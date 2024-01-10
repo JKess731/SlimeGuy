@@ -283,7 +283,7 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: SlimeGuyFMOD/SlimeGuy.fspro
+  sourceProjectPath: SlimeGuyFMOD/SlimeGuyFMOD.fspro
   sourceBankPath: SlimeGuyFMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
@@ -305,8 +305,10 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
