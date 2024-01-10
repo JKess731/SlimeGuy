@@ -283,8 +283,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: SlimeGuy/SlimeGuy.fspro
-  sourceBankPath: SlimeGuy/Build
+  sourceProjectPath: SlimeGuyFMOD/SlimeGuy.fspro
+  sourceBankPath: SlimeGuyFMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
