@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 3481214170883368468}
   StringsBanks:
   - {fileID: 3983534967476471702}
-  cacheTime: 638406901550922392
+  cacheTime: 638404997932491408
   cacheVersion: 131609
 --- !u!114 &2345330030308889238
 MonoBehaviour:
@@ -40,7 +40,7 @@ MonoBehaviour:
   Path: SlimeGuyFMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638406901550922392
+  lastModified: 638404997932491408
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -60,7 +60,7 @@ MonoBehaviour:
   Path: SlimeGuyFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638406901550911181
+  lastModified: 638404997932471427
   FileSizes:
   - Name: Desktop
     Value: 13824
@@ -80,7 +80,7 @@ MonoBehaviour:
   Path: SlimeGuyFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638406901550922392
+  lastModified: 638404997932481578
   FileSizes:
   - Name: Desktop
     Value: 804
