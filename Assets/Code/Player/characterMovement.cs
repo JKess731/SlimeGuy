@@ -10,11 +10,11 @@ using UnityEngine.InputSystem;
 public class characterMovement : MonoBehaviour
 {
     //Player Controller, Inputs, Directions
-    private CharacterController controller;
-    private Vector2 input;
-    private Vector2 direction;
+    public CharacterController controller;
+    public Vector2 input;
+    public Vector2 direction;
 
-    [SerializeField] private float speed;
+    public float speed;
 
     //Get CharacterController Component
     private void Awake()
@@ -32,6 +32,5 @@ public class characterMovement : MonoBehaviour
     {
         input = context.ReadValue<Vector2>();
         direction = new Vector2(input.x, input.y);
-        Debug.Log(input);
     }
 }
