@@ -19,7 +19,7 @@ public class characterAttack : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currenthealth;
 
-    public healthBar healthBar;
+    //public healthBar healthBar;
 
     public LayerMask enemyLayer;
 
@@ -49,8 +49,8 @@ public class characterAttack : MonoBehaviour
     public int attack2;
     private void Start()
     {
-        healthBar.SetMaxHealth(10);
-        healthBar.SetHealth(currenthealth);
+        //healthBar.SetMaxHealth(10);
+        //healthBar.SetHealth(currenthealth);
     }
     //Programmed to mouse clicks for now
     public void Update()
@@ -94,7 +94,7 @@ public class characterAttack : MonoBehaviour
             if(currenthealth < maxHealth)
             {
                 currenthealth++;
-                healthBar.SetHealth(currenthealth);
+                //healthBar.SetHealth(currenthealth);
             }
 
         }
