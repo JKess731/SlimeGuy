@@ -18,7 +18,7 @@ public class slimeTrail : MonoBehaviour
     private Vector3 lastPosition = new Vector3 ();
 
 
-    // Start is called before the first frame update
+    //On start get the player characters movement.
     void Start()
     {
         movement = GetComponent<characterMovement>();
@@ -27,15 +27,40 @@ public class slimeTrail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && lastTrail != null)
+
+        //On button press send Puddles to the other end of his slime trail.
+        if (Input.GetKeyDown(KeyCode.Space) && trailObjects.Count >= 0)
         {
-            Debug.Log("Diving");
-            Puddles.transform.position = trailObjects[0].transform.position;
+            //Original possible method. Is supposed to find the location of the earliest trailObject in the list, and send Puddles to that 
+            //location.
+            //Vector3 trailStart = trailObjects[0].transform.position;
+            //Puddles.transform.position = trailStart;
+
+
+            //Other Method. Is supposed to track for the trailObject furthest away from Puddles and send Puddles to that location.
+
+            //float furthestTrail = 0f;
+            //GameObject furthestSlimePatch = null;
+            //foreach (GameObject trailObject in trailObjects) 
+            //{ 
+                //float distance = Vector3.Distance(Puddles.transform.position, trailObject.transform.position);
+                //if (distance > furthestTrail) 
+                //{ 
+                    //furthestTrail = distance;
+                    //furthestSlimePatch = trailObject;
+
+                //}
+            //}
+            //Puddles.transform.position = furthestSlimePatch.transform.position;
+
         }
 
 
+        //Tracks if Puddles has moved by checking his current position and last known position.
         if (Puddles.transform.position != lastPosition)
         {
+            //If Puddles has moved/is moving stops the code for deleting all trails. If there is no current trail instantiates the first 
+            //patch of one. If there is checks the
             StopCoroutine(DeleteAllTrails());
             if (lastTrail != null)
             {
@@ -44,7 +69,6 @@ public class slimeTrail : MonoBehaviour
                     lastTrail = Instantiate(trailObject);
                     trailObjects.Add(lastTrail);
                     trailObject.transform.position = transform.position;
-
                     DeleteLastTrail();
                 }
             }
