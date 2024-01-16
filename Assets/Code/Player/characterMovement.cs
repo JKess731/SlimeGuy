@@ -9,12 +9,14 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class characterMovement : MonoBehaviour
 {
-    //Player Controller, Inputs, Directions
+    //Player Controller, Inputs, Movement directions
     public CharacterController controller;
     public Vector2 input;
-    public Vector2 direction;
+    public Vector2 moveDirection;
 
     public float speed;
+
+    public Vector2 faceDirection;
 
     //Get CharacterController Component
     private void Awake()
@@ -25,12 +27,18 @@ public class characterMovement : MonoBehaviour
     //Calls controller.Move(Vector2D)
     private void Update()
     {
-        controller.Move(direction * speed * Time.deltaTime);
+        //Handles Movement
+        controller.Move(moveDirection * speed * Time.deltaTime);
+
+        //Handles Rotation
+        Vector3 lookDir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(lookAngle,Vector3.forward);
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
-        direction = new Vector2(input.x, input.y);
+        moveDirection = new Vector2(input.x, input.y);
     }
 }

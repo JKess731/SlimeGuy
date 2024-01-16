@@ -19,17 +19,25 @@ public class characterAttack : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currenthealth;
 
+    public healthBar healthBar;
+
     public LayerMask enemyLayer;
 
     //Absorb
-    public Transform attackPoint;
+    public Transform attackPointAbsorb;
     public float attackRange;
 
     //Slingshot
+    public Transform attackPointSlingshot;
     public float dashSpeed = 10f;
     public float dashTime = 0.5f;
 
     //SlimeShotgun
+    public Transform attackPointShotgun;
+    public GameObject slimeBlob;
+    public int bulletCount = 3;
+    public float delay = 0.1f;
+
 
     /**Trial for different ability holder
     public lightAbility lightAbility;
@@ -39,7 +47,11 @@ public class characterAttack : MonoBehaviour
     //The ID of the attack
     public int attack1;
     public int attack2;
-
+    private void Start()
+    {
+        healthBar.SetMaxHealth(10);
+        healthBar.SetHealth(currenthealth);
+    }
     //Programmed to mouse clicks for now
     public void Update()
     {
@@ -74,7 +86,7 @@ public class characterAttack : MonoBehaviour
     }
     private void Absorb()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointAbsorb.position, attackRange, enemyLayer);
 
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -82,19 +94,25 @@ public class characterAttack : MonoBehaviour
             if(currenthealth < maxHealth)
             {
                 currenthealth++;
+                healthBar.SetHealth(currenthealth);
             }
+
         }
     }
 
-    private void SlimeShotgn()
-    {
+    private void SlimeShotgn(){
+        Quaternion left = attackPointShotgun.rotation * Quaternion.Euler(0f,0f,10f);
+        Quaternion right = attackPointShotgun.rotation * Quaternion.Euler(0f, 0f, -10f); ;
 
+        Instantiate(slimeBlob, attackPointShotgun.position, left);
+        Instantiate(slimeBlob, attackPointShotgun.position, attackPointShotgun.rotation);
+        Instantiate(slimeBlob, attackPointShotgun.position, right);
     }
 
     private void Slingshot()
     {
         StartCoroutine("Dash");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointSlingshot.position, attackRange, enemyLayer);
 
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -107,10 +125,18 @@ public class characterAttack : MonoBehaviour
         float startTime = Time.time;
         while (Time.time < startTime + dashTime)
         {
-            movement.controller.Move(movement.direction * dashSpeed * Time.deltaTime);
+            movement.controller.Move(movement.moveDirection * dashSpeed * Time.deltaTime);
 
-            //BAD BAD IDEA
             yield return null;
+        }
+    }
+
+    private IEnumerator ShootSlime(int slimeCount0)
+    {
+        for (int i = 0; i < slimeCount0; i++)
+        {
+            Instantiate(slimeBlob, attackPointShotgun);
+            yield return delay;
         }
     }
     private void OnDrawGizmos()
@@ -120,13 +146,13 @@ public class characterAttack : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if(attackPoint == null)
+        if(attackPointAbsorb == null)
         {
             return;
         }
 
         //Draws collision of attack
         Handles.color = Color.red;
-        Handles.DrawWireDisc(attackPoint.position, new Vector3(0, 0, 1), attackRange);
+        Handles.DrawWireDisc(attackPointAbsorb.position, new Vector3(0, 0, 1), attackRange);
     }
 }
