@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 952537313}
   - component: {fileID: 952537312}
-  - component: {fileID: 952537311}
+  - component: {fileID: 952537314}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -141,14 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &952537311
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 952537310}
-  m_Enabled: 1
 --- !u!20 &952537312
 Camera:
   m_ObjectHideFlags: 0
@@ -215,6 +207,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &952537314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952537310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &1200971300
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +278,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5e9e43da-6807-43c2-9453-7f93d22a99d8
     m_ActionName: GamePlay/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7f704a95-8479-4d8c-8931-c735682dc3f4
+    m_ActionName: GamePlay/Dive
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlay
@@ -305,6 +314,7 @@ GameObject:
   - component: {fileID: 1727257547}
   - component: {fileID: 1727257546}
   - component: {fileID: 1727257545}
+  - component: {fileID: 1727257549}
   m_Layer: 0
   m_Name: puddles
   m_TagString: Untagged
@@ -324,7 +334,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebafebeb4b268844087db57710217fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 1727257546}
+  input: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
   speed: 5
+  faceDirection: {x: 0, y: 0}
 --- !u!143 &1727257546
 CharacterController:
   m_ObjectHideFlags: 0
@@ -418,6 +432,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1727257549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727257544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75920c53d7a4e0f47b496f445d46eee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1727257544}
+  movement: {fileID: 1727257545}
+  maxHealth: 10
+  currenthealth: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attackPointAbsorb: {fileID: 0}
+  attackRange: 0
+  attackPointSlingshot: {fileID: 0}
+  dashSpeed: 10
+  dashTime: 0.5
+  attackPointShotgun: {fileID: 0}
+  slimeBlob: {fileID: 0}
+  bulletCount: 3
+  delay: 0.1
+  attack1: 0
+  attack2: 0
 --- !u!1 &1980138521
 GameObject:
   m_ObjectHideFlags: 0
