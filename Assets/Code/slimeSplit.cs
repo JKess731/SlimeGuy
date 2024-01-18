@@ -15,6 +15,7 @@ public class slimeSplit : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) 
         {
             GameObject newMinion = onSplit();
+            MinionMove minionObj = newMinion.GetComponent<MinionMove>();
 
             // Temp find "closest" enemy
             /*
@@ -23,19 +24,7 @@ public class slimeSplit : MonoBehaviour
              */
             GameObject enemy = GameObject.FindWithTag("enemy");
 
-            // Temp move enemy
-            /*
-             * Currently, move to the found enemy for testing
-             * 
-             * Will want to change this later to:
-             * If no enemy in range, move back to player
-             * otherwise, move to enemy
-             */
-
-            if (Vector3.Distance(newMinion.transform.position, enemy.transform.position) > 1)
-            {
-                newMinion.transform.position = Vector3.MoveTowards(newMinion.transform.position, enemy.transform.position, 5 * Time.deltaTime);
-            }
+            minionObj.target = enemy;
 
         }
     }
