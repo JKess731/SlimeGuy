@@ -124,13 +124,8 @@ public class characterAttack : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        float startTime = Time.time;
-        while (Time.time < startTime + dashTime)
-        {
-            movement.controller.Move(movement.moveDirection * dashSpeed * Time.deltaTime);
-
-            yield return null;
-        }
+        movement.controller.Move(movement.moveDirection * dashSpeed * Time.deltaTime);
+        yield return new WaitForSeconds(dashTime);
     }
 
     private IEnumerator ShootSlime(int slimeCount0)
