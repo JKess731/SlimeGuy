@@ -16,12 +16,14 @@ public class slimeTrail : MonoBehaviour
     private List<GameObject> trailObjects = new List<GameObject>();
     private GameObject lastTrail;
     private Vector3 lastPosition = new Vector3 ();
+    private bool trailCheck = true;
 
 
     //On start get the player characters movement.
     void Start()
     {
         movement = GetComponent<characterMovement>();
+        lastPosition = Puddles.transform.position;
     }
 
     // Update is called once per frame
@@ -29,47 +31,60 @@ public class slimeTrail : MonoBehaviour
     {
 
         //On button press send Puddles to the other end of his slime trail.
-        if (Input.GetKeyDown(KeyCode.Space) && trailObjects.Count >= 0)
+        if (Input.GetKeyDown(KeyCode.Space) && trailObjects.Count > 0)
         {
-            //Original possible method. Is supposed to find the location of the earliest trailObject in the list, and send Puddles to that 
-            //location.
-            //Vector3 trailStart = trailObjects[0].transform.position;
-            //Puddles.transform.position = trailStart;
+            //ORIGINAL POSSIBLE METHOD. IS SUPPOSED TO FIND THE LOCATION OF THE EARLIEST TRAILOBJECT IN THE LIST, AND SEND PUDDLES TO THAT 
+            //LOCATION.
+            Debug.Log(trailObjects[0]);
+            Vector3 TrailStart = trailObjects[0].transform.position;
+            trailCheck = false;
+            Debug.Log("Move Puddles");
+            Puddles.transform.position = TrailStart;
+            Debug.Log("Last Pos Update");
+            lastPosition = Puddles.transform.position;
+            trailCheck = true;
 
 
-            //Other Method. Is supposed to track for the trailObject furthest away from Puddles and send Puddles to that location.
+            //OTHER METHOD. IS SUPPOSED TO TRACK FOR THE TRAILOBJECT FURTHEST AWAY FROM PUDDLES AND SEND PUDDLES TO THAT LOCATION.
 
-            //float furthestTrail = 0f;
-            //GameObject furthestSlimePatch = null;
+            //float FurthestTrail = 0F;
+            //GameObject FurthestSlimePatch  = null;
             //foreach (GameObject trailObject in trailObjects) 
             //{ 
-                //float distance = Vector3.Distance(Puddles.transform.position, trailObject.transform.position);
-                //if (distance > furthestTrail) 
-                //{ 
-                    //furthestTrail = distance;
-                    //furthestSlimePatch = trailObject;
+            //float DISTANCE = Vector3.Distance(Puddles.transform.position, trailObject.transform.position);
+            //if (DISTANCE > FurthestTrail) 
+            //{ 
+            //FurthestTrail = DISTANCE;
+            //FurthestSlimePatch = trailObject;
 
-                //}
             //}
-            //Puddles.transform.position = furthestSlimePatch.transform.position;
+            //}
+            //trailCheck = false;
+            //Debug.Log("Move Puddles");
+            //Puddles.transform.position = FurthestSlimePatch.transform.position;
+            //Debug.Log("Last Pos Update");
+            //lastPosition = Puddles.transform.position;
+            //trailCheck = true;
 
         }
 
 
         //Tracks if Puddles has moved by checking his current position and last known position.
-        if (Puddles.transform.position != lastPosition)
+        if (Puddles.transform.position != lastPosition && trailCheck == true)
         {
+            Debug.Log("New Trail Check");
             //If Puddles has moved/is moving stops the code for deleting all trails. If there is no current trail instantiates the first 
             //patch of one. If there is checks the
             StopCoroutine(DeleteAllTrails());
             if (lastTrail != null)
             {
-                if (Vector3.Distance(transform.position, lastTrail.transform.position) >= .5)
+                if (Vector3.Distance(transform.position, lastTrail.transform.position) >= 1)
                 {
                     lastTrail = Instantiate(trailObject);
                     trailObjects.Add(lastTrail);
                     trailObject.transform.position = transform.position;
                     DeleteLastTrail();
+                   
                 }
             }
             else
