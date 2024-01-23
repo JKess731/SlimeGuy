@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 3481214170883368468}
   StringsBanks:
   - {fileID: 3983534967476471702}
-  cacheTime: 638409094192886843
+  cacheTime: 638415634623352871
   cacheVersion: 131609
 --- !u!114 &2345330030308889238
 MonoBehaviour:
@@ -40,10 +40,8 @@ MonoBehaviour:
   Path: SlimeGuyFMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638409094192886843
-  FileSizes:
-  - Name: Desktop
-    Value: 494
+  lastModified: 638415634623352871
+  FileSizes: []
   Exists: 1
 --- !u!114 &3481214170883368468
 MonoBehaviour:
@@ -60,10 +58,8 @@ MonoBehaviour:
   Path: SlimeGuyFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638409094192876942
-  FileSizes:
-  - Name: Desktop
-    Value: 13824
+  lastModified: 638415634623342869
+  FileSizes: []
   Exists: 1
 --- !u!114 &3983534967476471702
 MonoBehaviour:
@@ -75,14 +71,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/Desktop/Master.strings.bank
   m_EditorClassIdentifier: 
   Path: SlimeGuyFMOD/Build/Desktop/Master.strings.bank
-  Name: Master.strings
+  Name: Desktop/Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638409094192876942
+  lastModified: 638415634623347870
   FileSizes:
-  - Name: Desktop
+  - Name: 
     Value: 804
   Exists: 1
 --- !u!114 &7710518239371351642
