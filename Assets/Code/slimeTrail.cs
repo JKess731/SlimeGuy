@@ -26,7 +26,7 @@ public class slimeTrail : MonoBehaviour
         lastPosition = Puddles.transform.position;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame and every second I want to die.
     void Update()
     {
 
