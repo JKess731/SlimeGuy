@@ -19,7 +19,7 @@ public class slimeTrail : MonoBehaviour
     private bool trailCheck = true;
 
 
-    //On start get the player characters movement.
+    //On start get the player characters movement, and set lastPosition to Puddles position to prevent issues with other code on start.
     void Start()
     {
         movement = GetComponent<characterMovement>();
@@ -48,16 +48,16 @@ public class slimeTrail : MonoBehaviour
             //OTHER METHOD. IS SUPPOSED TO TRACK FOR THE TRAILOBJECT FURTHEST AWAY FROM PUDDLES AND SEND PUDDLES TO THAT LOCATION.
 
             //float FurthestTrail = 0F;
-            //GameObject FurthestSlimePatch  = null;
-            //foreach (GameObject trailObject in trailObjects) 
-            //{ 
-            //float DISTANCE = Vector3.Distance(Puddles.transform.position, trailObject.transform.position);
-            //if (DISTANCE > FurthestTrail) 
-            //{ 
-            //FurthestTrail = DISTANCE;
-            //FurthestSlimePatch = trailObject;
+            //GameObject FurthestSlimePatch = null;
+            //foreach (GameObject trailObject in trailObjects)
+            //{
+            //    float DISTANCE = Vector3.Distance(Puddles.transform.position, trailObject.transform.position);
+            //    if (DISTANCE > FurthestTrail)
+            //    {
+            //        FurthestTrail = DISTANCE;
+            //        FurthestSlimePatch = trailObject;
 
-            //}
+            //    }
             //}
             //trailCheck = false;
             //Debug.Log("Move Puddles");
@@ -69,7 +69,8 @@ public class slimeTrail : MonoBehaviour
         }
 
 
-        //Tracks if Puddles has moved by checking his current position and last known position.
+        //On update tracks if Puddles has moved by checking his current position and last known position. If Puddles has moved instantiates
+        //a trail patch behind Puddles and adds it to a list. 
         if (Puddles.transform.position != lastPosition && trailCheck == true)
         {
             Debug.Log("New Trail Check");
@@ -83,8 +84,7 @@ public class slimeTrail : MonoBehaviour
                     lastTrail = Instantiate(trailObject);
                     trailObjects.Add(lastTrail);
                     trailObject.transform.position = transform.position;
-                    DeleteLastTrail();
-                   
+                    DeleteLastTrail();                   
                 }
             }
             else
@@ -102,10 +102,9 @@ public class slimeTrail : MonoBehaviour
                 //StartCoroutine(DeleteAllTrails());
             }
         }
-
-        
     }
 
+    //Deletes all trails when called in the for loop above. 
     IEnumerator DeleteAllTrails()
     {
         GameObject removeTrail = trailObjects[0];
@@ -115,6 +114,7 @@ public class slimeTrail : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
     }
 
+    //Deletes the trail patch at [0] in the list when called if the list count is greater then 10.
     private void DeleteLastTrail() 
     {
         if (trailObjects.Count > 10) 
