@@ -83,7 +83,7 @@
                 {
                     "name": "Controller Left Stick",
                     "id": "216526a2-b2e3-4018-8fbb-f1c2a64518be",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

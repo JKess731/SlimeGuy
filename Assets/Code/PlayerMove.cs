@@ -1,57 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-// Jared
-// TEMPORARY MOVEMENT SCRIPT
-// **************************
-//   DELETE AFTER TESTING
-// **************************
+// Jared Kessler
+// Connection to the new Input System
 
+// Code taken from:
+// https://www.youtube.com/watch?v=UyUogO2DvwY&t=268s
+/*
+ * 
+ * Feel Free to edit this code as needed
+ * But do not break the game
+ * 
+ */
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] public float movementSpeed;
-    [SerializeField] private float moveLimiter;
+    private PlayerInput input = null;
+    
+    private Vector2 moveVector = Vector2.zero;
+    private Rigidbody2D rb = null;
 
-    public Vector2 moveDir;
-    private float moveX;
-    private float moveY;
+    [SerializeField] private float speed = 10f;
 
-    public bool isMoving = false;
-    public int direction = 1;
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        moveX = Input.GetAxisRaw("Horizontal");
-        moveY = Input.GetAxisRaw("Vertical");
-
-        moveDir = new Vector2(moveX, moveY).normalized;
-
+        input = new PlayerInput(); 
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        if (moveX != 0 && moveY != 0)
-        {
-            moveX *= moveLimiter;
-            moveY *= moveLimiter;
-        }
+        rb.velocity = moveVector * speed;
+    }
 
-        rb.velocity = new Vector2(moveDir.x * movementSpeed, moveDir.y * movementSpeed);
+    private void OnEnable()
+    {
+        input.Enable();
+        input.GamePlay.Movement.performed += onMovement;
+        input.GamePlay.Movement.canceled += onMovementCancel;
+    }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            direction = 1;
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-            isMoving = true;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            direction = -1;
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
-            isMoving = true;
-        }
+    private void OnDisable()
+    {
+        input.Disable();
+        input.GamePlay.Movement.performed -= onMovement;
+        input.GamePlay.Movement.canceled -= onMovementCancel;
+    }
+
+    private void onMovement(InputAction.CallbackContext value)
+    {
+        moveVector = value.ReadValue<Vector2>();
+    }
+
+    private void onMovementCancel(InputAction.CallbackContext value)
+    {
+        moveVector = Vector2.zero;
     }
 }
