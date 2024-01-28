@@ -16,7 +16,7 @@ using UnityEngine.InputSystem;
  */
 public class PlayerMove : MonoBehaviour
 {
-    private PlayerInput input = null;
+    public PlayerInput input = null;
     
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null;
