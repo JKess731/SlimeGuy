@@ -15,7 +15,7 @@ public class characterAttack : MonoBehaviour
 {
     //PlayerInfo
     [SerializeField] GameObject player;
-    public PlayerMove playerMove;
+    [SerializeField] PlayerMove movement;
     [SerializeField] private int maxHealth;
     [SerializeField] private int currenthealth;
 
@@ -120,12 +120,6 @@ public class characterAttack : MonoBehaviour
         {
             Debug.Log("We hit: " + enemy.name);
         }
-    }
-
-    private IEnumerator Dash()
-    {
-        //movement.controller.Move(movement.moveDirection * dashSpeed * Time.deltaTime);
-        yield return new WaitForSeconds(dashTime);
     }
 
     private IEnumerator ShootSlime(int slimeCount0)
