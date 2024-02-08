@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 //Ediosn Li
@@ -12,11 +13,15 @@ public class LookAtMouse : MonoBehaviour
         //float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         //transform.rotation = Quaternion.AngleAxis(lookAngle, Vector3.forward);
 
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.WorldToScreenPoint(mousePosition);
-        Vector2 direction = new Vector2(mousePosition.x - transform.position.x,
-                                        mousePosition.y - transform.position.y);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 rotation = mousePosition - transform.position;
+        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
-        transform.up = direction;
+        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+    }
+
+    public Quaternion getRotation()
+    {
+        return transform.rotation;
     }
 }
