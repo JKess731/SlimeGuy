@@ -31,28 +31,23 @@ public class slimeTrail : MonoBehaviour
         lastPosition = Puddles.transform.position;
     }
 
-    // Update is called once per frame and every second I want to die.
+    // Update is called once per frame
     void Update()
     {
 
-        //On button press send Puddles to the other end of his slime trail.
+        //On button press send Puddles to the other end of his slime trail. Can press again to leave slime trail and stop diving.
         if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && trailObjects.Count > 0)
         {
             Debug.Log("Button Press");
-            if(dive == false)
-            {
-               
+            if(dive == false){
                 dive = true;
                 Debug.Log("Start Dive");
                 trailCount = trailObjects.Count;
                 diveCheck = trailCount;
                 Debug.Log(diveCheck);
                 StartCoroutine(diveTrail());
-                
-                
             }
-            else
-            {
+            else{
                 dive = false;
                 Debug.Log("Stop Dive");
                 trailCount = 0;
@@ -60,22 +55,7 @@ public class slimeTrail : MonoBehaviour
                 StopCoroutine(diveTrail());
                 playerMove.input.Enable();
             }
-
         }
-        
-
-        //if (trailObjects.Count <= 0)
-        //{
-        //    dive = false;
-        //    trailCount = 0;
-        //    diveCheck = 0;
-        //    StopCoroutine(diveTrail());
-        //}
-
-
-
-
-
 
 
         //On update tracks if Puddles has moved by checking his current position and last known position. If Puddles has moved instantiates
@@ -146,9 +126,6 @@ public class slimeTrail : MonoBehaviour
             yield return new WaitForSeconds(.08f);
         }
         playerMove.input.Enable();
-
-
-
     }
 
 

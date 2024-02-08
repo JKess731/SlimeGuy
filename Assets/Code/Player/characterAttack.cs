@@ -15,7 +15,7 @@ public class characterAttack : MonoBehaviour
 {
     //PlayerInfo
     [SerializeField] GameObject player;
-    [SerializeField] characterMovement movement;
+    public PlayerMove playerMove;
     [SerializeField] private int maxHealth;
     [SerializeField] private int currenthealth;
 
@@ -124,7 +124,7 @@ public class characterAttack : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        movement.controller.Move(movement.moveDirection * dashSpeed * Time.deltaTime);
+        //movement.controller.Move(movement.moveDirection * dashSpeed * Time.deltaTime);
         yield return new WaitForSeconds(dashTime);
     }
 
