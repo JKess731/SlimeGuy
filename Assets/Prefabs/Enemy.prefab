@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 6074868330319176182}
   - component: {fileID: 5199764860221239451}
   - component: {fileID: -6659269561839717617}
+  - component: {fileID: 4558453996578837261}
+  - component: {fileID: 6249046739151919231}
   m_Layer: 6
-  m_Name: enemy
+  m_Name: Enemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,3 +149,31 @@ MonoBehaviour:
   health: 1
   attackDamage: 1
   speed: 1
+--- !u!114 &4558453996578837261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691146910668818382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5799f97814d4b4a9de63cbe079c102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+--- !u!114 &6249046739151919231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691146910668818382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd2f7238209e5b49ab3bc9d5779af9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 0
+  distanceBetween: 0

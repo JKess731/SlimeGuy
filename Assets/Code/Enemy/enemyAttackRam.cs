@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class enemyAttackRam : MonoBehaviour
 {
-    [SerializeField] GameObject enemy;
     [SerializeField] private int damage;
 
 
@@ -28,19 +27,5 @@ public class enemyAttackRam : MonoBehaviour
     {
         Debug.Log("Attacking");
        
-    }
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
