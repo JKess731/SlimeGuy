@@ -17,18 +17,12 @@ public class enemy : MonoBehaviour
         health = maxHealth;
     }
 
-    //Handles attack collision
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        {
-            Damage(1);
-        }
-    }
-
     //Handles Damage
-    private void Damage(int damage)
+    public void Damage(int damage)
     {
-        health -= damage;
+        Debug.Log(damage);
+        Debug.Log(gameObject.name + ":" + health);
+        health = health - damage;
         if(health <= 0)
         {
             Destroy(gameObject);
