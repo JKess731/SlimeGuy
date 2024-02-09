@@ -28,4 +28,9 @@ public class enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public int getHealth()
+    {
+        return health;
+    }
 }
