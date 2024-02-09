@@ -23,14 +23,26 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private float speed = 10f;
 
+    public bool isDashing;
+    public Vector2 playerFaceDirection;
+
     private void Awake()
     {
         input = new PlayerInput(); 
+
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     private void FixedUpdate()
     {
+        playerFaceDirection = moveVector.normalized;
+
+        if (isDashing)
+        {
+            return;
+        }
+
         rb.velocity = moveVector * speed;
     }
 

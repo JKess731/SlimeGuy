@@ -8,11 +8,21 @@ public class bullet : MonoBehaviour
     private Rigidbody2D rb;
     
     [SerializeField] private float bulletSpeed;
-    private int bulletDamage;
+    [SerializeField] private int bulletDamage = 1;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * bulletSpeed;
+        Destroy(gameObject, 3f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "enemy")
+        {
+            collision.gameObject.GetComponent<enemy>().Damage(bulletDamage);
+            Destroy(gameObject);
+        }
     }
 }
