@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd2f7238209e5b49ab3bc9d5779af9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 491783427}
+  player: {fileID: 491783433}
   speed: 1.5
   distanceBetween: 8
 --- !u!114 &1580965896
@@ -1104,7 +1104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5799f97814d4b4a9de63cbe079c102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1580965892}
   damage: 2
   player: {fileID: 491783427}
 --- !u!61 &1580965898
