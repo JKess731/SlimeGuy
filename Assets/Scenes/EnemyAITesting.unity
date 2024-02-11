@@ -272,11 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7e72cbe8a43da4d937544d157514cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPointShotgun: {fileID: 1735175790}
-  slimeBlob: {fileID: 4833602960537618009, guid: 8b09624d15fafc742adbbe3771d47cf1, type: 3}
+  attackPointShotgun: {fileID: 0}
+  slimeBlob: {fileID: 0}
   bulletCount: 3
   delay: 0.1
-  ring: {fileID: 1537342668}
+  ring: {fileID: 0}
 --- !u!114 &491783430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,9 +445,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642184e3688f1764984646dda4ee89bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 491783427}
-  maxHealth: 25
-  currentHealth: 25
+  player: {fileID: 0}
+  maxHealth: 0
+  currentHealth: 0
 --- !u!114 &491783436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 491783427}
   bullet: {fileID: 4833602960537618009, guid: b4245c634b3d6434c8eefba9a0108838, type: 3}
-  startShotCooldown: 1.5
+  startShotCooldown: 2
 --- !u!1 &773471136
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,11 +690,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyAbsorption: 0
   dashAbsorb: 0
-  absorbDash: {fileID: 2055849889}
-  absorbClick: {fileID: 1648195465}
-  playerMove: {fileID: 491783430}
-  rb: {fileID: 491783431}
-  tr: {fileID: 491783428}
+  absorbDash: {fileID: 0}
+  absorbClick: {fileID: 0}
+  playerMove: {fileID: 0}
+  rb: {fileID: 0}
+  tr: {fileID: 0}
 --- !u!1 &952537310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,8 +1104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5799f97814d4b4a9de63cbe079c102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  player: {fileID: 491783427}
+  damage: 0
+  player: {fileID: 0}
 --- !u!61 &1580965898
 BoxCollider2D:
   m_ObjectHideFlags: 0
