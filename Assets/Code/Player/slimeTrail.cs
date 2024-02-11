@@ -36,12 +36,12 @@ public class slimeTrail : MonoBehaviour
     {
 
         //On button press send Puddles to the other end of his slime trail. Can press again to leave slime trail and stop diving.
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && trailObjects.Count > 0)
+        if (UnityEngine.Input.GetKeyDown(KeyCode.F) && trailObjects.Count > 0)
         {
-            Debug.Log("Button Press");
+           
             if(dive == false){
                 dive = true;
-                Debug.Log("Start Dive");
+                
                 trailCount = trailObjects.Count;
                 diveCheck = trailCount;
                 Debug.Log(diveCheck);
@@ -49,7 +49,7 @@ public class slimeTrail : MonoBehaviour
             }
             else{
                 dive = false;
-                Debug.Log("Stop Dive");
+                
                 trailCount = 0;
                 diveCheck = 0;
                 StopCoroutine(diveTrail());
@@ -62,7 +62,7 @@ public class slimeTrail : MonoBehaviour
         //a trail patch behind Puddles and adds it to a list. 
         if (Puddles.transform.position != lastPosition && trailCheck == true)
         {
-            Debug.Log("New Trail Check");
+            
             //If Puddles has moved/is moving stops the code for deleting all trails. If there is no current trail instantiates the first 
             //patch of one. If there is checks the
             StopCoroutine(DeleteAllTrails());
@@ -106,18 +106,18 @@ public class slimeTrail : MonoBehaviour
         while (dive == true){
             playerMove.input.Disable();
             diveCheck--;
-            Debug.Log("Dive Check:" + diveCheck);
+            
             Vector3 TrailStart = trailObjects[diveCheck].transform.position;
-            Debug.Log("TrailStart:" + TrailStart);
+            
             trailCheck = false;
             Puddles.transform.position = TrailStart;
             lastPosition = Puddles.transform.position;
-            Debug.Log("Puddles Position" + Puddles.transform.position);
+            
             trailCheck = true;
             if (diveCheck <= 0) 
             {
                 dive = false;
-                Debug.Log("False");
+                
                 trailCount = 0;
                 diveCheck = 0;
                 StopCoroutine(diveTrail());
