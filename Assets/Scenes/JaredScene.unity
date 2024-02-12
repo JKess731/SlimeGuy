@@ -491,6 +491,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  isDashing: 0
+  playerFaceDirection: {x: 0, y: 0}
 --- !u!1 &1009061130
 GameObject:
   m_ObjectHideFlags: 0
