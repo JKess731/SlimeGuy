@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b554035dd21b5984b9551bc97ddbd02f
+guid: efd4b9b0712007549a704234c94da8d8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_0
+      name: PuddlesAni_IdleL-Sheet_0
       rect:
         serializedVersion: 2
         x: 16
@@ -118,125 +118,125 @@ TextureImporter:
         width: 32
         height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 467d4e1d661e65a4fa514a8c507d408f
-      internalID: -1377544796
+      spriteID: b6464033993805f49b77d81d52857709
+      internalID: -1018357442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_1
+      name: PuddlesAni_IdleL-Sheet_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 79
         y: 16
         width: 33
         height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9872eea7cd0c5044892870f09e0fa05a
-      internalID: 1962858816
+      spriteID: e616ad7a9956ee14d9a5bf31cf00f3d7
+      internalID: 1840011194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_2
+      name: PuddlesAni_IdleL-Sheet_2
       rect:
         serializedVersion: 2
-        x: 144
+        x: 143
         y: 16
         width: 33
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 910f2f41032e4414e9897994f1d12bb9
-      internalID: 1341561404
+      spriteID: e6f1350bb572b1f4099a1f7c307843a7
+      internalID: -1419792730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_3
+      name: PuddlesAni_IdleL-Sheet_3
       rect:
         serializedVersion: 2
-        x: 208
+        x: 207
         y: 16
         width: 33
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9468b5f1eb1463543b2f5ff28b195d04
-      internalID: 488174004
+      spriteID: ecc924aa6dfe80945b2562735b26c6d0
+      internalID: -1900089436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_4
+      name: PuddlesAni_IdleL-Sheet_4
       rect:
         serializedVersion: 2
-        x: 272
+        x: 271
         y: 16
         width: 33
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 793adc2dd3d347f4890e26c235d2e32e
-      internalID: -1665648483
+      spriteID: 0bced0480bf47744ba84c8f932bb6c6e
+      internalID: 513359180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_5
+      name: PuddlesAni_IdleL-Sheet_5
       rect:
         serializedVersion: 2
-        x: 336
+        x: 335
         y: 16
         width: 33
         height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 335e82308735c6c4b836b5f6f0f5cf9f
-      internalID: -1268905081
+      spriteID: a7b32289078c5d542b757ee4be41f681
+      internalID: 925758499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_6
+      name: PuddlesAni_IdleL-Sheet_6
       rect:
         serializedVersion: 2
         x: 400
@@ -244,77 +244,77 @@ TextureImporter:
         width: 32
         height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebd72a6d86d3a4842802cc38222c2660
-      internalID: -1323623098
+      spriteID: 75729cb107e90714e9b4a770c6f5ecf4
+      internalID: 946342945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_7
+      name: PuddlesAni_IdleL-Sheet_7
       rect:
         serializedVersion: 2
-        x: 464
+        x: 465
         y: 16
         width: 31
         height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6a43e54837393c4ba72b692a1cacfdc
-      internalID: -1419019069
+      spriteID: 2d380a776ce2a8b468c70769df3a7c08
+      internalID: -215744689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_8
+      name: PuddlesAni_IdleL-Sheet_8
       rect:
         serializedVersion: 2
-        x: 528
+        x: 529
         y: 16
         width: 31
         height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7abab2e48383077479a0f9bec3a239f0
-      internalID: -2064440564
+      spriteID: ceac18d820b50a84f813039db13b601c
+      internalID: -1876591154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PuddlesAni_IdleR-Sheet_9
+      name: PuddlesAni_IdleL-Sheet_9
       rect:
         serializedVersion: 2
-        x: 592
+        x: 593
         y: 16
         width: 31
         height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53a5c21f737de6a4583bf0fc49622544
-      internalID: 1015420763
+      spriteID: 855b4feea18593f4181ae039bcf8df9f
+      internalID: -1237577612
       vertices: []
       indices: 
       edges: []
@@ -330,16 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PuddlesAni_IdleR-Sheet_0: -1377544796
-      PuddlesAni_IdleR-Sheet_1: 1962858816
-      PuddlesAni_IdleR-Sheet_2: 1341561404
-      PuddlesAni_IdleR-Sheet_3: 488174004
-      PuddlesAni_IdleR-Sheet_4: -1665648483
-      PuddlesAni_IdleR-Sheet_5: -1268905081
-      PuddlesAni_IdleR-Sheet_6: -1323623098
-      PuddlesAni_IdleR-Sheet_7: -1419019069
-      PuddlesAni_IdleR-Sheet_8: -2064440564
-      PuddlesAni_IdleR-Sheet_9: 1015420763
+      PuddlesAni_IdleL-Sheet_0: -1018357442
+      PuddlesAni_IdleL-Sheet_1: 1840011194
+      PuddlesAni_IdleL-Sheet_2: -1419792730
+      PuddlesAni_IdleL-Sheet_3: -1900089436
+      PuddlesAni_IdleL-Sheet_4: 513359180
+      PuddlesAni_IdleL-Sheet_5: 925758499
+      PuddlesAni_IdleL-Sheet_6: 946342945
+      PuddlesAni_IdleL-Sheet_7: -215744689
+      PuddlesAni_IdleL-Sheet_8: -1876591154
+      PuddlesAni_IdleL-Sheet_9: -1237577612
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
