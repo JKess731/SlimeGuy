@@ -53,37 +53,35 @@ public class PlayerMove : MonoBehaviour
     private void OnEnable()
     {
         input.Enable();
-        input.GamePlay.Movement.performed += onMovement;
-        input.GamePlay.Movement.canceled += onMovementCancel;
+        input.GamePlay.Movement.performed += OnMovement;
+        input.GamePlay.Movement.canceled += OnMovementCancel;
 
     }
 
     private void OnDisable()
     {
         input.Disable();
-        input.GamePlay.Movement.performed -= onMovement;
-        input.GamePlay.Movement.canceled -= onMovementCancel;
+        input.GamePlay.Movement.performed -= OnMovement;
+        input.GamePlay.Movement.canceled -= OnMovementCancel;
     }
 
-    private void animationEventDoNothing()
+    private void AnimationEventDoNothing()
     {
         // For animations to stop snapping
     }
 
-    private void onMovement(InputAction.CallbackContext value)
+    private void OnMovement(InputAction.CallbackContext value)
     {
         moveVector = value.ReadValue<Vector2>();
 
-        animator.SetFloat("Speed", moveVector.x);
-
-        Debug.Log(animator.GetFloat("Speed"));
+        animator.SetFloat("Direction", moveVector.x);
     }
 
-    private void onMovementCancel(InputAction.CallbackContext value)
+    private void OnMovementCancel(InputAction.CallbackContext value)
     {
         moveVector = Vector2.zero;
 
-        animator.SetFloat("Speed", 0);
+        animator.SetFloat("Direction", 0);
     }
 
     
