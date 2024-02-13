@@ -29,7 +29,7 @@ public class enemyBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "puddles")
+        if (collision.gameObject.name == "Player")
         {
             collision.gameObject.GetComponent<playerHealth>().Damage(bulletDamage);
             Debug.Log("Bullet dmg");

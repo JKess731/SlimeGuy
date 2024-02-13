@@ -15,7 +15,7 @@ public class enemyAttackRam : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "puddles") {
+        if (collision.gameObject.name == "Player") {
             Debug.Log("Enter the puddles");
             player.GetComponentInParent<playerHealth>().Damage(damage);
             attackCon = true;
@@ -26,7 +26,7 @@ public class enemyAttackRam : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "puddles")
+        if (collision.gameObject.name == "Player")
         {
             Debug.Log("Exit the puddles");
             attackCon = false;
