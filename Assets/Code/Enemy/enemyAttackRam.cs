@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class enemyAttackRam : MonoBehaviour
 {
-    [SerializeField] GameObject enemy;
     [SerializeField] private int damage;
     [SerializeField] GameObject player;
     private bool attackCon = false;
