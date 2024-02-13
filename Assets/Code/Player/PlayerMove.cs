@@ -75,6 +75,8 @@ public class PlayerMove : MonoBehaviour
         moveVector = value.ReadValue<Vector2>();
 
         animator.SetFloat("Speed", moveVector.x);
+
+        Debug.Log(animator.GetFloat("Speed"));
     }
 
     private void onMovementCancel(InputAction.CallbackContext value)
