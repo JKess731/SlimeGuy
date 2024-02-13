@@ -16,6 +16,8 @@ using UnityEngine.InputSystem;
  */
 public class PlayerMove : MonoBehaviour
 {
+    private Animator animator;
+
     public PlayerInput input = null;
     
     private Vector2 moveVector = Vector2.zero;
@@ -28,6 +30,8 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
+
         input = new PlayerInput(); 
 
         rb = GetComponent<Rigidbody2D>();
@@ -51,6 +55,7 @@ public class PlayerMove : MonoBehaviour
         input.Enable();
         input.GamePlay.Movement.performed += onMovement;
         input.GamePlay.Movement.canceled += onMovementCancel;
+
     }
 
     private void OnDisable()
@@ -60,13 +65,24 @@ public class PlayerMove : MonoBehaviour
         input.GamePlay.Movement.canceled -= onMovementCancel;
     }
 
+    private void animationEventDoNothing()
+    {
+        // For animations to stop snapping
+    }
+
     private void onMovement(InputAction.CallbackContext value)
     {
         moveVector = value.ReadValue<Vector2>();
+
+        animator.SetFloat("Speed", moveVector.x);
     }
 
     private void onMovementCancel(InputAction.CallbackContext value)
     {
         moveVector = Vector2.zero;
+
+        animator.SetFloat("Speed", 0);
     }
+
+    
 }
