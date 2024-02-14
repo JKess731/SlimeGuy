@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class enemyMovementFollow : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float speed;
     public float distanceBetween;
     private float distance; 
+
+    /*
+     * On Awake grab reference to the player from the scene
+     * 
+     *  Jared Kessler
+     *  2/14/24
+     *  3:45 PM
+     * 
+     */
+    void Awake()
+    {
+        player = GameObject.FindWithTag("player").transform;
+    }
 
 
     // Update is called once per frame. On update checks the distabce between the player and this enemy and the direction to the player.
