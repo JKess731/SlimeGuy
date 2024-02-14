@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class RoomTriggerSpawner : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> spawners = new List<GameObject>();
@@ -29,14 +29,8 @@ public class EnemySpawner : MonoBehaviour
 
         }
 
+        Destroy(gameObject);
+
     }
-
-    //private Vector2 chooseSpawnLoc(CircleCollider2D radius)
-    //{
-    //    Vector2 spawnLoc = Random.insideUnitCircle * radius.radius;
-
-    //    return spawnLoc;
-
-    //}
 
 }
