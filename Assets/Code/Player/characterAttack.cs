@@ -109,8 +109,6 @@ public class characterAttack : MonoBehaviour
         Instantiate(slimeBlob, attackPointShotgun.position, right);
     }
 
-    //Need to be fixed
-    //Kinda buggy
     private void Slingshot()
     {
         StartCoroutine("Dash");
