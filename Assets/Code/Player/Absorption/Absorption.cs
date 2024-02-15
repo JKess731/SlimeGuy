@@ -5,18 +5,26 @@ using UnityEngine;
 //Edison Li
 /* This is a monobehavior class that is attached onto colliders to give them
  * the absorbption ability.
- * 
- * Stat
  */
 
 public class Absorption : MonoBehaviour
 {
     //Created custom enum for absorbtion buff
-    enum statBoost {attackUP,hpUP,defenseUP,speedUP}
+    [SerializeField] player playerClass;
+    [SerializeField] PlayerStatUI playerStatUI;
 
     [SerializeField] float absorbtionRate = 1f;
-    [SerializeField] statBoost _statBoost;
-    
+    [SerializeField] int growthRate = 1;
+
+    [SerializeField] stats.statBoost _statBoost;
+
+
+    private void Start()
+    {
+        playerStatUI = FindAnyObjectByType<PlayerStatUI>();
+        playerClass = GameObject.FindWithTag("player").GetComponent<player>();
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,20 +34,16 @@ public class Absorption : MonoBehaviour
 
             if (enemyHealth <= absorbtionRate)
             {
-                Debug.Log("absorbed");
+                Absorb(_statBoost);
+                playerStatUI.setText(_statBoost);
                 Destroy(collision.gameObject);
             }
         }
     }
 
     
-    private void Absorb(statBoost powerUp)
+    private void Absorb(stats.statBoost statBoostType)
     {
-        switch(powerUp) 
-        { 
-            case statBoost.attackUP:
-
-                break;
-        }
+        playerClass.increaseStats(growthRate,statBoostType);
     }
 }
