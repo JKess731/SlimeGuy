@@ -8,9 +8,18 @@ public class RoomTriggerSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> spawners = new List<GameObject>();
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
 
+    private GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("player");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         
+        SlimeSplit splitAbility = player.GetComponent<SlimeSplit>();
+
         foreach (GameObject spawner in spawners)
         {
             int indx = Random.Range(0, enemies.Count - 1);
@@ -25,7 +34,8 @@ public class RoomTriggerSpawner : MonoBehaviour
             GameObject enemy = Instantiate(chosenEnemy);
             enemy.transform.position = spawner.transform.position;
             enemy.layer = 6;
-            //enemy.transform.position = enemySpawnLoc;
+            
+            splitAbility.enemiesInRoom.Add(enemy);
 
         }
 
