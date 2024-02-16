@@ -25,7 +25,6 @@ public class enemyMovementFollow : MonoBehaviour
      * 
      */
 
-
     // Update is called once per frame. On update checks the distabce between the player and this enemy and the direction to the player.
     //Then normalizes the direction and uses a float angle for better enemy turning and movement. Then if the distance between the player and
     //this enemy is less then the given distanceBetween (The detection range for this enemy) then the enemy will follow the player. If the 
