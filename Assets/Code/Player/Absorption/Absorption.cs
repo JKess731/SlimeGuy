@@ -2,22 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Edison Li
+/* This is a monobehavior class that is attached onto colliders to give them
+ * the absorbption ability.
+ */
+
 public class Absorption : MonoBehaviour
 {
-    public float absorbtionRate = 1f;
+    //Created custom enum for absorbtion buff
+    [SerializeField] player playerClass;
+    [SerializeField] PlayerStatUI playerStatUI;
+
+    [SerializeField] float absorbtionRate = 1f;
+    [SerializeField] int growthRate = 1;
+
+    [SerializeField] stats.statBoost _statBoost;
+
+
+    private void Start()
+    {
+        playerStatUI = FindAnyObjectByType<PlayerStatUI>();
+        playerClass = GameObject.FindWithTag("player").GetComponent<player>();
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "enemy")
         {
-            Debug.Log("enemy");
             int enemyHealth = collision.gameObject.GetComponent<enemy>().getHealth();
 
             if (enemyHealth <= absorbtionRate)
             {
-                Debug.Log("absorbed");
+                Absorb(_statBoost);
+                playerStatUI.setText(_statBoost);
                 Destroy(collision.gameObject);
             }
         }
+    }
+
+    
+    private void Absorb(stats.statBoost statBoostType)
+    {
+        playerClass.increaseStats(growthRate,statBoostType);
     }
 }
