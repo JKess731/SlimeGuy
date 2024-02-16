@@ -7,7 +7,14 @@ public class enemyMovementFollow : MonoBehaviour
     private Transform player;
     public float speed;
     public float distanceBetween;
-    private float distance; 
+    private float distance;
+    private bool onPlayer = false;
+
+
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("player").transform;
+    }
 
     /*
      * On Awake grab reference to the player from the scene
@@ -17,11 +24,6 @@ public class enemyMovementFollow : MonoBehaviour
      *  3:45 PM
      * 
      */
-    void Awake()
-    {
-        player = GameObject.FindWithTag("player").transform;
-    }
-
 
     // Update is called once per frame. On update checks the distabce between the player and this enemy and the direction to the player.
     //Then normalizes the direction and uses a float angle for better enemy turning and movement. Then if the distance between the player and
@@ -32,9 +34,44 @@ public class enemyMovementFollow : MonoBehaviour
         Vector2 direction = player.position - transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x);
-        if (distance < distanceBetween) {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        if (onPlayer == false)
+        {
+            if (distance < distanceBetween)
+            {
+                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+                transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            }
+
         }
+        
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            attackColliding();
+        }
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            attackNotColliding();
+
+        }
+
+    }
+
+    public void attackColliding() {
+        onPlayer = true;
+    }
+
+    public void attackNotColliding()
+    {
+        onPlayer = false;
     }
 }

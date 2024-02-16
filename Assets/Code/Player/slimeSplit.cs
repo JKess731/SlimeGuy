@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Jared Kessler
-public class slimeSplit : MonoBehaviour
+public class SlimeSplit : MonoBehaviour
 {
-
+    [SerializeField] private int minionCounter = 1;
     [SerializeField] private GameObject minion;
+
+    public List<GameObject> enemiesInRoom = new List<GameObject>();
 
     // Update is called once per frame
     void Update()
@@ -14,23 +16,20 @@ public class slimeSplit : MonoBehaviour
         // Temp Input
         if (Input.GetKeyDown(KeyCode.R)) 
         {
-            GameObject newMinion = onSplit();
-            MinionMove minionObj = newMinion.GetComponent<MinionMove>();
-
-            // Temp find "closest" enemy
-            /*
-             * Will want to change this later when more than 1
-             * enemy is on the screen at a time
-             */
-            GameObject enemy = GameObject.FindWithTag("enemy");
-
-            minionObj.target = enemy;
-
+            if (minionCounter > 0)
+            {
+                GameObject newMinion = OnSplit();
+            }
         }
     }
 
-    private GameObject onSplit()
+    /// <summary>
+    /// Generates a minion object
+    /// </summary>
+    /// <returns></returns>
+    private GameObject OnSplit()
     {
+        minionCounter--;
         // Spawn Minion at player location
         GameObject spawnedMinion = Instantiate(minion);
         spawnedMinion.transform.position = transform.position;

@@ -10,12 +10,12 @@ public class enemyMovementFollowStop : MonoBehaviour
     public float distanceBetween;
     public float stop;
 
-    private float distance; 
+    private float distance;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        player = GameObject.FindWithTag("player");
     }
 
     // Update is called once per frame. On update checks the distabce between the player and this enemy and the direction to the player.
