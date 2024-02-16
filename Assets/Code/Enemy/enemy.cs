@@ -10,6 +10,7 @@ public class enemy : MonoBehaviour
 
     [SerializeField] private int attackDamage;
     [SerializeField] private float speed;
+    [SerializeField] private int defense;
 
     //Set health to max
     private void Awake()
@@ -22,8 +23,11 @@ public class enemy : MonoBehaviour
     {
         Debug.Log(damage);
         Debug.Log(gameObject.name + ":" + health);
+        damage = damage - defense;
+        if (damage <= 0) {  damage = 1; }
         health = health - damage;
-        if(health <= 0)
+        Debug.Log("Enemy taking: " + damage);
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
