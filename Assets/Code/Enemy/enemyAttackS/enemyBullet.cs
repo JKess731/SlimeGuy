@@ -11,6 +11,10 @@ public class enemyBullet : MonoBehaviour
     [SerializeField] private int bulletDamage;
     public Vector2 playerpos = Vector2.zero;
 
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("player");
+    }
 
     private void Start()
     {
@@ -21,10 +25,7 @@ public class enemyBullet : MonoBehaviour
 
         float rot = Mathf.Atan2(-direction.x, -direction.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot);
-
-
-        //rb.velocity = transform.right * bulletSpeed;
-        //Destroy(gameObject, 3f);
+        Destroy(gameObject, 3f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

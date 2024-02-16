@@ -13,6 +13,11 @@ public class enemyAttackRam : MonoBehaviour
 
     //Handles attack collision
 
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("player");
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Player") {
