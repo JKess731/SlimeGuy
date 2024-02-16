@@ -10,6 +10,7 @@ public class enemy : MonoBehaviour
 
     [SerializeField] private int attackDamage;
     [SerializeField] private float speed;
+    [SerializeField] private int defense;
 
     //Set health to max
     private void Awake()
@@ -17,21 +18,23 @@ public class enemy : MonoBehaviour
         health = maxHealth;
     }
 
-    //Handles attack collision
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        {
-            Damage(1);
-        }
-    }
-
     //Handles Damage
-    private void Damage(int damage)
+    public void Damage(int damage)
     {
-        health -= damage;
-        if(health <= 0)
+        Debug.Log(damage);
+        Debug.Log(gameObject.name + ":" + health);
+        damage = damage - defense;
+        if (damage <= 0) {  damage = 1; }
+        health = health - damage;
+        Debug.Log("Enemy taking: " + damage);
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    public int getHealth()
+    {
+        return health;
     }
 }

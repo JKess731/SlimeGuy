@@ -6,6 +6,8 @@ TagManager:
   tags:
   - enemy
   - player
+  - attack
+  - spawner
   layers:
   - Default
   - TransparentFX
@@ -13,10 +15,10 @@ TagManager:
   - 
   - Water
   - UI
+  - player
   - enemyLayer
-  - 
-  - 
-  - 
+  - floor
+  - enemyAttackLayer
   - 
   - 
   - 
@@ -40,6 +42,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 497496063
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemy
+    uniqueID: 3753536033
+    locked: 0
+  - name: Player
+    uniqueID: 2137300007
     locked: 0
