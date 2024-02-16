@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
     private bool isWalking;
 
     private string IDLE_LEFT = "Player_Idle_LFacing";
-    private string IDLE_RIGHT = "Player_IDle_RFacing";
+    private string IDLE_RIGHT = "Player_Idle_RFacing";
     private string MOVE_LEFT = "Player_Move_LFacing";
     private string MOVE_RIGHT = "Player_Move_RFacing";
     private string MOVE_DOWN = "Player_Move_DFacing";

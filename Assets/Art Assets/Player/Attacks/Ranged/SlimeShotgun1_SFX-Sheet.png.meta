@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SlimeShotgun1_SFX-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 16
+        width: 238
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ca21ea805672449b901140bce30040
+      internalID: 1769464713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeShotgun1_SFX-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 13
+        width: 242
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458a30487c3ca404e80f401776f2b2a1
+      internalID: -2080138894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeShotgun1_SFX-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 14
+        width: 207
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f62e07a1eea41f42bf01b1c903a10d3
+      internalID: 344282517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeShotgun1_SFX-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 28
+        width: 195
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66eb6cb2c7c90c641a9a34d5fc8a5f5d
+      internalID: 2029368640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeShotgun1_SFX-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1558
+        y: 14
+        width: 194
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a95c999f6d466c040bc73e4816336712
+      internalID: 869962453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +224,34 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SlimeShotgun1_SFX-Sheet_0: 1769464713
+      SlimeShotgun1_SFX-Sheet_1: -2080138894
+      SlimeShotgun1_SFX-Sheet_10: -566833129
+      SlimeShotgun1_SFX-Sheet_11: 869962453
+      SlimeShotgun1_SFX-Sheet_12: -994170729
+      SlimeShotgun1_SFX-Sheet_13: -1885000770
+      SlimeShotgun1_SFX-Sheet_14: 1907529925
+      SlimeShotgun1_SFX-Sheet_15: -1826808554
+      SlimeShotgun1_SFX-Sheet_16: 322286078
+      SlimeShotgun1_SFX-Sheet_17: -1116403875
+      SlimeShotgun1_SFX-Sheet_18: 698043277
+      SlimeShotgun1_SFX-Sheet_19: 1523242137
+      SlimeShotgun1_SFX-Sheet_2: 344282517
+      SlimeShotgun1_SFX-Sheet_20: 213257435
+      SlimeShotgun1_SFX-Sheet_21: 1120468092
+      SlimeShotgun1_SFX-Sheet_22: 1379305652
+      SlimeShotgun1_SFX-Sheet_23: 2087748794
+      SlimeShotgun1_SFX-Sheet_24: -706220078
+      SlimeShotgun1_SFX-Sheet_25: 1005914337
+      SlimeShotgun1_SFX-Sheet_26: 1158536110
+      SlimeShotgun1_SFX-Sheet_3: 1812871337
+      SlimeShotgun1_SFX-Sheet_4: -1000904451
+      SlimeShotgun1_SFX-Sheet_5: -799282351
+      SlimeShotgun1_SFX-Sheet_6: 2029368640
+      SlimeShotgun1_SFX-Sheet_7: 619075797
+      SlimeShotgun1_SFX-Sheet_8: 2050561500
+      SlimeShotgun1_SFX-Sheet_9: 577836941
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
