@@ -24,10 +24,6 @@ public class enemyMovementFollow : MonoBehaviour
      *  3:45 PM
      * 
      */
-    void Awake()
-    {
-        player = GameObject.FindWithTag("player").transform;
-    }
 
 
     // Update is called once per frame. On update checks the distabce between the player and this enemy and the direction to the player.
