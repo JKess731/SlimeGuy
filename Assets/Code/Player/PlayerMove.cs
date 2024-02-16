@@ -16,10 +16,9 @@ using UnityEngine.InputSystem;
  */
 public class PlayerMove : MonoBehaviour
 {
-    private Animator animator;
 
     public PlayerInput input = null;
-    
+
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D rb = null;
 
@@ -28,11 +27,24 @@ public class PlayerMove : MonoBehaviour
     public bool isDashing;
     public Vector2 playerFaceDirection;
 
+    // Animation States
+    private AnimationControl animControl;
+    public int directionX;
+    public int directionY;
+    private bool isWalking;
+
+    private string IDLE_LEFT = "Player_Idle_LFacing";
+    private string IDLE_RIGHT = "Player_Idle_RFacing";
+    private string MOVE_LEFT = "Player_Move_LFacing";
+    private string MOVE_RIGHT = "Player_Move_RFacing";
+    private string MOVE_DOWN = "Player_Move_DFacing";
+    private string MOVE_UP = "Player_Move_UFacing";
+
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animControl = GetComponent<AnimationControl>();
 
-        input = new PlayerInput(); 
+        input = new PlayerInput();
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -48,6 +60,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         rb.velocity = moveVector * speed;
+
     }
 
     private void OnEnable()
@@ -65,23 +78,63 @@ public class PlayerMove : MonoBehaviour
         input.GamePlay.Movement.canceled -= OnMovementCancel;
     }
 
-    private void AnimationEventDoNothing()
-    {
-        // For animations to stop snapping
-    }
-
     private void OnMovement(InputAction.CallbackContext value)
     {
         moveVector = value.ReadValue<Vector2>();
 
-        animator.SetFloat("Direction", moveVector.x);
+        if (moveVector.x > 0)
+        {
+            directionX = 1;
+            animControl.ChangeAnimationState(MOVE_RIGHT);
+        }
+        else if (moveVector.x < 0)
+        {
+            directionX = -1;
+            animControl.ChangeAnimationState(MOVE_LEFT);
+        }
+        else
+        {
+            directionX = 0;
+            if (moveVector.y > 0)
+            {
+                directionY = 1;
+                animControl.ChangeAnimationState(MOVE_UP);
+            }
+            else if (moveVector.y < 0)
+            {
+                directionY = 1;
+                animControl.ChangeAnimationState(MOVE_DOWN);
+            }
+        }
+
     }
 
     private void OnMovementCancel(InputAction.CallbackContext value)
     {
         moveVector = Vector2.zero;
 
-        animator.SetFloat("Direction", 0);
+        if (directionX > 0)
+        {
+            animControl.ChangeAnimationState(IDLE_RIGHT);
+        }
+        else if (directionX < 0)
+        {
+            animControl.ChangeAnimationState(IDLE_LEFT);
+        }
+        else
+        {
+            if (directionY > 0)
+            {
+                // IDLE_UP once done
+                animControl.ChangeAnimationState(IDLE_RIGHT);
+            }
+            else if (directionY < 0)
+            {
+                // IDLE_DOWN once done
+                animControl.ChangeAnimationState(IDLE_LEFT);
+            }
+        }
+
     }
 
     
