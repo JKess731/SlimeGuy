@@ -123,7 +123,7 @@ public class slimeTrail : MonoBehaviour
                 StopCoroutine(diveTrail());
                 
             }
-            yield return new WaitForSeconds(.08f);
+            yield return new WaitForSeconds(.03f); // Change trail speed
         }
         playerMove.input.Enable();
     }

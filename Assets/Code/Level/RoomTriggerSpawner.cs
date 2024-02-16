@@ -2,15 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class RoomTriggerSpawner : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> spawners = new List<GameObject>();
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
 
+    private GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("player");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         
+        SlimeSplit splitAbility = player.GetComponent<SlimeSplit>();
+
         foreach (GameObject spawner in spawners)
         {
             int indx = Random.Range(0, enemies.Count - 1);
@@ -25,18 +34,13 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy = Instantiate(chosenEnemy);
             enemy.transform.position = spawner.transform.position;
             enemy.layer = 6;
-            //enemy.transform.position = enemySpawnLoc;
+            
+            splitAbility.enemiesInRoom.Add(enemy);
 
         }
 
+        Destroy(gameObject);
+
     }
-
-    //private Vector2 chooseSpawnLoc(CircleCollider2D radius)
-    //{
-    //    Vector2 spawnLoc = Random.insideUnitCircle * radius.radius;
-
-    //    return spawnLoc;
-
-    //}
 
 }
