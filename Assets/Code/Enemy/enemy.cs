@@ -22,6 +22,7 @@ public class enemy : MonoBehaviour
     public void Damage(int damage)
     {
         Debug.Log(damage);
+        Debug.Log("Taking damage");
         Debug.Log(gameObject.name + ":" + health);
         damage = damage - defense;
         if (damage <= 0) {  damage = 1; }

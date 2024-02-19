@@ -33,7 +33,7 @@ public class RoomTriggerSpawner : MonoBehaviour
             //Spawn enemy
             GameObject enemy = Instantiate(chosenEnemy);
             enemy.transform.position = spawner.transform.position;
-            enemy.layer = 6;
+            enemy.layer = 7;
             
             splitAbility.enemiesInRoom.Add(enemy);
 
