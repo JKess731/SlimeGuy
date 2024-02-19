@@ -23,8 +23,6 @@ public class AnimationControl : MonoBehaviour
 
         currentState = newState;
 
-        Debug.Log(currentState);
-
     }
     private void AnimationEventDoNothing()
     {
