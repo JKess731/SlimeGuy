@@ -24,5 +24,7 @@ public class bullet : MonoBehaviour
             collision.gameObject.GetComponent<enemy>().Damage(bulletDamage);
             Destroy(gameObject);
         }
+
+        Debug.Log("Hit Enemy");
     }
 }

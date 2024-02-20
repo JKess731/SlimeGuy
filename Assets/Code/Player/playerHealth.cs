@@ -18,6 +18,7 @@ public class playerHealth : MonoBehaviour
     public void Damage(int damage)
     {
         Debug.Log("Taking Damage: " + currentHealth);
+        AudioManager.instance.PlaySFX("SlimeGuyHit");
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
