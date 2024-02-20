@@ -1733,10 +1733,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1e55867e9f45ca04181055d2a4c0a12b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -2001,7 +2001,7 @@ PrefabInstance:
     - target: {fileID: 3778987127537838941, guid: 79f19deefb9e98047af2e36f93f8a2a3, type: 3}
       propertyPath: enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 2792729719461104729, guid: 7d0a483f3bbb9a444b9a132056585a58, type: 3}
+      objectReference: {fileID: 6346162656513507999, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
     - target: {fileID: 3778987127537838941, guid: 79f19deefb9e98047af2e36f93f8a2a3, type: 3}
       propertyPath: enemies.Array.data[1]
       value: 

@@ -18,5 +18,4 @@ public class RoomTriggerSpawner : MonoBehaviour
         Destroy(gameObject);
 
     }
-
 }
