@@ -29,11 +29,13 @@ public class AbsorptionClass : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
+            AudioManager.instance.PlaySFX("SlimeAbsorption");
             StartCoroutine(Dash());
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            AudioManager.instance.PlaySFX("SlimeAbsorption");
             StartCoroutine(Click());
         }
 

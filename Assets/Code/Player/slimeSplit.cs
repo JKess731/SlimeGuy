@@ -18,6 +18,7 @@ public class SlimeSplit : MonoBehaviour
         {
             if (minionCounter > 0)
             {
+                AudioManager.instance.PlaySFX("SlimeSplit");
                 GameObject newMinion = OnSplit();
             }
         }
