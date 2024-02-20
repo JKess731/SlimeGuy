@@ -19,6 +19,10 @@ public class PlayerStatUI : MonoBehaviour
         speedTxt.SetText("speed: " + player.returnStats(stats.statsName.SPEED));
     }
 
+    /// <summary>
+    /// Sets the text based on the stat boost type
+    /// </summary>
+    /// <param name="boostType"></param>
     public void setText(stats.statBoost boostType)
     {
         switch (boostType)

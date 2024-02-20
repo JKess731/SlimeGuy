@@ -76,6 +76,7 @@ public class characterAttack : MonoBehaviour
                 break;
             case 2:
                 attackNumber = 2;
+                AudioManager.instance.PlaySFX("SlimeShotgun");
                 SlimeShotgn();
                 break;
             case 3:
