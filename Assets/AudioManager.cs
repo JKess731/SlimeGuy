@@ -3,6 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.tvOS;
+
+//Edison Li
+//Code from: https://www.youtube.com/watch?v=rdX7nhH6jdM
+//By: Rehope Games
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,6 +16,9 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
+    /// <summary>
+    /// Creates singelton and make sure it always loaded
+    /// </summary>
     private void Awake()
     {
         if(instance == null)
@@ -24,6 +32,10 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plays music give audio name
+    /// </summary>
+    /// <param name="name"></param>
     public void PlayMusic(string name)
     {
         Sound music = Array.Find(musicSounds, x => x.name == name);
@@ -39,6 +51,10 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plays sfx given audio name
+    /// </summary>
+    /// <param name="name"></param>
     public void PlaySFX(string name)
     {
         Sound sfx = Array.Find(sfxSounds, x => x.name == name);
