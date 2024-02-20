@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomTriggerSpawner : MonoBehaviour
+public class RoomTriggerControl : MonoBehaviour
 {
-    private RoomTriggerControl roomTriggerControl;
+
+    [SerializeField] public List<GameObject> spawners = new List<GameObject>();
+    [SerializeField] private List<GameObject> enemies = new List<GameObject>();
+
+    private GameObject player;
 
     private void Awake()
     {
-        roomTriggerControl = transform.parent.GetComponent<RoomTriggerControl>();
+        player = GameObject.FindWithTag("player");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void SpawnEnemies(List<GameObject> spawnerList)
     {
-<<<<<<< HEAD
-        
         SlimeSplit splitAbility = player.GetComponent<SlimeSplit>();
 
-        foreach (GameObject spawner in spawners)
+        foreach (GameObject spawner in spawnerList)
         {
             int indx = Random.Range(0, enemies.Count - 1);
 
@@ -31,16 +33,9 @@ public class RoomTriggerSpawner : MonoBehaviour
             GameObject enemy = Instantiate(chosenEnemy);
             enemy.transform.position = spawner.transform.position;
             enemy.layer = 7;
-            
+
             splitAbility.enemiesInRoom.Add(enemy);
 
         }
-=======
->>>>>>> 58b017070eb7097b7c9b4132a9e047be9107fa2f
-
-        roomTriggerControl.SpawnEnemies(roomTriggerControl.spawners);
-        Destroy(gameObject);
-
     }
-
 }
