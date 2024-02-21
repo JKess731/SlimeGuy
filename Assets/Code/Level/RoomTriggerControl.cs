@@ -20,24 +20,49 @@ public class RoomTriggerControl : MonoBehaviour
     {
         SlimeSplit splitAbility = player.GetComponent<SlimeSplit>();
 
-        List<GameObject> lowLevel = new List<GameObject>();
+        List<GameObject> canSpawnEnemies = new List<GameObject>();
+        canSpawnEnemies.AddRange(enemies);
+
+        int dangerLeft = dangerLevel;
 
         foreach (GameObject spawner in spawnerList)
         {
-            int indx = Random.Range(0, enemies.Count);
+
+            int indx = Random.Range(0, canSpawnEnemies.Count);
 
             // Choose an enemy
-            GameObject chosenEnemy = enemies[indx];
+            GameObject chosenEnemy = canSpawnEnemies[indx];
+            int enemyDangeLevel = chosenEnemy.GetComponent<enemy>().dangerLevel;
 
-            // Find a spot in the spawn area
-            //Vector2 enemySpawnLoc = chooseSpawnLoc(spawner.GetComponent<CircleCollider2D>());
+            /* If enemy danger level is greater than danger left, remove it from
+             * the available enemies to spawn list and choose a new one
+             */
+            if (enemyDangeLevel > dangerLeft)
+            {
+                canSpawnEnemies.Remove(chosenEnemy);
+                break;
+            }
+            else if (dangerLeft <= 0)
+            {
+                break;
+            }
+            else
+            {
 
-            //Spawn enemy
-            GameObject enemy = Instantiate(chosenEnemy);
-            enemy.transform.position = spawner.transform.position;
-            enemy.layer = 7;
+                dangerLeft = dangerLeft - enemyDangeLevel;
 
-            splitAbility.enemiesInRoom.Add(enemy);
+
+                // Find a spot in the spawn area
+                //Vector2 enemySpawnLoc = chooseSpawnLoc(spawner.GetComponent<CircleCollider2D>());
+
+                //Spawn enemy
+                GameObject enemy = Instantiate(chosenEnemy);
+                enemy.transform.position = spawner.transform.position;
+                enemy.layer = 7;
+
+                splitAbility.enemiesInRoom.Add(enemy);
+
+            }
 
         }
     }
