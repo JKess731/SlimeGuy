@@ -24,7 +24,7 @@ public class EnemyAttackRam : MonoBehaviour
             Debug.Log("Enter the puddles");
             player.GetComponentInParent<PlayerHealth>().Damage(damage);
             attackCon = true;
-            StartCoroutine(attackingContinue());
+            StartCoroutine(AttackingContinue());
         }
 
     }
@@ -40,7 +40,7 @@ public class EnemyAttackRam : MonoBehaviour
 
     }
 
-    IEnumerator attackingContinue() {
+    IEnumerator AttackingContinue() {
         while (attackCon == true) {
             Debug.Log("continue attacking");
             player.GetComponentInParent<PlayerHealth>().Damage(damage);

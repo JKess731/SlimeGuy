@@ -67,7 +67,7 @@ public class EnemyMovementFollow : MonoBehaviour
 
     //}
 
-    public void attackColliding()
+    public void AttackColliding()
     {
         onPlayer = true;
         
@@ -75,7 +75,7 @@ public class EnemyMovementFollow : MonoBehaviour
 
 
 
-    public void attackNotColliding()
+    public void AttackNotColliding()
     {
         onPlayer = false;
         

@@ -22,7 +22,7 @@ public class EnemyBulletDelayed : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("player");
-        StartCoroutine(delayShot(waitTime));
+        StartCoroutine(DelayShot(waitTime));
 
     }
 
@@ -36,7 +36,7 @@ public class EnemyBulletDelayed : MonoBehaviour
         }
     }
 
-    IEnumerator delayShot(float delay) { 
+    IEnumerator DelayShot(float delay) { 
         yield return new WaitForSeconds(delay);
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * bulletSpeed;

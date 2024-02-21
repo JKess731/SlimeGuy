@@ -45,14 +45,14 @@ public class SlimeTrail : MonoBehaviour
                 trailCount = trailObjects.Count;
                 diveCheck = trailCount;
                 Debug.Log(diveCheck);
-                StartCoroutine(diveTrail());
+                StartCoroutine(DiveTrail());
             }
             else{
                 dive = false;
                 
                 trailCount = 0;
                 diveCheck = 0;
-                StopCoroutine(diveTrail());
+                StopCoroutine(DiveTrail());
                 playerMove.input.Enable();
             }
         }
@@ -102,7 +102,7 @@ public class SlimeTrail : MonoBehaviour
 
 
 
-    IEnumerator diveTrail() {
+    IEnumerator DiveTrail() {
         while (dive == true){
             playerMove.input.Disable();
             diveCheck--;
@@ -120,7 +120,7 @@ public class SlimeTrail : MonoBehaviour
                 
                 trailCount = 0;
                 diveCheck = 0;
-                StopCoroutine(diveTrail());
+                StopCoroutine(DiveTrail());
                 
             }
             yield return new WaitForSeconds(.03f); // Change trail speed

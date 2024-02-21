@@ -38,8 +38,8 @@ public class EnemyAttackSlash : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             attackCon = true;
-            enemy.GetComponentInParent<EnemyMovementFollow>().attackColliding();
-            StartCoroutine(attackingContinue());
+            enemy.GetComponentInParent<EnemyMovementFollow>().AttackColliding();
+            StartCoroutine(AttackingContinue());
         }
 
     }
@@ -52,7 +52,7 @@ public class EnemyAttackSlash : MonoBehaviour
         }
     }
 
-    IEnumerator attackingContinue() {
+    IEnumerator AttackingContinue() {
         while (attackCon == true) {
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
@@ -61,7 +61,7 @@ public class EnemyAttackSlash : MonoBehaviour
             player.GetComponentInParent<PlayerHealth>().Damage(damage);
            
         }
-        enemy.GetComponentInParent<EnemyMovementFollow>().attackNotColliding();
+        enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
         
     }
 }

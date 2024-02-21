@@ -36,9 +36,9 @@ public class EnemyAttackSlam : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
 
-            enemy.GetComponentInParent<EnemyMovementFollow>().attackColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow>().AttackColliding();
             attackCon = true;
-            StartCoroutine(attackingContinue());
+            StartCoroutine(AttackingContinue());
         }
 
     }
@@ -47,26 +47,26 @@ public class EnemyAttackSlam : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            enemy.GetComponentInParent<EnemyMovementFollow>().attackNotColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
 
             attackCon = false;
 
         }
     }
 
-    IEnumerator attackingContinue() {
+    IEnumerator AttackingContinue() {
         while (attackCon == true) {
             yield return new WaitForSeconds(attackDelay/2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay/2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            player.GetComponentInParent<PlayerHealth>().Damage(damage);
-            StartCoroutine(playerStunned());
+            StartCoroutine(PlayerStunned());
             
         }
         
     }
 
-    IEnumerator playerStunned() {
+    IEnumerator PlayerStunned() {
         playerMove.input.Disable();
         Debug.Log("Player Stunned");
         yield return new WaitForSeconds(attackDelay/2);

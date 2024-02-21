@@ -41,7 +41,7 @@ public class EnemyAttackRangedChargeUpMultiBullets : MonoBehaviour
                 if (shotCooldown <= 0)
                 {
                     Debug.Log("Shoot");
-                    StartCoroutine(multiShot());
+                    StartCoroutine(MultiShot());
                     shotCooldown = startShotCooldown;
                 }
                 else
@@ -58,7 +58,7 @@ public class EnemyAttackRangedChargeUpMultiBullets : MonoBehaviour
         lastPosition = transform.position;
     }
 
-    IEnumerator multiShot() {
+    IEnumerator MultiShot() {
         yield return new WaitForSeconds(1f);
         GameObject bullet1 = Instantiate(bullet, bulletPos1.position, ring.transform.rotation);
         bullet1.GetComponent<EnemyBulletDelayed>().waitTime = 3;
