@@ -11,7 +11,7 @@ using UnityEngine.Rendering;
  * Ability holder class
 Controls when the sime abilities are activated
 **/
-public class characterAttack : MonoBehaviour
+public class CharacterAttack : MonoBehaviour
 {
     //PlayerInfo
     [SerializeField] GameObject player;

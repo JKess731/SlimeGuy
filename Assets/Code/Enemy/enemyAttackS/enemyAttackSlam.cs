@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class enemyAttackSlam : MonoBehaviour
+public class EnemyAttackSlam : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float attackDelay;
@@ -36,7 +36,7 @@ public class enemyAttackSlam : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
 
-            enemy.GetComponentInParent<enemyMovementFollow>().attackColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow>().attackColliding();
             attackCon = true;
             StartCoroutine(attackingContinue());
         }
@@ -47,7 +47,7 @@ public class enemyAttackSlam : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            enemy.GetComponentInParent<enemyMovementFollow>().attackNotColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow>().attackNotColliding();
 
             attackCon = false;
 
@@ -59,7 +59,7 @@ public class enemyAttackSlam : MonoBehaviour
             yield return new WaitForSeconds(attackDelay/2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay/2);
-            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            player.GetComponentInParent<playerHealth>().Damage(damage);
+            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            player.GetComponentInParent<PlayerHealth>().Damage(damage);
             StartCoroutine(playerStunned());
             
         }

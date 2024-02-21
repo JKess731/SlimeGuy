@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyMovementFollow : MonoBehaviour
+public class EnemyMovementFollow : MonoBehaviour
 {
     private Transform player;
     public float speed;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class enemyAttackSlash : MonoBehaviour
+public class EnemyAttackSlash : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float attackDelay;
@@ -38,7 +38,7 @@ public class enemyAttackSlash : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             attackCon = true;
-            enemy.GetComponentInParent<enemyMovementFollow>().attackColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow>().attackColliding();
             StartCoroutine(attackingContinue());
         }
 
@@ -58,10 +58,10 @@ public class enemyAttackSlash : MonoBehaviour
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
-            player.GetComponentInParent<playerHealth>().Damage(damage);
+            player.GetComponentInParent<PlayerHealth>().Damage(damage);
            
         }
-        enemy.GetComponentInParent<enemyMovementFollow>().attackNotColliding();
+        enemy.GetComponentInParent<EnemyMovementFollow>().attackNotColliding();
         
     }
 }

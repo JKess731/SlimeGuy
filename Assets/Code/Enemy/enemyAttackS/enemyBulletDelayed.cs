@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyBulletDelayed : MonoBehaviour
+public class EnemyBulletDelayed : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject player;
@@ -30,7 +30,7 @@ public class enemyBulletDelayed : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            collision.gameObject.GetComponent<playerHealth>().Damage(bulletDamage);
+            collision.gameObject.GetComponent<PlayerHealth>().Damage(bulletDamage);
             Debug.Log("Bullet dmg");
             Destroy(gameObject);
         }

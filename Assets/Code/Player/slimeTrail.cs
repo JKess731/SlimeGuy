@@ -7,7 +7,7 @@ using UnityEngine.Windows;
 
 //Brandon Sheley
 
-public class slimeTrail : MonoBehaviour
+public class SlimeTrail : MonoBehaviour
 {
 
     [SerializeField] GameObject trailObject;

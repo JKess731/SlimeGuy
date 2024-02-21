@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class slimeShotgun : MonoBehaviour
+public class SlimeShotgun : MonoBehaviour
 {
     public Transform attackPointShotgun;
     public GameObject slimeBlob;

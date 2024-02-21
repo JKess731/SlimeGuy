@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class enemyBullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject player;
@@ -32,7 +32,7 @@ public class enemyBullet : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            collision.gameObject.GetComponent<playerHealth>().Damage(bulletDamage);
+            collision.gameObject.GetComponent<PlayerHealth>().Damage(bulletDamage);
             Debug.Log("Bullet dmg");
             Destroy(gameObject);
         }

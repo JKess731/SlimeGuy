@@ -32,7 +32,7 @@ public class RoomTriggerControl : MonoBehaviour
 
             // Choose an enemy
             GameObject chosenEnemy = canSpawnEnemies[indx];
-            int enemyDangeLevel = chosenEnemy.GetComponent<enemy>().dangerLevel;
+            int enemyDangeLevel = chosenEnemy.GetComponent<Enemy>().dangerLevel;
 
             /* If enemy danger level is greater than danger left, remove it from
              * the available enemies to spawn list and choose a new one

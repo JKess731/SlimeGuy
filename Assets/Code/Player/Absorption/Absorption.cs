@@ -10,7 +10,7 @@ using UnityEngine;
 public class Absorption : MonoBehaviour
 {
     //Created custom enum for absorbtion buff
-    [SerializeField] player playerClass;
+    [SerializeField] Player playerClass;
     [SerializeField] PlayerStatUI playerStatUI;
 
     [SerializeField] float absorbtionRate = 1f;
@@ -22,7 +22,7 @@ public class Absorption : MonoBehaviour
     private void Start()
     {
         //playerStatUI = FindAnyObjectByType<PlayerStatUI>();
-        playerClass = GameObject.FindWithTag("player").GetComponent<player>();
+        playerClass = GameObject.FindWithTag("player").GetComponent<Player>();
     }
 
 
@@ -30,7 +30,7 @@ public class Absorption : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-            int enemyHealth = collision.gameObject.GetComponent<enemy>().getHealth();
+            int enemyHealth = collision.gameObject.GetComponent<Enemy>().GetHealth();
 
             if (enemyHealth <= absorbtionRate)
             {
