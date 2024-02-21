@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 2237648190537903601}
   - component: {fileID: 7495682527370946714}
   m_Layer: 7
-  m_Name: GeneralEnemy2
+  m_Name: GolemEnemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd2f7238209e5b49ab3bc9d5779af9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   speed: 1
   distanceBetween: 8
 --- !u!114 &2237648190537903601
@@ -205,6 +204,7 @@ MonoBehaviour:
   attackDamage: 1
   speed: 1
   defense: 5
+  dangerLevel: 4
 --- !u!61 &7495682527370946714
 BoxCollider2D:
   m_ObjectHideFlags: 0

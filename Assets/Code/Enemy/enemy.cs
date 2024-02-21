@@ -11,6 +11,7 @@ public class enemy : MonoBehaviour
     [SerializeField] private int attackDamage;
     [SerializeField] private float speed;
     [SerializeField] private int defense;
+    [SerializeField] public int dangerLevel;
 
     //Set health to max
     private void Awake()

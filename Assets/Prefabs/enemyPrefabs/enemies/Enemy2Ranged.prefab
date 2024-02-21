@@ -122,6 +122,8 @@ MonoBehaviour:
   health: 1
   attackDamage: 1
   speed: 1
+  defense: 1
+  dangerLevel: 1
 --- !u!61 &8076074326379979819
 BoxCollider2D:
   m_ObjectHideFlags: 0

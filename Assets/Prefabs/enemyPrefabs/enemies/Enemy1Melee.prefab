@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd2f7238209e5b49ab3bc9d5779af9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   speed: 1.5
   distanceBetween: 8
 --- !u!114 &1922290115253988324
@@ -119,6 +118,8 @@ MonoBehaviour:
   health: 1
   attackDamage: 1
   speed: 1
+  defense: 1
+  dangerLevel: 1
 --- !u!114 &9019784741742252195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5799f97814d4b4a9de63cbe079c102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 2792729719461104729}
   damage: 2
   player: {fileID: 0}
 --- !u!61 &8795883522356326299
