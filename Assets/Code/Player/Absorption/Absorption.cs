@@ -21,7 +21,7 @@ public class Absorption : MonoBehaviour
 
     private void Start()
     {
-        playerStatUI = FindAnyObjectByType<PlayerStatUI>();
+        //playerStatUI = FindAnyObjectByType<PlayerStatUI>();
         playerClass = GameObject.FindWithTag("player").GetComponent<player>();
     }
 
@@ -35,7 +35,7 @@ public class Absorption : MonoBehaviour
             if (enemyHealth <= absorbtionRate)
             {
                 Absorb(_statBoost);
-                playerStatUI.setText(_statBoost);
+                //playerStatUI.setText(_statBoost);
                 Destroy(collision.gameObject);
             }
         }

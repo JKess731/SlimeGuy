@@ -9,6 +9,7 @@ public class RoomTriggerControl : MonoBehaviour
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
 
     private GameObject player;
+    [HideInInspector] public int dangerLevel = 5;
 
     private void Awake()
     {
@@ -19,9 +20,11 @@ public class RoomTriggerControl : MonoBehaviour
     {
         SlimeSplit splitAbility = player.GetComponent<SlimeSplit>();
 
+        List<GameObject> lowLevel = new List<GameObject>();
+
         foreach (GameObject spawner in spawnerList)
         {
-            int indx = Random.Range(0, enemies.Count - 1);
+            int indx = Random.Range(0, enemies.Count);
 
             // Choose an enemy
             GameObject chosenEnemy = enemies[indx];
@@ -37,5 +40,10 @@ public class RoomTriggerControl : MonoBehaviour
             splitAbility.enemiesInRoom.Add(enemy);
 
         }
+    }
+
+    public int GetDangerLevel()
+    {
+        return dangerLevel;
     }
 }

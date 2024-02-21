@@ -178,6 +178,7 @@ MonoBehaviour:
   - {fileID: 6346162656513507999, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
   - {fileID: 4892147420155252896, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
   - {fileID: 6169016820238609206, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
+  dangerLevel: 5
 --- !u!1 &357932136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,43 +1860,11 @@ Transform:
   - {fileID: 1696203500}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1348018079 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-  m_PrefabInstance: {fileID: 8133810901862723260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1380856468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
   m_PrefabInstance: {fileID: 8133810901862723260}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1380856469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348018079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9cf5826c28d16469a56109c65cde3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minionCounter: 1
-  minion: {fileID: 74088980676390564, guid: 2ef87ce1d800e614fb0f58850f1d436e, type: 3}
-  enemiesInRoom: []
---- !u!114 &1380856479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348018079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 079ebac280211f74c97ec2ba6614cf2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1382317109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5817,13 +5786,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: 0
       addedObject: {fileID: 472917888}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1380856469}
-    - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1380856479}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

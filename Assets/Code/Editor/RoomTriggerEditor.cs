@@ -13,6 +13,9 @@ public class RoomTriggerEditor : Editor
 
         RoomTriggerControl trigger = (RoomTriggerControl)target;
 
+        GUILayout.Label("Room Danger Level");
+        trigger.dangerLevel = EditorGUILayout.IntSlider(trigger.dangerLevel, 2, 24);
+
         if (GUILayout.Button("Spawn New Enemies"))
         {
             // Make this so that enemies can only be spawned AFTER the initial spawn.
