@@ -20,9 +20,14 @@ public class enemyAttackSlash : MonoBehaviour
 
     void Update()
     {
-        Vector3 rotation = player.transform.position - ring.transform.position;
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        ring.transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        if (attackCon == false) {
+            Vector3 rotation = player.transform.position - ring.transform.position;
+            float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            ring.transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        }
+       
+        
+       
     }
 
 
@@ -32,9 +37,8 @@ public class enemyAttackSlash : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-
-            enemy.GetComponentInParent<enemyMovementFollow>().attackColliding();
             attackCon = true;
+            enemy.GetComponentInParent<enemyMovementFollow>().attackColliding();
             StartCoroutine(attackingContinue());
         }
 
@@ -44,12 +48,8 @@ public class enemyAttackSlash : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            enemy.GetComponentInParent<enemyMovementFollow>().attackNotColliding();
-
             attackCon = false;
-
         }
-
     }
 
     IEnumerator attackingContinue() {
@@ -58,10 +58,10 @@ public class enemyAttackSlash : MonoBehaviour
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
-            Debug.Log("Slashing the Puddles");
             player.GetComponentInParent<playerHealth>().Damage(damage);
            
         }
+        enemy.GetComponentInParent<enemyMovementFollow>().attackNotColliding();
         
     }
 }

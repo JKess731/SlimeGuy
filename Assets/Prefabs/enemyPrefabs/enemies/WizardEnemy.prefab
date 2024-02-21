@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 8959801620037599515}
   - component: {fileID: 8624462061331008423}
   m_Layer: 7
-  m_Name: GeneralEnemy3
+  m_Name: WizardEnemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,6 +445,7 @@ MonoBehaviour:
   attackDamage: 1
   speed: 1
   defense: 1
+  dangerLevel: 2
 --- !u!61 &7301704006152442750
 BoxCollider2D:
   m_ObjectHideFlags: 0
