@@ -38,7 +38,6 @@ public class slimeTrail : MonoBehaviour
         //On button press send Puddles to the other end of his slime trail. Can press again to leave slime trail and stop diving.
         if (UnityEngine.Input.GetKeyDown(KeyCode.F) && trailObjects.Count > 0)
         {
-            AudioManager.instance.PlaySFX("SlimeDive");
             if(dive == false){
                 dive = true;
                 
@@ -92,14 +91,6 @@ public class slimeTrail : MonoBehaviour
             }
         }
     }
-
-
-
-
-
-
-
-
 
 
     IEnumerator diveTrail() {

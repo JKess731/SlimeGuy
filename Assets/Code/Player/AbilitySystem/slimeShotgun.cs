@@ -14,7 +14,6 @@ public class slimeShotgun : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            AudioManager.instance.PlaySFX("SlimeShotgun");
             Shoot();
         }
     }
