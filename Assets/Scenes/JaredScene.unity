@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 472917888}
   - component: {fileID: 472917887}
-  - component: {fileID: 472917886}
+  - component: {fileID: 472917889}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -196,14 +196,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &472917886
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472917885}
-  m_Enabled: 1
 --- !u!20 &472917887
 Camera:
   m_ObjectHideFlags: 0
@@ -270,6 +262,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1380856468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &472917889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472917885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 1348018079}
 --- !u!1 &1009061130
 GameObject:
   m_ObjectHideFlags: 0
@@ -5423,6 +5428,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5857349339328864933, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: PlayEvent
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6680384814826121622, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -5487,12 +5496,25 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7501618215218074536, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501618215218074536, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501618215218074536, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8577484598870984570, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: 0

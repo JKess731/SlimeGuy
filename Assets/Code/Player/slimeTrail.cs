@@ -14,6 +14,8 @@ public class slimeTrail : MonoBehaviour
     [SerializeField] GameObject Puddles;
     public PlayerMove playerMove;
     
+    
+
 
     private List<GameObject> trailObjects = new List<GameObject>();
     private GameObject lastTrail;
@@ -23,11 +25,14 @@ public class slimeTrail : MonoBehaviour
     private int diveCheck = 0;
     private int trailCount = 0;
 
-
+    private FMODUnity.StudioEventEmitter eventEmitterRef;
+    private void Awake()
+    {
+        eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
+    }
     //On start get the player characters movement, and set lastPosition to Puddles position to prevent issues with other code on start.
     void Start()
     {
-        
         lastPosition = Puddles.transform.position;
     }
 
