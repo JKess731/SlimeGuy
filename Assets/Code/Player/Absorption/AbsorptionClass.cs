@@ -24,16 +24,24 @@ public class AbsorptionClass : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private TrailRenderer tr;
 
+    private FMODUnity.StudioEventEmitter eventEmitterRef;
+    private void Awake()
+    {
+        eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
+    }
+
     private void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
+            eventEmitterRef.Play();
             StartCoroutine(Dash());
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            eventEmitterRef.Play();
             StartCoroutine(Click());
         }
 
