@@ -82,15 +82,17 @@ public class PlayerMove : MonoBehaviour
     {
         moveVector = value.ReadValue<Vector2>();
 
+        animControl.isMoving = true;
+
         if (moveVector.x > 0)
         {
             directionX = 1;
-            animControl.ChangeAnimationState(MOVE_RIGHT);
+            animControl.currentState = AnimState.MOVE_RIGHT;
         }
         else if (moveVector.x < 0)
         {
             directionX = -1;
-            animControl.ChangeAnimationState(MOVE_LEFT);
+            animControl.currentState = AnimState.MOVE_LEFT;
         }
         else
         {
@@ -98,12 +100,12 @@ public class PlayerMove : MonoBehaviour
             if (moveVector.y > 0)
             {
                 directionY = 1;
-                animControl.ChangeAnimationState(MOVE_UP);
+                animControl.currentState = AnimState.MOVE_UP;
             }
             else if (moveVector.y < 0)
             {
                 directionY = 1;
-                animControl.ChangeAnimationState(MOVE_DOWN);
+                animControl.currentState = AnimState.MOVE_DOWN;
             }
         }
 
@@ -115,23 +117,23 @@ public class PlayerMove : MonoBehaviour
 
         if (directionX > 0)
         {
-            animControl.ChangeAnimationState(IDLE_RIGHT);
+            animControl.currentState = AnimState.IDLE_RIGHT;
         }
         else if (directionX < 0)
         {
-            animControl.ChangeAnimationState(IDLE_LEFT);
+            animControl.currentState = AnimState.IDLE_LEFT;
         }
         else
         {
             if (directionY > 0)
             {
-                // IDLE_UP once done
-                animControl.ChangeAnimationState(IDLE_RIGHT);
+                animControl.currentState = AnimState.IDLE_RIGHT;
+                //animControl.currentState = AnimState.IDLE_UP;
             }
             else if (directionY < 0)
             {
-                // IDLE_DOWN once done
-                animControl.ChangeAnimationState(IDLE_LEFT);
+                animControl.currentState = AnimState.IDLE_LEFT;
+                //animControl.currentState = AnimState.IDLE_DOWN;
             }
         }
 
