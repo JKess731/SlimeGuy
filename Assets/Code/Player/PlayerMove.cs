@@ -104,7 +104,7 @@ public class PlayerMove : MonoBehaviour
             }
             else if (moveVector.y < 0)
             {
-                directionY = 1;
+                directionY = -1;
                 animControl.currentState = AnimState.MOVE_DOWN;
             }
         }
@@ -127,13 +127,11 @@ public class PlayerMove : MonoBehaviour
         {
             if (directionY > 0)
             {
-                animControl.currentState = AnimState.IDLE_RIGHT;
-                //animControl.currentState = AnimState.IDLE_UP;
+                animControl.currentState = AnimState.IDLE_UP;
             }
             else if (directionY < 0)
             {
-                animControl.currentState = AnimState.IDLE_LEFT;
-                //animControl.currentState = AnimState.IDLE_DOWN;
+                animControl.currentState = AnimState.IDLE_DOWN;
             }
         }
 
