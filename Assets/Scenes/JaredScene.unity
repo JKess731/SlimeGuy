@@ -5371,7 +5371,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5237733825675011587, guid: 1d30bc693a898bc41bb0026eb0edc2c2, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784164430999487475, guid: 1d30bc693a898bc41bb0026eb0edc2c2, type: 3}
+      propertyPath: manual
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784164430999487475, guid: 1d30bc693a898bc41bb0026eb0edc2c2, type: 3}
+      propertyPath: dangerLevel
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7784164430999487475, guid: 1d30bc693a898bc41bb0026eb0edc2c2, type: 3}
       propertyPath: spawners.Array.size

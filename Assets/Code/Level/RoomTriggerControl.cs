@@ -10,60 +10,109 @@ public class RoomTriggerControl : MonoBehaviour
 
     private GameObject player;
     [HideInInspector] public int dangerLevel = 5;
+    [HideInInspector] public List<GameObject> spawnedEnemies = new List<GameObject>();
+
+    [SerializeField] public bool manual;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("player");
     }
 
+    private void Update()
+    {
+        // Handle cases where enemies are killed and remove them from the list
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (enemy == null)
+            {
+                spawnedEnemies.Remove(enemy);
+            }    
+        }
+    }
+
     public void SpawnEnemies(List<GameObject> spawnerList)
     {
         SlimeSplit splitAbility = player.GetComponent<SlimeSplit>();
 
-        List<GameObject> canSpawnEnemies = new List<GameObject>();
-        canSpawnEnemies.AddRange(enemies);
 
-        int dangerLeft = dangerLevel;
-
-        foreach (GameObject spawner in spawnerList)
+        // Random enemy spawners
+        if (manual != true)
         {
+            List<GameObject> canSpawnEnemies = new List<GameObject>();
+            canSpawnEnemies.AddRange(enemies);
 
-            int indx = Random.Range(0, canSpawnEnemies.Count);
+            int dangerLeft = dangerLevel;
 
-            // Choose an enemy
-            GameObject chosenEnemy = canSpawnEnemies[indx];
-            int enemyDangeLevel = chosenEnemy.GetComponent<Enemy>().dangerLevel;
-
-            /* If enemy danger level is greater than danger left, remove it from
-             * the available enemies to spawn list and choose a new one
-             */
-            if (enemyDangeLevel > dangerLeft)
-            {
-                canSpawnEnemies.Remove(chosenEnemy);
-                break;
-            }
-            else if (dangerLeft <= 0)
-            {
-                break;
-            }
-            else
+            foreach (GameObject spawner in spawnerList)
             {
 
-                dangerLeft = dangerLeft - enemyDangeLevel;
+                int indx = Random.Range(0, canSpawnEnemies.Count);
+
+                // Choose an enemy
+                GameObject chosenEnemy = canSpawnEnemies[indx];
+                int enemyDangeLevel = chosenEnemy.GetComponent<Enemy>().dangerLevel;
+
+                /* If enemy danger level is greater than danger left, remove it from
+                 * the available enemies to spawn list and choose a new one
+                 */
+                if (enemyDangeLevel > dangerLeft)
+                {
+                    canSpawnEnemies.Remove(chosenEnemy);
+                    break;
+                }
+                else if (dangerLeft <= 0)
+                {
+                    break;
+                }
+                else
+                {
+
+                    dangerLeft = dangerLeft - enemyDangeLevel;
 
 
-                // Find a spot in the spawn area
-                //Vector2 enemySpawnLoc = chooseSpawnLoc(spawner.GetComponent<CircleCollider2D>());
+                    // Find a spot in the spawn area
+                    //Vector2 enemySpawnLoc = chooseSpawnLoc(spawner.GetComponent<CircleCollider2D>());
 
-                //Spawn enemy
-                GameObject enemy = Instantiate(chosenEnemy);
-                enemy.transform.position = spawner.transform.position;
-                enemy.layer = 7;
+                    //Spawn enemy
+                    GameObject enemy = Instantiate(chosenEnemy);
+                    spawnedEnemies.Add(enemy);
+                    enemy.transform.position = spawner.transform.position;
+                    enemy.layer = 7;
 
-                splitAbility.enemiesInRoom.Add(enemy);
+                    splitAbility.enemiesInRoom.Add(enemy);
+
+                }
 
             }
+        }
+        else
+        {
+            // For loop to spawn manual enemies with spawners
+            for (int i = 0; i < spawnerList.Count; i++)
+            {
+                if (enemies[i] == null)
+                {
+                    break;
+                }
+                else
+                {
+                    GameObject enemy = Instantiate(enemies[i]);
+                    enemy.transform.position = spawnerList[i].transform.position;
+                    spawnedEnemies.Add(enemy);
+                    enemy.layer = 7;
+                    splitAbility.enemiesInRoom.Add(enemy);
+                }
+            }
+        }
+    }
 
+    public void KillEnemies()
+    {
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            spawnedEnemies.Remove(enemy);
+            Destroy(enemy);
         }
     }
 
