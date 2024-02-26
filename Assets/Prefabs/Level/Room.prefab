@@ -44,13 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36b32530e682c4469cf1d6bd1ab5c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawners:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  spawners: []
   enemies:
   - {fileID: 6346162656513507999, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
   - {fileID: 4892147420155252896, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
   - {fileID: 6169016820238609206, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
   dangerLevel: 5
+  spawnedEnemies: []
+  manual: 0

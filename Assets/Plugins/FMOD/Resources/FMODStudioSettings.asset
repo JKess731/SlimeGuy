@@ -281,8 +281,8 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 0
-  HasPlatforms: 0
+  HasSourceProject: 1
+  HasPlatforms: 1
   sourceProjectPath: SlimeGuyFMOD/SlimeGuyFMOD.fspro
   sourceBankPath: SlimeGuyFMOD/Build
   sourceBankPathUnformatted: 
@@ -306,9 +306,8 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Desktop/Master
-  Banks:
-  - Desktop/SFX
+  - Desktop/Desktop/Master
+  Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
