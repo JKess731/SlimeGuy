@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Edison Li
-public class stats
+public class Stats
 {
     public int maxHealth { get; set; }
     public int attack { get; set; }
@@ -25,7 +25,7 @@ public class stats
         SPEED
     }
 
-    public stats (int maxHealth, int attack, int defense, int speed)
+    public Stats (int maxHealth, int attack, int defense, int speed)
     {
         this.maxHealth = maxHealth;
         this.attack = attack;

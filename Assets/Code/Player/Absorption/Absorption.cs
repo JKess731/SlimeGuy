@@ -10,18 +10,18 @@ using UnityEngine;
 public class Absorption : MonoBehaviour
 {
     //Created custom enum for absorbtion buff
-    [SerializeField] Player playerClass;
+    [SerializeField] PlayerScript playerClass;
     [SerializeField] PlayerStatUI playerStatUI;
 
     [SerializeField] float absorbtionRate = 1f;
     [SerializeField] int growthRate = 1;
 
-    [SerializeField] stats.statBoost _statBoost;
+    [SerializeField] Stats.statBoost _statBoost;
 
     private void Start()
     {
         //playerStatUI = FindAnyObjectByType<PlayerStatUI>();
-        playerClass = GameObject.FindWithTag("player").GetComponent<Player>();
+        playerClass = GameObject.FindWithTag("player").GetComponent<PlayerScript>();
     }
 
 
@@ -41,7 +41,7 @@ public class Absorption : MonoBehaviour
     }
 
     
-    private void Absorb(stats.statBoost statBoostType)
+    private void Absorb(Stats.statBoost statBoostType)
     {
         playerClass.increaseStats(growthRate,statBoostType);
     }
