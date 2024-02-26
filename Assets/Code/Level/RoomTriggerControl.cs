@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoomTriggerControl : MonoBehaviour
 {
+    private int enemiesDead = 0;
 
     [SerializeField] public List<GameObject> spawners = new List<GameObject>();
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
@@ -17,18 +18,6 @@ public class RoomTriggerControl : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindWithTag("player");
-    }
-
-    private void Update()
-    {
-        // Handle cases where enemies are killed and remove them from the list
-        foreach (GameObject enemy in spawnedEnemies)
-        {
-            if (enemy == null)
-            {
-                spawnedEnemies.Remove(enemy);
-            }    
-        }
     }
 
     public void SpawnEnemies(List<GameObject> spawnerList)
@@ -89,9 +78,9 @@ public class RoomTriggerControl : MonoBehaviour
         else
         {
             // For loop to spawn manual enemies with spawners
-            for (int i = 0; i < spawnerList.Count; i++)
+            for (int i = 0; i < spawnerList.Count - 1; i++)
             {
-                if (enemies[i] == null)
+                if (i > enemies.Count)
                 {
                     break;
                 }
@@ -111,9 +100,10 @@ public class RoomTriggerControl : MonoBehaviour
     {
         foreach (GameObject enemy in spawnedEnemies)
         {
-            spawnedEnemies.Remove(enemy);
             Destroy(enemy);
         }
+
+        spawnedEnemies.Clear();
     }
 
     public int GetDangerLevel()

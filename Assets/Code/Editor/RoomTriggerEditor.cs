@@ -16,7 +16,7 @@ public class RoomTriggerEditor : Editor
         if (!trigger.manual)
         {
             GUILayout.Label("Room Danger Level");
-            trigger.dangerLevel = EditorGUILayout.IntSlider(trigger.dangerLevel, 2, 24);
+            trigger.dangerLevel = EditorGUILayout.IntSlider(trigger.dangerLevel, 4, 24);
         }
 
         if (GUILayout.Button("Spawn New Enemies"))
