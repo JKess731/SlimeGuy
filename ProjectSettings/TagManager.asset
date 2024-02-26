@@ -8,6 +8,7 @@ TagManager:
   - player
   - attack
   - spawner
+  - trigger_parent
   layers:
   - Default
   - TransparentFX

@@ -4,24 +4,36 @@ using UnityEngine;
 
 public class RoomTriggerControl : MonoBehaviour
 {
-    private int enemiesDead = 0;
 
     [SerializeField] public List<GameObject> spawners = new List<GameObject>();
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
+    [SerializeField] public bool manual;
 
+    private int enemiesDead = 0;
     private GameObject player;
+    private GameObject triggerParentGameObject;
+    private List<GameObject> triggerParentChildren = new List<GameObject>();
+
     [HideInInspector] public int dangerLevel = 5;
     [HideInInspector] public List<GameObject> spawnedEnemies = new List<GameObject>();
-
-    [SerializeField] public bool manual;
+    [HideInInspector] public bool triggerHit = false;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("player");
+        triggerParentGameObject = GameObject.FindWithTag("trigger_parent");
+
+        // Add children of trigger parent empty object into a list
+        int childCount = triggerParentGameObject.transform.childCount;
+        for (int i = childCount; i > 0; i--)
+        {
+            triggerParentChildren.Add(triggerParentGameObject.transform.GetChild(i).gameObject);
+        }
     }
 
     private void Update()
     {
+        // Update counter for dead enemies
         foreach(GameObject enemy in spawnedEnemies)
         {
             if (enemy == null)
@@ -30,12 +42,26 @@ public class RoomTriggerControl : MonoBehaviour
             }
         }
 
+        // Clear spawned enemies list when all enemies in the room are dead
         if (enemiesDead == spawnedEnemies.Count)
         {
             spawnedEnemies.Clear();
         }
+
+        // If a trigger has been hit, deactivate all remaining triggers in the room
+        if (triggerHit)
+        {
+            foreach (GameObject child in triggerParentChildren)
+            {
+                child.SetActive(false);
+            }
+        }
     }
 
+    /// <summary>
+    /// Spawns enemies at the given spawnerlist
+    /// </summary>
+    /// <param name="spawnerList"></param>
     public void SpawnEnemies(List<GameObject> spawnerList)
     {
         SlimeSplit splitAbility = player.GetComponent<SlimeSplit>();
@@ -73,11 +99,8 @@ public class RoomTriggerControl : MonoBehaviour
                 else
                 {
 
+                    // Update danger level
                     dangerLeft = dangerLeft - enemyDangeLevel;
-
-
-                    // Find a spot in the spawn area
-                    //Vector2 enemySpawnLoc = chooseSpawnLoc(spawner.GetComponent<CircleCollider2D>());
 
                     //Spawn enemy
                     GameObject enemy = Instantiate(chosenEnemy);
@@ -112,6 +135,9 @@ public class RoomTriggerControl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Kills all enemies in the given room
+    /// </summary>
     public void KillEnemies()
     {
         foreach (GameObject enemy in spawnedEnemies)
@@ -122,6 +148,10 @@ public class RoomTriggerControl : MonoBehaviour
         spawnedEnemies.Clear();
     }
 
+    /// <summary>
+    /// Returns the danger level of the given room
+    /// </summary>
+    /// <returns></returns>
     public int GetDangerLevel()
     {
         return dangerLevel;
