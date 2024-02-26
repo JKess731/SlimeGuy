@@ -15,7 +15,7 @@ public class RoomTriggerSpawner : MonoBehaviour
     {
 
         roomTriggerControl.SpawnEnemies(roomTriggerControl.spawners);
-        enabled = false;
+        gameObject.SetActive(false);
 
     }
 }

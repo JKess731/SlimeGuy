@@ -20,6 +20,22 @@ public class RoomTriggerControl : MonoBehaviour
         player = GameObject.FindWithTag("player");
     }
 
+    private void Update()
+    {
+        foreach(GameObject enemy in spawnedEnemies)
+        {
+            if (enemy == null)
+            {
+                enemiesDead++;
+            }
+        }
+
+        if (enemiesDead == spawnedEnemies.Count)
+        {
+            spawnedEnemies.Clear();
+        }
+    }
+
     public void SpawnEnemies(List<GameObject> spawnerList)
     {
         SlimeSplit splitAbility = player.GetComponent<SlimeSplit>();
@@ -48,7 +64,7 @@ public class RoomTriggerControl : MonoBehaviour
                 if (enemyDangeLevel > dangerLeft)
                 {
                     canSpawnEnemies.Remove(chosenEnemy);
-                    break;
+                    //break;
                 }
                 else if (dangerLeft <= 0)
                 {
