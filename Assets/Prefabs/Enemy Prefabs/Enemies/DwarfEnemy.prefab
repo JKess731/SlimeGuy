@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 6395861820097214905}
   - component: {fileID: 6717552941381058864}
   m_Layer: 7
-  m_Name: GeneralEnemy1
+  m_Name: DwarfEnemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,6 +352,7 @@ MonoBehaviour:
   attackDamage: 1
   speed: 3
   defense: 2
+  dangerLevel: 1
 --- !u!61 &6717552941381058864
 BoxCollider2D:
   m_ObjectHideFlags: 0

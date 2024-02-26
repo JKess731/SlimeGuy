@@ -7,7 +7,7 @@ using UnityEngine.Windows;
 
 //Brandon Sheley
 
-public class slimeTrail : MonoBehaviour
+public class SlimeTrail : MonoBehaviour
 {
 
     [SerializeField] GameObject trailObject;
@@ -38,21 +38,21 @@ public class slimeTrail : MonoBehaviour
         //On button press send Puddles to the other end of his slime trail. Can press again to leave slime trail and stop diving.
         if (UnityEngine.Input.GetKeyDown(KeyCode.F) && trailObjects.Count > 0)
         {
-            AudioManager.instance.PlaySFX("SlimeDive");
+            //AudioManager.instance.PlaySFX("SlimeDive");
             if(dive == false){
                 dive = true;
                 
                 trailCount = trailObjects.Count;
                 diveCheck = trailCount;
                 Debug.Log(diveCheck);
-                StartCoroutine(diveTrail());
+                StartCoroutine(DiveTrail());
             }
             else{
                 dive = false;
                 
                 trailCount = 0;
                 diveCheck = 0;
-                StopCoroutine(diveTrail());
+                StopCoroutine(DiveTrail());
                 playerMove.input.Enable();
             }
         }
@@ -102,7 +102,7 @@ public class slimeTrail : MonoBehaviour
 
 
 
-    IEnumerator diveTrail() {
+    IEnumerator DiveTrail() {
         while (dive == true){
             playerMove.input.Disable();
             diveCheck--;
@@ -120,7 +120,7 @@ public class slimeTrail : MonoBehaviour
                 
                 trailCount = 0;
                 diveCheck = 0;
-                StopCoroutine(diveTrail());
+                StopCoroutine(DiveTrail());
                 
             }
             yield return new WaitForSeconds(.03f); // Change trail speed

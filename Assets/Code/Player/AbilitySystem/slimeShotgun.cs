@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class slimeShotgun : MonoBehaviour
+public class SlimeShotgun : MonoBehaviour
 {
     public Transform attackPointShotgun;
     public GameObject slimeBlob;
@@ -14,7 +14,7 @@ public class slimeShotgun : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            AudioManager.instance.PlaySFX("SlimeShotgun");
+            //AudioManager.instance.PlaySFX("SlimeShotgun");
             Shoot();
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Edison Li
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     [SerializeField] private int health;
@@ -11,6 +11,7 @@ public class enemy : MonoBehaviour
     [SerializeField] private int attackDamage;
     [SerializeField] private float speed;
     [SerializeField] private int defense;
+    [SerializeField] public int dangerLevel;
 
     //Set health to max
     private void Awake()
@@ -34,7 +35,7 @@ public class enemy : MonoBehaviour
         }
     }
 
-    public int getHealth()
+    public int GetHealth()
     {
         return health;
     }

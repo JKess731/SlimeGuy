@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class enemyAttackSlash : MonoBehaviour
+public class EnemyAttackSlash : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float attackDelay;
@@ -20,9 +20,14 @@ public class enemyAttackSlash : MonoBehaviour
 
     void Update()
     {
-        Vector3 rotation = player.transform.position - ring.transform.position;
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        ring.transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        if (attackCon == false) {
+            Vector3 rotation = player.transform.position - ring.transform.position;
+            float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            ring.transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        }
+       
+        
+       
     }
 
 
@@ -32,10 +37,9 @@ public class enemyAttackSlash : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-
-            enemy.GetComponentInParent<enemyMovementFollow>().attackColliding();
             attackCon = true;
-            StartCoroutine(attackingContinue());
+            enemy.GetComponentInParent<EnemyMovementFollow>().AttackColliding();
+            StartCoroutine(AttackingContinue());
         }
 
     }
@@ -44,24 +48,20 @@ public class enemyAttackSlash : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            enemy.GetComponentInParent<enemyMovementFollow>().attackNotColliding();
-
             attackCon = false;
-
         }
-
     }
 
-    IEnumerator attackingContinue() {
+    IEnumerator AttackingContinue() {
         while (attackCon == true) {
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
-            Debug.Log("Slashing the Puddles");
-            player.GetComponentInParent<playerHealth>().Damage(damage);
+            player.GetComponentInParent<PlayerHealth>().Damage(damage);
            
         }
+        enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
         
     }
 }

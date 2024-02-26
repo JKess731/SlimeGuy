@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] private int maxHealth;
@@ -18,7 +18,7 @@ public class playerHealth : MonoBehaviour
     public void Damage(int damage)
     {
         Debug.Log("Taking Damage: " + currentHealth);
-        AudioManager.instance.PlaySFX("SlimeGuyHit");
+        //AudioManager.instance.PlaySFX("SlimeGuyHit");
         currentHealth -= damage;
         if (currentHealth <= 0)
         {

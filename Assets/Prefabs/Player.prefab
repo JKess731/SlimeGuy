@@ -80,7 +80,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dc7b7c2356f9b49bf53393ad5cd58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerClass: {fileID: 0}
+  playerStatUI: {fileID: 0}
   absorbtionRate: 1
+  growthRate: 1
+  _statBoost: 0
 --- !u!1 &5576299567651153443
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dc7b7c2356f9b49bf53393ad5cd58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerClass: {fileID: 0}
+  playerStatUI: {fileID: 0}
   absorbtionRate: 1
+  growthRate: 1
+  _statBoost: 0
 --- !u!1 &6705461624330608696
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +423,9 @@ GameObject:
   - component: {fileID: 8193355024975336288}
   - component: {fileID: 3260359442104468773}
   - component: {fileID: 2773545339210776950}
+  - component: {fileID: 7790223079383707430}
+  - component: {fileID: 6441711385004036941}
+  - component: {fileID: 1091768106442194323}
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -478,7 +489,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2137300007
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1377544796, guid: b554035dd21b5984b9551bc97ddbd02f, type: 3}
   m_Color: {r: 0.50795156, g: 0.8301887, b: 0.28586686, a: 1}
@@ -533,6 +544,8 @@ MonoBehaviour:
   speed: 10
   isDashing: 0
   playerFaceDirection: {x: 0, y: 0}
+  directionX: 0
+  directionY: 0
 --- !u!114 &4735249946205857124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,7 +708,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.050539136, y: 0.66964406}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -706,7 +719,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.808625, y: 1.3285049}
   m_EdgeRadius: 0
 --- !u!114 &8193355024975336288
 MonoBehaviour:
@@ -759,3 +772,45 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7790223079383707430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9cf5826c28d16469a56109c65cde3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionCounter: 1
+  minion: {fileID: 74088980676390564, guid: 2ef87ce1d800e614fb0f58850f1d436e, type: 3}
+  enemiesInRoom: []
+--- !u!114 &6441711385004036941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079ebac280211f74c97ec2ba6614cf2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  moveVector: {x: 0, y: 0, z: 0}
+  isMoving: 0
+--- !u!114 &1091768106442194323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ae4e37fba0a1544b54459fc51a8840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

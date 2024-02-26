@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyAttackRangedChargeUpMultiBullets : MonoBehaviour
+public class EnemyAttackRangedChargeUpMultiBullets : MonoBehaviour
 {
     [SerializeField] GameObject player;
     public GameObject bullet;
@@ -41,7 +41,7 @@ public class enemyAttackRangedChargeUpMultiBullets : MonoBehaviour
                 if (shotCooldown <= 0)
                 {
                     Debug.Log("Shoot");
-                    StartCoroutine(multiShot());
+                    StartCoroutine(MultiShot());
                     shotCooldown = startShotCooldown;
                 }
                 else
@@ -58,16 +58,16 @@ public class enemyAttackRangedChargeUpMultiBullets : MonoBehaviour
         lastPosition = transform.position;
     }
 
-    IEnumerator multiShot() {
+    IEnumerator MultiShot() {
         yield return new WaitForSeconds(1f);
         GameObject bullet1 = Instantiate(bullet, bulletPos1.position, ring.transform.rotation);
-        bullet1.GetComponent<enemyBulletDelayed>().waitTime = 3;
+        bullet1.GetComponent<EnemyBulletDelayed>().waitTime = 3;
         yield return new WaitForSeconds(1f);
         GameObject bullet2 = Instantiate(bullet, bulletPos2.position, ring.transform.rotation);
-        bullet2.GetComponent<enemyBulletDelayed>().waitTime = 2;
+        bullet2.GetComponent<EnemyBulletDelayed>().waitTime = 2;
         yield return new WaitForSeconds(1f);
         GameObject bullet3 = Instantiate(bullet, bulletPos3.position, ring.transform.rotation);
-        bullet3.GetComponent<enemyBulletDelayed>().waitTime = 1;
+        bullet3.GetComponent<EnemyBulletDelayed>().waitTime = 1;
         yield return new WaitForSeconds(1f);
 
     }

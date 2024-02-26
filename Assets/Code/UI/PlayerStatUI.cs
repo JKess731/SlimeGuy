@@ -10,7 +10,7 @@ public class PlayerStatUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI defenseTXT;
     [SerializeField] private TextMeshProUGUI speedTxt;
 
-    [SerializeField] player player;
+    [SerializeField] Player player;
     private void Start()
     {
         healthTXT.SetText("health: " + player.returnStats(stats.statsName.MAXHEALTH));

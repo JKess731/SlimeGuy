@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyBulletDelayed : MonoBehaviour
+public class EnemyBulletDelayed : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject player;
@@ -22,7 +22,7 @@ public class enemyBulletDelayed : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("player");
-        StartCoroutine(delayShot(waitTime));
+        StartCoroutine(DelayShot(waitTime));
 
     }
 
@@ -30,13 +30,13 @@ public class enemyBulletDelayed : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            collision.gameObject.GetComponent<playerHealth>().Damage(bulletDamage);
+            collision.gameObject.GetComponent<PlayerHealth>().Damage(bulletDamage);
             Debug.Log("Bullet dmg");
             Destroy(gameObject);
         }
     }
 
-    IEnumerator delayShot(float delay) { 
+    IEnumerator DelayShot(float delay) { 
         yield return new WaitForSeconds(delay);
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * bulletSpeed;

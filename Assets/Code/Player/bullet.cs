@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     
@@ -21,7 +21,7 @@ public class bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "enemy")
         {
-            collision.gameObject.GetComponent<enemy>().Damage(bulletDamage);
+            collision.gameObject.GetComponent<Enemy>().Damage(bulletDamage);
             Destroy(gameObject);
         }
 

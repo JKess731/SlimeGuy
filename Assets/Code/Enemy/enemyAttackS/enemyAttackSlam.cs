@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class enemyAttackSlam : MonoBehaviour
+public class EnemyAttackSlam : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float attackDelay;
@@ -36,9 +36,9 @@ public class enemyAttackSlam : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
 
-            enemy.GetComponentInParent<enemyMovementFollow>().attackColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow>().AttackColliding();
             attackCon = true;
-            StartCoroutine(attackingContinue());
+            StartCoroutine(AttackingContinue());
         }
 
     }
@@ -47,28 +47,26 @@ public class enemyAttackSlam : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            enemy.GetComponentInParent<enemyMovementFollow>().attackNotColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
 
             attackCon = false;
 
         }
     }
 
-    IEnumerator attackingContinue() {
+    IEnumerator AttackingContinue() {
         while (attackCon == true) {
             yield return new WaitForSeconds(attackDelay/2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay/2);
-            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
-            Debug.Log("Slaming the Puddles");
-            player.GetComponentInParent<playerHealth>().Damage(damage);
-            StartCoroutine(playerStunned());
+            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            player.GetComponentInParent<PlayerHealth>().Damage(damage);
+            StartCoroutine(PlayerStunned());
             
         }
         
     }
 
-    IEnumerator playerStunned() {
+    IEnumerator PlayerStunned() {
         playerMove.input.Disable();
         Debug.Log("Player Stunned");
         yield return new WaitForSeconds(attackDelay/2);

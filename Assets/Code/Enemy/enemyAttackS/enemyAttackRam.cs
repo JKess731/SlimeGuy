@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class enemyAttackRam : MonoBehaviour
+public class EnemyAttackRam : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] GameObject player;
@@ -22,9 +22,9 @@ public class enemyAttackRam : MonoBehaviour
     {
         if (collision.gameObject.name == "Player") {
             Debug.Log("Enter the puddles");
-            player.GetComponentInParent<playerHealth>().Damage(damage);
+            player.GetComponentInParent<PlayerHealth>().Damage(damage);
             attackCon = true;
-            StartCoroutine(attackingContinue());
+            StartCoroutine(AttackingContinue());
         }
 
     }
@@ -40,10 +40,10 @@ public class enemyAttackRam : MonoBehaviour
 
     }
 
-    IEnumerator attackingContinue() {
+    IEnumerator AttackingContinue() {
         while (attackCon == true) {
             Debug.Log("continue attacking");
-            player.GetComponentInParent<playerHealth>().Damage(damage);
+            player.GetComponentInParent<PlayerHealth>().Damage(damage);
             yield return new WaitForSeconds(.5f);
         }
         
