@@ -9,14 +9,14 @@ public class RoomTriggerControl : MonoBehaviour
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
     [SerializeField] public bool manual;
 
+    [HideInInspector] public int dangerLevel = 5;
+    [HideInInspector] public List<GameObject> spawnedEnemies = new List<GameObject>();
+    [HideInInspector] public bool triggerHit = false;
+
     private int enemiesDead = 0;
     private GameObject player;
     private GameObject triggerParentGameObject;
     private List<GameObject> triggerParentChildren = new List<GameObject>();
-
-    [HideInInspector] public int dangerLevel = 5;
-    [HideInInspector] public List<GameObject> spawnedEnemies = new List<GameObject>();
-    [HideInInspector] public bool triggerHit = false;
 
     private void Awake()
     {
