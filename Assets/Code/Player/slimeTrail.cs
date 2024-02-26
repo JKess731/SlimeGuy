@@ -14,7 +14,6 @@ public class SlimeTrail : MonoBehaviour
     [SerializeField] GameObject Puddles;
     public PlayerMove playerMove;
     
-
     private List<GameObject> trailObjects = new List<GameObject>();
     private GameObject lastTrail;
     private Vector3 lastPosition = new Vector3 ();
@@ -23,22 +22,24 @@ public class SlimeTrail : MonoBehaviour
     private int diveCheck = 0;
     private int trailCount = 0;
 
-
+    private FMODUnity.StudioEventEmitter eventEmitterRef;
+    private void Awake()
+    {
+        eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
+    }
     //On start get the player characters movement, and set lastPosition to Puddles position to prevent issues with other code on start.
     void Start()
     {
-        
         lastPosition = Puddles.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        eventEmitterRef.Play();
         //On button press send Puddles to the other end of his slime trail. Can press again to leave slime trail and stop diving.
         if (UnityEngine.Input.GetKeyDown(KeyCode.F) && trailObjects.Count > 0)
         {
-            //AudioManager.instance.PlaySFX("SlimeDive");
             if(dive == false){
                 dive = true;
                 
@@ -92,15 +93,6 @@ public class SlimeTrail : MonoBehaviour
             }
         }
     }
-
-
-
-
-
-
-
-
-
 
     IEnumerator DiveTrail() {
         while (dive == true){

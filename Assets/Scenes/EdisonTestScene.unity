@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 37002253}
+  - component: {fileID: 37002254}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -156,7 +157,75 @@ Transform:
   - {fileID: 1821954035}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &472917885
+--- !u!114 &37002254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37002252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36b32530e682c4469cf1d6bd1ab5c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawners:
+  - {fileID: 1061339997}
+  - {fileID: 1299055053}
+  - {fileID: 1561681645}
+  - {fileID: 1586185030}
+  enemies:
+  - {fileID: 6346162656513507999, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
+  - {fileID: 4892147420155252896, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+  - {fileID: 6169016820238609206, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
+--- !u!1 &600639964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8683295486406633418, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+  m_PrefabInstance: {fileID: 8133810901862723260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &600639967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600639964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1934989853
+      Data2: 1223327871
+      Data3: -1896828288
+      Data4: 1666543160
+    Path: event:/SFX/Puddles/Slime Absorption
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &860777826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2080989293142158726, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+  m_PrefabInstance: {fileID: 8133810901862723260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb31ed5ef1708647867547d2de3e014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &913836703
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,90 +233,79 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 472917888}
-  - component: {fileID: 472917887}
-  - component: {fileID: 472917886}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
+  - component: {fileID: 913836704}
+  - component: {fileID: 913836705}
+  - component: {fileID: 913836706}
+  m_Layer: 6
+  m_Name: Slime Shotgun
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &472917886
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472917885}
-  m_Enabled: 1
---- !u!20 &472917887
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472917885}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 7
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &472917888
+--- !u!4 &913836704
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472917885}
+  m_GameObject: {fileID: 913836703}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1380856468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913836705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913836703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1697883cc8ca3458225fa50705e7ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPointShotgun: {fileID: 1411516991}
+  slimeBlob: {fileID: 4833602960537618009, guid: 8b09624d15fafc742adbbe3771d47cf1, type: 3}
+  bulletCount: 3
+  delay: 0.1
+  ring: {fileID: 860777826}
+--- !u!114 &913836706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913836703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -115196307
+      Data2: 1130899821
+      Data3: 626401201
+      Data4: 664755720
+    Path: event:/SFX/Puddles/Slime Shotgun
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1009061130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,21 +1713,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
   m_PrefabInstance: {fileID: 8133810901862723260}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1380856469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348018079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9cf5826c28d16469a56109c65cde3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minionCounter: 1
-  minion: {fileID: 74088980676390564, guid: 2ef87ce1d800e614fb0f58850f1d436e, type: 3}
-  enemiesInRoom: []
 --- !u!114 &1380856479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,9 +1722,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1348018079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 079ebac280211f74c97ec2ba6614cf2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1001 &1382317109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1791,6 +1853,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2360279029371207498, guid: 79f19deefb9e98047af2e36f93f8a2a3, type: 3}
   m_PrefabInstance: {fileID: 1382317109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1411516991 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1998642360960838624, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+  m_PrefabInstance: {fileID: 8133810901862723260}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1561681645
 GameObject:
@@ -5397,26 +5464,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6680384814826121622, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6680384814826121622, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -541431263
-      objectReference: {fileID: 0}
-    - target: {fileID: 6705461624330608696, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -5457,27 +5504,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7407095389853606614, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      propertyPath: m_SortingOrder
+    - target: {fileID: 7501618215218074536, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501618215218074536, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501618215218074536, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8683295486406633418, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_Name
+      value: Slime Absorb
       objectReference: {fileID: 0}
     - target: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8577484598870984570, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 472917888}
+      insertIndex: 3
+      addedObject: {fileID: 913836704}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1380856469}
-    - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1380856479}
+    - targetCorrespondingSourceObject: {fileID: 8683295486406633418, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 600639967}
   m_SourcePrefab: {fileID: 100100000, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

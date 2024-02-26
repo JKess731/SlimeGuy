@@ -18,7 +18,6 @@ public class Absorption : MonoBehaviour
 
     [SerializeField] stats.statBoost _statBoost;
 
-
     private void Start()
     {
         //playerStatUI = FindAnyObjectByType<PlayerStatUI>();

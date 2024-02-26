@@ -13,7 +13,6 @@ public class RoomTriggerSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         roomTriggerControl.SpawnEnemies(roomTriggerControl.spawners);
         gameObject.SetActive(false);
 
