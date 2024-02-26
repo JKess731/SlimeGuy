@@ -25,9 +25,6 @@ public class EnemyAttackSlash : MonoBehaviour
             float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
             ring.transform.rotation = Quaternion.Euler(0, 0, rotZ);
         }
-       
-        
-       
     }
 
 
@@ -44,6 +41,7 @@ public class EnemyAttackSlash : MonoBehaviour
 
     }
 
+    //Handles attack collision
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
@@ -52,6 +50,7 @@ public class EnemyAttackSlash : MonoBehaviour
         }
     }
 
+    //Handles attack delay
     IEnumerator AttackingContinue() {
         while (attackCon == true) {
             yield return new WaitForSeconds(attackDelay / 2);
@@ -62,6 +61,5 @@ public class EnemyAttackSlash : MonoBehaviour
            
         }
         enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
-        
     }
 }
