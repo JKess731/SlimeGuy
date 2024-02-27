@@ -68,9 +68,20 @@ public class AnimationControl : MonoBehaviour
         {
             currentState = AnimState.IDLE_LEFT;
         }
-        else
+        else if (playerMove.directionX < 0)
         {
             currentState = AnimState.IDLE_RIGHT;
+        }
+        else
+        {
+            if (playerMove.directionY > 0)
+            {
+                currentState = AnimState.IDLE_UP;
+            }
+            else if (playerMove.directionY < 0)
+            {
+                currentState = AnimState.IDLE_DOWN;
+            }
         }
     }
 
