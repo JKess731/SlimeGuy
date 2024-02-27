@@ -37,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Taking Damage: " + currentHealth);
         currentHealth -= damage;
 
+        playerAnimationControl.isBeingHit = true;
+
         if (whiteHitAnimation)
         {
             if (playerMovement.directionX > 0)
