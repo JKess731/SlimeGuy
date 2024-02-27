@@ -11,12 +11,12 @@ public class RoomTriggerControl : MonoBehaviour
 
     [HideInInspector] public int dangerLevel = 5;
     [HideInInspector] public List<GameObject> spawnedEnemies = new List<GameObject>();
+    [HideInInspector] public List<GameObject> triggerParentChildren = new List<GameObject>();
     [HideInInspector] public bool triggerHit = false;
 
     private int enemiesDead = 0;
     private GameObject player;
     private GameObject triggerParentGameObject;
-    private List<GameObject> triggerParentChildren = new List<GameObject>();
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class RoomTriggerControl : MonoBehaviour
 
         // Add children of trigger parent empty object into a list
         int childCount = triggerParentGameObject.transform.childCount;
-        for (int i = childCount; i > 0; i--)
+        for (int i = childCount; i <= 0; i--)
         {
             triggerParentChildren.Add(triggerParentGameObject.transform.GetChild(i).gameObject);
         }

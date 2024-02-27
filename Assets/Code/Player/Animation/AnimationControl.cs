@@ -53,16 +53,16 @@ public class AnimationControl : MonoBehaviour
                 animator.Play("Player_Move_DFacing");
                 break;
             case AnimState.HIT_LEFT_WHITE:
-                animator.Play("Player_Hit_L_White");
+                animator.Play("Player_Hit_LWhite");
                 break;
             case AnimState.HIT_RIGHT_WHITE:
-                animator.Play("Player_Hit_R_White");
+                animator.Play("Player_Hit_RWhite");
                 break;
             case AnimState.HIT_LEFT_RED:
-                animator.Play("Player_Hit_L_Red");
+                animator.Play("Player_Hit_LRed");
                 break;
             case AnimState.HIT_RIGHT_RED:
-                animator.Play("Player_Hit_R_Red");
+                animator.Play("Player_Hit_RRed");
                 break;
         }
     }

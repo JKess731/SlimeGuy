@@ -82,8 +82,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerClass: {fileID: 0}
   playerStatUI: {fileID: 0}
-  playerClass: {fileID: 0}
-  playerStatUI: {fileID: 0}
   absorbtionRate: 1
   growthRate: 1
   _statBoost: 0
@@ -773,7 +771,6 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2137300007
   m_SortingLayer: 2
-  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1377544796, guid: b554035dd21b5984b9551bc97ddbd02f, type: 3}
   m_Color: {r: 0.50795156, g: 0.8301887, b: 0.28586686, a: 1}
@@ -830,23 +827,6 @@ MonoBehaviour:
   playerFaceDirection: {x: 0, y: 0}
   directionX: 0
   directionY: 0
---- !u!114 &4735249946205857124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7e72cbe8a43da4d937544d157514cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPointShotgun: {fileID: 6359139107008641216}
-  slimeBlob: {fileID: 4833602960537618009, guid: 8b09624d15fafc742adbbe3771d47cf1, type: 3}
-  bulletCount: 3
-  delay: 0.1
-  ring: {fileID: 2080989293142158726}
 --- !u!96 &4898250958995919665
 TrailRenderer:
   serializedVersion: 3
@@ -1020,6 +1000,8 @@ MonoBehaviour:
   player: {fileID: 9030121839249631364}
   maxHealth: 25
   currentHealth: 25
+  spawnPos: {x: 0, y: 0}
+  whiteHitAnimation: 0
 --- !u!114 &3260359442104468773
 MonoBehaviour:
   m_ObjectHideFlags: 0
