@@ -48,7 +48,6 @@ public class EnemyAttackSlam : MonoBehaviour
             enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
 
             attackCon = false;
-
         }
     }
 
