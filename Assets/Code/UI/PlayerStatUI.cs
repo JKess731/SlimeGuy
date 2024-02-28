@@ -10,34 +10,34 @@ public class PlayerStatUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI defenseTXT;
     [SerializeField] private TextMeshProUGUI speedTxt;
 
-    [SerializeField] player player;
+    [SerializeField] PlayerScript player;
     private void Start()
     {
-        healthTXT.SetText("health: " + player.returnStats(stats.statsName.MAXHEALTH));
-        attackTXT.SetText("attack: " + player.returnStats(stats.statsName.ATTACK));
-        defenseTXT.SetText("defense: " + player.returnStats(stats.statsName.DEFENSE));
-        speedTxt.SetText("speed: " + player.returnStats(stats.statsName.SPEED));
+        healthTXT.SetText("health: " + player.returnStats(Stats.statsName.MAXHEALTH));
+        attackTXT.SetText("attack: " + player.returnStats(Stats.statsName.ATTACK));
+        defenseTXT.SetText("defense: " + player.returnStats(Stats.statsName.DEFENSE));
+        speedTxt.SetText("speed: " + player.returnStats(Stats.statsName.SPEED));
     }
 
     /// <summary>
     /// Sets the text based on the stat boost type
     /// </summary>
     /// <param name="boostType"></param>
-    public void setText(stats.statBoost boostType)
+    public void setText(Stats.statBoost boostType)
     {
         switch (boostType)
         {
-            case stats.statBoost.healthUP:
-                healthTXT.SetText("health: " + player.returnStats(stats.statsName.MAXHEALTH));
+            case Stats.statBoost.healthUP:
+                healthTXT.SetText("health: " + player.returnStats(Stats.statsName.MAXHEALTH));
                 break;
-            case stats.statBoost.attackUP:
-                attackTXT.SetText("attack: " + player.returnStats(stats.statsName.ATTACK));
+            case Stats.statBoost.attackUP:
+                attackTXT.SetText("attack: " + player.returnStats(Stats.statsName.ATTACK));
                 break;
-            case stats.statBoost.defenseUP:
-                defenseTXT.SetText("defense: " + player.returnStats(stats.statsName.DEFENSE));
+            case Stats.statBoost.defenseUP:
+                defenseTXT.SetText("defense: " + player.returnStats(Stats.statsName.DEFENSE));
                 break;
-            case stats.statBoost.speedUP:
-                speedTxt.SetText("speed: " + player.returnStats(stats.statsName.SPEED));
+            case Stats.statBoost.speedUP:
+                speedTxt.SetText("speed: " + player.returnStats(Stats.statsName.SPEED));
                 break;
         }
     }
