@@ -80,7 +80,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dc7b7c2356f9b49bf53393ad5cd58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerClass: {fileID: 0}
+  playerStatUI: {fileID: 0}
   absorbtionRate: 1
+  growthRate: 1
+  _statBoost: 0
 --- !u!1 &5576299567651153443
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dc7b7c2356f9b49bf53393ad5cd58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerClass: {fileID: 0}
+  playerStatUI: {fileID: 0}
   absorbtionRate: 1
+  growthRate: 1
+  _statBoost: 0
 --- !u!1 &6705461624330608696
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,8 +420,6 @@ GameObject:
   - component: {fileID: 4735249946205857124}
   - component: {fileID: 4898250958995919665}
   - component: {fileID: 8722994623963178404}
-  - component: {fileID: 8193355024975336288}
-  - component: {fileID: 3260359442104468773}
   - component: {fileID: 2773545339210776950}
   m_Layer: 6
   m_Name: Player
@@ -478,7 +484,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2137300007
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1377544796, guid: b554035dd21b5984b9551bc97ddbd02f, type: 3}
   m_Color: {r: 0.50795156, g: 0.8301887, b: 0.28586686, a: 1}
@@ -533,6 +539,8 @@ MonoBehaviour:
   speed: 10
   isDashing: 0
   playerFaceDirection: {x: 0, y: 0}
+  directionX: 0
+  directionY: 0
 --- !u!114 &4735249946205857124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,36 +716,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8193355024975336288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 642184e3688f1764984646dda4ee89bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 9030121839249631364}
-  maxHealth: 25
-  currentHealth: 25
---- !u!114 &3260359442104468773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a8151df13740ca44b285616d62592ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trailObject: {fileID: 989652616188887022, guid: bc3031ab587a15740b619e743c2f6cd0, type: 3}
-  Puddles: {fileID: 9030121839249631364}
-  playerMove: {fileID: 2252183450457289478}
 --- !u!95 &2773545339210776950
 Animator:
   serializedVersion: 5
