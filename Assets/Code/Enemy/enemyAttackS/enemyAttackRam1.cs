@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyAttackRam1 : MonoBehaviour
+public class EnemyAttackRam : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] GameObject player;
