@@ -158,9 +158,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4833602960537618009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf78ec89a65f1b2469bd7203e9f5532b, type: 3}
+  m_Script: {fileID: 11500000, guid: f1a0987b048f8e54486dbc7a2b1ecf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 5
-  bulletDamage: 2
+  bulletSpeed: 8
+  bulletDamage: 1
   playerpos: {x: 0, y: 0}

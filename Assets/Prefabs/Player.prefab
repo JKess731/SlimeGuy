@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 7790223079383707430}
   - component: {fileID: 6441711385004036941}
   - component: {fileID: 2286926643201842907}
+  - component: {fileID: 8544461910176983870}
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -1014,7 +1015,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9030121839249631364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 642184e3688f1764984646dda4ee89bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 0788bdaec5bca584a9069e402c2a8a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
@@ -1050,11 +1051,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9030121839249631364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9cf5826c28d16469a56109c65cde3f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ec90a9a856e254429d5969d88f671b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minionCounter: 1
-  minion: {fileID: 74088980676390564, guid: 2ef87ce1d800e614fb0f58850f1d436e, type: 3}
+  minion: {fileID: 0}
   enemiesInRoom: []
 --- !u!114 &6441711385004036941
 MonoBehaviour:
@@ -1102,3 +1103,20 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: -1
   OverrideMaxDistance: -1
+--- !u!114 &8544461910176983870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1697883cc8ca3458225fa50705e7ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPointShotgun: {fileID: 1998642360960838624}
+  slimeBlob: {fileID: 4833602960537618009, guid: d1d50472f734b6c4d80f67aaa73b313c, type: 3}
+  bulletCount: 3
+  delay: 0.1
+  ring: {fileID: 0}

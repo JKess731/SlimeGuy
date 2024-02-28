@@ -124,11 +124,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4833602960537618009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172104fc8f80e6347b7a1779d942b643, type: 3}
+  m_Script: {fileID: 11500000, guid: efd5d91ed2d44a0439ed4bd1f666953b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 10
-  bulletDamage: 3
+  bulletSpeed: 0
+  bulletDamage: 1
 --- !u!58 &7643890239121380685
 CircleCollider2D:
   m_ObjectHideFlags: 0
