@@ -95,9 +95,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4017600752784018102}
   - component: {fileID: 6322349473942033054}
-  - component: {fileID: 5825441487662763452}
-  - component: {fileID: 2237648190537903601}
   - component: {fileID: 7495682527370946714}
+  - component: {fileID: 3712294576004728107}
+  - component: {fileID: 9075875009069443492}
   m_Layer: 7
   m_Name: GolemEnemy
   m_TagString: enemy
@@ -173,38 +173,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5825441487662763452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4892147420155252896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afd2f7238209e5b49ab3bc9d5779af9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  distanceBetween: 8
---- !u!114 &2237648190537903601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4892147420155252896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c60c3b9fad849ae4bb0f25b2a1ab5a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 6
-  health: 6
-  attackDamage: 1
-  speed: 1
-  defense: 5
-  dangerLevel: 4
 --- !u!61 &7495682527370946714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -250,6 +218,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3712294576004728107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4892147420155252896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d3de6df1a663a45bd17ccf8bb1759c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  health: 1
+  attackDamage: 1
+  speed: 1
+  defense: 1
+  dangerLevel: 1
+--- !u!114 &9075875009069443492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4892147420155252896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0086e0b8ce633d843ac8bb323d5f6cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  distanceBetween: 100
 --- !u!1 &6320488281308932678
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 1773292749316505675}
   - component: {fileID: 6128227401782977703}
   - component: {fileID: 1328728302571247172}
-  - component: {fileID: 7383357608152270613}
+  - component: {fileID: 1113061696944961827}
   m_Layer: 9
   m_Name: Front
   m_TagString: Untagged
@@ -371,7 +371,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
---- !u!114 &7383357608152270613
+--- !u!114 &1113061696944961827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,12 +380,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6320488281308932678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e74ee1f633d3d4e827fe42003ed560, type: 3}
+  m_Script: {fileID: 11500000, guid: e3110f3eb2358cb4baa701560737fb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  attackDelay: 2.5
+  damage: 0
+  attackDelay: 0
   player: {fileID: 0}
   playerMove: {fileID: 0}
-  enemy: {fileID: 4892147420155252896}
-  ring: {fileID: 809023192014729213}
+  enemy: {fileID: 0}
+  ring: {fileID: 0}

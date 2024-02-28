@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4467054456402248838}
   - component: {fileID: 7264125344018861333}
   - component: {fileID: 2506365643547532333}
-  - component: {fileID: 550783709146843297}
+  - component: {fileID: 6565660149979412233}
   m_Layer: 0
   m_Name: EnemyBulletDelayed
   m_TagString: Untagged
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &550783709146843297
+--- !u!114 &6565660149979412233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,10 +158,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7894588220112412387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df8acf195686d743b2992cb926fb470, type: 3}
+  m_Script: {fileID: 11500000, guid: 2083a3114fab6e74fab57126c4bcd5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 6
-  bulletDamage: 2
+  bulletSpeed: 0
+  bulletDamage: 0
   playerpos: {x: 0, y: 0}
   waitTime: 0

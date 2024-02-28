@@ -349,10 +349,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2407028541800297998}
   - component: {fileID: 2131363663756015018}
-  - component: {fileID: 3168918881402231385}
   - component: {fileID: 7301704006152442750}
-  - component: {fileID: 8959801620037599515}
-  - component: {fileID: 8624462061331008423}
+  - component: {fileID: 39162836423394928}
+  - component: {fileID: 5342104090162196023}
+  - component: {fileID: 3398094856483405810}
   m_Layer: 7
   m_Name: WizardEnemy
   m_TagString: enemy
@@ -428,24 +428,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3168918881402231385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6169016820238609206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c60c3b9fad849ae4bb0f25b2a1ab5a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  health: 3
-  attackDamage: 1
-  speed: 1
-  defense: 1
-  dangerLevel: 2
 --- !u!61 &7301704006152442750
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -491,7 +473,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8959801620037599515
+--- !u!114 &39162836423394928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -500,14 +482,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 6169016820238609206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e26ecf178be49f48acd01d5c9baac02, type: 3}
+  m_Script: {fileID: 11500000, guid: b0d3de6df1a663a45bd17ccf8bb1759c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  health: 1
+  attackDamage: 1
+  speed: 1
+  defense: 1
+  dangerLevel: 1
+--- !u!114 &5342104090162196023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169016820238609206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff149000ea0d36e4686e1d416e0283c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 2
-  distanceBetween: 10
-  stop: 8
---- !u!114 &8624462061331008423
+  speed: 1
+  distanceBetween: 100
+  stop: 5
+--- !u!114 &3398094856483405810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -516,14 +516,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6169016820238609206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9158220cd4cfe6498b1880ade25adfe, type: 3}
+  m_Script: {fileID: 11500000, guid: 2edf5f625ef7ee847a27d856e18afb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   bullet: {fileID: 7894588220112412387, guid: 64131fd989dfe734490b5fe741fa1637, type: 3}
-  bulletPos1: {fileID: 7939623532759540836}
-  bulletPos2: {fileID: 1705383063181023989}
+  bulletPos1: {fileID: 1705383063181023989}
+  bulletPos2: {fileID: 7939623532759540836}
   bulletPos3: {fileID: 8618978228583471652}
   ring: {fileID: 2918383135543469741}
-  startShotCooldown: 4
-  detectRange: 10
+  startShotCooldown: 5
+  detectRange: 100

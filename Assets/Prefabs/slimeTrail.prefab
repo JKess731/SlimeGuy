@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6741632444001236678}
   - component: {fileID: 7207622374602410813}
   m_Layer: 0
-  m_Name: slimeTrail
+  m_Name: SlimeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

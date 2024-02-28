@@ -140,6 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079ebac280211f74c97ec2ba6614cf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
+  moveVector: {x: 0, y: 0, z: 0}
+  isMoving: 0
 --- !u!114 &254999670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,12 +1180,25 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7501618215218074536, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501618215218074536, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501618215218074536, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2776752034193068935, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: 0
