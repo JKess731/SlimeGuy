@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5248836437703759967}
   - component: {fileID: 4204973351621799660}
   - component: {fileID: 8476463627832965961}
-  - component: {fileID: 7524974725368040872}
   m_Layer: 9
   m_Name: Front
   m_TagString: Untagged
@@ -131,23 +130,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 6}
   m_EdgeRadius: 0
---- !u!114 &7524974725368040872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4717620318812606324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d66d76908d24a48b4dee0472a8c074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  attackDelay: 0.75
-  player: {fileID: 0}
-  enemy: {fileID: 6346162656513507999}
-  ring: {fileID: 5997310045633212185}
 --- !u!1 &5997310045633212185
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +227,6 @@ GameObject:
   - component: {fileID: 9081120099023874424}
   - component: {fileID: 6717552941381058864}
   - component: {fileID: 6696334631182475827}
-  - component: {fileID: 2953474723828323176}
   m_Layer: 7
   m_Name: DwarfEnemy
   m_TagString: enemy
@@ -380,21 +361,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   distanceBetween: 10
---- !u!114 &2953474723828323176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6346162656513507999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db199b1cb0a13e94a8eeab088f1b73e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
-  attackDamage: 0
-  speed: 0
-  defense: 0
-  dangerLevel: 0

@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 6322349473942033054}
   - component: {fileID: 2237648190537903601}
   - component: {fileID: 7495682527370946714}
-  - component: {fileID: 781657162985093186}
   m_Layer: 7
   m_Name: GolemEnemy
   m_TagString: enemy
@@ -232,24 +231,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &781657162985093186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4892147420155252896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db199b1cb0a13e94a8eeab088f1b73e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
-  attackDamage: 0
-  speed: 0
-  defense: 0
-  dangerLevel: 0
 --- !u!1 &6320488281308932678
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +242,6 @@ GameObject:
   - component: {fileID: 1773292749316505675}
   - component: {fileID: 6128227401782977703}
   - component: {fileID: 1328728302571247172}
-  - component: {fileID: 7383357608152270613}
   m_Layer: 9
   m_Name: Front
   m_TagString: Untagged
@@ -371,21 +351,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
---- !u!114 &7383357608152270613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6320488281308932678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa175d052bf37db4792ac81704871c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  attackDelay: 2.5
-  player: {fileID: 0}
-  playerMove: {fileID: 0}
-  enemy: {fileID: 4892147420155252896}
-  ring: {fileID: 809023192014729213}
