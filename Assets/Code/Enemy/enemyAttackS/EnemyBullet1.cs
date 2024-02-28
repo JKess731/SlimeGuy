@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet1 : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject player;

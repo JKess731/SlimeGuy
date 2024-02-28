@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletDelayed : MonoBehaviour
+public class EnemyBulletDelayed1 : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject player;
