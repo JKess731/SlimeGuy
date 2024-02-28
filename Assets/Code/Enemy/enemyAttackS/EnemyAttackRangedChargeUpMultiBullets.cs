@@ -61,13 +61,13 @@ public class EnemyAttackRangedChargeUpMultiBullets1 : MonoBehaviour
     IEnumerator MultiShot() {
         yield return new WaitForSeconds(1f);
         GameObject bullet1 = Instantiate(bullet, bulletPos1.position, ring.transform.rotation);
-        bullet1.GetComponent<EnemyBulletDelayed1>().waitTime = 3;
+        bullet1.GetComponent<EnemyBulletDelayed>().waitTime = 3;
         yield return new WaitForSeconds(1f);
         GameObject bullet2 = Instantiate(bullet, bulletPos2.position, ring.transform.rotation);
-        bullet2.GetComponent<EnemyBulletDelayed1>().waitTime = 2;
+        bullet2.GetComponent<EnemyBulletDelayed>().waitTime = 2;
         yield return new WaitForSeconds(1f);
         GameObject bullet3 = Instantiate(bullet, bulletPos3.position, ring.transform.rotation);
-        bullet3.GetComponent<EnemyBulletDelayed1>().waitTime = 1;
+        bullet3.GetComponent<EnemyBulletDelayed>().waitTime = 1;
         yield return new WaitForSeconds(1f);
 
     }
