@@ -349,10 +349,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2407028541800297998}
   - component: {fileID: 2131363663756015018}
-  - component: {fileID: 3168918881402231385}
   - component: {fileID: 7301704006152442750}
   - component: {fileID: 8959801620037599515}
   - component: {fileID: 8624462061331008423}
+  - component: {fileID: 6691720909825951592}
   m_Layer: 7
   m_Name: WizardEnemy
   m_TagString: enemy
@@ -428,24 +428,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3168918881402231385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6169016820238609206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea386013e522894fb9f68d776c449d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  health: 3
-  attackDamage: 1
-  speed: 2
-  defense: 1
-  dangerLevel: 2
 --- !u!61 &7301704006152442750
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -527,3 +509,21 @@ MonoBehaviour:
   ring: {fileID: 2918383135543469741}
   startShotCooldown: 4
   detectRange: 10
+--- !u!114 &6691720909825951592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169016820238609206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db199b1cb0a13e94a8eeab088f1b73e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
+  attackDamage: 0
+  speed: 0
+  defense: 0
+  dangerLevel: 0
