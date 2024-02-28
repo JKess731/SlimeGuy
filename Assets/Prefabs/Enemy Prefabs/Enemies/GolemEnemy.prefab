@@ -388,4 +388,4 @@ MonoBehaviour:
   player: {fileID: 0}
   playerMove: {fileID: 0}
   enemy: {fileID: 0}
-  ring: {fileID: 0}
+  ring: {fileID: 809023192014729213}
