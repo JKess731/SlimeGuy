@@ -351,6 +351,8 @@ GameObject:
   - component: {fileID: 2131363663756015018}
   - component: {fileID: 7301704006152442750}
   - component: {fileID: 39162836423394928}
+  - component: {fileID: 5342104090162196023}
+  - component: {fileID: 3398094856483405810}
   m_Layer: 7
   m_Name: WizardEnemy
   m_TagString: enemy
@@ -483,9 +485,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d3de6df1a663a45bd17ccf8bb1759c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
-  attackDamage: 0
-  speed: 0
-  defense: 0
-  dangerLevel: 0
+  maxHealth: 1
+  health: 1
+  attackDamage: 1
+  speed: 1
+  defense: 1
+  dangerLevel: 1
+--- !u!114 &5342104090162196023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169016820238609206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff149000ea0d36e4686e1d416e0283c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 1
+  distanceBetween: 100
+  stop: 5
+--- !u!114 &3398094856483405810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169016820238609206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2edf5f625ef7ee847a27d856e18afb74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  bullet: {fileID: 7894588220112412387, guid: 64131fd989dfe734490b5fe741fa1637, type: 3}
+  bulletPos1: {fileID: 1705383063181023989}
+  bulletPos2: {fileID: 7939623532759540836}
+  bulletPos3: {fileID: 8618978228583471652}
+  ring: {fileID: 2918383135543469741}
+  startShotCooldown: 5
+  detectRange: 100
