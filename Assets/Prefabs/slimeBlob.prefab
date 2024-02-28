@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 8389715867114712342}
   - component: {fileID: 712376111380511975}
   - component: {fileID: 8572699724354787075}
-  - component: {fileID: 1945181661085788209}
   - component: {fileID: 7643890239121380685}
   - component: {fileID: 2128405102834123984}
+  - component: {fileID: 9081533340875136812}
   m_Layer: 0
-  m_Name: SlimeBlob
+  m_Name: slimeBlob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,20 +115,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1945181661085788209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4833602960537618009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd5d91ed2d44a0439ed4bd1f666953b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 0
-  bulletDamage: 1
 --- !u!58 &7643890239121380685
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -185,3 +171,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9081533340875136812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833602960537618009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b129554bc1be3194d839fa1e452176e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 20
+  bulletDamage: 1
