@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyAttackSlash1 : MonoBehaviour
+public class EnemyAttackSlash : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float attackDelay;
