@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovementFollow: MonoBehaviour
+public class EnemyMovementFollow : MonoBehaviour
 {
     private Transform player;
     public float speed;
@@ -29,7 +27,8 @@ public class EnemyMovementFollow: MonoBehaviour
     //Then normalizes the direction and uses a float angle for better enemy turning and movement. Then if the distance between the player and
     //this enemy is less then the given distanceBetween (The detection range for this enemy) then the enemy will follow the player. If the 
     //player leaves the detection range then the enemy will stop moving. Used for melee enemies.
-    void Update(){
+    void Update()
+    {
         distance = Vector2.Distance(transform.position, player.position);
         Vector2 direction = player.position - transform.position;
         direction.Normalize();
@@ -43,7 +42,7 @@ public class EnemyMovementFollow: MonoBehaviour
             }
 
         }
-        
+
     }
 
 
@@ -70,7 +69,7 @@ public class EnemyMovementFollow: MonoBehaviour
     public void AttackColliding()
     {
         onPlayer = true;
-        
+
     }
 
 
@@ -78,7 +77,7 @@ public class EnemyMovementFollow: MonoBehaviour
     public void AttackNotColliding()
     {
         onPlayer = false;
-        
+
     }
 
 }

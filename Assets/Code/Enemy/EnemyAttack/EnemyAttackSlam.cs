@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -51,21 +49,24 @@ public class EnemyAttackSlam : MonoBehaviour
         }
     }
 
-    IEnumerator AttackingContinue() {
-        while (attackCon == true) {
-            yield return new WaitForSeconds(attackDelay/2);
+    IEnumerator AttackingContinue()
+    {
+        while (attackCon == true)
+        {
+            yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
-            yield return new WaitForSeconds(attackDelay/2);
-            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            player.GetComponentInParent<PlayerHealth>().Damage(damage);
+            yield return new WaitForSeconds(attackDelay / 2);
+            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true; player.GetComponentInParent<PlayerHealth>().Damage(damage);
             StartCoroutine(PlayerStunned());
         }
-        
+
     }
 
-    IEnumerator PlayerStunned() {
+    IEnumerator PlayerStunned()
+    {
         playerMove.input.Disable();
         Debug.Log("Player Stunned");
-        yield return new WaitForSeconds(attackDelay/2);
+        yield return new WaitForSeconds(attackDelay / 2);
         playerMove.input.Enable();
     }
 }

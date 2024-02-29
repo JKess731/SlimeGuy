@@ -5,7 +5,6 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
-using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -308,7 +307,7 @@ namespace FMODUnity
                     {
                         if (assetIndex < 0)
                         {
-                            assetIndex = AddAsset(AssetType.Scene,  path);
+                            assetIndex = AddAsset(AssetType.Scene, path);
                         }
 
                         task.AssetIndex = assetIndex;
@@ -543,7 +542,7 @@ namespace FMODUnity
             int initialOldFieldCount = oldFields.Count;
 
             // Remove empty [EventRef] fields
-            for (int i = 0; i < oldFields.Count; )
+            for (int i = 0; i < oldFields.Count;)
             {
                 FieldInfo oldField = oldFields[i];
 
@@ -579,7 +578,7 @@ namespace FMODUnity
 
             // Handle [EventRef] fields with MigrateTo set
 #pragma warning disable 0618 // Suppress a warning about using the obsolete EventRefAttribute class
-            for (int i = 0; i < oldFields.Count; )
+            for (int i = 0; i < oldFields.Count;)
             {
                 FieldInfo oldField = oldFields[i];
 
@@ -944,7 +943,8 @@ namespace FMODUnity
                 ExecuteDelegate Execute,
                 ManualInstructionsDelegate ManualInstructions = null)
             {
-                Implementations[(int)type] = new Delegates() {
+                Implementations[(int)type] = new Delegates()
+                {
                     Description = Description,
                     IsValid = IsValid,
                     Execute = Execute,
@@ -966,14 +966,17 @@ namespace FMODUnity
 #pragma warning disable 0618
 
                 Implement(Type.EmitterClearEvent,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         return string.Format("Clear <b>'{0}'</b> from the <b>{1}</b> field", data[0], EmitterEventField);
                     },
-                    IsValid: (data, target) => {
+                    IsValid: (data, target) =>
+                    {
                         StudioEventEmitter emitter = target as StudioEventEmitter;
                         return emitter != null && emitter.Event == data[0] && !emitter.EventReference.IsNull;
                     },
-                    Execute: (data, target) => {
+                    Execute: (data, target) =>
+                    {
                         StudioEventEmitter emitter = target as StudioEventEmitter;
 
                         emitter.Event = string.Empty;
@@ -981,15 +984,18 @@ namespace FMODUnity
                     }
                 );
                 Implement(Type.EmitterMoveEventToEventReference,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         return string.Format("Move <b>'{0}'</b> from <b>{1}</b> to <b>{2}</b>",
                             data[0], EmitterEventField, EmitterEventReferenceField);
                     },
-                    IsValid: (data, target) => {
+                    IsValid: (data, target) =>
+                    {
                         StudioEventEmitter emitter = target as StudioEventEmitter;
                         return emitter != null && emitter.Event == data[0] && emitter.EventReference.IsNull;
                     },
-                    Execute: (data, target) => {
+                    Execute: (data, target) =>
+                    {
                         StudioEventEmitter emitter = target as StudioEventEmitter;
 
                         emitter.EventReference.Path = emitter.Event;
@@ -1006,11 +1012,13 @@ namespace FMODUnity
                     }
                 );
                 Implement(Type.EmitterMoveEventOverrideToEventReference,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         return string.Format("Move prefab override <b>'{0}'</b> from <b>{1}</b> to <b>{2}</b>",
                             data[0], EmitterEventField, EmitterEventReferenceField);
                     },
-                    IsValid: (data, target) => {
+                    IsValid: (data, target) =>
+                    {
                         if (!PrefabUtility.IsPartOfPrefabInstance(target))
                         {
                             return false;
@@ -1049,7 +1057,8 @@ namespace FMODUnity
 
                         return true;
                     },
-                    Execute: (data, target) => {
+                    Execute: (data, target) =>
+                    {
                         StudioEventEmitter emitter = target as StudioEventEmitter;
 
                         string path = emitter.Event;
@@ -1080,14 +1089,17 @@ namespace FMODUnity
 
 #if UNITY_TIMELINE_EXIST
                 Implement(Type.PlayableClearEventName,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         return string.Format("Clear <b>'{0}'</b> from the <b>{1}</b> field", data[0], PlayableEventNameField);
                     },
-                    IsValid: (data, target) => {
+                    IsValid: (data, target) =>
+                    {
                         FMODEventPlayable playable = target as FMODEventPlayable;
                         return playable != null && playable.eventName == data[0] && !playable.EventReference.IsNull;
                     },
-                    Execute: (data, target) => {
+                    Execute: (data, target) =>
+                    {
                         FMODEventPlayable playable = target as FMODEventPlayable;
 
                         playable.eventName = string.Empty;
@@ -1095,15 +1107,18 @@ namespace FMODUnity
                     }
                 );
                 Implement(Type.PlayableMoveEventNameToEventReference,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         return string.Format("Move <b>'{0}'</b> from <b>{1}</b> to <b>{2}</b>",
                             data[0], PlayableEventNameField, PlayableEventReferenceField);
                     },
-                    IsValid: (data, target) => {
+                    IsValid: (data, target) =>
+                    {
                         FMODEventPlayable playable = target as FMODEventPlayable;
                         return playable != null && playable.eventName == data[0] && playable.EventReference.IsNull;
                     },
-                    Execute: (data, target) => {
+                    Execute: (data, target) =>
+                    {
                         FMODEventPlayable playable = target as FMODEventPlayable;
 
                         playable.EventReference.Path = playable.eventName;
@@ -1121,10 +1136,12 @@ namespace FMODUnity
                 );
 #endif
                 Implement(Type.GenericRemoveEventRefField,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         return string.Format("Remove field <b>{0}</b>", FieldPath(data[0], data[2]));
                     },
-                    ManualInstructions: (data, component) => {
+                    ManualInstructions: (data, component) =>
+                    {
                         string subObjectPath = data[0];
                         string value = data[1];
                         string fieldName = data[2];
@@ -1139,7 +1156,8 @@ namespace FMODUnity
                             "* Edit the definition of the {3} type and remove the {4} field",
                             fieldPath, component.Type, value, targetType, fieldName);
                     },
-                    IsValid: (data, rootObject) => {
+                    IsValid: (data, rootObject) =>
+                    {
                         object target = FindSubObject(rootObject, data[0]);
 
                         System.Type targetType = target.GetType();
@@ -1150,10 +1168,12 @@ namespace FMODUnity
                     Execute: null
                 );
                 Implement(Type.GenericRemoveEmptyEventRefField,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         return string.Format("Remove empty field <b>{0}</b>", FieldPath(data[0], data[1]));
                     },
-                    ManualInstructions: (data, component) => {
+                    ManualInstructions: (data, component) =>
+                    {
                         string subObjectPath = data[0];
                         string fieldName = data[1];
                         string targetType = data[2];
@@ -1166,7 +1186,8 @@ namespace FMODUnity
                             "* Edit the definition of the {2} type and remove the {3} field",
                             fieldPath, component.Type, targetType, fieldName);
                     },
-                    IsValid: (data, rootObject) => {
+                    IsValid: (data, rootObject) =>
+                    {
                         object target = FindSubObject(rootObject, data[0]);
 
                         System.Type targetType = target.GetType();
@@ -1178,7 +1199,8 @@ namespace FMODUnity
                     Execute: null
                 );
                 Implement(Type.GenericMoveEventRefFieldToEventReferenceField,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         string subObjectPath = data[0];
                         string value = data[1];
                         string oldFieldPath = FieldPath(subObjectPath, data[2]);
@@ -1187,7 +1209,8 @@ namespace FMODUnity
                         return string.Format("Move <b>'{0}'</b> from <b>{1}</b> to <b>{2}</b>",
                             value, oldFieldPath, newFieldPath);
                     },
-                    IsValid: (data, rootObject) => {
+                    IsValid: (data, rootObject) =>
+                    {
                         string subObjectPath = data[0];
                         string value = data[1];
                         string oldFieldName = data[2];
@@ -1211,7 +1234,8 @@ namespace FMODUnity
 
                         return oldValue == value && newValue.IsNull;
                     },
-                    Execute: (data, rootObject) => {
+                    Execute: (data, rootObject) =>
+                    {
                         string subObjectPath = data[0];
                         string path = data[1];
                         string oldFieldName = data[2];
@@ -1239,7 +1263,8 @@ namespace FMODUnity
                     }
                 );
                 Implement(Type.GenericAddMigrationTarget,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         string value = data[1];
                         string fieldPath = FieldPath(data[0], data[2]);
                         string targetName = data[4];
@@ -1256,7 +1281,8 @@ namespace FMODUnity
                                 value, fieldPath);
                         }
                     },
-                    ManualInstructions: (data, component) => {
+                    ManualInstructions: (data, component) =>
+                    {
                         string fieldName = data[2];
                         string targetType = data[3];
                         string targetName = data[4];
@@ -1296,7 +1322,8 @@ namespace FMODUnity
                                 fieldPath, component.Type, script, fieldName);
                         }
                     },
-                    IsValid: (data, rootObject) => {
+                    IsValid: (data, rootObject) =>
+                    {
                         string value = data[1];
                         string oldFieldName = data[2];
 
@@ -1311,13 +1338,15 @@ namespace FMODUnity
                     Execute: null
                 );
                 Implement(Type.GenericUpdateEventReferencePath,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         return string.Format(
                             "Change the path on field <b>{0}</b> " +
                             "from <b>'{1}'</b> to <b>'{2}'</b> (to match GUID <b>{3}</b>)",
                             FieldPath(data[0], data[1]), data[2], data[3], data[4]);
                     },
-                    IsValid: (data, rootObject) => {
+                    IsValid: (data, rootObject) =>
+                    {
                         object target = FindSubObject(rootObject, data[0]);
 
                         System.Type targetType = target.GetType();
@@ -1332,7 +1361,8 @@ namespace FMODUnity
 
                         return value.Path == data[2] && value.Guid.ToString() == data[4];
                     },
-                    Execute: (data, rootObject) => {
+                    Execute: (data, rootObject) =>
+                    {
                         object target = FindSubObject(rootObject, data[0]);
 
                         System.Type targetType = target.GetType();
@@ -1347,13 +1377,15 @@ namespace FMODUnity
                     }
                 );
                 Implement(Type.GenericUpdateEventReferenceGuid,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         return string.Format(
                             "Change the GUID on field <b>{0}</b> " +
                             "from <b>{1}</b> to <b>{2}</b> (to match path <b>'{3}'</b>)",
                             FieldPath(data[0], data[1]), data[2], data[3], data[4]);
                     },
-                    IsValid: (data, rootObject) => {
+                    IsValid: (data, rootObject) =>
+                    {
                         object target = FindSubObject(rootObject, data[0]);
 
                         System.Type targetType = target.GetType();
@@ -1368,7 +1400,8 @@ namespace FMODUnity
 
                         return value.Guid.ToString() == data[2] && value.Path == data[4];
                     },
-                    Execute: (data, rootObject) => {
+                    Execute: (data, rootObject) =>
+                    {
                         object target = FindSubObject(rootObject, data[0]);
 
                         System.Type targetType = target.GetType();
@@ -1383,14 +1416,16 @@ namespace FMODUnity
                     }
                 );
                 Implement(Type.GenericFixMigrationTargetConflict,
-                    Description: (data) => {
+                    Description: (data) =>
+                    {
                         string subObjectPath = data[0];
                         IEnumerable<string> fieldPaths = data.Skip(2).Select(field => FieldPath(subObjectPath, field));
 
                         return string.Format("Fix conflicting migration targets on fields <b>{0}</b>",
                             EditorUtils.SeriesString("</b>, <b>", "</b> and <b>", fieldPaths));
                     },
-                    ManualInstructions: (data, component) => {
+                    ManualInstructions: (data, component) =>
+                    {
                         return string.Format(
                             "Fields {0} on the {1} type have [EventRef] attributes with the same MigrateTo value.\n" +
                             "* Edit the definition of the {1} type and make sure all [EventRef] attributes have " +
@@ -1398,7 +1433,8 @@ namespace FMODUnity
                             "* Re-scan your project",
                             EditorUtils.SeriesString(", ", " and ", data.Skip(2)), data[1]);
                     },
-                    IsValid: (data, target) => {
+                    IsValid: (data, target) =>
+                    {
                         return true;
                     },
                     Execute: null
@@ -1636,7 +1672,8 @@ namespace FMODUnity
 
         private int AddAsset(AssetType type, string path)
         {
-            Asset asset = new Asset() {
+            Asset asset = new Asset()
+            {
                 Type = type,
                 Path = path,
             };
@@ -1650,7 +1687,8 @@ namespace FMODUnity
         {
             MonoScript script = MonoScript.FromMonoBehaviour(behaviour);
 
-            Component component = new Component() {
+            Component component = new Component()
+            {
                 GameObjectID = GlobalObjectId.GetGlobalObjectIdSlow(behaviour.gameObject),
                 Type = behaviour.GetType().Name,
                 Path = EditorUtils.GameObjectPath(behaviour, root),
@@ -1666,7 +1704,8 @@ namespace FMODUnity
         {
             MonoScript script = MonoScript.FromScriptableObject(scriptableObject);
 
-            Component component = new Component() {
+            Component component = new Component()
+            {
                 Type = scriptableObject.GetType().Name,
                 ScriptPath = AssetDatabase.GetAssetPath(script),
             };
@@ -2128,7 +2167,8 @@ namespace FMODUnity
 
                         if (assetItem == null || assetItem.asset != asset)
                         {
-                            assetItem = new AssetItem() {
+                            assetItem = new AssetItem()
+                            {
                                 id = index++,
                                 asset = asset,
                                 displayName = asset.Path,
@@ -2138,7 +2178,8 @@ namespace FMODUnity
                             root.AddChild(assetItem);
                         }
 
-                        TreeViewItem taskItem = new TaskItem() {
+                        TreeViewItem taskItem = new TaskItem()
+                        {
                             id = index++,
                             task = task,
                         };

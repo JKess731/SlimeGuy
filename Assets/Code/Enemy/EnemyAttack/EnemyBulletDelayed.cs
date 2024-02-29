@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBulletDelayed : MonoBehaviour
@@ -36,7 +35,8 @@ public class EnemyBulletDelayed : MonoBehaviour
         }
     }
 
-    IEnumerator DelayShot(float delay) { 
+    IEnumerator DelayShot(float delay)
+    {
         yield return new WaitForSeconds(delay);
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * bulletSpeed;

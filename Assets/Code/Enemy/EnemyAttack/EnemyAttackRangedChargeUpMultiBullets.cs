@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttackRangedChargeUpMultiBullets : MonoBehaviour
@@ -58,7 +57,8 @@ public class EnemyAttackRangedChargeUpMultiBullets : MonoBehaviour
         lastPosition = transform.position;
     }
 
-    IEnumerator MultiShot() {
+    IEnumerator MultiShot()
+    {
         yield return new WaitForSeconds(1f);
         GameObject bullet1 = Instantiate(bullet, bulletPos1.position, ring.transform.rotation);
         bullet1.GetComponent<EnemyBulletDelayed>().waitTime = 3;

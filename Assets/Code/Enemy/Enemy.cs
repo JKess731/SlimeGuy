@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //Edison Li
@@ -26,7 +24,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("Taking damage");
         Debug.Log(gameObject.name + ":" + health);
         damage = damage - defense;
-        if (damage <= 0) {  damage = 1; }
+        if (damage <= 0) { damage = 1; }
         health = health - damage;
         Debug.Log("Enemy taking: " + damage);
         if (health <= 0)

@@ -74,7 +74,7 @@ namespace FMODUnity
             foreach (var emitter in localEmitters)
             {
                 SerializedProperty emitterProperty = null;
-                for(int i = 0; i < emitters.arraySize; i++)
+                for (int i = 0; i < emitters.arraySize; i++)
                 {
                     if (emitters.GetArrayElementAtIndex(i).FindPropertyRelative("Target").objectReferenceValue == emitter)
                     {

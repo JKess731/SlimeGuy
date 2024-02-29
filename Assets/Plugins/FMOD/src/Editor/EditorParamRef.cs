@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEditor;
 using UnityEngine;
 
 namespace FMODUnity
@@ -42,7 +38,8 @@ namespace FMODUnity
         {
             public static implicit operator ParameterID(FMOD.Studio.PARAMETER_ID source)
             {
-                return new ParameterID {
+                return new ParameterID
+                {
                     data1 = source.data1,
                     data2 = source.data2,
                 };
@@ -50,7 +47,8 @@ namespace FMODUnity
 
             public static implicit operator FMOD.Studio.PARAMETER_ID(ParameterID source)
             {
-                return new FMOD.Studio.PARAMETER_ID {
+                return new FMOD.Studio.PARAMETER_ID
+                {
                     data1 = source.data1,
                     data2 = source.data2,
                 };

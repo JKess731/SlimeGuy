@@ -11,7 +11,7 @@ namespace FMODUnity
     }
 
     [AddComponentMenu("FMOD Studio/FMOD Studio Parameter Trigger")]
-    public class StudioParameterTrigger: EventHandler
+    public class StudioParameterTrigger : EventHandler
     {
         public EmitterRef[] Emitters;
         public EmitterGameEvent TriggerEvent;

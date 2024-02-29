@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace FMODUnity
 {
@@ -181,7 +180,8 @@ namespace FMODUnity
 
                     if (renamedEvent != null)
                     {
-                        MismatchInfo mismatch = new MismatchInfo() {
+                        MismatchInfo mismatch = new MismatchInfo()
+                        {
                             Message = string.Format("Moved to {0}", renamedEvent.Path),
                             HelpText = string.Format(
                                 "This event has been moved in FMOD Studio.\n" +
@@ -189,7 +189,8 @@ namespace FMODUnity
                                 "the <b>{0}</b> command to scan your project for similar issues and fix them all.",
                                 EventReferenceUpdater.MenuPath),
                             RepairTooltip = string.Format("Repair: set path to {0}", renamedEvent.Path),
-                            RepairAction = (p) => {
+                            RepairAction = (p) =>
+                            {
                                 p.FindPropertyRelative("Path").stringValue = renamedEvent.Path;
                             },
                         };
@@ -285,7 +286,8 @@ namespace FMODUnity
             {
                 if (eventReference.Guid != editorEventRef.Guid)
                 {
-                    return new MismatchInfo() {
+                    return new MismatchInfo()
+                    {
                         Message = "GUID doesn't match path",
                         HelpText = string.Format(
                             "The GUID on this EventReference doesn't match the path.\n" +
@@ -293,7 +295,8 @@ namespace FMODUnity
                             "<b>{0}</b> command to scan your project for similar issues and fix them all.",
                             EventReferenceUpdater.MenuPath),
                         RepairTooltip = string.Format("Repair: set GUID to {0}", editorEventRef.Guid),
-                        RepairAction = (property) => {
+                        RepairAction = (property) =>
+                        {
                             property.FindPropertyRelative("Guid").SetGuid(editorEventRef.Guid);
                         },
                     };
@@ -303,7 +306,8 @@ namespace FMODUnity
             {
                 if (eventReference.Path != editorEventRef.Path)
                 {
-                    return new MismatchInfo() {
+                    return new MismatchInfo()
+                    {
                         Message = "Path doesn't match GUID",
                         HelpText = string.Format(
                             "The path on this EventReference doesn't match the GUID.\n" +
@@ -311,7 +315,8 @@ namespace FMODUnity
                             "<b>{0}</b> command to scan your project for similar issues and fix them all.",
                             EventReferenceUpdater.MenuPath),
                         RepairTooltip = string.Format("Repair: set path to '{0}'", editorEventRef.Path),
-                        RepairAction = (property) => {
+                        RepairAction = (property) =>
+                        {
                             property.FindPropertyRelative("Path").stringValue = editorEventRef.Path;
                         },
                     };

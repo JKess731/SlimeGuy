@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace FMODUnity
 {
@@ -118,7 +118,7 @@ namespace FMODUnity
             }
 
             // Recurse for child entries
-            foreach(var childEntry in entry.entries)
+            foreach (var childEntry in entry.entries)
             {
                 BuildTreeItem(childEntry);
             }
@@ -251,7 +251,7 @@ namespace FMODUnity
                 var bg = new GUIStyle(GUI.skin.box);
                 Rect bgRect = new Rect(currentRect);
                 bgRect.x = 2;
-                bgRect.width = position.width-4;
+                bgRect.width = position.width - 4;
                 GUI.Box(bgRect, GUIContent.none, bg);
 
                 Rect textureRect = currentRect;

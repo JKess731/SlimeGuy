@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 using UnityEngine.Serialization;
+using UnityEngine.Timeline;
 
 namespace FMODUnity
 {

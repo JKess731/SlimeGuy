@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace FMODUnity
 {
     [AddComponentMenu("FMOD Studio/FMOD Studio Global Parameter Trigger")]
-    public class StudioGlobalParameterTrigger: EventHandler
+    public class StudioGlobalParameterTrigger : EventHandler
     {
         [ParamRef]
         [FormerlySerializedAs("parameter")]

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +33,7 @@ public class RoomTriggerControl : MonoBehaviour
     private void Update()
     {
         // Update counter for dead enemies
-        foreach(GameObject enemy in spawnedEnemies)
+        foreach (GameObject enemy in spawnedEnemies)
         {
             if (enemy == null)
             {

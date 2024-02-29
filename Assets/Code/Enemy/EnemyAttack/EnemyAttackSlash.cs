@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,7 +18,8 @@ public class EnemyAttackSlash1 : MonoBehaviour
 
     void Update()
     {
-        if (attackCon == false) {
+        if (attackCon == false)
+        {
             Vector3 rotation = player.transform.position - ring.transform.position;
             float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
             ring.transform.rotation = Quaternion.Euler(0, 0, rotZ);
@@ -51,14 +50,16 @@ public class EnemyAttackSlash1 : MonoBehaviour
     }
 
     //Handles attack delay
-    IEnumerator AttackingContinue() {
-        while (attackCon == true) {
+    IEnumerator AttackingContinue()
+    {
+        while (attackCon == true)
+        {
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
             player.GetComponentInParent<PlayerHealth>().Damage(damage);
-           
+
         }
         enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
     }

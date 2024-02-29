@@ -66,7 +66,8 @@ namespace FMODUnity
             {
                 currentWatchPath = pathToWatch;
 
-                try {
+                try
+                {
                     sourceFileWatcher.EnableRaisingEvents = false;
                     sourceFilesChanged = false;
 

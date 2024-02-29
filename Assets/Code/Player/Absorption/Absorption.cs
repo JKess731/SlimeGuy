@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //Edison Li
@@ -40,9 +38,9 @@ public class Absorption : MonoBehaviour
         }
     }
 
-    
+
     private void Absorb(Stats.statBoost statBoostType)
     {
-        playerClass.increaseStats(growthRate,statBoostType);
+        playerClass.increaseStats(growthRate, statBoostType);
     }
 }

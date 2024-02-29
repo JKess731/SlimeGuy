@@ -59,7 +59,8 @@ namespace FMODUnity
 
             public static Task Move(string source, string destination, Platform platform)
             {
-                return new Task() {
+                return new Task()
+                {
                     type = Type.Move,
                     status = Status.Pending,
                     platform = platform,
@@ -71,7 +72,8 @@ namespace FMODUnity
 
             public static Task RemoveFolder(string path)
             {
-                return new Task() {
+                return new Task()
+                {
                     type = Type.RemoveFolder,
                     status = Status.Pending,
                     source = path,
@@ -81,7 +83,8 @@ namespace FMODUnity
 
             public static Task Missing(string path, Platform platform)
             {
-                return new Task() {
+                return new Task()
+                {
                     type = Type.Missing,
                     status = Status.Missing,
                     platform = platform,
@@ -94,7 +97,8 @@ namespace FMODUnity
 
             public static Task RemoveAsset(string path, Platform platform)
             {
-                return new Task() {
+                return new Task()
+                {
                     type = Type.RemoveAsset,
                     status = Status.Pending,
                     platform = platform,
@@ -350,7 +354,8 @@ namespace FMODUnity
 
                     foreach (Task task in tasks)
                     {
-                        TreeViewItem taskItem = new TaskItem() {
+                        TreeViewItem taskItem = new TaskItem()
+                        {
                             id = index++,
                             task = task,
                         };
@@ -758,24 +763,29 @@ namespace FMODUnity
                 {
                     cacheInitialized = true;
 
-                    statusColumnStyle = new GUIStyle(GUI.skin.label) {
+                    statusColumnStyle = new GUIStyle(GUI.skin.label)
+                    {
                         alignment = TextAnchor.MiddleLeft,
                     };
 
-                    statusBarStyle = new GUIStyle(GUI.skin.label) {
+                    statusBarStyle = new GUIStyle(GUI.skin.label)
+                    {
                         alignment = TextAnchor.UpperLeft,
                         wordWrap = true,
                     };
 
-                    stepStyle = new GUIStyle(GUI.skin.label) {
+                    stepStyle = new GUIStyle(GUI.skin.label)
+                    {
                         alignment = TextAnchor.MiddleRight,
                     };
 
-                    prefixStyle = new GUIStyle(GUI.skin.label) {
+                    prefixStyle = new GUIStyle(GUI.skin.label)
+                    {
                         alignment = TextAnchor.MiddleRight,
                     };
 
-                    suffixStyle = new GUIStyle(GUI.skin.label) {
+                    suffixStyle = new GUIStyle(GUI.skin.label)
+                    {
                         alignment = TextAnchor.MiddleLeft,
                     };
 
@@ -1033,7 +1043,7 @@ namespace FMODUnity
                 }
             }
 
-           private void AddFolderTasks(string path)
+            private void AddFolderTasks(string path)
             {
                 string baseFolder = BaseFolders.First(f => path.StartsWith(f));
 

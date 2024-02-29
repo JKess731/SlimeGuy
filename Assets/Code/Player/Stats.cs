@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 //Edison Li
 public class Stats
 {
@@ -25,7 +21,7 @@ public class Stats
         SPEED
     }
 
-    public Stats (int maxHealth, int attack, int defense, int speed)
+    public Stats(int maxHealth, int attack, int defense, int speed)
     {
         this.maxHealth = maxHealth;
         this.attack = attack;

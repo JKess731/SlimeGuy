@@ -14,9 +14,9 @@ namespace FMOD
         {
             byte[] bytes = guid.ToByteArray();
 
-            Data1 = BitConverter.ToInt32(bytes,  0);
-            Data2 = BitConverter.ToInt32(bytes,  4);
-            Data3 = BitConverter.ToInt32(bytes,  8);
+            Data1 = BitConverter.ToInt32(bytes, 0);
+            Data2 = BitConverter.ToInt32(bytes, 4);
+            Data3 = BitConverter.ToInt32(bytes, 8);
             Data4 = BitConverter.ToInt32(bytes, 12);
         }
 
@@ -49,12 +49,12 @@ namespace FMOD
                 && Data4 == other.Data4;
         }
 
-        public static bool operator==(GUID a, GUID b)
+        public static bool operator ==(GUID a, GUID b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator!=(GUID a, GUID b)
+        public static bool operator !=(GUID a, GUID b)
         {
             return !a.Equals(b);
         }
@@ -67,16 +67,16 @@ namespace FMOD
         public static implicit operator Guid(GUID guid)
         {
             return new Guid(guid.Data1,
-                    (short) ((guid.Data2 >>  0) & 0xFFFF),
-                    (short) ((guid.Data2 >> 16) & 0xFFFF),
-                    (byte)  ((guid.Data3 >>  0) & 0xFF),
-                    (byte)  ((guid.Data3 >>  8) & 0xFF),
-                    (byte)  ((guid.Data3 >> 16) & 0xFF),
-                    (byte)  ((guid.Data3 >> 24) & 0xFF),
-                    (byte)  ((guid.Data4 >>  0) & 0xFF),
-                    (byte)  ((guid.Data4 >>  8) & 0xFF),
-                    (byte)  ((guid.Data4 >> 16) & 0xFF),
-                    (byte)  ((guid.Data4 >> 24) & 0xFF)
+                    (short)((guid.Data2 >> 0) & 0xFFFF),
+                    (short)((guid.Data2 >> 16) & 0xFFFF),
+                    (byte)((guid.Data3 >> 0) & 0xFF),
+                    (byte)((guid.Data3 >> 8) & 0xFF),
+                    (byte)((guid.Data3 >> 16) & 0xFF),
+                    (byte)((guid.Data3 >> 24) & 0xFF),
+                    (byte)((guid.Data4 >> 0) & 0xFF),
+                    (byte)((guid.Data4 >> 8) & 0xFF),
+                    (byte)((guid.Data4 >> 16) & 0xFF),
+                    (byte)((guid.Data4 >> 24) & 0xFF)
                 );
         }
 

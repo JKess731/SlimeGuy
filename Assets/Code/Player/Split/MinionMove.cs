@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,7 +30,7 @@ public class MinionMove : MonoBehaviour
             if (target == null)
             {
                 // Remove enemy from the list if it has been destroyed
-                if (playerSlimeSplit.enemiesInRoom.Contains(target)) 
+                if (playerSlimeSplit.enemiesInRoom.Contains(target))
                 {
                     playerSlimeSplit.enemiesInRoom.Remove(target);
                 }
