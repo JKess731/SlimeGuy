@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth1 : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] private int maxHealth;

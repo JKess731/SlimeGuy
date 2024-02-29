@@ -30,7 +30,7 @@ public class EnemyBulletDelayed : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            collision.gameObject.GetComponent<PlayerHealth1>().Damage(bulletDamage);
+            collision.gameObject.GetComponent<PlayerHealth>().Damage(bulletDamage);
             Debug.Log("Bullet dmg");
             Destroy(gameObject);
         }
