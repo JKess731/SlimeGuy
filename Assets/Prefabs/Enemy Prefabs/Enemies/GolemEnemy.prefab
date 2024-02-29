@@ -230,13 +230,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d3de6df1a663a45bd17ccf8bb1759c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  health: 1
-  attackDamage: 1
+  maxHealth: 6
+  health: 6
+  attackDamage: 5
   speed: 1
-  defense: 1
-  dangerLevel: 1
---- !u!114 &9075875009069443492
+  defense: 5
+  dangerLevel: 4
+--- !u!114 &9152445037982138438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  distanceBetween: 100
+  distanceBetween: 25
 --- !u!1 &6320488281308932678
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,9 +383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3110f3eb2358cb4baa701560737fb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  attackDelay: 0
+  damage: 5
+  attackDelay: 2.5
   player: {fileID: 0}
   playerMove: {fileID: 0}
-  enemy: {fileID: 0}
-  ring: {fileID: 0}
+  enemy: {fileID: 4892147420155252896}
+  ring: {fileID: 809023192014729213}
