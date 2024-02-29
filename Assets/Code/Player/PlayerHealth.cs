@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
 /**
  * Created by:
  * 
  * Last Edited by: Jared Kessler
  */
 
-=======
->>>>>>> origin/BrandonToTestMainCopy
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
-<<<<<<< HEAD
     [SerializeField] private Vector2 spawnPos;
     [SerializeField] private bool whiteHitAnimation;
 
@@ -24,19 +20,14 @@ public class PlayerHealth : MonoBehaviour
 
     private AnimationControl playerAnimationControl;
     private PlayerMove playerMovement;
-=======
->>>>>>> origin/BrandonToTestMainCopy
 
     private void Awake()
     {
         currentHealth = maxHealth;
-<<<<<<< HEAD
         spawnPos = transform.position;
 
         playerAnimationControl = GetComponent<AnimationControl>();
         playerMovement = GetComponent<PlayerMove>();
-=======
->>>>>>> origin/BrandonToTestMainCopy
     }
 
 
@@ -45,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Taking Damage: " + currentHealth);
         currentHealth -= damage;
-<<<<<<< HEAD
 
         playerAnimationControl.isBeingHit = true;
 
@@ -93,10 +83,6 @@ public class PlayerHealth : MonoBehaviour
                 trigger.SetActive(true);
             }
 
-=======
-        if (currentHealth <= 0)
-        {
->>>>>>> origin/BrandonToTestMainCopy
             Debug.Log("You Lose");
         }
     }

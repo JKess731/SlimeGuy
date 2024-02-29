@@ -96,13 +96,8 @@ GameObject:
   - component: {fileID: 4017600752784018102}
   - component: {fileID: 6322349473942033054}
   - component: {fileID: 7495682527370946714}
-<<<<<<< HEAD
   - component: {fileID: 3712294576004728107}
   - component: {fileID: 9075875009069443492}
-=======
-  - component: {fileID: 4018531195852825020}
-  - component: {fileID: 9152445037982138438}
->>>>>>> origin/BrandonToTestMainCopy
   m_Layer: 7
   m_Name: GolemEnemy
   m_TagString: enemy
@@ -223,11 +218,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
-<<<<<<< HEAD
 --- !u!114 &3712294576004728107
-=======
---- !u!114 &4018531195852825020
->>>>>>> origin/BrandonToTestMainCopy
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,7 +227,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4892147420155252896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: b0d3de6df1a663a45bd17ccf8bb1759c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -247,18 +237,6 @@ MonoBehaviour:
   defense: 1
   dangerLevel: 1
 --- !u!114 &9075875009069443492
-=======
-  m_Script: {fileID: 11500000, guid: e0f20a9f707c9744685a41e1219d2860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
-  attackDamage: 0
-  speed: 0
-  defense: 0
-  dangerLevel: 0
---- !u!114 &9152445037982138438
->>>>>>> origin/BrandonToTestMainCopy
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,19 +245,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4892147420155252896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 0086e0b8ce633d843ac8bb323d5f6cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
   distanceBetween: 100
-=======
-  m_Script: {fileID: 11500000, guid: 2c41d69449c93a54097a94c178ebc514, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  distanceBetween: 0
->>>>>>> origin/BrandonToTestMainCopy
 --- !u!1 &6320488281308932678
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,11 +261,7 @@ GameObject:
   - component: {fileID: 1773292749316505675}
   - component: {fileID: 6128227401782977703}
   - component: {fileID: 1328728302571247172}
-<<<<<<< HEAD
   - component: {fileID: 1113061696944961827}
-=======
-  - component: {fileID: 7771731580153117223}
->>>>>>> origin/BrandonToTestMainCopy
   m_Layer: 9
   m_Name: Front
   m_TagString: Untagged
@@ -405,11 +371,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
-<<<<<<< HEAD
 --- !u!114 &1113061696944961827
-=======
---- !u!114 &7771731580153117223
->>>>>>> origin/BrandonToTestMainCopy
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -418,11 +380,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6320488281308932678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: e3110f3eb2358cb4baa701560737fb1d, type: 3}
-=======
-  m_Script: {fileID: 11500000, guid: 21f4889ce455c984eacd11b853530061, type: 3}
->>>>>>> origin/BrandonToTestMainCopy
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
@@ -430,8 +388,4 @@ MonoBehaviour:
   player: {fileID: 0}
   playerMove: {fileID: 0}
   enemy: {fileID: 0}
-<<<<<<< HEAD
   ring: {fileID: 0}
-=======
-  ring: {fileID: 809023192014729213}
->>>>>>> origin/BrandonToTestMainCopy

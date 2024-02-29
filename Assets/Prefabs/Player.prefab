@@ -95,12 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4069369708536998750}
   - component: {fileID: 8068375920541606069}
-<<<<<<< HEAD
   - component: {fileID: 6273149869401920110}
-=======
-  - component: {fileID: 2326245605098126465}
-  - component: {fileID: -915540105571855173}
->>>>>>> origin/BrandonToTestMainCopy
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -182,17 +177,6 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2776752034193068935}
   m_Enabled: 1
-<<<<<<< HEAD
-=======
---- !u!114 &-915540105571855173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2776752034193068935}
-  m_Enabled: 1
->>>>>>> origin/BrandonToTestMainCopy
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
@@ -743,11 +727,8 @@ GameObject:
   - component: {fileID: 2773545339210776950}
   - component: {fileID: 6441711385004036941}
   - component: {fileID: 2286926643201842907}
-<<<<<<< HEAD
   - component: {fileID: 8544461910176983870}
   - component: {fileID: 4423855729724371313}
-=======
->>>>>>> origin/BrandonToTestMainCopy
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -1096,7 +1077,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: -1
   OverrideMaxDistance: -1
-<<<<<<< HEAD
 --- !u!114 &8544461910176983870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1132,5 +1112,3 @@ MonoBehaviour:
   spawnPos: {x: 0, y: 0}
   whiteHitAnimation: 0
   currentRoom: {fileID: 0}
-=======
->>>>>>> origin/BrandonToTestMainCopy
