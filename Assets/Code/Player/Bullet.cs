@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Bullet1 : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     
