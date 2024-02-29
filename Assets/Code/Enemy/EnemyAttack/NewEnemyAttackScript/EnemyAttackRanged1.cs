@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttackRanged : MonoBehaviour
+public class EnemyAttackRanged1 : MonoBehaviour
 {
     [SerializeField] GameObject player;
     public GameObject bullet;

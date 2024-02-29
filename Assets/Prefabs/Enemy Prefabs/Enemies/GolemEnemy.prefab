@@ -95,8 +95,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4017600752784018102}
   - component: {fileID: 6322349473942033054}
-  - component: {fileID: 5825441487662763452}
-  - component: {fileID: 2237648190537903601}
   - component: {fileID: 7495682527370946714}
   m_Layer: 7
   m_Name: GolemEnemy
@@ -173,38 +171,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5825441487662763452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4892147420155252896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea386013e522894fb9f68d776c449d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 6
-  health: 6
-  attackDamage: 1
-  speed: 1
-  defense: 5
-  dangerLevel: 4
---- !u!114 &2237648190537903601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4892147420155252896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d058e27a0846a74408758da53d863f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  distanceBetween: 10
 --- !u!61 &7495682527370946714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -261,7 +227,6 @@ GameObject:
   - component: {fileID: 1773292749316505675}
   - component: {fileID: 6128227401782977703}
   - component: {fileID: 1328728302571247172}
-  - component: {fileID: 7383357608152270613}
   m_Layer: 9
   m_Name: Front
   m_TagString: Untagged
@@ -371,21 +336,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
---- !u!114 &7383357608152270613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6320488281308932678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa175d052bf37db4792ac81704871c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  attackDelay: 2.5
-  player: {fileID: 0}
-  playerMove: {fileID: 0}
-  enemy: {fileID: 4892147420155252896}
-  ring: {fileID: 809023192014729213}
