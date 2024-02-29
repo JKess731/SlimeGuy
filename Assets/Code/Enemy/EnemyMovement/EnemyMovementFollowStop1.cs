@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovementFollowStop : MonoBehaviour
+public class EnemyMovementFollowStop1 : MonoBehaviour
 {
 
     public GameObject player;
