@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Edison Li
-public class Enemy : MonoBehaviour
+public class Enemy1 : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     [SerializeField] private int health;
