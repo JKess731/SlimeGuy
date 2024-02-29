@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyAttackSlam1 : MonoBehaviour
+public class EnemyAttackSlam : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float attackDelay;
@@ -36,7 +36,7 @@ public class EnemyAttackSlam1 : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
 
-            enemy.GetComponentInParent<EnemyMovementFollow1>().AttackColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow>().AttackColliding();
             attackCon = true;
             StartCoroutine(AttackingContinue());
         }
@@ -47,7 +47,7 @@ public class EnemyAttackSlam1 : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            enemy.GetComponentInParent<EnemyMovementFollow1>().AttackNotColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
 
             attackCon = false;
 
