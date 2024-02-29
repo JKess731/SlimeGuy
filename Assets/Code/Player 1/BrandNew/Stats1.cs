@@ -21,7 +21,7 @@ public class Stats1
         SPEED
     }
 
-    public Stats(int maxHealth, int attack, int defense, int speed)
+    public Stats1(int maxHealth, int attack, int defense, int speed)
     {
         this.maxHealth = maxHealth;
         this.attack = attack;
