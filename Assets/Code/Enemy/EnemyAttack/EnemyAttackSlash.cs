@@ -57,7 +57,7 @@ public class EnemyAttackSlash : MonoBehaviour
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
-            player.GetComponentInParent<PlayerHealth>().Damage(damage);
+            player.GetComponentInParent<PlayerHealth1>().Damage(damage);
            
         }
         enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();

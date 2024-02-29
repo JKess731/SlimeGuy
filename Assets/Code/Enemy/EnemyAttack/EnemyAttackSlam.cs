@@ -59,7 +59,8 @@ public class EnemyAttackSlam : MonoBehaviour
             yield return new WaitForSeconds(attackDelay/2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay/2);
-            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            player.GetComponentInParent<PlayerHealth>().Damage(damage);
+            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            
+            player.GetComponentInParent<PlayerHealth1>().Damage(damage);
             StartCoroutine(PlayerStunned());
             
         }
