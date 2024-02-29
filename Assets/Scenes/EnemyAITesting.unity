@@ -171,20 +171,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7877581377025729480, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: slimeBlob
+      value: 
+      objectReference: {fileID: 4833602960537618009, guid: d1d50472f734b6c4d80f67aaa73b313c, type: 3}
+    - target: {fileID: 8544461910176983870, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: ring
+      value: 
+      objectReference: {fileID: 591756657}
     - target: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2326245605098126465, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2776752034193068935, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 393737167}
   m_SourcePrefab: {fileID: 100100000, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
 --- !u!1 &393737166 stripped
 GameObject:
+<<<<<<< HEAD
   m_CorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
   m_PrefabInstance: {fileID: 393737165}
   m_PrefabAsset: {fileID: 0}
+=======
+  m_CorrespondingSourceObject: {fileID: 2776752034193068935, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+  m_PrefabInstance: {fileID: 393737165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &393737167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393737166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+--- !u!114 &591756657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2080989293142158726, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+  m_PrefabInstance: {fileID: 393737165}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb31ed5ef1708647867547d2de3e014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> origin/BrandonToTestMainCopy
 --- !u!1001 &625201194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,6 +235,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1617731401375956847, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
+      propertyPath: stop
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617731401375956847, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617731401375956847, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
+      propertyPath: distanceBetween
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2407028541800297998, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -241,7 +295,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3168918881402231385, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -376,6 +431,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1971839985017873612, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971839985017873612, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
+      propertyPath: distanceBetween
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6346162656513507999, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
       propertyPath: m_Name
       value: DwarfEnemy
@@ -458,6 +521,14 @@ PrefabInstance:
     - target: {fileID: 4892147420155252896, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
       propertyPath: m_Name
       value: GolemEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152445037982138438, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152445037982138438, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+      propertyPath: distanceBetween
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
