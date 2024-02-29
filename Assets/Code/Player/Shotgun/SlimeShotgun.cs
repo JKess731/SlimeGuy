@@ -7,7 +7,7 @@ public class slimeShotgun : MonoBehaviour
     public int bulletCount = 3;
     public float delay = 0.1f;
 
-    public LookAtMouse ring;
+    public LookAtMouse1 ring;
     public void Update()
     {
         if (Input.GetMouseButtonDown(0))
