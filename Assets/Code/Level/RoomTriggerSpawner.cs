@@ -6,13 +6,13 @@ public class RoomTriggerSpawner : MonoBehaviour
 {
     private RoomTriggerControl roomTriggerControl;
     private PlayerHealth health;
-    private Player player;
+    private PlayerScript player;
 
     private void Awake()
     {
         roomTriggerControl = transform.parent.parent.GetComponent<RoomTriggerControl>();
 
-        player = FindAnyObjectByType<Player>();
+        player = FindAnyObjectByType<PlayerScript>();
         health = player.GetComponent<PlayerHealth>();
     }
 
