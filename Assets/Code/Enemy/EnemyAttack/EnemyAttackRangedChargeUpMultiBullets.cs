@@ -1,10 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttackRanged : MonoBehaviour
+public class EnemyAttackRangedChargeUpMultiBullets : MonoBehaviour
 {
     [SerializeField] GameObject player;
     public GameObject bullet;
-    public Transform bulletPos;
+    public Transform bulletPos1;
+    public Transform bulletPos2;
+    public Transform bulletPos3;
     public GameObject ring;
     private float shotCooldown;
     public float startShotCooldown;
@@ -15,6 +19,7 @@ public class EnemyAttackRanged : MonoBehaviour
     {
         player = GameObject.FindWithTag("player");
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +41,7 @@ public class EnemyAttackRanged : MonoBehaviour
                 if (shotCooldown <= 0)
                 {
                     Debug.Log("Shoot");
-                    Instantiate(bullet, bulletPos.position, ring.transform.rotation);
+                    StartCoroutine(MultiShot());
                     shotCooldown = startShotCooldown;
                 }
                 else
@@ -51,5 +56,19 @@ public class EnemyAttackRanged : MonoBehaviour
             lastPosition = transform.position;
         }
         lastPosition = transform.position;
+    }
+
+    IEnumerator MultiShot() {
+        yield return new WaitForSeconds(1f);
+        GameObject bullet1 = Instantiate(bullet, bulletPos1.position, ring.transform.rotation);
+        bullet1.GetComponent<EnemyBulletDelayed>().waitTime = 3;
+        yield return new WaitForSeconds(1f);
+        GameObject bullet2 = Instantiate(bullet, bulletPos2.position, ring.transform.rotation);
+        bullet2.GetComponent<EnemyBulletDelayed>().waitTime = 2;
+        yield return new WaitForSeconds(1f);
+        GameObject bullet3 = Instantiate(bullet, bulletPos3.position, ring.transform.rotation);
+        bullet3.GetComponent<EnemyBulletDelayed>().waitTime = 1;
+        yield return new WaitForSeconds(1f);
+
     }
 }

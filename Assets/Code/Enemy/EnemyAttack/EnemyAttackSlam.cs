@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,12 +20,14 @@ public class EnemyAttackSlam : MonoBehaviour
         playerMove = GameObject.FindWithTag("player").GetComponent<PlayerMove>();
     }
 
+
     void Update()
     {
         Vector3 rotation = player.transform.position - ring.transform.position;
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         ring.transform.rotation = Quaternion.Euler(0, 0, rotZ);
     }
+
 
     //Handles attack collision
 
@@ -46,27 +50,27 @@ public class EnemyAttackSlam : MonoBehaviour
             enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
 
             attackCon = false;
+
         }
     }
 
-    IEnumerator AttackingContinue()
-    {
-        while (attackCon == true)
-        {
-            yield return new WaitForSeconds(attackDelay / 2);
+    IEnumerator AttackingContinue() {
+        while (attackCon == true) {
+            yield return new WaitForSeconds(attackDelay/2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
-            yield return new WaitForSeconds(attackDelay / 2);
-            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true; player.GetComponentInParent<PlayerHealth1>().Damage(damage);
+            yield return new WaitForSeconds(attackDelay/2);
+            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            
+            player.GetComponentInParent<PlayerHealth>().Damage(damage);
             StartCoroutine(PlayerStunned());
+            
         }
-
+        
     }
 
-    IEnumerator PlayerStunned()
-    {
+    IEnumerator PlayerStunned() {
         playerMove.input.Disable();
         Debug.Log("Player Stunned");
-        yield return new WaitForSeconds(attackDelay / 2);
+        yield return new WaitForSeconds(attackDelay/2);
         playerMove.input.Enable();
     }
 }

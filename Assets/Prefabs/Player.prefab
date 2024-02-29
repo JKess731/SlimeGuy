@@ -95,7 +95,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4069369708536998750}
   - component: {fileID: 8068375920541606069}
-  - component: {fileID: 6273149869401920110}
+  - component: {fileID: 2326245605098126465}
+  - component: {fileID: -915540105571855173}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -170,6 +171,14 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!114 &6273149869401920110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776752034193068935}
+  m_Enabled: 1
+--- !u!114 &-915540105571855173
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -727,8 +736,6 @@ GameObject:
   - component: {fileID: 2773545339210776950}
   - component: {fileID: 6441711385004036941}
   - component: {fileID: 2286926643201842907}
-  - component: {fileID: 8544461910176983870}
-  - component: {fileID: 4423855729724371313}
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -1077,35 +1084,3 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: -1
   OverrideMaxDistance: -1
---- !u!114 &8544461910176983870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa1697883cc8ca3458225fa50705e7ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPointShotgun: {fileID: 1998642360960838624}
-  slimeBlob: {fileID: 4833602960537618009, guid: d1d50472f734b6c4d80f67aaa73b313c, type: 3}
-  bulletCount: 3
-  delay: 0.1
-  ring: {fileID: 2080989293142158726}
---- !u!114 &4423855729724371313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284721d4264ff574eaf05ddacab6d365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 9030121839249631364}
-  maxHealth: 20
-  currentHealth: 20
