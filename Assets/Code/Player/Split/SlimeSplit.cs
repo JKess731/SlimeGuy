@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Jared Kessler
-public class SlimeSplit1 : MonoBehaviour
+public class SlimeSplit : MonoBehaviour
 {
     [SerializeField] private int minionCounter = 1;
     [SerializeField] private GameObject minion;
