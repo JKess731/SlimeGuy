@@ -35,7 +35,7 @@ public class EnemyAttackSlash1 : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             attackCon = true;
-            enemy.GetComponentInParent<EnemyMovementFollow>().AttackColliding();
+            enemy.GetComponentInParent<EnemyMovementFollow1>().AttackColliding();
             StartCoroutine(AttackingContinue());
         }
 
@@ -60,6 +60,6 @@ public class EnemyAttackSlash1 : MonoBehaviour
             player.GetComponentInParent<PlayerHealth>().Damage(damage);
            
         }
-        enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
+        enemy.GetComponentInParent<EnemyMovementFollow1>().AttackNotColliding();
     }
 }
