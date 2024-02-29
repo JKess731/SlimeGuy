@@ -350,6 +350,8 @@ GameObject:
   - component: {fileID: 2407028541800297998}
   - component: {fileID: 2131363663756015018}
   - component: {fileID: 7301704006152442750}
+  - component: {fileID: 1617731401375956847}
+  - component: {fileID: 1954104896830944921}
   m_Layer: 7
   m_Name: WizardEnemy
   m_TagString: enemy
@@ -470,3 +472,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1617731401375956847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169016820238609206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af411d3deeaa8045a01a63f7aa13eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 0
+  distanceBetween: 0
+  stop: 0
+--- !u!114 &1954104896830944921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169016820238609206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013d3d8124b7ba247a6a72301b2e8c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  bullet: {fileID: 0}
+  bulletPos1: {fileID: 1705383063181023989}
+  bulletPos2: {fileID: 7939623532759540836}
+  bulletPos3: {fileID: 8618978228583471652}
+  ring: {fileID: 2918383135543469741}
+  startShotCooldown: 0
+  detectRange: 0

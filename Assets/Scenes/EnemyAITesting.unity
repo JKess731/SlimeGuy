@@ -233,6 +233,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1617731401375956847, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
+      propertyPath: stop
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617731401375956847, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617731401375956847, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
+      propertyPath: distanceBetween
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2407028541800297998, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -413,6 +425,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1971839985017873612, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971839985017873612, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
+      propertyPath: distanceBetween
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6346162656513507999, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
       propertyPath: m_Name
       value: DwarfEnemy
@@ -473,6 +493,14 @@ PrefabInstance:
     - target: {fileID: 4892147420155252896, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
       propertyPath: m_Name
       value: GolemEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152445037982138438, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152445037982138438, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+      propertyPath: distanceBetween
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
