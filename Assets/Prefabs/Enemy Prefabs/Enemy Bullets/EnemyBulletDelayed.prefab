@@ -158,10 +158,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7894588220112412387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d063faa136672ba4483abdb20220e767, type: 3}
+  m_Script: {fileID: 11500000, guid: eaf81f243da55b84192b685a757fd41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 8
+  bulletSpeed: 12
   bulletDamage: 2
   playerpos: {x: 0, y: 0}
-  waitTime: 1
+  waitTime: 0

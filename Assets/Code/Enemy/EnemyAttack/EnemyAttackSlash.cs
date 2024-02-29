@@ -47,19 +47,24 @@ public class EnemyAttackSlash : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             attackCon = false;
+
         }
     }
 
     //Handles attack delay
     IEnumerator AttackingContinue() {
         while (attackCon == true) {
+            Debug.Log("We Attacking");
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
             player.GetComponentInParent<PlayerHealth>().Damage(damage);
            
+           
         }
         enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
+
+       
     }
 }
