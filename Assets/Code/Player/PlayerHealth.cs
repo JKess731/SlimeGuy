@@ -77,11 +77,10 @@ public class PlayerHealth : MonoBehaviour
             currentRoom.spawnedEnemies.Clear();
 
             playerAnimationControl.currentState = AnimState.IDLE_LEFT;
-            
-            foreach (GameObject trigger in currentRoom.triggerParentChildren)
-            {
-                trigger.SetActive(true);
-            }
+
+            // Re-activate triggers in the room
+            // ONE ROOM TESTING ONLY
+            currentRoom.triggerParentGameObject.SetActive(true);
 
             Debug.Log("You Lose");
         }

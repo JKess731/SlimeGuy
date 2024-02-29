@@ -11,24 +11,16 @@ public class RoomTriggerControl : MonoBehaviour
 
     [HideInInspector] public int dangerLevel = 5;
     [HideInInspector] public List<GameObject> spawnedEnemies = new List<GameObject>();
-    [HideInInspector] public List<GameObject> triggerParentChildren = new List<GameObject>();
     [HideInInspector] public bool triggerHit = false;
+    [HideInInspector] public GameObject triggerParentGameObject;
 
     private int enemiesDead = 0;
     private GameObject player;
-    private GameObject triggerParentGameObject;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("player");
         triggerParentGameObject = GameObject.FindWithTag("trigger_parent");
-
-        // Add children of trigger parent empty object into a list
-        int childCount = triggerParentGameObject.transform.childCount;
-        for (int i = childCount; i <= 0; i--)
-        {
-            triggerParentChildren.Add(triggerParentGameObject.transform.GetChild(i).gameObject);
-        }
     }
 
     private void Update()
@@ -51,10 +43,7 @@ public class RoomTriggerControl : MonoBehaviour
         // If a trigger has been hit, deactivate all remaining triggers in the room
         if (triggerHit)
         {
-            foreach (GameObject child in triggerParentChildren)
-            {
-                child.SetActive(false);
-            }
+            triggerParentGameObject.SetActive(false);
         }
     }
 
