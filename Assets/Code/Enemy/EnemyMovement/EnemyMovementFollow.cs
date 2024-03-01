@@ -9,6 +9,7 @@ public class EnemyMovementFollow : MonoBehaviour
     public float distanceBetween;
     private float distance;
     private bool onPlayer = false;
+    private bool foundPlayer = false;
 
 
     private void Awake()
@@ -36,11 +37,21 @@ public class EnemyMovementFollow : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x);
         if (onPlayer == false)
         {
-            if (distance < distanceBetween)
+            if (foundPlayer == false)
             {
+                if (distance < distanceBetween)
+                {
+                    transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+                    transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+                    foundPlayer = true;
+                }
+            }
+            else {
                 transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+
             }
+            
 
         }
         
@@ -79,7 +90,7 @@ public class EnemyMovementFollow : MonoBehaviour
     public void AttackNotColliding()
     {
         onPlayer = false;
-        Debug.Log("AttakNotCollide");
+        
 
     }
 

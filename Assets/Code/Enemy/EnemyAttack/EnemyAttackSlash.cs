@@ -11,6 +11,7 @@ public class EnemyAttackSlash : MonoBehaviour
     [SerializeField] GameObject player;
     public GameObject enemy;
     private bool attackCon = false;
+    private bool attacking = false;
     public GameObject ring;
 
     private void Awake()
@@ -20,7 +21,7 @@ public class EnemyAttackSlash : MonoBehaviour
 
     void Update()
     {
-        if (attackCon == false) {
+        if (attacking == false) {
             Vector3 rotation = player.transform.position - ring.transform.position;
             float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
             ring.transform.rotation = Quaternion.Euler(0, 0, rotZ);
@@ -47,24 +48,21 @@ public class EnemyAttackSlash : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             attackCon = false;
-
         }
     }
 
     //Handles attack delay
     IEnumerator AttackingContinue() {
         while (attackCon == true) {
-            Debug.Log("We Attacking");
+            attacking = true;
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay / 2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
             player.GetComponentInParent<PlayerHealth>().Damage(damage);
-           
-           
+            attacking = false;
         }
         enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
-
-       
     }
+
 }
