@@ -1631,6 +1631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 3639828122232246719, guid: 79f19deefb9e98047af2e36f93f8a2a3, type: 3}
+      propertyPath: m_TagString
+      value: trigger_parent
+      objectReference: {fileID: 0}
     - target: {fileID: 3778987127537838941, guid: 79f19deefb9e98047af2e36f93f8a2a3, type: 3}
       propertyPath: enemies.Array.size
       value: 2

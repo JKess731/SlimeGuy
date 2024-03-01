@@ -236,9 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1697883cc8ca3458225fa50705e7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPointShotgun: {fileID: 1998642360960838624}
-  slimeBlob: {fileID: 4833602960537618009, guid: 8b09624d15fafc742adbbe3771d47cf1, type: 3}
-  bulletCount: 3
+  attackPoint: {fileID: 6359139107008641216}
+  projectile: {fileID: 4833602960537618009, guid: d1d50472f734b6c4d80f67aaa73b313c, type: 3}
+  bulletCount: 10
+  spread: 10
   delay: 0.1
   ring: {fileID: 2080989293142158726}
 --- !u!114 &428084628684688605
@@ -736,6 +737,7 @@ GameObject:
   - component: {fileID: 2773545339210776950}
   - component: {fileID: 6441711385004036941}
   - component: {fileID: 2286926643201842907}
+  - component: {fileID: 4327921851085568936}
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -1084,3 +1086,15 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: -1
   OverrideMaxDistance: -1
+--- !u!114 &4327921851085568936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ae4e37fba0a1544b54459fc51a8840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
