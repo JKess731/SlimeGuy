@@ -231,7 +231,7 @@ MonoBehaviour:
   projectile: {fileID: 4833602960537618009, guid: d1d50472f734b6c4d80f67aaa73b313c, type: 3}
   bulletCount: 10
   spread: 10
-  delay: 0.1
+  fireRate: 0.1
   ring: {fileID: 2080989293142158726}
 --- !u!114 &428084628684688605
 MonoBehaviour:
@@ -730,6 +730,8 @@ GameObject:
   - component: {fileID: 6441711385004036941}
   - component: {fileID: 2286926643201842907}
   - component: {fileID: 4327921851085568936}
+  - component: {fileID: 7092696641672025270}
+  - component: {fileID: 721982832936382186}
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -1102,3 +1104,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ae4e37fba0a1544b54459fc51a8840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7092696641672025270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 748d0b7154a74014b8cd0e439c120e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionCounter: 1
+  minion: {fileID: 0}
+  enemiesInRoom: []
+--- !u!114 &721982832936382186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284721d4264ff574eaf05ddacab6d365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  maxHealth: 0
+  currentHealth: 0
+  spawnPos: {x: 0, y: 0}
+  whiteHitAnimation: 0
+  currentRoom: {fileID: 0}

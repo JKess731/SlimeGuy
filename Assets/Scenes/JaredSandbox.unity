@@ -178,13 +178,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1720753561}
-    - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1720753562}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
 --- !u!1 &285871004
 GameObject:
@@ -3965,11 +3959,6 @@ Transform:
   - {fileID: 1491625753}
   m_Father: {fileID: 515009834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1098994201 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6359139107008641216, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-  m_PrefabInstance: {fileID: 122734998}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1133295194
 GameObject:
   m_ObjectHideFlags: 0
@@ -5300,17 +5289,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6721891750707394437, guid: 67dfabdddbf8bbd46b1fbddcbcec6376, type: 3}
   m_PrefabInstance: {fileID: 1491625752}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1496884148 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2080989293142158726, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-  m_PrefabInstance: {fileID: 122734998}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbb31ed5ef1708647867547d2de3e014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1590596105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5378,43 +5356,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6721891750707394437, guid: 67dfabdddbf8bbd46b1fbddcbcec6376, type: 3}
   m_PrefabInstance: {fileID: 1590596105}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1720753548 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-  m_PrefabInstance: {fileID: 122734998}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1720753561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720753548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa1697883cc8ca3458225fa50705e7ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPointShotgun: {fileID: 1098994201}
-  slimeBlob: {fileID: 4833602960537618009, guid: 8b09624d15fafc742adbbe3771d47cf1, type: 3}
-  bulletCount: 3
-  delay: 0.1
-  ring: {fileID: 1496884148}
---- !u!114 &1720753562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720753548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748d0b7154a74014b8cd0e439c120e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minionCounter: 1
-  minion: {fileID: 0}
-  enemiesInRoom: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

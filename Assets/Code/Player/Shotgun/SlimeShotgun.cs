@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
 
-public class slimeShotgun : MonoBehaviour
+public class SlimeShotgun : MonoBehaviour
 {
     [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject projectile;
