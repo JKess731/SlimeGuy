@@ -1045,6 +1045,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7877581377025729480, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877581377025729480, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 5098964168513206920, guid: af0f355657d43034298e051d36c06964, type: 3}
@@ -1075,7 +1079,50 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8689628706314995353, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: -1
       addedObject: {fileID: 356947554}
+    - targetCorrespondingSourceObject: {fileID: 4376191853738983620, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1589141345}
   m_SourcePrefab: {fileID: 100100000, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+--- !u!114 &1589141337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2080989293142158726, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+  m_PrefabInstance: {fileID: 1589141336}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb31ed5ef1708647867547d2de3e014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1589141338 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6359139107008641216, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+  m_PrefabInstance: {fileID: 1589141336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1589141339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4376191853738983620, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+  m_PrefabInstance: {fileID: 1589141336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1589141345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589141339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad939f71c6d9f3c42af95b1d51bdcb82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 1589141338}
+  projectile: {fileID: 5098964168513206920, guid: d8c90b9493e25064186aa862c048d5f3, type: 3}
+  bulletCount: 3
+  spread: 30
+  chargeRate: 3
+  holdRate: 1
+  ring: {fileID: 1589141337}
 --- !u!1 &1980138521
 GameObject:
   m_ObjectHideFlags: 0
