@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 6322349473942033054}
   - component: {fileID: 7495682527370946714}
   - component: {fileID: 3712294576004728107}
+  - component: {fileID: 7228277099346263925}
   m_Layer: 7
   m_Name: GolemEnemy
   m_TagString: enemy
@@ -235,6 +236,20 @@ MonoBehaviour:
   speed: 1
   defense: 5
   dangerLevel: 4
+--- !u!114 &7228277099346263925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4892147420155252896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4013a3ebbd717943871a2459812dd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  distanceBetween: 25
 --- !u!1 &6320488281308932678
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +261,7 @@ GameObject:
   - component: {fileID: 1773292749316505675}
   - component: {fileID: 6128227401782977703}
   - component: {fileID: 1328728302571247172}
+  - component: {fileID: 7219613518441860051}
   m_Layer: 9
   m_Name: Front
   m_TagString: Untagged
@@ -355,3 +371,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
+--- !u!114 &7219613518441860051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6320488281308932678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea05b4c8b97a21428be9564bba6bee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  attackDelay: 2.5
+  player: {fileID: 0}
+  playerMove: {fileID: 0}
+  enemy: {fileID: 4892147420155252896}
+  ring: {fileID: 809023192014729213}
