@@ -5,27 +5,22 @@ using UnityEngine.InputSystem.Controls;
 
 public class AnimationControl : MonoBehaviour
 {
+    [HideInInspector] public bool isMoving;
+    [HideInInspector] public bool isBeingHit;
+
     private Animator animator;
     public AnimState currentState;
-
-    public Vector3 moveVector;
-    private int directionX;
-    private int directionY;
-
-    public bool isMoving;
-    private bool isBeingHit;
+    private PlayerMove playerMove;
 
     // Start is called before the first frame update
     void Awake()
     {
         animator = GetComponent<Animator>();
+        playerMove = GetComponent<PlayerMove>();
     }
 
     private void Update()
-    {
-
-        ChangeState();
-        
+    {        
         switch (currentState)
         {
             case AnimState.IDLE_LEFT:
@@ -53,19 +48,43 @@ public class AnimationControl : MonoBehaviour
                 animator.Play("Player_Move_DFacing");
                 break;
             case AnimState.HIT_LEFT_WHITE:
-                animator.Play("Player_Hit_L_White");
+                animator.Play("Player_Hit_LWhite");
                 break;
             case AnimState.HIT_RIGHT_WHITE:
-                animator.Play("Player_Hit_R_White");
+                animator.Play("Player_Hit_RWhite");
                 break;
             case AnimState.HIT_LEFT_RED:
-                animator.Play("Player_Hit_L_Red");
+                animator.Play("Player_Hit_LRed");
                 break;
             case AnimState.HIT_RIGHT_RED:
-                animator.Play("Player_Hit_R_Red");
+                animator.Play("Player_Hit_RRed");
                 break;
         }
     }
+
+    private void ChangeHitToIdle()
+    {
+        if (playerMove.directionX > 0)
+        {
+            currentState = AnimState.IDLE_LEFT;
+        }
+        else if (playerMove.directionX < 0)
+        {
+            currentState = AnimState.IDLE_RIGHT;
+        }
+        else
+        {
+            if (playerMove.directionY > 0)
+            {
+                currentState = AnimState.IDLE_UP;
+            }
+            else if (playerMove.directionY < 0)
+            {
+                currentState = AnimState.IDLE_DOWN;
+            }
+        }
+    }
+
 
     /// <summary>
     /// Used to stop animations from snapping, using AnimtionEvents
@@ -74,18 +93,6 @@ public class AnimationControl : MonoBehaviour
     {
         // For animations to stop snapping
     }
-
-    /// <summary>
-    /// Changes the animation state of the player
-    /// </summary>
-    private void ChangeState()
-    {
-        if (isMoving)
-        {
-
-        }
-    }
-
 }
 
 public enum AnimState
