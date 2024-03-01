@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  boomerangObject: {fileID: 8324434197327494847, guid: 287da434a4d391c41843bff9ae513782, type: 3}
+  boomerangObject: {fileID: 835114825190095912, guid: b0647156ed16b3b459d2179f20908001, type: 3}
   boomerangPos: {fileID: 2038694264}
   ring: {fileID: 1472584601}
   startShotCooldown: 3
