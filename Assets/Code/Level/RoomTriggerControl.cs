@@ -106,8 +106,10 @@ public class RoomTriggerControl : MonoBehaviour
         else
         {
             // For loop to spawn manual enemies with spawners
-            for (int i = 0; i < spawnerList.Count - 1; i++)
+            for (int i = 0; i < spawnerList.Count; i++)
             {
+                Debug.Log(i);
+                Debug.Log(enemies[i]);
                 if (i > enemies.Count)
                 {
                     break;
