@@ -5,10 +5,11 @@ using UnityEngine;
 // Jared Kessler
 public class SlimeSplit : MonoBehaviour
 {
-    [SerializeField] private int minionCounter = 1;
     [SerializeField] private GameObject minion;
 
-    public List<GameObject> enemiesInRoom = new List<GameObject>();
+    // List for enemies that are in the room
+    [HideInInspector] public List<GameObject> enemiesInRoom = new List<GameObject>();
+    [HideInInspector] public int minionCounter = 1;
 
     // Update is called once per frame
     void Update()
@@ -32,7 +33,7 @@ public class SlimeSplit : MonoBehaviour
         minionCounter--;
         // Spawn Minion at player location
         GameObject spawnedMinion = Instantiate(minion);
-        spawnedMinion.transform.position = transform.position;
+        spawnedMinion.transform.position = transform.parent.position;
 
         return spawnedMinion;
     }
