@@ -7,6 +7,8 @@ using static UnityEngine.GraphicsBuffer;
 public class SlimeSplit : MonoBehaviour
 {
     [SerializeField] private GameObject minionPrefab;
+    public float cooldownTime = 3f;
+    public float lifetime = 12f;
 
     // List for enemies that are in the room
     [HideInInspector] public List<GameObject> enemiesInRoom = new List<GameObject>();
@@ -16,10 +18,12 @@ public class SlimeSplit : MonoBehaviour
 
     private LookAtEnemy lookAtEnemy;
     private Vector3 minionSpawnPos;
+    private int minionsLeft;
 
     private void Awake()
     {
         lookAtEnemy = transform.GetChild(0).gameObject.GetComponent<LookAtEnemy>();
+        minionsLeft = minionCounter;
     }
 
     // Update is called once per frame
@@ -30,10 +34,9 @@ public class SlimeSplit : MonoBehaviour
         // Temp Input
         if (Input.GetKeyDown(KeyCode.R)) 
         {
-            if (minionCounter > 0)
+            if (minionsLeft > 0)
             {
                 GameObject newMinion = OnSplit();
- 
             }
         }
     }
@@ -44,12 +47,25 @@ public class SlimeSplit : MonoBehaviour
     /// <returns></returns>
     private GameObject OnSplit()
     {
-        minionCounter--;
+        minionsLeft--;
         // Spawn Minion at player location
         GameObject toSpawnMinion = Instantiate(minionPrefab);
 
         toSpawnMinion.transform.position = minionSpawnPos; 
 
         return toSpawnMinion;
+    }
+
+    public void StartCooldown()
+    {
+        StartCoroutine(Cooldown(cooldownTime));
+    }
+
+    private IEnumerator Cooldown(float coolTime)
+    {
+        Debug.Log("SLIME SPLIT: Cooldown started, " + minionsLeft + " minions can be spawned");
+        yield return new WaitForSeconds(coolTime);
+        minionsLeft++;
+        Debug.Log("Cooldown ended, " + minionsLeft + " minions can be spawned");
     }
 }

@@ -22,6 +22,8 @@ public class MinionMove : MonoBehaviour
         lookAtEnemy = playerSlimeSplit.transform.GetChild(0).GetComponent<LookAtEnemy>();
 
         target = FindNearestEnemy();
+
+        StartCoroutine(MinionLifetime(playerSlimeSplit.lifetime));
     }
 
     void Update()
@@ -105,5 +107,18 @@ public class MinionMove : MonoBehaviour
             isMovingToEnemy = true;
         }
         return target;
+    }
+
+    private IEnumerator MinionLifetime(float lifetime)
+    {
+        Debug.Log("SLIME SPLIT: Lifetime started");
+        // Wait the lifetime of the minion before doing anything
+        yield return new WaitForSeconds(lifetime);
+
+        // Notify the main slime split that a minion can spawned
+        // run a function in the main slime split that starts the cooldown
+        playerSlimeSplit.StartCooldown();
+        Debug.Log("SLIME SPLIT: Lifetime ended");
+        Destroy(gameObject);
     }
 }
