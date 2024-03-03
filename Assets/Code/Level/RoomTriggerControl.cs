@@ -16,11 +16,13 @@ public class RoomTriggerControl : MonoBehaviour
 
     private int enemiesDead = 0;
     private GameObject player;
+    private LookAtEnemy lookAtEnemy;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("player");
         triggerParentGameObject = GameObject.FindWithTag("trigger_parent");
+        lookAtEnemy = GameObject.FindWithTag("slime_split").transform.GetChild(0).gameObject.GetComponent<LookAtEnemy>();
     }
 
     private void Update()
@@ -102,6 +104,8 @@ public class RoomTriggerControl : MonoBehaviour
                 }
 
             }
+
+            lookAtEnemy.closestEnemy = spawnedEnemies[0].transform;
         }
         else
         {

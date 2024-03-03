@@ -5131,9 +5131,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 721982832936382186, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      propertyPath: maxHealth
-      value: 25
+    - target: {fileID: 2776752034193068935, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5123400271604012892, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: closestEnemy

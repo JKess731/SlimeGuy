@@ -11,8 +11,6 @@ public class LookAtEnemy : MonoBehaviour
     void Update()
     {
         
-        
-
         if (closestEnemy != null)
         {
             Vector3 direction = closestEnemy.position - transform.position;

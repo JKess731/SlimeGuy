@@ -441,6 +441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minionPrefab: {fileID: 0}
+  cooldownTime: 3
+  lifetime: 12
   enemiesInRoom: []
   minionCounter: 1
   enemyDistance: 8
@@ -1297,8 +1299,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  maxHealth: 0
-  currentHealth: 0
+  maxHealth: 25
+  currentHealth: 25
   spawnPos: {x: 0, y: 0}
   whiteHitAnimation: 0
   currentRoom: {fileID: 0}
