@@ -8,7 +8,7 @@ public class EnemyBulletReturn : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject player;
-    [SerializeField] GameObject enemy;
+    public GameObject enemy;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private int bulletDamage;
     public Vector3 playerPos = Vector3.zero;
@@ -37,6 +37,7 @@ public class EnemyBulletReturn : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             collision.gameObject.GetComponent<PlayerHealth>().Damage(bulletDamage);
+            enemy.GetComponent<DwarfBehavior>().RestartAttackCounter();
             Debug.Log("Bullet dmg");
             Destroy(gameObject);
         }
@@ -64,10 +65,6 @@ public class EnemyBulletReturn : MonoBehaviour
             yield return null;
 
         }
-        enemy.GetComponent<EnemyMovementFollow>().RestartSecondAttackCounter();
-
-
-
-
+        enemy.GetComponent<DwarfBehavior>().RestartAttackCounter();
     }
 }

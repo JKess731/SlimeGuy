@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "enemy")
         {
-            collision.gameObject.GetComponent<DwarfBehavior>().Damage(bulletDamage);
+            collision.gameObject.GetComponent<Enemy>().Damage(bulletDamage);
             Destroy(gameObject);
         }
 
