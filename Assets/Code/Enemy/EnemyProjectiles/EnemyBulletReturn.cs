@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 public class EnemyBulletReturn : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject player;
+    [SerializeField] GameObject enemy;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private int bulletDamage;
-    public Vector2 playerpos = Vector2.zero;
+    public Vector3 playerPos = Vector3.zero;
+    public Vector3 startPos = Vector3.zero;
     public float waitTime;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("player");
+        playerPos = player.transform.position;
+        startPos = transform.position;
     }
 
     // Start is called before the first frame update
@@ -39,12 +45,29 @@ public class EnemyBulletReturn : MonoBehaviour
     IEnumerator DelayShot(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Debug.Log("I hate everything");
-        Vector3 direction = player.transform.position - transform.position;
-        rb.velocity = new Vector2(direction.x, direction.y).normalized * bulletSpeed;
-        float rot = Mathf.Atan2(-direction.x, -direction.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rot);
-        Destroy(gameObject, 3f);
+
+        float distance = Vector3.Distance(startPos, playerPos);
+        float remainingDistance = distance;
+        while(remainingDistance > 0)
+        {
+            transform.position = Vector3.Slerp(startPos, playerPos, 1 - (remainingDistance/distance));
+            remainingDistance -= bulletSpeed * Time.deltaTime;
+            yield return null;
+
+        }
+        distance = Vector3.Distance(playerPos, startPos);
+        remainingDistance = distance;
+        while (remainingDistance > 0)
+        {
+            transform.position = Vector3.Slerp(playerPos, startPos, 1 - (remainingDistance / distance));
+            remainingDistance -= bulletSpeed * Time.deltaTime;
+            yield return null;
+
+        }
+        enemy.GetComponent<EnemyMovementFollow>().RestartSecondAttackCounter();
+
+
+
 
     }
 }

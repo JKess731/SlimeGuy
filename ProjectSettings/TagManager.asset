@@ -9,6 +9,7 @@ TagManager:
   - attack
   - spawner
   - trigger_parent
+  - trigger_child
   layers:
   - Default
   - TransparentFX

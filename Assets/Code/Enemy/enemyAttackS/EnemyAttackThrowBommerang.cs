@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class EnemyAttackThrowBommerang : MonoBehaviour
 {
     [SerializeField] GameObject player;
+    [SerializeField] GameObject enemy;
     public GameObject boomerangObject;
     public Transform boomerangPos;
     public GameObject ring;
@@ -36,9 +37,8 @@ public class EnemyAttackThrowBommerang : MonoBehaviour
             {
                 if (shotCooldown <= 0)
                 {
-                    Debug.Log("Shoot");
                     StartCoroutine(ThrowAttack());
-                    shotCooldown = startShotCooldown;
+                    
                 }
                 else
                 {
@@ -47,7 +47,7 @@ public class EnemyAttackThrowBommerang : MonoBehaviour
             }
             else
             {
-                shotCooldown = startShotCooldown;
+                RestartCooldown();
             }
             lastPosition = transform.position;
         }
@@ -60,6 +60,10 @@ public class EnemyAttackThrowBommerang : MonoBehaviour
         GameObject bullet1 = Instantiate(boomerangObject, boomerangPos.position, ring.transform.rotation);
         yield return new WaitForSeconds(1f);
 
+    }
+
+    public void RestartCooldown() {
+        shotCooldown = startShotCooldown;
     }
 
 }

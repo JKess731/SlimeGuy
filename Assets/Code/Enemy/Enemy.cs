@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     [SerializeField] private int health;
-
     [SerializeField] private int attackDamage;
     [SerializeField] private float speed;
     [SerializeField] private int defense;

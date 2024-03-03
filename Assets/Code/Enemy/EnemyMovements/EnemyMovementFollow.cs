@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class EnemyMovementFollow: MonoBehaviour
 {
+
+    [SerializeField] GameObject enemy;
     private Transform player;
     public float speed;
     public float distanceBetween;
     private float distance;
     private bool onPlayer = false;
     private bool foundPlayer = false;
+    private float startSecondAttack = 0;
+    private bool continueSecondAttackCounter = true;
 
 
     private void Awake()
     {
         player = GameObject.FindWithTag("player").transform;
+        startSecondAttack += Random.value;
     }
 
     /*
@@ -31,12 +36,27 @@ public class EnemyMovementFollow: MonoBehaviour
     //this enemy is less then the given distanceBetween (The detection range for this enemy) then the enemy will follow the player. If the 
     //player leaves the detection range then the enemy will stop moving. Used for melee enemies.
     void Update(){
+        if (continueSecondAttackCounter == true) {
+            continueSecondAttackCounter = false;
+            StartCoroutine(StartSecondAttackCounter());
+        }
         distance = Vector2.Distance(transform.position, player.position);
         Vector2 direction = player.position - transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x);
         if (onPlayer == false)
         {
+            if (startSecondAttack >= 10)
+            {
+                onPlayer = true;
+                continueSecondAttackCounter = false;
+                if (enemy.name == "Dwarf") {
+                    enemy.GetComponent<EnemyAttackThrowBommerang>().RestartCooldown();
+
+                }
+            }
+
+
             if (foundPlayer == false)
             {
                 if (distance < distanceBetween)
@@ -49,34 +69,9 @@ public class EnemyMovementFollow: MonoBehaviour
             else {
                 transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-
             }
-            
-
         }
-        
     }
-
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.name == "Player")
-    //    {
-
-    //        attackColliding();
-    //    }
-
-    //}
-
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.name == "Player")
-    //    {
-    //        attackNotColliding();
-
-    //    }
-
-    //}
 
     public void AttackColliding()
     {
@@ -85,13 +80,27 @@ public class EnemyMovementFollow: MonoBehaviour
 
     }
 
-
-
     public void AttackNotColliding()
     {
         onPlayer = false;
         
 
     }
+
+    public void RestartSecondAttackCounter() {
+
+        onPlayer = false;
+        continueSecondAttackCounter = true;
+        startSecondAttack = 0;
+    }
+
+    IEnumerator StartSecondAttackCounter() { 
+        yield return new WaitForSeconds(.5f);
+        startSecondAttack += Random.value * 2;
+        Debug.Log(startSecondAttack);
+        continueSecondAttackCounter = true;
+    }
+
+
 
 }
