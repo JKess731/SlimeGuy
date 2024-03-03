@@ -440,9 +440,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748d0b7154a74014b8cd0e439c120e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minion: {fileID: 0}
+  minionPrefab: {fileID: 0}
   enemiesInRoom: []
   minionCounter: 1
+  enemyDistance: 8
+  enemyFound: 0
 --- !u!1 &6705461624330608696
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +910,6 @@ GameObject:
   - component: {fileID: 6441711385004036941}
   - component: {fileID: 2286926643201842907}
   - component: {fileID: 4327921851085568936}
-  - component: {fileID: 7092696641672025270}
   - component: {fileID: 721982832936382186}
   m_Layer: 6
   m_Name: Player
@@ -1283,21 +1284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ae4e37fba0a1544b54459fc51a8840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7092696641672025270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748d0b7154a74014b8cd0e439c120e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minion: {fileID: 0}
-  enemiesInRoom: []
-  minionCounter: 1
 --- !u!114 &721982832936382186
 MonoBehaviour:
   m_ObjectHideFlags: 0

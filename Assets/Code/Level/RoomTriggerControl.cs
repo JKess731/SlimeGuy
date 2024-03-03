@@ -53,7 +53,7 @@ public class RoomTriggerControl : MonoBehaviour
     /// <param name="spawnerList"></param>
     public void SpawnEnemies(List<GameObject> spawnerList)
     {
-        SlimeSplit splitAbility = player.GetComponent<SlimeSplit>();
+        SlimeSplit splitAbility = GameObject.FindWithTag("slime_split").GetComponent<SlimeSplit>();
 
 
         // Random enemy spawners

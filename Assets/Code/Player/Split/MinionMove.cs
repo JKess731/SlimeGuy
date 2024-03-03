@@ -10,22 +10,34 @@ public class MinionMove : MonoBehaviour
     public GameObject target = null;
 
     private SlimeSplit playerSlimeSplit;
+    private LookAtEnemy lookAtEnemy;
+    private int enemyDistance;
 
-    private bool enemyFound = false;
+    [HideInInspector] private bool isMovingToEnemy = false;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("player");
-        playerSlimeSplit = player.GetComponent<SlimeSplit>();
+        playerSlimeSplit = GameObject.FindWithTag("slime_split").GetComponent<SlimeSplit>();
+        lookAtEnemy = playerSlimeSplit.transform.GetChild(0).GetComponent<LookAtEnemy>();
+
+        target = FindNearestEnemy();
     }
 
     void Update()
     {
-        if (enemyFound == false)
+        enemyDistance = playerSlimeSplit.enemyDistance;
+
+
+        // If target is or isn't null and minion isn't moving
+        if (target == null && !isMovingToEnemy || target != null && !isMovingToEnemy)
         {
-            FindNearestEnemy();
+            transform.position = Vector3.Lerp(transform.position, player.transform.position, 2 * Time.deltaTime);
+            target = FindNearestEnemy();
         }
-        else
+        
+
+        if (isMovingToEnemy != false)
         {
             // If the enemy is destroyed find a new one
             if (target == null)
@@ -36,50 +48,62 @@ public class MinionMove : MonoBehaviour
                     playerSlimeSplit.enemiesInRoom.Remove(target);
                 }
 
-                enemyFound = false;
-                transform.position = Vector3.Lerp(transform.position, player.transform.position, 2 * Time.deltaTime);
+                isMovingToEnemy = false;
             }
             else
             {
                 transform.position = Vector3.Lerp(transform.position, target.transform.position, 2 * Time.deltaTime);
             }
         }
+        else
+        {
+            target = FindNearestEnemy();
+        }
     }
 
-    private void FindNearestEnemy()
+    public GameObject FindNearestEnemy()
     {
-        List<GameObject> removeEnemies = new List<GameObject>();
+        List<GameObject> nullEnemies = new List<GameObject>();
+        GameObject target = null;
+        List<GameObject> enemies = playerSlimeSplit.enemiesInRoom;
 
-        foreach (GameObject enemy in playerSlimeSplit.enemiesInRoom)
+        foreach (GameObject enemy in enemies)
         {
             if (enemy != null)
             {
                 // Check the distance of the player to the checking enemy, if no enemy selected check within the range
                 if (target == null)
                 {
-                    if (Vector3.Distance(transform.position, enemy.transform.position) <= 5)
+                    if (Vector3.Distance(transform.position, enemy.transform.position) <= enemyDistance)
                     {
                         target = enemy;
+                        lookAtEnemy.closestEnemy = target.transform;
                     }
                 }
                 // Otherwise check the distance of the current enemy against the last looked at enemy
                 else if (Vector3.Distance(transform.position, enemy.transform.position) < Vector3.Distance(transform.position, target.transform.position))
                 {
                     target = enemy;
+                    lookAtEnemy.closestEnemy = target.transform;
                 }
-
-                enemyFound = true;
             }
             else
             {
-                removeEnemies.Add(enemy);
+                // Enemies that are in the enemiesInRoom list but are null need to be removed from the list
+                nullEnemies.Add(enemy);
             }
 
         }
 
-        foreach (GameObject gameObj in removeEnemies)
+        foreach (GameObject gameObj in nullEnemies)
         {
-            playerSlimeSplit.enemiesInRoom.Remove(gameObj);
+            enemies.Remove(gameObj);
         }
+
+        if (target != null)
+        {
+            isMovingToEnemy = true;
+        }
+        return target;
     }
 }
