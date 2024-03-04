@@ -30,7 +30,6 @@ public class EnemyAttackSlash : MonoBehaviour
 
 
     //Handles attack collision
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
@@ -39,7 +38,6 @@ public class EnemyAttackSlash : MonoBehaviour
             enemy.GetComponentInParent<EnemyMovementFollow>().AttackColliding();
             StartCoroutine(AttackingContinue());
         }
-
     }
 
     //Handles attack collision
@@ -51,7 +49,7 @@ public class EnemyAttackSlash : MonoBehaviour
         }
     }
 
-    //Handles attack delay
+    //Handles slash attack delay
     IEnumerator AttackingContinue() {
         while (attackCon == true) {
             attacking = true;

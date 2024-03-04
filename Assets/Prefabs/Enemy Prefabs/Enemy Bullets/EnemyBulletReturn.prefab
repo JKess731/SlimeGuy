@@ -126,9 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb92d194082600488cba2f11816bc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 12
+  enemy: {fileID: 6346162656513507999, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+  bulletSpeed: 6
   bulletDamage: 2
-  playerpos: {x: 0, y: 0}
+  playerPos: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
   waitTime: 0
 --- !u!58 &8806459865559033414
 CircleCollider2D:
