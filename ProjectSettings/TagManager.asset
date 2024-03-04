@@ -10,6 +10,7 @@ TagManager:
   - spawner
   - trigger_parent
   - trigger_child
+  - slime_split
   layers:
   - Default
   - TransparentFX
