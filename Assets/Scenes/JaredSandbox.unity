@@ -1791,6 +1791,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7877581377025729480, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: spread
+      value: 37.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877581377025729480, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: fireRate
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877581377025729480, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5098964168513206920, guid: af0f355657d43034298e051d36c06964, type: 3}
     - target: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_Name
       value: Player
