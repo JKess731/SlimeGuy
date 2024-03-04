@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Code/Enemy/EnemyAttacks/EnemyAttackSlash.cs.meta
+guid: e3d302e1cac6c0241bddd9d22e6b7af1
+========
+guid: 6822b50e0d306764d9235847a6382892
+>>>>>>>> jaredCopyMain:Assets/Code/Enemy/enemyAttackS/EnemyAttackSlash.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

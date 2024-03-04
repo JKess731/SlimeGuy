@@ -36,7 +36,7 @@ public class SlimeTrail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        eventEmitterRef.Play();
+        //eventEmitterRef.Play();
         //On button press send Puddles to the other end of his slime trail. Can press again to leave slime trail and stop diving.
         if (UnityEngine.Input.GetKeyDown(KeyCode.F) && trailObjects.Count > 0)
         {

@@ -383,8 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f4889ce455c984eacd11b853530061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  attackDelay: 0
+  damage: 5
+  attackDelay: 2.5
   player: {fileID: 0}
   playerMove: {fileID: 0}
   enemy: {fileID: 0}

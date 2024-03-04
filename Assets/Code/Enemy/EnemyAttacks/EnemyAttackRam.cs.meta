@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Code/Enemy/EnemyAttacks/EnemyAttackRam.cs.meta
+guid: e606b43ebbb780f4eaac258a14bf65c1
+========
+guid: cbb7aac052efa544b88db5b0572ecf04
+>>>>>>>> jaredCopyMain:Assets/Code/Enemy/enemyAttackS/EnemyAttackRam.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

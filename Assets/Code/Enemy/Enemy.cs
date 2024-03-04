@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //Edison Li
-public class Enemy1 : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     [SerializeField] private int health;

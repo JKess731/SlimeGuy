@@ -236,10 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1697883cc8ca3458225fa50705e7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPointShotgun: {fileID: 1998642360960838624}
-  slimeBlob: {fileID: 4833602960537618009, guid: 8b09624d15fafc742adbbe3771d47cf1, type: 3}
-  bulletCount: 3
-  delay: 0.1
+  attackPoint: {fileID: 6359139107008641216}
+  projectile: {fileID: 4833602960537618009, guid: d1d50472f734b6c4d80f67aaa73b313c, type: 3}
+  bulletCount: 10
+  spread: 10
+  fireRate: 0.1
   ring: {fileID: 2080989293142158726}
 --- !u!114 &428084628684688605
 MonoBehaviour:
@@ -729,6 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7074808056681584966}
   - component: {fileID: 7407095389853606614}
+  - component: {fileID: 1499401507028251260}
   - component: {fileID: 3256424544208323031}
   - component: {fileID: 2252183450457289478}
   - component: {fileID: 4898250958995919665}
@@ -815,6 +817,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1499401507028251260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ae4e37fba0a1544b54459fc51a8840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &3256424544208323031
 Rigidbody2D:
   serializedVersion: 4
@@ -1050,9 +1064,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079ebac280211f74c97ec2ba6614cf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
-  moveVector: {x: 0, y: 0, z: 0}
   isMoving: 0
+  isBeingHit: 0
+  currentState: 0
 --- !u!114 &2286926643201842907
 MonoBehaviour:
   m_ObjectHideFlags: 0

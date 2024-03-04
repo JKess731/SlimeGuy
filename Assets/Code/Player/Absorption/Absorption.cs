@@ -29,7 +29,7 @@ public class Absorption : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-            int enemyHealth = collision.gameObject.GetComponent<Enemy1>().GetHealth();
+            int enemyHealth = collision.gameObject.GetComponent<Enemy>().GetHealth();
 
             if (enemyHealth <= absorbtionRate)
             {
