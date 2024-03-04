@@ -18,7 +18,7 @@ public class MinionMove : MonoBehaviour
     private LookAtEnemy lookAtEnemy;
     // lookAtTarget is the script on the child of the Minion game object
     private LookAtEnemy lookAtTarget;
-    private int enemyDistance;
+    private float enemyDistance;
 
     [HideInInspector] public bool isMovingToEnemy = false;
     [HideInInspector] public bool isShooting = false;

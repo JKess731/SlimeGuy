@@ -6,23 +6,33 @@ using static UnityEngine.GraphicsBuffer;
 // Jared Kessler
 public class SlimeSplit : MonoBehaviour
 {
-    [SerializeField] private GameObject minionPrefab;
+    // Public variables that are editable
+    public GameObject minionPrefab;
     public float cooldownTime = 3f;
-    public float lifetime = 12f;
+    public float lifetime = 8f;
+    public bool dashSplit = true;
 
-    // List for enemies that are in the room
-    [HideInInspector] public List<GameObject> enemiesInRoom = new List<GameObject>();
+    // Public variables that get edited with the Custom Editor
     [HideInInspector] public int minionCounter = 1;
-    [HideInInspector] public int enemyDistance = 8;
-    [HideInInspector] public bool enemyFound = false;
+    [HideInInspector] public float enemyDistance = 8f;
 
+    // Public variables that don't want cluttering the inspector
+    // they talk between themselves and other scripts
+    [HideInInspector] public List<GameObject> enemiesInRoom = new List<GameObject>();
+    [HideInInspector] public bool enemyFound = false;
+    [HideInInspector] public int minionsLeft;
+    [HideInInspector] public Vector3 minionSpawnPos;
+
+    // Private variables
     private LookAtEnemy lookAtEnemy;
-    private Vector3 minionSpawnPos;
-    private int minionsLeft;
+    private SingleAttackSplit singleAttack;
+    private DashSplit dashAttack;
 
     private void Awake()
     {
-        lookAtEnemy = transform.GetChild(0).gameObject.GetComponent<LookAtEnemy>();
+        lookAtEnemy = transform.GetChild(0).GetComponent<LookAtEnemy>();
+        singleAttack = transform.GetChild(1).GetComponent<SingleAttackSplit>();
+        dashAttack = transform.GetChild(2).GetComponent<DashSplit>();
         minionsLeft = minionCounter;
     }
 
@@ -34,26 +44,28 @@ public class SlimeSplit : MonoBehaviour
         // Temp Input
         if (Input.GetKeyDown(KeyCode.R)) 
         {
-            if (minionsLeft > 0)
+            // Single Attack Split
+            if (!dashSplit)
             {
-                GameObject newMinion = OnSplit();
+                if (minionsLeft > 0)
+                {
+                    GameObject newMinion = singleAttack.OnSplit();
+                }
+            }
+            // Dash Split
+            else
+            {
+                if (minionsLeft > 0)
+                {
+                    dashAttack.OnSplit();
+                    minionsLeft--;
+                }
+                else
+                {
+                    StartCoroutine(dashAttack.Dash());
+                }
             }
         }
-    }
-
-    /// <summary>
-    /// Generates a minion object
-    /// </summary>
-    /// <returns></returns>
-    private GameObject OnSplit()
-    {
-        minionsLeft--;
-        // Spawn Minion at player location
-        GameObject toSpawnMinion = Instantiate(minionPrefab);
-
-        toSpawnMinion.transform.position = minionSpawnPos; 
-
-        return toSpawnMinion;
     }
 
     public void StartCooldown()
