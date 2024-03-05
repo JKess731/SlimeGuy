@@ -33,6 +33,9 @@ public class PlayerMove : MonoBehaviour
     public int directionY;
     private bool isWalking;
 
+    //Input Buffer
+    public InputBuffer inputBuffer = new InputBuffer();
+
     private void Awake()
     {
         animControl = GetComponent<AnimationControl>();
@@ -42,18 +45,21 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
     }
+    private void Update()
+    {
+        
+    }
 
     private void FixedUpdate()
     {
         playerFaceDirection = moveVector.normalized;
+        inputBuffer.Update();
 
         if (isDashing)
         {
             return;
         }
-
         rb.velocity = moveVector * speed;
-
     }
 
     private void OnEnable()
