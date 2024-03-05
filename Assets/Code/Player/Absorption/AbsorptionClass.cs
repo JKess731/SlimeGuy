@@ -57,7 +57,7 @@ public class AbsorptionClass : MonoBehaviour
         playerMove.isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = playerMove.playerFaceDirection * dashingPower;
+        rb.velocity = playerMove.faceDirection * dashingPower;
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;

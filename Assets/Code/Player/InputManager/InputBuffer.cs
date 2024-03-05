@@ -18,7 +18,8 @@ public class InputBuffer
     // This function is used to update the input buffer
     public void Update()
     {
-        GameManager.instance.inputBuffer = this;
+        //GameManager.instance.inputBuffer = this;
+
         // If the input list is empty or the input list is not the same size as the raw input list,
         // then initialize the buffer
         if (inputList.Count < rawInputList.Length || inputList.Count == 0)

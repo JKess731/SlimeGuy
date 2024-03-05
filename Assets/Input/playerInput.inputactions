@@ -15,9 +15,36 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Dive",
+                    "name": "Shotgun",
                     "type": "Button",
-                    "id": "7f704a95-8479-4d8c-8931-c735682dc3f4",
+                    "id": "5e5db078-6228-4eed-af97-48c38eed6abb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "d0b4c10d-80de-44c6-93f0-b7b5a985d506",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Absorb",
+                    "type": "Button",
+                    "id": "28e5203c-d40c-42ec-962b-da1d83bdc29f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpawnMinion",
+                    "type": "Button",
+                    "id": "75a0b376-d78b-49e4-b363-c78af9ae49be",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -192,12 +219,45 @@
                 },
                 {
                     "name": "",
-                    "id": "8ee37af3-f76a-4625-b218-48b4144aeac1",
-                    "path": "f",
+                    "id": "112628f9-7c68-433a-aa78-05de930c1e8a",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dive",
+                    "action": "Shotgun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68e51093-b8a0-41da-b31d-ac3a4562752a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35a922a8-c8ea-4bb2-a4eb-fd9a030a81f5",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Absorb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e55fd9a6-88b6-414a-b906-ae3f1c1d43c7",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnMinion",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

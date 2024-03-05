@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 // Jared Kessler
 // Connection to the new Input System
@@ -14,127 +16,161 @@ using UnityEngine.InputSystem;
  * But do not break the game
  * 
  */
+
 public class PlayerMove : MonoBehaviour
 {
 
-    public PlayerInput input = null;
-
-    private Vector2 moveVector = Vector2.zero;
-    private Rigidbody2D rb = null;
-
+    //Serialized Fields
+    [SerializeField] private InputReader inputReader;
     [SerializeField] private float speed = 10f;
 
-    public bool isDashing;
-    public Vector2 playerFaceDirection;
+    // Components
 
-    // Animation States
+    //---Movement---
+    private Rigidbody2D rb;
+    private Vector2 moveVector = Vector2.zero;
+    public Vector2 faceDirection;
+    private bool isMoving;
+
+    //---Dash---
+    public bool isDashing;
+        
+    //---Aninmation Buffer---
     private AnimationControl animControl;
     public int directionX;
     public int directionY;
-    private bool isWalking;
 
-    //Input Buffer
+    //---Input Buffer---
     public InputBuffer inputBuffer = new InputBuffer();
 
     private void Awake()
     {
         animControl = GetComponent<AnimationControl>();
-
-        input = new PlayerInput();
-
         rb = GetComponent<Rigidbody2D>();
-
     }
-    private void Update()
+
+    private void Start()
     {
-        
+        inputReader.movementEvent += HandleMovement;
+        inputReader.movementEventCancel += HandleMovementCancel;
+
+        inputReader.dashEvent += HandleDash;
+        inputReader.dashEventCancel += HandleDashCancel;
     }
 
     private void FixedUpdate()
     {
-        playerFaceDirection = moveVector.normalized;
+        // Update the input buffer
         inputBuffer.Update();
 
-        if (isDashing)
-        {
-            return;
-        }
+        Move();
+        //Dash();
+
+        // Set the player's face direction
+        faceDirection = moveVector.normalized;
+    }
+
+    private void Dash()
+    {
+        throw new NotImplementedException();
+    }
+
+    //Move the player
+    private void Move()
+    {
         rb.velocity = moveVector * speed;
-    }
 
-    private void OnEnable()
-    {
-        input.Enable();
-        input.GamePlay.Movement.performed += OnMovement;
-        input.GamePlay.Movement.canceled += OnMovementCancel;
-
-    }
-
-    private void OnDisable()
-    {
-        input.Disable();
-        input.GamePlay.Movement.performed -= OnMovement;
-        input.GamePlay.Movement.canceled -= OnMovementCancel;
-    }
-
-    private void OnMovement(InputAction.CallbackContext value)
-    {
-        moveVector = value.ReadValue<Vector2>();
-
-        animControl.isMoving = true;
-
-        if (moveVector.x > 0)
+        if (isMoving)
         {
-            directionX = 1;
-            animControl.currentState = AnimState.MOVE_RIGHT;
-        }
-        else if (moveVector.x < 0)
-        {
-            directionX = -1;
-            animControl.currentState = AnimState.MOVE_LEFT;
+            animControl.isMoving = true;
+
+            if (moveVector.x > 0)
+            {
+                directionX = 1;
+                animControl.currentState = AnimState.MOVE_RIGHT;
+            }
+            else if (moveVector.x < 0)
+            {
+                directionX = -1;
+                animControl.currentState = AnimState.MOVE_LEFT;
+            }
+            else
+            {
+                directionX = 0;
+                if (moveVector.y > 0)
+                {
+                    directionY = 1;
+                    animControl.currentState = AnimState.MOVE_UP;
+                }
+                else if (moveVector.y < 0)
+                {
+                    directionY = -1;
+                    animControl.currentState = AnimState.MOVE_DOWN;
+                }
+            }
         }
         else
         {
-            directionX = 0;
-            if (moveVector.y > 0)
+            if (directionX > 0)
             {
-                directionY = 1;
-                animControl.currentState = AnimState.MOVE_UP;
+                animControl.currentState = AnimState.IDLE_RIGHT;
             }
-            else if (moveVector.y < 0)
+            else if (directionX < 0)
             {
-                directionY = -1;
-                animControl.currentState = AnimState.MOVE_DOWN;
+                animControl.currentState = AnimState.IDLE_LEFT;
+            }
+            else
+            {
+                if (directionY > 0)
+                {
+                    animControl.currentState = AnimState.IDLE_UP;
+                }
+                else if (directionY < 0)
+                {
+                    animControl.currentState = AnimState.IDLE_DOWN;
+                }
             }
         }
-
     }
 
-    private void OnMovementCancel(InputAction.CallbackContext value)
+    //Subscribe to the input reader movement event
+    private void HandleMovement(Vector2 dir)
+    {
+        moveVector = dir;
+        isMoving = true;
+    }
+
+    //Subscribe to the input reader movement cancel event
+    private void HandleMovementCancel()
     {
         moveVector = Vector2.zero;
-
-        if (directionX > 0)
-        {
-            animControl.currentState = AnimState.IDLE_RIGHT;
-        }
-        else if (directionX < 0)
-        {
-            animControl.currentState = AnimState.IDLE_LEFT;
-        }
-        else
-        {
-            if (directionY > 0)
-            {
-                animControl.currentState = AnimState.IDLE_UP;
-            }
-            else if (directionY < 0)
-            {
-                animControl.currentState = AnimState.IDLE_DOWN;
-            }
-        }
-
+        isMoving = false;
     }
 
-    
+    //Subscribe to the input reader dash event
+    private void HandleDash()
+    {
+        isDashing = true;
+    }
+
+    //Subscribe to the input reader dash cancel event
+    private void HandleDashCancel()
+    {
+        isDashing = false;
+    }
+
+    //Disable movement event by unsubscribing from the input reader movement event
+    public void DisableMovemnt()
+    {
+        moveVector = Vector2.zero;
+        inputReader.movementEvent -= HandleMovement;
+        inputReader.movementEventCancel -= HandleMovementCancel;
+    }
+
+    //Enable the movement event by resubscribing to the input reader movement event
+    public void EnableMovemnt()
+    {
+        inputReader.movementEvent += HandleMovement;
+        inputReader.movementEventCancel += HandleMovementCancel;
+    }
 }

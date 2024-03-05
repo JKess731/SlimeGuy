@@ -63,9 +63,9 @@ public class EnemyAttackSlam : MonoBehaviour
     }
 
     IEnumerator PlayerStunned() {
-        playerMove.input.Disable();
+        playerMove.DisableMovemnt();
         Debug.Log("Player Stunned");
         yield return new WaitForSeconds(attackDelay/2);
-        playerMove.input.Enable();
+        playerMove.EnableMovemnt();
     }
 }

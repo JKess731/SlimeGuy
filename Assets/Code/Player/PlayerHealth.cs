@@ -66,7 +66,8 @@ public class PlayerHealth : MonoBehaviour
         {
             
             transform.position = spawnPos;
-            playerMovement.input.Enable();
+            playerMovement.DisableMovemnt();
+
             currentHealth = maxHealth;
 
             foreach (GameObject enemy in currentRoom.spawnedEnemies)
