@@ -16,18 +16,21 @@ public class AbsorptionClass : MonoBehaviour
     public Collider2D absorbClick;
 
     private bool canDash = true;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
+    [SerializeField] private float dashingPower = 24f;
+    [SerializeField] private float dashingTime = 0.2f;
+    [SerializeField] private float dashingCooldown = 1f;
 
-    [SerializeField] private PlayerMove playerMove;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private TrailRenderer tr;
+    private PlayerMove playerMove;
+    private Rigidbody2D rb;
+    private TrailRenderer tr;
 
     private FMODUnity.StudioEventEmitter eventEmitterRef;
     private void Awake()
     {
         eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
+        playerMove = GameObject.Find("Player").GetComponent<PlayerMove>();
+        rb = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        tr = GameObject.Find("Player").GetComponent<TrailRenderer>();
     }
 
     private void Update()
