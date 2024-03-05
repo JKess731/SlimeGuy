@@ -19,12 +19,14 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "wall")
+        {
+            Destroy(gameObject);
+        }
+            if (collision.gameObject.tag == "enemy")
         {
             collision.gameObject.GetComponent<Enemy>().Damage(bulletDamage);
             Destroy(gameObject);
         }
-
-        Debug.Log("Hit Enemy");
     }
 }

@@ -228,9 +228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 6359139107008641216}
-  projectile: {fileID: 4833602960537618009, guid: d1d50472f734b6c4d80f67aaa73b313c, type: 3}
+  projectile: {fileID: 5098964168513206920, guid: af0f355657d43034298e051d36c06964, type: 3}
   bulletCount: 10
-  spread: 10
+  spread: 17.15
   fireRate: 0.1
   ring: {fileID: 2080989293142158726}
 --- !u!114 &428084628684688605
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 5302479371234029580}
   m_Layer: 6
   m_Name: Slime Split
-  m_TagString: Untagged
+  m_TagString: slime_split
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
