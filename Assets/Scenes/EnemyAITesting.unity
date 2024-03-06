@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &384334932
+--- !u!1001 &310814660
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -131,55 +131,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.921051
+      value: -5.770055
       objectReference: {fileID: 0}
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9503367
+      value: -0.61370873
       objectReference: {fileID: 0}
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4017600752784018102, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892147420155252896, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+    - target: {fileID: 6346162656513507999, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
       propertyPath: m_Name
-      value: GolemEnemy
+      value: DwarfEnemy (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
 --- !u!1 &1200971300
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +339,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+--- !u!1001 &1689287786
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.6157622
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.9618409
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6346162656513507999, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_Name
+      value: DwarfEnemy (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+--- !u!1001 &1841438811
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.2979393
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.107699
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768730685121157510, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6346162656513507999, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
+      propertyPath: m_Name
+      value: DwarfEnemy (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
 --- !u!1 &1980138521
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,4 +542,6 @@ SceneRoots:
   - {fileID: 1980138523}
   - {fileID: 1200971302}
   - {fileID: 1237116344}
-  - {fileID: 384334932}
+  - {fileID: 310814660}
+  - {fileID: 1841438811}
+  - {fileID: 1689287786}

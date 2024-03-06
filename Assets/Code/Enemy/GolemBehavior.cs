@@ -34,6 +34,7 @@ public class GolemBehavior : MonoBehaviour
     public float startShotCooldown;
     private Vector3 lastPosition = new Vector3();
     public float detectRange;
+    private bool volleyFall = false;
 
 
     //Attack cycles
@@ -152,8 +153,10 @@ public class GolemBehavior : MonoBehaviour
         {
             if (collision.gameObject.name == "Player")
             {
-                Debug.Log("Player has been hit by volley");
-                player.GetComponentInParent<PlayerHealth>().Damage(volleyDamage);
+                if(volleyFall == true) {
+                    Debug.Log("VolleyHitPlayer");
+                    player.GetComponentInParent<PlayerHealth>().Damage(volleyDamage);
+                }
             }
         }
         else 
@@ -197,10 +200,16 @@ public class GolemBehavior : MonoBehaviour
     //THIS HANDLES COROUTINE FOR ROCKVOLLEY.
     IEnumerator RockVolleyAttack()
     {
-        yield return new WaitForSeconds(rockVolleyAttackDelay);
+        yield return new WaitForSeconds(rockVolleyAttackDelay/2);
         rockFallLocation.transform.position = player.transform.position;
+        yield return new WaitForSeconds(rockVolleyAttackDelay / 2);
+        Debug.Log("VolleyOnPlayer");
+        volleyFall = true;
+
         yield return new WaitForSeconds(rockVolleyAttackDelay/2);
         rockFallLocation.transform.position = frontLocation.transform.position;
+        Debug.Log("VolleyNotOnPlayer");
+        volleyFall = false;
         RestartAttackCounter();
         AttackNotColliding();
 
