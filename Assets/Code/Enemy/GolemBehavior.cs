@@ -28,13 +28,11 @@ public class GolemBehavior : MonoBehaviour
 
     //RockVolley
     [SerializeField] private float rockVolleyAttackDelay;
-    public GameObject rockFallLocation;
-    public GameObject frontLocation;
+    public GameObject volleyAttackCircle;
     private float shotCooldown;
     public float startShotCooldown;
     private Vector3 lastPosition = new Vector3();
     public float detectRange;
-    private bool volleyFall = false;
 
 
     //Attack cycles
@@ -151,13 +149,7 @@ public class GolemBehavior : MonoBehaviour
     {
         if (attackCounter > .5)
         {
-            if (collision.gameObject.name == "Player")
-            {
-                if(volleyFall == true) {
-                    Debug.Log("VolleyHitPlayer");
-                    player.GetComponentInParent<PlayerHealth>().Damage(volleyDamage);
-                }
-            }
+            
         }
         else 
         {
@@ -201,15 +193,11 @@ public class GolemBehavior : MonoBehaviour
     IEnumerator RockVolleyAttack()
     {
         yield return new WaitForSeconds(rockVolleyAttackDelay/2);
-        rockFallLocation.transform.position = player.transform.position;
+        Vector3 playerPos = player.transform.position;
+        GameObject volley1 = volleyAttackCircle.gameObject;
+        volley1.gameObject.GetComponent<EnemyBulletVolley>().delayVolleyTime = rockVolleyAttackDelay;
+        Instantiate(volley1, playerPos, ring.transform.rotation);
         yield return new WaitForSeconds(rockVolleyAttackDelay / 2);
-        Debug.Log("VolleyOnPlayer");
-        volleyFall = true;
-
-        yield return new WaitForSeconds(rockVolleyAttackDelay/2);
-        rockFallLocation.transform.position = frontLocation.transform.position;
-        Debug.Log("VolleyNotOnPlayer");
-        volleyFall = false;
         RestartAttackCounter();
         AttackNotColliding();
 
