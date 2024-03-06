@@ -69,7 +69,7 @@ public class RoomTriggerControl : MonoBehaviour
             foreach (GameObject spawner in spawnerList)
             {
 
-                int indx = Random.Range(0, canSpawnEnemies.Count);
+                int indx = Random.Range(0, canSpawnEnemies.Count-1);
 
                 // Choose an enemy
                 GameObject chosenEnemy = canSpawnEnemies[indx];

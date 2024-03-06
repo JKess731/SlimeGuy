@@ -15,63 +15,38 @@ public class AbsorptionClass : MonoBehaviour
     public Collider2D absorbDash;
     public Collider2D absorbClick;
 
-    private bool canDash = true;
-    [SerializeField] private float dashingPower = 24f;
-    [SerializeField] private float dashingTime = 0.2f;
-    [SerializeField] private float dashingCooldown = 1f;
-
-    private PlayerMove playerMove;
-    private Rigidbody2D rb;
-    private TrailRenderer tr;
-
     private FMODUnity.StudioEventEmitter eventEmitterRef;
     private void Awake()
     {
         eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
-        playerMove = GameObject.Find("Player").GetComponent<PlayerMove>();
-        rb = GameObject.Find("Player").GetComponent<Rigidbody2D>();
-        tr = GameObject.Find("Player").GetComponent<TrailRenderer>();
     }
 
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             eventEmitterRef.Play();
-            StartCoroutine(Dash());
+            Dash();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            eventEmitterRef.Play();
-            StartCoroutine(Click());
-        }
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    eventEmitterRef.Play();
+        //    StartCoroutine(Click());
+        //}
 
     }
 
-    private IEnumerator Dash()
+    private void Dash()
     {
-        canDash = false;
         absorbDash.enabled = true;
-        playerMove.isDashing = true;
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
-        rb.velocity = playerMove.faceDirection * dashingPower;
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
-        rb.gravityScale = originalGravity;
-        absorbDash.enabled = false;
-        playerMove.isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
     }
 
-    private IEnumerator Click()
-    {
-        absorbClick.enabled = true;
-        yield return new WaitForSeconds(0.5f);
-        absorbClick.enabled = false;
-    }
+    //private IEnumerator Click()
+    //{
+    //    absorbClick.enabled = true;
+    //    yield return new WaitForSeconds(0.5f);
+    //    absorbClick.enabled = false;
+    //}
 }

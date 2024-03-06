@@ -55,8 +55,6 @@ public class EnemyMovementFollow: MonoBehaviour
 
                 }
             }
-
-
             if (foundPlayer == false)
             {
                 if (distance < distanceBetween)
@@ -76,15 +74,11 @@ public class EnemyMovementFollow: MonoBehaviour
     public void AttackColliding()
     {
         onPlayer = true;
-        
-
     }
 
     public void AttackNotColliding()
     {
         onPlayer = false;
-        
-
     }
 
     public void RestartSecondAttackCounter() {

@@ -31,10 +31,15 @@ public class PlayerMove : MonoBehaviour
     private Vector2 moveVector = Vector2.zero;
     public Vector2 faceDirection;
     private bool isMoving;
+    private TrailRenderer trail;
 
     //---Dash---
-    public bool isDashing;
-        
+    public bool isDashing = false;
+    private bool canDash = true;
+    [SerializeField] private float dashingPower = 24f;
+    [SerializeField] private float dashingTime = 0.2f;
+    [SerializeField] private float dashingCooldown = 1f;
+
     //---Aninmation Buffer---
     private AnimationControl animControl;
     public int directionX;
@@ -47,6 +52,7 @@ public class PlayerMove : MonoBehaviour
     {
         animControl = GetComponent<AnimationControl>();
         rb = GetComponent<Rigidbody2D>();
+        trail = GetComponent<TrailRenderer>();
     }
 
     private void Start()
@@ -55,7 +61,7 @@ public class PlayerMove : MonoBehaviour
         inputReader.movementEventCancel += HandleMovementCancel;
 
         inputReader.dashEvent += HandleDash;
-        inputReader.dashEventCancel += HandleDashCancel;
+        inputReader.dashEventCancel += HandDashCancel;
     }
 
     private void FixedUpdate()
@@ -64,7 +70,7 @@ public class PlayerMove : MonoBehaviour
         inputBuffer.Update();
 
         Move();
-        //Dash();
+        Dash();
 
         // Set the player's face direction
         faceDirection = moveVector.normalized;
@@ -72,7 +78,19 @@ public class PlayerMove : MonoBehaviour
 
     private void Dash()
     {
-        throw new NotImplementedException();
+        if (isDashing)
+        {    
+            canDash = false;
+            isDashing = true;
+            rb.velocity = faceDirection * dashingPower;
+            trail.emitting = true;
+        }
+        else
+        {
+            trail.emitting = false;
+            isDashing = false;
+            canDash = true;
+        }
     }
 
     //Move the player
@@ -153,8 +171,7 @@ public class PlayerMove : MonoBehaviour
         isDashing = true;
     }
 
-    //Subscribe to the input reader dash cancel event
-    private void HandleDashCancel()
+    private void HandDashCancel()
     {
         isDashing = false;
     }

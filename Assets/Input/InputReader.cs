@@ -38,7 +38,7 @@ public class InputReader : ScriptableObject, PlayerInput.IGamePlayActions
 
     public void OnAbsorb(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Absorb");
     }
 
     public void OnDash(InputAction.CallbackContext context)
@@ -47,7 +47,6 @@ public class InputReader : ScriptableObject, PlayerInput.IGamePlayActions
         {
             dashEvent?.Invoke();
         }
-
         if(context.phase == InputActionPhase.Canceled)
         {
             dashEventCancel?.Invoke();
@@ -69,11 +68,11 @@ public class InputReader : ScriptableObject, PlayerInput.IGamePlayActions
 
     public void OnShotgun(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Shotgun");
     }
 
     public void OnSpawnMinion(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("SpawnMinion");
     }
 }
