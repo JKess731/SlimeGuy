@@ -180,12 +180,11 @@ public class GolemBehavior : MonoBehaviour
 
     IEnumerator PlayerStunned()
     {
-        playerMove.input.Disable();
+        playerMove.DisableMovemnt();
         Debug.Log("Player Stunned");
         yield return new WaitForSeconds(slamAttackDelay / 2);
-        playerMove.input.Enable();
+        playerMove.EnableMovemnt();
     }
-
 
 
     //---------------------------------------------------------------------------------------------------------------------------
