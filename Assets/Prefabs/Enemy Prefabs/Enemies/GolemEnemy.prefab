@@ -97,7 +97,8 @@ GameObject:
   - component: {fileID: 6322349473942033054}
   - component: {fileID: 7495682527370946714}
   - component: {fileID: 3712294576004728107}
-  - component: {fileID: 7228277099346263925}
+  - component: {fileID: 3265519029715588133}
+  - component: {fileID: 3868195325182825746}
   m_Layer: 7
   m_Name: GolemEnemy
   m_TagString: enemy
@@ -114,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 4892147420155252896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 4, z: 0}
+  m_LocalPosition: {x: 4.0862293, y: 1.90329, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -188,7 +189,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -232,11 +233,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 6
   health: 6
-  attackDamage: 5
-  speed: 1
   defense: 5
   dangerLevel: 4
---- !u!114 &7228277099346263925
+--- !u!114 &3265519029715588133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,11 +244,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 4892147420155252896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4013a3ebbd717943871a2459812dd03, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d7ac35dced275e4ba469392a16fa4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1
+  dangerLevel: 4
+  enemy: {fileID: 4892147420155252896}
   distanceBetween: 25
+  stop: 6
+  slamDamage: 5
+  volleyDamage: 4
+  slamAttackDelay: 2.5
+  playerMove: {fileID: 0}
+  ring: {fileID: 809023192014729213}
+  rockVolleyAttackDelay: 1.5
+  volleyAttackCircle: {fileID: 656076906102123849, guid: 6e8a17b69f2d63d4dae028676879501c, type: 3}
+  startShotCooldown: 1.5
+  detectRange: 25
+--- !u!50 &3868195325182825746
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4892147420155252896}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6320488281308932678
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +299,6 @@ GameObject:
   - component: {fileID: 1773292749316505675}
   - component: {fileID: 6128227401782977703}
   - component: {fileID: 1328728302571247172}
-  - component: {fileID: 7219613518441860051}
   m_Layer: 9
   m_Name: Front
   m_TagString: Untagged
@@ -351,7 +388,7 @@ CircleCollider2D:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -371,21 +408,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
---- !u!114 &7219613518441860051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6320488281308932678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ea05b4c8b97a21428be9564bba6bee8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  attackDelay: 2.5
-  player: {fileID: 0}
-  playerMove: {fileID: 0}
-  enemy: {fileID: 4892147420155252896}
-  ring: {fileID: 809023192014729213}
