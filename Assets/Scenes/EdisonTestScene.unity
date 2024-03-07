@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 37002254}
   m_Layer: 0
   m_Name: Room
-  m_TagString: Untagged
+  m_TagString: trigger_parent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   - {fileID: 1561681645}
   - {fileID: 1586185030}
   enemies:
-  - {fileID: 6346162656513507999, guid: cbd6d2218781edf4aa5b349b2f5ed724, type: 3}
+  - {fileID: 6346162656513507999, guid: 29392a68f2a291d48b6bfabdeb8e1ff5, type: 3}
   - {fileID: 4892147420155252896, guid: dbe8bddd28c99eb41a1434860bbfc06b, type: 3}
   - {fileID: 6169016820238609206, guid: bf621ef075610114ebc9ef716cb42c16, type: 3}
   manual: 0
@@ -5328,6 +5328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5690419769693682902, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_TagString
+      value: slime_split
+      objectReference: {fileID: 0}
     - target: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
