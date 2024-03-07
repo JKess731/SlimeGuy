@@ -127,8 +127,5 @@ public class PlayerMove : MonoBehaviour
                 animControl.currentState = AnimState.IDLE_DOWN;
             }
         }
-
     }
-
-    
 }

@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
 
 public class AnimationControl : MonoBehaviour
 {
-    [HideInInspector] public bool isMoving;
-    [HideInInspector] public bool isBeingHit;
-
+    //References
     private Animator animator;
-    public AnimState currentState;
     private PlayerMove playerMove;
 
-    // Start is called before the first frame update
+    [HideInInspector] public bool isIdle;
+    [HideInInspector] public bool isMoving;
+    [HideInInspector] public bool isDashing;
+    [HideInInspector] public bool isAttacking;
+
+    [HideInInspector] public bool isBeingHit;
+
+    public AnimState currentState;
+    
     void Awake()
     {
         animator = GetComponent<Animator>();
