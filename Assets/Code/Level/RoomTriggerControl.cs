@@ -16,19 +16,21 @@ public class RoomTriggerControl : MonoBehaviour
 
     private int enemiesDead = 0;
     private GameObject player;
-    private LookAtEnemy lookAtEnemy;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("player");
         triggerParentGameObject = GameObject.FindWithTag("trigger_parent");
-        lookAtEnemy = GameObject.FindWithTag("slime_split").transform.GetChild(0).gameObject.GetComponent<LookAtEnemy>();
+
+        // Level Control
+        List<GameObject> l = new List<GameObject>();
+        EnemiesInLevel.instance.rooms.Add(gameObject, l); ;
     }
 
     private void Update()
     {
         // Update counter for dead enemies
-        foreach(GameObject enemy in spawnedEnemies)
+        foreach(GameObject enemy in EnemiesInLevel.instance.rooms[gameObject])
         {
             if (enemy == null)
             {
@@ -37,9 +39,9 @@ public class RoomTriggerControl : MonoBehaviour
         }
 
         // Clear spawned enemies list when all enemies in the room are dead
-        if (enemiesDead == spawnedEnemies.Count)
+        if (enemiesDead == EnemiesInLevel.instance.rooms[gameObject].Count)
         {
-            spawnedEnemies.Clear();
+            EnemiesInLevel.instance.rooms[gameObject].Clear();
         }
 
         // If a trigger has been hit, deactivate all remaining triggers in the room
@@ -55,9 +57,6 @@ public class RoomTriggerControl : MonoBehaviour
     /// <param name="spawnerList"></param>
     public void SpawnEnemies(List<GameObject> spawnerList)
     {
-        SlimeSplit splitAbility = GameObject.FindWithTag("slime_split").GetComponent<SlimeSplit>();
-
-
         // Random enemy spawners
         if (manual != true)
         {
@@ -95,17 +94,13 @@ public class RoomTriggerControl : MonoBehaviour
 
                     //Spawn enemy
                     GameObject enemy = Instantiate(chosenEnemy);
-                    spawnedEnemies.Add(enemy);
+                    EnemiesInLevel.instance.rooms[gameObject].Add(enemy);
                     enemy.transform.position = spawner.transform.position;
                     enemy.layer = 7;
-
-                    splitAbility.enemiesInRoom.Add(enemy);
 
                 }
 
             }
-
-            lookAtEnemy.closestEnemy = spawnedEnemies[0].transform;
         }
         else
         {
@@ -122,9 +117,8 @@ public class RoomTriggerControl : MonoBehaviour
                 {
                     GameObject enemy = Instantiate(enemies[i]);
                     enemy.transform.position = spawnerList[i].transform.position;
-                    spawnedEnemies.Add(enemy);
+                    EnemiesInLevel.instance.rooms[gameObject].Add(enemy);
                     enemy.layer = 7;
-                    splitAbility.enemiesInRoom.Add(enemy);
                 }
             }
         }
@@ -140,7 +134,7 @@ public class RoomTriggerControl : MonoBehaviour
             Destroy(enemy);
         }
 
-        spawnedEnemies.Clear();
+        EnemiesInLevel.instance.rooms[gameObject].Clear();
     }
 
     /// <summary>

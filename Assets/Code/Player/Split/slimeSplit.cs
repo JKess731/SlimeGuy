@@ -28,18 +28,43 @@ public class SlimeSplit : MonoBehaviour
     private SingleAttackSplit singleAttack;
     private DashSplit dashAttack;
 
+    private GameObject currentRoom;
+
     private void Awake()
     {
         lookAtEnemy = transform.GetChild(0).GetComponent<LookAtEnemy>();
         singleAttack = transform.GetChild(1).GetComponent<SingleAttackSplit>();
         dashAttack = transform.GetChild(2).GetComponent<DashSplit>();
         minionsLeft = minionCounter;
+
+        currentRoom = EnemiesInLevel.instance.currentRoom;
+
+        if (currentRoom != null)
+        {
+            enemiesInRoom = EnemiesInLevel.instance.GetEnemies(currentRoom);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currentRoom != null)
+        {
+            enemiesInRoom = EnemiesInLevel.instance.GetEnemies(currentRoom);
+        }
+        else
+        {
+            currentRoom = EnemiesInLevel.instance.currentRoom;
+        }
+
+        if (lookAtEnemy.closestEnemy == null && enemiesInRoom.Count > 0)
+        {
+            lookAtEnemy.closestEnemy = enemiesInRoom[0].transform;
+        }
+
         minionSpawnPos = lookAtEnemy.transform.GetChild(0).position;
+
+        //-----------------------------------------------------------
 
         // Temp Input
         if (Input.GetKeyDown(KeyCode.R)) 

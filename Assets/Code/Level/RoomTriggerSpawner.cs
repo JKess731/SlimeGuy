@@ -21,5 +21,7 @@ public class RoomTriggerSpawner : MonoBehaviour
         roomTriggerControl.SpawnEnemies(roomTriggerControl.spawners);
         transform.gameObject.SetActive(false);
         health.currentRoom = roomTriggerControl;
+
+        EnemiesInLevel.instance.currentRoom = roomTriggerControl.gameObject;
     }
 }
