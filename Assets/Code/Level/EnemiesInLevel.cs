@@ -35,21 +35,7 @@ public class EnemiesInLevel : MonoBehaviour
 
     public void ResetCurrentRoom()
     {
-        List<GameObject> currentRoomList = rooms[currentRoom];
-
-        int count = 0;
-        foreach(GameObject enemy in currentRoomList)
-        {
-            if (enemy == null)
-            {
-                count++;
-            }
-        }
-
-        if (count == currentRoomList.Count)
-        {
-            currentRoom = null;
-            rooms[currentRoom].Clear();
-        }
+        currentRoom = null;
+        rooms[currentRoom].Clear();
     }
 }
