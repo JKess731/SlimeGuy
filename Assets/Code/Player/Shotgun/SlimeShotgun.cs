@@ -34,7 +34,7 @@ public class SlimeShotgun : MonoBehaviour
 
     private void Shoot()  
     {
-        float angleDiff = spread * 2 / bulletCount;
+        float angleDiff = spread * 2 / (bulletCount - 1);
 
         for (int i = 0; i < bulletCount; i++)
         {
