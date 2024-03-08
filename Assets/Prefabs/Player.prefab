@@ -913,6 +913,7 @@ GameObject:
   - component: {fileID: 2286926643201842907}
   - component: {fileID: 4327921851085568936}
   - component: {fileID: 721982832936382186}
+  - component: {fileID: 3322473668760506266}
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -1240,7 +1241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079ebac280211f74c97ec2ba6614cf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   isMoving: 0
+  isDashing: 0
+  isAttacking: 0
   isBeingHit: 0
   currentState: 0
 --- !u!114 &2286926643201842907
@@ -1304,3 +1308,20 @@ MonoBehaviour:
   spawnPos: {x: 0, y: 0}
   whiteHitAnimation: 0
   currentRoom: {fileID: 0}
+--- !u!320 &3322473668760506266
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 5745989e8611a934ab91ef1fc7d78943, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
