@@ -74,58 +74,14 @@ public class PlayerMove : MonoBehaviour
     private void OnMovement(InputAction.CallbackContext value)
     {
         moveVector = value.ReadValue<Vector2>();
-
         animControl.isMoving = true;
-
-        if (moveVector.x > 0)
-        {
-            directionX = 1;
-            animControl.currentState = AnimState.MOVE_RIGHT;
-        }
-        else if (moveVector.x < 0)
-        {
-            directionX = -1;
-            animControl.currentState = AnimState.MOVE_LEFT;
-        }
-        else
-        {
-            directionX = 0;
-            if (moveVector.y > 0)
-            {
-                directionY = 1;
-                animControl.currentState = AnimState.MOVE_UP;
-            }
-            else if (moveVector.y < 0)
-            {
-                directionY = -1;
-                animControl.currentState = AnimState.MOVE_DOWN;
-            }
-        }
-
+        animControl.isIdle = false;
     }
 
     private void OnMovementCancel(InputAction.CallbackContext value)
     {
         moveVector = Vector2.zero;
-
-        if (directionX > 0)
-        {
-            animControl.currentState = AnimState.IDLE_RIGHT;
-        }
-        else if (directionX < 0)
-        {
-            animControl.currentState = AnimState.IDLE_LEFT;
-        }
-        else
-        {
-            if (directionY > 0)
-            {
-                animControl.currentState = AnimState.IDLE_UP;
-            }
-            else if (directionY < 0)
-            {
-                animControl.currentState = AnimState.IDLE_DOWN;
-            }
-        }
+        animControl.isMoving = false;
+        animControl.isIdle = true;
     }
 }

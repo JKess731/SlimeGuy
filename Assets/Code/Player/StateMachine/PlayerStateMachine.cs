@@ -10,15 +10,17 @@ public class PlayerStateMachine : MonoBehaviour
     AnimationControl animationControl;
     Rigidbody2D rigidBody;
 
-    [SerializeField] private float speed = 10f;
-
+    //Movement Variables
     private Vector2 moveVector = Vector2.zero;
     public Vector2 faceDirection;
 
+    //Animation States
     bool isIdle;
     bool isMoving;
     bool isDashing;
     bool isAttacking;
+
+    [SerializeField] private float speed = 10f;
 
     private void Awake()
     {
@@ -33,48 +35,53 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
+    //Handles Movement and Animation
     private void FixedUpdate()
     {
-        HandleMovement();
         HandleAnimation();
+        HandleMovement();
     }
 
+    //Enables Input Actions
     private void OnEnable()
     {
         playerInput.GamePlay.Enable();
     }
 
+    //Disables Input Actions
     private void OnDisable()
     {
         playerInput.GamePlay.Disable();
     }
 
+    //Handles Movement
     private void HandleMovement()
     {
         rigidBody.velocity = moveVector * speed;
-        faceDirection = moveVector.normalized;
     }
 
+    //Handles Movement Input Actions
     private void OnMovement(InputAction.CallbackContext value)
     {
         isMoving = true;
         isIdle = false;
 
         moveVector = value.ReadValue<Vector2>();
-        Debug.Log("Moving");
-        Debug.Log(moveVector);
+        faceDirection = moveVector.normalized;
     }
 
+    //Handles Movement Cancel Input Actions
     private void OnMovementCancel(InputAction.CallbackContext value)
     {
         isMoving = false;
         isIdle = true;
-        moveVector = Vector2.zero;
 
-        Debug.Log("Not Moving");
-        Debug.Log(moveVector);
+        moveVector = Vector2.zero;
     }
 
+    /// <summary>
+    /// Handles the animation based on the state of the player and the direction they are facing
+    /// </summary>
     private void HandleAnimation()
     {
         animationControl.isMoving = isMoving;
@@ -82,42 +89,6 @@ public class PlayerStateMachine : MonoBehaviour
         animationControl.isDashing = isDashing;
         animationControl.isAttacking = isAttacking;
 
-        if (moveVector.x > 0)
-        {
-            animationControl.currentState = AnimState.MOVE_RIGHT;
-        }
-        else if (moveVector.x < 0)
-        {
-            animationControl.currentState = AnimState.MOVE_LEFT;
-        }
-        else
-        {
-            if (moveVector.y > 0)
-            {
-                animationControl.currentState = AnimState.MOVE_UP;
-            }
-            else if (moveVector.y < 0)
-            {
-                animationControl.currentState = AnimState.MOVE_DOWN;
-            }
-        }
-
-        if (faceDirection.x > 0)
-        {
-            animationControl.currentState = AnimState.IDLE_RIGHT;
-        }
-        else if (faceDirection.x < 0)
-        {
-            animationControl.currentState = AnimState.IDLE_LEFT;
-        }
-
-        if (faceDirection.y > 0)
-        {
-            animationControl.currentState = AnimState.IDLE_UP;
-        }
-        else if (faceDirection.y < 0)
-        {
-            animationControl.currentState = AnimState.IDLE_DOWN;
-        }
+        animationControl.PlayAnimation(faceDirection);
     }
 }

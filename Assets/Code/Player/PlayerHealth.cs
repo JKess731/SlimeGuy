@@ -14,12 +14,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     [SerializeField] private Vector2 spawnPos;
-    [SerializeField] private bool whiteHitAnimation;
+    
 
     [HideInInspector] public RoomTriggerControl currentRoom;
 
     private AnimationControl playerAnimationControl;
-    private PlayerMove playerMovement;
 
     private void Awake()
     {
@@ -27,7 +26,6 @@ public class PlayerHealth : MonoBehaviour
         spawnPos = transform.position;
 
         playerAnimationControl = GetComponent<AnimationControl>();
-        playerMovement = GetComponent<PlayerMove>();
     }
 
 
@@ -39,34 +37,10 @@ public class PlayerHealth : MonoBehaviour
 
         playerAnimationControl.isBeingHit = true;
 
-        if (whiteHitAnimation)
-        {
-            if (playerMovement.directionX > 0)
-            {
-                playerAnimationControl.currentState = AnimState.HIT_RIGHT_WHITE;
-            }
-            else
-            {
-                playerAnimationControl.currentState = AnimState.HIT_LEFT_WHITE;
-            }
-        }
-        else
-        {
-            if (playerMovement.directionX > 0)
-            {
-                playerAnimationControl.currentState = AnimState.HIT_RIGHT_RED;
-            }
-            else
-            {
-                playerAnimationControl.currentState = AnimState.HIT_LEFT_RED;
-            }
-        }
-
         if (currentHealth <= 0)
         {
             
             transform.position = spawnPos;
-            playerMovement.input.Enable();
             currentHealth = maxHealth;
 
             foreach (GameObject enemy in currentRoom.spawnedEnemies)
@@ -76,8 +50,6 @@ public class PlayerHealth : MonoBehaviour
 
             // Clear the list
             currentRoom.spawnedEnemies.Clear();
-
-            playerAnimationControl.currentState = AnimState.IDLE_LEFT;
 
             // Re-activate triggers in the room
             // ONE ROOM TESTING ONLY
