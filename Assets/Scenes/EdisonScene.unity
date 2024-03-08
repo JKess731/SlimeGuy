@@ -1209,8 +1209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65027d985656114bb9e35110a7a4e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   faceDirection: {x: 0, y: 0}
+  dashingPower: 24
+  dashingTime: 0.2
+  dashingCooldown: 0.5
+  speed: 10
 --- !u!114 &1589141345
 MonoBehaviour:
   m_ObjectHideFlags: 0

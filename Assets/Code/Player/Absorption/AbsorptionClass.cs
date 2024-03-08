@@ -15,15 +15,6 @@ public class AbsorptionClass : MonoBehaviour
     public Collider2D absorbDash;
     public Collider2D absorbClick;
 
-    private bool canDash = true;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
-
-    [SerializeField] private PlayerMove playerMove;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private TrailRenderer tr;
-
     private FMODUnity.StudioEventEmitter eventEmitterRef;
     private void Awake()
     {
@@ -33,36 +24,16 @@ public class AbsorptionClass : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             eventEmitterRef.Play();
-            StartCoroutine(Dash());
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             eventEmitterRef.Play();
-            StartCoroutine(Click());
         }
 
-    }
-
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        absorbDash.enabled = true;
-        playerMove.isDashing = true;
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
-        rb.velocity = playerMove.playerFaceDirection * dashingPower;
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
-        rb.gravityScale = originalGravity;
-        absorbDash.enabled = false;
-        playerMove.isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
     }
 
     private IEnumerator Click()
