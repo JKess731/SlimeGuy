@@ -29,8 +29,9 @@ public class AbsorptionClass : MonoBehaviour
             eventEmitterRef.Play();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButtonDown(1))
         {
+            StartCoroutine(Click());
             eventEmitterRef.Play();
         }
 

@@ -83,17 +83,20 @@ public class AnimationControl : MonoBehaviour
                 {
                     animator.Play("Player_Hit_LWhite");
                 }
+                isBeingHit = false;
             }
             else
             {
                 if (direction.x > 0)
                 {
                     animator.Play("Player_Hit_RRed");
+
                 }
                 else
                 {
                     animator.Play("Player_Hit_LRed");
                 }
+                isBeingHit = false;
             }
         }
     }

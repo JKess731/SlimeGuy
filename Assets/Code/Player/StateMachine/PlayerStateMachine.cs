@@ -84,7 +84,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     //Disables Movement Input Actions
-    private void DisableMovement()
+    public void DisableMovement()
     {
         playerInput.GamePlay.Movement.started -= OnMovement;
         playerInput.GamePlay.Movement.performed -= OnMovement;
@@ -92,7 +92,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     //Enables Movement Input Actions
-    private void EnableMovement()
+    public void EnableMovement()
     {
         playerInput.GamePlay.Movement.started += OnMovement;
         playerInput.GamePlay.Movement.performed += OnMovement;
