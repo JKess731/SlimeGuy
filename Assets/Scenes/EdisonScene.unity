@@ -1084,6 +1084,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5690419769693682902, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_TagString
+      value: slime_split
+      objectReference: {fileID: 0}
     - target: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -1143,6 +1147,10 @@ PrefabInstance:
     - target: {fileID: 7877581377025729480, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: bulletCount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068375920541606069, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: orthographic size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8068375920541606069, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_BackGroundColor.b
