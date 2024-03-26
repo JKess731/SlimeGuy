@@ -100,7 +100,4 @@ public class EnemyMovementFollow: MonoBehaviour
         Debug.Log(startSecondAttack);
         continueSecondAttackCounter = true;
     }
-
-
-
 }

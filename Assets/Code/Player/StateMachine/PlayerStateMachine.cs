@@ -154,7 +154,6 @@ public class PlayerStateMachine : MonoBehaviour
         isIdle = false;
         isMoving = false;
 
-        Debug.Log("Dash Pressed");
         dashPressed = context.ReadValueAsButton();
     }
 
@@ -166,7 +165,6 @@ public class PlayerStateMachine : MonoBehaviour
         canDash = false;
         tr.emitting = true;
         rigidBody.velocity = faceDirection * dashingPower;
-        Debug.Log(rigidBody.velocity);
         yield return new WaitForSeconds(dashingTime);
 
         //Handles Dash End
@@ -175,8 +173,6 @@ public class PlayerStateMachine : MonoBehaviour
         isDashing = false;
         isMoving = true;
         rigidBody.velocity = Vector2.zero;
-        Debug.Log(rigidBody.velocity);
-
 
         //Handles Dash Cooldown
         yield return new WaitForSeconds(dashingCooldown);

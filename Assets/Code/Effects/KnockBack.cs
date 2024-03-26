@@ -14,7 +14,7 @@ public class KnockBack : MonoBehaviour
 
     private Rigidbody rb;
 
-    public bool isBeingKnockedBack { get; private set; }
+    public bool isBeingKnockedBack { get; private set; }  
 
     public IEnumerator KnockbackAction(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
     {
