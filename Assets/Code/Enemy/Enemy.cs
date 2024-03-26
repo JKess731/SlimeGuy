@@ -19,13 +19,15 @@ public class Enemy : MonoBehaviour
     //Handles Damage
     public void Damage(int damage)
     {
-        Debug.Log(damage);
-        Debug.Log("Taking damage");
-        Debug.Log(gameObject.name + ":" + health);
+        //Debug.Log(damage);
+        //Debug.Log("Taking damage");
+        //Debug.Log(gameObject.name + ":" + health);
         damage = damage - defense;
         if (damage <= 0) {  damage = 1; }
         health = health - damage;
-        Debug.Log("Enemy taking: " + damage);
+
+        //Debug.Log("Enemy taking: " + damage);
+
         if (health <= 0)
         {
             Destroy(gameObject);

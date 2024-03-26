@@ -53,6 +53,12 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Movement and Animation
     private void FixedUpdate()
     {
+        if (dashPressed && canDash)
+        {
+            isDashing = true;
+            StartCoroutine(DashCoroutine());
+        }
+
         HandleAnimation();
         HandleMovement();
     }
@@ -102,9 +108,9 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Movement
     private void HandleMovement()
     {
-        if(isDashing)
+        if (isDashing)
         {
-            return;
+           return;
         }
 
         rigidBody.velocity = moveVector * speed;
@@ -148,23 +154,19 @@ public class PlayerStateMachine : MonoBehaviour
         isIdle = false;
         isMoving = false;
 
+        Debug.Log("Dash Pressed");
         dashPressed = context.ReadValueAsButton();
-
-        if (dashPressed && canDash)
-        {
-            StartCoroutine(Dash());
-        }
     }
 
-    private IEnumerator Dash()
+    private IEnumerator DashCoroutine()
     {
         //Handles Initial Dash
         DisableMovement();
         isMoving = false;
         canDash = false;
-        isDashing = true;
         tr.emitting = true;
         rigidBody.velocity = faceDirection * dashingPower;
+        Debug.Log(rigidBody.velocity);
         yield return new WaitForSeconds(dashingTime);
 
         //Handles Dash End
@@ -173,7 +175,8 @@ public class PlayerStateMachine : MonoBehaviour
         isDashing = false;
         isMoving = true;
         rigidBody.velocity = Vector2.zero;
-        
+        Debug.Log(rigidBody.velocity);
+
 
         //Handles Dash Cooldown
         yield return new WaitForSeconds(dashingCooldown);
