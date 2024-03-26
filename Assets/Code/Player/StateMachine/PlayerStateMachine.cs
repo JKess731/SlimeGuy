@@ -102,12 +102,12 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Movement
     private void HandleMovement()
     {
-        if (!isDashing)
+        if(isDashing)
         {
-            rigidBody.velocity = moveVector * speed;
+            return;
         }
 
-        HandleDash();
+        rigidBody.velocity = moveVector * speed;
     }
 
     //Handles Movement Input Actions
@@ -141,14 +141,6 @@ public class PlayerStateMachine : MonoBehaviour
         animationControl.PlayAnimation(faceDirection);
     }
 
-    //Handle Dash
-    private void HandleDash()
-    {
-        if (canDash && dashPressed && !isDashing)
-        {
-            StartCoroutine(Dash());
-        }
-    }
 
     //Handles Dash Input Actions
     private void OnDash(InputAction.CallbackContext context)
@@ -157,6 +149,11 @@ public class PlayerStateMachine : MonoBehaviour
         isMoving = false;
 
         dashPressed = context.ReadValueAsButton();
+
+        if (dashPressed && canDash)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     private IEnumerator Dash()
