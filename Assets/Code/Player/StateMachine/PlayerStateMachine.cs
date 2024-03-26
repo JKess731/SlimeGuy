@@ -8,7 +8,8 @@ public class PlayerStateMachine : MonoBehaviour
     //References
     PlayerInput playerInput;
     AnimationControl animationControl;
-    Rigidbody2D rigidBody;
+
+    Rigidbody2D rb;
     TrailRenderer tr;
 
     //Movement Variables
@@ -19,6 +20,9 @@ public class PlayerStateMachine : MonoBehaviour
     private bool canDash = true;
     private bool dashPressed;
 
+    //Knockback Variables
+    private KnockBack knockBack;
+
     [SerializeField] private float dashingPower = 20f;
     [SerializeField] private float dashingTime = 0.5f;
     [SerializeField] private float dashingCooldown = 1f;
@@ -28,6 +32,9 @@ public class PlayerStateMachine : MonoBehaviour
     bool isMoving = false;
     bool isDashing = false;
     bool isAttacking = false;
+    
+    //Bad practice to have public variables
+    public bool isBeingHit = false;
 
     [SerializeField] private float speed = 10f;
 
@@ -36,8 +43,9 @@ public class PlayerStateMachine : MonoBehaviour
         //Set up initial references
         animationControl = GetComponent<AnimationControl>();
         playerInput = new PlayerInput();
-        rigidBody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
+        knockBack = GetComponent<KnockBack>();
 
         //Set up input actions
         playerInput.GamePlay.Movement.started += OnMovement;
@@ -53,14 +61,20 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Movement and Animation
     private void FixedUpdate()
     {
-        if (dashPressed && canDash)
+        if(knockBack.isBeingKnockedBack)
+        {
+            return;
+        }
+
+        if (dashPressed && canDash && !knockBack.isBeingKnockedBack)
         {
             isDashing = true;
             StartCoroutine(DashCoroutine());
         }
 
-        HandleAnimation();
         HandleMovement();
+        HandleAnimation();
+        
     }
 
     //Enables Input Actions
@@ -110,10 +124,10 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (isDashing)
         {
-           return;
+            return;
         }
 
-        rigidBody.velocity = moveVector * speed;
+        rb.velocity = moveVector * speed;
     }
 
     //Handles Movement Input Actions
@@ -143,10 +157,10 @@ public class PlayerStateMachine : MonoBehaviour
         animationControl.isIdle = isIdle;
         animationControl.isDashing = isDashing;
         animationControl.isAttacking = isAttacking;
+        animationControl.isBeingHit = isBeingHit;
 
         animationControl.PlayAnimation(faceDirection);
     }
-
 
     //Handles Dash Input Actions
     private void OnDash(InputAction.CallbackContext context)
@@ -157,6 +171,7 @@ public class PlayerStateMachine : MonoBehaviour
         dashPressed = context.ReadValueAsButton();
     }
 
+    //Dash Coroutine set the rigidbody to the dashing power for a set amount of time
     private IEnumerator DashCoroutine()
     {
         //Handles Initial Dash
@@ -164,7 +179,7 @@ public class PlayerStateMachine : MonoBehaviour
         isMoving = false;
         canDash = false;
         tr.emitting = true;
-        rigidBody.velocity = faceDirection * dashingPower;
+        rb.velocity = faceDirection * dashingPower;
         yield return new WaitForSeconds(dashingTime);
 
         //Handles Dash End
@@ -172,10 +187,27 @@ public class PlayerStateMachine : MonoBehaviour
         tr.emitting = false;
         isDashing = false;
         isMoving = true;
-        rigidBody.velocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
 
         //Handles Dash Cooldown
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    //Handles Knockback
+    public void Knockback(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
+    {
+        Debug.Log(isBeingHit);
+
+        isIdle = false;
+        isMoving = false;
+        isDashing = false;
+
+        knockBack.CallKnockback(hitDirection, constantForceDirection, inputDirection);
+    }
+
+    public Vector2 GetMoveDir()
+    {
+        return moveVector;
     }
 }

@@ -73,6 +73,7 @@ public class AnimationControl : MonoBehaviour
  
         if (isBeingHit)
         {
+            Debug.Log("Hit");
             if(damageColor == DamagedColor.WHITE)
                 {
                 if (direction.x > 0)

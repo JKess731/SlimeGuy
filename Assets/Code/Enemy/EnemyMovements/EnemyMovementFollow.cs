@@ -76,15 +76,11 @@ public class EnemyMovementFollow: MonoBehaviour
     public void AttackColliding()
     {
         onPlayer = true;
-        
-
     }
 
     public void AttackNotColliding()
     {
         onPlayer = false;
-        
-
     }
 
     public void RestartSecondAttackCounter() {

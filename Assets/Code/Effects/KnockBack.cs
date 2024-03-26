@@ -12,9 +12,15 @@ public class KnockBack : MonoBehaviour
     [SerializeField] private float constForce = 5f;
     [SerializeField] private float inputForce = 7.5f;
 
-    private Rigidbody rb;
+    private Rigidbody2D rb2D;
+    private Coroutine knockbackCoroutine;
 
-    public bool isBeingKnockedBack { get; private set; }  
+    public bool isBeingKnockedBack { get; private set; }
+
+    private void Start()
+    {
+        rb2D = GetComponent<Rigidbody2D>();
+    }
 
     public IEnumerator KnockbackAction(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
     {
@@ -39,7 +45,7 @@ public class KnockBack : MonoBehaviour
 
             //Combine _knockbackForce and _inputForce
             if (inputDirection != 0) { 
-                _combinedForce = _knockbackForce + new Vector2(inputDirection, 0f);
+                _combinedForce = _knockbackForce + new Vector2(inputDirection * inputForce, 0f);
             }
             else
             {
@@ -47,11 +53,15 @@ public class KnockBack : MonoBehaviour
             }
 
             //Applies the knockback force
-            rb.velocity = _combinedForce;
+            rb2D.velocity = _combinedForce;
 
             yield return new WaitForFixedUpdate();
         }
-
         isBeingKnockedBack = false;
+    }
+
+    public void CallKnockback(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
+    {
+        knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, constantForceDirection, inputDirection));
     }
 }

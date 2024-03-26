@@ -46,7 +46,6 @@ public class DwarfBehavior : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-
         //From EnemyMovementFollow script.
         distance = Vector2.Distance(transform.position, player.position);
         Vector2 direction = player.position - transform.position;
@@ -108,7 +107,6 @@ public class DwarfBehavior : MonoBehaviour
         } 
     }
 
-
     //---------------------------------------------------------------------------------------------------------------------------
     //THIS SECTION HANDLES FUNCTIONS FROM EnemyMovementFollow script.
     public void AttackColliding(){
@@ -118,7 +116,6 @@ public class DwarfBehavior : MonoBehaviour
     public void AttackNotColliding(){
         onPlayer = false;
     }
-
 
     //---------------------------------------------------------------------------------------------------------------------------
     //THIS SECTION HANDLES SLASH ATTACK COLLISION AND COROUTINE from EnemyAttackSlash script.
@@ -140,11 +137,8 @@ public class DwarfBehavior : MonoBehaviour
         attacking = false;
         RestartAttackCounter();
         AttackNotColliding();
-
-
-
-
     }
+
     //---------------------------------------------------------------------------------------------------------------------------
     //THIS HANDLES COROUTINE FOR THROWING THE BOOMERANG. FROM EnemyAttackThrowBommerang SCRIPT.
     IEnumerator ThrowAttack(){
@@ -172,5 +166,4 @@ public class DwarfBehavior : MonoBehaviour
         attackOnce = true;
         shotCooldown = startShotCooldown;
     }
-
 }
