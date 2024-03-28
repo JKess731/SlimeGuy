@@ -21,10 +21,13 @@ public class RoomTriggerControl : MonoBehaviour
     {
         player = GameObject.FindWithTag("player");
         triggerParentGameObject = GameObject.FindWithTag("trigger_parent");
+    }
 
+    private void Start()
+    {
         // Level Control
         List<GameObject> l = new List<GameObject>();
-        EnemiesInLevel.instance.rooms.Add(gameObject, l); ;
+        EnemiesInLevel.instance.rooms.Add(gameObject, l);
     }
 
     private void Update()

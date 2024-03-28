@@ -11,6 +11,8 @@ public class SlimeSplit : MonoBehaviour
     public float cooldownTime = 3f;
     public float lifetime = 8f;
     public bool dashSplit = true;
+    public float minionStopDistanceFromEnemy = 3f;
+    public float shootDelay = .3f;
 
     // Public variables that get edited with the Custom Editor
     [HideInInspector] public int minionCounter = 1;
@@ -28,7 +30,7 @@ public class SlimeSplit : MonoBehaviour
     private SingleAttackSplit singleAttack;
     private DashSplit dashAttack;
 
-    private GameObject currentRoom;
+    private GameObject currentRoom = null;
 
     private void Awake()
     {
@@ -48,20 +50,26 @@ public class SlimeSplit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If in a room, grab the list of enemies from that room
         if (currentRoom != null)
         {
             enemiesInRoom = EnemiesInLevel.instance.GetEnemies(currentRoom);
         }
         else
         {
+            // Otherwise check if in a room and set currentRoom to either null again
+            // or to the room the player is in
             currentRoom = EnemiesInLevel.instance.currentRoom;
         }
 
-        if (lookAtEnemy.closestEnemy == null && enemiesInRoom.Count > 0)
-        {
-            lookAtEnemy.closestEnemy = enemiesInRoom[0].transform;
-        }
+        // If not looking at an enemy and there are enemies in the room, set the closest enemy
+        // to be the first enemy in the list in the room
+        //if (lookAtEnemy.closestEnemy == null && enemiesInRoom.Count > 0)
+        //{
+        //    lookAtEnemy.closestEnemy = enemiesInRoom[0].transform;
+        //}
 
+        // Set the minions spawn position to the spawn position empty game object
         minionSpawnPos = lookAtEnemy.transform.GetChild(0).position;
 
         //-----------------------------------------------------------
@@ -74,7 +82,7 @@ public class SlimeSplit : MonoBehaviour
             {
                 if (minionsLeft > 0)
                 {
-                    GameObject newMinion = singleAttack.OnSplit();
+                    singleAttack.OnSplit();
                 }
             }
             // Dash Split

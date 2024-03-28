@@ -41,6 +41,7 @@ public class DashSplit : MonoBehaviour
     {
         GameObject minion = Instantiate(controller.minionPrefab);
         minion.transform.position = pos;
+        minion.transform.parent = controller.transform;
     }
 
     public IEnumerator Dash()

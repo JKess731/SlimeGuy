@@ -18,10 +18,13 @@ public class RoomTriggerSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        roomTriggerControl.SpawnEnemies(roomTriggerControl.spawners);
-        transform.gameObject.SetActive(false);
-        health.currentRoom = roomTriggerControl;
+        if (other.tag == "player")
+        {
+            roomTriggerControl.SpawnEnemies(roomTriggerControl.spawners);
+            transform.gameObject.SetActive(false);
+            health.currentRoom = roomTriggerControl;
 
-        EnemiesInLevel.instance.currentRoom = roomTriggerControl.gameObject;
+            EnemiesInLevel.instance.currentRoom = roomTriggerControl.gameObject;
+        }
     }
 }

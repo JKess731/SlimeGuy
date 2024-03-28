@@ -1,158 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 // Jared Kessler
 // 2/15/24 1:59 PM
 public class MinionMove : MonoBehaviour
 {
-    [SerializeField] private float minionDistanceFromEnemy = 3f;
-
+    // Player dependendencies
     private GameObject player;
-    public GameObject target = null;
+    private SlimeSplit slimeSplitControler;
 
-    private SlimeSplit playerSlimeSplit;
-    private MinionShoot minionShoot;
+    // State Manager References
+    private MinionStateManager stateManager;
+    private GameObject target;
+    private List<GameObject> enemies;
 
     // lookAtEnemy is the script on the child of the SlimeSplit game object
     private LookAtEnemy lookAtEnemy;
-    // lookAtTarget is the script on the child of the Minion game object
-    private LookAtEnemy lookAtTarget;
-    private float enemyDistance;
 
-    [HideInInspector] public bool isMovingToEnemy = false;
-    [HideInInspector] public bool isShooting = false;
 
     private void Awake()
     {
+        // Set player component references
         player = GameObject.FindWithTag("player");
-        playerSlimeSplit = GameObject.FindWithTag("slime_split").GetComponent<SlimeSplit>();
-        lookAtEnemy = playerSlimeSplit.transform.GetChild(0).GetComponent<LookAtEnemy>();
-        lookAtTarget = transform.GetChild(0).GetComponent<LookAtEnemy>();
-        minionShoot = GetComponent<MinionShoot>();
+        slimeSplitControler = GameObject.FindWithTag("slime_split").GetComponent<SlimeSplit>();
 
-        target = FindNearestEnemy();
-
-        StartCoroutine(MinionLifetime(playerSlimeSplit.lifetime));
+        // State Control references
+        stateManager = GetComponent<MinionStateManager>();
+        target = stateManager.GetTarget();
+        enemies = stateManager.GetEnemyList();
     }
 
-    void Update()
+    public void Update()
     {
-        enemyDistance = playerSlimeSplit.enemyDistance;
+        enemies = stateManager.GetEnemyList();
         if (target != null)
         {
-            lookAtTarget.closestEnemy = target.transform;
-        }
-
-        // If target is or isn't null and minion isn't moving
-        if (target == null && !isMovingToEnemy)
-        {
-            MoveToPlayer();
-        }
-        
-
-        if (isMovingToEnemy != false)
-        {
-            MoveToEnemy();
-        }
-        else
-        {
-            target = FindNearestEnemy();
+            if (Vector3.Distance(transform.position, target.transform.position) < slimeSplitControler.minionStopDistanceFromEnemy)
+            {
+                stateManager.currentState = MinionStateEnum.AttackEnemy;
+            }
         }
     }
 
-    private void MoveToPlayer()
+    public void OnMoveToPlayer()
     {
-        transform.position = Vector3.Lerp(transform.position, player.transform.position, 2 * Time.deltaTime);
-        target = FindNearestEnemy();
-    }
-
-    private void MoveToEnemy()
-    {
-        // If the enemy is destroyed find a new one
         if (target == null)
         {
-            // Remove enemy from the list if it has been destroyed
-            if (playerSlimeSplit.enemiesInRoom.Contains(target))
-            {
-                playerSlimeSplit.enemiesInRoom.Remove(target);
-            }
+            target = stateManager.FindNearestEnemy(enemies);
 
-            isMovingToEnemy = false;
-        }
-        else
-        {
-            if (!isShooting)
-            {
-                if (Vector3.Distance(transform.position, target.transform.position) > minionDistanceFromEnemy)
-                {
-                    transform.position = Vector3.Lerp(transform.position, target.transform.position, 2 * Time.deltaTime);
-                }
-                else
-                {
-                    StartCoroutine(minionShoot.Shoot());
-                }
-            }
-        }
-    }
-
-
-    public GameObject FindNearestEnemy()
-    {
-        List<GameObject> nullEnemies = new List<GameObject>();
-        GameObject target = null;
-        List<GameObject> enemies = playerSlimeSplit.enemiesInRoom;
-
-        foreach (GameObject enemy in enemies)
-        {
-            if (enemy != null)
-            {
-                // Check the distance of the player to the checking enemy, if no enemy selected check within the range
-                if (target == null)
-                {
-                    if (Vector3.Distance(transform.position, enemy.transform.position) <= enemyDistance)
-                    {
-                        target = enemy;
-                        lookAtEnemy.closestEnemy = target.transform;
-                    }
-                }
-                // Otherwise check the distance of the current enemy against the last looked at enemy
-                else if (Vector3.Distance(transform.position, enemy.transform.position) < Vector3.Distance(transform.position, target.transform.position))
-                {
-                    target = enemy;
-                    lookAtEnemy.closestEnemy = target.transform;
-                }
-            }
+            if (target != null) stateManager.currentState = MinionStateEnum.MoveToEnemy;
             else
             {
-                // Enemies that are in the enemiesInRoom list but are null need to be removed from the list
-                nullEnemies.Add(enemy);
+                transform.position = Vector3.Lerp(transform.position, player.transform.position, stateManager.moveSpeed * Time.deltaTime);
             }
-
         }
-
-        foreach (GameObject gameObj in nullEnemies)
-        {
-            enemies.Remove(gameObj);
-        }
-
-        if (target != null)
-        {
-            isMovingToEnemy = true;
-        }
-        return target;
     }
 
-    private IEnumerator MinionLifetime(float lifetime)
+    public void OnMoveToEnemy()
     {
-        Debug.Log("SLIME SPLIT: Lifetime started");
-        // Wait the lifetime of the minion before doing anything
-        yield return new WaitForSeconds(lifetime);
+        // No enemies & no target, switch state
+        if (enemies.Count <= 0)
+        {
+            stateManager.currentState = MinionStateEnum.MoveToPlayer;
+        }
 
-        // Notify the main slime split that a minion can spawned
-        // run a function in the main slime split that starts the cooldown
-        playerSlimeSplit.StartCooldown();
-        Debug.Log("SLIME SPLIT: Lifetime ended");
-        Destroy(gameObject);
+        // If there are enemies and no target has been selected, pick a target
+        if (enemies.Count > 0 && target == null)
+        {
+            target = stateManager.FindNearestEnemy(enemies);
+        }
+
+        // If there is a target, move to it
+        if (enemies.Count > 0 && target != null)
+        {
+            transform.position = Vector3.Lerp(transform.position, target.transform.position, stateManager.moveSpeed * Time.deltaTime);
+        }
+
     }
 }

@@ -9,9 +9,7 @@ using UnityEngine;
 public class SingleAttackSplit : MonoBehaviour
 {
     private SlimeSplit controller;
-
     private GameObject minionPrefab;
-
 
     private void Awake()
     {
@@ -30,6 +28,7 @@ public class SingleAttackSplit : MonoBehaviour
         GameObject toSpawnMinion = Instantiate(minionPrefab);
 
         toSpawnMinion.transform.position = controller.minionSpawnPos;
+        toSpawnMinion.transform.parent = controller.transform;
 
         return toSpawnMinion;
     }
