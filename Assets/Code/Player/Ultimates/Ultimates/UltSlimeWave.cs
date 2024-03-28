@@ -7,7 +7,7 @@ public class UltSlimeWave : MonoBehaviour, IUltTriggerable
     // Player
     private GameObject player;
     private bool canWave = true;
-    public float activationTime { get; set; }
+    public float activationTime;
 
     // Colliders
     [SerializeField] private List<GameObject> collidersList = new List<GameObject>();
@@ -43,10 +43,7 @@ public class UltSlimeWave : MonoBehaviour, IUltTriggerable
             transform.rotation = Quaternion.Slerp(transform.rotation, angleAxis, Time.deltaTime * 50);
             #endregion
 
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                StartCoroutine(OnActivate(activationTime));
-            }
+            HandleInput();
         }
     }
 
@@ -55,9 +52,20 @@ public class UltSlimeWave : MonoBehaviour, IUltTriggerable
         HandleTriggers(collision.gameObject);
     }
 
+    public void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            StartCoroutine(OnActivate(activationTime));
+        }
+    }
+
     public void HandleTriggers(GameObject enemy)
     {
         enemySet.Add(enemy);
+        
+        // Deal Damage & Knockback
+
         Debug.Log("Enemy in Trigger");
     }
 
@@ -76,7 +84,6 @@ public class UltSlimeWave : MonoBehaviour, IUltTriggerable
 
         Debug.Log("Ult activating");
         yield return new WaitForSeconds(activationTime);
-        Debug.Log("Dealing Damage");
 
         foreach (GameObject trigger in collidersList)
         {

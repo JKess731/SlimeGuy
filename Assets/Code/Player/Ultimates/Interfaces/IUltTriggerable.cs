@@ -4,9 +4,8 @@ using UnityEngine;
 
 public interface IUltTriggerable
 {
-    public float activationTime { get; set; }
-
     void HandleTriggers(GameObject enemy);
+    void HandleInput();
 
     IEnumerator OnActivate(float activationTime);
 }
