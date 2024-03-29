@@ -7,6 +7,7 @@ public class AnimationControl : MonoBehaviour
 {
     //References
     private Animator animator;
+    private PlayerStateMachine playerStateMachine;
 
     //Animation States
     [HideInInspector] public bool isIdle;
@@ -21,6 +22,7 @@ public class AnimationControl : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+        playerStateMachine = GetComponent<PlayerStateMachine>();
     }
 
     /// <summary>
@@ -83,7 +85,6 @@ public class AnimationControl : MonoBehaviour
                 {
                     animator.Play("Player_Hit_LWhite");
                 }
-                isBeingHit = false;
             }
             else
             {
@@ -96,7 +97,6 @@ public class AnimationControl : MonoBehaviour
                 {
                     animator.Play("Player_Hit_LRed");
                 }
-                isBeingHit = false;
             }
         }
     }
@@ -112,13 +112,22 @@ public class AnimationControl : MonoBehaviour
 
     private void ChangeHitToIdle()
     {
-        isBeingHit = false;
         Debug.Log("Hit to Idle");
+        playerStateMachine.setIdle();
     }
 
     public enum DamagedColor
     {
         WHITE,
         RED
+    }
+
+    public void printStates()
+    {
+        Debug.Log("IsIdle: " + isIdle);
+        Debug.Log("IsMoving: " + isMoving);
+        Debug.Log("IsDashing: " + isDashing);
+        Debug.Log("IsAttacking: " + isAttacking);
+        Debug.Log("IsBeingHit: " + isBeingHit);
     }
 }

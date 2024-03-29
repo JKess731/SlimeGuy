@@ -29,10 +29,11 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] private float dashingCooldown = 1f;
 
     //Animation States
-    bool isIdle = false;
-    bool isMoving = false;
-    bool isDashing = false;
-    bool isAttacking = false;
+    public bool isIdle = false;
+    public bool isMoving = false;
+    public bool isDashing = false;
+    public bool isAttacking = false;
+    public bool isBeingHit = false;
 
     [SerializeField] private float speed = 10f;
 
@@ -44,6 +45,7 @@ public class PlayerStateMachine : MonoBehaviour
         //Set up initial references
         animationControl = GetComponent<AnimationControl>();
         playerInput = new PlayerInput();
+
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
         knockBack = GetComponent<KnockBack>();
@@ -157,6 +159,7 @@ public class PlayerStateMachine : MonoBehaviour
         animationControl.isIdle = isIdle;
         animationControl.isDashing = isDashing;
         animationControl.isAttacking = isAttacking;
+        animationControl.isBeingHit = isBeingHit;
 
         animationControl.PlayAnimation(faceDirection);
     }
@@ -206,6 +209,30 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Damage(int damage)
     {
+        isBeingHit = true;
+        isMoving = false;
+        isIdle = false;
+        isDashing = false;
+        isAttacking = false;
+
         playerHealth.Damage(damage);
+    }
+
+    public void setIdle()
+    {
+        StartCoroutine(IdleCoroutine());
+    }
+
+    IEnumerator IdleCoroutine()
+    {
+        DisableMovement();
+        isIdle = true;
+        isMoving = false;
+        isDashing = false;
+        isAttacking = false;
+        isBeingHit = false; 
+
+        yield return new WaitForSeconds(0.1f);
+        EnableMovement();
     }
 }

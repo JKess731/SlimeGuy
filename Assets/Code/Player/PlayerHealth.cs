@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     [SerializeField] private Vector2 spawnPos;
+
     [SerializeField] private PlayerHealthbar healthBar;
     
 
@@ -40,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         healthBar.setHealth((float) currentHealth / maxHealth);
 
-        playerAnimationControl.isBeingHit = true;
+        //playerAnimationControl.printStates();
 
         if (currentHealth <= 0)
         {

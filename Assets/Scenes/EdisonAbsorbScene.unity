@@ -5951,7 +5951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6441711385004036941, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: damageColor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_LocalPosition.x
