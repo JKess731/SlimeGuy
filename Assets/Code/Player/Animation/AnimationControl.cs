@@ -73,7 +73,6 @@ public class AnimationControl : MonoBehaviour
  
         if (isBeingHit)
         {
-            Debug.Log("Hit");
             if(damageColor == DamagedColor.WHITE)
                 {
                 if (direction.x > 0)
@@ -108,7 +107,13 @@ public class AnimationControl : MonoBehaviour
     /// </summary>
     private void AnimationEventDoNothing()
     {
-        // For animations to stop snapping
+        //Do Nothing
+    }
+
+    private void ChangeHitToIdle()
+    {
+        isBeingHit = false;
+        Debug.Log("Hit to Idle");
     }
 
     public enum DamagedColor

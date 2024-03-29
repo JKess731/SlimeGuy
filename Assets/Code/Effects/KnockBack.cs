@@ -60,6 +60,16 @@ public class KnockBack : MonoBehaviour
         isBeingKnockedBack = false;
     }
 
+    /// <summary>
+    /// Calls the knockback coroutine
+    /// @param hitDirection: The direction the player is hit
+    /// @param constantForceDirection: The constant force direction
+    /// @param inputDirection: The input direction of the player
+    /// </summary>
+    /// <param name="hitDirection"></param>
+    /// <param name="constantForceDirection"></param>
+    /// <param name="inputDirection"></param>
+    //Couroutine is a monobehavior method
     public void CallKnockback(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
     {
         knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, constantForceDirection, inputDirection));

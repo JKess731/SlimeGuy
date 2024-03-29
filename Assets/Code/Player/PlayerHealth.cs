@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     [SerializeField] private Vector2 spawnPos;
+    [SerializeField] private PlayerHealthbar healthBar;
     
 
     [HideInInspector] public RoomTriggerControl currentRoom;
@@ -22,7 +23,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
+        healthBar = GameObject.Find("HealthBar").GetComponent<PlayerHealthbar>();
+
         currentHealth = maxHealth;
+
         spawnPos = transform.position;
 
         playerAnimationControl = GetComponent<AnimationControl>();
@@ -34,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Taking Damage: " + currentHealth);
         currentHealth -= damage;
+        healthBar.setHealth((float) currentHealth / maxHealth);
 
         playerAnimationControl.isBeingHit = true;
 
@@ -57,5 +62,25 @@ public class PlayerHealth : MonoBehaviour
 
             Debug.Log("You Lose");
         }
+    }
+
+    public void Heal(int heal)
+    {
+        currentHealth += heal;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.setHealth(currentHealth);
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 }

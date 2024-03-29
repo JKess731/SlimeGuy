@@ -46,8 +46,8 @@ public class SimpleEnemyMove : MonoBehaviour
         if (collision.gameObject.CompareTag("player"))
         {
             PlayerStateMachine player = collision.gameObject.GetComponent<PlayerStateMachine>();
+            player.Damage(1);
             player.Knockback(faceDir, Vector2.up, player.GetMoveDir().x);
-            player.isBeingHit = true;
         }
     }
 }

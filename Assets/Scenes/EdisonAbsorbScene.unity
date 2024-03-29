@@ -2326,7 +2326,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1949423}
   m_HandleRect: {fileID: 0}
@@ -2350,6 +2350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170bbbc16caf79c4cbcd4063c33c714c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
 --- !u!4 &1526299735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 91190765579302560, guid: 1d30bc693a898bc41bb0026eb0edc2c2, type: 3}
@@ -5936,6 +5937,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 721982832936382186, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3138058705991477500, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: dashingTime
       value: 0.2
@@ -5943,6 +5948,10 @@ PrefabInstance:
     - target: {fileID: 3138058705991477500, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: dashingCooldown
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441711385004036941, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: damageColor
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_LocalPosition.x

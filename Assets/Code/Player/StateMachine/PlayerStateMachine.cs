@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     //References
+    PlayerHealth playerHealth;
     PlayerInput playerInput;
     AnimationControl animationControl;
 
@@ -32,14 +33,14 @@ public class PlayerStateMachine : MonoBehaviour
     bool isMoving = false;
     bool isDashing = false;
     bool isAttacking = false;
-    
-    //Bad practice to have public variables
-    public bool isBeingHit = false;
 
     [SerializeField] private float speed = 10f;
 
     private void Awake()
     {
+        //Not great
+        playerHealth = GetComponent<PlayerHealth>();
+
         //Set up initial references
         animationControl = GetComponent<AnimationControl>();
         playerInput = new PlayerInput();
@@ -74,7 +75,6 @@ public class PlayerStateMachine : MonoBehaviour
 
         HandleMovement();
         HandleAnimation();
-        
     }
 
     //Enables Input Actions
@@ -157,7 +157,6 @@ public class PlayerStateMachine : MonoBehaviour
         animationControl.isIdle = isIdle;
         animationControl.isDashing = isDashing;
         animationControl.isAttacking = isAttacking;
-        animationControl.isBeingHit = isBeingHit;
 
         animationControl.PlayAnimation(faceDirection);
     }
@@ -197,17 +196,16 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Knockback
     public void Knockback(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
     {
-        Debug.Log(isBeingHit);
-
-        isIdle = false;
-        isMoving = false;
-        isDashing = false;
-
         knockBack.CallKnockback(hitDirection, constantForceDirection, inputDirection);
     }
 
     public Vector2 GetMoveDir()
     {
         return moveVector;
+    }
+
+    public void Damage(int damage)
+    {
+        playerHealth.Damage(damage);
     }
 }
