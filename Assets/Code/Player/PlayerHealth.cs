@@ -10,38 +10,38 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    // Health Variables
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
-    [SerializeField] private Vector2 spawnPos;
+    [SerializeField] private UIManager uiManager;
 
-    [SerializeField] private PlayerHealthbar healthBar;
-    
+    // Respawn Variables
+    [SerializeField] private Vector2 spawnPos;
 
     [HideInInspector] public RoomTriggerControl currentRoom;
 
-    private AnimationControl playerAnimationControl;
-
     private void Awake()
     {
-        healthBar = GameObject.Find("HealthBar").GetComponent<PlayerHealthbar>();
+        uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
 
         currentHealth = maxHealth;
 
         spawnPos = transform.position;
-
-        playerAnimationControl = GetComponent<AnimationControl>();
     }
 
+    //Initializes the health bar && absorption bar
+    private void Start()
+    {
+        uiManager.UpdateHealthBar(currentHealth, maxHealth);
+        uiManager.UpdateAbsorptionBar(currentHealth, maxHealth);
+    }
 
     //Handles Damage
     public void Damage(int damage)
     {
-        Debug.Log("Taking Damage: " + currentHealth);
         currentHealth -= damage;
-        healthBar.setHealth((float) currentHealth / maxHealth);
-
-        //playerAnimationControl.printStates();
+        uiManager.UpdateHealthBar(currentHealth, maxHealth);
+        uiManager.UpdateAbsorptionBar(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
@@ -72,7 +72,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        healthBar.setHealth(currentHealth);
+        uiManager.UpdateHealthBar(currentHealth, maxHealth);
     }
 
     public int GetCurrentHealth()
