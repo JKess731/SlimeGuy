@@ -7,7 +7,6 @@ public class AnimationControl : MonoBehaviour
 {
     //References
     private Animator animator;
-    private PlayerStateMachine playerStateMachine;
 
     //Animation States
     private AnimationState currentState;
@@ -18,7 +17,6 @@ public class AnimationControl : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        playerStateMachine = GetComponent<PlayerStateMachine>();
     }
 
     /// <summary>

@@ -24,17 +24,21 @@ public class PlayerStateMachine : MonoBehaviour
     //Knockback Variables
     private KnockBack knockBack;
 
+    //Dash Variables
+    [Header("Dash Variables")]
     [SerializeField] private float dashingPower = 20f;
     [SerializeField] private float dashingTime = 0.5f;
     [SerializeField] private float dashingCooldown = 1f;
 
     //Animation States
-    public bool isIdle = false;
-    public bool isMoving = false;
-    public bool isDashing = false;
-    public bool isAttacking = false;
-    public bool isDamaged = false;
+    [Header("Animation States")]
+    [SerializeField] private bool isIdle = false;
+    [SerializeField] private bool isMoving = false;
+    [SerializeField] private bool isDashing = false;
+    [SerializeField] private bool isAttacking = false;
+    [SerializeField] private bool isDamaged = false;
 
+    //Player Speed
     [SerializeField] private float speed = 10f;
 
     private void Awake()
@@ -113,18 +117,16 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Movement
     private void HandleMovement()
     {
-        if (knockBack.isBeingKnockedBack)
-        {
-            return;
-        }
 
         if (dashPressed && canDash && !knockBack.isBeingKnockedBack)
         {
-            isDashing = true;
             StartCoroutine(DashCoroutine());
         }
 
-        rb.velocity = moveVector * speed;
+        if ((isIdle || isMoving) && (!isDashing && !isDamaged))
+        {
+            rb.velocity = moveVector * speed;
+        }
     }
 
     //Handles Movement Input Actions
@@ -193,7 +195,9 @@ public class PlayerStateMachine : MonoBehaviour
         //Handles Initial Dash
         DisableMovement();
         isMoving = false;
+        isDashing = true;
         canDash = false;
+
         tr.emitting = true;
         rb.velocity = faceDirection * dashingPower;
         yield return new WaitForSeconds(dashingTime);
