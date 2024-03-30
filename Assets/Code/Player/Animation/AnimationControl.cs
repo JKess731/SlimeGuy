@@ -10,11 +10,7 @@ public class AnimationControl : MonoBehaviour
     private PlayerStateMachine playerStateMachine;
 
     //Animation States
-    [HideInInspector] public bool isIdle;
-    [HideInInspector] public bool isMoving;
-    [HideInInspector] public bool isDashing;
-    [HideInInspector] public bool isAttacking;
-    [HideInInspector] public bool isBeingHit;
+    private AnimationState currentState;
 
     //Damaged Color
     [SerializeField] private DamagedColor damageColor;
@@ -31,7 +27,7 @@ public class AnimationControl : MonoBehaviour
     /// <param name="direction"></param>
     public void PlayAnimation(Vector2 direction)
     {
-        if (isIdle)
+        if (currentState == AnimationState.IDLE)
         {
             if (direction.y > 0)
             {
@@ -52,7 +48,7 @@ public class AnimationControl : MonoBehaviour
             
         }
 
-        if (isMoving)
+        if (currentState == AnimationState.MOVING)
         {
             if (direction.y > 0)
             {
@@ -73,7 +69,7 @@ public class AnimationControl : MonoBehaviour
             
         }
  
-        if (isBeingHit)
+        if (currentState == AnimationState.DAMAGED)
         {
             if(damageColor == DamagedColor.WHITE)
                 {
@@ -101,7 +97,10 @@ public class AnimationControl : MonoBehaviour
         }
     }
 
-
+    public void SetState(AnimationState state)
+    {
+        currentState = state;
+    }
     /// <summary>
     /// Used to stop animations from snapping, using AnimtionEvents
     /// </summary>
@@ -109,25 +108,17 @@ public class AnimationControl : MonoBehaviour
     {
         //Do Nothing
     }
-
-    private void ChangeHitToIdle()
+    
+    //Debugging states purposes
+    public void printStates()
     {
-        Debug.Log("Hit to Idle");
-        playerStateMachine.setIdle();
+        Debug.Log("Current state:" + currentState);
     }
 
+    //Damaged Color Enum for Damaged Animation
     public enum DamagedColor
     {
         WHITE,
         RED
-    }
-
-    public void printStates()
-    {
-        Debug.Log("IsIdle: " + isIdle);
-        Debug.Log("IsMoving: " + isMoving);
-        Debug.Log("IsDashing: " + isDashing);
-        Debug.Log("IsAttacking: " + isAttacking);
-        Debug.Log("IsBeingHit: " + isBeingHit);
     }
 }

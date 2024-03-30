@@ -74,14 +74,10 @@ public class PlayerMove : MonoBehaviour
     private void OnMovement(InputAction.CallbackContext value)
     {
         moveVector = value.ReadValue<Vector2>();
-        animControl.isMoving = true;
-        animControl.isIdle = false;
     }
 
     private void OnMovementCancel(InputAction.CallbackContext value)
     {
         moveVector = Vector2.zero;
-        animControl.isMoving = false;
-        animControl.isIdle = true;
     }
 }

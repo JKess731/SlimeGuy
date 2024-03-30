@@ -33,7 +33,7 @@ public class PlayerStateMachine : MonoBehaviour
     public bool isMoving = false;
     public bool isDashing = false;
     public bool isAttacking = false;
-    public bool isBeingHit = false;
+    public bool isDamaged = false;
 
     [SerializeField] private float speed = 10f;
 
@@ -64,17 +64,6 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Movement and Animation
     private void FixedUpdate()
     {
-        if(knockBack.isBeingKnockedBack)
-        {
-            return;
-        }
-
-        if (dashPressed && canDash && !knockBack.isBeingKnockedBack)
-        {
-            isDashing = true;
-            StartCoroutine(DashCoroutine());
-        }
-
         HandleMovement();
         HandleAnimation();
     }
@@ -124,9 +113,15 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Movement
     private void HandleMovement()
     {
-        if (isDashing)
+        if (knockBack.isBeingKnockedBack)
         {
             return;
+        }
+
+        if (dashPressed && canDash && !knockBack.isBeingKnockedBack)
+        {
+            isDashing = true;
+            StartCoroutine(DashCoroutine());
         }
 
         rb.velocity = moveVector * speed;
@@ -155,11 +150,30 @@ public class PlayerStateMachine : MonoBehaviour
     /// </summary>
     private void HandleAnimation()
     {
-        animationControl.isMoving = isMoving;
-        animationControl.isIdle = isIdle;
-        animationControl.isDashing = isDashing;
-        animationControl.isAttacking = isAttacking;
-        animationControl.isBeingHit = isBeingHit;
+        if(isIdle)
+        {
+            animationControl.SetState(AnimationState.IDLE);
+        }
+
+        if(isMoving)
+        {
+            animationControl.SetState(AnimationState.MOVING);
+        }
+
+        if(isDashing)
+        {
+            animationControl.SetState(AnimationState.DASHING);
+        }
+
+        if(isAttacking)
+        {
+            animationControl.SetState(AnimationState.ATTACKING);
+        }
+
+        if(isDamaged)
+        {
+            animationControl.SetState(AnimationState.DAMAGED);
+        }
 
         animationControl.PlayAnimation(faceDirection);
     }
@@ -209,7 +223,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Damage(int damage)
     {
-        isBeingHit = true;
+        isDamaged = true;
         isMoving = false;
         isIdle = false;
         isDashing = false;
@@ -218,21 +232,12 @@ public class PlayerStateMachine : MonoBehaviour
         playerHealth.Damage(damage);
     }
 
-    public void setIdle()
+    private void SetIdleEvent()
     {
-        StartCoroutine(IdleCoroutine());
-    }
-
-    IEnumerator IdleCoroutine()
-    {
-        DisableMovement();
         isIdle = true;
         isMoving = false;
         isDashing = false;
         isAttacking = false;
-        isBeingHit = false; 
-
-        yield return new WaitForSeconds(0.1f);
-        EnableMovement();
+        isDamaged = false;
     }
 }
