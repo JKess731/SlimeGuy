@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltSlimeWave : MonoBehaviour, IUltTriggerable
+public class UltSlimeWave : MonoBehaviour, IAttackTriggerable
 {
     // Player
     private GameObject player;

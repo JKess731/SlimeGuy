@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltSlimePush : MonoBehaviour, IUltTriggerable
+public class UltSlimePush : MonoBehaviour, IAttackTriggerable
 {
     private GameObject player;
 

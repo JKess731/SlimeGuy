@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltSlimeWhip : MonoBehaviour, IUltTriggerable
+public class UltSlimeWhip : MonoBehaviour, IAttackTriggerable
 {
     public float activationTime;
 
