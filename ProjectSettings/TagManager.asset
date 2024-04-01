@@ -12,6 +12,7 @@ TagManager:
   - trigger_child
   - slime_split
   - wall
+  - attack_point_transform
   layers:
   - Default
   - TransparentFX
