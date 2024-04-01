@@ -12,6 +12,7 @@ TagManager:
   - trigger_child
   - slime_split
   - wall
+  - attack_point_transform
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2137300007
+    locked: 0
+  - name: Attacks Above Player
+    uniqueID: 1479101705
     locked: 0

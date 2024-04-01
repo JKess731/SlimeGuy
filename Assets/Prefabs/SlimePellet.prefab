@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4985747929611648509}
   m_Layer: 10
   m_Name: SlimePellet
-  m_TagString: Untagged
+  m_TagString: attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

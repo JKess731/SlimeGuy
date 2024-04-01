@@ -17,6 +17,6 @@ public class SlimeSplitEditor : Editor
         slimeSplit.minionCounter = EditorGUILayout.IntSlider(slimeSplit.minionCounter, 1, 10); ;
 
         GUILayout.Label("--- Range Distance ---");
-        slimeSplit.enemyDistance = EditorGUILayout.IntSlider(slimeSplit.enemyDistance, 3, 20); ;
+        slimeSplit.enemyDistance = EditorGUILayout.Slider(slimeSplit.enemyDistance, 3, 20); ;
     }
 }

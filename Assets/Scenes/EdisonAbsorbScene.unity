@@ -6619,9 +6619,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8133810901862723262}
-    - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8133810901862723276}
   m_SourcePrefab: {fileID: 100100000, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
 --- !u!1 &8133810901862723261 stripped
 GameObject:
@@ -6644,28 +6641,6 @@ MonoBehaviour:
   hitDirectionForce: 10
   constForce: 5
   inputForce: 7.5
---- !u!114 &8133810901862723276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8133810901862723261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c65027d985656114bb9e35110a7a4e14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  faceDirection: {x: 0, y: 0}
-  dashingPower: 20
-  dashingTime: 0.2
-  dashingCooldown: 0.2
-  isIdle: 0
-  isMoving: 0
-  isDashing: 0
-  isAttacking: 0
-  isDamaged: 0
-  speed: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6675,5 +6650,5 @@ SceneRoots:
   - {fileID: 8133810901862723260}
   - {fileID: 92834813}
   - {fileID: 2044602435}
-  - {fileID: 742430269}
   - {fileID: 734827527}
+  - {fileID: 742430269}

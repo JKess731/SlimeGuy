@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8637422405196468283}
   - component: {fileID: 4898402769832709564}
   - component: {fileID: -8686753083301956358}
+  - component: {fileID: 6314471143389579174}
   - component: {fileID: 3207143329003296661}
   - component: {fileID: 6482475836402687126}
   m_Layer: 0
@@ -161,6 +162,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6314471143389579174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74088980676390564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a995f96138f6504aabae033a34ec111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  slimeSplitController: {fileID: 0}
+  minionsMovement: {fileID: 0}
+  minionShoot: {fileID: 0}
+  lookDistance: 8
+  moveSpeed: 2
 --- !u!114 &3207143329003296661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,10 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20409cabf7b3ba54ba5642d030b380e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minionDistanceFromEnemy: 3
-  target: {fileID: 0}
-  isMovingToEnemy: 0
-  isShooting: 0
 --- !u!114 &6482475836402687126
 MonoBehaviour:
   m_ObjectHideFlags: 0
