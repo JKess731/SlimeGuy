@@ -71,8 +71,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         stateMachine.currentEnemyState.PhysicsUpdate();
     }
 
-
-
     #region Health Die Functions
     public void Damage(float damageAmount)
     {
@@ -85,7 +83,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void Die()
     {
-        
+        Destroy(gameObject);
     }
 
     #endregion
@@ -140,4 +138,12 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         isWithinStikingDistance = isStrikingDistance_;
     }
     #endregion
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "attack")
+        {
+            Damage(10f);
+        }
+    }
 }
