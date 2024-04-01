@@ -63,12 +63,12 @@ public class UltSlimePush : MonoBehaviour, IAttackTriggerable
 
         //Disable player movement
         PlayerMove input = player.GetComponent<PlayerMove>();
-        input.input.Disable();
+        //input.input.Disable();
 
         yield return new WaitForSeconds(activationTime);
 
         //Enable player movement
-        input.input.Enable();
+        //input.input.Enable();
 
         canPush = true;
         isPushing = false;
