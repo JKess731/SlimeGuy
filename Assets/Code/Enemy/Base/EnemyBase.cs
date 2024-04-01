@@ -85,6 +85,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void Die()
     {
+        Destroy(gameObject);
         
     }
 
