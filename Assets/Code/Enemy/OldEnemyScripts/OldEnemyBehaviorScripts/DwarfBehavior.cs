@@ -140,10 +140,6 @@ public class DwarfBehavior : MonoBehaviour
         attacking = false;
         RestartAttackCounter();
         AttackNotColliding();
-
-
-
-
     }
     //---------------------------------------------------------------------------------------------------------------------------
     //THIS HANDLES COROUTINE FOR THROWING THE BOOMERANG. FROM EnemyAttackThrowBommerang SCRIPT.
