@@ -1,112 +1,122 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
 
 public class AnimationControl : MonoBehaviour
 {
-    [HideInInspector] public bool isMoving;
-    [HideInInspector] public bool isBeingHit;
-
+    //References
     private Animator animator;
-    public AnimState currentState;
-    private PlayerMove playerMove;
 
-    // Start is called before the first frame update
+    //Animation States
+    private AnimationState currentState;
+
+    //Damaged Color
+    [SerializeField] private DamagedColor damageColor;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
-        playerMove = GetComponent<PlayerMove>();
     }
 
-    private void Update()
-    {        
-        switch (currentState)
-        {
-            case AnimState.IDLE_LEFT:
-                animator.Play("Player_Idle_LFacing");
-                break;
-            case AnimState.IDLE_RIGHT:
-                animator.Play("Player_Idle_RFacing");
-                break;
-            case AnimState.IDLE_UP:
-                animator.Play("Player_Idle_UFacing");
-                break;
-            case AnimState.IDLE_DOWN:
-                animator.Play("Player_Idle_DFacing");
-                break;
-            case AnimState.MOVE_LEFT:
-                animator.Play("Player_Move_LFacing");
-                break;
-            case AnimState.MOVE_RIGHT:
-                animator.Play("Player_Move_RFacing");
-                break;
-            case AnimState.MOVE_UP:
-                animator.Play("Player_Move_UFacing");
-                break;
-            case AnimState.MOVE_DOWN:
-                animator.Play("Player_Move_DFacing");
-                break;
-            case AnimState.HIT_LEFT_WHITE:
-                animator.Play("Player_Hit_LWhite");
-                break;
-            case AnimState.HIT_RIGHT_WHITE:
-                animator.Play("Player_Hit_RWhite");
-                break;
-            case AnimState.HIT_LEFT_RED:
-                animator.Play("Player_Hit_LRed");
-                break;
-            case AnimState.HIT_RIGHT_RED:
-                animator.Play("Player_Hit_RRed");
-                break;
-        }
-    }
-
-    private void ChangeHitToIdle()
+    /// <summary>
+    /// Plays the animation based on the direction the player is facing and the state of the player
+    /// </summary>
+    /// <param name="direction"></param>
+    public void PlayAnimation(Vector2 direction)
     {
-        if (playerMove.directionX > 0)
+        if (currentState == AnimationState.IDLE)
         {
-            currentState = AnimState.IDLE_LEFT;
-        }
-        else if (playerMove.directionX < 0)
-        {
-            currentState = AnimState.IDLE_RIGHT;
-        }
-        else
-        {
-            if (playerMove.directionY > 0)
+            if (direction.y > 0)
             {
-                currentState = AnimState.IDLE_UP;
+                animator.Play("Player_Idle_UFacing");
             }
-            else if (playerMove.directionY < 0)
+            else if (direction.y < 0)
             {
-                currentState = AnimState.IDLE_DOWN;
+                animator.Play("Player_Idle_DFacing");
+            }
+            else if (direction.x > 0)
+            {
+                animator.Play("Player_Idle_RFacing");
+            }
+            else if (direction.x < 0)
+            {
+                animator.Play("Player_Idle_LFacing");
+            }
+            
+        }
+
+        if (currentState == AnimationState.MOVING)
+        {
+            if (direction.y > 0)
+            {
+                animator.Play("Player_Move_UFacing");
+            }
+            else if (direction.y < 0)
+            {
+                animator.Play("Player_Move_DFacing");
+            }
+            else if (direction.x > 0)
+            {
+                animator.Play("Player_Move_RFacing");
+            }
+            else if (direction.x < 0)
+            {
+                animator.Play("Player_Move_LFacing");
+            }
+            
+        }
+ 
+        if (currentState == AnimationState.DAMAGED)
+        {
+            if(damageColor == DamagedColor.WHITE)
+                {
+                if (direction.x > 0)
+                {
+                    animator.Play("Player_Hit_RWhite");
+                }
+                else
+                {
+                    animator.Play("Player_Hit_LWhite");
+                }
+            }
+            else
+            {
+                if (direction.x > 0)
+                {
+                    animator.Play("Player_Hit_RRed");
+
+                }
+                else
+                {
+                    animator.Play("Player_Hit_LRed");
+                }
             }
         }
     }
 
-
+    public void SetState(AnimationState state)
+    {
+        currentState = state;
+    }
     /// <summary>
     /// Used to stop animations from snapping, using AnimtionEvents
     /// </summary>
     private void AnimationEventDoNothing()
     {
-        // For animations to stop snapping
+        //Do Nothing
     }
-}
+    
+    //Debugging states purposes
+    public void printStates()
+    {
+        Debug.Log("Current state:" + currentState);
+    }
 
-public enum AnimState
-{
-    IDLE_LEFT,
-    IDLE_RIGHT,
-    IDLE_UP,
-    IDLE_DOWN,
-    MOVE_LEFT,
-    MOVE_RIGHT,
-    MOVE_UP,
-    MOVE_DOWN,
-    HIT_LEFT_WHITE,
-    HIT_RIGHT_WHITE,
-    HIT_LEFT_RED,
-    HIT_RIGHT_RED
+    //Damaged Color Enum for Damaged Animation
+    public enum DamagedColor
+    {
+        WHITE,
+        RED
+    }
 }

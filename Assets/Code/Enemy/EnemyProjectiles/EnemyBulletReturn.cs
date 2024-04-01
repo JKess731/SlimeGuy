@@ -37,7 +37,11 @@ public class EnemyBulletReturn : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             collision.gameObject.GetComponent<PlayerHealth>().Damage(bulletDamage);
-            enemy.GetComponent<DwarfBehavior>().RestartAttackCounter();
+            if (enemy != null)
+            {
+                enemy.GetComponent<DwarfBehavior>().RestartAttackCounter();
+
+            }
             Debug.Log("Bullet dmg");
             Destroy(gameObject);
         }
@@ -65,6 +69,11 @@ public class EnemyBulletReturn : MonoBehaviour
             yield return null;
 
         }
-        enemy.GetComponent<DwarfBehavior>().RestartAttackCounter();
+        if (enemy != null) {
+            enemy.GetComponent<DwarfBehavior>().RestartAttackCounter();
+
+        }
+        Destroy(gameObject);
+        
     }
 }

@@ -487,8 +487,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   health: 3
-  attackDamage: 2
-  speed: 2
   defense: 1
   dangerLevel: 2
 --- !u!114 &1579437973478685166
@@ -504,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 2
+  speed: 5
   distanceBetween: 25
   stop: 6
 --- !u!114 &5576152204602481358
