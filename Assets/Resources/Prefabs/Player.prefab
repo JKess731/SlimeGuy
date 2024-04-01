@@ -228,10 +228,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 6359139107008641216}
-  projectile: {fileID: 4833602960537618009, guid: d1d50472f734b6c4d80f67aaa73b313c, type: 3}
-  bulletCount: 10
+  projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
+  bulletCount: 3
   spread: 10
-  fireRate: 0.1
+  fireRate: 0.5
   ring: {fileID: 2080989293142158726}
 --- !u!114 &428084628684688605
 MonoBehaviour:
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 5302479371234029580}
   m_Layer: 6
   m_Name: Slime Split
-  m_TagString: Untagged
+  m_TagString: slime_split
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -775,9 +775,6 @@ MonoBehaviour:
   dashAbsorb: 0
   absorbDash: {fileID: 5894164332348149983}
   absorbClick: {fileID: 6425857033223355587}
-  playerMove: {fileID: 2252183450457289478}
-  rb: {fileID: 3256424544208323031}
-  tr: {fileID: 4898250958995919665}
 --- !u!114 &1812752525382855131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,7 +902,6 @@ GameObject:
   - component: {fileID: 7407095389853606614}
   - component: {fileID: 1499401507028251260}
   - component: {fileID: 3256424544208323031}
-  - component: {fileID: 2252183450457289478}
   - component: {fileID: 4898250958995919665}
   - component: {fileID: 8722994623963178404}
   - component: {fileID: 2773545339210776950}
@@ -913,6 +909,8 @@ GameObject:
   - component: {fileID: 2286926643201842907}
   - component: {fileID: 4327921851085568936}
   - component: {fileID: 721982832936382186}
+  - component: {fileID: 940243701078917196}
+  - component: {fileID: 992569523923328154}
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -1032,23 +1030,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2252183450457289478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf23db7af2cecb448d84e640ec07a68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  isDashing: 0
-  playerFaceDirection: {x: 0, y: 0}
-  directionX: 0
-  directionY: 0
 --- !u!96 &4898250958995919665
 TrailRenderer:
   serializedVersion: 3
@@ -1240,9 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079ebac280211f74c97ec2ba6614cf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoving: 0
-  isBeingHit: 0
-  currentState: 0
+  damageColor: 1
 --- !u!114 &2286926643201842907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,9 +1277,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284721d4264ff574eaf05ddacab6d365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   maxHealth: 25
   currentHealth: 25
+  uiManager: {fileID: 0}
   spawnPos: {x: 0, y: 0}
-  whiteHitAnimation: 0
   currentRoom: {fileID: 0}
+--- !u!114 &940243701078917196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9874ece03a58ca14da08bdbf145ee69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.5
+  hitDirectionForce: 10
+  constForce: 5
+  inputForce: 7.5
+--- !u!114 &992569523923328154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030121839249631364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c65027d985656114bb9e35110a7a4e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceDirection: {x: 0, y: 0}
+  dashingPower: 20
+  dashingTime: 0.2
+  dashingCooldown: 0.2
+  isIdle: 0
+  isMoving: 0
+  isDashing: 0
+  isAttacking: 0
+  isDamaged: 0
+  speed: 10

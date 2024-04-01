@@ -41,22 +41,13 @@ public class EnemyAttackSlam : MonoBehaviour
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Player")
-        {
-            enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
-
-            attackCon = false;
-        }
-    }
-
     IEnumerator AttackingContinue() {
         while (attackCon == true) {
             yield return new WaitForSeconds(attackDelay/2);
             ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(attackDelay/2);
-            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            player.GetComponentInParent<PlayerHealth>().Damage(damage);
+            ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;            
+            player.GetComponentInParent<PlayerHealth>().Damage(damage);
             StartCoroutine(PlayerStunned());
         }
         

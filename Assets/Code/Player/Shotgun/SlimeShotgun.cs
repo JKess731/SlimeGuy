@@ -8,7 +8,7 @@ public class SlimeShotgun : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject projectile;
 
-    [SerializeField] private int bulletCount = 5;
+    [SerializeField] private int bulletCount = 3;
     [SerializeField] private float spread = 30;
     [SerializeField] private float fireRate = 0.1f;
     [SerializeField] private LookAtMouse ring;
@@ -34,7 +34,7 @@ public class SlimeShotgun : MonoBehaviour
 
     private void Shoot()  
     {
-        float angleDiff = spread * 2 / bulletCount;
+        float angleDiff = spread * 2 / (bulletCount - 1);
 
         for (int i = 0; i < bulletCount; i++)
         {

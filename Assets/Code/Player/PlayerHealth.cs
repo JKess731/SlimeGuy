@@ -10,63 +10,43 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    // Health Variables
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
+    [SerializeField] private UIManager uiManager;
+
+    // Respawn Variables
     [SerializeField] private Vector2 spawnPos;
-    [SerializeField] private bool whiteHitAnimation;
 
     [HideInInspector] public RoomTriggerControl currentRoom;
 
-    private AnimationControl playerAnimationControl;
-    private PlayerMove playerMovement;
-
     private void Awake()
     {
-        currentHealth = maxHealth;
-        spawnPos = transform.position;
+        uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
 
-        playerAnimationControl = GetComponent<AnimationControl>();
-        playerMovement = GetComponent<PlayerMove>();
+        currentHealth = maxHealth;
+
+        spawnPos = transform.position;
     }
 
+    //Initializes the health bar && absorption bar
+    private void Start()
+    {
+        uiManager.UpdateHealthBar(currentHealth, maxHealth);
+        uiManager.UpdateAbsorptionBar(currentHealth, maxHealth);
+    }
 
     //Handles Damage
     public void Damage(int damage)
     {
-        Debug.Log("Taking Damage: " + currentHealth);
         currentHealth -= damage;
-
-        playerAnimationControl.isBeingHit = true;
-
-        if (whiteHitAnimation)
-        {
-            if (playerMovement.directionX > 0)
-            {
-                playerAnimationControl.currentState = AnimState.HIT_RIGHT_WHITE;
-            }
-            else
-            {
-                playerAnimationControl.currentState = AnimState.HIT_LEFT_WHITE;
-            }
-        }
-        else
-        {
-            if (playerMovement.directionX > 0)
-            {
-                playerAnimationControl.currentState = AnimState.HIT_RIGHT_RED;
-            }
-            else
-            {
-                playerAnimationControl.currentState = AnimState.HIT_LEFT_RED;
-            }
-        }
+        uiManager.UpdateHealthBar(currentHealth, maxHealth);
+        uiManager.UpdateAbsorptionBar(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
             
             transform.position = spawnPos;
-            playerMovement.input.Enable();
             currentHealth = maxHealth;
 
             foreach (GameObject enemy in currentRoom.spawnedEnemies)
@@ -77,13 +57,31 @@ public class PlayerHealth : MonoBehaviour
             // Clear the list
             currentRoom.spawnedEnemies.Clear();
 
-            playerAnimationControl.currentState = AnimState.IDLE_LEFT;
-
             // Re-activate triggers in the room
             // ONE ROOM TESTING ONLY
             currentRoom.triggerParentGameObject.SetActive(true);
 
             Debug.Log("You Lose");
         }
+    }
+
+    public void Heal(int heal)
+    {
+        currentHealth += heal;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        uiManager.UpdateHealthBar(currentHealth, maxHealth);
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 }

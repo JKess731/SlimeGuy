@@ -8,6 +8,7 @@ public class RoomTriggerControl : MonoBehaviour
     [SerializeField] public List<GameObject> spawners = new List<GameObject>();
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
     [SerializeField] public bool manual;
+    [SerializeField] public bool triggerSpawner = true;
 
     [HideInInspector] public int dangerLevel = 5;
     [HideInInspector] public List<GameObject> spawnedEnemies = new List<GameObject>();
