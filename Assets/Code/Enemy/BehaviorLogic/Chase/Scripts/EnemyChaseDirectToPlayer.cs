@@ -15,7 +15,6 @@ public class EnemyChaseDirectToPlayer : EnemyChaseSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        Debug.Log("EnterChaseToPlayer");
     }
 
     public override void DoExitLogic()

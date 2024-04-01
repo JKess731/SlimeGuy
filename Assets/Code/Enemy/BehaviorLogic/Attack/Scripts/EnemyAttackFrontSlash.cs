@@ -10,6 +10,7 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     [SerializeField] private Transform attackPoint;
     [SerializeField] private int frontSlashDamage;
     [SerializeField] private float frontSlashAttackDelay;
+    public GameObject ring;
     private float timer;
     private float exitTimer;
 
@@ -23,6 +24,7 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     {
         base.DoEnterLogic();
         attackPoint = enemy.transform.GetChild(2).GetChild(0);
+        ring = enemy.transform.GetChild(2).gameObject;
         
     }
 
@@ -40,6 +42,12 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
             timer = 0f;
             GameObject slash = GameObject.Instantiate(slashTriggerPrefab, attackPoint.position, Quaternion.identity);
             enemy.stateMachine.ChangeState(enemy.chaseState);
+        }
+        if (timer < frontSlashAttackDelay)
+        {
+            Vector3 rotation = playerTransform.position - ring.transform.position;
+            float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
         }
         timer += Time.deltaTime;
         
