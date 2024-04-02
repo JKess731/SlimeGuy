@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 20
   bulletDamage: 1
+  KnockbackPower: 1
 --- !u!58 &4985747929611648509
 CircleCollider2D:
   m_ObjectHideFlags: 0

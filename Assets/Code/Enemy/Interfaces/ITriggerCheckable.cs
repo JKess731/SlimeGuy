@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngineInternal;
 
+// ITriggerCheckable interface for all trigger checkable objects
 public interface ITriggerCheckable
 {
     bool isAggroed { get; set; }

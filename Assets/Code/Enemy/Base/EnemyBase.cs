@@ -6,29 +6,31 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckable
 {
     [field: SerializeField] public float maxHealth { get; set; } = 100f;
-
     public float currentHealth { get; set; }
     public Rigidbody2D RB { get; set; }
     public bool isFacingRight { get; set; } = true;
-
-    private KnockBack knockBack;        // Knockback script
-    private SimpleFalsh damageFlash;    // Flash script
-
+    
+    //The types of states the enemy can be in
     #region State Machine Variables
     public EnemyStateMachine stateMachine { get; set; }
     public EnemyIdleState idleState { get; set; }
     public EnemyChaseState chaseState { get; set; }
     public EnemyAttackState attackState { get; set; }
+    public EnemyDamagedState damagedState { get; set; }
     #endregion
 
+    //The scriptable objects that hold the base logic for the enemy
     #region Scriptable Objects Variables
     [SerializeField] private EnemyIdleSOBase enemyIdleBase;
     [SerializeField] private EnemyChaseSOBase enemyChaseBase;
     [SerializeField] private EnemyAttackSOBase enemyAttackBase;
+    [SerializeField] private EnemyDamagedSOBase enemyDamagedBase;
 
+    //The instances of the scriptable objects 
     public EnemyIdleSOBase enemyIdleBaseInstance { get; set; }
     public EnemyChaseSOBase enemyChaseBaseInstance { get; set; }
     public EnemyAttackSOBase enemyAttackBaseInstance { get; set; }
+    public EnemyDamagedSOBase enemyDamagedBaseInstance { get; set; }
     #endregion
 
     #region Idle Variables
@@ -38,6 +40,9 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public bool isAggroed { get; set; }
     public bool isWithinStikingDistance { get; set; }
     #endregion
+
+    public KnockBack knockBack { get; private set; }    // Knockback script
+    private SimpleFalsh damageFlash;                  // Flash script
 
     private void Awake()
     {
@@ -49,6 +54,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         enemyIdleBaseInstance = Instantiate(enemyIdleBase);
         enemyChaseBaseInstance = Instantiate(enemyChaseBase);
         enemyAttackBaseInstance = Instantiate(enemyAttackBase);
+        enemyDamagedBaseInstance = Instantiate(enemyDamagedBase);
 
         //Instantiate State Machine
         stateMachine = new EnemyStateMachine();
@@ -57,6 +63,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         idleState = new EnemyIdleState(this, stateMachine);
         chaseState = new EnemyChaseState(this, stateMachine);
         attackState = new EnemyAttackState(this, stateMachine);
+        damagedState = new EnemyDamagedState(this, stateMachine);
     }
 
     private void Start()
@@ -67,12 +74,17 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         enemyIdleBaseInstance.Initialize(gameObject, this);
         enemyChaseBaseInstance.Initialize(gameObject, this);
         enemyAttackBaseInstance.Initialize(gameObject, this);
+        enemyDamagedBaseInstance.Initialize(gameObject, this);
 
         stateMachine.Initialize(idleState);
     }
 
     private void Update()
     {
+        if (knockBack.isBeingKnockedBack)
+        {
+            return;
+        }
         stateMachine.currentEnemyState.FrameUpdate();
     }
 
@@ -105,7 +117,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         RB.velocity = velocity;
         CheckLeftOrRightFacing(velocity);
-        
     }
 
     public void CheckLeftOrRightFacing(Vector2 velocity)

@@ -30,6 +30,8 @@ public class KnockBack : MonoBehaviour
 
         _hitForce = hitDirection * hitDirectionForce;
         _constantForce = constantForceDirection * constForce;
+        
+        isBeingKnockedBack = true;
 
         float _elapedTimer = 0;
         while (_elapedTimer < knockBackTime)
@@ -54,6 +56,7 @@ public class KnockBack : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
+        isBeingKnockedBack = false;
     }
 
     /// <summary>
