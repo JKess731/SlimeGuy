@@ -35,6 +35,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public bool isWithinStikingDistance { get; set; }
     #endregion
 
+    public Animator animator;
+
     private void Awake()
     {
         enemyIdleBaseInstance = Instantiate(enemyIdleBase);
@@ -76,15 +78,17 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region Health Die Functions
     public void Damage(float damageAmount)
     {
+        animator.SetBool("Hit", true);
         currentHealth -= damageAmount;
         if (currentHealth <= 0f) {
             Die();
-        
         }
+        animator.SetBool("Hit", false);
     }
 
     public void Die()
     {
+        animator.SetBool("Death", true);
         Destroy(gameObject);
         
     }
@@ -104,14 +108,14 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         if (isFacingRight && velocity.x < 0f)
         {
-            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
             isFacingRight = !isFacingRight;
+            animator.SetBool("FacingLeft", true);
+            Debug.Log(animator.GetBool("FacingLeft"));
         }
         else if (!isFacingRight && velocity.x > 0f) {
-            Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
             isFacingRight = !isFacingRight;
+            animator.SetBool("FacingLeft", false);
+            Debug.Log(animator.GetBool("FacingLeft"));
         }
     }
 
