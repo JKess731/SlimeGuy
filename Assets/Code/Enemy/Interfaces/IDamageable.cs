@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    void Damage(float damageAmount);
+    void Damage(float damageAmount, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection, float inputDirection);
 
     void Die();
 

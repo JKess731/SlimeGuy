@@ -7,6 +7,8 @@ public class SimpleEnemyMove : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float speed;
+    [SerializeField] private float knockBackPower;
+
     private KnockBack KnockBack;
 
     private Rigidbody2D rb;
@@ -46,8 +48,7 @@ public class SimpleEnemyMove : MonoBehaviour
         if (collision.gameObject.CompareTag("player"))
         {
             PlayerStateMachine player = collision.gameObject.GetComponent<PlayerStateMachine>();
-            player.Damage(1);
-            player.Knockback(faceDir, Vector2.up, player.GetMoveDir().x);
+            player.Damage(1, faceDir, knockBackPower, Vector2.up, player.GetMoveDir().x);
         }
     }
 }

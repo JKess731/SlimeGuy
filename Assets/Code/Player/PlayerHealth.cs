@@ -45,7 +45,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            
             transform.position = spawnPos;
             currentHealth = maxHealth;
 

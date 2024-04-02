@@ -6,9 +6,13 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckable
 {
     [field: SerializeField] public float maxHealth { get; set; } = 100f;
+
     public float currentHealth { get; set; }
     public Rigidbody2D RB { get; set; }
     public bool isFacingRight { get; set; } = true;
+
+    private KnockBack knockBack;        // Knockback script
+    private SimpleFalsh damageFlash;    // Flash script
 
     #region State Machine Variables
     public EnemyStateMachine stateMachine { get; set; }
@@ -37,15 +41,22 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     private void Awake()
     {
+        //Get Knockback and Flash Scripts
+        knockBack = GetComponent<KnockBack>();
+        damageFlash = GetComponent<SimpleFalsh>();
+
+        //Instantiate Scriptable Objects
         enemyIdleBaseInstance = Instantiate(enemyIdleBase);
         enemyChaseBaseInstance = Instantiate(enemyChaseBase);
         enemyAttackBaseInstance = Instantiate(enemyAttackBase);
 
+        //Instantiate State Machine
         stateMachine = new EnemyStateMachine();
+
+        //Instantiate enemy states into State Machine
         idleState = new EnemyIdleState(this, stateMachine);
         chaseState = new EnemyChaseState(this, stateMachine);
         attackState = new EnemyAttackState(this, stateMachine);
-
     }
 
     private void Start()
@@ -72,12 +83,13 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     }
 
     #region Health Die Functions
-    public void Damage(float damageAmount)
+    public void Damage(float damageAmount, Vector2 hitDirection, float hitforce, Vector2 constantForceDirection, float inputDirection)
     {
+        damageFlash.Flash();
         currentHealth -= damageAmount;
+        knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection, 0);
         if (currentHealth <= 0f) {
             Die();
-        
         }
     }
 
@@ -138,12 +150,4 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         isWithinStikingDistance = isStrikingDistance_;
     }
     #endregion
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "attack")
-        {
-            Damage(10f);
-        }
-    }
 }

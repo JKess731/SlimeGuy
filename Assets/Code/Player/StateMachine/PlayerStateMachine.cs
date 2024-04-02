@@ -214,18 +214,14 @@ public class PlayerStateMachine : MonoBehaviour
         canDash = true;
     }
 
-    //Handles Knockback
-    public void Knockback(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
-    {
-        knockBack.CallKnockback(hitDirection, constantForceDirection, inputDirection);
-    }
 
     public Vector2 GetMoveDir()
     {
         return moveVector;
     }
 
-    public void Damage(int damage)
+    //Handles Damage and Knockback
+    public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection, float inputDirection)
     {
         isDamaged = true;
         isMoving = false;
@@ -234,6 +230,7 @@ public class PlayerStateMachine : MonoBehaviour
         isAttacking = false;
 
         playerHealth.Damage(damage);
+        knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection, inputDirection);
     }
 
     private void SetIdleEvent()

@@ -8,23 +8,20 @@ using UnityEngine;
 public class KnockBack : MonoBehaviour
 {
     [SerializeField] private float knockBackTime = 0.5f;
-    [SerializeField] private float hitDirectionForce = 10f;
     [SerializeField] private float constForce = 5f;
     [SerializeField] private float inputForce = 7.5f;
 
     private Rigidbody2D rb2D;
     private Coroutine knockbackCoroutine;
-
-    public bool isBeingKnockedBack { get; private set; }
+    public bool isBeingKnockedBack { get; set;}
 
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    public IEnumerator KnockbackAction(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
+    public IEnumerator KnockbackAction(Vector2 hitDirection, float hitDirectionForce,Vector2 constantForceDirection, float inputDirection)
     {
-        isBeingKnockedBack = true;
 
         Vector2 _hitForce;
         Vector2 _constantForce;
@@ -57,7 +54,6 @@ public class KnockBack : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
-        isBeingKnockedBack = false;
     }
 
     /// <summary>
@@ -70,8 +66,8 @@ public class KnockBack : MonoBehaviour
     /// <param name="constantForceDirection"></param>
     /// <param name="inputDirection"></param>
     //Couroutine is a monobehavior method
-    public void CallKnockback(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
+    public void CallKnockback(Vector2 hitDirection, float hitForce, Vector2 constantForceDirection, float inputDirection)
     {
-        knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, constantForceDirection, inputDirection));
+        knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, hitForce, constantForceDirection, inputDirection));
     }
 }
