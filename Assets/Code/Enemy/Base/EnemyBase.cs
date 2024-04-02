@@ -61,7 +61,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     private void Start()
     {
-
         currentHealth = maxHealth;
         RB = GetComponent<Rigidbody2D>();
 

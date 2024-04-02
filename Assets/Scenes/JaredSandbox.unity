@@ -1219,7 +1219,7 @@ GameObject:
   - component: {fileID: 1133295198}
   - component: {fileID: 1133295197}
   - component: {fileID: 1133295196}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Walls
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -2446,9 +2446,17 @@ PrefabInstance:
       propertyPath: knockBackPower
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5183094326716198758, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+    - target: {fileID: 3256424544208323031, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924360067323315985, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183094326716198758, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6600261066204793647, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: trigger
@@ -2494,9 +2502,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8722994623963178404, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 8805604001512030829, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_Name
