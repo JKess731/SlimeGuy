@@ -62,7 +62,7 @@ public class ASlimeWhipControl : MonoBehaviour
             if (enemy != null)
             {
                 EnemyBase eBase = enemy.GetComponent<EnemyBase>();
-                eBase.Damage(damage, transform.right, knockBackPower, Vector2.up, 0f);
+                eBase.Damage(damage, -(whip.transform.right), knockBackPower, Vector2.up);
                 clearEnemies.Add(enemy);
             }
         }

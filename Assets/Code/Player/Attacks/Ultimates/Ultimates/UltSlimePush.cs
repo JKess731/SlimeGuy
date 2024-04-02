@@ -59,7 +59,7 @@ public class UltSlimePush : MonoBehaviour
             if (enemy != null)
             {
                 EnemyBase eBase = enemy.GetComponent<EnemyBase>();
-                eBase.Damage(damage, transform.right, knockBackPower, Vector2.up, 0f);
+                eBase.Damage(damage, -(eBase.faceDir), knockBackPower, Vector2.up);
                 clearEnemies.Add(enemy);
             }
         }
@@ -81,7 +81,7 @@ public class UltSlimePush : MonoBehaviour
         theSlime.SetActive(true);
 
         //Disable player movement
-        PlayerMove input = player.GetComponent<PlayerMove>();
+        //PlayerMove input = player.GetComponent<PlayerMove>();
         //input.input.Disable();
 
         yield return new WaitForSeconds(activationTime);

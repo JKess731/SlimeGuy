@@ -221,7 +221,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     //Handles Damage and Knockback
-    public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection, float inputDirection)
+    public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
         isDamaged = true;
         isMoving = false;
@@ -230,7 +230,7 @@ public class PlayerStateMachine : MonoBehaviour
         isAttacking = false;
 
         playerHealth.Damage(damage);
-        knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection, inputDirection);
+        knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
     }
 
     private void SetIdleEvent()

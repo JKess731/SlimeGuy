@@ -7,9 +7,8 @@ using UnityEngine;
  * */
 public class KnockBack : MonoBehaviour
 {
-    [SerializeField] private float knockBackTime = 0.5f;
+    [SerializeField] private float knockBackTime = 0.2f;
     [SerializeField] private float constForce = 5f;
-    [SerializeField] private float inputForce = 7.5f;
 
     private Rigidbody2D rb2D;
     private Coroutine knockbackCoroutine;
@@ -20,7 +19,7 @@ public class KnockBack : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    public IEnumerator KnockbackAction(Vector2 hitDirection, float hitDirectionForce,Vector2 constantForceDirection, float inputDirection)
+    public IEnumerator KnockbackAction(Vector2 hitDir, float hitDirForce,Vector2 constantForceDirection)
     {
 
         Vector2 _hitForce;
@@ -28,7 +27,7 @@ public class KnockBack : MonoBehaviour
         Vector2 _knockbackForce;
         Vector2 _combinedForce;
 
-        _hitForce = hitDirection * hitDirectionForce;
+        _hitForce = hitDir * hitDirForce;
         _constantForce = constantForceDirection * constForce;
         
         isBeingKnockedBack = true;
@@ -42,14 +41,8 @@ public class KnockBack : MonoBehaviour
             //Combine _hitForce and _constantForce
             _knockbackForce = _hitForce + _constantForce;
 
-            //Combine _knockbackForce and _inputForce
-            if (inputDirection != 0) { 
-                _combinedForce = _knockbackForce + new Vector2(inputDirection * inputForce, 0f);
-            }
-            else
-            {
-                _combinedForce = _knockbackForce;
-            }
+            _combinedForce = _knockbackForce;
+            
 
             //Applies the knockback force
             rb2D.velocity = _combinedForce;
@@ -69,8 +62,8 @@ public class KnockBack : MonoBehaviour
     /// <param name="constantForceDirection"></param>
     /// <param name="inputDirection"></param>
     //Couroutine is a monobehavior method
-    public void CallKnockback(Vector2 hitDirection, float hitForce, Vector2 constantForceDirection, float inputDirection)
+    public void CallKnockback(Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
-        knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, hitForce, constantForceDirection, inputDirection));
+        knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, hitForce, constantForceDirection));
     }
 }

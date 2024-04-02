@@ -29,7 +29,7 @@ public class SlimeWhip : MonoBehaviour
         if (collision.gameObject.CompareTag("enemy"))
         {
             Debug.Log("Hit Enemy");
-            collision.gameObject.GetComponent<EnemyBase>().Damage(Damage, transform.right, KnockBackPower, Vector2.up, 0f);
+            collision.gameObject.GetComponent<EnemyBase>().Damage(Damage, transform.right, KnockBackPower, Vector2.up);
         }
     }
 }

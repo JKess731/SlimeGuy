@@ -48,7 +48,7 @@ public class SimpleEnemyMove : MonoBehaviour
         if (collision.gameObject.CompareTag("player"))
         {
             PlayerStateMachine player = collision.gameObject.GetComponent<PlayerStateMachine>();
-            player.Damage(1, faceDir, knockBackPower, Vector2.up, player.GetMoveDir().x);
+            player.Damage(1, faceDir, knockBackPower, Vector2.up);
         }
     }
 }

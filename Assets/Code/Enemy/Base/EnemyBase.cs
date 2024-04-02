@@ -9,6 +9,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public float currentHealth { get; set; }
     public Rigidbody2D RB { get; set; }
     public bool isFacingRight { get; set; } = true;
+
+    public Vector2 faceDir { get; set; }
     
     //The types of states the enemy can be in
     #region State Machine Variables
@@ -94,11 +96,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     }
 
     #region Health Die Functions
-    public void Damage(float damageAmount, Vector2 hitDirection, float hitforce, Vector2 constantForceDirection, float inputDirection)
+    public void Damage(float damageAmount, Vector2 hitDirection, float hitforce, Vector2 constantForceDirection)
     {
         damageFlash.Flash();
         currentHealth -= damageAmount;
-        knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection, 0);
+        knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
         if (currentHealth <= 0f) {
             Die();
         }
@@ -115,6 +117,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void MoveEnemy(Vector2 velocity)
     {
+        faceDir = velocity.normalized;
         RB.velocity = velocity;
         CheckLeftOrRightFacing(velocity);
     }
