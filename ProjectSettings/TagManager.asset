@@ -13,6 +13,7 @@ TagManager:
   - slime_split
   - wall
   - attack_point_transform
+  - spawn
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Water
   - UI
   - player
-  - enemyLayer
   - floor
+  - enemyLayer
   - enemyAttackLayer
   - playerAttackLayer
   - Wall

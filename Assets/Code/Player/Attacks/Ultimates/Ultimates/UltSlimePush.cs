@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltSlimePush : MonoBehaviour, IAttackTriggerable
+public class UltSlimePush : MonoBehaviour
 {
     private GameObject player;
 
@@ -10,9 +10,14 @@ public class UltSlimePush : MonoBehaviour, IAttackTriggerable
     [SerializeField] private float scaleFactor;
     [SerializeField] private GameObject theSlime;
     private bool canPush = true;
-    private bool isPushing;
+    private bool isPushing = false;
+    [SerializeField] private float damage;
+    [SerializeField] private float knockBackPower;
 
     private Vector3 originalScale;
+
+    // Enemy
+    public HashSet<GameObject> enemies = new HashSet<GameObject>();
 
     void Awake()
     {
@@ -32,26 +37,40 @@ public class UltSlimePush : MonoBehaviour, IAttackTriggerable
 
         if (isPushing)
         {
+            HandleCollision();
             theSlime.transform.localScale = new Vector3(theSlime.transform.localScale.x + scaleFactor * Time.deltaTime, theSlime.transform.localScale.y + scaleFactor * Time.deltaTime);
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        HandleTriggers(collision.gameObject);
     }
 
     public void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Keycode down");
             StartCoroutine(OnActivate(activationTime));
         }
     }
 
-    public void HandleTriggers(GameObject enemy)
+    public void HandleCollision()
     {
+        HashSet<GameObject> clearEnemies = new HashSet<GameObject>();
 
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                EnemyBase eBase = enemy.GetComponent<EnemyBase>();
+                eBase.Damage(damage, transform.right, knockBackPower, Vector2.up, 0f);
+                clearEnemies.Add(enemy);
+            }
+        }
+
+        foreach (GameObject enemy in clearEnemies)
+        {
+            if (enemies.Contains(enemy))
+            {
+                enemies.Remove(enemy);
+            }
+        }
     }
 
     public IEnumerator OnActivate(float activationTime)

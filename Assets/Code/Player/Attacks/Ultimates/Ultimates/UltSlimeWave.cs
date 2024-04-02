@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltSlimeWave : MonoBehaviour, IAttackTriggerable
+public class UltSlimeWave : MonoBehaviour
 {
     // Player
     private GameObject player;
     private bool canWave = true;
+    private bool waveStarted = false;
     public float activationTime;
+    [SerializeField] private float damage;
+    [SerializeField] private float knockBackPower;
 
     // Colliders
     [SerializeField] private List<GameObject> collidersList = new List<GameObject>();
 
     // Enemy
-    private HashSet<GameObject> enemySet = new HashSet<GameObject>();
+    public HashSet<GameObject> enemies = new HashSet<GameObject>();
 
     private void Awake()
     {
@@ -30,7 +33,6 @@ public class UltSlimeWave : MonoBehaviour, IAttackTriggerable
     // Update is called once per frame
     void Update()
     {
-
         if (canWave)
         {
             #region Rotation
@@ -45,11 +47,11 @@ public class UltSlimeWave : MonoBehaviour, IAttackTriggerable
 
             HandleInput();
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        HandleTriggers(collision.gameObject);
+        if (waveStarted)
+        {
+            HandleCollision();
+        }
     }
 
     public void HandleInput()
@@ -60,18 +62,33 @@ public class UltSlimeWave : MonoBehaviour, IAttackTriggerable
         }
     }
 
-    public void HandleTriggers(GameObject enemy)
+    public void HandleCollision()
     {
-        enemySet.Add(enemy);
-        
-        // Deal Damage & Knockback
+        HashSet<GameObject> clearEnemies = new HashSet<GameObject>();
 
-        Debug.Log("Enemy in Trigger");
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                EnemyBase eBase = enemy.GetComponent<EnemyBase>();
+                eBase.Damage(damage, transform.right, knockBackPower, Vector2.up, 0f);
+                clearEnemies.Add(enemy);
+            }
+        }
+
+        foreach (GameObject enemy in clearEnemies)
+        {
+            if (enemies.Contains(enemy))
+            {
+                enemies.Remove(enemy);
+            }
+        }
     }
 
     public IEnumerator OnActivate(float activationTime)
     {
         canWave = false;
+        waveStarted = true;
 
         GameObject bigOne = collidersList[0];
         bigOne.SetActive(true);
@@ -91,5 +108,6 @@ public class UltSlimeWave : MonoBehaviour, IAttackTriggerable
         }
 
         canWave = true;
+        waveStarted = false;
     }
 }
