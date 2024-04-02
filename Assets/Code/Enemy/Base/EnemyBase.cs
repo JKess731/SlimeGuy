@@ -15,16 +15,23 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public EnemyIdleState idleState { get; set; }
     public EnemyChaseState chaseState { get; set; }
     public EnemyAttackState attackState { get; set; }
+    public EnemySpawningState spawnState { get; set; }
+    public EnemyDeathState deathState { get; set; }
     #endregion
 
     #region Scriptable Objects Variables
     [SerializeField] private EnemyIdleSOBase enemyIdleBase;
     [SerializeField] private EnemyChaseSOBase enemyChaseBase;
     [SerializeField] private EnemyAttackSOBase enemyAttackBase;
+    [SerializeField] private EnemySpawnSOBase enemySpawnBase;
+    [SerializeField] private EnemyDeathSOBase enemyDeathBase;
 
     public EnemyIdleSOBase enemyIdleBaseInstance { get; set; }
     public EnemyChaseSOBase enemyChaseBaseInstance { get; set; }
     public EnemyAttackSOBase enemyAttackBaseInstance { get; set; }
+    public EnemySpawnSOBase enemySpawnBaseInstance { get; set; }
+    public EnemyDeathSOBase enemyDeathBaseInstance { get; set; }
+
     #endregion
 
     #region Idle Variables
@@ -42,12 +49,15 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         enemyIdleBaseInstance = Instantiate(enemyIdleBase);
         enemyChaseBaseInstance = Instantiate(enemyChaseBase);
         enemyAttackBaseInstance = Instantiate(enemyAttackBase);
+        enemySpawnBaseInstance = Instantiate(enemySpawnBase);
+        enemyDeathBaseInstance = Instantiate(enemyDeathBase);
 
         stateMachine = new EnemyStateMachine();
         idleState = new EnemyIdleState(this, stateMachine);
         chaseState = new EnemyChaseState(this, stateMachine);
         attackState = new EnemyAttackState(this, stateMachine);
-
+        spawnState = new EnemySpawningState(this, stateMachine);
+        deathState = new EnemyDeathState(this, stateMachine);
     }
 
     private void Start()
@@ -59,8 +69,10 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         enemyIdleBaseInstance.Initialize(gameObject, this);
         enemyChaseBaseInstance.Initialize(gameObject, this);
         enemyAttackBaseInstance.Initialize(gameObject, this);
+        enemySpawnBase.Initialize(gameObject, this);
+        enemyDeathBase.Initialize(gameObject, this);
 
-        stateMachine.Initialize(idleState);
+        stateMachine.Initialize(spawnState);
     }
 
     private void Update()
@@ -73,6 +85,37 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         stateMachine.currentEnemyState.PhysicsUpdate();
     }
 
+#region Change states for animation events
+    public void GoToIdle()
+    {
+        stateMachine.ChangeState(idleState);
+
+    }
+
+    public void GoToChase()
+    {
+        stateMachine.ChangeState(chaseState);
+
+    }
+
+    public void GoToAttack()
+    {
+        stateMachine.ChangeState(attackState);
+
+    }
+
+    public void GoToSpawn()
+    {
+        stateMachine.ChangeState(spawnState);
+
+    }
+
+    public void GoToDeath()
+    {
+        stateMachine.ChangeState(deathState);
+
+    }
+    #endregion
 
 
     #region Health Die Functions
@@ -81,14 +124,15 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         animator.SetBool("Hit", true);
         currentHealth -= damageAmount;
         if (currentHealth <= 0f) {
-            Die();
+           stateMachine.ChangeState(deathState);
+
         }
         animator.SetBool("Hit", false);
     }
 
     public void Die()
     {
-        animator.SetBool("Death", true);
+        
         Destroy(gameObject);
         
     }
