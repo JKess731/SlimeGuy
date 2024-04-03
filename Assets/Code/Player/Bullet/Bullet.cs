@@ -10,12 +10,14 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private int bulletDamage = 1;
     [SerializeField] private float KnockbackPower = 1f;
+    [SerializeField] private float bulletLifeTime = 1f;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * bulletSpeed;
         Destroy(gameObject, 3f);
+        Destroy(gameObject, bulletLifeTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

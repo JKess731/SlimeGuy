@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckable
 {
     [field: SerializeField] public float maxHealth { get; set; } = 100f;
+    [field: SerializeField] private float moveSpeed = 5f;
     public float currentHealth { get; set; }
     public Rigidbody2D RB { get; set; }
     public bool isFacingRight { get; set; } = true;
@@ -169,7 +170,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public void MoveEnemy(Vector2 velocity)
     {
         faceDir = velocity.normalized;
-        RB.velocity = velocity;
+        RB.velocity = velocity * moveSpeed;
         CheckLeftOrRightFacing(velocity);
     }
 
