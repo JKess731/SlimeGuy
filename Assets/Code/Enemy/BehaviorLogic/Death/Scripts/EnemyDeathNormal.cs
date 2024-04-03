@@ -13,6 +13,8 @@ public class EnemyDeathNormal : EnemyDeathSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
+        
+        
     }
 
     public override void DoExitLogic()

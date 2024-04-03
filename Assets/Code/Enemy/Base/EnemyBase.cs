@@ -124,7 +124,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         animator.SetBool("Hit", true);
         currentHealth -= damageAmount;
         if (currentHealth <= 0f) {
-           stateMachine.ChangeState(deathState);
+            Die();
 
         }
         animator.SetBool("Hit", false);
@@ -132,7 +132,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void Die()
     {
-        
+
         Destroy(gameObject);
         
     }
