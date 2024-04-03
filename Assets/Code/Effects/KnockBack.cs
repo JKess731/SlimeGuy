@@ -8,7 +8,7 @@ using UnityEngine;
 public class KnockBack : MonoBehaviour
 {
     [SerializeField] private float knockBackTime = 0.2f;
-    [SerializeField] private float constForce = 5f;
+    [SerializeField] private float constForce = 0.25f;
 
     private Rigidbody2D rb2D;
     private Coroutine knockbackCoroutine;

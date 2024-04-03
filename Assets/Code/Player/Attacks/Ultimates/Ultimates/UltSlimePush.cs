@@ -59,7 +59,7 @@ public class UltSlimePush : MonoBehaviour
             if (enemy != null)
             {
                 EnemyBase eBase = enemy.GetComponent<EnemyBase>();
-                eBase.Damage(damage, -(eBase.faceDir), knockBackPower, Vector2.up);
+                eBase.Damage(damage, -(eBase.faceDir), knockBackPower, -(eBase.faceDir));
                 clearEnemies.Add(enemy);
             }
         }
