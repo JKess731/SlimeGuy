@@ -739,6 +739,7 @@ PrefabInstance:
     - {fileID: 1298708147480805958, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
     - {fileID: 9171760680480260446, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
     - {fileID: 3924360067323315985, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+    - {fileID: 5183094326716198758, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: 7
@@ -762,9 +763,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3800932296414698913, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: -1
       addedObject: {fileID: 227547383}
-    - targetCorrespondingSourceObject: {fileID: 5183094326716198758, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 227547381}
     - targetCorrespondingSourceObject: {fileID: 6617685742100875956, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: -1
       addedObject: {fileID: 227547380}
@@ -777,11 +775,6 @@ Transform:
 --- !u!1 &227547376 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6617685742100875956, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-  m_PrefabInstance: {fileID: 227547374}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &227547377 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5183094326716198758, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
   m_PrefabInstance: {fileID: 227547374}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &227547379 stripped
@@ -801,23 +794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c9aefa28f17604dba2ce9186a16425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &227547381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227547377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42528c138598394381b75d5e9bad906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activationTime: 5
-  whip: {fileID: 1801857697669013330, guid: 7d98b623000ec994e9cf2e251cd3dc70, type: 3}
-  rotationSpeed: 100
-  damage: 1
-  knockBackPower: 100
 --- !u!114 &227547383
 MonoBehaviour:
   m_ObjectHideFlags: 0
