@@ -23,8 +23,8 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        attackPoint = enemy.transform.GetChild(2).GetChild(0);
-        ring = enemy.transform.GetChild(2).gameObject;
+        attackPoint = enemy.transform.GetChild(1).GetChild(0);
+        ring = enemy.transform.GetChild(1).gameObject;
         
     }
 

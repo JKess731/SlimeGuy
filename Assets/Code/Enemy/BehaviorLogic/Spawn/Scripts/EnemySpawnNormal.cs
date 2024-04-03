@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "ChaseDirectChase", menuName = "EnemyLogic/ChaseLogic/DirectChase")]
+using UnityEngine.Rendering;
 
-public class EnemyChaseDirectToPlayer : EnemyChaseSOBase
+[CreateAssetMenu(fileName = "SpawnNormal", menuName = "EnemyLogic/SpawnLogic/Normal")]
+
+public class EnemySpawnNormal : EnemySpawnSOBase
 {
-    [SerializeField] public float movementSpeed = 1.75f;
-
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
@@ -20,17 +20,12 @@ public class EnemyChaseDirectToPlayer : EnemyChaseSOBase
     public override void DoExitLogic()
     {
         base.DoExitLogic();
+
     }
 
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        if (enemy.currentHealth <= 0)
-        {
-            movementSpeed = 0;
-        }
-        Vector2 moveDirection = (playerTransform.position - enemy.transform.position).normalized;
-        enemy.MoveEnemy(moveDirection * movementSpeed);
     }
 
     public override void DoPhysicsLogic()

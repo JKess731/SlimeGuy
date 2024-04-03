@@ -18,6 +18,7 @@ public class EnemyIdleState : EnemyState
     public override void EnterState()
     {
         base.EnterState();
+        enemyBase.animator.SetBool("IdleState", true);
         enemyBase.enemyIdleBaseInstance.DoEnterLogic();
 
     }
@@ -25,6 +26,7 @@ public class EnemyIdleState : EnemyState
     public override void ExitState()
     {
         base.ExitState();
+        enemyBase.animator.SetBool("IdleState", false);
         enemyBase.enemyIdleBaseInstance.DoExitLogic();
 
     }

@@ -19,6 +19,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public EnemyChaseState chaseState { get; set; }
     public EnemyAttackState attackState { get; set; }
     public EnemyDamagedState damagedState { get; set; }
+    public EnemySpawningState spawnState { get; set; }
+    public EnemyDeathState deathState { get; set; }
     #endregion
 
     //The scriptable objects that hold the base logic for the enemy
@@ -27,12 +29,17 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     [SerializeField] private EnemyChaseSOBase enemyChaseBase;
     [SerializeField] private EnemyAttackSOBase enemyAttackBase;
     [SerializeField] private EnemyDamagedSOBase enemyDamagedBase;
+    [SerializeField] private EnemySpawnSOBase enemySpawnBase;
+    [SerializeField] private EnemyDeathSOBase enemyDeathBase;
 
     //The instances of the scriptable objects 
     public EnemyIdleSOBase enemyIdleBaseInstance { get; set; }
     public EnemyChaseSOBase enemyChaseBaseInstance { get; set; }
     public EnemyAttackSOBase enemyAttackBaseInstance { get; set; }
     public EnemyDamagedSOBase enemyDamagedBaseInstance { get; set; }
+    public EnemySpawnSOBase enemySpawnBaseInstance { get; set; }
+    public EnemyDeathSOBase enemyDeathBaseInstance { get; set; }
+
     #endregion
 
     #region Idle Variables
@@ -46,6 +53,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public KnockBack knockBack { get; private set; }    // Knockback script
     private SimpleFalsh damageFlash;                  // Flash script
 
+    public Animator animator;
+
     private void Awake()
     {
         //Get Knockback and Flash Scripts
@@ -57,6 +66,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         enemyChaseBaseInstance = Instantiate(enemyChaseBase);
         enemyAttackBaseInstance = Instantiate(enemyAttackBase);
         enemyDamagedBaseInstance = Instantiate(enemyDamagedBase);
+        enemySpawnBaseInstance = Instantiate(enemySpawnBase);
+        enemyDeathBaseInstance = Instantiate(enemyDeathBase);
 
         //Instantiate State Machine
         stateMachine = new EnemyStateMachine();
@@ -65,7 +76,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         idleState = new EnemyIdleState(this, stateMachine);
         chaseState = new EnemyChaseState(this, stateMachine);
         attackState = new EnemyAttackState(this, stateMachine);
-        damagedState = new EnemyDamagedState(this, stateMachine);
+        damagedState = new EnemyDamagedState(this, stateMachine);        spawnState = new EnemySpawningState(this, stateMachine);
+        deathState = new EnemyDeathState(this, stateMachine);
     }
 
     private void Start()
@@ -77,8 +89,10 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         enemyChaseBaseInstance.Initialize(gameObject, this);
         enemyAttackBaseInstance.Initialize(gameObject, this);
         enemyDamagedBaseInstance.Initialize(gameObject, this);
+        enemySpawnBase.Initialize(gameObject, this);
+        enemyDeathBase.Initialize(gameObject, this);
 
-        stateMachine.Initialize(idleState);
+        stateMachine.Initialize(spawnState);
     }
 
     private void Update()
@@ -95,19 +109,56 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         stateMachine.currentEnemyState.PhysicsUpdate();
     }
 
+#region Change states for animation events
+    public void GoToIdle()
+    {
+        stateMachine.ChangeState(idleState);
+
+    }
+
+    public void GoToChase()
+    {
+        stateMachine.ChangeState(chaseState);
+
+    }
+
+    public void GoToAttack()
+    {
+        stateMachine.ChangeState(attackState);
+
+    }
+
+    public void GoToSpawn()
+    {
+        stateMachine.ChangeState(spawnState);
+
+    }
+
+    public void GoToDeath()
+    {
+        stateMachine.ChangeState(deathState);
+
+    }
+    #endregion
+
+
     #region Health Die Functions
     public void Damage(float damageAmount, Vector2 hitDirection, float hitforce, Vector2 constantForceDirection)
     {
         damageFlash.Flash();
+        animator.SetBool("Hit", true);
         currentHealth -= damageAmount;
         knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
         if (currentHealth <= 0f) {
             Die();
         }
+        animator.SetBool("Hit", false);
     }
 
     public void Die()
     {
+
+        Destroy(gameObject);
         Destroy(gameObject);
     }
 
@@ -126,14 +177,14 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         if (isFacingRight && velocity.x < 0f)
         {
-            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
             isFacingRight = !isFacingRight;
+            animator.SetBool("FacingLeft", true);
+            Debug.Log(animator.GetBool("FacingLeft"));
         }
         else if (!isFacingRight && velocity.x > 0f) {
-            Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
             isFacingRight = !isFacingRight;
+            animator.SetBool("FacingLeft", false);
+            Debug.Log(animator.GetBool("FacingLeft"));
         }
     }
 
