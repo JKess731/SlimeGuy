@@ -185,7 +185,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         isIdle = false;
         isMoving = false;
-
         dashPressed = context.ReadValueAsButton();
     }
 
@@ -193,6 +192,7 @@ public class PlayerStateMachine : MonoBehaviour
     private IEnumerator DashCoroutine()
     {
         //Handles Initial Dash
+        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
         DisableMovement();
         isMoving = false;
         isDashing = true;
@@ -231,6 +231,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         playerHealth.Damage(damage);
         knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
+        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
     }
 
     private void SetIdleEvent()

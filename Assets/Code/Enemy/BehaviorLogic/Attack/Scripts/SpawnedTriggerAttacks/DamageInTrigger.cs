@@ -7,9 +7,9 @@ public class DamageInTrigger : MonoBehaviour
 {
 
     [SerializeField] private int damageDealt;
-    private GameObject player;
     [SerializeField] private float timerEnd;
     [SerializeField] private float timeBetweenDamageInstances;
+    [SerializeField] private float knockbackPower = 50;
     private float timeBetweenDamageInstancesTimer;
     private float timer;
     private bool canDamage = true;
@@ -17,7 +17,6 @@ public class DamageInTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("player");
         Debug.Log("SpawnedTrigger");
 
     }
@@ -44,7 +43,7 @@ public class DamageInTrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "player" && canDamage == true)
         {
-            player.GetComponentInParent<PlayerHealth>().Damage(damageDealt);
+            collision.gameObject.GetComponent<PlayerStateMachine>().Damage(damageDealt, transform.right, knockbackPower, transform.right);
             canDamage = false;
         }
     }

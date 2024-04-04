@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3319092747842303783}
@@ -104,8 +104,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -541431263
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 862cfde0db5d82244b6fd7c7f3c73b12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -243,6 +243,8 @@ GameObject:
   - component: {fileID: 5092370093470245312}
   - component: {fileID: 8370906869325316475}
   - component: {fileID: 4751146899569220850}
+  - component: {fileID: 100338875997879468}
+  - component: {fileID: 5565166607894818481}
   m_Layer: 7
   m_Name: EnemyDwarf
   m_TagString: enemy
@@ -260,8 +262,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.4212, y: -1.7188, z: 0}
-  m_LocalScale: {x: 2.2176, y: 2.2176, z: 2.2176}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7913074600318505000}
   - {fileID: 3550361478932584518}
@@ -305,9 +307,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -541431263
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9c5cbacbcae9bac42b2e2640164a7033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -358,10 +360,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -378,7 +380,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0129933655, y: -0.025986671}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -389,7 +391,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32805705, y: 0.45799088}
   m_EdgeRadius: 0
 --- !u!114 &8370906869325316475
 MonoBehaviour:
@@ -403,11 +405,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352c011b5e66b9f4bb8020fe11d4bde6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <maxHealth>k__BackingField: 1
+  <maxHealth>k__BackingField: 5
+  moveSpeed: 3
   enemyIdleBase: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
   enemyAttackBase: {fileID: 11400000, guid: 69f1e2c478eb0a94ab2db8550295ce40, type: 2}
-  enemyDamagedBase: {fileID: 0}
   enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
   enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
   animator: {fileID: 4751146899569220850}
@@ -432,6 +434,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &100338875997879468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777186743103341712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9874ece03a58ca14da08bdbf145ee69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.4
+  constForce: 0.25
+--- !u!114 &5565166607894818481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777186743103341712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20982fdf203d1f94da0c9c4e8d83537b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 36705b5bfd6d8a94ba023480d660b1af, type: 2}
+  duration: 0.25
 --- !u!1 &7125127084281730235
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +529,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.39
 --- !u!114 &8315749308211237267
 MonoBehaviour:
   m_ObjectHideFlags: 0

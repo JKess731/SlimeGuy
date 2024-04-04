@@ -40,7 +40,7 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
         if (timer > frontSlashAttackDelay)
         {
             timer = 0f;
-            GameObject slash = GameObject.Instantiate(slashTriggerPrefab, attackPoint.position, Quaternion.identity);
+            GameObject slash = Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
             enemy.stateMachine.ChangeState(enemy.chaseState);
         }
         if (timer < frontSlashAttackDelay)
@@ -50,7 +50,6 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
             ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
         }
         timer += Time.deltaTime;
-        
     }
 
     public override void DoPhysicsLogic()

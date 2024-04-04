@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2877916221077795836, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: knockBackPower
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256424544208323031, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155648553637808336, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477860827362108846, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: knockBackPower
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7074808056681584966, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.31
@@ -48,12 +64,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8533954452395809251, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+    - target: {fileID: 8805604001512030829, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: m_Name
-      value: Player (1) Variant
+      value: Player Playtest Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8683295486406633418, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+    - {fileID: 450693840660667097, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}

@@ -62,5 +62,4 @@ public class EnemyAttackSlash : MonoBehaviour
         }
         enemy.GetComponentInParent<EnemyMovementFollow>().AttackNotColliding();
     }
-
 }
