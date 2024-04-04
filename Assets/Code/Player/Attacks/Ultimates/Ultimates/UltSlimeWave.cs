@@ -110,4 +110,18 @@ public class UltSlimeWave : MonoBehaviour
         canWave = true;
         waveStarted = false;
     }
+
+    private void OnEnable()
+    {
+        foreach (GameObject trigger in collidersList)
+        {
+            trigger.SetActive(false);
+        }
+        canWave = true;
+    }
+
+    private void OnDisable()
+    {
+        canWave = false;
+    }
 }

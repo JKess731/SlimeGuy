@@ -48,10 +48,10 @@ public class PlayerHealth : MonoBehaviour
             transform.position = spawnPos;
             currentHealth = maxHealth;
 
-            foreach (GameObject enemy in currentRoom.spawnedEnemies)
-            {
-                Destroy(enemy);
-            }
+            //foreach (GameObject enemy in currentRoom.spawnedEnemies)
+            //{
+            //    Destroy(enemy);
+            //}
 
             // Clear the list
             currentRoom.spawnedEnemies.Clear();

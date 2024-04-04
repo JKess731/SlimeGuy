@@ -97,4 +97,15 @@ public class ASlimeWhipControl : MonoBehaviour
         canWhip = true;
         whipStarted = false;
     }
+
+    private void OnEnable()
+    {
+        whip.SetActive(false);
+        canWhip = true;
+    }
+
+    private void OnDisable()
+    {
+        whipStarted = false;
+    }
 }

@@ -94,4 +94,15 @@ public class UltSlimePush : MonoBehaviour
         theSlime.SetActive(false);
         theSlime.transform.localScale = originalScale;
     }
+
+    private void OnEnable()
+    {
+        theSlime.SetActive(false);
+        canPush = true;
+    }
+
+    private void OnDisable()
+    {
+        isPushing = false;
+    }
 }
