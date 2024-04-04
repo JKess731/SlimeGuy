@@ -8,12 +8,16 @@ public class AttackCollisionStickyBomb : MonoBehaviour
     private void Start()
     {
         controller = transform.parent.GetComponent<ASlimeStickyBomb>();
+        Debug.Log(controller.name);
+        Debug.Log(controller.enemiesInKockBackRadius);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.transform.tag == "enemy" && controller.throwEnded)
+        if (collision.transform.tag == "enemy" && controller.throwEnded 
+            && !controller.enemiesInKockBackRadius.Contains(collision.transform.gameObject))
         {
+            Debug.Log("enemy in trig");
             controller.enemiesInKockBackRadius.Add(collision.gameObject);
         }
     }

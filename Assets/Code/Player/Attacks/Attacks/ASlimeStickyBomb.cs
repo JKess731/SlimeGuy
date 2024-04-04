@@ -132,6 +132,7 @@ public class ASlimeStickyBomb : MonoBehaviour
             yield return null;
         }
 
+        transform.parent = null;
         collider.enabled = true;
         throwEnded = true;
     }
@@ -141,9 +142,11 @@ public class ASlimeStickyBomb : MonoBehaviour
         yield return new WaitForSeconds(activationTime);
 
         HashSet<GameObject> enemiesToKnockback = new HashSet<GameObject>();
+        
 
         foreach (GameObject enemy in enemiesInKockBackRadius)
         {
+            Debug.Log("SET: " + enemy);
             if (!enemiesInBlastRadius.Contains(enemy))
             {
                 enemiesToKnockback.Add(enemy);
@@ -153,6 +156,7 @@ public class ASlimeStickyBomb : MonoBehaviour
         foreach (GameObject enemy in enemiesInBlastRadius)
         {
             EnemyBase eBase = enemy.GetComponent<EnemyBase>();
+            Debug.Log("Call");
             eBase.Damage(dmg, -(eBase.faceDir), knockback, -(eBase.faceDir));
         }
 
@@ -162,7 +166,8 @@ public class ASlimeStickyBomb : MonoBehaviour
             eBase.Damage(0f, -(eBase.faceDir), knockback, -(eBase.faceDir));
         }
 
-        Debug.Log("activating");
+        transform.position = player.transform.position;
+        transform.parent = player.transform;
 
         yield return new WaitForSeconds(reloadT);
 
@@ -170,8 +175,6 @@ public class ASlimeStickyBomb : MonoBehaviour
         canActivate = true;
         stuckToEnemy = false;
         stuckEnemy = null;
-        transform.position = player.transform.position;
-        transform.parent = player.transform;
 
         enemiesInKockBackRadius.Clear();
         enemiesInBlastRadius.Clear();

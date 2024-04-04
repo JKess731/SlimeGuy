@@ -1316,8 +1316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwTime: 0.5
-  maxHeight: 3
-  bombDistance: 4
+  maxHeight: 6
+  bombDistance: 10
   curve:
     serializedVersion: 2
     m_Curve:
