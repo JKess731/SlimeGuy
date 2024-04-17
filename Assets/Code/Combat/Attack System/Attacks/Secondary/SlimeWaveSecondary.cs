@@ -12,7 +12,7 @@ public class SlimeWaveSecondary : SecondaryAttack
     // Colliders
     [SerializeField] private List<GameObject> collidersList = new List<GameObject>();
 
-    public void OnEnable()
+    public override void OnEnable()
     {
         base.OnEnable();
         foreach (GameObject trigger in collidersList)

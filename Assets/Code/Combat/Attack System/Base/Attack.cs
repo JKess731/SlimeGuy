@@ -24,7 +24,7 @@ public abstract class Attack: MonoBehaviour
         transform.position = player.transform.position;
     }
 
-    public void OnEnable()
+    public virtual void OnEnable()
     {
         gameObject.SetActive(true);
         canActivate = true;

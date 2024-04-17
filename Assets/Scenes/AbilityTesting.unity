@@ -1272,7 +1272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &420016263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3400,7 +3400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134823972}
   m_Layer: 0
-  m_Name: Object Pool
+  m_Name: Trail Object Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31201,6 +31201,7 @@ PrefabInstance:
     - {fileID: 3018981797051667233, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
     - {fileID: 8078813948523669997, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
     - {fileID: 6824687386059056935, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
+    - {fileID: 2102679082569510298, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
@@ -31215,6 +31216,6 @@ SceneRoots:
   - {fileID: 484556178}
   - {fileID: 755313966}
   - {fileID: 1054503144}
+  - {fileID: 420016264}
   - {fileID: 1313865582}
   - {fileID: 1134823972}
-  - {fileID: 420016264}
