@@ -12,7 +12,7 @@ public class Trail : Attack
     [SerializeField] private Transform poolParent;
     [SerializeField] private List<TrailType> trailTypes;
     private List<GameObject> trailsSpawned;
-    [SerializeField] private float distanceBetweenObjects = 1f;
+    [SerializeField] private float distanceBetweenObjects = .35f;
 
     public int trailLength = 10;
 

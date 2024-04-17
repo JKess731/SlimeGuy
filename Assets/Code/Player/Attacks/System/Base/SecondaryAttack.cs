@@ -2,8 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondaryAttack : Attack
+public abstract class SecondaryAttack : Attack
 {
-    public virtual IEnumerator OnActivate(float aTime) { yield return null; }
+    protected void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            StartCoroutine(OnActivate(activationTime));
+        }
+    }
+
+    public abstract IEnumerator OnActivate(float aTime);
+
     public virtual void OnDeactivate() { enabled = false; }
 }

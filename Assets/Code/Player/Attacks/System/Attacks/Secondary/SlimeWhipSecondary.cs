@@ -20,11 +20,7 @@ public class SlimeWhipSecondary : SecondaryAttack
     {
         if (canActivate)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                StartCoroutine(OnActivate(activationTime));
-                //Instantiate(whip, player.transform.position, Quaternion.identity);
-            }
+            HandleInput();
         }
 
         if (isActivated)
@@ -42,8 +38,8 @@ public class SlimeWhipSecondary : SecondaryAttack
         yield return new WaitForSeconds(aTime);
 
         whip.SetActive(false);
-        canActivate = true;
         isActivated = false;
+        StartCoroutine(AttackCooldown(cooldownTime));
     }
 
 }
