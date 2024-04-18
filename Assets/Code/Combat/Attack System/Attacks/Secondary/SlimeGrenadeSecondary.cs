@@ -166,6 +166,8 @@ public class SlimeGrenadeSecondary : SecondaryAttack
         enemiesInKockBackRadius.Clear();
         enemiesInBlastRadius.Clear();
 
+        StartCoroutine(AttackCooldown(cooldownTime));
+
     }
 
     // Override from parent

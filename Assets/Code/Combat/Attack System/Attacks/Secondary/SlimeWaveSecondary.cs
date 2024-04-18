@@ -80,6 +80,8 @@ public class SlimeWaveSecondary : SecondaryAttack
 
         canActivate = true;
         isActivated = false;
+
+        StartCoroutine(AttackCooldown(cooldownTime));
     }
 
 

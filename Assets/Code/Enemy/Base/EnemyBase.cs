@@ -156,6 +156,18 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         animator.SetBool("Hit", false);
     }
 
+    public void Damage(float damageAmount)
+    {
+        damageFlash.Flash();
+        animator.SetBool("Hit", true);
+        currentHealth -= damageAmount;
+        if (currentHealth <= 0f)
+        {
+            Die();
+        }
+        animator.SetBool("Hit", false);
+    }
+
     public void Die()
     {
 

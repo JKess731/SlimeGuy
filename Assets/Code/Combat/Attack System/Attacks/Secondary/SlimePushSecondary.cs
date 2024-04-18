@@ -80,5 +80,7 @@ public class SlimePushSecondary : SecondaryAttack
         isActivated = false;
         pushSlime.SetActive(false);
         pushSlime.transform.localScale = resetScale;
+
+        StartCoroutine(AttackCooldown(cooldownTime));
     }
 }

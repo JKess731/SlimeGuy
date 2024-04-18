@@ -9,11 +9,15 @@ public abstract class Attack: MonoBehaviour
     [SerializeField] protected float cooldownTime;
     [SerializeField] protected float activationTime;
 
+    [Header("Status Effects")]
+    [SerializeField] protected List<Effect> effects = new List<Effect>();
+
     [HideInInspector] protected bool canActivate = true;
     [HideInInspector] protected bool isActivated = false;
 
     protected GameObject player;
     [HideInInspector] public HashSet<GameObject> enemiesToAttack = new HashSet<GameObject>();
+   
 
     protected virtual void Awake()
     {
@@ -23,6 +27,8 @@ public abstract class Attack: MonoBehaviour
         transform.parent = player.transform;
         transform.position = player.transform.position;
     }
+
+    #region Enable/Disable
 
     public virtual void OnEnable()
     {
@@ -37,9 +43,42 @@ public abstract class Attack: MonoBehaviour
         isActivated = false;
     }
 
+    #endregion
+
+    #region Cooldown
     protected IEnumerator AttackCooldown(float time)
     {
         yield return new WaitForSeconds(time);
         canActivate = true;
     }
+    #endregion
+
+    #region Status Effects
+
+    public List<Effect> GetEffects()
+    {
+        return effects;
+    }
+    public void AddEffect(Effect effect)
+    {
+        effects.Add(effect);
+    }
+    public void RemoveEffect(Effect effect)
+    {
+        if (effects.Contains(effect))
+        {
+            effects.Remove(effect);
+        }
+    }
+
+    public void ApplyEffects(GameObject target)
+    {
+        foreach (Effect effect in effects)
+        {
+            effect.ApplyModifier(target);
+        }
+    }
+
+    #endregion
+
 }

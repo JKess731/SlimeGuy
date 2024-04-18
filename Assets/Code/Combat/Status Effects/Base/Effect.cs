@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effect : ScriptableObject
+public abstract class Effect : ScriptableObject
 {
-    public Effects[] effectTypes;
+    public Effects effectTypes { get; set; }
+
+    public abstract void ApplyModifier(GameObject target);
 }
