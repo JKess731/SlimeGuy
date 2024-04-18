@@ -201,6 +201,24 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         }
     }
 
+    /// <summary>
+    /// Modifiys the movement speed of this enemy by += operation
+    /// </summary>
+    /// <param name="amount"></param>
+    public void ModifyMoveSpeed(float amount, float timeUntilReset)
+    {
+        float originalSpeed = moveSpeed;
+        moveSpeed += amount;
+
+        StartCoroutine(ResetSpeed(timeUntilReset, originalSpeed));
+    }
+
+    public IEnumerator ResetSpeed(float time, float originalSpeed)
+    {
+        yield return new WaitForSeconds(time);
+        moveSpeed = originalSpeed;
+    }
+
     #endregion
 
     #region Animation Triggers

@@ -9,6 +9,6 @@ public class SOBaseStick : Effect
 
     public override void ApplyModifier(GameObject target)
     {
-        throw new System.NotImplementedException();
+        
     }
 }

@@ -10,7 +10,12 @@ public class SOBaseSlimed : Effect
 
     public override void ApplyModifier(GameObject target)
     {
+        if (speedDecrease < 0)
+        {
+            speedDecrease = -speedDecrease;
+        }
+
         EnemyBase enemyBase = target.GetComponent<EnemyBase>();
-        
+        enemyBase.ModifyMoveSpeed(-speedDecrease, time);
     }
 }
