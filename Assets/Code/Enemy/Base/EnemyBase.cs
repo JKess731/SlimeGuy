@@ -12,7 +12,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public bool isFacingRight { get; set; } = true;
 
     public Vector2 faceDir { get; set; }
-    
+
     //The types of states the enemy can be in
     #region State Machine Variables
     public EnemyStateMachine stateMachine { get; set; }
@@ -77,7 +77,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         idleState = new EnemyIdleState(this, stateMachine);
         chaseState = new EnemyChaseState(this, stateMachine);
         attackState = new EnemyAttackState(this, stateMachine);
-        damagedState = new EnemyDamagedState(this, stateMachine);        
+        damagedState = new EnemyDamagedState(this, stateMachine);
         spawnState = new EnemySpawningState(this, stateMachine);
         deathState = new EnemyDeathState(this, stateMachine);
     }
@@ -111,7 +111,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         stateMachine.currentEnemyState.PhysicsUpdate();
     }
 
-#region Change states for animation events
+    #region Change states for animation events
     public void GoToIdle()
     {
         stateMachine.ChangeState(idleState);
@@ -217,6 +217,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         yield return new WaitForSeconds(time);
         moveSpeed = originalSpeed;
+    }
+
+    public float GetSpeed()
+    {
+        return moveSpeed;
     }
 
     #endregion
