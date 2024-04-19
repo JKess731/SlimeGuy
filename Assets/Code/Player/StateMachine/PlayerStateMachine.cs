@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     //References
-    PlayerHealth playerHealth;
+    PlayerStats playerHealth;
     PlayerInput playerInput;
     AnimationControl animationControl;
 
@@ -44,7 +44,7 @@ public class PlayerStateMachine : MonoBehaviour
     private void Awake()
     {
         //Not great
-        playerHealth = GetComponent<PlayerHealth>();
+        playerHealth = GetComponent<PlayerStats>();
 
         //Set up initial references
         animationControl = GetComponent<AnimationControl>();
@@ -213,7 +213,6 @@ public class PlayerStateMachine : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
-
 
     public Vector2 GetMoveDir()
     {

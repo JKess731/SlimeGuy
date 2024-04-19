@@ -80,8 +80,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dc7b7c2356f9b49bf53393ad5cd58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerClass: {fileID: 0}
-  playerStatUI: {fileID: 0}
   absorbtionRate: 1
   growthRate: 1
   _statBoost: 0
@@ -220,11 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 6359139107008641216}
-  projectile: {fileID: 5098964168513206920, guid: af0f355657d43034298e051d36c06964, type: 3}
-  bulletCount: 5
-  spread: 10
-  fireRate: 1
   ring: {fileID: 2080989293142158726}
+  basicShotgunSO: {fileID: 0}
 --- !u!114 &428084628684688605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,8 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dc7b7c2356f9b49bf53393ad5cd58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerClass: {fileID: 0}
-  playerStatUI: {fileID: 0}
   absorbtionRate: 1
   growthRate: 1
   _statBoost: 0
@@ -906,8 +899,6 @@ GameObject:
   - component: {fileID: 2773545339210776950}
   - component: {fileID: 6441711385004036941}
   - component: {fileID: 2286926643201842907}
-  - component: {fileID: 4327921851085568936}
-  - component: {fileID: 721982832936382186}
   - component: {fileID: 3322473668760506266}
   - component: {fileID: 3138058705991477500}
   m_Layer: 6
@@ -1257,35 +1248,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &4327921851085568936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ae4e37fba0a1544b54459fc51a8840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &721982832936382186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284721d4264ff574eaf05ddacab6d365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 35
-  currentHealth: 35
-  uiManager: {fileID: 0}
-  spawnPos: {x: 0, y: 0}
-  currentRoom: {fileID: 0}
 --- !u!320 &3322473668760506266
 PlayableDirector:
   m_ObjectHideFlags: 0

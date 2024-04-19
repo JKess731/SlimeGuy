@@ -133,7 +133,7 @@ public class DwarfBehavior : MonoBehaviour
         ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(attackDelay / 2);
         ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
-        player.GetComponentInParent<PlayerHealth>().Damage(slashDamage);
+        player.GetComponentInParent<PlayerStats>().Damage(slashDamage);
         attacking = false;
         RestartAttackCounter();
         AttackNotColliding();

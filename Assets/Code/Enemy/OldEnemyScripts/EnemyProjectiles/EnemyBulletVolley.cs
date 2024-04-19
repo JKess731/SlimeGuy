@@ -43,7 +43,7 @@ public class EnemyBulletVolley : MonoBehaviour
         Debug.Log("Bullet starts");
         yield return new WaitForSeconds(delayVolleyTime/2);
         if (hitAttack == true) {
-            player.GetComponent<PlayerHealth>().Damage(volleyDamage);
+            player.GetComponent<PlayerStats>().Damage(volleyDamage);
         }
         yield return new WaitForSeconds(delayVolleyTime / 2);
         Debug.Log("Bullet dies");

@@ -129,7 +129,7 @@ MonoBehaviour:
   bulletSpeed: 20
   bulletDamage: 1
   KnockbackPower: 0.25
-  bulletLifeTime: 0.25
+  range: 200
 --- !u!58 &4985747929611648509
 CircleCollider2D:
   m_ObjectHideFlags: 0

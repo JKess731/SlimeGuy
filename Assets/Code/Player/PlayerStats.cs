@@ -4,21 +4,29 @@ using UnityEngine;
 
 /**
  * Created by:
- * 
  * Last Edited by: Jared Kessler
+ * Modified on: April 18th, 2024 (Edison Li)
  */
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
-    // Health Variables
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
-    [SerializeField] private UIManager uiManager;
+    // Player Stats
+    [SerializeField] public int maxHealth { get; private set; } = 10; 
+    [SerializeField] public int currentHealth { get; private set; } = 10;
+    [SerializeField] public int attack { get; private set; } = 10;
+    [SerializeField] public int defense { get; private set; } = 10;
+    [SerializeField] public int speed { get; private set; } = 10;
+    [SerializeField] public int absorption { get; private set; } = 0;
+    [SerializeField] public int maxAbsorption { get; private set; } = 10;
+
 
     // Respawn Variables
     [SerializeField] private Vector2 spawnPos;
-
     [HideInInspector] public RoomTriggerControl currentRoom;
+
+    [SerializeField] private UIManager uiManager;
+
+    public static PlayerStats instance;
 
     private void Awake()
     {
@@ -27,13 +35,23 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
 
         spawnPos = transform.position;
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerStats instance already exists. Destroying duplicate.");
+            Destroy(gameObject);
+        }
     }
 
     //Initializes the health bar && absorption bar
     private void Start()
     {
         uiManager.UpdateHealthBar(currentHealth, maxHealth);
-        uiManager.UpdateAbsorptionBar(currentHealth, maxHealth);
+        uiManager.UpdateAbsorptionBar(absorption, maxAbsorption);
     }
 
     //Handles Damage
@@ -41,7 +59,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         uiManager.UpdateHealthBar(currentHealth, maxHealth);
-        uiManager.UpdateAbsorptionBar(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
@@ -82,5 +99,14 @@ public class PlayerHealth : MonoBehaviour
     public int GetMaxHealth()
     {
         return maxHealth;
+    }
+
+    public void InreaseAbsorption(int amount)
+    {
+        if (absorption + amount <= maxAbsorption)
+        {
+            absorption += amount;
+            uiManager.UpdateAbsorptionBar(absorption, maxAbsorption);
+        }
     }
 }

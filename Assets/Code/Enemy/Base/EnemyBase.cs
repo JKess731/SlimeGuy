@@ -158,8 +158,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void Die()
     {
-
-        Destroy(gameObject);
         Destroy(gameObject);
     }
 
@@ -192,7 +190,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #endregion
 
     #region Animation Triggers
-
     private void AnimationTriggerEvent(AnimationTriggerType triggerType) { 
         stateMachine.currentEnemyState.AnimationTriggerEvent(triggerType);
     }

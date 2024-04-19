@@ -6,5 +6,4 @@ using UnityEngine;
 public class EnemyAttackBoomerangProjectile : EnemyAttackSOBase
 {
     [SerializeField] private Rigidbody2D bulletPrefab;
-
 }
