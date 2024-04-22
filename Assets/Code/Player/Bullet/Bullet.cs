@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
         }
         if (collision.gameObject.tag == "enemy")
         {
-            PlayerStats.instance.InreaseAbsorption(absorption);
+            PlayerStats.instance.IncreaseAbsorption(absorption);
             collision.gameObject.GetComponent<EnemyBase>().Damage(bulletDamage, transform.right, KnockbackPower, transform.right);
             Destroy(gameObject);
         }

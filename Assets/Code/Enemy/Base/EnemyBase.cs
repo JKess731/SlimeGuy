@@ -55,6 +55,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private SimpleFalsh damageFlash;                  // Flash script
 
     public Animator animator;
+    public GameObject slimeDrop;                      // The slime drop prefab for absorption
+    public bool isDead { get; set; } = false;
 
     private void Awake()
     {
@@ -115,31 +117,26 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public void GoToIdle()
     {
         stateMachine.ChangeState(idleState);
-
     }
 
     public void GoToChase()
     {
         stateMachine.ChangeState(chaseState);
-
     }
 
     public void GoToAttack()
     {
         stateMachine.ChangeState(attackState);
-
     }
 
     public void GoToSpawn()
     {
         stateMachine.ChangeState(spawnState);
-
     }
 
     public void GoToDeath()
     {
         stateMachine.ChangeState(deathState);
-
     }
     #endregion
 
@@ -150,12 +147,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         animator.SetBool("Hit", true);
         currentHealth -= damageAmount;
         knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
-        if (currentHealth <= 0f) {
+        if (currentHealth <= 0f & !isDead) {
             Die();
         }
         animator.SetBool("Hit", false);
     }
-
     public void Damage(float damageAmount)
     {
         damageFlash.Flash();
@@ -170,6 +166,9 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void Die()
     {
+        Instantiate(slimeDrop, transform.position, Quaternion.identity);
+        isDead = true;  //Prevent multiple slimedrops
+
         Destroy(gameObject);
     }
 

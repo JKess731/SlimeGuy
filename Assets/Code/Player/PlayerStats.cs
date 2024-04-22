@@ -101,7 +101,7 @@ public class PlayerStats : MonoBehaviour
         return maxHealth;
     }
 
-    public void InreaseAbsorption(int amount)
+    public void IncreaseAbsorption(int amount)
     {
         if (absorption + amount <= maxAbsorption)
         {
