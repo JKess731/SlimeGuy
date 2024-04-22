@@ -35,10 +35,13 @@ public class SlimeSplit : MonoBehaviour
     private void Awake()
     {
         lookAtEnemy = transform.GetChild(0).GetComponent<LookAtEnemy>();
-        singleAttack = transform.GetChild(1).GetComponent<SingleAttackSplit>();
-        dashAttack = transform.GetChild(2).GetComponent<DashSplit>();
+        //singleAttack = transform.GetChild(1).GetComponent<SingleAttackSplit>();
+        //dashAttack = transform.GetChild(2).GetComponent<DashSplit>();
         minionsLeft = minionCounter;
+    }
 
+    private void Start()
+    {
         currentRoom = EnemiesInLevel.instance.currentRoom;
 
         if (currentRoom != null)

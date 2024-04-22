@@ -168,7 +168,7 @@ public class GolemBehavior : MonoBehaviour
         ring.GameObject().GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(slamAttackDelay / 2);
         ring.GameObject().GetComponent<SpriteRenderer>().enabled = true;
-        player.GetComponentInParent<PlayerHealth>().Damage(slamDamage);
+        player.GetComponentInParent<PlayerStats>().Damage(slamDamage);
         StartCoroutine(PlayerStunned());
         attacking = false;
         RestartAttackCounter();

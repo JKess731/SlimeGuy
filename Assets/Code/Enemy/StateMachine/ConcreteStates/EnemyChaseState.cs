@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class EnemyChaseState : EnemyState
 {
 
@@ -19,13 +15,14 @@ public class EnemyChaseState : EnemyState
     public override void EnterState()
     {
         base.EnterState();
+        enemyBase.animator.SetBool("ChaseState", true);
         enemyBase.enemyChaseBaseInstance.DoEnterLogic();
-
     }
 
     public override void ExitState()
     {
         base.ExitState();
+        enemyBase.animator.SetBool("ChaseState", false);
         enemyBase.enemyChaseBaseInstance.DoExitLogic();
     }
 

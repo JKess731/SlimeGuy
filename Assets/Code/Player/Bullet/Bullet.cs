@@ -5,16 +5,31 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    
     [SerializeField] private float bulletSpeed;
     [SerializeField] private int bulletDamage = 1;
+    [SerializeField] private float KnockbackPower = 1f;
+    [SerializeField] private float range = 200f;
+    [SerializeField] private int absorption = 1;
+
+    private Vector2 StartPos;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * bulletSpeed;
-        Destroy(gameObject, 3f);
+        StartPos = transform.position;
+
+        Debug.Log("Bullet created");
+    }
+
+    private void Update()
+    {
+        if (Vector2.Distance(StartPos, transform.position) > range)
+        {
+            Debug.Log(Vector2.Distance(StartPos, transform.position));
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,9 +38,10 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-            if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "enemy")
         {
-            collision.gameObject.GetComponent<EnemyBase>().Damage(bulletDamage);
+            PlayerStats.instance.InreaseAbsorption(absorption);
+            collision.gameObject.GetComponent<EnemyBase>().Damage(bulletDamage, transform.right, KnockbackPower, transform.right);
             Destroy(gameObject);
         }
     }

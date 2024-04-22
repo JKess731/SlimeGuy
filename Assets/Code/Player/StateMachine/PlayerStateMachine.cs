@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     //References
-    PlayerHealth playerHealth;
+    PlayerStats playerHealth;
     PlayerInput playerInput;
     AnimationControl animationControl;
 
@@ -44,7 +44,7 @@ public class PlayerStateMachine : MonoBehaviour
     private void Awake()
     {
         //Not great
-        playerHealth = GetComponent<PlayerHealth>();
+        playerHealth = GetComponent<PlayerStats>();
 
         //Set up initial references
         animationControl = GetComponent<AnimationControl>();
@@ -185,7 +185,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         isIdle = false;
         isMoving = false;
-
         dashPressed = context.ReadValueAsButton();
     }
 
@@ -193,6 +192,7 @@ public class PlayerStateMachine : MonoBehaviour
     private IEnumerator DashCoroutine()
     {
         //Handles Initial Dash
+        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
         DisableMovement();
         isMoving = false;
         isDashing = true;
@@ -214,18 +214,13 @@ public class PlayerStateMachine : MonoBehaviour
         canDash = true;
     }
 
-    //Handles Knockback
-    public void Knockback(Vector2 hitDirection, Vector2 constantForceDirection, float inputDirection)
-    {
-        knockBack.CallKnockback(hitDirection, constantForceDirection, inputDirection);
-    }
-
     public Vector2 GetMoveDir()
     {
         return moveVector;
     }
 
-    public void Damage(int damage)
+    //Handles Damage and Knockback
+    public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
         isDamaged = true;
         isMoving = false;
@@ -234,6 +229,8 @@ public class PlayerStateMachine : MonoBehaviour
         isAttacking = false;
 
         playerHealth.Damage(damage);
+        knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
+        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
     }
 
     private void SetIdleEvent()

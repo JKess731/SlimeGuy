@@ -9,7 +9,7 @@ public class DashSplit : MonoBehaviour
     private float dashingCooldown = 1f;
     private bool canDash = true;
 
-    private PlayerScript player;
+    private GameObject player;
     private PlayerMove playerMove;
     private Rigidbody2D rb;
     private SlimeSplit controller;
@@ -17,7 +17,7 @@ public class DashSplit : MonoBehaviour
 
     private void Awake()
     {
-        player = FindAnyObjectByType<PlayerScript>();
+        player = GameObject.FindGameObjectWithTag("player");
         playerMove = player.GetComponent<PlayerMove>();
         rb = player.GetComponent<Rigidbody2D>();
         controller = FindAnyObjectByType<SlimeSplit>();

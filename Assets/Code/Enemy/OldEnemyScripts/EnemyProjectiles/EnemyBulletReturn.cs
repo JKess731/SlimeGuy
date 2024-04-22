@@ -36,7 +36,7 @@ public class EnemyBulletReturn : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            collision.gameObject.GetComponent<PlayerHealth>().Damage(bulletDamage);
+            collision.gameObject.GetComponent<PlayerStats>().Damage(bulletDamage);
             if (enemy != null)
             {
                 enemy.GetComponent<DwarfBehavior>().RestartAttackCounter();

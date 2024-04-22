@@ -32,7 +32,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            collision.gameObject.GetComponent<PlayerHealth>().Damage(bulletDamage);
+            collision.gameObject.GetComponent<PlayerStats>().Damage(bulletDamage);
             Debug.Log("Bullet dmg");
             Destroy(gameObject);
         }

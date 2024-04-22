@@ -23,10 +23,7 @@ public class EnemyAttackSOBase : ScriptableObject
 
     public virtual void DoExitLogic() { ResetValues(); }
 
-    public virtual void DoFrameUpdateLogic()
-    {
-        
-    }
+    public virtual void DoFrameUpdateLogic() { }
 
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { }
