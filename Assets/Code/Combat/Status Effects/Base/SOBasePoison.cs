@@ -12,6 +12,17 @@ public class SOBasePoison : Effect
     public override void ApplyModifier(GameObject target)
     {
         EnemyBase enemyBase = target.GetComponent<EnemyBase>();
-        enemyBase.Damage(damage);
+        enemyBase.Damage(damage/intervals); 
+    }
+
+    public IEnumerator DamageOverTime(float t, GameObject target)
+    {
+        float currentTime = 0;
+        while (currentTime < t)
+        {
+            currentTime += Time.deltaTime;
+            yield return new WaitForSeconds(t/intervals);
+            ApplyModifier(target);
+        }
     }
 }
