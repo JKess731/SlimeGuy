@@ -898,7 +898,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7275767536416132755}
-  - component: {fileID: 5495697931961372154}
   m_Layer: 0
   m_Name: PlayerStats
   m_TagString: Untagged
@@ -921,30 +920,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 558452028673960895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5495697931961372154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656482405054491463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284721d4264ff574eaf05ddacab6d365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  <maxHealth>k__BackingField: 0
-  <currentHealth>k__BackingField: 0
-  <attack>k__BackingField: 0
-  <attackSpeed>k__BackingField: 0
-  <defense>k__BackingField: 0
-  <speed>k__BackingField: 0
-  <absorption>k__BackingField: 0
-  <maxAbsorption>k__BackingField: 0
-  <bulletCount>k__BackingField: 0
-  spawnPos: {x: 0, y: 0}
-  currentRoom: {fileID: 0}
 --- !u!1 &6947235108412896666
 GameObject:
   m_ObjectHideFlags: 0
