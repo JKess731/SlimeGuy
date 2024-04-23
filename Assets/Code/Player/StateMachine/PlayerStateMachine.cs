@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     //References
-    PlayerStats playerHealth;
+    PlayerStats playerStats;
     PlayerInput playerInput;
     AnimationControl animationControl;
 
@@ -38,13 +38,12 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] private bool isAttacking = false;
     [SerializeField] private bool isDamaged = false;
 
-    //Player Speed
-    [SerializeField] private float speed = 10f;
+    private float speed;
 
     private void Awake()
     {
         //Not great
-        playerHealth = GetComponent<PlayerStats>();
+        playerStats = GetComponent<PlayerStats>();
 
         //Set up initial references
         animationControl = GetComponent<AnimationControl>();
@@ -62,7 +61,11 @@ public class PlayerStateMachine : MonoBehaviour
         playerInput.GamePlay.Dash.started += OnDash;
         playerInput.GamePlay.Dash.performed += OnDash;
         playerInput.GamePlay.Dash.canceled += OnDash;
+    }
 
+    private void Start()
+    {
+        speed = PlayerStats.instance.speed;
     }
 
     //Handles Movement and Animation
@@ -228,7 +231,7 @@ public class PlayerStateMachine : MonoBehaviour
         isDashing = false;
         isAttacking = false;
 
-        playerHealth.Damage(damage);
+        playerStats.Damage(damage);
         knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
     }
@@ -240,5 +243,10 @@ public class PlayerStateMachine : MonoBehaviour
         isDashing = false;
         isAttacking = false;
         isDamaged = false;
+    }
+
+    public void setSpeed(float newSpeed)
+    {
+        speed = newSpeed;
     }
 }

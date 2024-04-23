@@ -33,7 +33,6 @@ public class SlimeShotgun : MonoBehaviour
         basicShotgunSO.Activate(ring.getRotation(), attackPoint.position);
     }
 
-
     //Draws the cone spread rays of the bullets in the editor
     private void OnDrawGizmos()
     {

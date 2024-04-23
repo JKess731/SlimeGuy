@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,31 +12,25 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     // Player Stats
-    [SerializeField] public int maxHealth { get; private set; } = 10; 
-    [SerializeField] public int currentHealth { get; private set; } = 10;
-    [SerializeField] public int attack { get; private set; } = 10;
-    [SerializeField] public int defense { get; private set; } = 10;
-    [SerializeField] public int speed { get; private set; } = 10;
-    [SerializeField] public int absorption { get; private set; } = 0;
-    [SerializeField] public int maxAbsorption { get; private set; } = 10;
-
+    [field: SerializeField] public float maxHealth { get; private set; }
+    [field: SerializeField] public float currentHealth { get; private set; }
+    [field: SerializeField] public float attack { get; private set; }
+    [field: SerializeField] public float attackSpeed { get; private set; }
+    [field: SerializeField] public float defense { get; private set; }
+    [field: SerializeField] public float speed { get; private set; }
+    [field: SerializeField] public float absorption { get; private set; }
+    [field: SerializeField] public float maxAbsorption { get; private set; }
+    [field: SerializeField] public float bulletCount { get; private set; }
 
     // Respawn Variables
     [SerializeField] private Vector2 spawnPos;
     [HideInInspector] public RoomTriggerControl currentRoom;
 
-    [SerializeField] private UIManager uiManager;
-
     public static PlayerStats instance;
+    public PlayerStateMachine playerStateMachine;
 
     private void Awake()
     {
-        uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
-
-        currentHealth = maxHealth;
-
-        spawnPos = transform.position;
-
         if (instance == null)
         {
             instance = this;
@@ -45,20 +40,23 @@ public class PlayerStats : MonoBehaviour
             Debug.LogWarning("PlayerStats instance already exists. Destroying duplicate.");
             Destroy(gameObject);
         }
+
+        currentHealth = maxHealth;
+        playerStateMachine = GameObject.FindWithTag("player").GetComponent<PlayerStateMachine>();
     }
 
     //Initializes the health bar && absorption bar
     private void Start()
     {
-        uiManager.UpdateHealthBar(currentHealth, maxHealth);
-        uiManager.UpdateAbsorptionBar(absorption, maxAbsorption);
+        UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
+        UiManager.instance.UpdateAbsorptionBar(absorption, maxAbsorption);
     }
 
     //Handles Damage
     public void Damage(int damage)
     {
         currentHealth -= damage;
-        uiManager.UpdateHealthBar(currentHealth, maxHealth);
+        UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
@@ -83,30 +81,68 @@ public class PlayerStats : MonoBehaviour
 
     public void Heal(int heal)
     {
-        currentHealth += heal;
-        if (currentHealth > maxHealth)
+        if (currentHealth + heal >= maxHealth)
         {
             currentHealth = maxHealth;
         }
-        uiManager.UpdateHealthBar(currentHealth, maxHealth);
+        //Else heal the player
+        currentHealth += heal;
+        
+        UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
     }
 
-    public int GetCurrentHealth()
-    {
-        return currentHealth;
-    }
-
-    public int GetMaxHealth()
-    {
-        return maxHealth;
-    }
-
-    public void InreaseAbsorption(int amount)
+    public void IncreaseAbsorption(int amount)
     {
         if (absorption + amount <= maxAbsorption)
         {
             absorption += amount;
-            uiManager.UpdateAbsorptionBar(absorption, maxAbsorption);
+            UiManager.instance.UpdateAbsorptionBar(absorption, maxAbsorption);
         }
     }
+    public void print()
+    {
+        Debug.Log("Health: " + currentHealth);
+        Debug.Log("Attack: " + attack);
+        Debug.Log("Attack Speed: " + attackSpeed);
+        Debug.Log("Defense: " + defense);
+        Debug.Log("Speed: " + speed);
+        Debug.Log("Absorption: " + absorption);
+        Debug.Log("Bullet Count: " + bulletCount);
+    }
+
+    #region Stat Increase
+    public void IncreaseBulletCount(int amount){bulletCount += amount;}
+    public void IncreaseAttack(float amount){attack += amount;}
+    public void IncreaseSpeed(float amount) { 
+        speed += amount;
+        playerStateMachine.setSpeed(speed);
+    }
+    public void IncreaseAttackSpeed(float amount) { attackSpeed += amount; }
+    public void IncreaseDefense(float amount) { defense += amount; }
+    public void IncreaseMaxHealth(float amount) { 
+        maxHealth += amount; 
+        currentHealth += amount; 
+        UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
+    }
+    public void IncreaseMaxAbsorption(float amount) { maxAbsorption += amount; }
+    #endregion
+    #region Stat Decrease
+    public void DecreaseBulletCount(int amount) { bulletCount -= amount; }
+    public void DecreaseAttack(float amount) { attack -= amount; }
+    public void DecreaseSpeed(float amount) { 
+        speed -= amount;
+        playerStateMachine.setSpeed(speed);
+    }
+    public void DecreaseAttackSpeed(float amount) { attackSpeed -= amount; }
+    public void DecreaseDefense(float amount) { defense -= amount; }
+    public void DecreaseMaxHealth(float amount) { 
+        maxHealth -= amount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth -= amount;
+        }
+        UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
+    }
+    public void DecreaseMaxAbsorption(float amount) { maxAbsorption -= amount; }
+    #endregion
 }

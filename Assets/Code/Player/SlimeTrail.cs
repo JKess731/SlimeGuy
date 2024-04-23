@@ -11,12 +11,13 @@ public class SlimeTrail : MonoBehaviour
 {
 
     [SerializeField] GameObject trailObject;
-    [SerializeField] GameObject Puddles;
-    public PlayerMove playerMove;
+    private GameObject Puddles;
+    private PlayerStateMachine stateMachine;
     
     private List<GameObject> trailObjects = new List<GameObject>();
     private GameObject lastTrail;
     private Vector3 lastPosition = new Vector3 ();
+
     private bool trailCheck = true;
     private bool dive = false;
     private int diveCheck = 0;
@@ -26,6 +27,8 @@ public class SlimeTrail : MonoBehaviour
     private void Awake()
     {
         eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
+        Puddles = GameObject.FindWithTag("player");
+        stateMachine = Puddles.GetComponent<PlayerStateMachine>();
     }
     //On start get the player characters movement, and set lastPosition to Puddles position to prevent issues with other code on start.
     void Start()
@@ -54,7 +57,7 @@ public class SlimeTrail : MonoBehaviour
                 trailCount = 0;
                 diveCheck = 0;
                 StopCoroutine(DiveTrail());
-                playerMove.input.Enable();
+                stateMachine.EnableMovement();
             }
         }
 
@@ -63,7 +66,6 @@ public class SlimeTrail : MonoBehaviour
         //a trail patch behind Puddles and adds it to a list. 
         if (Puddles.transform.position != lastPosition && trailCheck == true)
         {
-            
             //If Puddles has moved/is moving stops the code for deleting all trails. If there is no current trail instantiates the first 
             //patch of one. If there is checks the
             StopCoroutine(DeleteAllTrails());
@@ -96,7 +98,7 @@ public class SlimeTrail : MonoBehaviour
 
     IEnumerator DiveTrail() {
         while (dive == true){
-            playerMove.input.Disable();
+            stateMachine.DisableMovement();
             diveCheck--;
             
             Vector3 TrailStart = trailObjects[diveCheck].transform.position;
@@ -117,12 +119,8 @@ public class SlimeTrail : MonoBehaviour
             }
             yield return new WaitForSeconds(.03f); // Change trail speed
         }
-        playerMove.input.Enable();
+        stateMachine.EnableMovement();
     }
-
-
-
-
 
     //Deletes all trails when called in the for loop above. 
     IEnumerator DeleteAllTrails()
@@ -145,5 +143,11 @@ public class SlimeTrail : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyBase>().Damage(1);
+        }
+    }
 }
