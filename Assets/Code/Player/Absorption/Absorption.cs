@@ -12,9 +12,6 @@ public class Absorption : MonoBehaviour
     [SerializeField] float absorbtionRate = 1f;
     [SerializeField] int growthRate = 1;
 
-    [SerializeField] Stats.statBoost _statBoost;
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "enemy")

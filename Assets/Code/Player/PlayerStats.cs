@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,32 +11,27 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    // Player Stats
-    [SerializeField] public int maxHealth { get; private set; } = 10; 
-    [SerializeField] public int currentHealth { get; private set; } = 10;
-    [SerializeField] public int attack { get; private set; } = 10;
-    [SerializeField] public int defense { get; private set; } = 10;
-    [SerializeField] public int speed { get; private set; } = 10;
-    [SerializeField] public int absorption { get; private set; } = 0;
-    [SerializeField] public int maxAbsorption { get; private set; } = 10;
+    [SerializeField] private StatsSO playerStats;
 
+    // Player Stats
+    [field: SerializeField] public float maxHealth { get; private set; } = 0;
+    [field: SerializeField] public float currentHealth { get; private set; } = 0;
+    [field: SerializeField] public float attack { get; private set; } = 0;
+    [field: SerializeField] public float attackSpeed { get; private set; } = 0;
+    [field: SerializeField] public float defense { get; private set; } = 0;
+    [field: SerializeField] public float speed { get; private set; } = 0;
+    [field: SerializeField] public float absorption { get; private set; } = 0;
+    [field: SerializeField] public float maxAbsorption { get; private set; } = 0;
+    [field: SerializeField] public float bulletCount { get; private set; } = 0;
 
     // Respawn Variables
     [SerializeField] private Vector2 spawnPos;
     [HideInInspector] public RoomTriggerControl currentRoom;
 
-    [SerializeField] private UIManager uiManager;
-
     public static PlayerStats instance;
 
     private void Awake()
     {
-        uiManager = GameObject.Find("UI Manager").GetComponent<UIManager>();
-
-        currentHealth = maxHealth;
-
-        spawnPos = transform.position;
-
         if (instance == null)
         {
             instance = this;
@@ -45,20 +41,32 @@ public class PlayerStats : MonoBehaviour
             Debug.LogWarning("PlayerStats instance already exists. Destroying duplicate.");
             Destroy(gameObject);
         }
+        playerStats.Initialize();
+        spawnPos = transform.position;
+
+        maxHealth = playerStats.GetStat(Enum_Stat.HEALTH);
+        currentHealth = maxHealth;
+        attack = playerStats.GetStat(Enum_Stat.ATTACK);
+        attackSpeed = playerStats.GetStat(Enum_Stat.ATTACKSPEED);
+        defense = playerStats.GetStat(Enum_Stat.DEFENSE);
+        speed = playerStats.GetStat(Enum_Stat.SPEED);
+        maxAbsorption = playerStats.GetStat(Enum_Stat.ABSORPTION);
+        bulletCount = playerStats.GetStat(Enum_Stat.BULLETCOUNT);
     }
 
     //Initializes the health bar && absorption bar
     private void Start()
     {
-        uiManager.UpdateHealthBar(currentHealth, maxHealth);
-        uiManager.UpdateAbsorptionBar(absorption, maxAbsorption);
+        print();
+        UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
+        UiManager.instance.UpdateAbsorptionBar(absorption, maxAbsorption);
     }
 
     //Handles Damage
     public void Damage(int damage)
     {
         currentHealth -= damage;
-        uiManager.UpdateHealthBar(currentHealth, maxHealth);
+        UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
@@ -88,17 +96,7 @@ public class PlayerStats : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        uiManager.UpdateHealthBar(currentHealth, maxHealth);
-    }
-
-    public int GetCurrentHealth()
-    {
-        return currentHealth;
-    }
-
-    public int GetMaxHealth()
-    {
-        return maxHealth;
+        UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
     }
 
     public void IncreaseAbsorption(int amount)
@@ -106,7 +104,17 @@ public class PlayerStats : MonoBehaviour
         if (absorption + amount <= maxAbsorption)
         {
             absorption += amount;
-            uiManager.UpdateAbsorptionBar(absorption, maxAbsorption);
+            UiManager.instance.UpdateAbsorptionBar(absorption, maxAbsorption);
         }
+    }
+    public void print()
+    {
+        Debug.Log("Health: " + currentHealth);
+        Debug.Log("Attack: " + attack);
+        Debug.Log("Attack Speed: " + attackSpeed);
+        Debug.Log("Defense: " + defense);
+        Debug.Log("Speed: " + speed);
+        Debug.Log("Absorption: " + absorption);
+        Debug.Log("Bullet Count: " + bulletCount);
     }
 }
