@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae3d0b1bcc43f2147a5f2544b613f7be, type: 3}
+  m_Name: General Rooms 4 Each Side
+  m_EditorClassIdentifier: 
+  topRooms:
+  - {fileID: 2650626665130728009, guid: b10ab5ae09eea034b88d52384016936c, type: 3}
+  - {fileID: 2084770706880848314, guid: 27c172ab62c6e084fbb97df73c416542, type: 3}
+  - {fileID: 3731886447827035060, guid: 6fd242323893dbb4480c524b1fbfbee9, type: 3}
+  - {fileID: 7294784050992588423, guid: 8d3bb19bd65a3f64f9571f0d4ae26c1b, type: 3}
+  bottomRooms:
+  - {fileID: 183556518165175926, guid: 65e726f92f0a3134984ddae916dd0dd3, type: 3}
+  - {fileID: 2084770706880848314, guid: 27c172ab62c6e084fbb97df73c416542, type: 3}
+  - {fileID: 4606289034529013657, guid: d7484aa92e58cd44687912ef944510c8, type: 3}
+  - {fileID: 6400376492245675534, guid: 5ed4ef837f68bdc42a3b91d739759894, type: 3}
+  leftRooms:
+  - {fileID: 7618772270129800772, guid: 6513d73c9450f1644a32805eaa1ade94, type: 3}
+  - {fileID: 3588790299571034880, guid: f4ced3cd653c03e4aba2d64f3cdddc6a, type: 3}
+  - {fileID: 3731886447827035060, guid: 6fd242323893dbb4480c524b1fbfbee9, type: 3}
+  - {fileID: 6400376492245675534, guid: 5ed4ef837f68bdc42a3b91d739759894, type: 3}
+  rightRooms:
+  - {fileID: 8200174327451714724, guid: d80ee8e99de862642b12c4712260ba3e, type: 3}
+  - {fileID: 3588790299571034880, guid: f4ced3cd653c03e4aba2d64f3cdddc6a, type: 3}
+  - {fileID: 7294784050992588423, guid: 8d3bb19bd65a3f64f9571f0d4ae26c1b, type: 3}
+  - {fileID: 4606289034529013657, guid: d7484aa92e58cd44687912ef944510c8, type: 3}

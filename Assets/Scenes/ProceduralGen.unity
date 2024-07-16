@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &356524886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356524888}
+  - component: {fileID: 356524887}
+  m_Layer: 0
+  m_Name: New Gen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &356524887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356524886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe1774fb73c5e649a9bb5309c619de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingRoom: {fileID: 3411629566987365092, guid: 6d6d5aa283d1c824aa651c7a6d7cbfaf, type: 3}
+  roomPresetList: {fileID: 11400000, guid: 2986cc62c8883564abc17dd7d848779c, type: 2}
+  gridRows: 5
+  gridColumns: 5
+  changeRoomBufferTime: 5
+  roomsPlaced: []
+--- !u!4 &356524888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356524886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6966739, y: -4.1900816, z: 2.5648167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &533037931
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &560046942
 Transform:
   m_ObjectHideFlags: 0
@@ -241,7 +291,7 @@ Transform:
   m_GameObject: {fileID: 560046940}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.6983194, y: -0.9863723, z: 0.027620502}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -259,17 +309,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d279117b5019b46bdf9ef8a3ee286c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRoom: {fileID: 332948439611818991, guid: 5a728bb98e3179849a2c531c47ca6c25, type: 3}
-  seed: 0
-  width: 5
-  height: 5
-  gridSpaceSize: 16
-  placeRoom:
-    m_PersistentCalls:
-      m_Calls: []
+  startingRoom: {fileID: 3411629566987365092, guid: 6d6d5aa283d1c824aa651c7a6d7cbfaf, type: 3}
+  roomList: {fileID: 11400000, guid: 2986cc62c8883564abc17dd7d848779c, type: 2}
+  bossRoomList: {fileID: 0}
+  roomsPlaced: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 533037934}
   - {fileID: 560046942}
+  - {fileID: 356524888}
