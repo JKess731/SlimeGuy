@@ -12,7 +12,7 @@ public class SlimeTrail : MonoBehaviour
 
     [SerializeField] GameObject trailObject;
     private GameObject Puddles;
-    private PlayerStateMachine stateMachine;
+    private PlayerController controller;
     
     private List<GameObject> trailObjects = new List<GameObject>();
     private GameObject lastTrail;
@@ -28,7 +28,7 @@ public class SlimeTrail : MonoBehaviour
     {
         eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
         Puddles = GameObject.FindWithTag("player");
-        stateMachine = Puddles.GetComponent<PlayerStateMachine>();
+        controller = Puddles.GetComponent<PlayerController>();
     }
     //On start get the player characters movement, and set lastPosition to Puddles position to prevent issues with other code on start.
     void Start()
@@ -57,7 +57,7 @@ public class SlimeTrail : MonoBehaviour
                 trailCount = 0;
                 diveCheck = 0;
                 StopCoroutine(DiveTrail());
-                stateMachine.EnableMovement();
+                controller.EnableMovement();
             }
         }
 
@@ -98,7 +98,7 @@ public class SlimeTrail : MonoBehaviour
 
     IEnumerator DiveTrail() {
         while (dive == true){
-            stateMachine.DisableMovement();
+            controller.DisableMovement();
             diveCheck--;
             
             Vector3 TrailStart = trailObjects[diveCheck].transform.position;
@@ -119,7 +119,7 @@ public class SlimeTrail : MonoBehaviour
             }
             yield return new WaitForSeconds(.03f); // Change trail speed
         }
-        stateMachine.EnableMovement();
+        controller.EnableMovement();
     }
 
     //Deletes all trails when called in the for loop above. 

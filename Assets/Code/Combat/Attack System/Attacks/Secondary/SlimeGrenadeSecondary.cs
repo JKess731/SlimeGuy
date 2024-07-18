@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlimeGrenadeSecondary : SecondaryAttack
 {
     [Space]
+
     [Header("Grenade Attributes")]
     // Throw & Curve
     [Header("Throw Attributes")]

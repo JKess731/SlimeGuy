@@ -6,16 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     //References
-    PlayerStats playerStats;
-    PlayerInput playerInput;
-    AnimationControl animationControl;
-
-    Rigidbody2D rb;
-    TrailRenderer tr;
-
-    //Movement Variables
-    private Vector2 moveVector = Vector2.zero;
-    public Vector2 faceDirection;
+    private PlayerStats playerStats;
+    [SerializeField] private PlayerController controller;
+    private AnimationControl animationControl;
 
     //Dash Variables
     private bool canDash = true;
@@ -31,7 +24,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] private float dashingCooldown = 1f;
 
     //Animation States
-    [Header("Animation States")]
+    
     [SerializeField] private bool isIdle = false;
     [SerializeField] private bool isMoving = false;
     [SerializeField] private bool isDashing = false;
@@ -44,111 +37,27 @@ public class PlayerStateMachine : MonoBehaviour
     {
         //Not great
         playerStats = GetComponent<PlayerStats>();
+        controller = GetComponent<PlayerController>();
 
         //Set up initial references
         animationControl = GetComponent<AnimationControl>();
-        playerInput = new PlayerInput();
 
-        rb = GetComponent<Rigidbody2D>();
-        tr = GetComponent<TrailRenderer>();
         knockBack = GetComponent<KnockBack>();
-
-        //Set up input actions
-        playerInput.GamePlay.Movement.started += OnMovement;
-        playerInput.GamePlay.Movement.performed += OnMovement;
-        playerInput.GamePlay.Movement.canceled += OnMovementCancel;
-
-        playerInput.GamePlay.Dash.started += OnDash;
-        playerInput.GamePlay.Dash.performed += OnDash;
-        playerInput.GamePlay.Dash.canceled += OnDash;
     }
 
     private void Start()
     {
-        speed = PlayerStats.instance.speed;
+        //speed = PlayerStats.instance.speed;
+        speed = 10;
     }
 
     //Handles Movement and Animation
     private void FixedUpdate()
     {
-        HandleMovement();
         HandleAnimation();
     }
 
-    //Enables Input Actions
-    private void OnEnable()
-    {
-        playerInput.GamePlay.Enable();
-        playerInput.GamePlay.Movement.started += OnMovement;
-        playerInput.GamePlay.Movement.performed += OnMovement;
-        playerInput.GamePlay.Movement.canceled += OnMovementCancel;
-
-        playerInput.GamePlay.Dash.started += OnDash;
-        playerInput.GamePlay.Dash.performed += OnDash;
-        playerInput.GamePlay.Dash.canceled += OnDash;
-    }
-
-    //Disables Input Actions
-    private void OnDisable()
-    {
-        playerInput.GamePlay.Disable();
-        playerInput.GamePlay.Movement.started -= OnMovement;
-        playerInput.GamePlay.Movement.performed -= OnMovement;
-        playerInput.GamePlay.Movement.canceled -= OnMovementCancel;
-
-        playerInput.GamePlay.Dash.started -= OnDash;
-        playerInput.GamePlay.Dash.performed -= OnDash;
-        playerInput.GamePlay.Dash.canceled -= OnDash;
-    }
-
     //Disables Movement Input Actions
-    public void DisableMovement()
-    {
-        playerInput.GamePlay.Movement.started -= OnMovement;
-        playerInput.GamePlay.Movement.performed -= OnMovement;
-        playerInput.GamePlay.Movement.canceled -= OnMovement;
-    }
-
-    //Enables Movement Input Actions
-    public void EnableMovement()
-    {
-        playerInput.GamePlay.Movement.started += OnMovement;
-        playerInput.GamePlay.Movement.performed += OnMovement;
-        playerInput.GamePlay.Movement.canceled += OnMovementCancel;
-    }
-
-    //Handles Movement
-    private void HandleMovement()
-    {
-
-        if (dashPressed && canDash && !knockBack.isBeingKnockedBack)
-        {
-            StartCoroutine(DashCoroutine());
-        }
-
-        if ((isIdle || isMoving) && (!isDashing && !isDamaged))
-        {
-            rb.velocity = moveVector * speed;
-        }
-    }
-
-    //Handles Movement Input Actions
-    private void OnMovement(InputAction.CallbackContext context)
-    {
-        isMoving = true;
-        isIdle = false;
-
-        moveVector = context.ReadValue<Vector2>();
-        faceDirection = moveVector.normalized;
-    }
-
-    private void OnMovementCancel(InputAction.CallbackContext context)
-    {
-        isMoving = false;
-        isIdle = true;
-
-        moveVector = Vector2.zero;
-    }
 
     /// <summary>
     /// Handles the animation based on the state of the player and the direction they are facing
@@ -180,46 +89,7 @@ public class PlayerStateMachine : MonoBehaviour
             animationControl.SetState(AnimationState.DAMAGED);
         }
 
-        animationControl.PlayAnimation(faceDirection);
-    }
-
-    //Handles Dash Input Actions
-    private void OnDash(InputAction.CallbackContext context)
-    {
-        isIdle = false;
-        isMoving = false;
-        dashPressed = context.ReadValueAsButton();
-    }
-
-    //Dash Coroutine set the rigidbody to the dashing power for a set amount of time
-    private IEnumerator DashCoroutine()
-    {
-        //Handles Initial Dash
-        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
-        DisableMovement();
-        isMoving = false;
-        isDashing = true;
-        canDash = false;
-
-        tr.emitting = true;
-        rb.velocity = faceDirection * dashingPower;
-        yield return new WaitForSeconds(dashingTime);
-
-        //Handles Dash End
-        EnableMovement();
-        tr.emitting = false;
-        isDashing = false;
-        isMoving = true;
-        rb.velocity = Vector2.zero;
-
-        //Handles Dash Cooldown
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
-    }
-
-    public Vector2 GetMoveDir()
-    {
-        return moveVector;
+        animationControl.PlayAnimation(controller.faceDirection);
     }
 
     //Handles Damage and Knockback
