@@ -156,7 +156,8 @@ MonoBehaviour:
   roomPresetList: {fileID: 11400000, guid: 2986cc62c8883564abc17dd7d848779c, type: 2}
   gridRows: 5
   gridColumns: 5
-  changeRoomBufferTime: 5
+  changeRoomBufferTime: 3
+  changingRooms: 0
   roomsPlaced: []
 --- !u!4 &356524888
 Transform:

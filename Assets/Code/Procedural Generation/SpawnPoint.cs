@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,16 +21,22 @@ public class SpawnPoint : MonoBehaviour
         public int col = 0;
     }
 
-    private void Start()
+    private void Awake()
     {
         genScript = FindAnyObjectByType<ProceduralGeneration>();
+        if (genScript.changingRooms)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
         parentRoom = transform.parent.gameObject;
+
         roomList = genScript.roomPresetList;
 
-        ArrayCoordinate arrCoord = GetArrayCoordinate();
-        Debug.Log(arrCoord.row + ", " + arrCoord.row);
-
-        Invoke("ChooseRoom", 0.1f);
+        Invoke("ChooseRoom", 0.25f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -80,13 +87,12 @@ public class SpawnPoint : MonoBehaviour
 
                 ArrayCoordinate newRoomCoords = new ArrayCoordinate();
                 newRoomCoords.col = parentCoords.col;
-                newRoomCoords.row = parentCoords.row;
+                newRoomCoords.row = parentCoords.row + 1;
 
-                if (newRoomCoords.row + 1 > genScript.rooms.GetLength(0) - 1)
+                if (newRoomCoords.row >= genScript.rooms.GetLength(0) - 1)
                 {
                     GameObject singleDoor = GetSingleDoor();
-                    room = singleDoor;
-                    GameObject newRoom = Instantiate(room, transform.position, room.transform.rotation);
+                    GameObject newRoom = Instantiate(singleDoor, transform.position, room.transform.rotation);
                     genScript.rooms[newRoomCoords.row, newRoomCoords.col] = newRoom;
                     genScript.roomsPlaced.Add(newRoom);
                 }
@@ -106,11 +112,10 @@ public class SpawnPoint : MonoBehaviour
                 newRoomCoords.col = parentCoords.col;
                 newRoomCoords.row = parentCoords.row - 1;
 
-                if (newRoomCoords.row - 1 < 0)
+                if (newRoomCoords.row - 1 <= 0)
                 {
                     GameObject singleDoor = GetSingleDoor();
-                    room = singleDoor;
-                    GameObject newRoom = Instantiate(room, transform.position, room.transform.rotation);
+                    GameObject newRoom = Instantiate(singleDoor, transform.position, room.transform.rotation);
                     genScript.rooms[newRoomCoords.row, newRoomCoords.col] = newRoom;
                     genScript.roomsPlaced.Add(newRoom);
                 }
@@ -134,8 +139,7 @@ public class SpawnPoint : MonoBehaviour
                 if (newRoomCoords.col <= 0)
                 {
                     GameObject singleDoor = GetSingleDoor();
-                    room = singleDoor;
-                    GameObject newRoom = Instantiate(room, transform.position, room.transform.rotation);
+                    GameObject newRoom = Instantiate(singleDoor, transform.position, room.transform.rotation);
                     genScript.rooms[newRoomCoords.row, newRoomCoords.col] = newRoom;
                     genScript.roomsPlaced.Add(newRoom);
                 }
@@ -155,11 +159,10 @@ public class SpawnPoint : MonoBehaviour
                 newRoomCoords.col = parentCoords.col + 1;
                 newRoomCoords.row = parentCoords.row;
 
-                if (newRoomCoords.col + 1 > genScript.rooms.GetLength(1) - 1)
+                if (newRoomCoords.col >= genScript.rooms.GetLength(1) - 1)
                 {
                     GameObject singleDoor = GetSingleDoor();
-                    room = singleDoor;
-                    GameObject newRoom = Instantiate(room, transform.position, room.transform.rotation);
+                    GameObject newRoom = Instantiate(singleDoor, transform.position, room.transform.rotation);
                     genScript.rooms[newRoomCoords.row, newRoomCoords.col] = newRoom;
                     genScript.roomsPlaced.Add(newRoom);
                 }
