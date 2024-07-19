@@ -23,10 +23,9 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     public Vector2 moveVector { get; private set; }
     public Vector2 faceDirection { get; private set; }
-    
+
     //Player State Enum
-    [Header("Animation States")]
-    private PlayerState state;
+    public PlayerState state {get; private set;}
     
     private void Awake()
     {
@@ -98,15 +97,15 @@ public class PlayerController : MonoBehaviour
     //Handles Movement
     private void HandleMovement()
     {
-        if(state == PlayerState.DAMAGED || state == PlayerState.DASHING)
+        if(state == PlayerState.DAMAGED)
         {
             return;
         }
 
-        if (state == PlayerState.DASHING)
-        {
-            StartCoroutine(DashCoroutine());
-        }
+        //if (state == PlayerState.DASHING && dashPressed)
+        //{
+        //    StartCoroutine(DashCoroutine());
+        //}
 
         if (state == PlayerState.IDLE || state == PlayerState.MOVING)
         {
@@ -133,9 +132,12 @@ public class PlayerController : MonoBehaviour
     //Handles Dash Input Actions
     private void OnDash(InputAction.CallbackContext context)
     {
-        state = PlayerState.DASHING;
-
-        dashPressed = context.ReadValueAsButton();
+        Debug.Log("Dash");
+        if (canDash)
+        {
+            state = PlayerState.DASHING;
+            StartCoroutine(DashCoroutine());
+        }
     }
 
     //Dash Coroutine set the rigidbody to the dashing power for a set amount of time
@@ -144,7 +146,6 @@ public class PlayerController : MonoBehaviour
         //Handles Initial Dash
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
         DisableMovement();
-        state = PlayerState.DASHING;
         canDash = false;
 
         tr.emitting = true;
@@ -163,13 +164,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
-}
 
-enum PlayerState
-{
-    IDLE,
-    MOVING,
-    DASHING,
-    ATTACKING,
-    DAMAGED
+    //Sets the player state to idle
+    public void SetIdle()
+    {
+        state = PlayerState.IDLE;
+    }
 }
