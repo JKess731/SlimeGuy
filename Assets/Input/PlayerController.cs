@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
     {
         //Handles Initial Dash
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
-        DisableMovement();
+        //DisableMovement();
         canDash = false;
 
         tr.emitting = true;
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         //-----------------------------------------------------------------------------------
 
         //Handles Dash End
-        EnableMovement();
+        //EnableMovement();
         tr.emitting = false;
         state = PlayerState.IDLE;
         rb.velocity = Vector2.zero;

@@ -406,8 +406,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   dashingPower: 20
-  dashingTime: 0.5
-  dashingCooldown: 1
+  dashingTime: 0.2
+  dashingCooldown: 0.1
 --- !u!1 &709651894
 GameObject:
   m_ObjectHideFlags: 0
