@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerInput { get; private set; }
     public Vector2 moveVector { get; private set; }
     public Vector2 faceDirection { get; private set; }
-
+    
     //Player State Enum
     public PlayerState state {get; private set;}
 
@@ -107,15 +107,15 @@ public class PlayerController : MonoBehaviour
     //Handles Movement
     private void HandleMovement()
     {
-        if(state == PlayerState.DAMAGED)
+        if(state == PlayerState.DAMAGED || state == PlayerState.DASHING)
         {
             return;
         }
 
-        //if (state == PlayerState.DASHING && dashPressed)
-        //{
-        //    StartCoroutine(DashCoroutine());
-        //}
+        if (state == PlayerState.DASHING)
+        {
+            StartCoroutine(DashCoroutine());
+        }
 
         if (state == PlayerState.IDLE || state == PlayerState.MOVING)
         {
@@ -142,12 +142,9 @@ public class PlayerController : MonoBehaviour
     //Handles Dash Input Actions
     private void OnDash(InputAction.CallbackContext context)
     {
-        Debug.Log("Dash");
-        if (canDash)
-        {
-            state = PlayerState.DASHING;
-            StartCoroutine(DashCoroutine());
-        }
+        state = PlayerState.DASHING;
+
+        dashPressed = context.ReadValueAsButton();
     }
 
     //Dash Coroutine set the rigidbody to the dashing power for a set amount of time
@@ -155,7 +152,7 @@ public class PlayerController : MonoBehaviour
     {
         //Handles Initial Dash
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
-        //DisableMovement();
+        DisableMovement();
         canDash = false;
 
         tr.emitting = true;
@@ -173,11 +170,5 @@ public class PlayerController : MonoBehaviour
         //Handles Dash Cooldown
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-    }
-
-    //Sets the player state to idle
-    public void SetIdle()
-    {
-        state = PlayerState.IDLE;
     }
 }

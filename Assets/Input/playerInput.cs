@@ -46,7 +46,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Primary"",
+                    ""name"": ""Light Attack"",
                     ""type"": ""Button"",
                     ""id"": ""78f6ca0b-b9d8-48b8-ad73-830c579ae3e4"",
                     ""expectedControlType"": ""Button"",
@@ -55,7 +55,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Secondary"",
+                    ""name"": ""Heavy Attack"",
                     ""type"": ""Button"",
                     ""id"": ""ef3037d6-0aa2-4af5-b483-9a265ede27c2"",
                     ""expectedControlType"": ""Button"",
@@ -248,7 +248,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Primary"",
+                    ""action"": ""Light Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -259,7 +259,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Secondary"",
+                    ""action"": ""Heavy Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -272,8 +272,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
         m_GamePlay_Movement = m_GamePlay.FindAction("Movement", throwIfNotFound: true);
         m_GamePlay_Dash = m_GamePlay.FindAction("Dash", throwIfNotFound: true);
-        m_GamePlay_Primary = m_GamePlay.FindAction("Primary", throwIfNotFound: true);
-        m_GamePlay_Secondary = m_GamePlay.FindAction("Secondary", throwIfNotFound: true);
+        m_GamePlay_LightAttack = m_GamePlay.FindAction("Light Attack", throwIfNotFound: true);
+        m_GamePlay_HeavyAttack = m_GamePlay.FindAction("Heavy Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -337,16 +337,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IGamePlayActions> m_GamePlayActionsCallbackInterfaces = new List<IGamePlayActions>();
     private readonly InputAction m_GamePlay_Movement;
     private readonly InputAction m_GamePlay_Dash;
-    private readonly InputAction m_GamePlay_Primary;
-    private readonly InputAction m_GamePlay_Secondary;
+    private readonly InputAction m_GamePlay_LightAttack;
+    private readonly InputAction m_GamePlay_HeavyAttack;
     public struct GamePlayActions
     {
         private @PlayerInput m_Wrapper;
         public GamePlayActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_GamePlay_Movement;
         public InputAction @Dash => m_Wrapper.m_GamePlay_Dash;
-        public InputAction @Primary => m_Wrapper.m_GamePlay_Primary;
-        public InputAction @Secondary => m_Wrapper.m_GamePlay_Secondary;
+        public InputAction @LightAttack => m_Wrapper.m_GamePlay_LightAttack;
+        public InputAction @HeavyAttack => m_Wrapper.m_GamePlay_HeavyAttack;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -362,12 +362,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
-            @Primary.started += instance.OnPrimary;
-            @Primary.performed += instance.OnPrimary;
-            @Primary.canceled += instance.OnPrimary;
-            @Secondary.started += instance.OnSecondary;
-            @Secondary.performed += instance.OnSecondary;
-            @Secondary.canceled += instance.OnSecondary;
+            @LightAttack.started += instance.OnLightAttack;
+            @LightAttack.performed += instance.OnLightAttack;
+            @LightAttack.canceled += instance.OnLightAttack;
+            @HeavyAttack.started += instance.OnHeavyAttack;
+            @HeavyAttack.performed += instance.OnHeavyAttack;
+            @HeavyAttack.canceled += instance.OnHeavyAttack;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -378,12 +378,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
-            @Primary.started -= instance.OnPrimary;
-            @Primary.performed -= instance.OnPrimary;
-            @Primary.canceled -= instance.OnPrimary;
-            @Secondary.started -= instance.OnSecondary;
-            @Secondary.performed -= instance.OnSecondary;
-            @Secondary.canceled -= instance.OnSecondary;
+            @LightAttack.started -= instance.OnLightAttack;
+            @LightAttack.performed -= instance.OnLightAttack;
+            @LightAttack.canceled -= instance.OnLightAttack;
+            @HeavyAttack.started -= instance.OnHeavyAttack;
+            @HeavyAttack.performed -= instance.OnHeavyAttack;
+            @HeavyAttack.canceled -= instance.OnHeavyAttack;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -405,7 +405,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
-        void OnPrimary(InputAction.CallbackContext context);
-        void OnSecondary(InputAction.CallbackContext context);
+        void OnLightAttack(InputAction.CallbackContext context);
+        void OnHeavyAttack(InputAction.CallbackContext context);
     }
 }
