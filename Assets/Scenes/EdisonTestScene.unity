@@ -439,27 +439,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4728d1386f8d68468b5aa5b44071ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthTXT: {fileID: 1958530079}
-  attackTXT: {fileID: 1028929502}
-  defenseTXT: {fileID: 417579174}
-  speedTxt: {fileID: 1320295694}
-  player: {fileID: 752412403}
 --- !u!1 &752412392 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
   m_PrefabInstance: {fileID: 8133810901862723260}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &752412403 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1499401507028251260, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-  m_PrefabInstance: {fileID: 8133810901862723260}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752412392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ae4e37fba0a1544b54459fc51a8840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &752412406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,7 +460,11 @@ MonoBehaviour:
   dashingPower: 20
   dashingTime: 0.2
   dashingCooldown: 1
-  speed: 10
+  isIdle: 0
+  isMoving: 0
+  isDashing: 0
+  isAttacking: 0
+  isDamaged: 0
 --- !u!1 &827238421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6721891750707394437, guid: 67dfabdddbf8bbd46b1fbddcbcec6376, type: 3}
@@ -6129,7 +6117,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2252183450457289478, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-    m_RemovedGameObjects: []
+    - {fileID: 1499401507028251260, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 4376191853738983620, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}

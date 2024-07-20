@@ -65,7 +65,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Start()
     {
-        speed = PlayerStats.instance.speed;
+        speed = 10f;
     }
 
     //Handles Movement and Animation
