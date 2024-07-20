@@ -20,13 +20,15 @@ public class PlayerController : MonoBehaviour
     private bool canDash = true;
 
     //Input Variables
-    private PlayerInput playerInput;
+    public PlayerInput playerInput { get; private set; }
     public Vector2 moveVector { get; private set; }
     public Vector2 faceDirection { get; private set; }
 
     //Player State Enum
     public PlayerState state {get; private set;}
-    
+
+    [SerializeField] private Ability primary;
+
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -64,6 +66,10 @@ public class PlayerController : MonoBehaviour
         playerInput.GamePlay.Dash.started += OnDash;
         playerInput.GamePlay.Dash.performed += OnDash;
         playerInput.GamePlay.Dash.canceled += OnDash;
+
+        playerInput.GamePlay.Primary.started += primary.Activate;
+        playerInput.GamePlay.Primary.performed += primary.Activate;
+        playerInput.GamePlay.Primary.canceled += primary.Activate;
     }
 
     //Disables Input Actions
@@ -77,6 +83,10 @@ public class PlayerController : MonoBehaviour
         playerInput.GamePlay.Dash.started -= OnDash;
         playerInput.GamePlay.Dash.performed -= OnDash;
         playerInput.GamePlay.Dash.canceled -= OnDash;
+
+        playerInput.GamePlay.Primary.started += primary.Activate;
+        playerInput.GamePlay.Primary.performed += primary.Activate;
+        playerInput.GamePlay.Primary.canceled += primary.Activate;
     }
 
     public void DisableMovement()
