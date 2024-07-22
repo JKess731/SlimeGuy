@@ -17,32 +17,4 @@ public class AttackManager : MonoBehaviour
     {
         input = GetComponent<PlayerController>().playerInput;
     }
-
-    private void OnEnable()
-    {
-        try
-        {
-            input.GamePlay.Primary.started += context => primary.Activate(context);
-            input.GamePlay.Dash.started += context => dash.Activate(context);
-            input.GamePlay.Secondary.started += context => secondary.Activate(context);
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log(e);
-        }
-    }
-
-    private void OnDisable()
-    {
-        try
-        {
-            input.GamePlay.Primary.started -= context => primary.Activate(context);
-            input.GamePlay.Dash.started -= context => dash.Activate(context);
-            input.GamePlay.Secondary.started -= context => secondary.Activate(context);
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log(e);
-        }
-    }
 }

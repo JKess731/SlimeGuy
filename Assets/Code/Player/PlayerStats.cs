@@ -115,7 +115,6 @@ public class PlayerStats : MonoBehaviour
     public void IncreaseAttack(float amount){attack += amount;}
     public void IncreaseSpeed(float amount) { 
         speed += amount;
-        playerStateMachine.setSpeed(speed);
     }
     public void IncreaseAttackSpeed(float amount) { attackSpeed += amount; }
     public void IncreaseDefense(float amount) { defense += amount; }
@@ -131,7 +130,6 @@ public class PlayerStats : MonoBehaviour
     public void DecreaseAttack(float amount) { attack -= amount; }
     public void DecreaseSpeed(float amount) { 
         speed -= amount;
-        playerStateMachine.setSpeed(speed);
     }
     public void DecreaseAttackSpeed(float amount) { attackSpeed -= amount; }
     public void DecreaseDefense(float amount) { defense -= amount; }

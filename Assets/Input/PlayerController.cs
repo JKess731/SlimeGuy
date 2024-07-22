@@ -66,10 +66,6 @@ public class PlayerController : MonoBehaviour
         playerInput.GamePlay.Dash.started += OnDash;
         playerInput.GamePlay.Dash.performed += OnDash;
         playerInput.GamePlay.Dash.canceled += OnDash;
-
-        playerInput.GamePlay.Primary.started += primary.Activate;
-        playerInput.GamePlay.Primary.performed += primary.Activate;
-        playerInput.GamePlay.Primary.canceled += primary.Activate;
     }
 
     //Disables Input Actions
@@ -83,10 +79,6 @@ public class PlayerController : MonoBehaviour
         playerInput.GamePlay.Dash.started -= OnDash;
         playerInput.GamePlay.Dash.performed -= OnDash;
         playerInput.GamePlay.Dash.canceled -= OnDash;
-
-        playerInput.GamePlay.Primary.started += primary.Activate;
-        playerInput.GamePlay.Primary.performed += primary.Activate;
-        playerInput.GamePlay.Primary.canceled += primary.Activate;
     }
 
     public void DisableMovement()
@@ -142,8 +134,13 @@ public class PlayerController : MonoBehaviour
     //Handles Dash Input Actions
     private void OnDash(InputAction.CallbackContext context)
     {
-        state = PlayerState.DASHING;
+        if (!canDash)
+        {
+            return;
+        }
 
+        state = PlayerState.DASHING;
+        StartCoroutine(DashCoroutine());
         dashPressed = context.ReadValueAsButton();
     }
 
