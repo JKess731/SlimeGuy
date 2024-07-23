@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a25a11ea296f884d994765a0edb8e75, type: 3}
+  m_Name: SlimeShotgunAbility
+  m_EditorClassIdentifier: 
+  abilityName: Slime Shotgun
+  attack: {fileID: 11400000, guid: e38e70362e4195e43934250a86621407, type: 2}
+  damage: 0
+  knockback: 0
+  range: 0
+  speed: 0
+  cooldownTime: 0
+  activationTime: 0

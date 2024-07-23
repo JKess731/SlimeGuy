@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BasicShotgun", menuName = "Player/Attacks/BasicAbilities/BasicShotgun")]
-public class BasicShotgun : BasicAbilities
+[CreateAssetMenu(fileName = "BasicShotgun", menuName = "AttackPrefab/BasicShotgun")]
+public class BasicShotgun : AttackBehavior
 {
     public int bulletCount;
     public float spreadAngle;

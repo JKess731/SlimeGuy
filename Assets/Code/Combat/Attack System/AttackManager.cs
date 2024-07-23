@@ -6,10 +6,9 @@ using UnityEngine.InputSystem;
 
 public class AttackManager : MonoBehaviour
 {
-    [SerializeField] private Ability primary;
-    [SerializeField] private Ability dash;
-    [SerializeField] private Ability secondary;
-    [SerializeField] private Ability secondary2;
+    [SerializeField] private AbilityBase primary;
+    [SerializeField] private AbilityBase dash;
+    [SerializeField] private AbilityBase secondary;
 
     private PlayerInput input;
 

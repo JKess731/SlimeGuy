@@ -3,40 +3,49 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static PlayerInput;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IGamePlayActions
 {
     //Movement Variables
     private Rigidbody2D rb;
     [SerializeField] private float speed = 10f;
+    [SerializeField] private Transform attackPos;
 
     //Dash Variables
     [Header("Dash Variables")]
     [SerializeField] private float dashingPower = 20f;
     [SerializeField] private float dashingTime = 0.5f;
     [SerializeField] private float dashingCooldown = 1f;
-    private TrailRenderer tr;
     private bool dashPressed;
     private bool canDash = true;
+    private TrailRenderer tr;
+
+    //Ability Variables
+    [Header("Ability Variables")]
+    [SerializeField] private AbilityBase primary;
+    [SerializeField] private AbilityBase secondary;
+    [SerializeField] private AbilityBase dash;
 
     //Input Variables
     public PlayerInput playerInput { get; private set; }
     public Vector2 moveVector { get; private set; }
     public Vector2 faceDirection { get; private set; }
-    
-    //Player State Enum
-    public PlayerState state {get; private set;}
 
-    [SerializeField] private Ability primary;
+    //Player State Enum
+    public PlayerState state { get; private set; }
 
     private void Awake()
     {
-        playerInput = new PlayerInput();
+        if(playerInput == null)
+        {
+            playerInput = new PlayerInput();
+        }
+        
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
 
         //Set up input actions
-        OnEnable();
         playerInput.GamePlay.Movement.started += OnMovement;
         playerInput.GamePlay.Movement.performed += OnMovement;
         playerInput.GamePlay.Movement.canceled += OnMovementCancel;
@@ -44,6 +53,15 @@ public class PlayerController : MonoBehaviour
         playerInput.GamePlay.Dash.started += OnDash;
         playerInput.GamePlay.Dash.performed += OnDash;
         playerInput.GamePlay.Dash.canceled += OnDash;
+
+        playerInput.GamePlay.Primary.started += OnPrimary;
+        playerInput.GamePlay.Primary.performed += OnPrimary;
+        playerInput.GamePlay.Primary.canceled += OnPrimary;
+
+        playerInput.GamePlay.Secondary.started += OnSecondary;
+        playerInput.GamePlay.Secondary.performed += OnSecondary;
+        playerInput.GamePlay.Secondary.canceled += OnSecondary;
+
     }
 
     private void Start()
@@ -81,6 +99,7 @@ public class PlayerController : MonoBehaviour
         playerInput.GamePlay.Dash.canceled -= OnDash;
     }
 
+    #region Movement
     public void DisableMovement()
     {
         playerInput.GamePlay.Movement.started -= OnMovement;
@@ -104,11 +123,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (state == PlayerState.DASHING)
-        {
-            StartCoroutine(DashCoroutine());
-        }
-
         if (state == PlayerState.IDLE || state == PlayerState.MOVING)
         {
             rb.velocity = moveVector * speed;
@@ -116,7 +130,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Handles Movement Input Actions
-    private void OnMovement(InputAction.CallbackContext context)
+    public void OnMovement(InputAction.CallbackContext context)
     {
         state = PlayerState.MOVING;
 
@@ -124,15 +138,17 @@ public class PlayerController : MonoBehaviour
         faceDirection = moveVector.normalized;
     }
 
-    private void OnMovementCancel(InputAction.CallbackContext context)
+    public void OnMovementCancel(InputAction.CallbackContext context)
     {
         state = PlayerState.IDLE;
 
         moveVector = Vector2.zero;
     }
+    #endregion
 
+    #region Dash
     //Handles Dash Input Actions
-    private void OnDash(InputAction.CallbackContext context)
+    public void OnDash(InputAction.CallbackContext context)
     {
         if (!canDash)
         {
@@ -141,6 +157,7 @@ public class PlayerController : MonoBehaviour
 
         state = PlayerState.DASHING;
         StartCoroutine(DashCoroutine());
+
         dashPressed = context.ReadValueAsButton();
     }
 
@@ -149,7 +166,7 @@ public class PlayerController : MonoBehaviour
     {
         //Handles Initial Dash
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
-        DisableMovement();
+        //DisableMovement();
         canDash = false;
 
         tr.emitting = true;
@@ -168,4 +185,19 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+    #endregion
+
+    #region Primary
+    public void OnPrimary(InputAction.CallbackContext context)
+    {
+        primary.Activate(context, attackPos.rotation, attackPos.position);
+    }
+    #endregion
+
+    #region Secondary
+    public void OnSecondary(InputAction.CallbackContext context)
+    {
+        secondary.Activate(context, attackPos.rotation, attackPos.position);
+    }
+    #endregion
 }

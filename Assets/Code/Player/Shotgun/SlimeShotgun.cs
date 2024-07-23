@@ -9,7 +9,7 @@ public class SlimeShotgun : MonoBehaviour
     [SerializeField] private LookAtMouse ring;
     [SerializeField] private BasicShotgun basicShotgunSO;
 
-    private float timer = 0;
+    //private float timer = 0;
 
     private FMODUnity.StudioEventEmitter eventEmitterRef;
     private void Awake()
@@ -19,13 +19,13 @@ public class SlimeShotgun : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetMouseButton(0) && timer < 0)
-        {
-            eventEmitterRef.Play();
-            Shoot();
-            timer = basicShotgunSO.cooldown;
-        }
-        timer -= Time.deltaTime; 
+        //if (Input.GetMouseButton(0) && timer < 0)
+        //{
+        //    eventEmitterRef.Play();
+        //    Shoot();
+        //    timer = basicShotgunSO.cooldown;
+        //}
+        //timer -= Time.deltaTime; 
     }
 
     private void Shoot()  
