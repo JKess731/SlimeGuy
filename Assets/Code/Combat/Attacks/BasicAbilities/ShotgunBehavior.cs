@@ -7,17 +7,17 @@ using UnityEngine;
 public class ShotgunBehavior : AttackBehavior
 {
     [Header("Shotgun Attributes")]
-    [SerializeField] private int bulletCount;
-    [SerializeField] private float spreadAngle;
-    [SerializeField] private GameObject projectile;
+    [SerializeField] private int _bulletCount;
+    [SerializeField] private float _spreadAngle;
+    [SerializeField] private GameObject _projectile;
 
     public override void ActivateAttack(Quaternion rotation, Vector2 attackPosition)
     {
-        float angleDiff = spreadAngle * 2 / (bulletCount - 1);
-        for (int i = 0; i < bulletCount; i++){
+        float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
+        for (int i = 0; i < _bulletCount; i++){
             float addedOffset = -angleDiff * i;
-            Quaternion newRot = rotation * Quaternion.Euler(0, 0, spreadAngle) * Quaternion.Euler(0, 0, addedOffset);
-            Instantiate(projectile, attackPosition, newRot);
+            Quaternion newRot = rotation * Quaternion.Euler(0, 0, _spreadAngle) * Quaternion.Euler(0, 0, addedOffset);
+            Instantiate(_projectile, attackPosition, newRot);
         }
     }   
 }

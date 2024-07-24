@@ -8,8 +8,6 @@ using UnityEngine;
 /// </summary>
 public abstract class AttackBehavior : ScriptableObject
 {
-    private float activationTime;
-
     public virtual void ActivateAttack(Quaternion rotation, Vector2 attackPosition)
     {
         throw new System.NotImplementedException();
