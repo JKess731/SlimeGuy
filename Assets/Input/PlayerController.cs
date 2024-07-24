@@ -190,14 +190,14 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     #region Primary
     public void OnPrimary(InputAction.CallbackContext context)
     {
-        primary.Activate(context, attackPos.rotation, attackPos.position);
+        primary.ActivateAbility(context, attackPos.rotation, attackPos.position);
     }
     #endregion
 
     #region Secondary
     public void OnSecondary(InputAction.CallbackContext context)
     {
-        secondary.Activate(context, attackPos.rotation, attackPos.position);
+        secondary.ActivateAbility(context, attackPos.rotation, attackPos.position);
     }
     #endregion
 }

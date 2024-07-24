@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BasicShotgun", menuName = "AttackPrefab/BasicShotgun")]
-public class BasicShotgun : AttackBehavior
+[CreateAssetMenu(fileName = "Shotgun", menuName = "Attack/Shotgun")]
+public class ShotgunBehavior : AttackBehavior
 {
-    public int bulletCount;
-    public float spreadAngle;
-    public GameObject projectile;
+    [Header("Shotgun Attributes")]
+    [SerializeField] private int bulletCount;
+    [SerializeField] private float spreadAngle;
+    [SerializeField] private GameObject projectile;
 
-    public override void Activate(Quaternion rotation, Vector2 attackPosition)
+    public override void ActivateAttack(Quaternion rotation, Vector2 attackPosition)
     {
         float angleDiff = spreadAngle * 2 / (bulletCount - 1);
         for (int i = 0; i < bulletCount; i++){

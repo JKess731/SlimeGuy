@@ -7,7 +7,7 @@ public class SlimeShotgun : MonoBehaviour
 {
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LookAtMouse ring;
-    [SerializeField] private BasicShotgun basicShotgunSO;
+    [SerializeField] private ShotgunBehavior basicShotgunSO;
 
     //private float timer = 0;
 
@@ -30,20 +30,20 @@ public class SlimeShotgun : MonoBehaviour
 
     private void Shoot()  
     {
-        basicShotgunSO.Activate(ring.getRotation(), attackPoint.position);
+        basicShotgunSO.ActivateAttack(ring.getRotation(), attackPoint.position);
     }
 
     //Draws the cone spread rays of the bullets in the editor
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Vector2 test1 = Quaternion.AngleAxis(basicShotgunSO.spreadAngle, Vector3.forward) * attackPoint.right;
-        Gizmos.DrawRay(attackPoint.position, test1 * 5);
+        //Gizmos.color = Color.blue;
+        //Vector2 test1 = Quaternion.AngleAxis(basicShotgunSO.spreadAngle, Vector3.forward) * attackPoint.right;
+        //Gizmos.DrawRay(attackPoint.position, test1 * 5);
 
-        Vector2 test2 = Quaternion.AngleAxis(-basicShotgunSO.spreadAngle, Vector3.forward) * attackPoint.right;
-        Gizmos.DrawRay(attackPoint.position, test2 * 5);
+        //Vector2 test2 = Quaternion.AngleAxis(-basicShotgunSO.spreadAngle, Vector3.forward) * attackPoint.right;
+        //Gizmos.DrawRay(attackPoint.position, test2 * 5);
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(attackPoint.position, attackPoint.right * 5);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawRay(attackPoint.position, attackPoint.right * 5);
     }
 }

@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 5035838835907895610}
   - component: {fileID: 6896055371890961494}
   - component: {fileID: 4209171271890075006}
-  - component: {fileID: 8905899364920994192}
   - component: {fileID: 4985747929611648509}
-  - component: {fileID: 3746752025495361709}
+  - component: {fileID: 5813185348422231775}
   m_Layer: 10
   m_Name: SlimePellet
   m_TagString: attack
@@ -115,19 +114,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8905899364920994192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5098964168513206920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b129554bc1be3194d839fa1e452176e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 20
 --- !u!58 &4985747929611648509
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3746752025495361709
+--- !u!114 &5813185348422231775
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,9 +158,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5098964168513206920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056645fba99328a45b2d0e6cafce0fe4, type: 3}
+  m_Script: {fileID: 11500000, guid: b129554bc1be3194d839fa1e452176e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
   knockback: 1
+  bulletSpeed: 10
   range: 5

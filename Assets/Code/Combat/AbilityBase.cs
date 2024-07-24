@@ -2,13 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// The SO base class for all abilities
+/// </summary>
 public abstract class AbilityBase : ScriptableObject
 {
     [Header("Name")]
     [SerializeField] protected string abilityName;
 
     [Header("Attack Prefab")]
-    [SerializeField] protected AttackBehavior attack;
+    [SerializeField] protected AttackBehavior behavior;
 
     [Header("Stats")]
     [SerializeField] protected float damage;
@@ -23,11 +26,7 @@ public abstract class AbilityBase : ScriptableObject
     [HideInInspector] protected bool canActivate = true;
     [HideInInspector] protected bool isActivated = false;
 
-    protected virtual void Awake()
-    {
-       throw new System.NotImplementedException();
-    }
-    public virtual void Activate(InputAction.CallbackContext context, Quaternion rotation, Vector2 attackPosition)
+    public virtual void ActivateAbility(InputAction.CallbackContext context, Quaternion rotation, Vector2 attackPosition)
     {
         Debug.Log(abilityName + ": Activated");
         throw new System.NotImplementedException();
@@ -40,4 +39,9 @@ public abstract class AbilityBase : ScriptableObject
         canActivate = true;
     }
     #endregion
+
+    public void test()
+    {
+        AttackCooldown(5f);
+    }
 }
