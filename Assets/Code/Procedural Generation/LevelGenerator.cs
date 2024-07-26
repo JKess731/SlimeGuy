@@ -99,7 +99,7 @@ public class LevelGenerator : MonoBehaviour
 
             DoorTypes doorNeeded = sp.doorNeeded;
 
-            Debug.Log(row + "," + col);
+            //Debug.Log(row + "," + col);
 
             if (rooms[row, col] != null )
             {
@@ -143,8 +143,6 @@ public class LevelGenerator : MonoBehaviour
                 rooms[row, col] = spawnedRoom.GetComponent<RoomTypes>();
                 currentRoomCount++;
             }
-
-            Destroy(sp.gameObject);
         }
 
     }
@@ -179,7 +177,10 @@ public class LevelGenerator : MonoBehaviour
             if ((chosenRoomCount / 2) + 1 > currentRoomCount)
             {
                 options = GetDoorAmount(2);
-
+            }
+            else if ((chosenRoomCount / 3) > currentRoomCount)
+            {
+                options = GetDoorAmount(2);
                 options.AddRange(GetDoorAmount(3));
             }
             else
@@ -231,19 +232,16 @@ public class LevelGenerator : MonoBehaviour
     {
         ArrayCoordinate coord = new ArrayCoordinate();
 
-        GameObject parent = sp.transform.parent.gameObject;
+        GameObject parent = sp.parentRoom;
 
-        if (parent != null)
+        for (int row = 0; row < rowSize; row++)
         {
-            for (int row = 0; row < rowSize; row++)
+            for (int col = 0; col < colSize; col++)
             {
-                for (int col = 0; col < colSize; col++)
+                if (rooms[row, col] == parent.GetComponent<RoomTypes>())
                 {
-                    if (rooms[row, col] == parent.GetComponent<RoomTypes>())
-                    {
-                        coord.row = row;
-                        coord.col = col;
-                    }
+                    coord.row = row;
+                    coord.col = col;
                 }
             }
         }
@@ -252,11 +250,11 @@ public class LevelGenerator : MonoBehaviour
         {
             coord.row += 1;
         }
-        else if (sp.doorNeeded == DoorTypes.BOTTOM_DOOR && coord.row >= 0)
+        else if (sp.doorNeeded == DoorTypes.BOTTOM_DOOR && coord.row > 0)
         {
             coord.row -= 1;
         }
-        else if (sp.doorNeeded == DoorTypes.RIGHT_DOOR && coord.col >= 0)
+        else if (sp.doorNeeded == DoorTypes.RIGHT_DOOR && coord.col > 0)
         {
             coord.col += 1;
         }

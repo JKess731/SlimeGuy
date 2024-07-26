@@ -20,6 +20,14 @@ public class SpawnPoint : MonoBehaviour
     {
         parentRoom = transform.parent.gameObject;
         genScript.spawnPoints.Enqueue(this);
+
+        StartCoroutine(SelfDestruct());
+    }
+
+    IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSecondsRealtime(8f);
+        Destroy(gameObject);
     }
     /*
     private void OnTriggerEnter2D(Collider2D collision)
