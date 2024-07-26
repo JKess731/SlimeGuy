@@ -49,7 +49,7 @@ public class ProceduralGeneration : MonoBehaviour
         {
             for (int col = 0; col < gridColumns; col++)
             {
-                if (rooms[row, col] != null)
+                if (rooms[row, col] != null && rooms[row, col] != startingRoom)
                 {
                     GameObject room = rooms[row, col];
                     RoomTypes roomTypesScript = room.GetComponent<RoomTypes>();

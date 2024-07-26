@@ -6,39 +6,22 @@ using UnityEngine.InputSystem;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] private ProceduralGeneration genScript;
-    [SerializeField] private DoorTypes doorNeeded;
+    [SerializeField] private LevelGenerator genScript;
+    public DoorTypes doorNeeded;
 
-    [SerializeField] private GameObject parentRoom;
-    private RoomList roomList;
-
-    public bool spawned = false;
-    private GameObject room;
-
-    private class ArrayCoordinate
-    {
-        public int row = 0;
-        public int col = 0;
-    }
+    public GameObject parentRoom;
 
     private void Awake()
     {
-        genScript = FindAnyObjectByType<ProceduralGeneration>();
-        if (genScript.changingRooms)
-        {
-            Destroy(gameObject);
-        }
+        genScript = FindAnyObjectByType<LevelGenerator>();
     }
 
     private void Start()
     {
         parentRoom = transform.parent.gameObject;
-
-        roomList = genScript.roomPresetList;
-
-        Invoke("ChooseRoom", 0.25f);
+        genScript.spawnPoints.Enqueue(this);
     }
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("room_spawn_point") && collision.GetComponent<SpawnPoint>().spawned == true)
@@ -233,4 +216,5 @@ public class SpawnPoint : MonoBehaviour
 
         return null;
     }
+    */
 }

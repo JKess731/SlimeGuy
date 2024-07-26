@@ -123,6 +123,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &13985927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13985929}
+  - component: {fileID: 13985928}
+  m_Layer: 0
+  m_Name: New New Gen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &13985928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13985927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0515c50d5a8d849ab3a3701808f79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRoom: {fileID: 3411629566987365092, guid: 6d6d5aa283d1c824aa651c7a6d7cbfaf, type: 3}
+  roomList: {fileID: 11400000, guid: 2986cc62c8883564abc17dd7d848779c, type: 2}
+  maxRooms: 25
+  minRooms: 15
+  overrideRoomCount: 0
+  rowSize: 10
+  colSize: 10
+  spawnDelay: 0.5
+  roomsPlaced: []
+--- !u!4 &13985929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13985927}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.433975, y: -5.9535737, z: 3.5201707}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &356524886
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &356524887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,8 +207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingRoom: {fileID: 3411629566987365092, guid: 6d6d5aa283d1c824aa651c7a6d7cbfaf, type: 3}
   roomPresetList: {fileID: 11400000, guid: 2986cc62c8883564abc17dd7d848779c, type: 2}
-  gridRows: 5
-  gridColumns: 5
+  gridRows: 10
+  gridColumns: 10
   changeRoomBufferTime: 3
   changingRooms: 0
   roomsPlaced: []
@@ -310,10 +363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d279117b5019b46bdf9ef8a3ee286c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingRoom: {fileID: 3411629566987365092, guid: 6d6d5aa283d1c824aa651c7a6d7cbfaf, type: 3}
-  roomList: {fileID: 11400000, guid: 2986cc62c8883564abc17dd7d848779c, type: 2}
-  bossRoomList: {fileID: 0}
-  roomsPlaced: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -321,3 +370,4 @@ SceneRoots:
   - {fileID: 533037934}
   - {fileID: 560046942}
   - {fileID: 356524888}
+  - {fileID: 13985929}
