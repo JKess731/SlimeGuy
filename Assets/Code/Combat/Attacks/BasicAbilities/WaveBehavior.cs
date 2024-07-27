@@ -9,10 +9,10 @@ using UnityEngine;
 public class WaveBehavior : AttackBehavior
 {
     [Header("Wave Attributes")]
-    [SerializeField] GameObject wavePrefab;
+    [SerializeField] GameObject _parentWave;
 
     public override void ActivateAttack(Quaternion rotation, Vector2 attackPosition)
     {
-        Instantiate(wavePrefab, attackPosition, rotation);
+        Instantiate(_parentWave, attackPosition, rotation);
     }
 }

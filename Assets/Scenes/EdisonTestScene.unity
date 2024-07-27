@@ -257,7 +257,7 @@ MonoBehaviour:
   dashingTime: 0.5
   dashingCooldown: 1
   primary: {fileID: 11400000, guid: 04decd47599722f4d8b4d90909296d3d, type: 2}
-  secondary: {fileID: 11400000, guid: 04decd47599722f4d8b4d90909296d3d, type: 2}
+  secondary: {fileID: 11400000, guid: 21f4d801539e5e54fae412528d7a89fc, type: 2}
   dash: {fileID: 11400000, guid: 04decd47599722f4d8b4d90909296d3d, type: 2}
 --- !u!1 &827238421 stripped
 GameObject:

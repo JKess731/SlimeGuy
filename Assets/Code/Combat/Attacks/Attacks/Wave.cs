@@ -2,17 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wave : MonoBehaviour
+public class Wave : Attacks
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Wave Settings")]
+    [SerializeField] private GameObject _parent;
+    [SerializeField] private GameObject _child;
+
+    [SerializeField] private float _lifeTime;
+
+
+    protected override void Start()
     {
-        
+        base.Start();
+        Destroy(gameObject, _lifeTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "enemy")
+        {
+            collision.GetComponent<EnemyBase>().Damage(base.damage);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(_child, _parent.transform.position, _parent.transform.rotation);
     }
 }
