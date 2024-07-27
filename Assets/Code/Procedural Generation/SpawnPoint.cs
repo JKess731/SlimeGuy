@@ -26,7 +26,7 @@ public class SpawnPoint : MonoBehaviour
 
     IEnumerator SelfDestruct()
     {
-        yield return new WaitForSecondsRealtime(8f);
+        yield return new WaitForSecondsRealtime(5f);
         Destroy(gameObject);
     }
     /*

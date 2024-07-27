@@ -159,7 +159,7 @@ MonoBehaviour:
   overrideRoomCount: 0
   rowSize: 10
   colSize: 10
-  spawnDelay: 0.5
+  spawnDelay: 0.175
   roomsPlaced: []
 --- !u!4 &13985929
 Transform:

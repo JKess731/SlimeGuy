@@ -24,6 +24,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private float spawnDelay = 1f;
 
     public RoomTypes[,] rooms;
+
     public List<GameObject> roomsPlaced = new List<GameObject>();
 
     public Queue<SpawnPoint> spawnPoints = new Queue<SpawnPoint>();
@@ -121,11 +122,15 @@ public class LevelGenerator : MonoBehaviour
 
                     RoomTypes oldRoomScript = rooms[row, col];
                     GameObject oldRoomObj = oldRoomScript.gameObject;
+
+                    int index = roomsPlaced.IndexOf(oldRoomObj);
+                    roomsPlaced.Remove(oldRoomObj);
                     Destroy(oldRoomObj);
 
                     GameObject spawnedRoom = Instantiate(newRoom, sp.transform.position, Quaternion.identity);
                     rooms[row, col] = spawnedRoom.GetComponent<RoomTypes>();
                     currentRoomCount++;
+                    roomsPlaced.Insert(index, spawnedRoom);
                 }
 
             }
@@ -142,8 +147,13 @@ public class LevelGenerator : MonoBehaviour
                 // Place it in the array at rooms[row, col]
                 rooms[row, col] = spawnedRoom.GetComponent<RoomTypes>();
                 currentRoomCount++;
+                roomsPlaced.Add(spawnedRoom);
             }
         }
+
+        yield return new WaitForSecondsRealtime(1f);
+
+        ChooseBossRoom();
 
     }
 
@@ -225,7 +235,14 @@ public class LevelGenerator : MonoBehaviour
 
     private SpawnPoint GetSpawnPoint()
     {
-        return spawnPoints.Dequeue();
+        SpawnPoint sp = spawnPoints.Dequeue();
+
+        if (sp.parentRoom == null)
+        {
+            return GetSpawnPoint();
+        }
+
+        return sp;
     }
 
     private ArrayCoordinate GetSpawnPointArrayCoords(SpawnPoint sp)
@@ -265,6 +282,32 @@ public class LevelGenerator : MonoBehaviour
 
         return coord;
     }
+
+    private void ChooseBossRoom()
+    {
+        GameObject room = roomsPlaced[roomsPlaced.Count - 1];
+
+        for (int i = 0; i < room.transform.childCount; i++)
+        {
+            if (room.transform.GetChild(i).name == "Walls")
+            {
+                GameObject r = room.transform.GetChild(i).gameObject;
+
+                for (int j = 0; j < r.transform.childCount; j++)
+                {
+                    SpriteRenderer sr = r.transform.GetChild(j).GetComponent<SpriteRenderer>();
+                    sr.color = Color.red;
+                }
+
+                break;
+            }
+        }
+
+        // Get room grid location
+        // Replace room with boss room of same door type from boss room preset list
+
+    }
+
     #endregion
 
     #region Room Lists
