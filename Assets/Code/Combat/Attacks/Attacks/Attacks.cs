@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The base class for all attacks MonoBehaviour
+/// </summary>
 public class Attacks : MonoBehaviour
 {
-    [SerializeField] protected int damage;
-    [SerializeField] protected float knockback;
-
-    protected Vector2 startPos;
-
-    protected virtual void Start()
-    {
-        startPos = transform.position;
-    }
+    protected int _damage;
+    protected float _knockback;
+    protected Vector2 _startPos;
 }

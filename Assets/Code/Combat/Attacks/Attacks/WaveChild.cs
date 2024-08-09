@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class WaveChild : Attacks
 {
-    [Header("Wave Settings")]
-    [SerializeField] private float _lifeTime;
+    private WaveStruct _waveStruct;
 
     private HashSet<EnemyBase> _enemyHashSet = new  HashSet<EnemyBase>();
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
-        Destroy(gameObject, _lifeTime);
+        Destroy(gameObject, _waveStruct.ActivationTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +30,7 @@ public class WaveChild : Attacks
             }
 
             //Else, add the enemy to the hashset and damage it
-            enemy.Damage(base.damage);
+            enemy.Damage(base._damage);
             _enemyHashSet.Add(enemy);
         }
     }
@@ -54,8 +52,13 @@ public class WaveChild : Attacks
             }
 
             //Else, add the enemy to the hashset and damage it
-            enemy.Damage(base.damage);
+            enemy.Damage(base._damage);
             _enemyHashSet.Add(enemy);
         }
+    }
+
+    public void SetWaveStruct(WaveStruct waveStruct)
+    {
+        _waveStruct = waveStruct;
     }
 }

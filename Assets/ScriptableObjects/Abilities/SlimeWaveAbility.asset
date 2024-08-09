@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Slime Wave
   behavior: {fileID: 11400000, guid: 5173ae7a62fcadf4c974156ce4e3d7f0, type: 2}
-  damage: 0
-  knockback: 0
-  range: 0
-  speed: 0
-  cooldownTime: 0
-  activationTime: 0
+  _damage: 0
+  _knockback: 0
+  _range: 0
+  _speed: 0
+  _cooldownTime: 1
+  _activationTime: 0

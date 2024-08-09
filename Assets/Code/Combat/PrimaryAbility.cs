@@ -8,10 +8,7 @@ public class PrimaryAbility : AbilityBase
 {
     public override void ActivateAbility(InputAction.CallbackContext context, Quaternion rotation, Vector2 position2d)
     {
-        if (context.performed)
-        {
-            //AudioManager.instance.Play("PrimaryAbility");
-            base.behavior.ActivateAttack(rotation, position2d);
-        }
+        behavior.ActivateAttack(context, position2d, rotation);
+        IsActivated = true;
     }
 }

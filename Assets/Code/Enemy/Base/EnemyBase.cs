@@ -189,12 +189,12 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         {
             isFacingRight = !isFacingRight;
             animator.SetBool("FacingLeft", true);
-            Debug.Log(animator.GetBool("FacingLeft"));
+            //Debug.Log(animator.GetBool("FacingLeft"));
         }
         else if (!isFacingRight && velocity.x > 0f) {
             isFacingRight = !isFacingRight;
             animator.SetBool("FacingLeft", false);
-            Debug.Log(animator.GetBool("FacingLeft"));
+            //Debug.Log(animator.GetBool("FacingLeft"));
         }
     }
 

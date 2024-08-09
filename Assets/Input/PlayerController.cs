@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     //Movement Variables
     private Rigidbody2D rb;
     [SerializeField] private float speed = 10f;
-    [SerializeField] private Transform attackPos;
 
     //Dash Variables
     [Header("Dash Variables")]
@@ -22,10 +21,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     private TrailRenderer tr;
 
     //Ability Variables
-    [Header("Ability Variables")]
-    [SerializeField] private AbilityBase primary;
-    [SerializeField] private AbilityBase secondary;
-    [SerializeField] private AbilityBase dash;
+    [SerializeField] private AbilityManager abilityManager;
 
     //Input Variables
     public PlayerInput playerInput { get; private set; }
@@ -44,6 +40,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
+        abilityManager = GetComponent<AbilityManager>();
 
         //Set up input actions
         playerInput.GamePlay.Movement.started += OnMovement;
@@ -190,14 +187,14 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     #region Primary
     public void OnPrimary(InputAction.CallbackContext context)
     {
-        primary.ActivateAbility(context, attackPos.rotation, attackPos.position);
+        abilityManager.OnPrimary(context);
     }
     #endregion
 
     #region Secondary
     public void OnSecondary(InputAction.CallbackContext context)
     {
-        secondary.ActivateAbility(context, attackPos.rotation, attackPos.position);
+        abilityManager.OnSecondary(context);
     }
     #endregion
 }
