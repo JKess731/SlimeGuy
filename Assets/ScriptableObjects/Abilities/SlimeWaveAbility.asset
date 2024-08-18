@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeWaveAbility
   m_EditorClassIdentifier: 
   abilityName: Slime Wave
-  behavior: {fileID: 11400000, guid: 5173ae7a62fcadf4c974156ce4e3d7f0, type: 2}
+  behavior: {fileID: 11400000, guid: 4e4c812c57e2e3f4ea4f8bb4ca743cbc, type: 2}
   _damage: 0
   _knockback: 0
   _range: 0

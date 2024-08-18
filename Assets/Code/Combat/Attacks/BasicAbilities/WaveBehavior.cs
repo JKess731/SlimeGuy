@@ -12,27 +12,30 @@ public class WaveBehavior : AttackBehavior
     [Header("Wave Attributes")]
 
     [Space]
+    [SerializeField] private GameObject _waveObj;
+
     [Header("Wave Parent")]
-    [SerializeField] WaveParent _parentWave;
-    [SerializeField] int _parentDamage;
-    [SerializeField] float _parentKnockback;
-    [SerializeField] float _parentLifetime;
+    [SerializeField] private int _parentDamage;
+    [SerializeField] private float _parentKnockback;
+    [SerializeField] private float _parentLifetime;
 
     [Space]
     [Header("Wave Child")]
-    [SerializeField] WaveChild _childWave;
-    [SerializeField] int _childDamage;
-    [SerializeField] float _childKnockback;
-    [SerializeField] float _childLifetime;
+    [SerializeField] private int _childDamage;
+    [SerializeField] private float _childKnockback;
+    [SerializeField] private float _childLifetime;
+
+    private WaveStruct _parentStruct;
+    private WaveStruct _childStruct;
 
     public override void Initialize()
     {
-        _parentWave.SetWaveStruct(new WaveStruct(_parentDamage, _parentKnockback, _parentLifetime));
-        _childWave.SetWaveStruct(new WaveStruct(_childDamage, _childKnockback, _childLifetime));
+        _parentStruct = new WaveStruct(_parentDamage, _parentKnockback, _parentLifetime);
+        _childStruct = new WaveStruct(_childDamage, _childKnockback, _childLifetime);
     }
 
     public override void ActivateAttack(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
     {
-        Instantiate(_parentWave, attackPosition, rotation);
+        _waveObj.GetComponent<Wave>().Spawn(attackPosition, rotation, _parentStruct, _childStruct);
     }
 }
