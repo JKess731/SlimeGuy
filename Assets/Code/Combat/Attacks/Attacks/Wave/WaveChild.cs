@@ -10,6 +10,7 @@ public class WaveChild : Attacks
 
     protected void Start()
     {
+        Debug.Log("child:" + _activationTime);
         Destroy(gameObject, _activationTime);
     }
 

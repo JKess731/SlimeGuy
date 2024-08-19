@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae92acb7b11b9469223eacd042c0c4, type: 3}
   m_Name: SlimeWave
   m_EditorClassIdentifier: 
-  _wave: {fileID: 0}
-  _parentDamage: 0
-  _parentKnockback: 0
-  _parentLifetime: 0
-  _childDamage: 0
-  _childKnockback: 0
-  _childLifetime: 0
+  _waveObj: {fileID: 3241613675561963162, guid: eb70f7c09d0dd4c4795821fece597adc, type: 3}
+  _parentDamage: 3
+  _parentKnockback: 1
+  _parentLifetime: 1
+  _childDamage: 1
+  _childKnockback: 1
+  _childLifetime: 1

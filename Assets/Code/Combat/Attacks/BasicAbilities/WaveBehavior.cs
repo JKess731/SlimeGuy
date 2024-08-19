@@ -12,7 +12,7 @@ public class WaveBehavior : AttackBehavior
     [Header("Wave Attributes")]
 
     [Space]
-    [SerializeField] private GameObject _waveObj;
+    [SerializeField] private GameObject _wave;
 
     [Header("Wave Parent")]
     [SerializeField] private int _parentDamage;
@@ -36,6 +36,6 @@ public class WaveBehavior : AttackBehavior
 
     public override void ActivateAttack(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
     {
-        _waveObj.GetComponent<Wave>().Spawn(attackPosition, rotation, _parentStruct, _childStruct);
+        _wave.GetComponent<Wave>().Spawn(attackPosition, rotation, _parentStruct, _childStruct);
     }
 }

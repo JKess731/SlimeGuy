@@ -5,23 +5,19 @@ using UnityEngine;
 public class WaveParent : Attacks
 {
     [SerializeField] private GameObject _child;
+    [SerializeField] private Transform _spawnOffset;
     private float _activationTime;
+
+    private WaveStruct _childStruct;
 
     protected void Start()
     {
-        Destroy(gameObject, _activationTime);
+        Debug.Log("parent:"+ _activationTime);
+        StartCoroutine(DestroyWave());
     }
 
-    private void OnDestroy()
-    {
-        if (_child != null)
-        {
-            Instantiate(_child, transform.position, transform.rotation);
-        }
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision detected");
         // If the object is an enemy
         if (collision.gameObject.tag == "enemy")
         {
@@ -30,7 +26,7 @@ public class WaveParent : Attacks
             EnemyBase enemy = collision.GetComponent<EnemyBase>();
 
             //Else, add the enemy to the hashset and damage it
-            enemy.Damage(base._damage);
+            enemy.Damage(_damage);
 
         }
     }
@@ -40,6 +36,7 @@ public class WaveParent : Attacks
         _damage = parent.Damage;
         _knockback = parent.Knockback;
         _activationTime = parent.ActivationTime;
+        _childStruct = child;
 
         try
         {
@@ -49,5 +46,18 @@ public class WaveParent : Attacks
         {
             Debug.Log(e);
         }
-    }   
+    }
+    
+    private IEnumerator DestroyWave()
+    {
+        yield return new WaitForSeconds(_activationTime);
+
+        if (_child != null)
+        {
+            GameObject waveChild = Instantiate(_child, _spawnOffset.position, transform.rotation);
+            waveChild.GetComponent<WaveChild>().SetWaveStruct(_childStruct);
+        }
+
+        Destroy(gameObject);
+    }
 }
