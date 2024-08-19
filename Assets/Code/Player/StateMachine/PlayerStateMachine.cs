@@ -43,7 +43,7 @@ public class PlayerStateMachine : MonoBehaviour
     private void Awake()
     {
         //Not great
-        playerStats = GetComponent<PlayerStats>();
+        //playerStats = GetComponent<PlayerStats>();
 
         //Set up initial references
         animationControl = GetComponent<AnimationControl>();
@@ -195,7 +195,7 @@ public class PlayerStateMachine : MonoBehaviour
     private IEnumerator DashCoroutine()
     {
         //Handles Initial Dash
-        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
+        //AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
         DisableMovement();
         isMoving = false;
         isDashing = true;

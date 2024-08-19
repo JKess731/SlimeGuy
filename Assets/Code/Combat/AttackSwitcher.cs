@@ -12,7 +12,7 @@ public class AttackSwitcher : MonoBehaviour
 
     private void Start()
     {
-        slimeWaveControl.SetActive(true);
+        slimeWaveControl.SetActive(false);
         slimeWhipControl.SetActive(false);
         slimePushControl.SetActive(false);
     }

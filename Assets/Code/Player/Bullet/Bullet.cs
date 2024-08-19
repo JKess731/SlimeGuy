@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.right * bulletSpeed;
         StartPos = transform.position;
 
-        Debug.Log("Bullet created");
+        //Debug.Log("Bullet created");
     }
 
     private void Update()

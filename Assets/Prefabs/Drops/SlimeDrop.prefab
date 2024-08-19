@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 296445899194220802}
   - component: {fileID: 8756941239489960974}
   m_Layer: 0
-  m_Name: SlimeBlob
+  m_Name: SlimeDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
