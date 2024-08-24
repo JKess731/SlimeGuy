@@ -13,10 +13,5 @@ MonoBehaviour:
   m_Name: SlimeWaveAbility
   m_EditorClassIdentifier: 
   abilityName: Slime Wave
+  icon: {fileID: 7482667652216324306, guid: 88177d4a9c3874f40968fd53b08ff2db, type: 3}
   behavior: {fileID: 11400000, guid: 4e4c812c57e2e3f4ea4f8bb4ca743cbc, type: 2}
-  _damage: 0
-  _knockback: 0
-  _range: 0
-  _speed: 0
-  _cooldownTime: 1
-  _activationTime: 0

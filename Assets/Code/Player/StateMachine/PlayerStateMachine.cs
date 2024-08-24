@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     //References
-    private PlayerStats playerStats;
+    [SerializeField] private Stats playerStats;
     [SerializeField] private PlayerController controller;
     private AnimationControl animationControl;
 
@@ -15,14 +15,22 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Awake()
     {
+        //Set up initial references
+        playerStats.Initialize();
+
         //Not great
-        playerStats = GetComponent<PlayerStats>();
         controller = GetComponent<PlayerController>();
 
         //Set up initial references
         animationControl = GetComponent<AnimationControl>();
 
         knockBack = GetComponent<KnockBack>();
+    }
+
+    private void Start()
+    {
+        //Debug.Log(playerStats.GetStat(StatsEnum.HEALTH));
+        //Debug.Log(playerStats.GetStat(StatsEnum.SPEED));
     }
 
     //Handles Movement and Animation
@@ -50,7 +58,12 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Damage and Knockback
     public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
-        playerStats.Damage(damage);
+        if (playerStats.GetStat(StatsEnum.HEALTH) <= 0)
+        {
+            return;
+        }
+
+        playerStats.SubtractStat(StatsEnum.HEALTH, damage);
         knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
     }

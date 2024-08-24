@@ -7,11 +7,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a25a11ea296f884d994765a0edb8e75, type: 3}
-  m_Name: SlimeShotgunAbility
+  m_Name: SlimeWhipAbility
   m_EditorClassIdentifier: 
-  abilityName: Slime Shotgun
-  icon: {fileID: -2413806693520163455, guid: c53e0acb1feba9f48bf09df35a118951, type: 3}
-  behavior: {fileID: 11400000, guid: e38e70362e4195e43934250a86621407, type: 2}
+  abilityName: SlimeWhip
+  icon: {fileID: 7482667652216324306, guid: 7389179d92f855c459d7cc6fd47601b6, type: 3}
+  behavior: {fileID: 11400000, guid: 62384aa000b56544ebb398164f458a1f, type: 2}

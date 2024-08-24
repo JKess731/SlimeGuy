@@ -81,6 +81,14 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         playerInput.GamePlay.Dash.started += OnDash;
         playerInput.GamePlay.Dash.performed += OnDash;
         playerInput.GamePlay.Dash.canceled += OnDash;
+
+        playerInput.GamePlay.Primary.started += OnPrimary;
+        playerInput.GamePlay.Primary.performed += OnPrimary;
+        playerInput.GamePlay.Primary.canceled += OnPrimary;
+
+        playerInput.GamePlay.Secondary.started += OnSecondary;
+        playerInput.GamePlay.Secondary.performed += OnSecondary;
+        playerInput.GamePlay.Secondary.canceled += OnSecondary;
     }
 
     //Disables Input Actions
@@ -94,6 +102,14 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         playerInput.GamePlay.Dash.started -= OnDash;
         playerInput.GamePlay.Dash.performed -= OnDash;
         playerInput.GamePlay.Dash.canceled -= OnDash;
+
+        playerInput.GamePlay.Primary.started -= OnPrimary;
+        playerInput.GamePlay.Primary.performed -= OnPrimary;
+        playerInput.GamePlay.Primary.canceled -= OnPrimary;
+
+        playerInput.GamePlay.Secondary.started -= OnSecondary;
+        playerInput.GamePlay.Secondary.performed -= OnSecondary;
+        playerInput.GamePlay.Secondary.canceled -= OnSecondary;
     }
 
     #region Movement
