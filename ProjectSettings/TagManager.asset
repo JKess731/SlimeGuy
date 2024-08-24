@@ -13,7 +13,7 @@ TagManager:
   - slime_split
   - wall
   - attack_point_transform
-  - spawn
+  - room_spawn_point
   layers:
   - Default
   - TransparentFX
