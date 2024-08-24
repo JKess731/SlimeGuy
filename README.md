@@ -1,26 +1,26 @@
-#Slime Guy
+# Slime Guy
 A slime rogue-like developed by students of IU Bloomington. Releasing on steam around Spring 2024
 
-##Installation
+## Installation
 Made within Unity
 
-##Authors and acknowledgment
+## Authors and acknowledgment
 ###Programmers
 Jared Kessler
 Brandon Sheley
 Edison Li
 
-###Artist
+### Artist
 Matthew Miller
 
-###Designer
+### Designer
 Peter Lim
 
-###Sound Designer
+### Sound Designer
 Jason Williams
 
-###Special Thanks
+### Special Thanks
 Ian Sundstrum
 
-##Project status
+## Project status
 Still in development and playtesting
