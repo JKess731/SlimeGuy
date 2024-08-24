@@ -10,7 +10,7 @@ using UnityEngine;
 public class Absorption : MonoBehaviour
 {
     [SerializeField] float absorbtionRate = 1f;
-    [SerializeField] int growthRate = 1;
+    //[SerializeField] int growthRate = 1;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

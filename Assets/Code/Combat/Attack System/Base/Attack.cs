@@ -10,6 +10,10 @@ public abstract class Attack: MonoBehaviour
     [SerializeField] protected float activationTime;
 
     [Header("Status Effects")]
+    [SerializeField] protected Effect[] baseEffects;
+    List<Effect> currentEffects;
+
+
     [SerializeField] protected List<Effect> effects = new List<Effect>();
 
     [HideInInspector] protected bool canActivate = true;

@@ -17,8 +17,7 @@ public class DamageInTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("SpawnedTrigger");
-
+        //Debug.Log("SpawnedTrigger");
     }
 
     // Update is called once per frame

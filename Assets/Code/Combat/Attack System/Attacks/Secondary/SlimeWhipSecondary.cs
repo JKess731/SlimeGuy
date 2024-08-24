@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlimeWhipSecondary : SecondaryAttack
 {
     [Space]
+
     [Header("Whip Attributes")]
     [SerializeField] private GameObject whip;
     [SerializeField] private float rotationSpeed;

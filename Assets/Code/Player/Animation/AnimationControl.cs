@@ -8,8 +8,8 @@ public class AnimationControl : MonoBehaviour
     //References
     private Animator animator;
 
-    //Animation States
-    private AnimationState currentState;
+    //Debugging
+    private PlayerState state;
 
     //Damaged Color
     [SerializeField] private DamagedColor damageColor;
@@ -25,7 +25,7 @@ public class AnimationControl : MonoBehaviour
     /// <param name="direction"></param>
     public void PlayAnimation(Vector2 direction)
     {
-        if (currentState == AnimationState.IDLE)
+        if (state == PlayerState.IDLE)
         {
             if (direction.y > 0)
             {
@@ -46,7 +46,7 @@ public class AnimationControl : MonoBehaviour
             
         }
 
-        if (currentState == AnimationState.MOVING)
+        if (state == PlayerState.MOVING)
         {
             if (direction.y > 0)
             {
@@ -67,7 +67,7 @@ public class AnimationControl : MonoBehaviour
             
         }
  
-        if (currentState == AnimationState.DAMAGED)
+        if (state == PlayerState.DAMAGED)
         {
             if(damageColor == DamagedColor.WHITE)
                 {
@@ -95,22 +95,23 @@ public class AnimationControl : MonoBehaviour
         }
     }
 
-    public void SetState(AnimationState state)
-    {
-        currentState = state;
-    }
     /// <summary>
     /// Used to stop animations from snapping, using AnimtionEvents
     /// </summary>
-    private void AnimationEventDoNothing()
+    //private void AnimationEventDoNothing()
+    //{
+    //    //Do Nothing
+    //}
+
+    public void SetState(PlayerState state)
     {
-        //Do Nothing
+        this.state = state;
     }
     
     //Debugging states purposes
-    public void printStates()
+    public void PrintStates()
     {
-        Debug.Log("Current state:" + currentState);
+        Debug.Log("Current state:" + state);
     }
 
     //Damaged Color Enum for Damaged Animation

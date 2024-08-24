@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlimeWaveSecondary : SecondaryAttack
 {
     [Space]
+
     [Header("Wave Attributes")]
     [SerializeField] private float damage;
     [SerializeField] private float knockBackPower;

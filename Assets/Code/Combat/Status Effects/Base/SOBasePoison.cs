@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PoisonDamage", menuName = "Status Effects/Poison")]
 public class SOBasePoison : Effect
 {
-    public float damage;
+    
+    [SerializeField] float damage;
+
+    public float GetDamage()
+    {
+        return damage;
+    }
+
     public int intervals;
     public float totalTime;
 

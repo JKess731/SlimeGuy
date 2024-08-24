@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlimePushSecondary : SecondaryAttack
 {
     [Space]
+
     [Header("Push Attributes")]
     [SerializeField] private float scaleFactor;
     [SerializeField] private GameObject pushSlime;
