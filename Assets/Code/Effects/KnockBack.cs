@@ -43,7 +43,6 @@ public class KnockBack : MonoBehaviour
 
             _combinedForce = _knockbackForce;
             
-
             //Applies the knockback force
             rb2D.velocity = _combinedForce;
 
@@ -64,6 +63,11 @@ public class KnockBack : MonoBehaviour
     //Couroutine is a monobehavior method
     public void CallKnockback(Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
+        if (knockbackCoroutine != null)
+        {
+            StopCoroutine(knockbackCoroutine);
+        }
+
         knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, hitForce, constantForceDirection));
     }
 }

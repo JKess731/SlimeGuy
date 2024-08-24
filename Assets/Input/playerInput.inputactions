@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Light Attack",
+                    "name": "Primary",
                     "type": "Button",
                     "id": "78f6ca0b-b9d8-48b8-ad73-830c579ae3e4",
                     "expectedControlType": "Button",
@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Heavy Attack",
+                    "name": "Secondary",
                     "type": "Button",
                     "id": "ef3037d6-0aa2-4af5-b483-9a265ede27c2",
                     "expectedControlType": "Button",
@@ -226,7 +226,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Light Attack",
+                    "action": "Primary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -237,7 +237,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Heavy Attack",
+                    "action": "Secondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -22,7 +22,7 @@ public class GolemBehavior : MonoBehaviour
     [SerializeField] private int slamDamage;
     [SerializeField] private int volleyDamage;
     [SerializeField] private float slamAttackDelay;
-    public PlayerStateMachine playerState;
+    public PlayerController controller;
     private bool attacking = false;
     public GameObject ring;
 
@@ -43,7 +43,7 @@ public class GolemBehavior : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindWithTag("player").transform;
-        playerState = GameObject.FindWithTag("player").GetComponent<PlayerStateMachine>();
+        controller = GameObject.FindWithTag("player").GetComponent<PlayerController>();
         shotCooldown = startShotCooldown;
         StartCoroutine(AttackCycleSwitch());
     }
@@ -180,10 +180,10 @@ public class GolemBehavior : MonoBehaviour
 
     IEnumerator PlayerStunned()
     {
-        playerState.DisableMovement();
+        controller.DisableMovement();
         Debug.Log("Player Stunned");
         yield return new WaitForSeconds(slamAttackDelay / 2);
-        playerState.EnableMovement();
+        controller.EnableMovement();
     }
 
 

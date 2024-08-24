@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckable
 {
-    [field: SerializeField] public float maxHealth { get; set; } = 100f;
-    [field: SerializeField] private float moveSpeed = 5f;
+    public Stats _stats;
+
+    private Stats _statInstance;   
+
     public float currentHealth { get; set; }
     public Rigidbody2D RB { get; set; }
     public bool isFacingRight { get; set; } = true;
@@ -57,6 +59,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public Animator animator;
     public GameObject slimeDrop;                      // The slime drop prefab for absorption
     public bool isDead { get; set; } = false;
+    public float maxHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     private void Awake()
     {
@@ -65,6 +68,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         damageFlash = GetComponent<SimpleFalsh>();
 
         //Instantiate Scriptable Objects
+        _statInstance = Instantiate(_stats);
+
         enemyIdleBaseInstance = Instantiate(enemyIdleBase);
         enemyChaseBaseInstance = Instantiate(enemyChaseBase);
         enemyAttackBaseInstance = Instantiate(enemyAttackBase);
@@ -82,11 +87,14 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         damagedState = new EnemyDamagedState(this, stateMachine);
         spawnState = new EnemySpawningState(this, stateMachine);
         deathState = new EnemyDeathState(this, stateMachine);
+
+        Debug.Log(_statInstance.GetStat(StatsEnum.HEALTH));
+        Debug.Log(_statInstance.GetStat(StatsEnum.SPEED));
+        Debug.Log(_statInstance.GetStat(StatsEnum.ATTACK));
     }
 
     private void Start()
     {
-        currentHealth = maxHealth;
         RB = GetComponent<Rigidbody2D>();
 
         enemyIdleBaseInstance.Initialize(gameObject, this);
@@ -145,9 +153,12 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         damageFlash.Flash();
         animator.SetBool("Hit", true);
-        currentHealth -= damageAmount;
+        _statInstance.SubtractStat(StatsEnum.HEALTH, damageAmount);
+        Debug.Log(_statInstance.GetStat(StatsEnum.HEALTH));
+
         knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
-        if (currentHealth <= 0f & !isDead) {
+
+        if (_statInstance.GetStat(StatsEnum.HEALTH) <=0 & !isDead) {
             Die();
         }
         animator.SetBool("Hit", false);
@@ -156,8 +167,10 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         damageFlash.Flash();
         animator.SetBool("Hit", true);
-        currentHealth -= damageAmount;
-        if (currentHealth <= 0f)
+        _statInstance.SubtractStat(StatsEnum.HEALTH, damageAmount);
+        Debug.Log(_statInstance.GetStat(StatsEnum.HEALTH));
+
+        if (_statInstance.GetStat(StatsEnum.HEALTH) <= 0 & !isDead)
         {
             Die();
         }
@@ -179,7 +192,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public void MoveEnemy(Vector2 velocity)
     {
         faceDir = velocity.normalized;
-        RB.velocity = velocity * moveSpeed;
+        RB.velocity = velocity * _stats.GetStat(StatsEnum.SPEED);
         CheckLeftOrRightFacing(velocity);
     }
 
@@ -189,12 +202,12 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         {
             isFacingRight = !isFacingRight;
             animator.SetBool("FacingLeft", true);
-            Debug.Log(animator.GetBool("FacingLeft"));
+            //Debug.Log(animator.GetBool("FacingLeft"));
         }
         else if (!isFacingRight && velocity.x > 0f) {
             isFacingRight = !isFacingRight;
             animator.SetBool("FacingLeft", false);
-            Debug.Log(animator.GetBool("FacingLeft"));
+            //Debug.Log(animator.GetBool("FacingLeft"));
         }
     }
 
@@ -204,8 +217,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     /// <param name="amount"></param>
     public void ModifyMoveSpeed(float amount, float timeUntilReset)
     {
-        float originalSpeed = moveSpeed;
-        moveSpeed += amount;
+        float originalSpeed = _stats.GetStat(StatsEnum.SPEED);
+        _stats.AddStat(StatsEnum.SPEED,amount);
 
         StartCoroutine(ResetSpeed(timeUntilReset, originalSpeed));
     }
@@ -213,12 +226,12 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public IEnumerator ResetSpeed(float time, float originalSpeed)
     {
         yield return new WaitForSeconds(time);
-        moveSpeed = originalSpeed;
+        _stats.SetStat(StatsEnum.SPEED, originalSpeed);
     }
 
     public float GetSpeed()
     {
-        return moveSpeed;
+        return _stats.GetStat(StatsEnum.SPEED);
     }
 
     #endregion

@@ -19,7 +19,7 @@ public class EnemyIdleRandomWander : EnemyIdleSOBase
     {
         base.DoEnterLogic();
         targetPos = GetRandomPointInCircle();
-        Debug.Log("EnterWander");
+        //Debug.Log("EnterWander");
     }
 
     public override void DoExitLogic()

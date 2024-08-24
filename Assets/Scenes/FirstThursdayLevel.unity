@@ -1309,7 +1309,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Playtest Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2102679082569510298, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
+      propertyPath: m_Name
+      value: Slime Wave
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699939210593383277, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
+      propertyPath: dashingTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699939210593383277, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
+      propertyPath: dashingCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2116574599555371913, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
+    - {fileID: 7695982892252600974, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
+    - {fileID: 5049364743551599877, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
+    - {fileID: 1751382009174234265, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
+    - {fileID: 7865973745874029005, guid: be87ca0ee6df1704f929162e7a82b6c4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
