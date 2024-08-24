@@ -48,8 +48,8 @@ public class PlayerStats : MonoBehaviour
     //Initializes the health bar && absorption bar
     private void Start()
     {
-        //Manager.instance.UpdateHealthBar(currentHealth, maxHealth);
-        //Manager.instance.UpdateAbsorptionBar(absorption, maxAbsorption);
+        //UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
+        //UiManager.instance.UpdateAbsorptionBar(absorption, maxAbsorption);
     }
 
     //Handles Damage
