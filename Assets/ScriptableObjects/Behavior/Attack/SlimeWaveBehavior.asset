@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae92acb7b11b9469223eacd042c0c4, type: 3}
   m_Name: SlimeWaveBehavior
   m_EditorClassIdentifier: 
-  _cooldownTime: 1
+  _cooldownTime: 12
   _activationTime: 1
   _wave: {fileID: 3241613675561963162, guid: eb70f7c09d0dd4c4795821fece597adc, type: 3}
   _parentDamage: 3

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SlimeWaveAbility
   m_EditorClassIdentifier: 
   abilityName: Slime Wave
-  icon: {fileID: 7482667652216324306, guid: 88177d4a9c3874f40968fd53b08ff2db, type: 3}
+  icon: {fileID: -943331131, guid: 178beffb62d9a8a4eb535d3a6755f36d, type: 3}
   behavior: {fileID: 11400000, guid: 4e4c812c57e2e3f4ea4f8bb4ca743cbc, type: 2}
