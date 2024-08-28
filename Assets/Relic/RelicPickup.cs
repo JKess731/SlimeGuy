@@ -9,15 +9,15 @@ public class RelicPickup : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("player") && collision.gameObject.name == "Player")
+        if (collision.gameObject.CompareTag("player"))
         {
             if (relicManager.GetRelicCount() - 1 < relicManager.relicsEquipped.Length)
             {
                 relicManager.AddRelic(relicScriptableObject);
+
+                relicScriptableObject.ActivateBuff(relicManager.playerStats);
+                gameObject.SetActive(false);
             }
         }
-
-        relicScriptableObject.ActivateBuff(relicManager.playerStats);
-        gameObject.SetActive(false);
     }
 }
