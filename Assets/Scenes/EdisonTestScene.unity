@@ -2130,7 +2130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281ba0bfea1ad8c40996ab8b19be825f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 5b56bd97153aef44cb818fc4906c7a31, type: 2}
+  playerStats: {fileID: 11400000, guid: 646beef95cfe9f549b85d602a7b050ef, type: 2}
   maxRelics: 10
   relicsEquipped: []
 --- !u!1 &1320295692
