@@ -17,4 +17,4 @@ MonoBehaviour:
     buffPercentage: 10
   relicName: Test Health Boost
   flavorTextDescription: A Test health boost
-  spriteIcon: {fileID: 0}
+  spriteIcon: {fileID: 21300000, guid: 679fb4a5d5ad1bd48b0d12850fc8bddc, type: 3}

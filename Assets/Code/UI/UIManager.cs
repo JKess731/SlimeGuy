@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Slider primaryCooldown;
     [SerializeField] private Slider secondaryCooldown;
     [SerializeField] private Slider dashCooldown;
+
+    [SerializeField] private Image[] RelicImages;
+    [SerializeField] private Image[] RelicImageBackgrounds;
 
     private AbilityManager _abilityManager;
 
@@ -81,7 +85,7 @@ public class UiManager : MonoBehaviour
         passiveAbilityImage.sprite = Icon;
     }
 
-    public IEnumerator TextAndSliderAdjustment(AbilityBase attack, string type)
+    public IEnumerator TextAndSliderAdjustment(AbilityBase attack, string type) //this coroutine is for the radial cooldown and text on abilites.
     {
         Debug.Log("I got to TextAndSliderAdjustment");
         Slider modifiedSlider = null;
@@ -123,5 +127,24 @@ public class UiManager : MonoBehaviour
         modifiedText.gameObject.SetActive(false);
         modifiedSlider.maxValue = 1;
         modifiedText.text = "";
+    }
+
+    public void UpdateRelicImage(RelicSO relic, int index, bool add)
+    {
+        if (add)
+        {
+            RelicImages[index].sprite = relic.spriteIcon;
+            Color newColor = RelicImageBackgrounds[index].color;
+            newColor.a = 0.95f;
+            RelicImageBackgrounds[index].color = newColor;
+            RelicImages[index].gameObject.SetActive(true);
+        }
+        else
+        {
+            Color newColor = RelicImageBackgrounds[index].color;
+            newColor.a = 0.35f;
+            RelicImageBackgrounds[index].color = newColor;
+            RelicImages[index].gameObject.SetActive(false);
+        }
     }
 }
