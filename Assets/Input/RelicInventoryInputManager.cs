@@ -7,6 +7,7 @@ public class RelicInventoryInputManager : MonoBehaviour
 {
     public static RelicInventoryInputManager instance;
     [SerializeField] private GameObject RelicInventory;
+    [SerializeField] private GameObject RelicInventoryBG;
     private bool isOpen;
     public bool menuOpenCloseInput {  get; private set; }
     public InputActionAsset inputActionAsset;
@@ -24,6 +25,8 @@ public class RelicInventoryInputManager : MonoBehaviour
 
     private void Start()
     {
+        RelicInventoryBG.SetActive(false);
+        RelicInventory.SetActive(false);
         isOpen = false;
     }
 
@@ -47,12 +50,14 @@ public class RelicInventoryInputManager : MonoBehaviour
             {
                 isOpen = true;
                 RelicInventory.SetActive(true);
+                RelicInventoryBG.SetActive(true);
                 Debug.Log("Opening Menu");
             }
             else
             {
                 isOpen = false;
                 RelicInventory.SetActive(false);
+                RelicInventoryBG.SetActive(false);
                 Debug.Log("Closing Menu");
             }
         }

@@ -99,6 +99,7 @@ public class AbilityManager : MonoBehaviour
         if (passive.AbilityState == AbilityState.Active)
         {
             StartCoroutine(passive.Cooldown());
+            StartCoroutine(UiManager.instance.TextAndSliderAdjustment(passive, "PA"));
         }
     }
     #endregion

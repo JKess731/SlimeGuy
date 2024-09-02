@@ -15,6 +15,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI primaryCooldownTxt;
     [SerializeField] private TextMeshProUGUI secondaryCooldownTxt;
     [SerializeField] private TextMeshProUGUI dashCooldownTxt;
+    [SerializeField] private TextMeshProUGUI passiveCooldownTxt;
 
     [SerializeField] private Image primaryAbilityImage;
     [SerializeField] private Image secondaryAbilityImage;
@@ -24,6 +25,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Slider primaryCooldown;
     [SerializeField] private Slider secondaryCooldown;
     [SerializeField] private Slider dashCooldown;
+    [SerializeField] private Slider passiveCooldown;
 
     [SerializeField] private Image[] RelicImages;
     [SerializeField] private Image[] RelicImageBackgrounds;
@@ -105,6 +107,11 @@ public class UiManager : MonoBehaviour
         {
             modifiedSlider = dashCooldown;
             modifiedText = dashCooldownTxt;
+        }
+        else if (type == "PA")
+        {
+            modifiedSlider = passiveCooldown;
+            modifiedText = passiveCooldownTxt;
         }
         yield return new WaitForSeconds(attack.Behavior.ActivationTime);
 
