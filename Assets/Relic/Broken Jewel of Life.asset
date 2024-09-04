@@ -17,5 +17,6 @@ MonoBehaviour:
     percentage: 10
   relicConditions: []
   relicName: Broken Jewel of Life
-  flavorTextDescription: 
-  spriteIcon: {fileID: 21300000, guid: 679fb4a5d5ad1bd48b0d12850fc8bddc, type: 3}
+  flavorTextDescription: 'It''s the broken eye of the golem. It seems like someone
+    put life into the rock to make the golem. '
+  spriteIcon: {fileID: 0}
