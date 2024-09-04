@@ -9,7 +9,7 @@ public class RelicSO : ScriptableObject
     public class RelicBuff
     {
         public StatsEnum statType;
-        public float buffPercentage = 10f;
+        public float percentage = 10f;
     }
 
     public List<RelicBuff> relicBuffs = new List<RelicBuff>();
@@ -19,36 +19,56 @@ public class RelicSO : ScriptableObject
     public string relicName;
     public string flavorTextDescription;
     public Sprite spriteIcon;
-    private bool condMet = true;
 
+    private bool condMet = false;
 
     public void ActivateBuff(Stats playerStats)
     {
-
-        foreach (RelicBuff buff in relicConditions)
+        if (relicConditions.Count > 0) // If there is any conditions
         {
-
-            if(playerStats.GetStat(buff.statType) !<= (playerStats.GetStat(buff.statType) * (1-buff.buffPercentage)))
+            foreach (RelicBuff cond in relicConditions)
             {
-                Debug.Log(buff.statType);
-                condMet = false;
+                float condPercentage = cond.percentage / 100;
+
+                if (cond.statType == StatsEnum.MAXHEALTH)
+                {
+                    float maxHealth = playerStats.GetStat(StatsEnum.MAXHEALTH);
+                    float currHealth = playerStats.GetStat(StatsEnum.HEALTH);
+
+                    float percentageHealth = currHealth / maxHealth;
+
+                    if (percentageHealth <= condPercentage)
+                    {
+                        condMet = true;
+                    }
+
+                }
             }
 
+            if (condMet)
+            {
+                LoopBuffs(playerStats);
+            }
         }
-        Debug.Log(condMet);
-        if(condMet == true)
+        else
         {
-            foreach (RelicBuff buff in relicBuffs)
-            {
-                float percentage = buff.buffPercentage / 100;
-                percentage = percentage + 1;
+            LoopBuffs(playerStats);
+        }
 
-                float newStat = playerStats.GetStat(buff.statType) * percentage;
+    }
 
-                playerStats.SetStat(buff.statType, newStat);
+    private void LoopBuffs(Stats playerStats)
+    {
+        foreach (RelicBuff buff in relicBuffs)
+        {
+            float percentage = buff.percentage / 100;
+            percentage = percentage + 1;
 
-                Debug.Log(playerStats.GetStat(buff.statType));
-            }
+            float newStat = playerStats.GetStat(buff.statType) * percentage;
+
+            playerStats.SetStat(buff.statType, newStat);
+
+            Debug.Log(playerStats.GetStat(buff.statType));
         }
     }
 }
