@@ -13,24 +13,42 @@ public class RelicSO : ScriptableObject
     }
 
     public List<RelicBuff> relicBuffs = new List<RelicBuff>();
+    public List<RelicBuff> relicConditions = new List<RelicBuff>();
     [Space]
 
     public string relicName;
     public string flavorTextDescription;
     public Sprite spriteIcon;
+    private bool condMet = true;
+
 
     public void ActivateBuff(Stats playerStats)
     {
-        foreach (RelicBuff buff in relicBuffs)
+
+        foreach (RelicBuff buff in relicConditions)
         {
-            float percentage = buff.buffPercentage / 100;
-            percentage = percentage + 1;
 
-            float newStat = playerStats.GetStat(buff.statType) * percentage;
+            if(playerStats.GetStat(buff.statType) !<= (playerStats.GetStat(buff.statType) * (1-buff.buffPercentage)))
+            {
+                Debug.Log(buff.statType);
+                condMet = false;
+            }
 
-            playerStats.SetStat(buff.statType, newStat);
+        }
+        Debug.Log(condMet);
+        if(condMet == true)
+        {
+            foreach (RelicBuff buff in relicBuffs)
+            {
+                float percentage = buff.buffPercentage / 100;
+                percentage = percentage + 1;
 
-            Debug.Log(playerStats.GetStat(buff.statType));
+                float newStat = playerStats.GetStat(buff.statType) * percentage;
+
+                playerStats.SetStat(buff.statType, newStat);
+
+                Debug.Log(playerStats.GetStat(buff.statType));
+            }
         }
     }
 }
