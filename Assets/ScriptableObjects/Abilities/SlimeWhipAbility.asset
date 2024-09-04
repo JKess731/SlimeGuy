@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SlimeWhipAbility
   m_EditorClassIdentifier: 
   abilityName: SlimeWhip
-  icon: {fileID: 7482667652216324306, guid: 7389179d92f855c459d7cc6fd47601b6, type: 3}
+  icon: {fileID: -1202402212, guid: 04f97eeb25132e24893e68206355e5d3, type: 3}
   behavior: {fileID: 11400000, guid: 62384aa000b56544ebb398164f458a1f, type: 2}
