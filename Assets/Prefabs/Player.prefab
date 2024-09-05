@@ -81,8 +81,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   absorbtionRate: 1
-  growthRate: 1
-  _statBoost: 0
 --- !u!1 &588290264488947615
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,8 +376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   absorbtionRate: 1
-  growthRate: 1
-  _statBoost: 0
 --- !u!1 &5690419769693682902
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +896,6 @@ GameObject:
   - component: {fileID: 6441711385004036941}
   - component: {fileID: 2286926643201842907}
   - component: {fileID: 3322473668760506266}
-  - component: {fileID: 3138058705991477500}
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -1265,28 +1260,6 @@ PlayableDirector:
   m_SceneBindings: []
   m_ExposedReferences:
     m_References: []
---- !u!114 &3138058705991477500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030121839249631364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c65027d985656114bb9e35110a7a4e14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  faceDirection: {x: 0, y: 0}
-  dashingPower: 20
-  dashingTime: 0.5
-  dashingCooldown: 1
-  isIdle: 0
-  isMoving: 0
-  isDashing: 0
-  isAttacking: 0
-  isDamaged: 0
-  speed: 10
 --- !u!1 &9065808785307625830
 GameObject:
   m_ObjectHideFlags: 0

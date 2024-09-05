@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SlimeShotgunAbility
   m_EditorClassIdentifier: 
   abilityName: Slime Shotgun
-  icon: {fileID: -2413806693520163455, guid: c53e0acb1feba9f48bf09df35a118951, type: 3}
+  icon: {fileID: 1011951465, guid: f1d0e9ee28aa8044b9333bcafe0ce470, type: 3}
   behavior: {fileID: 11400000, guid: e38e70362e4195e43934250a86621407, type: 2}

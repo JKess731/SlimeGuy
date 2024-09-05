@@ -48,6 +48,16 @@ public class AbilityManager : MonoBehaviour
         if (primary.AbilityState == AbilityState.Active && context.started)
         {
             StartCoroutine(primary.Cooldown());
+            try
+            {
+                StartCoroutine(UiManager.instance.TextAndSliderAdjustment(primary, "P"));
+            }
+            catch (NullReferenceException)
+            {
+                Debug.LogWarning("UI Manager is not assigned");
+            }
+            //StartCoroutine(UiManager.instance.TextAndSliderAdjustment(primary, "P"));
+            Debug.Log("I got to the end of OnPrimary");
         }
     }
     #endregion
@@ -63,6 +73,17 @@ public class AbilityManager : MonoBehaviour
         if (secondary.AbilityState == AbilityState.Active && context.started)
         {
             StartCoroutine(secondary.Cooldown());
+
+            try
+            {
+                StartCoroutine(UiManager.instance.TextAndSliderAdjustment(secondary, "S"));
+            }
+            catch (NullReferenceException)
+            {
+                Debug.LogWarning("UI Manager is not assigned");
+            }
+            //StartCoroutine(UiManager.instance.TextAndSliderAdjustment(secondary, "S"));
+            Debug.Log("I got to the end of OnSecondary");
         }
     }
     #endregion
@@ -78,6 +99,8 @@ public class AbilityManager : MonoBehaviour
         if (dash.AbilityState == AbilityState.Ready && context.started)
         {
             StartCoroutine(dash.Cooldown());
+            StartCoroutine(UiManager.instance.TextAndSliderAdjustment(dash, "D"));
+            Debug.Log("I got to the end of OnDash");
         }
     }
     #endregion 
@@ -93,6 +116,7 @@ public class AbilityManager : MonoBehaviour
         if (passive.AbilityState == AbilityState.Active)
         {
             StartCoroutine(passive.Cooldown());
+            StartCoroutine(UiManager.instance.TextAndSliderAdjustment(passive, "PA"));
         }
     }
     #endregion

@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         playerInput.GamePlay.Secondary.started += OnSecondary;
         playerInput.GamePlay.Secondary.performed += OnSecondary;
         playerInput.GamePlay.Secondary.canceled += OnSecondary;
-
     }
 
     private void Start()
@@ -89,6 +88,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         playerInput.GamePlay.Secondary.started += OnSecondary;
         playerInput.GamePlay.Secondary.performed += OnSecondary;
         playerInput.GamePlay.Secondary.canceled += OnSecondary;
+
     }
 
     //Disables Input Actions
