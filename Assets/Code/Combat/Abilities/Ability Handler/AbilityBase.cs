@@ -19,6 +19,8 @@ public abstract class AbilityBase : ScriptableObject
     [Header("Behavior SO")]
     [SerializeField] protected Behavior behavior;
 
+    public Behavior Behavior { get => behavior; }
+
     [HideInInspector] protected AbilityState _abilityState = AbilityState.Ready;
     public AbilityState AbilityState { get => _abilityState; protected set => _abilityState = value; }
     

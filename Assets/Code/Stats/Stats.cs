@@ -10,7 +10,7 @@ using UnityEngine;
 public class Stats: ScriptableObject
 {
     [SerializeField]private List<StatsInfo> _statList= new List<StatsInfo>();
-    private Dictionary<StatsEnum, float> _stats = new Dictionary<StatsEnum, float>();
+    private Dictionary<StatsEnum, float> _stats = new Dictionary<StatsEnum, float>(); 
 
     //If stats are not initialized in awake, initialize them
     private void Awake()
