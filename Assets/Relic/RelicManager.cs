@@ -6,6 +6,7 @@ using UnityEngine;
 public class RelicManager : MonoBehaviour
 {
     public Stats playerStats;
+    public static RelicManager instance;
     [SerializeField] private int maxRelics = 10;
 
     public RelicSO[] relicsEquipped;
@@ -13,6 +14,16 @@ public class RelicManager : MonoBehaviour
     private void Awake()
     {
         relicsEquipped = new RelicSO[maxRelics];
+
+        // Singleton pattern: only one instance of this class can exist
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Adds a relic to the array at the first null position
@@ -28,8 +39,11 @@ public class RelicManager : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Removes a relic and replaces null at it's position in the array
+    /// </summary>
+    /// <param name="r"> Relic scriptable object</param>
 
-    // Removes a relic and replaces null at it's position in the array
     public void RemoveRelic(RelicSO r)
     {
         for (int i = 0; i < relicsEquipped.Length; i++)

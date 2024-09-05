@@ -5931,37 +5931,20 @@ MonoBehaviour:
   absorptionBar: {fileID: 0}
   healthTxt: {fileID: 991052892}
   absorptionTxt: {fileID: 1775292177}
---- !u!1 &2086004448
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2086004449}
-  m_Layer: 0
-  m_Name: 
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2086004449
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086004448}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  primaryCooldownTxt: {fileID: 0}
+  secondaryCooldownTxt: {fileID: 0}
+  dashCooldownTxt: {fileID: 0}
+  passiveCooldownTxt: {fileID: 0}
+  primaryAbilityImage: {fileID: 0}
+  secondaryAbilityImage: {fileID: 0}
+  dashAbilityImage: {fileID: 0}
+  passiveAbilityImage: {fileID: 0}
+  primaryCooldown: {fileID: 0}
+  secondaryCooldown: {fileID: 0}
+  dashCooldown: {fileID: 0}
+  passiveCooldown: {fileID: 0}
+  RelicImages: []
+  RelicImageBackgrounds: []
 --- !u!1001 &2119571666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5984,6 +5967,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 711987294111210327, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660313072678195780, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
@@ -6086,7 +6073,6 @@ SceneRoots:
   - {fileID: 682022337}
   - {fileID: 465366780}
   - {fileID: 863172034}
-  - {fileID: 2086004449}
   - {fileID: 1909886305}
   - {fileID: 2119571666}
   - {fileID: 1141042590}

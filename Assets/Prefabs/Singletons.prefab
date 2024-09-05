@@ -455,9 +455,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1274223466834709028}
-  - {fileID: 8254159755282590637}
   - {fileID: 3956110274198115102}
   - {fileID: 7275767536416132755}
+  - {fileID: 615174084205822168}
   m_Father: {fileID: 4433807784745035315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2316970208145928444
@@ -650,13 +650,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3956110274198115102}
+  - component: {fileID: 7867131330333283501}
+  - component: {fileID: 5510295411688159328}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3956110274198115102
 Transform:
   m_ObjectHideFlags: 0
@@ -672,6 +674,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 558452028673960895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7867131330333283501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660313072678195780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170bbbc16caf79c4cbcd4063c33c714c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  absorptionBar: {fileID: 0}
+  healthTxt: {fileID: 3226160977747427696}
+  absorptionTxt: {fileID: 2177403649719202476}
+  primaryCooldownTxt: {fileID: 0}
+  secondaryCooldownTxt: {fileID: 0}
+  dashCooldownTxt: {fileID: 0}
+  passiveCooldownTxt: {fileID: 0}
+  primaryAbilityImage: {fileID: 0}
+  secondaryAbilityImage: {fileID: 0}
+  dashAbilityImage: {fileID: 0}
+  passiveAbilityImage: {fileID: 0}
+  primaryCooldown: {fileID: 0}
+  secondaryCooldown: {fileID: 0}
+  dashCooldown: {fileID: 0}
+  passiveCooldown: {fileID: 0}
+  RelicImages: []
+  RelicImageBackgrounds: []
+--- !u!114 &5510295411688159328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660313072678195780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170bbbc16caf79c4cbcd4063c33c714c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  absorptionBar: {fileID: 0}
+  healthTxt: {fileID: 3226160977747427696}
+  absorptionTxt: {fileID: 2177403649719202476}
+  primaryCooldownTxt: {fileID: 0}
+  secondaryCooldownTxt: {fileID: 0}
+  dashCooldownTxt: {fileID: 0}
+  passiveCooldownTxt: {fileID: 0}
+  primaryAbilityImage: {fileID: 0}
+  secondaryAbilityImage: {fileID: 0}
+  dashAbilityImage: {fileID: 0}
+  passiveAbilityImage: {fileID: 0}
+  primaryCooldown: {fileID: 0}
+  secondaryCooldown: {fileID: 0}
+  dashCooldown: {fileID: 0}
+  passiveCooldown: {fileID: 0}
+  RelicImages: []
+  RelicImageBackgrounds: []
 --- !u!1 &3200497636280106889
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,6 +930,53 @@ Transform:
   - {fileID: 8616589491745402113}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6504497772437875389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615174084205822168}
+  - component: {fileID: 204192083973444155}
+  m_Layer: 0
+  m_Name: RelicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &615174084205822168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6504497772437875389}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 558452028673960895}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204192083973444155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6504497772437875389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281ba0bfea1ad8c40996ab8b19be825f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 646beef95cfe9f549b85d602a7b050ef, type: 2}
+  maxRelics: 10
+  relicsEquipped: []
 --- !u!1 &6656482405054491463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,88 +1193,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &8505199937310268985
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8254159755282590637}
-  - component: {fileID: 1592400454208651114}
-  m_Layer: 0
-  m_Name: PlayerInput
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8254159755282590637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8505199937310268985}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.816776, y: -5.500531, z: 1.0918995}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 558452028673960895}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1592400454208651114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8505199937310268985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 5bc548c5890e7ef44ac4fc8696edc032, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: characterMovement, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5e9e43da-6807-43c2-9453-7f93d22a99d8
-    m_ActionName: GamePlay/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7f704a95-8479-4d8c-8931-c735682dc3f4
-    m_ActionName: GamePlay/Dive
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: GamePlay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &8620642315701142993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,11 +1344,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <playerAttack>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -115196307
+      Data2: 1130899821
+      Data3: 626401201
+      Data4: 664755720
+    Path: event:/SFX/Puddles/Slime Shotgun
   <playerDash>k__BackingField:
     Guid:
       Data1: 99209843
@@ -1338,11 +1365,11 @@ MonoBehaviour:
     Path: event:/SFX/Puddles/Slime Hurt
   <playerDeath>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 99209843
+      Data2: 1254200077
+      Data3: 1265527175
+      Data4: 2076121304
+    Path: event:/SFX/Puddles/Slime Dive
 --- !u!1 &9122877760510248961
 GameObject:
   m_ObjectHideFlags: 0

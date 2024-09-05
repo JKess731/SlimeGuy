@@ -50,9 +50,17 @@ public class UiManager : MonoBehaviour
         absorptionBar = GameObject.Find("Absorption Bar").GetComponent<Slider>();
         healthTxt = GameObject.Find("Health Text").GetComponent<TextMeshProUGUI>();
         absorptionTxt = GameObject.Find("Absorption Text").GetComponent<TextMeshProUGUI>();
-        UpdatePrimaryAbilityImage(_abilityManager.Primary.Icon);
-        UpdateSecondaryAbilityImage(_abilityManager.Secondary.Icon);
-        UpdateDashAbilityImage(_abilityManager.Dash.Icon);
+
+        try
+        {
+            UpdatePrimaryAbilityImage(_abilityManager.Primary.Icon);
+            UpdateSecondaryAbilityImage(_abilityManager.Secondary.Icon);
+            UpdateDashAbilityImage(_abilityManager.Dash.Icon);
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.LogWarning("One or more abilities are not assigned");
+        }
     }
 
     public void UpdateHealthBar(float health, float maxHealth)
