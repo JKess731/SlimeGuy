@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-public enum AnimationState
+public enum AnimateState
 {
     IDLE,
     MOVING,
     DASHING,
     ATTACKING,
-    DAMAGED
+    DAMAGED,
+    DEAD
 }

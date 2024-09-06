@@ -23,13 +23,13 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     //Ability Variables
     [SerializeField] private AbilityManager abilityManager;
 
+    //PlayerStateMachine Variables
+    private PlayerStateMachine playerStateMachine;
+
     //Input Variables
     public PlayerInput playerInput { get; private set; }
     public Vector2 moveVector { get; private set; }
     public Vector2 faceDirection { get; private set; }
-
-    //Player State Enum
-    public PlayerState state { get; private set; }
 
     private void Awake()
     {
@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
         abilityManager = GetComponent<AbilityManager>();
+        playerStateMachine = GetComponent<PlayerStateMachine>();
 
         //Set up input actions
         playerInput.GamePlay.Movement.started += OnMovement;
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
 
     private void Start()
     {
-        state = PlayerState.IDLE;
+        state = Enum_State.IDLE;
     }
     private void Update()
     {
@@ -131,12 +132,12 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     //Handles Movement
     private void HandleMovement()
     {
-        if(state == PlayerState.DAMAGED || state == PlayerState.DASHING)
+        if(state == Enum_State.DAMAGED || state == Enum_State.DASHING)
         {
             return;
         }
 
-        if (state == PlayerState.IDLE || state == PlayerState.MOVING)
+        if (state == Enum_State.IDLE || state == Enum_State.MOVING)
         {
             rb.velocity = moveVector * speed;
         }
@@ -145,7 +146,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     //Handles Movement Input Actions
     public void OnMovement(InputAction.CallbackContext context)
     {
-        state = PlayerState.MOVING;
+        state = Enum_State.MOVING;
 
         moveVector = context.ReadValue<Vector2>();
         faceDirection = moveVector.normalized;
@@ -153,7 +154,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
 
     public void OnMovementCancel(InputAction.CallbackContext context)
     {
-        state = PlayerState.IDLE;
+        state = Enum_State.IDLE;
 
         moveVector = Vector2.zero;
     }
@@ -168,7 +169,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
             return;
         }
 
-        state = PlayerState.DASHING;
+        state = Enum_State.DASHING;
         StartCoroutine(DashCoroutine());
 
         dashPressed = context.ReadValueAsButton();
@@ -191,7 +192,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         //Handles Dash End
         //EnableMovement();
         tr.emitting = false;
-        state = PlayerState.IDLE;
+        state = Enum_State.IDLE;
         rb.velocity = Vector2.zero;
 
         //Handles Dash Cooldown

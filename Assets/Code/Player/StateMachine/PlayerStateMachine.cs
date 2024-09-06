@@ -6,31 +6,25 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     //References
-    [SerializeField] private Stats playerStats;
-    [SerializeField] private PlayerController controller;
-    private AnimationControl animationControl;
+    [SerializeField] private Stats _playerStats;
+    private AnimationControl _animationControl;
+    private PlayerController _playerController;
 
+    private Enum_State _state;
     //Knockback Variables
-    private KnockBack knockBack;
+    private KnockBack _knockBack;
+
+    public Enum_State State { get => _state; set => value(); }
 
     private void Awake()
     {
         //Set up initial references
-        playerStats.Initialize();
-
-        //Not great
-        controller = GetComponent<PlayerController>();
+        _playerStats.Initialize();
 
         //Set up initial references
-        animationControl = GetComponent<AnimationControl>();
-
-        knockBack = GetComponent<KnockBack>();
-    }
-
-    private void Start()
-    {
-        //Debug.Log(playerStats.GetStat(StatsEnum.HEALTH));
-        //Debug.Log(playerStats.GetStat(StatsEnum.SPEED));
+        _animationControl = GetComponent<AnimationControl>();
+        _playerController = GetComponent<PlayerController>();
+        _knockBack = GetComponent<KnockBack>();
     }
 
     //Handles Movement and Animation
@@ -46,25 +40,24 @@ public class PlayerStateMachine : MonoBehaviour
     /// </summary>
     private void HandleAnimation()
     {
-        if (animationControl == null)
-        {
-            Debug.LogError("No Animation Control Found");
-        }
-
-        animationControl.SetState(controller.state);
-        animationControl.PlayAnimation(controller.faceDirection);
+        _animationControl.PlayAnimation(_playerController.faceDirection, _state);
     }
 
     //Handles Damage and Knockback
     public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
-        if (playerStats.GetStat(StatsEnum.HEALTH) <= 0)
+        if (_playerStats.GetStat(StatsEnum.HEALTH) <= 0)
         {
             return;
         }
 
-        playerStats.SubtractStat(StatsEnum.HEALTH, damage);
-        knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
+        _playerStats.SubtractStat(StatsEnum.HEALTH, damage);
+        _knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
+    }
+
+    public void SetState(Enum_State state)
+    {
+        _state = state;
     }
 }
