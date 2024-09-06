@@ -12,7 +12,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public float currentHealth { get; set; }
     public Rigidbody2D RB { get; set; }
     public bool isFacingRight { get; set; } = true;
-
     public Vector2 faceDir { get; set; }
 
     //The types of states the enemy can be in
@@ -26,12 +25,12 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public EnemyDeathState deathState { get; set; }
     #endregion
 
+    [Header("Scriptable Object States")]
     //The scriptable objects that hold the base logic for the enemy
     #region Scriptable Objects Variables
     [SerializeField] private EnemyIdleSOBase enemyIdleBase;
     [SerializeField] private EnemyChaseSOBase enemyChaseBase;
     [SerializeField] private EnemyAttackSOBase enemyAttackBase;
-    //[SerializeField] private EnemyDamagedSOBase enemyDamagedBase;
     [SerializeField] private EnemySpawnSOBase enemySpawnBase;
     [SerializeField] private EnemyDeathSOBase enemyDeathBase;
 
@@ -39,7 +38,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public EnemyIdleSOBase enemyIdleBaseInstance { get; set; }
     public EnemyChaseSOBase enemyChaseBaseInstance { get; set; }
     public EnemyAttackSOBase enemyAttackBaseInstance { get; set; }
-    //public EnemyDamagedSOBase enemyDamagedBaseInstance { get; set; }
     public EnemySpawnSOBase enemySpawnBaseInstance { get; set; }
     public EnemyDeathSOBase enemyDeathBaseInstance { get; set; }
 
@@ -54,10 +52,10 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #endregion
 
     public KnockBack knockBack { get; private set; }    // Knockback script
-    private SimpleFalsh damageFlash;                  // Flash script
+    private SimpleFalsh damageFlash;                    // Flash script
 
     public Animator animator;
-    public GameObject slimeDrop;                      // The slime drop prefab for absorption
+    public GameObject slimeDrop;                        // The slime drop prefab for absorption
     public bool isDead { get; set; } = false;
     public float maxHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
@@ -73,7 +71,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         enemyIdleBaseInstance = Instantiate(enemyIdleBase);
         enemyChaseBaseInstance = Instantiate(enemyChaseBase);
         enemyAttackBaseInstance = Instantiate(enemyAttackBase);
-        //enemyDamagedBaseInstance = Instantiate(enemyDamagedBase);
         enemySpawnBaseInstance = Instantiate(enemySpawnBase);
         enemyDeathBaseInstance = Instantiate(enemyDeathBase);
 
