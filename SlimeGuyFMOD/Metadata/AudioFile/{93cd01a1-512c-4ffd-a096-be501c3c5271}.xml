@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{93cd01a1-512c-4ffd-a096-be501c3c5271}">
+		<property name="assetPath">
+			<value>GremlinSlice.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.39735416666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f1b8826f-904c-45bf-af99-ef0eec3a91ad}</destination>
+		</relationship>
+	</object>
+</objects>
