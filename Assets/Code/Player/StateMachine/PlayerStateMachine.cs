@@ -7,14 +7,13 @@ public class PlayerStateMachine : MonoBehaviour
 {
     //References
     [SerializeField] private Stats _playerStats;
-    private AnimationControl _animationControl;
+    private PlayerAnimation _animationControl;
     private PlayerController _playerController;
 
-    private Enum_State _state;
-    //Knockback Variables
-    private KnockBack _knockBack;
+    private Enum_State _state;                      //State Variables
+    private KnockBack _knockBack;                   //Knockback Variables
 
-    public Enum_State State { get => _state; set => value(); }
+    public Enum_State State { get => _state; set => _state = value; }
 
     private void Awake()
     {
@@ -22,7 +21,7 @@ public class PlayerStateMachine : MonoBehaviour
         _playerStats.Initialize();
 
         //Set up initial references
-        _animationControl = GetComponent<AnimationControl>();
+        _animationControl = GetComponent<PlayerAnimation>();
         _playerController = GetComponent<PlayerController>();
         _knockBack = GetComponent<KnockBack>();
     }
@@ -40,7 +39,7 @@ public class PlayerStateMachine : MonoBehaviour
     /// </summary>
     private void HandleAnimation()
     {
-        _animationControl.PlayAnimation(_playerController.faceDirection, _state);
+        _animationControl.PlayAnimation(_playerController._faceDirection, _state);
     }
 
     //Handles Damage and Knockback
