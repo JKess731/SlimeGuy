@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &12621632 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 229693032122342972, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-  m_PrefabInstance: {fileID: 484256295}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281ba0bfea1ad8c40996ab8b19be825f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &101757375
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicScriptableObject: {fileID: 11400000, guid: e88b18a59cd92b44bac6e504f708df0e, type: 2}
-  relicManager: {fileID: 12621632}
+  relicManager: {fileID: 0}
 --- !u!58 &101757377
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -301,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicScriptableObject: {fileID: 11400000, guid: 68fba6e11e969c44fb7da44cb93b8bd9, type: 2}
-  relicManager: {fileID: 12621632}
+  relicManager: {fileID: 0}
 --- !u!58 &190186741
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -447,12 +436,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Path
+      value: event:/Gelatinous Groove
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerDeath>k__BackingField.Path
       value: event:/SFX/Puddles/Slime Dive
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerAttack>k__BackingField.Path
       value: event:/SFX/Puddles/Slime Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Path
+      value: event:/SFX/Puddles/SlimePickupCoin_mixdown
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Guid.Data1
+      value: 54997007
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Guid.Data2
+      value: 1151168758
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Guid.Data3
+      value: 503846837
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Guid.Data4
+      value: 498348562
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerDeath>k__BackingField.Guid.Data1
@@ -485,6 +498,22 @@ PrefabInstance:
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerAttack>k__BackingField.Guid.Data4
       value: 664755720
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Guid.Data1
+      value: -1592696734
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Guid.Data2
+      value: 1191570007
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Guid.Data3
+      value: -1252000886
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Guid.Data4
+      value: 1788261284
       objectReference: {fileID: 0}
     - target: {fileID: 4433807784745035315, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -533,11 +562,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8505199937310268985, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 558452028673960895, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1259132001}
+    m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 715730813915780561, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1216532565}
     - targetCorrespondingSourceObject: {fileID: 2660313072678195780, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 484256297}
@@ -599,11 +628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &484256300 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 558452028673960895, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-  m_PrefabInstance: {fileID: 484256295}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &522553428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2360279029371207498, guid: 79f19deefb9e98047af2e36f93f8a2a3, type: 3}
@@ -641,7 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicScriptableObject: {fileID: 11400000, guid: 1d2f7dfafe787e74da027ec6990bf86f, type: 2}
-  relicManager: {fileID: 12621632}
+  relicManager: {fileID: 0}
 --- !u!58 &707081287
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -878,7 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicScriptableObject: {fileID: 11400000, guid: b670212c6610191469bd391a76e51cf8, type: 2}
-  relicManager: {fileID: 12621632}
+  relicManager: {fileID: 0}
 --- !u!58 &764424505
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1065,7 +1089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicScriptableObject: {fileID: 11400000, guid: d3ffea7c1bf220d48bc284d044ed693e, type: 2}
-  relicManager: {fileID: 12621632}
+  relicManager: {fileID: 0}
 --- !u!58 &895768115
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2746,7 +2770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicScriptableObject: {fileID: 11400000, guid: f533650ae666d3847b95fa37222a2d59, type: 2}
-  relicManager: {fileID: 12621632}
+  relicManager: {fileID: 0}
 --- !u!58 &1178018454
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2849,6 +2873,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1216532562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 715730813915780561, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+  m_PrefabInstance: {fileID: 484256295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1216532565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216532562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da92a7d05c99e848875e5eb35dd6375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1239784411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 91190765579302560, guid: 1d30bc693a898bc41bb0026eb0edc2c2, type: 3}
@@ -2886,7 +2927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicScriptableObject: {fileID: 11400000, guid: 115e805cac5f6e24c853ddd55cc339ca, type: 2}
-  relicManager: {fileID: 12621632}
+  relicManager: {fileID: 0}
 --- !u!58 &1245245026
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2989,53 +3030,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1259132000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1259132001}
-  - component: {fileID: 1259132002}
-  m_Layer: 0
-  m_Name: RelicManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1259132001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259132000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 484256300}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1259132002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259132000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281ba0bfea1ad8c40996ab8b19be825f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 646beef95cfe9f549b85d602a7b050ef, type: 2}
-  maxRelics: 10
-  relicsEquipped: []
 --- !u!1 &1320295692
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,7 +3196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicScriptableObject: {fileID: 11400000, guid: d3ffea7c1bf220d48bc284d044ed693e, type: 2}
-  relicManager: {fileID: 12621632}
+  relicManager: {fileID: 0}
 --- !u!58 &1384758004
 CircleCollider2D:
   m_ObjectHideFlags: 0
