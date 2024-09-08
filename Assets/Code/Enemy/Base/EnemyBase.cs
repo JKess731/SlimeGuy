@@ -84,10 +84,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         damagedState = new EnemyDamagedState(this, stateMachine);
         spawnState = new EnemySpawningState(this, stateMachine);
         deathState = new EnemyDeathState(this, stateMachine);
-
-        Debug.Log(_statInstance.GetStat(StatsEnum.HEALTH));
-        Debug.Log(_statInstance.GetStat(StatsEnum.SPEED));
-        Debug.Log(_statInstance.GetStat(StatsEnum.ATTACK));
     }
 
     private void Start()

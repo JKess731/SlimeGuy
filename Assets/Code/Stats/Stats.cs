@@ -12,16 +12,6 @@ public class Stats: ScriptableObject
     [SerializeField]private List<StatsInfo> _statList= new List<StatsInfo>();
     private Dictionary<StatsEnum, float> _stats = new Dictionary<StatsEnum, float>(); 
 
-    //If stats are not initialized in awake, initialize them
-    private void Awake()
-    {
-        //Check if the stats dictionary is empty
-        if (_stats.Count == 0)
-        {
-            Initialize();
-        }
-    }
-
     /// <summary>
     /// Adds all stats to dictionary
     /// </summary>
