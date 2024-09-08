@@ -39,7 +39,9 @@ public class PlayerStateMachine : MonoBehaviour
     /// </summary>
     private void HandleAnimation()
     {
-        _animationControl.PlayAnimation(_playerController._faceDirection, _state);
+        Debug.Log(_state);
+        Debug.Log(_playerController.FaceDirection);
+        _animationControl.PlayAnimation(_playerController.FaceDirection, _state);
     }
 
     //Handles Damage and Knockback

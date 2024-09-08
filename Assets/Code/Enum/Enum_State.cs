@@ -8,5 +8,6 @@ public enum Enum_State
     MOVING,
     DASHING,
     DAMAGED,
-    DEAD
+    DEAD,
+    ATTACKING
 }

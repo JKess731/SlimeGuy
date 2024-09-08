@@ -290,11 +290,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2204149
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9834127
+      value: -1.63
       objectReference: {fileID: 0}
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.z
@@ -347,7 +347,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1409781260}
   m_SourcePrefab: {fileID: 100100000, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
 --- !u!1 &827238421 stripped
 GameObject:
@@ -2076,6 +2079,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383261535}
   m_CullTransparentMesh: 1
+--- !u!1 &1409781251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+  m_PrefabInstance: {fileID: 728773348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1409781260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409781251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6012ec76cb1c94f86e1defaf4d543c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1425627445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6038,6 +6058,14 @@ PrefabInstance:
     - target: {fileID: 5217851409447338946, guid: 8d37b0625ee527b49ad8f714e1bcb830, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049369820564130192, guid: 8d37b0625ee527b49ad8f714e1bcb830, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049369820564130192, guid: 8d37b0625ee527b49ad8f714e1bcb830, type: 3}
+      propertyPath: m_FlipY
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6275242436927828480, guid: 8d37b0625ee527b49ad8f714e1bcb830, type: 3}
       propertyPath: m_LocalPosition.x

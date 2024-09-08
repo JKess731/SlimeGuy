@@ -27,9 +27,14 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     private PlayerStateMachine _playerState;
 
     //Input Variables
-    public PlayerInput _playerInput { get; private set; }
-    public Vector2 _moveVector { get; private set; }
-    public Vector2 _faceDirection { get; private set; }
+    private PlayerInput _playerInput;
+    private Vector2 _moveVector;
+    private Vector2 _faceDirection;
+
+    public PlayerInput PlayerInput { get => _playerInput;}
+    public Vector2 FaceDirection { get => _faceDirection; set => _faceDirection = value; }
+    public Vector2 MoveVector { get => _moveVector; set => _moveVector = value; }
+
 
     private void Awake()
     {
