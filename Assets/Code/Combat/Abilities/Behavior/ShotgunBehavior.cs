@@ -24,7 +24,7 @@ public class ShotgunBehavior : Behavior
 
     public override void Initialize()
     {
-        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
+        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange, status);
     }
 
     //Activate the attack

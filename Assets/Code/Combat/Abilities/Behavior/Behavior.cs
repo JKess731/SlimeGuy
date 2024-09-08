@@ -12,9 +12,12 @@ public abstract class Behavior : ScriptableObject
     [Header("Timer Attributes")]
     [SerializeField] protected float _cooldownTime;
     [SerializeField] protected float _activationTime;
+    [SerializeField] protected StatusSO _status;
 
     public float CooldownTime { get => _cooldownTime; protected set => _cooldownTime = value; }
     public float ActivationTime { get => _activationTime; protected set => _activationTime = value; }
+
+    public StatusSO status { get => _status; protected set => _status = value; }
 
     public virtual void Initialize()
     {

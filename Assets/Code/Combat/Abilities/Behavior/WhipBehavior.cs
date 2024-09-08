@@ -21,7 +21,7 @@ public class WhipBehavior : Behavior
 
     public override void Initialize()
     {
-        _whipStruct = new WhipStruct(_damage, _knockback, _activationTime, _rotationSpeed);
+        _whipStruct = new WhipStruct(_damage, _knockback, _activationTime, _rotationSpeed, status);
     }
 
     public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
