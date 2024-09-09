@@ -15,7 +15,7 @@ public class RelicPickup : MonoBehaviour
             {
                 relicManager.AddRelic(relicScriptableObject);
 
-                relicScriptableObject.ActivateBuff(relicManager.playerStats);
+                //relicScriptableObject.ActivateBuff(relicManager.playerStats);
                 gameObject.SetActive(false);
             }
         }
