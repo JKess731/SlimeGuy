@@ -7,11 +7,11 @@ using UnityEngine;
 /// Scriptable object to store stats
 /// </summary>
 [CreateAssetMenu(fileName = "Stats", menuName = "Stats/Stats")]
-public class Stats: ScriptableObject
+public class StatsSO: ScriptableObject
 {
     [SerializeField]private List<StatsInfo> _statList= new List<StatsInfo>();
     private Dictionary<StatsEnum, float> _stats = new Dictionary<StatsEnum, float>(); 
-
+    public List<StatsInfo> StatList { get => _statList; }
     /// <summary>
     /// Adds all stats to dictionary
     /// </summary>
@@ -32,6 +32,14 @@ public class Stats: ScriptableObject
         {
             Debug.LogWarning("Stat not found");
             return 0;
+        }
+    }
+
+    public void Copy(List<StatsInfo> statList)
+    {
+        for (int i = 0; i < statList.Count; i++)
+        {
+            _stats.Add(_statList[i].StatEnum, _statList[i].Value);
         }
     }
 

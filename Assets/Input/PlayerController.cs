@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
 
     private void Start()
     {
-        _playerState.SetState(Enum_State.IDLE);
+        _playerState.SetState(Enum_State.IDLING);
     }
     private void Update()
     {
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
             return;
         }
 
-        if (_playerState.State == Enum_State.IDLE || _playerState.State == Enum_State.MOVING)
+        if (_playerState.State == Enum_State.IDLING || _playerState.State == Enum_State.MOVING)
         {
             _rb.velocity = _moveVector * _speed;
         }
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
 
     public void OnMovementCancel(InputAction.CallbackContext context)
     {
-        _playerState.State = Enum_State.IDLE;
+        _playerState.State = Enum_State.IDLING;
 
         _moveVector = Vector2.zero;
     }
@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         //Handles Dash End
         //EnableMovement();
         _tr.emitting = false;
-        _playerState.State = Enum_State.IDLE;
+        _playerState.State = Enum_State.IDLING;
         _rb.velocity = Vector2.zero;
 
         //Handles Dash Cooldown

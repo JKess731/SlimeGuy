@@ -10,6 +10,6 @@ public class SOBaseStick : Effect
     public override void ApplyModifier(GameObject target)
     {
         EnemyBase enemyBase = target.GetComponent<EnemyBase>();
-        enemyBase.ModifyMoveSpeed(-enemyBase.GetSpeed(), time);
+        //enemyBase.ModifyMoveSpeed(-enemyBase.GetSpeed(), time);
     }
 }

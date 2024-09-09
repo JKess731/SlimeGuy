@@ -7,16 +7,16 @@ public class EnemyAnimation : AnimationControl
 
     public override void PlayAnimation(Vector2 direction, Enum_State state)
     {
-        if (direction.x > 0)
+        if (direction.x < 0)
         {
             _spriteRenderer.flipX = true;
         }
-        else if (direction.x < 0)
+        else if (direction.x > 0)
         {
             _spriteRenderer.flipX = false;
         }
 
-        if(state == Enum_State.IDLE)
+        if(state == Enum_State.IDLING)
         {
             _animator.Play("Idle");
         }
@@ -28,7 +28,7 @@ public class EnemyAnimation : AnimationControl
 
         if(state == Enum_State.ATTACKING)
         {
-            _animator.Play("Attack");
+            _animator.Play("Slice");
         }
 
         if(state == Enum_State.DAMAGED)

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum Enum_State
 {
-    IDLE,
+    SPAWNING,
+    IDLING,
     MOVING,
     DASHING,
     DAMAGED,

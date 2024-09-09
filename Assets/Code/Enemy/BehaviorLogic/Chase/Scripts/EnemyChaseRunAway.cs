@@ -24,8 +24,8 @@ public class EnemyChaseRunAway : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        Vector2 runDir = -(playerTransform.position - transform.position).normalized;
-        enemy.MoveEnemy(runDir *  runAwaySpeed);
+        Vector2 runDir = -(_playerTransform.position - _transform.position).normalized;
+        _enemy.MoveEnemy(runDir *  runAwaySpeed);
     }
 
     public override void DoPhysicsLogic()

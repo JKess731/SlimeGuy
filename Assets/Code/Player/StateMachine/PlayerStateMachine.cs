@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     //References
-    [SerializeField] private Stats _playerStats;
+    [SerializeField] private StatsSO _playerStats;
     private PlayerAnimation _animationControl;
     private PlayerController _playerController;
 
@@ -39,8 +39,6 @@ public class PlayerStateMachine : MonoBehaviour
     /// </summary>
     private void HandleAnimation()
     {
-        Debug.Log(_state);
-        Debug.Log(_playerController.FaceDirection);
         _animationControl.PlayAnimation(_playerController.FaceDirection, _state);
     }
 

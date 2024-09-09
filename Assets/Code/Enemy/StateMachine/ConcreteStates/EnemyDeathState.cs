@@ -11,32 +11,32 @@ public class EnemyDeathState : EnemyState
     public override void AnimationTriggerEvent(EnemyBase.AnimationTriggerType triggerType)
     {
         base.AnimationTriggerEvent(triggerType);
-        enemyBase.enemyDeathBaseInstance.DoAnimationTriggerEventLogic(triggerType);
+        _enemyBase.enemyDeathBaseInstance.DoAnimationTriggerEventLogic(triggerType);
     }
 
     public override void EnterState()
     {
         base.EnterState();
-        enemyBase.animator.SetBool("DeathState", true);
-        enemyBase.enemyDeathBaseInstance.DoEnterLogic();
+        _enemyBase.enemyDeathBaseInstance.DoEnterLogic();
+        _enemyBase.State = Enum_State.DEAD;
+        Debug.Log("Enemy is dead");
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        enemyBase.animator.SetBool("DeathState", false);
-        enemyBase.enemyDeathBaseInstance.DoExitLogic();
+        _enemyBase.enemyDeathBaseInstance.DoExitLogic();
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        enemyBase.enemyDeathBaseInstance.DoFrameUpdateLogic();
+        _enemyBase.enemyDeathBaseInstance.DoFrameUpdateLogic();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        enemyBase.enemyDeathBaseInstance.DoPhysicsLogic();
+        _enemyBase.enemyDeathBaseInstance.DoPhysicsLogic();
     }
 }

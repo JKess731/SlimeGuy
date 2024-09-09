@@ -4,31 +4,22 @@ using UnityEngine;
 
 public class EnemySpawnSOBase : ScriptableObject
 {
-    protected EnemyBase enemy;
-    protected Transform transform;
-    protected GameObject gameObject;
-    protected Transform playerTransform;
-
-    public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
-    {
-
-        this.gameObject = gameObject;
-        transform = gameObject.transform;
-        this.enemy = enemy;
-
+    protected EnemyBase _enemy;
+    protected GameObject _gameObject;
+    public virtual void Initialize(GameObject gameObject, EnemyBase enemy){
+        _enemy = enemy;
+        _gameObject = gameObject;
     }
-
-    public virtual void DoEnterLogic() { }
-
+    public virtual void DoEnterLogic() {
+        Debug.Log(_enemy);
+        Debug.Log(_enemy.State);
+        _enemy.State = Enum_State.SPAWNING;
+        _enemy.stateMachine.ChangeState(_enemy.idleState);
+    }
     public virtual void DoExitLogic() { ResetValues(); }
-
-    public virtual void DoFrameUpdateLogic()
-    {
-       
-    }
+    public virtual void DoFrameUpdateLogic() {}
 
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { }
-
     public virtual void ResetValues() { }
 }

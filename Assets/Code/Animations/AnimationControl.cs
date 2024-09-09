@@ -32,7 +32,7 @@ public class AnimationControl : MonoBehaviour
         }
 
 
-        if (state == Enum_State.IDLE)
+        if (state == Enum_State.IDLING)
         {
             if (direction.x != 0)
             {

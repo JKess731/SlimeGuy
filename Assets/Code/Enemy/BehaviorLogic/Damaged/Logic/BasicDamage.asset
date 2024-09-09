@@ -9,17 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e28ec274df094d4eaa25ada74863c1a, type: 3}
-  m_Name: DwarfStats
+  m_Script: {fileID: 11500000, guid: 485e41b05d10ff24286b83c0798f6804, type: 3}
+  m_Name: BasicDamage
   m_EditorClassIdentifier: 
-  _statList:
-  - _statEnum: 0
-    _statValue: 1
-  - _statEnum: 4
-    _statValue: 10
-  - _statEnum: 3
-    _statValue: 10
-  - _statEnum: 2
-    _statValue: 10
-  - _statEnum: 1
-    _statValue: 1

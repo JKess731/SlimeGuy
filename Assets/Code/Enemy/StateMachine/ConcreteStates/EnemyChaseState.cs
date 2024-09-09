@@ -9,32 +9,30 @@ public class EnemyChaseState : EnemyState
     public override void AnimationTriggerEvent(EnemyBase.AnimationTriggerType triggerType)
     {
         base.AnimationTriggerEvent(triggerType);
-        enemyBase.enemyChaseBaseInstance.DoAnimationTriggerEventLogic(triggerType);
+        _enemyBase.enemyChaseBaseInstance.DoAnimationTriggerEventLogic(triggerType);
     }
 
     public override void EnterState()
     {
         base.EnterState();
-        enemyBase.animator.SetBool("ChaseState", true);
-        enemyBase.enemyChaseBaseInstance.DoEnterLogic();
+        _enemyBase.enemyChaseBaseInstance.DoEnterLogic();
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        enemyBase.animator.SetBool("ChaseState", false);
-        enemyBase.enemyChaseBaseInstance.DoExitLogic();
+        _enemyBase.enemyChaseBaseInstance.DoExitLogic();
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        enemyBase.enemyChaseBaseInstance.DoFrameUpdateLogic();
+        _enemyBase.enemyChaseBaseInstance.DoFrameUpdateLogic();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        enemyBase.enemyChaseBaseInstance.DoPhysicsLogic();
+        _enemyBase.enemyChaseBaseInstance.DoPhysicsLogic();
     }
 }
