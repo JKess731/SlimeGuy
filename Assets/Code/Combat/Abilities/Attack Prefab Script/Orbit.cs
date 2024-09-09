@@ -19,6 +19,8 @@ public class Orbit : Attacks
         _player = GameObject.FindWithTag("player");
 
         _currentDistance = 0f;
+
+        Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     private void FixedUpdate()
