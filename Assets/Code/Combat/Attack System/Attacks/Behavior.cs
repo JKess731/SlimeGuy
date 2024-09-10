@@ -18,14 +18,14 @@ public abstract class Behavior : ScriptableObject
 
     public virtual void Initialize()
     {
-        throw new System.NotImplementedException();
+       //throw new System.NotImplementedException();
     }
     public virtual void Activate()
     {
-        throw new System.NotImplementedException();
+      // throw new System.NotImplementedException();
     }
     public virtual void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
     {
-        throw new System.NotImplementedException();
+       // throw new System.NotImplementedException();
     }
 }
