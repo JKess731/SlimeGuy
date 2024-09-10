@@ -35,7 +35,10 @@ public class Bullet : Attacks
         if (collision.gameObject.tag == "enemy")
         {
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage);
-            collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
+            if (_status != null)
+            {
+                collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
+            }
             Debug.Log("I got past StatusManager");
             Destroy(gameObject);
 

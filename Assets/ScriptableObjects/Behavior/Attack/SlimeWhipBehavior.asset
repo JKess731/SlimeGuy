@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cooldownTime: 2
   _activationTime: 1
-  _status: {fileID: 11400000, guid: f2b4f48c4bb18fc449dd797b79cf81b0, type: 2}
+  _status: {fileID: 11400000, guid: 41de268f9ff83b840af18fe91cc29984, type: 2}
   _whip: {fileID: 1444053255082817093, guid: 72bbfe5b1348d7a4792d4a570411e74f, type: 3}
   _damage: 1
   _knockback: 1
