@@ -42,5 +42,18 @@ public class ShotgunBehavior : Behavior
                 newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
             }
         }
+
+        if(context.started)
+        {
+            Debug.Log("Started");
+        }
+        if (context.performed)
+        {
+            Debug.Log("Performed");
+        }
+        if (context.canceled)
+        {
+            Debug.Log("Canceled");
+        }
     }   
 }

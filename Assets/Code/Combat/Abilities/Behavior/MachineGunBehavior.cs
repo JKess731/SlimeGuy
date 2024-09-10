@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class MachineGunBehavior : Behavior
 {
     [Header("Machine Gun Attributes")]
-    [SerializeField] private int _bulletCount = 15;
+    //[SerializeField] private int _bulletCount = 15;
     [SerializeField] private float _fireRate = 0.1f; // Time between shots
     [SerializeField] private GameObject _projectile;
 
@@ -21,49 +21,56 @@ public class MachineGunBehavior : Behavior
     [SerializeField] private float _projectileRange;
 
     private BulletStruct _bulletStruct;
-    private float _lastFireTime; // Tracks the last time the gun fired
     private float _firingDuration = 5f; //Fire Timer
-    private float _timeLeftToFire = 0f;
-    private bool _isFiring = false; 
 
     public override void Initialize()
     {
         _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
-        _lastFireTime = -_fireRate; // Ensures immediate firing
     }
 
     // Activate the attack
     public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
     {
-        if (context.started && !_isFiring) 
+        //if (context.started && !_isFiring) 
+        //{
+        //    _isFiring = true; //Firing Loop
+        //    Debug.Log("Machine gun firing started for 5 seconds");
+        //}
+
+        if (context.started)
         {
-            _timeLeftToFire = _firingDuration; // Start the 5-second timer
-            _isFiring = true; //Firing Loop
-            Debug.Log("Machine gun firing started for 5 seconds");
+            Debug.Log("Started");
+            Debug.Log(Time.deltaTime);
         }
 
         // If the gun is currently in the firing loop
-        if (_isFiring)
+        if (context.performed)
         {
-            while (_timeLeftToFire > 0)
-            {
-                //Reduce Time
-                _timeLeftToFire -= Time.deltaTime;
-                _lastFireTime = Time.deltaTime; // Update the last fire time
+            Debug.Log("Performed");
+            Debug.Log(Time.deltaTime);
+            //Debug.Log("Machine gun Performed");
+            //float currentTime = 0;                      // Get the current time
+            //float currentfireRate = _fireRate;          // Time between shots
 
-                // Fire a bullet
-                GameObject newBullet = Instantiate(_projectile, attackPosition, rotation);
-                newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
-
-                Debug.Log("Bullet Fired");
-            }
+            //while (currentTime < _firingDuration)
+            //{
+            //    Debug.Log("Machine gun firing:" + currentTime);
+            //    currentTime += Time.deltaTime;          // Update the current time
+            //    if (currentTime  >= currentfireRate)
+            //    {
+            //        // Fire a bullet
+            //        Vector2 randomAttackPos = new Vector2(attackPosition.x + Random.Range(-0.5f, 0.5f), attackPosition.y);
+            //        GameObject newBullet = Instantiate(_projectile, randomAttackPos, rotation);
+            //        newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
+            //        currentfireRate += _fireRate;           // Increase the fire rate
+            //    }
+            //}
         }
 
-        // Once the time has run out, stop firing
-        if (_timeLeftToFire <= 0)
+        if (context.canceled)
         {
-            _isFiring = false; // End the firing loop
-            Debug.Log("Machine gun firing ended");
+            Debug.Log("Canceled");
+            Debug.Log(Time.deltaTime);
         }
     }
 }
