@@ -9,17 +9,21 @@ public class Push : Attacks
     private float _distance;
 
     private GameObject _player;
+    private GameObject _attack;
 
     private void Start()
     {
         Destroy(gameObject, _activationTime);
         _player = GameObject.FindWithTag("player");
+        _attack = GameObject.FindWithTag("attack");
 
         transform.position = _player.transform.position;
 
         transform.localScale = Vector3.zero;
 
         Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(_attack.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
     }
 
     private void FixedUpdate()
