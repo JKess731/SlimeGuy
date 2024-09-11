@@ -24,6 +24,7 @@ public class ShotgunBehavior : Behavior
 
     public override void Initialize()
     {
+        base.Initialize();
         _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
     }
 
@@ -32,6 +33,7 @@ public class ShotgunBehavior : Behavior
     {
         if (context.started)
         {
+            AbilityState = AbilityState.ACTIVE;
             float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
             for (int i = 0; i < _bulletCount; i++)
             {
@@ -42,18 +44,37 @@ public class ShotgunBehavior : Behavior
                 newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
             }
         }
-
-        if(context.started)
-        {
-            Debug.Log("Started");
-        }
         if (context.performed)
         {
             Debug.Log("Performed");
         }
         if (context.canceled)
         {
+            AbilityState = AbilityState.FINISHED;
             Debug.Log("Canceled");
         }
-    }   
+    }
+    public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.ACTIVE;
+        float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
+        for (int i = 0; i < _bulletCount; i++)
+        {
+            float addedOffset = -angleDiff * i;
+            Quaternion newRot = rotation * Quaternion.Euler(0, 0, _spreadAngle) * Quaternion.Euler(0, 0, addedOffset);
+
+            GameObject newBullet = Instantiate(_projectile, attackPosition, newRot);
+            newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
+        }
+    }
+
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        base.PerformBehavior();
+    }
+
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.FINISHED;
+    }
 }

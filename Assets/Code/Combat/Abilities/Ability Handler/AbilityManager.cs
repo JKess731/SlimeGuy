@@ -40,27 +40,40 @@ public class AbilityManager : MonoBehaviour
     #region Primary
     public void OnPrimary(InputAction.CallbackContext context)
     {
-        if (primary.AbilityState == AbilityState.Ready)
+        if (primary.Behavior.AbilityState == AbilityState.READY)
         {
             primary.ActivateAbility(context, attackPos.rotation, attackPos.position);
         }
 
-        if (primary.AbilityState == AbilityState.Active && context.started)
-        {
-            StartCoroutine(primary.Cooldown());
-        }
+        //if (primary.Behavior.AbilityState == AbilityState.FINISHED)
+        //{
+        //    Debug.Log("Start Cooldown");
+        //    StartCoroutine(primary.Cooldown());
+        //}
+    }
+    public void OnPrimaryStarted(InputAction.CallbackContext context)
+    {
+        primary.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
+    }
+    public void OnPrimaryPerformed(InputAction.CallbackContext context)
+    {
+        primary.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
+    }
+    public void OnPrimaryCanceled(InputAction.CallbackContext context)
+    {
+        primary.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
     }
     #endregion
 
     #region Secondary
     public void OnSecondary(InputAction.CallbackContext context)
     {
-        if (secondary.AbilityState == AbilityState.Ready)
+        if (secondary.Behavior.AbilityState == AbilityState.READY)
         {
             secondary.ActivateAbility(context, attackPos.rotation, attackPos.position);
         }
 
-        if (secondary.AbilityState == AbilityState.Active && context.started)
+        if (secondary.Behavior.AbilityState == AbilityState.FINISHED)
         {
             StartCoroutine(secondary.Cooldown());
         }
@@ -70,12 +83,12 @@ public class AbilityManager : MonoBehaviour
     #region Dash
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (dash.AbilityState == AbilityState.Ready)
+        if (dash.Behavior.AbilityState == AbilityState.READY)
         {
             dash.ActivateAbility(context, attackPos.rotation, attackPos.position);
         }
 
-        if (dash.AbilityState == AbilityState.Ready && context.started)
+        if (dash.Behavior.AbilityState == AbilityState.FINISHED)
         {
             StartCoroutine(dash.Cooldown());
         }
@@ -85,12 +98,12 @@ public class AbilityManager : MonoBehaviour
     #region Passive
     public void OnPassive()
     {
-        if (passive.AbilityState == AbilityState.Ready)
+        if (passive.Behavior.AbilityState == AbilityState.READY)
         {
             passive.ActivateAbility();
         }
 
-        if (passive.AbilityState == AbilityState.Active)
+        if (passive.Behavior.AbilityState == AbilityState.FINISHED)
         {
             StartCoroutine(passive.Cooldown());
         }

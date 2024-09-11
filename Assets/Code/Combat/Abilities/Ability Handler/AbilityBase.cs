@@ -18,9 +18,7 @@ public abstract class AbilityBase : ScriptableObject
 
     [Header("Behavior SO")]
     [SerializeField] protected Behavior behavior;
-
-    [HideInInspector] protected AbilityState _abilityState = AbilityState.Ready;
-    public AbilityState AbilityState { get => _abilityState; protected set => _abilityState = value; }
+    public Behavior Behavior { get => behavior; }
     
     /// <summary>
     /// Initializes the ability
@@ -28,7 +26,6 @@ public abstract class AbilityBase : ScriptableObject
     /// </summary>
     public virtual void Initialize()
     {
-        _abilityState = AbilityState.Ready;
         behavior.Initialize();
     }
 
@@ -56,13 +53,8 @@ public abstract class AbilityBase : ScriptableObject
     /// <returns>The current wait for seconds left</returns>
     public IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(behavior.ActivationTime);
-
-        _abilityState = AbilityState.Deactive;
-        //Debug.Log("Activation Ended");
         yield return new WaitForSeconds(behavior.CooldownTime);
-
-        _abilityState = AbilityState.Ready;
+        behavior.SetReady();
         //Debug.Log("Cooldown Ended");
     }
     #endregion
@@ -70,7 +62,8 @@ public abstract class AbilityBase : ScriptableObject
 
 public enum AbilityState
 {
-    Ready,
-    Active,
-    Deactive
+    READY,
+    ACTIVE,
+    FINISHED,
+    DEACTIVE,
 }

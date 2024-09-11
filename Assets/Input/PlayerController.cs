@@ -82,9 +82,9 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         playerInput.GamePlay.Dash.performed += OnDash;
         playerInput.GamePlay.Dash.canceled += OnDash;
 
-        playerInput.GamePlay.Primary.started += OnPrimary;
-        playerInput.GamePlay.Primary.performed += OnPrimary;
-        playerInput.GamePlay.Primary.canceled += OnPrimary;
+        playerInput.GamePlay.Primary.started += OnPrimaryStarted;
+        playerInput.GamePlay.Primary.performed += OnPrimaryPerformed;
+        playerInput.GamePlay.Primary.canceled += OnPrimaryCanceled;
 
         playerInput.GamePlay.Secondary.started += OnSecondary;
         playerInput.GamePlay.Secondary.performed += OnSecondary;
@@ -205,12 +205,37 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     {
         abilityManager.OnPrimary(context);
     }
+
+    public void OnPrimaryStarted(InputAction.CallbackContext context)
+    {
+        abilityManager.OnPrimaryStarted(context);
+    }
+    public void OnPrimaryPerformed(InputAction.CallbackContext context)
+    {
+        abilityManager.OnPrimaryPerformed(context);
+    }
+    public void OnPrimaryCanceled(InputAction.CallbackContext context)
+    {
+        abilityManager.OnPrimaryCanceled(context);
+    }
     #endregion
 
     #region Secondary
     public void OnSecondary(InputAction.CallbackContext context)
     {
         abilityManager.OnSecondary(context);
+    }
+    public void OnSecondaryStarted(InputAction.CallbackContext context)
+    {
+        Debug.Log("Primary Started");
+    }
+    public void OnSecondaryPerformed(InputAction.CallbackContext context)
+    {
+        Debug.Log("Primary Performed");
+    }
+    public void OnSecondaryCanceled(InputAction.CallbackContext context)
+    {
+        Debug.Log("Primary Canceled");
     }
     #endregion
 }
