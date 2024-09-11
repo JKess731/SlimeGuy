@@ -5,36 +5,27 @@ using UnityEngine;
 
 public abstract class RelicSO : ScriptableObject
 {
-    [System.Serializable]
-    public class RelicBuff
-    {
-        public StatsEnum statType;
-        public Operator operate;
-        public float num;
-        public NumType numberType;
-    }
+    [SerializeField] protected Stats playerStats;
+    [SerializeField] protected string relicName;
+    [SerializeField] protected string flavorTextDescription;
+    [SerializeField] protected RelicRarity rarity;
+    [SerializeField] protected Sprite spriteIcon;
 
-    [System.Serializable]
-    public class RelicCondition
-    {
-        public StatsEnum statType;
-        public Operator operate;
-        public float num;
-        public NumType numberType;
-    }
+    [SerializeField] protected bool hasCondition = false;
 
-    [InspectorLabel("Buffs")]
-    public List<RelicBuff> relicBuffs = new List<RelicBuff>();
-    [InspectorLabel("Conditions")]
-    public List<RelicCondition> relicConditions = new List<RelicCondition>();
+    [HideInInspector] public RelicCalculator calc;
 
-    public Stats playerStats;
-    public string relicName;
-    public string flavorTextDescription;
-    public RelicRarity rarity;
-    public Sprite spriteIcon;
+    public string Name { get { return name; } }
+    public string Description {  get { return flavorTextDescription; } }
+    public RelicRarity Rarity {  get { return rarity; } }
+    public Sprite Icon { get { return spriteIcon; } }  
+    public bool HasCondition {  get { return hasCondition; } }
+
+    public abstract void OnPickup();
 
     public abstract void ActivateBuffs();
+
+    public abstract void DeactivateBuffs();
 
     public abstract bool Condition();
 }
