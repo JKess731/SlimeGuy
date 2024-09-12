@@ -59,5 +59,6 @@ public class DividingSlashBehavior : Behavior
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.FINISHED;
+        onBehaviorFinished?.Invoke();
     }
 }
