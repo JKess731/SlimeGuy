@@ -10,8 +10,9 @@ using UnityEngine.UIElements;
 public class MachineGunBehavior : Behavior
 {
     [Header("Machine Gun Attributes")]
-    //[SerializeField] private int _bulletCount = 15;
-    [SerializeField] private float _fireRate = 0.1f; // Time between shots
+    [SerializeField] private int _bulletCount = 15;
+    [SerializeField] private float _fireRate = 0.5f; // Time between shots
+    [SerializeField] private float _spreadAngle; 
     [SerializeField] private GameObject _projectile;
 
     [Header("Prefab Attributes")]
@@ -20,8 +21,9 @@ public class MachineGunBehavior : Behavior
     [SerializeField] private float _projectileSpeed;
     [SerializeField] private float _projectileRange;
 
+    private float nextFireTime = 0f; //Tells when to fire
     private BulletStruct _bulletStruct;
-    private float _firingDuration = 5f; //Fire Timer
+    
 
     public override void Initialize(AbilityBase abilityBase)
     {
@@ -32,46 +34,33 @@ public class MachineGunBehavior : Behavior
     // Activate the attack
     public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
     {
-        //if (context.started && !_isFiring) 
-        //{
-        //    _isFiring = true; //Firing Loop
-        //    Debug.Log("Machine gun firing started for 5 seconds");
-        //}
-
         if (context.started)
         {
-            Debug.Log("Started");
-            Debug.Log(Time.deltaTime);
-        }
+            // Check if enough time has passed to fire again
+            if (Time.time >= nextFireTime)
+            {
+                Debug.Log("Performed");
+                Debug.Log(Time.deltaTime);
 
-        // If the gun is currently in the firing loop
-        if (context.performed)
-        {
-            Debug.Log("Performed");
-            Debug.Log(Time.deltaTime);
-            //Debug.Log("Machine gun Performed");
-            //float currentTime = 0;                      // Get the current time
-            //float currentfireRate = _fireRate;          // Time between shots
+                float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
+                for (int i = 0; i < _bulletCount; i++)
+                {
+                    float addedOffset = -angleDiff * i;
+                    Quaternion newRot = rotation * Quaternion.Euler(0, 0, _spreadAngle) * Quaternion.Euler(0, 0, addedOffset);
 
-            //while (currentTime < _firingDuration)
-            //{
-            //    Debug.Log("Machine gun firing:" + currentTime);
-            //    currentTime += Time.deltaTime;          // Update the current time
-            //    if (currentTime  >= currentfireRate)
-            //    {
-            //        // Fire a bullet
-            //        Vector2 randomAttackPos = new Vector2(attackPosition.x + Random.Range(-0.5f, 0.5f), attackPosition.y);
-            //        GameObject newBullet = Instantiate(_projectile, randomAttackPos, rotation);
-            //        newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
-            //        currentfireRate += _fireRate;           // Increase the fire rate
-            //    }
-            //}
+                    GameObject newBullet = Instantiate(_projectile, attackPosition, newRot);
+                    newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
+                }
+
+                // Update the next fire time
+                nextFireTime = Time.time + _fireRate;
+            }
         }
 
         if (context.canceled)
         {
-            Debug.Log("Canceled");
-            Debug.Log(Time.deltaTime);
+            //Debug.Log("Canceled");
+            //Debug.Log(Time.deltaTime);
         }
     }
 }
