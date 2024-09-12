@@ -752,8 +752,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primary: {fileID: 11400000, guid: 04decd47599722f4d8b4d90909296d3d, type: 2}
   secondary: {fileID: 11400000, guid: c19e8ebc44663a94bb12205ccb7afef5, type: 2}
-  dash: {fileID: 11400000, guid: 660476e7635397f40a304e6a0639ebc3, type: 2}
-  passive: {fileID: 11400000, guid: 660476e7635397f40a304e6a0639ebc3, type: 2}
+  dash: {fileID: 0}
+  passive: {fileID: 0}
   attackPos: {fileID: 240163473}
 --- !u!1 &709651894
 GameObject:
