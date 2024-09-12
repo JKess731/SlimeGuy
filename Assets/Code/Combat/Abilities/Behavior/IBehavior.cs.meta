@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Code/Stats/StatsSO.cs.meta
-guid: df85d10d946d2ad42a832325e3bcb4c8
-========
 guid: b63f86c23dc160d4a8659ebcd1ba91e3
->>>>>>>> Relic_Trenton_Edison:Assets/Code/Combat/Abilities/Behavior/IBehavior.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

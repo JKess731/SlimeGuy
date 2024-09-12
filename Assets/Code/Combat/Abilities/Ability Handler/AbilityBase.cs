@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -18,11 +19,7 @@ public abstract class AbilityBase : ScriptableObject
 
     [Header("Behavior SO")]
     [SerializeField] protected Behavior behavior;
-
     public Behavior Behavior { get => behavior; }
-
-    [HideInInspector] protected AbilityState _abilityState = AbilityState.Ready;
-    public AbilityState AbilityState { get => _abilityState; protected set => _abilityState = value; }
     
     /// <summary>
     /// Initializes the ability
@@ -30,8 +27,7 @@ public abstract class AbilityBase : ScriptableObject
     /// </summary>
     public virtual void Initialize()
     {
-        _abilityState = AbilityState.Ready;
-        behavior.Initialize();
+        behavior?.Initialize(this);
     }
 
     /// <summary>
@@ -50,29 +46,4 @@ public abstract class AbilityBase : ScriptableObject
     {
         throw new System.NotImplementedException();
     }
-
-    #region Cooldown
-    /// <summary>
-    /// A coroutine that handles the cooldown of the ability
-    /// </summary>
-    /// <returns>The current wait for seconds left</returns>
-    public IEnumerator Cooldown()
-    {
-        yield return new WaitForSeconds(behavior.ActivationTime);
-
-        _abilityState = AbilityState.Deactive;
-        //Debug.Log("Activation Ended");
-        yield return new WaitForSeconds(behavior.CooldownTime);
-
-        _abilityState = AbilityState.Ready;
-        //Debug.Log("Cooldown Ended");
-    }
-    #endregion
-}
-
-public enum AbilityState
-{
-    Ready,
-    Active,
-    Deactive
 }
