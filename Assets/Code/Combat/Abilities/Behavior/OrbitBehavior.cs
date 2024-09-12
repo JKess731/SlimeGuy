@@ -28,10 +28,30 @@ public class OrbitBehavior : Behavior
 
     public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
     {
-        if (context.started)
-        {
-            GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
-            newOrbit.GetComponent<Orbit>().SetOrbitStruct(_orbitStruct);
-        }
+        //if (context.started)
+        //{
+        //    GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
+        //    newOrbit.GetComponent<Orbit>().SetOrbitStruct(_orbitStruct);
+        //}
+    }
+
+    public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+
+        GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
+        newOrbit.GetComponent<Orbit>().SetOrbitStruct(_orbitStruct);
+        
+        AbilityState = AbilityState.PERFORMING;
+    }
+
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.CANCELING;
+    }
+
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.FINISHED;
+        onBehaviorFinished?.Invoke();
     }
 }
