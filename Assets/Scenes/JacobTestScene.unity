@@ -5690,8 +5690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21ccc7ad8685424f8b30006d41cdd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primary: {fileID: 11400000, guid: 04decd47599722f4d8b4d90909296d3d, type: 2}
-  secondary: {fileID: 11400000, guid: 402d99393386dc64eb017b53cea7a48e, type: 2}
+  primary: {fileID: 11400000, guid: 9519d265c835bbc4b98eabbcb76d40cd, type: 2}
+  secondary: {fileID: 11400000, guid: 9c997ebf57fcfa941b1005556c46848e, type: 2}
   dash: {fileID: 11400000, guid: 21f4d801539e5e54fae412528d7a89fc, type: 2}
   passive: {fileID: 0}
   attackPos: {fileID: 1066278096}
