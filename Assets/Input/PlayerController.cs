@@ -53,17 +53,17 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Movement.performed += OnMovement;
         _playerInput.GamePlay.Movement.canceled += OnMovementCancel;
 
-        playerInput.GamePlay.Dash.started += OnDashStarted;
-        playerInput.GamePlay.Dash.performed += OnDashPerformed;
-        playerInput.GamePlay.Dash.canceled += OnDashCanceled;
+        _playerInput.GamePlay.Dash.started += OnDashStarted;
+        _playerInput.GamePlay.Dash.performed += OnDashPerformed;
+        _playerInput.GamePlay.Dash.canceled += OnDashCanceled;
 
-        playerInput.GamePlay.Primary.started += OnPrimaryStarted;
-        playerInput.GamePlay.Primary.performed += OnPrimaryPerformed;
-        playerInput.GamePlay.Primary.canceled += OnPrimaryCanceled;
+        _playerInput.GamePlay.Primary.started += OnPrimaryStarted;
+        _playerInput.GamePlay.Primary.performed += OnPrimaryPerformed;
+        _playerInput.GamePlay.Primary.canceled += OnPrimaryCanceled;
 
-        playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
-        playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
-        playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
+        _playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
+        _playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
+        _playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
     }
 
     private void Start()
@@ -83,17 +83,17 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Movement.performed += OnMovement;
         _playerInput.GamePlay.Movement.canceled += OnMovementCancel;
 
-        playerInput.GamePlay.Dash.started += OnDashStarted;
-        playerInput.GamePlay.Dash.performed += OnDashPerformed;
-        playerInput.GamePlay.Dash.canceled += OnDashCanceled;
+        _playerInput.GamePlay.Dash.started += OnDashStarted;
+        _playerInput.GamePlay.Dash.performed += OnDashPerformed;
+        _playerInput.GamePlay.Dash.canceled += OnDashCanceled;
 
-        playerInput.GamePlay.Primary.started += OnPrimaryStarted;
-        playerInput.GamePlay.Primary.performed += OnPrimaryPerformed;
-        playerInput.GamePlay.Primary.canceled += OnPrimaryCanceled;
+        _playerInput.GamePlay.Primary.started += OnPrimaryStarted;
+        _playerInput.GamePlay.Primary.performed += OnPrimaryPerformed;
+        _playerInput.GamePlay.Primary.canceled += OnPrimaryCanceled;
 
-        playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
-        playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
-        playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
+        _playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
+        _playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
+        _playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
     }
 
     //Disables Input Actions
@@ -104,17 +104,17 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Movement.performed -= OnMovement;
         _playerInput.GamePlay.Movement.canceled -= OnMovementCancel;
 
-        playerInput.GamePlay.Dash.started -= OnDashStarted;
-        playerInput.GamePlay.Dash.performed -= OnDashPerformed;
-        playerInput.GamePlay.Dash.canceled -= OnDashCanceled;
+        _playerInput.GamePlay.Dash.started -= OnDashStarted;
+        _playerInput.GamePlay.Dash.performed -= OnDashPerformed;
+        _playerInput.GamePlay.Dash.canceled -= OnDashCanceled;
 
-        playerInput.GamePlay.Primary.started -= OnPrimaryStarted;
-        playerInput.GamePlay.Primary.performed -= OnPrimaryPerformed;
-        playerInput.GamePlay.Primary.canceled -= OnPrimaryCanceled;
+        _playerInput.GamePlay.Primary.started -= OnPrimaryStarted;
+        _playerInput.GamePlay.Primary.performed -= OnPrimaryPerformed;
+        _playerInput.GamePlay.Primary.canceled -= OnPrimaryCanceled;
 
-        playerInput.GamePlay.Secondary.started -= OnSecondaryStarted;
-        playerInput.GamePlay.Secondary.performed -= OnSecondaryPerformed;
-        playerInput.GamePlay.Secondary.canceled -= OnSecondaryCanceled;
+        _playerInput.GamePlay.Secondary.started -= OnSecondaryStarted;
+        _playerInput.GamePlay.Secondary.performed -= OnSecondaryPerformed;
+        _playerInput.GamePlay.Secondary.canceled -= OnSecondaryCanceled;
     }
 
     #region Movement
@@ -209,30 +209,30 @@ public class PlayerController : MonoBehaviour
 
     private void OnPrimaryStarted(InputAction.CallbackContext context)
     {
-        abilityManager.OnPrimaryStarted(context);
+        _abilityManager.OnPrimaryStarted(context);
     }
     private void OnPrimaryPerformed(InputAction.CallbackContext context)
     {
-        abilityManager.OnPrimaryPerformed(context);
+        _abilityManager.OnPrimaryPerformed(context);
     }
     private void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
-        abilityManager.OnPrimaryCanceled(context);
+        _abilityManager.OnPrimaryCanceled(context);
     }
     #endregion
 
     #region Secondary
     private void OnSecondaryStarted(InputAction.CallbackContext context)
     {
-        abilityManager.OnSecondaryStarted(context);
+        _abilityManager.OnSecondaryStarted(context);
     }
     private void OnSecondaryPerformed(InputAction.CallbackContext context)
     {
-        abilityManager.OnSecondaryPerformed(context);
+        _abilityManager.OnSecondaryPerformed(context);
     }
     private void OnSecondaryCanceled(InputAction.CallbackContext context)
     {
-        abilityManager.OnSecondaryCanceled(context);
+        _abilityManager.OnSecondaryCanceled(context);
     }
     #endregion
 

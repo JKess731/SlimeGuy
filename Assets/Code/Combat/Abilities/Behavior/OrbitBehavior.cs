@@ -20,8 +20,9 @@ public class OrbitBehavior : Behavior
 
     private OrbitStruct _orbitStruct;
 
-    public override void Initialize()
+    public override void Initialize(AbilityBase abilityBase)
     {
+        base.Initialize(abilityBase);
         _orbitStruct = new OrbitStruct(_damage, _knockback, _activationTime, _rotationSpeed, _distance);
     }
 

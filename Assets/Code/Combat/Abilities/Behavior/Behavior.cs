@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// The SO base for all attack behaviors
 /// </summary>
-public abstract class Behavior : ScriptableObject
+public abstract class Behavior : ScriptableObject, IBehavior
 {
     [Header("Timer Attributes")]
     [SerializeField] protected float _cooldownTime;
@@ -16,9 +16,10 @@ public abstract class Behavior : ScriptableObject
     public float CooldownTime { get => _cooldownTime; protected set => _cooldownTime = value; }
     public float ActivationTime { get => _activationTime; protected set => _activationTime = value; }
 
-    public virtual void Initialize()
+    protected AbilityBase _abilityBase;
+    public virtual void Initialize(AbilityBase abilityBase)
     {
-        throw new System.NotImplementedException();
+        _abilityBase = abilityBase;
     }
     public virtual void Activate()
     {
@@ -28,4 +29,7 @@ public abstract class Behavior : ScriptableObject
     {
         throw new System.NotImplementedException();
     }
+    public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) { }
+    public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) { }
+    public virtual void CancelBehavior(Vector2 attackPosition, Quaternion rotation) { }
 }
