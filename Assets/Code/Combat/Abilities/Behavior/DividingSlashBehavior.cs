@@ -18,26 +18,46 @@ public class DividingSlashBehavior : Behavior
     [SerializeField] private float _dividingSlashSpeed;
     [SerializeField] private float _dividingSlashRange;
 
-
     private DividingSlashStruct _dividingSlashStruct;
 
-    public override void Initialize()
+    public override void Initialize(AbilityBase abilitybase)
     {
+        base.Initialize(abilitybase);
         _dividingSlashStruct = new DividingSlashStruct(_dividingSlashDamage, _dividingSlashKnockback, _dividingSlashSpeed, _dividingSlashRange);
     }
 
     //Activate the attack
     public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
     {
-        if (context.started)
-        {
-            for (int i = 0; i < 1; i++)
-            {
-                Quaternion newRot = rotation;
+        //if (context.started)
+        //{
+        //    for (int i = 0; i < 1; i++)
+        //    {
+        //        Quaternion newRot = rotation;
 
-                GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
-                newDividingSlash.GetComponent<DividingSlash>().SetDividingSlashStruct(_dividingSlashStruct);
-            }
-        }
+        //        GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
+        //        newDividingSlash.GetComponent<DividingSlash>().SetDividingSlashStruct(_dividingSlashStruct);
+        //    }
+        //}
+    }
+
+    public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        Quaternion newRot = rotation;
+
+        GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
+        newDividingSlash.GetComponent<DividingSlash>().SetDividingSlashStruct(_dividingSlashStruct);
+
+        AbilityState = AbilityState.PERFORMING;
+    }
+
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.CANCELING;
+    }
+
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.FINISHED;
     }
 }

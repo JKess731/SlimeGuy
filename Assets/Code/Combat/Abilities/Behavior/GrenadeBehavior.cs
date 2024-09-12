@@ -17,11 +17,11 @@ public class GrenadeBehavior : Behavior
     [SerializeField] private float _grenadeKnockback;
     [SerializeField] private float _grenadeSpeed;
 
-
     private GrenadeStruct _grenadeStruct;
 
-    public override void Initialize()
+    public override void Initialize(AbilityBase abilityBase)
     {
+        base.Initialize(abilityBase);
         _grenadeStruct = new GrenadeStruct(_grenadeDamage, _grenadeKnockback, _grenadeSpeed);
     }
 
@@ -38,5 +38,25 @@ public class GrenadeBehavior : Behavior
                 newGrenade.GetComponent<Grenade>().SetGrenadeStruct(_grenadeStruct);
             }
         }
+    }
+
+    public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        Quaternion newRot = rotation;
+
+        GameObject newGrenade = Instantiate(_grenade, attackPosition, newRot);
+        newGrenade.GetComponent<Grenade>().SetGrenadeStruct(_grenadeStruct);
+
+        AbilityState = AbilityState.PERFORMING;
+    }
+
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.CANCELING;
+    }
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.FINISHED;
+        onBehaviorFinished?.Invoke();
     }
 }
