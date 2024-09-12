@@ -32,10 +32,11 @@ public class MachineGunBehavior : Behavior
     }
 
     // Activate the attack
-    public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        if (context.started)
-        {
+         Debug.Log("Performed");
+         Debug.Log(Time.deltaTime);
+
             // Check if enough time has passed to fire again
             if (Time.time >= nextFireTime)
             {
@@ -56,13 +57,6 @@ public class MachineGunBehavior : Behavior
                 nextFireTime = Time.time + _fireRate;
             }
         }
-
-        if (context.canceled)
-        {
-            //Debug.Log("Canceled");
-            //Debug.Log(Time.deltaTime);
-        }
     }
-}
     
 
