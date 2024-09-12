@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeea4d80eac327441bb6aedcc292a51c, type: 3}
   m_Name: SlimeShotgunBehavior
   m_EditorClassIdentifier: 
-  _cooldownTime: 0.2
+  _cooldownTime: 4
   _activationTime: 0.1
   _bulletCount: 3
   _spreadAngle: 20

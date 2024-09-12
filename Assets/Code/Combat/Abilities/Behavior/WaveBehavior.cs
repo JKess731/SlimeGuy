@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// The wave behavior allows for attacks to spawn child attacks
 /// </summary>
-[CreateAssetMenu(fileName = "Wave", menuName = "Attack/Wave")]
+[CreateAssetMenu(fileName = "Wave", menuName = "Behavior/Wave")]
 public class WaveBehavior : Behavior
 {
     [Header("Wave Attributes")]
@@ -28,8 +28,9 @@ public class WaveBehavior : Behavior
     private WaveStruct _parentStruct;
     private WaveStruct _childStruct;
 
-    public override void Initialize()
+    public override void Initialize(AbilityBase abilityBase)
     {
+        base.Initialize(abilityBase);
         _parentStruct = new WaveStruct(_parentDamage, _parentKnockback,  _parentActivationTime);
         _childStruct = new WaveStruct(_childDamage, _childKnockback, _childActivationTime);
     }

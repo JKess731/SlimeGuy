@@ -1,8 +1,8 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using diag = System.Diagnostics;
 
 /// <summary>
 /// The SO base for all attack behaviors
@@ -17,8 +17,15 @@ public class Behavior : ScriptableObject, IBehavior
 
     [HideInInspector] protected AbilityState _abilityState;
     public AbilityState AbilityState { get => _abilityState; protected set => _abilityState = value; }
-    public virtual void Initialize()
+
+    protected AbilityBase _abilityBase;
+
+    public delegate void OnBehaviorFinished();
+    public OnBehaviorFinished onBehaviorFinished;
+
+    public virtual void Initialize(AbilityBase abilityBase)
     {
+        _abilityBase = abilityBase;
         _abilityState = AbilityState.READY;
        //throw new System.NotImplementedException();
     }
@@ -33,13 +40,14 @@ public class Behavior : ScriptableObject, IBehavior
 
     public virtual void StartBehavior()
     {
+
         //throw new System.NotImplementedException();
     }
     public virtual void PerformBehavior()
     {
         //throw new System.NotImplementedException();
     }
-    public virtual void EndBehavior()
+    public virtual void CancelBehavior()
     {
         //throw new System.NotImplementedException();
     }
@@ -57,9 +65,37 @@ public class Behavior : ScriptableObject, IBehavior
         //throw new System.NotImplementedException();
     }
 
-
-    public void SetReady()
+    public virtual IEnumerator Cooldown()
     {
+        diag.Stopwatch stopWatch = new diag.Stopwatch();
+        stopWatch.Start();
+
+        Debug.Log("Cooldown Started: " + _cooldownTime);
+        _abilityState = AbilityState.COOLDOWN;
+
+        yield return new WaitForSeconds(_cooldownTime);
+
+        // Get the elapsed time as a TimeSpan value.
+        stopWatch.Stop();
+        TimeSpan ts = stopWatch.Elapsed;
+
+        // Format and display the TimeSpan value.
+        string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+        ts.Hours, ts.Minutes, ts.Seconds,
+        ts.Milliseconds / 10);
+        Debug.Log("RunTime " + elapsedTime);
+
         _abilityState = AbilityState.READY;
+        Debug.Log("Cooldown Finished");
     }
+}
+
+public enum AbilityState
+{
+    READY,
+    STARTING,
+    PERFORMING,
+    CANCELING,
+    FINISHED,
+    COOLDOWN
 }

@@ -87,10 +87,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         damagedState = new EnemyDamagedState(this, stateMachine);
         spawnState = new EnemySpawningState(this, stateMachine);
         deathState = new EnemyDeathState(this, stateMachine);
-
-        Debug.Log(_statInstance.GetStat(StatsEnum.HEALTH));
-        Debug.Log(_statInstance.GetStat(StatsEnum.SPEED));
-        Debug.Log(_statInstance.GetStat(StatsEnum.ATTACK));
     }
 
     private void Start()
@@ -154,7 +150,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         damageFlash.Flash();
         animator.SetBool("Hit", true);
         _statInstance.SubtractStat(StatsEnum.HEALTH, damageAmount);
-        Debug.Log(_statInstance.GetStat(StatsEnum.HEALTH));
 
         knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
 
@@ -168,7 +163,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         damageFlash.Flash();
         animator.SetBool("Hit", true);
         _statInstance.SubtractStat(StatsEnum.HEALTH, damageAmount);
-        Debug.Log(_statInstance.GetStat(StatsEnum.HEALTH));
 
         if (_statInstance.GetStat(StatsEnum.HEALTH) <= 0 & !isDead)
         {

@@ -40,7 +40,7 @@ public class Stats: ScriptableObject
         }
         else
         {
-            Debug.LogWarning("Stat not found");
+            Debug.LogWarning("Stat not found: " + stat.ToString());
             return 0;
         }
     }

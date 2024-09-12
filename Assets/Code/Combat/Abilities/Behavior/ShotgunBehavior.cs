@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "Shotgun", menuName = "Attack/Shotgun")]
+[CreateAssetMenu(fileName = "Shotgun", menuName = "Behavior/Shotgun")]
 public class ShotgunBehavior : Behavior
 {
     [Header("Shotgun Attributes")]
@@ -22,41 +22,14 @@ public class ShotgunBehavior : Behavior
 
     private BulletStruct _bulletStruct;
 
-    public override void Initialize()
+    public override void Initialize(AbilityBase abilityBase)
     {
-        base.Initialize();
+        base.Initialize(abilityBase);
         _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
-    }
-
-    //Activate the attack
-    public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
-    {
-        if (context.started)
-        {
-            AbilityState = AbilityState.ACTIVE;
-            float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
-            for (int i = 0; i < _bulletCount; i++)
-            {
-                float addedOffset = -angleDiff * i;
-                Quaternion newRot = rotation * Quaternion.Euler(0, 0, _spreadAngle) * Quaternion.Euler(0, 0, addedOffset);
-
-                GameObject newBullet = Instantiate(_projectile,attackPosition,newRot);
-                newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
-            }
-        }
-        if (context.performed)
-        {
-            Debug.Log("Performed");
-        }
-        if (context.canceled)
-        {
-            AbilityState = AbilityState.FINISHED;
-            Debug.Log("Canceled");
-        }
     }
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        AbilityState = AbilityState.ACTIVE;
+
         float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
         for (int i = 0; i < _bulletCount; i++)
         {
@@ -66,15 +39,18 @@ public class ShotgunBehavior : Behavior
             GameObject newBullet = Instantiate(_projectile, attackPosition, newRot);
             newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
         }
+
+        AbilityState = AbilityState.PERFORMING;
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        base.PerformBehavior();
+        AbilityState = AbilityState.CANCELING;
     }
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.FINISHED;
+        onBehaviorFinished?.Invoke();
     }
 }

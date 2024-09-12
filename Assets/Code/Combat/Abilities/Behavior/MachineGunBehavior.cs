@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "MachineGun", menuName = "Attack/MachineGun")]
+[CreateAssetMenu(fileName = "MachineGun", menuName = "Behavior/MachineGun")]
 public class MachineGunBehavior : Behavior
 {
     [Header("Machine Gun Attributes")]
@@ -23,8 +23,9 @@ public class MachineGunBehavior : Behavior
     private BulletStruct _bulletStruct;
     private float _firingDuration = 5f; //Fire Timer
 
-    public override void Initialize()
+    public override void Initialize(AbilityBase abilityBase)
     {
+        base.Initialize(abilityBase);
         _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
     }
 

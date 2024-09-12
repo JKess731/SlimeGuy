@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static PlayerInput;
 
-public class PlayerController : MonoBehaviour, IGamePlayActions
+public class PlayerController : MonoBehaviour
 {
     //Movement Variables
     private Rigidbody2D rb;
@@ -47,18 +47,17 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         playerInput.GamePlay.Movement.performed += OnMovement;
         playerInput.GamePlay.Movement.canceled += OnMovementCancel;
 
-        playerInput.GamePlay.Dash.started += OnDash;
-        playerInput.GamePlay.Dash.performed += OnDash;
-        playerInput.GamePlay.Dash.canceled += OnDash;
+        playerInput.GamePlay.Dash.started += OnDashStarted;
+        playerInput.GamePlay.Dash.performed += OnDashPerformed;
+        playerInput.GamePlay.Dash.canceled += OnDashCanceled;
 
-        playerInput.GamePlay.Primary.started += OnPrimary;
-        playerInput.GamePlay.Primary.performed += OnPrimary;
-        playerInput.GamePlay.Primary.canceled += OnPrimary;
+        playerInput.GamePlay.Primary.started += OnPrimaryStarted;
+        playerInput.GamePlay.Primary.performed += OnPrimaryPerformed;
+        playerInput.GamePlay.Primary.canceled += OnPrimaryCanceled;
 
-        playerInput.GamePlay.Secondary.started += OnSecondary;
-        playerInput.GamePlay.Secondary.performed += OnSecondary;
-        playerInput.GamePlay.Secondary.canceled += OnSecondary;
-
+        playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
+        playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
+        playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
     }
 
     private void Start()
@@ -78,17 +77,17 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         playerInput.GamePlay.Movement.performed += OnMovement;
         playerInput.GamePlay.Movement.canceled += OnMovementCancel;
 
-        playerInput.GamePlay.Dash.started += OnDash;
-        playerInput.GamePlay.Dash.performed += OnDash;
-        playerInput.GamePlay.Dash.canceled += OnDash;
+        playerInput.GamePlay.Dash.started += OnDashStarted;
+        playerInput.GamePlay.Dash.performed += OnDashPerformed;
+        playerInput.GamePlay.Dash.canceled += OnDashCanceled;
 
         playerInput.GamePlay.Primary.started += OnPrimaryStarted;
         playerInput.GamePlay.Primary.performed += OnPrimaryPerformed;
         playerInput.GamePlay.Primary.canceled += OnPrimaryCanceled;
 
-        playerInput.GamePlay.Secondary.started += OnSecondary;
-        playerInput.GamePlay.Secondary.performed += OnSecondary;
-        playerInput.GamePlay.Secondary.canceled += OnSecondary;
+        playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
+        playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
+        playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
     }
 
     //Disables Input Actions
@@ -99,17 +98,17 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
         playerInput.GamePlay.Movement.performed -= OnMovement;
         playerInput.GamePlay.Movement.canceled -= OnMovementCancel;
 
-        playerInput.GamePlay.Dash.started -= OnDash;
-        playerInput.GamePlay.Dash.performed -= OnDash;
-        playerInput.GamePlay.Dash.canceled -= OnDash;
+        playerInput.GamePlay.Dash.started -= OnDashStarted;
+        playerInput.GamePlay.Dash.performed -= OnDashPerformed;
+        playerInput.GamePlay.Dash.canceled -= OnDashCanceled;
 
-        playerInput.GamePlay.Primary.started -= OnPrimary;
-        playerInput.GamePlay.Primary.performed -= OnPrimary;
-        playerInput.GamePlay.Primary.canceled -= OnPrimary;
+        playerInput.GamePlay.Primary.started -= OnPrimaryStarted;
+        playerInput.GamePlay.Primary.performed -= OnPrimaryPerformed;
+        playerInput.GamePlay.Primary.canceled -= OnPrimaryCanceled;
 
-        playerInput.GamePlay.Secondary.started -= OnSecondary;
-        playerInput.GamePlay.Secondary.performed -= OnSecondary;
-        playerInput.GamePlay.Secondary.canceled -= OnSecondary;
+        playerInput.GamePlay.Secondary.started -= OnSecondaryStarted;
+        playerInput.GamePlay.Secondary.performed -= OnSecondaryPerformed;
+        playerInput.GamePlay.Secondary.canceled -= OnSecondaryCanceled;
     }
 
     #region Movement
@@ -201,41 +200,58 @@ public class PlayerController : MonoBehaviour, IGamePlayActions
     #endregion
 
     #region Primary
-    public void OnPrimary(InputAction.CallbackContext context)
-    {
-        abilityManager.OnPrimary(context);
-    }
 
-    public void OnPrimaryStarted(InputAction.CallbackContext context)
+    private void OnPrimaryStarted(InputAction.CallbackContext context)
     {
         abilityManager.OnPrimaryStarted(context);
     }
-    public void OnPrimaryPerformed(InputAction.CallbackContext context)
+    private void OnPrimaryPerformed(InputAction.CallbackContext context)
     {
         abilityManager.OnPrimaryPerformed(context);
     }
-    public void OnPrimaryCanceled(InputAction.CallbackContext context)
+    private void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
         abilityManager.OnPrimaryCanceled(context);
     }
     #endregion
 
     #region Secondary
+    private void OnSecondaryStarted(InputAction.CallbackContext context)
+    {
+        abilityManager.OnSecondaryStarted(context);
+    }
+    private void OnSecondaryPerformed(InputAction.CallbackContext context)
+    {
+        abilityManager.OnSecondaryPerformed(context);
+    }
+    private void OnSecondaryCanceled(InputAction.CallbackContext context)
+    {
+        abilityManager.OnSecondaryCanceled(context);
+    }
+    #endregion
+
+    #region Dash
+    private void OnDashStarted(InputAction.CallbackContext context)
+    {
+        abilityManager.OnDashStarted(context);
+    }
+    private void OnDashPerformed(InputAction.CallbackContext context)
+    {
+        abilityManager.OnDashPerformed(context);
+    }
+    private void OnDashCanceled(InputAction.CallbackContext context)
+    {
+        abilityManager.OnDashCanceled(context);
+    }
+
+    public void OnPrimary(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void OnSecondary(InputAction.CallbackContext context)
     {
-        abilityManager.OnSecondary(context);
-    }
-    public void OnSecondaryStarted(InputAction.CallbackContext context)
-    {
-        Debug.Log("Primary Started");
-    }
-    public void OnSecondaryPerformed(InputAction.CallbackContext context)
-    {
-        Debug.Log("Primary Performed");
-    }
-    public void OnSecondaryCanceled(InputAction.CallbackContext context)
-    {
-        Debug.Log("Primary Canceled");
+        throw new System.NotImplementedException();
     }
     #endregion
 }

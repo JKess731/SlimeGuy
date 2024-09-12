@@ -752,8 +752,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primary: {fileID: 11400000, guid: 04decd47599722f4d8b4d90909296d3d, type: 2}
   secondary: {fileID: 11400000, guid: c19e8ebc44663a94bb12205ccb7afef5, type: 2}
-  dash: {fileID: 11400000, guid: 21f4d801539e5e54fae412528d7a89fc, type: 2}
-  passive: {fileID: 0}
+  dash: {fileID: 11400000, guid: 660476e7635397f40a304e6a0639ebc3, type: 2}
+  passive: {fileID: 11400000, guid: 660476e7635397f40a304e6a0639ebc3, type: 2}
   attackPos: {fileID: 240163473}
 --- !u!1 &709651894
 GameObject:
@@ -827,6 +827,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3156741874245950511, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3156741874245950511, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3156741874245950511, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.2204149
@@ -873,7 +885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: _stats
