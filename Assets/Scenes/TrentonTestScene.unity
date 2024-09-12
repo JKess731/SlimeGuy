@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 788523838475850912, guid: 8d37b0625ee527b49ad8f714e1bcb830, type: 3}
+      propertyPath: primary
+      value: 
+      objectReference: {fileID: 11400000, guid: 11365e0017b84d3468bc1b48644514f9, type: 2}
+    - target: {fileID: 4106921632412334044, guid: 8d37b0625ee527b49ad8f714e1bcb830, type: 3}
+      propertyPath: _playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d58222cfe955f24db98e1c515175487, type: 2}
     - target: {fileID: 5217851409447338946, guid: 8d37b0625ee527b49ad8f714e1bcb830, type: 3}
       propertyPath: m_Name
       value: Player V2
@@ -6983,11 +6991,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e4f8e43704d0346ac43b8f63718f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  dashingPower: 20
-  dashingTime: 0.5
-  dashingCooldown: 1
-  abilityManager: {fileID: 2019515866}
+  _speed: 10
+  _dashingPower: 20
+  _dashingTime: 0.5
+  _dashingCooldown: 1
+  _abilityManager: {fileID: 0}
 --- !u!1 &2047991390
 GameObject:
   m_ObjectHideFlags: 0
@@ -7141,3 +7149,4 @@ SceneRoots:
   - {fileID: 1484554245}
   - {fileID: 489848438}
   - {fileID: 114438506}
+  - {fileID: 2019515863}
