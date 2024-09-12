@@ -22,11 +22,11 @@ public class AnimationControl : MonoBehaviour
     /// <param name="direction"></param>
     public virtual void PlayAnimation(Vector2 direction, Enum_State state)
     {
-        if (direction.x > 0)
+        if (direction.x < 0)
         {
             _spriteRenderer.flipX = true;
         }
-        else if (direction.x < 0)
+        else if (direction.x > 0)
         {
             _spriteRenderer.flipX = false;
         }

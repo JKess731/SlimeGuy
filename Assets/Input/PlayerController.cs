@@ -239,15 +239,15 @@ public class PlayerController : MonoBehaviour
     #region Dash
     private void OnDashStarted(InputAction.CallbackContext context)
     {
-        abilityManager.OnDashStarted(context);
+        _abilityManager.OnDashStarted(context);
     }
     private void OnDashPerformed(InputAction.CallbackContext context)
     {
-        abilityManager.OnDashPerformed(context);
+        _abilityManager.OnDashPerformed(context);
     }
     private void OnDashCanceled(InputAction.CallbackContext context)
     {
-        abilityManager.OnDashCanceled(context);
+        _abilityManager.OnDashCanceled(context);
     }
 
     public void OnPrimary(InputAction.CallbackContext context)
