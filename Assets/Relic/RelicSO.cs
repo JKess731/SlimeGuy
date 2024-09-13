@@ -35,9 +35,7 @@ public enum Operator
     PLUS,
     MINUS,
     MULT,
-    DIV,
-    LESS_THAN,
-    GREATER_THAN
+    DIV
 }
 
 public enum NumType
