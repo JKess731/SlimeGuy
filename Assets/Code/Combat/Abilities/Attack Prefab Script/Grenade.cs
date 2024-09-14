@@ -6,66 +6,66 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Grenade : Attacks
 {
+    //Stat variables for grenade
+
     private Rigidbody2D _rb;
     private float _speed;
 
+    private bool _isStuckToEnemy = false;  // To check if the grenade is stuck to an enemy
+    private GameObject _stuckEnemy;        // To reference the enemy it sticks to
     private float _explosionRadius = 2f;   // The radius of the explosion
-    private float _explosionDelay = 3f;    // Delay before explosion
-    private Vector3 _targetPosition;       // The target position (mouse click)
-    private Vector3 _startPosition;        // The starting position of the grenade
-    private bool _isMoving = false;        // To check if the grenade is moving
-    private float _moveTime = 1.5f;        // Time it takes to reach the destination (1.5 seconds)
-    private float _elapsedTime = 0f;       // Tracks elapsed time for lerping
+    private float _explosionDelay = 1f;    // Delay before explosion after sticking to an enemy
+    private float _timer;                  // Timer for explosion
 
     private GameObject _player;
-    private GameObject _attack;
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _rb.isKinematic = true;  // Disable physics-based movement since we are controlling it manually
-
         _player = GameObject.FindWithTag("player");
-        _attack = GameObject.FindWithTag("attack");
-
-        // Get the mouse position and convert it to world space
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        _targetPosition = new Vector3(mousePosition.x, mousePosition.y, 0f); // Set z to 0 for 2D
-
-        _startPosition = transform.position; // Grenade starts at the player's position
-        _isMoving = true; // Start moving the grenade
-
-        // Ignore collisions with the player and other attacks while moving
         Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(_attack.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-
-        // Ignore collisions with enemies while moving
-        IgnoreEnemyCollisions(true);
-
-        // Start the explosion countdown
-        StartCoroutine(ExplosionCountdown());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (_isMoving)
+        // If stuck to an enemy, follow the enemy's position
+        if (_isStuckToEnemy && _stuckEnemy != null)
         {
-            _elapsedTime += Time.deltaTime;
-
-            // Lerp from the starting position to the target position
-            float t = _elapsedTime / _moveTime; // Calculate normalized time (0 to 1)
-            transform.position = Vector3.Lerp(_startPosition, _targetPosition, t);
-
-            // Stop moving once we reach the target position
-            if (t >= 1f)
-            {
-                _isMoving = false;
-
-                // Re-enable collisions with enemies and player
-                IgnoreEnemyCollisions(false);
-                Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
-            }
+            transform.position = _stuckEnemy.transform.position;
         }
+    }
+
+    //Handle collisions with walls and enemies
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        //If the grenade hits a wall, destroy the grenade
+        if (collision.gameObject.tag == "wall")
+        {
+            Explode();
+        }
+
+        //If the grenade hits an enemy, make it stick to the enemy and then do damage
+        if (collision.gameObject.tag == "enemy" && !_isStuckToEnemy)
+        {
+            StickToEnemy(collision.gameObject);
+        }
+    }
+
+    // Stick the grenade to the enemy and start the explosion timer
+    private void StickToEnemy(GameObject enemy)
+    {
+        _isStuckToEnemy = true;
+        _stuckEnemy = enemy;
+
+        // Stop the grenade's movement
+        _rb.velocity = Vector2.zero;
+        _rb.isKinematic = true;  // Make the grenade stick without physics
+
+        _rb.simulated = false;
+
+        transform.SetParent(_stuckEnemy.transform);  // Make the grenade a child of the enemy
+
+        // Start the countdown for the explosion
+        StartCoroutine(ExplosionCountdown());
     }
 
     // Coroutine to handle the delay before explosion
@@ -102,19 +102,10 @@ public class Grenade : Attacks
         Destroy(gameObject);
     }
 
-    // Helper function to ignore or re-enable collisions with enemies
-    private void IgnoreEnemyCollisions(bool ignore)
+    private void Awake()
     {
-        Collider2D grenadeCollider = GetComponent<Collider2D>();
-        Collider2D[] enemyColliders = FindObjectsOfType<Collider2D>();
-
-        foreach (Collider2D enemyCollider in enemyColliders)
-        {
-            if (enemyCollider.CompareTag("enemy"))
-            {
-                Physics2D.IgnoreCollision(grenadeCollider, enemyCollider, ignore);
-            }
-        }
+        _rb = GetComponent<Rigidbody2D>();
+        _startPos = transform.position;
     }
 
     public void SetGrenadeStruct(GrenadeStruct grenadeStruct)
@@ -122,6 +113,7 @@ public class Grenade : Attacks
         _damage = grenadeStruct.Damage;
         _speed = grenadeStruct.GrenadeSpeed;
         _knockback = grenadeStruct.Knockback;
+
+        _rb.velocity = transform.right * _speed;
     }
 }
-
