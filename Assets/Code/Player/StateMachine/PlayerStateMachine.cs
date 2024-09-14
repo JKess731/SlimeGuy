@@ -16,6 +16,7 @@ public class PlayerStateMachine : MonoBehaviour
     private void Awake()
     {
         //Set up initial references
+        playerStats = Instantiate(playerStats);
         playerStats.Initialize();
 
         //Not great
@@ -25,12 +26,6 @@ public class PlayerStateMachine : MonoBehaviour
         animationControl = GetComponent<AnimationControl>();
 
         knockBack = GetComponent<KnockBack>();
-    }
-
-    private void Start()
-    {
-        //Debug.Log(playerStats.GetStat(StatsEnum.HEALTH));
-        //Debug.Log(playerStats.GetStat(StatsEnum.SPEED));
     }
 
     //Handles Movement and Animation
