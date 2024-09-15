@@ -22,7 +22,7 @@ public class RelicSO : ScriptableObject
 
     private bool condMet = false;
 
-    public void ActivateBuff(Stats playerStats)
+    public void ActivateBuff(StatsSO playerStats)
     {
         if (relicConditions.Count > 0) // If there is any conditions
         {
@@ -57,7 +57,7 @@ public class RelicSO : ScriptableObject
 
     }
 
-    private void LoopBuffs(Stats playerStats)
+    private void LoopBuffs(StatsSO playerStats)
     {
         foreach (RelicBuff buff in relicBuffs)
         {

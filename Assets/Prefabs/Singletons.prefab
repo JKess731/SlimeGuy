@@ -470,6 +470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4625138022259225533}
   - component: {fileID: 2959722197660183270}
+  - component: {fileID: 7749948516408433130}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -507,6 +508,36 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &7749948516408433130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2316970208145928444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &2397857388719928460
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,14 +682,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3956110274198115102}
   - component: {fileID: 7867131330333283501}
-  - component: {fileID: 5510295411688159328}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3956110274198115102
 Transform:
   m_ObjectHideFlags: 0
@@ -675,36 +705,6 @@ Transform:
   m_Father: {fileID: 558452028673960895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7867131330333283501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2660313072678195780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 170bbbc16caf79c4cbcd4063c33c714c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  absorptionBar: {fileID: 0}
-  healthTxt: {fileID: 3226160977747427696}
-  absorptionTxt: {fileID: 2177403649719202476}
-  primaryCooldownTxt: {fileID: 0}
-  secondaryCooldownTxt: {fileID: 0}
-  dashCooldownTxt: {fileID: 0}
-  passiveCooldownTxt: {fileID: 0}
-  primaryAbilityImage: {fileID: 0}
-  secondaryAbilityImage: {fileID: 0}
-  dashAbilityImage: {fileID: 0}
-  passiveAbilityImage: {fileID: 0}
-  primaryCooldown: {fileID: 0}
-  secondaryCooldown: {fileID: 0}
-  dashCooldown: {fileID: 0}
-  passiveCooldown: {fileID: 0}
-  RelicImages: []
-  RelicImageBackgrounds: []
---- !u!114 &5510295411688159328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

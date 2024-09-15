@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RelicManager : MonoBehaviour
 {
-    public Stats playerStats;
+    public StatsSO playerStats;
     public static RelicManager instance;
     [SerializeField] private int maxRelics = 10;
 

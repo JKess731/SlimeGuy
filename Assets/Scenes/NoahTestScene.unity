@@ -423,11 +423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e4f8e43704d0346ac43b8f63718f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  dashingPower: 20
-  dashingTime: 0.5
-  dashingCooldown: 1
-  abilityManager: {fileID: 675594158}
+  _speed: 10
+  _dashingPower: 20
+  _dashingTime: 0.5
+  _dashingCooldown: 1
+  _abilityManager: {fileID: 0}
 --- !u!114 &675594158
 MonoBehaviour:
   m_ObjectHideFlags: 0

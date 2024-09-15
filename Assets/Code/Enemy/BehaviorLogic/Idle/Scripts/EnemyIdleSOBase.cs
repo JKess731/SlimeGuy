@@ -18,7 +18,9 @@ public class EnemyIdleSOBase : ScriptableObject
     
     }
 
-    public virtual void DoEnterLogic() { }
+    public virtual void DoEnterLogic() { 
+        enemy.State = Enum_State.IDLING;
+    }
 
     public virtual void DoExitLogic() { ResetValues(); }
 

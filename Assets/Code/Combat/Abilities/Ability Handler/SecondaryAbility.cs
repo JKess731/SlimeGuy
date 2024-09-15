@@ -9,6 +9,5 @@ public class SecondaryAbility : AbilityBase
     public override void ActivateAbility(InputAction.CallbackContext context, Quaternion rotation, Vector2 position2d)
     {
         behavior.Activate(context, position2d, rotation);
-        base.AbilityState = AbilityState.Active;
     }
 }

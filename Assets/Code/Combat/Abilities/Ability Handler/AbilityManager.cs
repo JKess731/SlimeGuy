@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -21,103 +22,132 @@ public class AbilityManager : MonoBehaviour
     public AbilityBase Primary { get => primary; }
     public AbilityBase Secondary { get => secondary; }
     public AbilityBase Dash { get => dash; }
-    public PassiveAbility Passive { get => passive; }
+
     private void Start()
     {
+        primary?.Initialize();
+        secondary?.Initialize();
+        dash?.Initialize();
+
         try
         {
-            primary.Initialize();
-            secondary.Initialize();
-            dash.Initialize();
-            passive.Initialize();
+            primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
+            secondary.Behavior.onBehaviorFinished += OnSecondaryCooldown;
+            dash.Behavior.onBehaviorFinished += OnDashCooldown;
         }
-        catch (NullReferenceException)
+        catch (NullReferenceException e)
         {
-            Debug.LogWarning("One or more abilities are not assigned");
+            Debug.LogWarning("One Behavior not Found, reload ability into slot");
         }
     }
 
-    #region Primary
-    public void OnPrimary(InputAction.CallbackContext context)
-    {
-        if (primary.AbilityState == AbilityState.Ready)
-        {
-            primary.ActivateAbility(context, attackPos.rotation, attackPos.position);
-        }
+    //private void Update()
+    //{
+    //    if (primary.Behavior.AbilityState == AbilityState.FINISHED)
+    //    {
+    //        StartCoroutine(primary.Behavior.Cooldown());
+    //    }
+    //    if (secondary.Behavior.AbilityState == AbilityState.FINISHED)
+    //    {
+    //        StartCoroutine(secondary.Behavior.Cooldown());
+    //    }
+    //    if (dash.Behavior.AbilityState == AbilityState.FINISHED)
+    //    {
+    //        StartCoroutine(dash.Behavior.Cooldown());
+    //    }
+    //}
 
-        if (primary.AbilityState == AbilityState.Active && context.started)
+    #region Primary
+
+    public void OnPrimaryStarted(InputAction.CallbackContext context)
+    {
+        if(primary.Behavior.AbilityState == AbilityState.READY)
         {
-            StartCoroutine(primary.Cooldown());
-            try
-            {
-                StartCoroutine(UiManager.instance.TextAndSliderAdjustment(primary, "P"));
-            }
-            catch (NullReferenceException)
-            {
-                Debug.LogWarning("UI Manager is not assigned");
-            }
-            //StartCoroutine(UiManager.instance.TextAndSliderAdjustment(primary, "P"));
-            Debug.Log("I got to the end of OnPrimary");
+            primary?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
         }
+    }
+    public void OnPrimaryPerformed(InputAction.CallbackContext context)
+    {
+        if(primary.Behavior.AbilityState == AbilityState.STARTING)
+        {
+            primary?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
+        }
+    }
+    public void OnPrimaryCanceled(InputAction.CallbackContext context)
+    {
+        if (primary.Behavior.AbilityState == AbilityState.PERFORMING)
+        {
+            primary?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
+        }
+    }
+
+    public void OnPrimaryCooldown()
+    {
+        StartCoroutine(primary.Behavior.Cooldown());
     }
     #endregion
 
     #region Secondary
-    public void OnSecondary(InputAction.CallbackContext context)
+
+    public void OnSecondaryStarted(InputAction.CallbackContext context)
     {
-        if (secondary.AbilityState == AbilityState.Ready)
+        if (secondary.Behavior.AbilityState == AbilityState.READY)
         {
-            secondary.ActivateAbility(context, attackPos.rotation, attackPos.position);
+            secondary?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
         }
-
-        if (secondary.AbilityState == AbilityState.Active && context.started)
+    }
+    public void OnSecondaryPerformed(InputAction.CallbackContext context)
+    {
+        if (secondary.Behavior.AbilityState == AbilityState.STARTING)
         {
-            StartCoroutine(secondary.Cooldown());
-
-            try
-            {
-                StartCoroutine(UiManager.instance.TextAndSliderAdjustment(secondary, "S"));
-            }
-            catch (NullReferenceException)
-            {
-                Debug.LogWarning("UI Manager is not assigned");
-            }
-            //StartCoroutine(UiManager.instance.TextAndSliderAdjustment(secondary, "S"));
-            Debug.Log("I got to the end of OnSecondary");
+            secondary?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
         }
+    }
+    public void OnSecondaryCanceled(InputAction.CallbackContext context)
+    {
+        if(secondary.Behavior.AbilityState == AbilityState.PERFORMING)
+        {
+            secondary?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
+        }
+    }
+    public void OnSecondaryCooldown()
+    {
+        StartCoroutine(secondary.Behavior.Cooldown());
     }
     #endregion
 
     #region Dash
-    public void OnDash(InputAction.CallbackContext context)
+    public void OnDashStarted(InputAction.CallbackContext context)
     {
-        if (dash.AbilityState == AbilityState.Ready)
+        if (dash.Behavior.AbilityState == AbilityState.READY)
         {
-            dash.ActivateAbility(context, attackPos.rotation, attackPos.position);
+            dash?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
         }
-
-        if (dash.AbilityState == AbilityState.Ready && context.started)
+    }
+    public void OnDashPerformed(InputAction.CallbackContext context)
+    {
+        if (dash.Behavior.AbilityState == AbilityState.STARTING)
         {
-            StartCoroutine(dash.Cooldown());
-            StartCoroutine(UiManager.instance.TextAndSliderAdjustment(dash, "D"));
-            Debug.Log("I got to the end of OnDash");
+            dash?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
         }
+    }
+    public void OnDashCanceled(InputAction.CallbackContext context)
+    {
+        if (dash.Behavior.AbilityState == AbilityState.PERFORMING)
+        {
+            dash?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
+        }
+    }
+    public void OnDashCooldown()
+    {
+        StartCoroutine(dash.Behavior.Cooldown());
     }
     #endregion 
 
     #region Passive
     public void OnPassive()
     {
-        if (passive.AbilityState == AbilityState.Ready)
-        {
-            passive.ActivateAbility();
-        }
-
-        if (passive.AbilityState == AbilityState.Active)
-        {
-            StartCoroutine(passive.Cooldown());
-            StartCoroutine(UiManager.instance.TextAndSliderAdjustment(passive, "PA"));
-        }
+        Debug.Log("Passive");
     }
     #endregion
 }

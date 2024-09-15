@@ -12,8 +12,6 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     [SerializeField] private float frontSlashAttackDelay;
     public GameObject ring;
     private float timer;
-    private float exitTimer;
-
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
@@ -23,8 +21,8 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        attackPoint = enemy.transform.GetChild(1).GetChild(0);
-        ring = enemy.transform.GetChild(1).gameObject;
+        attackPoint = _enemy.transform.GetChild(1).GetChild(0);
+        ring = _enemy.transform.GetChild(1).gameObject;
         
     }
 
@@ -36,16 +34,16 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        enemy.MoveEnemy(Vector2.zero);
+        _enemy.MoveEnemy(Vector2.zero);
         if (timer > frontSlashAttackDelay)
         {
             timer = 0f;
             GameObject slash = Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
-            enemy.stateMachine.ChangeState(enemy.chaseState);
+            _enemy.stateMachine.ChangeState(_enemy.chaseState);
         }
         if (timer < frontSlashAttackDelay)
         {
-            Vector3 rotation = playerTransform.position - ring.transform.position;
+            Vector3 rotation = _playerTransform.position - ring.transform.position;
             float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
             ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
         }

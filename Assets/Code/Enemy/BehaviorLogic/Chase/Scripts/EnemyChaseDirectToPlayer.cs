@@ -25,12 +25,12 @@ public class EnemyChaseDirectToPlayer : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        if (enemy.currentHealth <= 0)
+        if (_enemy.isDead)
         {
             movementSpeed = 0;
         }
-        Vector2 moveDirection = (playerTransform.position - enemy.transform.position).normalized;
-        enemy.MoveEnemy(moveDirection * movementSpeed);
+        Vector2 moveDirection = (_playerTransform.position - _enemy.transform.position).normalized;
+        _enemy.MoveEnemy(moveDirection * movementSpeed);
     }
 
     public override void DoPhysicsLogic()
