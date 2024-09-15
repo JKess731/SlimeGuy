@@ -11,6 +11,8 @@ public class DividingSlashBehavior : Behavior
 {
     [Header("Dividing Slash Attributes")]
     [SerializeField] private GameObject _dividingSlash;
+    [SerializeField] private int _slashCount = 1;
+    [SerializeField] private float _spreadAngle = 45f;
 
     [Header("Prefab Attributes")]
     [SerializeField] private int _dividingSlashDamage;
@@ -31,12 +33,26 @@ public class DividingSlashBehavior : Behavior
     {
         if (context.started)
         {
-            for (int i = 0; i < 1; i++)
-            {
-                Quaternion newRot = rotation;
+            // Calculate the angle step based on the number of slashes and the total spread angle
+            float angleStep = _spreadAngle / (_slashCount - 1);
+            float currentAngle = -_spreadAngle / 2;  // Start from the negative half of the spread
 
+            Vector2 averageDirection = Vector2.zero;
+
+            for (int i = 0; i < _slashCount; i++)
+            {
+                // Calculate the new rotation for each slash based on the current angle
+                Quaternion newRot = rotation * Quaternion.Euler(0, 0, currentAngle);
+
+                // Instantiate the slash at the calculated position and rotation
                 GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
                 newDividingSlash.GetComponent<DividingSlash>().SetDividingSlashStruct(_dividingSlashStruct);
+
+                Vector2 slashDirection = newRot * Vector2.right;  // Right direction of the slash
+                averageDirection += slashDirection;
+
+                // Increment the angle for the next slash
+                currentAngle += angleStep;
             }
         }
     }
