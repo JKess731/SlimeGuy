@@ -18,8 +18,6 @@ public class Behavior : ScriptableObject, IBehavior
 
     public StatusSO status { get => _status; protected set => _status = value; }
 
-    public StatusSO status { get => _status; protected set => _status = value; }
-
     [HideInInspector] protected AbilityState _abilityState;
     public AbilityState AbilityState { get => _abilityState; protected set => _abilityState = value; }
 

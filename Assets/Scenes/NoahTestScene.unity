@@ -445,6 +445,19 @@ MonoBehaviour:
   dash: {fileID: 11400000, guid: 21f4d801539e5e54fae412528d7a89fc, type: 2}
   passive: {fileID: 0}
   attackPos: {fileID: 240163473}
+--- !u!114 &675594170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675594144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f809cbe5788e754fa612f9066407b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageColor: 0
 --- !u!114 &703211600 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5353163666252110962, guid: 9ee15d2e67f797542875bb9c8084c326, type: 3}
@@ -544,11 +557,15 @@ PrefabInstance:
     - target: {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: _stats
       value: 
-      objectReference: {fileID: 11400000, guid: d4fabd1de84ec4d46811fbea8b58feac, type: 2}
+      objectReference: {fileID: 11400000, guid: c3a443f228234f445b6848ae4ea4802a, type: 2}
     - target: {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: slimeDrop
       value: 
       objectReference: {fileID: 7906903390282518362, guid: 5a5471a3de724e8408006b702139286a, type: 3}
+    - target: {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      propertyPath: enemyDamagedBase
+      value: 
+      objectReference: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -556,6 +573,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1382333539}
+    - targetCorrespondingSourceObject: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1382333548}
   m_SourcePrefab: {fileID: 100100000, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
 --- !u!114 &780641894 stripped
 MonoBehaviour:
@@ -2168,6 +2188,10 @@ GameObject:
   - component: {fileID: 1131895951}
   - component: {fileID: 1131895950}
   - component: {fileID: 1131895949}
+  - component: {fileID: 1131895952}
+  - component: {fileID: 1131895953}
+  - component: {fileID: 1131895954}
+  - component: {fileID: 1131895955}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -2263,6 +2287,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1131895952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131895948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6012ec76cb1c94f86e1defaf4d543c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1131895953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131895948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b08ba2e982ed145a72808f92d85fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stats: {fileID: 11400000, guid: c3a443f228234f445b6848ae4ea4802a, type: 2}
+  enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
+  enemyIdleBase: {fileID: 11400000, guid: 985540e631692a9449807e007b23c8bb, type: 2}
+  enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
+  enemyAttackBase: {fileID: 11400000, guid: 69f1e2c478eb0a94ab2db8550295ce40, type: 2}
+  enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
+  enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
+  slimeDrop: {fileID: 4833602960537618009, guid: d1d50472f734b6c4d80f67aaa73b313c, type: 3}
+--- !u!114 &1131895954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131895948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9874ece03a58ca14da08bdbf145ee69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.2
+  constForce: 0.25
+--- !u!50 &1131895955
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131895948}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1138785010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,6 +2661,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5898e8da9887d1409ead60bbc1614ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1382333548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382333530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6012ec76cb1c94f86e1defaf4d543c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1420806229 stripped
@@ -6531,11 +6640,15 @@ PrefabInstance:
     - target: {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: _stats
       value: 
-      objectReference: {fileID: 11400000, guid: d4fabd1de84ec4d46811fbea8b58feac, type: 2}
+      objectReference: {fileID: 11400000, guid: c3a443f228234f445b6848ae4ea4802a, type: 2}
     - target: {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: slimeDrop
       value: 
       objectReference: {fileID: 7906903390282518362, guid: 5a5471a3de724e8408006b702139286a, type: 3}
+    - target: {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      propertyPath: enemyDamagedBase
+      value: 
+      objectReference: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6926,6 +7039,10 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 11400000, guid: 646beef95cfe9f549b85d602a7b050ef, type: 2}
+    - target: {fileID: 992569523923328154, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      propertyPath: _playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d58222cfe955f24db98e1c515175487, type: 2}
     - target: {fileID: 1622243461502216913, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       propertyPath: slimePushControl
       value: 
@@ -7044,6 +7161,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
       insertIndex: -1
       addedObject: {fileID: 675594158}
+    - targetCorrespondingSourceObject: {fileID: 9030121839249631364, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 675594170}
   m_SourcePrefab: {fileID: 100100000, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

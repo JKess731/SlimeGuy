@@ -18,11 +18,8 @@ public class PlayerStateMachine : MonoBehaviour
     private void Awake()
     {
         //Set up initial references
-        playerStats = Instantiate(playerStats);
-        playerStats.Initialize();
-
-        //Not great
-        controller = GetComponent<PlayerController>();
+        _playerStats = Instantiate(_playerStats);
+        _playerStats.Initialize();
 
         //Set up initial references
         _animationControl = GetComponent<PlayerAnimation>();

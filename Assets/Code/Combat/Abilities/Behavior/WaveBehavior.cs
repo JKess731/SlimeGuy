@@ -31,8 +31,8 @@ public class WaveBehavior : Behavior
     public override void Initialize(AbilityBase abilityBase)
     {
         base.Initialize(abilityBase);
-        _parentStruct = new WaveStruct(_parentDamage, _parentKnockback,  _parentActivationTime);
-        _childStruct = new WaveStruct(_childDamage, _childKnockback, _childActivationTime);
+        _parentStruct = new WaveStruct(_parentDamage, _parentKnockback,  _parentActivationTime, status);
+        _childStruct = new WaveStruct(_childDamage, _childKnockback, _childActivationTime, status);
     }
 
     public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
