@@ -20,7 +20,6 @@ public class EnemyIdleState : EnemyState
         base.EnterState();
         _enemyBase.enemyIdleBaseInstance.DoEnterLogic();
         _enemyBase.State = Enum_State.IDLING;
-        Debug.Log("Enemy is idling");
     }
 
     public override void ExitState()
