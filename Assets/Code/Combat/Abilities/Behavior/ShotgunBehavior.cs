@@ -29,7 +29,7 @@ public class ShotgunBehavior : Behavior
     }
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-
+        Debug.Log("Started");
         float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
         for (int i = 0; i < _bulletCount; i++)
         {
@@ -45,11 +45,13 @@ public class ShotgunBehavior : Behavior
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
     {
+        Debug.Log("Performed");
         AbilityState = AbilityState.CANCELING;
     }
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
     {
+        Debug.Log("Finished");
         AbilityState = AbilityState.FINISHED;
         onBehaviorFinished?.Invoke();
     }

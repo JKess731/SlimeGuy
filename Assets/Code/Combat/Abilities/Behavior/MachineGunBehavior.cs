@@ -10,9 +10,7 @@ using UnityEngine.UIElements;
 public class MachineGunBehavior : Behavior
 {
     [Header("Machine Gun Attributes")]
-    [SerializeField] private int _bulletCount = 15;
-    [SerializeField] private float _fireRate = 0.5f; // Time between shots
-    [SerializeField] private float _spreadAngle; 
+    [SerializeField] private GameObject _MachineGun;
     [SerializeField] private GameObject _projectile;
 
     [Header("Prefab Attributes")]
@@ -22,41 +20,36 @@ public class MachineGunBehavior : Behavior
     [SerializeField] private float _projectileRange;
 
     private float nextFireTime = 0f; //Tells when to fire
-    private BulletStruct _bulletStruct;
+    private MachineGunStruct _MachineGunStruct;
     
 
     public override void Initialize(AbilityBase abilityBase)
     {
         base.Initialize(abilityBase);
-        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
+        _MachineGunStruct = new MachineGunStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
     }
 
+
+    public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.PERFORMING;
+        //Debug.Log("Started");
+    }
     // Activate the attack
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-         Debug.Log("Performed");
-         Debug.Log(Time.deltaTime);
+        GameObject newMachineGun = Instantiate(_MachineGun, attackPosition, rotation);
+        newMachineGun.GetComponent<MachineGun>().SetMachineGunStruct(_MachineGunStruct);
 
-            // Check if enough time has passed to fire again
-            if (Time.time >= nextFireTime)
-            {
-                Debug.Log("Performed");
-                Debug.Log(Time.deltaTime);
-
-                float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
-                for (int i = 0; i < _bulletCount; i++)
-                {
-                    float addedOffset = -angleDiff * i;
-                    Quaternion newRot = rotation * Quaternion.Euler(0, 0, _spreadAngle) * Quaternion.Euler(0, 0, addedOffset);
-
-                    GameObject newBullet = Instantiate(_projectile, attackPosition, newRot);
-                    newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
-                }
-
-                // Update the next fire time
-                nextFireTime = Time.time + _fireRate;
-            }
-        }
+        AbilityState = AbilityState.CANCELING;
     }
+
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.FINISHED;
+        //Debug.Log("Finished");
+        onBehaviorFinished?.Invoke();
+    }
+}
     
 
