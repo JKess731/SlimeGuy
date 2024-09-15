@@ -113,10 +113,10 @@ TextureImporter:
       name: Golem_Smash_Right_Sheet_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 49
-        width: 71
-        height: 100
+        x: 0
+        y: 0
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: Golem_Smash_Right_Sheet_1
       rect:
         serializedVersion: 2
-        x: 211
-        y: 43
-        width: 64
-        height: 75
+        x: 160
+        y: 0
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
