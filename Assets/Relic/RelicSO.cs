@@ -1,74 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Relic", menuName = "Relic/New Relic")]
-public class RelicSO : ScriptableObject
+public abstract class RelicSO : ScriptableObject
 {
-    [System.Serializable]
-    public class RelicBuff
-    {
-        public StatsEnum statType;
-        public float percentage = 10f;
-    }
+    [SerializeField] protected Stats playerStats;
+    [SerializeField] protected string relicName;
+    [SerializeField] protected string flavorTextDescription;
+    [SerializeField] protected RelicRarity rarity;
+    [SerializeField] protected Sprite spriteIcon;
 
-    public List<RelicBuff> relicBuffs = new List<RelicBuff>();
-    public List<RelicBuff> relicConditions = new List<RelicBuff>();
-    [Space]
+    [SerializeField] protected bool hasCondition = false;
 
-    public string relicName;
-    public string flavorTextDescription;
-    public Sprite spriteIcon;
+    [HideInInspector] public RelicCalculator calc;
 
-    private bool condMet = false;
+    public string Name { get { return name; } }
+    public string Description {  get { return flavorTextDescription; } }
+    public RelicRarity Rarity {  get { return rarity; } }
+    public Sprite Icon { get { return spriteIcon; } }  
+    public bool HasCondition {  get { return hasCondition; } }
 
-    public void ActivateBuff(Stats playerStats)
-    {
-        if (relicConditions.Count > 0) // If there is any conditions
-        {
-            foreach (RelicBuff cond in relicConditions)
-            {
-                float condPercentage = cond.percentage / 100;
+    public abstract void OnPickup();
 
-                if (cond.statType == StatsEnum.MAXHEALTH)
-                {
-                    float maxHealth = playerStats.GetStat(StatsEnum.MAXHEALTH);
-                    float currHealth = playerStats.GetStat(StatsEnum.HEALTH);
+    public abstract void ActivateBuffs();
 
-                    float percentageHealth = currHealth / maxHealth;
+    public abstract void DeactivateBuffs();
 
-                    if (percentageHealth <= condPercentage)
-                    {
-                        condMet = true;
-                    }
+    public abstract bool Condition();
+}
 
-                }
-            }
+public enum Operator
+{
+    PLUS,
+    MINUS,
+    MULT,
+    DIV
+}
 
-            if (condMet)
-            {
-                LoopBuffs(playerStats);
-            }
-        }
-        else
-        {
-            LoopBuffs(playerStats);
-        }
+public enum NumType
+{
+    PERCENTAGE,
+    INTEGER
+}
 
-    }
-
-    private void LoopBuffs(Stats playerStats)
-    {
-        foreach (RelicBuff buff in relicBuffs)
-        {
-            float percentage = buff.percentage / 100;
-            percentage = percentage + 1;
-
-            float newStat = playerStats.GetStat(buff.statType) * percentage;
-
-            playerStats.SetStat(buff.statType, newStat);
-
-            Debug.Log(playerStats.GetStat(buff.statType));
-        }
-    }
+public enum RelicRarity
+{
+    COMMON,
+    UNCOMMON,
+    RARE,
+    LEGENDARY
 }

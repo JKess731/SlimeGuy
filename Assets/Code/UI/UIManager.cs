@@ -148,7 +148,7 @@ public class UiManager : MonoBehaviour
     {
         if (add)
         {
-            RelicImages[index].sprite = relic.spriteIcon;
+            RelicImages[index].sprite = relic.Icon;
             Color newColor = RelicImageBackgrounds[index].color;
             newColor.a = 0.95f;
             RelicImageBackgrounds[index].color = newColor;
