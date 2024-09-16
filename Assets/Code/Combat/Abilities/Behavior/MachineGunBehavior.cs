@@ -10,8 +10,7 @@ using UnityEngine.UIElements;
 public class MachineGunBehavior : Behavior
 {
     [Header("Machine Gun Attributes")]
-    //[SerializeField] private int _bulletCount = 15;
-    [SerializeField] private float _fireRate = 0.1f; // Time between shots
+    [SerializeField] private GameObject _MachineGun;
     [SerializeField] private GameObject _projectile;
 
     [Header("Prefab Attributes")]
@@ -20,59 +19,36 @@ public class MachineGunBehavior : Behavior
     [SerializeField] private float _projectileSpeed;
     [SerializeField] private float _projectileRange;
 
-    private BulletStruct _bulletStruct;
-    private float _firingDuration = 5f; //Fire Timer
+    private float nextFireTime = 0f; //Tells when to fire
+    private MachineGunStruct _MachineGunStruct;
+    
 
     public override void Initialize(AbilityBase abilityBase)
     {
         base.Initialize(abilityBase);
-        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange, status);
+        _MachineGunStruct = new MachineGunStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
     }
 
-    // Activate the attack
-    public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
+
+    public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        //if (context.started && !_isFiring) 
-        //{
-        //    _isFiring = true; //Firing Loop
-        //    Debug.Log("Machine gun firing started for 5 seconds");
-        //}
+        AbilityState = AbilityState.PERFORMING;
+        //Debug.Log("Started");
+    }
+    // Activate the attack
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        GameObject newMachineGun = Instantiate(_MachineGun, attackPosition, rotation);
+        newMachineGun.GetComponent<MachineGun>().SetMachineGunStruct(_MachineGunStruct);
 
-        if (context.started)
-        {
-            Debug.Log("Started");
-            Debug.Log(Time.deltaTime);
-        }
+        AbilityState = AbilityState.CANCELING;
+    }
 
-        // If the gun is currently in the firing loop
-        if (context.performed)
-        {
-            Debug.Log("Performed");
-            Debug.Log(Time.deltaTime);
-            //Debug.Log("Machine gun Performed");
-            //float currentTime = 0;                      // Get the current time
-            //float currentfireRate = _fireRate;          // Time between shots
-
-            //while (currentTime < _firingDuration)
-            //{
-            //    Debug.Log("Machine gun firing:" + currentTime);
-            //    currentTime += Time.deltaTime;          // Update the current time
-            //    if (currentTime  >= currentfireRate)
-            //    {
-            //        // Fire a bullet
-            //        Vector2 randomAttackPos = new Vector2(attackPosition.x + Random.Range(-0.5f, 0.5f), attackPosition.y);
-            //        GameObject newBullet = Instantiate(_projectile, randomAttackPos, rotation);
-            //        newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
-            //        currentfireRate += _fireRate;           // Increase the fire rate
-            //    }
-            //}
-        }
-
-        if (context.canceled)
-        {
-            Debug.Log("Canceled");
-            Debug.Log(Time.deltaTime);
-        }
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.FINISHED;
+        //Debug.Log("Finished");
+        onBehaviorFinished?.Invoke();
     }
 }
     

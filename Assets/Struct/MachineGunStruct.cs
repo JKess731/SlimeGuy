@@ -15,6 +15,7 @@ public struct MachineGunStruct
     public float Range { get { return _range; } }
 
 
+
     public MachineGunStruct(int damage, float knockback, float bulletSpeed, float range)
     {
         _damage = damage;
@@ -22,4 +23,5 @@ public struct MachineGunStruct
         _bulletSpeed = bulletSpeed;
         _range = range;
     }
+
 }

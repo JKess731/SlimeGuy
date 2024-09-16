@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cooldownTime: 0.2
   _activationTime: 0.1
-  _bulletCount: 15
-  _fireRate: 0.1
+  _MachineGun: {fileID: 7583688260531183335, guid: 36a765782e9aeb94ebd95632d8eadd43, type: 3}
   _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
   _projectileDamage: 1
   _projectileKnockback: 1
-  _projectileSpeed: 2
+  _projectileSpeed: 5
   _projectileRange: 3

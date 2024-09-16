@@ -68,14 +68,14 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnPrimaryPerformed(InputAction.CallbackContext context)
     {
-        if(primary.Behavior.AbilityState == AbilityState.STARTING)
+        if(primary.Behavior.AbilityState == AbilityState.PERFORMING)
         {
             primary?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
-        if (primary.Behavior.AbilityState == AbilityState.PERFORMING)
+        if (primary.Behavior.AbilityState == AbilityState.CANCELING)
         {
             primary?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
         }
