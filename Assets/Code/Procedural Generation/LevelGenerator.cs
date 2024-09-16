@@ -29,6 +29,7 @@ public class LevelGenerator : MonoBehaviour
     public List<GameObject> roomsPlaced = new List<GameObject>();
 
     public Queue<SpawnPoint> spawnPoints = new Queue<SpawnPoint>();
+    private bool generationComplete = false;
 
     private class ArrayCoordinate
     {
@@ -128,7 +129,7 @@ public class LevelGenerator : MonoBehaviour
                     roomsPlaced.Remove(oldRoomObj);
                     Destroy(oldRoomObj);
 
-                    GameObject spawnedRoom = Instantiate(newRoom, sp.transform.position, Quaternion.identity);
+                    GameObject spawnedRoom = Instantiate(newRoom, sp.transform.position, Quaternion.identity, transform);
                     rooms[row, col] = spawnedRoom.GetComponent<RoomTypes>();
                     currentRoomCount++;
                     roomsPlaced.Insert(index, spawnedRoom);
@@ -144,7 +145,7 @@ public class LevelGenerator : MonoBehaviour
                 Debug.Log(row + " " + col);
 
                 // Instantiate that room at the position of the spawn point
-                GameObject spawnedRoom = Instantiate(room, sp.transform.position, Quaternion.identity);
+                GameObject spawnedRoom = Instantiate(room, sp.transform.position, Quaternion.identity, transform);
 
                 // Place it in the array at rooms[row, col]
                 rooms[row, col] = spawnedRoom.GetComponent<RoomTypes>();
@@ -154,6 +155,9 @@ public class LevelGenerator : MonoBehaviour
         }
 
         yield return new WaitForSecondsRealtime(1f);
+
+        Debug.Log("Generation Complete...");
+        generationComplete = true;
 
         ChooseBossRoom();
 
@@ -166,7 +170,10 @@ public class LevelGenerator : MonoBehaviour
 
         // Step 1: Check if the Room is on an edge
 
-        if (row == 0 || row == rowSize - 1 || col == 0 || col == colSize - 1)
+        Debug.Log("ROOM ROW: " + row);
+        Debug.Log("ROOM COL: " + col);
+
+        if (row == 1 || row == rowSize - 1 || col == 1 || col == colSize - 1)
         {
             options = GetDoorAmount(1);
 
