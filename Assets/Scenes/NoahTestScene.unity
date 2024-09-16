@@ -249,12 +249,52 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyHurt>k__BackingField.Path
+      value: event:/Gremlin/GremlinDead
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyAttack>k__BackingField.Path
+      value: event:/Gremlin/GremlinSlice
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerDeath>k__BackingField.Path
       value: event:/SFX/Puddles/Slime Dive
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerAttack>k__BackingField.Path
       value: event:/SFX/Puddles/Slime Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyHurt>k__BackingField.Guid.Data1
+      value: 693111236
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyHurt>k__BackingField.Guid.Data2
+      value: 1231856157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyHurt>k__BackingField.Guid.Data3
+      value: 1390187655
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyHurt>k__BackingField.Guid.Data4
+      value: -426594554
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyAttack>k__BackingField.Guid.Data1
+      value: 1275740998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyAttack>k__BackingField.Guid.Data2
+      value: 1326337593
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyAttack>k__BackingField.Guid.Data3
+      value: -511714116
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <enemyAttack>k__BackingField.Guid.Data4
+      value: 189367657
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerDeath>k__BackingField.Guid.Data1
@@ -1021,7 +1061,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 497496063
-  m_SortingLayer: -1
+  m_SortingLayer: -3
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -3257,7 +3297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d05048753de8b46b3b8cb28a5c0318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicScriptableObject: {fileID: 11400000, guid: 31cc87c1d05b82748b8913ca13f85cc8, type: 2}
+  relicScriptableObject: {fileID: 0}
   relicManager: {fileID: 285452914}
 --- !u!58 &1589850168
 CircleCollider2D:
@@ -3484,7 +3524,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 497496063
-  m_SortingLayer: -1
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
