@@ -12,8 +12,8 @@ public class FmodEvents : MonoBehaviour
     [field: SerializeField] public EventReference playerDash { get; private set; }
     [field:SerializeField] public EventReference playerHurt { get; private set; }
     [field:SerializeField] public EventReference playerDeath { get; private set; }
-    
-
+    [field: SerializeField] public EventReference playerPickUp { get; private set; }
+    [field: SerializeField] public EventReference NikoSong { get; private set; }
 
     private void Awake()
     {

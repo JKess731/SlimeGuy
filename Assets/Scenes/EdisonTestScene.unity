@@ -166,12 +166,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Path
+      value: event:/Gelatinous Groove
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerDeath>k__BackingField.Path
       value: event:/SFX/Puddles/Slime Dive
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerAttack>k__BackingField.Path
       value: event:/SFX/Puddles/Slime Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Path
+      value: event:/SFX/Puddles/SlimePickupCoin_mixdown
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Guid.Data1
+      value: 54997007
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Guid.Data2
+      value: 1151168758
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Guid.Data3
+      value: 503846837
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <NikoSong>k__BackingField.Guid.Data4
+      value: 498348562
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerDeath>k__BackingField.Guid.Data1
@@ -204,6 +228,22 @@ PrefabInstance:
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <playerAttack>k__BackingField.Guid.Data4
       value: 664755720
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Guid.Data1
+      value: -1592696734
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Guid.Data2
+      value: 1191570007
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Guid.Data3
+      value: -1252000886
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <playerPickUp>k__BackingField.Guid.Data4
+      value: 1788261284
       objectReference: {fileID: 0}
     - target: {fileID: 4433807784745035315, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_LocalPosition.x
