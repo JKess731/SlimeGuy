@@ -18,6 +18,7 @@ public class PlayerStateMachine : MonoBehaviour
     private void Awake()
     {
         //Set up initial references
+        _playerStats = Instantiate(_playerStats);
         _playerStats.Initialize();
 
         //Set up initial references

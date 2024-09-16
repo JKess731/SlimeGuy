@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cooldownTime: 0.3
   _activationTime: 0.1
+  _status: {fileID: 0}
   _bulletCount: 3
   _spreadAngle: 20
   _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}

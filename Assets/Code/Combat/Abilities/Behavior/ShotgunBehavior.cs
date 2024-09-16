@@ -25,7 +25,7 @@ public class ShotgunBehavior : Behavior
     public override void Initialize(AbilityBase abilityBase)
     {
         base.Initialize(abilityBase);
-        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
+        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange, status);
     }
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
