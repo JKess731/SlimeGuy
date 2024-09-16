@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class RelicManager : MonoBehaviour
 {
-    public StatsSO playerStats;
+    [SerializeField] private Stats playerStats;
     public static RelicManager instance;
     [SerializeField] private int maxRelics = 10;
 
+    public RelicCalculator calculator;
     public RelicSO[] relicsEquipped;
 
     private void Awake()
@@ -26,6 +27,11 @@ public class RelicManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        CheckRelics();
+    }
+
     // Adds a relic to the array at the first null position
     public void AddRelic(RelicSO r)
     {
@@ -39,11 +45,11 @@ public class RelicManager : MonoBehaviour
             }
         }
     }
+    
     /// <summary>
     /// Removes a relic and replaces null at it's position in the array
     /// </summary>
     /// <param name="r"> Relic scriptable object</param>
-
     public void RemoveRelic(RelicSO r)
     {
         for (int i = 0; i < relicsEquipped.Length; i++)
@@ -70,6 +76,17 @@ public class RelicManager : MonoBehaviour
         }
 
         return count;
+    }
+
+    private void CheckRelics()
+    {
+        foreach (RelicSO r in relicsEquipped)
+        {
+            if (r.HasCondition && r.Condition())
+            {
+                r.ActivateBuffs();
+            }
+        }
     }
 
 }
