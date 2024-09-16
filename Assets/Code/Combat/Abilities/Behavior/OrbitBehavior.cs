@@ -11,6 +11,8 @@ public class OrbitBehavior : Behavior
 {
     [Header("Orbit Attributes")]
     [SerializeField] private GameObject _orbit;
+    [SerializeField] private int _orbitCount;
+    [SerializeField] private float _spreadAngle = 360f;
 
     [Header("Prefab Attributes")]
     [SerializeField] private int _damage;
@@ -38,8 +40,22 @@ public class OrbitBehavior : Behavior
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
 
-        GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
-        newOrbit.GetComponent<Orbit>().SetOrbitStruct(_orbitStruct);
+            // Calculate the angle difference between each orbitball
+            float angleStep = _spreadAngle / _orbitCount;
+            float currentAngle = 0f;
+
+            for (int i = 0; i < _orbitCount; i++)
+            {
+                // Spawn the orbitball at the player's position
+            GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
+
+                // Set the orbitball's attributes and its initial angle
+            newOrbit.GetComponent<Orbit>().SetOrbitStruct(_orbitStruct);
+                newOrbit.GetComponent<Orbit>().SetInitialAngle(currentAngle);
+
+                // Increment the angle for the next orbitball
+                currentAngle += angleStep;
+            }
         
         AbilityState = AbilityState.PERFORMING;
     }

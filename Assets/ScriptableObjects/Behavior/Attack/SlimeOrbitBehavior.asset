@@ -15,6 +15,8 @@ MonoBehaviour:
   _cooldownTime: 3
   _activationTime: 7
   _orbit: {fileID: 7031965650677062296, guid: ffccf9cc23408834e9783f3a655a1542, type: 3}
+  _orbitCount: 4
+  _spreadAngle: 360
   _damage: 1
   _knockback: 3
   _rotationSpeed: 5

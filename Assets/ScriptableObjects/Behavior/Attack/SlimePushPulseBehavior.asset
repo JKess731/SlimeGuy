@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27cce0efc86dfcf49b27c8a2ed60116c, type: 3}
-  m_Name: SlimePushBehavior
+  m_Script: {fileID: 11500000, guid: 53645cc4280dc5b43b57d46c8b302b67, type: 3}
+  m_Name: SlimePushPulseBehavior
   m_EditorClassIdentifier: 
-  _cooldownTime: 5
-  _activationTime: 5
-  _push: {fileID: 7595820434947627400, guid: 64dd7bf8fa61e0548a50803894a0ab1d, type: 3}
+  _cooldownTime: 8
+  _activationTime: 3
+  _pushPulse: {fileID: 9087892251996441329, guid: e9bb8cf59f951af48a2792de9df212f2, type: 3}
   _damage: 1
-  _knockback: 10
-  _speed: 5
-  _distance: 7
+  _knockback: 7
+  _speed: 4
+  _distance: 4

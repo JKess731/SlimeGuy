@@ -12,15 +12,23 @@ public class Orbit : Attacks
     private float _currentDistance;
 
     private GameObject _player;
+    private GameObject _attack;
 
     private void Start()
     {
         Destroy(gameObject, _activationTime);
         _player = GameObject.FindWithTag("player");
+        _attack = GameObject.FindWithTag("attack");
 
         _currentDistance = 0f;
 
         Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(_attack.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+    }
+
+    public void SetInitialAngle(float angle)
+    {
+        _angle = angle * Mathf.Deg2Rad; // Convert to radians for trigonometric functions
     }
 
     private void FixedUpdate()

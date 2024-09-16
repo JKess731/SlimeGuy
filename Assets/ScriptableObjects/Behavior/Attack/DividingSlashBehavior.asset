@@ -15,6 +15,8 @@ MonoBehaviour:
   _cooldownTime: 0.2
   _activationTime: 3
   _dividingSlash: {fileID: 168608533301039626, guid: 37a47e8836288384ea6c68713713d7c8, type: 3}
+  _slashCount: 1
+  _spreadAngle: 0
   _dividingSlashDamage: 2
   _dividingSlashKnockback: 10
   _dividingSlashSpeed: 6

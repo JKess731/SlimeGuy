@@ -42,6 +42,7 @@ public class Push : Attacks
             if (transform.localScale.x > _distance)
             {
                 transform.localScale = new Vector3(_distance, _distance, 0);
+                Destroy(gameObject);
             }
         }
     }

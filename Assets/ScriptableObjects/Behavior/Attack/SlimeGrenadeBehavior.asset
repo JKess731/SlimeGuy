@@ -17,4 +17,4 @@ MonoBehaviour:
   _grenade: {fileID: 383735710107329663, guid: efed971914fda05439022b3b572addde, type: 3}
   _grenadeDamage: 3
   _grenadeKnockback: 0
-  _grenadeSpeed: 5
+  _grenadeSpeed: 6
