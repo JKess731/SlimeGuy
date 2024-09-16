@@ -136,442 +136,274 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_0
+      name: EnemySpawn_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 5
-        width: 31
-        height: 16
+        x: 0
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8d59bd0ffc925649b9e6c5b81096860
-      internalID: -556299842
+      spriteID: ea1b5471efcfbcd4f8cd2f8565a3e26a
+      internalID: 2035944205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_1
+      name: EnemySpawn_1
       rect:
         serializedVersion: 2
-        x: 130
-        y: 5
-        width: 21
-        height: 16
+        x: 96
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4b0771b6ffd09344abb44a9d5a365ea
-      internalID: -1957077239
+      spriteID: 19c70b8da3eded34986304730c368d11
+      internalID: -575176246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_2
+      name: EnemySpawn_2
       rect:
         serializedVersion: 2
-        x: 160
-        y: 13
-        width: 4
-        height: 5
+        x: 192
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ce0ccf6fb827e2408ae1ab1db2e9e4f
-      internalID: -772859739
+      spriteID: 970fc29f50d765945be2dc18a8bb36c8
+      internalID: -640449381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_3
+      name: EnemySpawn_3
       rect:
         serializedVersion: 2
-        x: 223
-        y: 17
-        width: 8
-        height: 4
+        x: 288
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f4543d0445ff934fa55d3106c8e424c
-      internalID: 1635719488
+      spriteID: bf25763a968fb9e419fd2fde2ad8e444
+      internalID: 548350369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_4
+      name: EnemySpawn_4
       rect:
         serializedVersion: 2
-        x: 234
-        y: 5
-        width: 16
-        height: 13
+        x: 384
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e64ddc3ea492834419eaad96147133de
-      internalID: 1765506136
+      spriteID: cb4faecb717428d46bcda929407164b4
+      internalID: -1373244847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_5
+      name: EnemySpawn_5
       rect:
         serializedVersion: 2
-        x: 255
-        y: 13
-        width: 5
-        height: 6
+        x: 480
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a946690edeb0796428ef25663c53c2e0
-      internalID: -1813387714
+      spriteID: 01509403112624649af9cd160f30e5ae
+      internalID: 548737380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_6
+      name: EnemySpawn_6
       rect:
         serializedVersion: 2
-        x: 316
-        y: 11
-        width: 11
-        height: 10
+        x: 576
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a518abe112fed9f40944d86cbd9b43d2
-      internalID: -1343084800
+      spriteID: 925762c9ffc3bd741b77882b740edf04
+      internalID: -2076183952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_7
+      name: EnemySpawn_7
       rect:
         serializedVersion: 2
-        x: 331
-        y: 11
-        width: 9
-        height: 7
+        x: 672
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49bb335a97a00234abb77f3f677b7417
-      internalID: -916244879
+      spriteID: ed6152c8c0fb6654ea08da505ec0fb24
+      internalID: 296332953
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_8
+      name: EnemySpawn_8
       rect:
         serializedVersion: 2
-        x: 344
-        y: 13
-        width: 12
-        height: 8
+        x: 768
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bf3178444f0c91499cbc5f3de8006ed
-      internalID: -1340637367
+      spriteID: 806e0cf9f8fad7b40a81ef5f2e84d24a
+      internalID: 575069117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_9
+      name: EnemySpawn_9
       rect:
         serializedVersion: 2
-        x: 412
-        y: 5
-        width: 16
-        height: 16
+        x: 864
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3680919c95ab5440b3b3130c06e8cb3
-      internalID: 278504418
+      spriteID: 5a1e4bfae235fcf43bdccb5ae1d49847
+      internalID: -2005944082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_10
+      name: EnemySpawn_10
       rect:
         serializedVersion: 2
-        x: 424
-        y: 5
-        width: 25
-        height: 14
+        x: 960
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f27f28f0d8c9e594ea9ae657ada984d1
-      internalID: -573042686
+      spriteID: 98814fbed0abb36408a90cdb71777b8f
+      internalID: -1372286289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_11
+      name: EnemySpawn_11
       rect:
         serializedVersion: 2
-        x: 432
-        y: 13
-        width: 20
-        height: 9
+        x: 1056
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46ee295cb98f85648b5c421da3f5ef92
-      internalID: 1134130821
+      spriteID: 3dd634f6337f0e743b9ccf95e49ec8d3
+      internalID: -934408171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyDwarfSpawn_12
+      name: EnemySpawn_12
       rect:
         serializedVersion: 2
-        x: 508
-        y: 5
-        width: 40
-        height: 17
+        x: 1152
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 293d3133b7ce48e48834b507a7b5f020
-      internalID: -442521301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDwarfSpawn_13
-      rect:
-        serializedVersion: 2
-        x: 604
-        y: 5
-        width: 40
-        height: 90
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46e1ae55b03bd434cae15c03f5708bef
-      internalID: -2119902356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDwarfSpawn_14
-      rect:
-        serializedVersion: 2
-        x: 700
-        y: 5
-        width: 40
-        height: 91
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 830a5b8cdc7d58447a6e290db67e5e2e
-      internalID: 64742869
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDwarfSpawn_15
-      rect:
-        serializedVersion: 2
-        x: 796
-        y: 5
-        width: 40
-        height: 88
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75472d454dd97c342a111b3357bf675b
-      internalID: -1287387096
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDwarfSpawn_16
-      rect:
-        serializedVersion: 2
-        x: 892
-        y: 5
-        width: 40
-        height: 86
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0020f29f9e53b5249b2c77aa8f87d4dd
-      internalID: -2069046524
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDwarfSpawn_17
-      rect:
-        serializedVersion: 2
-        x: 988
-        y: 5
-        width: 40
-        height: 75
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87df7e17f10d9ea42900839fca7b0cdb
-      internalID: -1619912295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDwarfSpawn_18
-      rect:
-        serializedVersion: 2
-        x: 1084
-        y: 5
-        width: 40
-        height: 69
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1268eb899c0cab4197cea47bd091697
-      internalID: -1566081818
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDwarfSpawn_19
-      rect:
-        serializedVersion: 2
-        x: 1180
-        y: 5
-        width: 40
-        height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5faa76428b26f1c4cb14c98791055bee
-      internalID: 711419244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDwarfSpawn_20
-      rect:
-        serializedVersion: 2
-        x: 330
-        y: 5
-        width: 23
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1c9254625fc93248bc66ae72be3e76b
-      internalID: -435050572
+      spriteID: 38c4f915d311c714eb1a8586f560f1a1
+      internalID: 1903300259
       vertices: []
       indices: 
       edges: []
@@ -587,27 +419,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      EnemyDwarfSpawn_0: -556299842
-      EnemyDwarfSpawn_1: -1957077239
-      EnemyDwarfSpawn_10: -573042686
-      EnemyDwarfSpawn_11: 1134130821
-      EnemyDwarfSpawn_12: -442521301
-      EnemyDwarfSpawn_13: -2119902356
-      EnemyDwarfSpawn_14: 64742869
-      EnemyDwarfSpawn_15: -1287387096
-      EnemyDwarfSpawn_16: -2069046524
-      EnemyDwarfSpawn_17: -1619912295
-      EnemyDwarfSpawn_18: -1566081818
-      EnemyDwarfSpawn_19: 711419244
-      EnemyDwarfSpawn_2: -772859739
-      EnemyDwarfSpawn_20: -435050572
-      EnemyDwarfSpawn_3: 1635719488
-      EnemyDwarfSpawn_4: 1765506136
-      EnemyDwarfSpawn_5: -1813387714
-      EnemyDwarfSpawn_6: -1343084800
-      EnemyDwarfSpawn_7: -916244879
-      EnemyDwarfSpawn_8: -1340637367
-      EnemyDwarfSpawn_9: 278504418
+      EnemySpawn_0: 2035944205
+      EnemySpawn_1: -575176246
+      EnemySpawn_10: -1372286289
+      EnemySpawn_11: -934408171
+      EnemySpawn_12: 1903300259
+      EnemySpawn_2: -640449381
+      EnemySpawn_3: 548350369
+      EnemySpawn_4: -1373244847
+      EnemySpawn_5: 548737380
+      EnemySpawn_6: -2076183952
+      EnemySpawn_7: 296332953
+      EnemySpawn_8: 575069117
+      EnemySpawn_9: -2005944082
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

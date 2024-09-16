@@ -20,6 +20,7 @@ public class SingleRoomController : MonoBehaviour
         public List<MonsterSpawner> monsters = new List<MonsterSpawner>();
     }
 
+    [SerializeField] private GameObject spawnAnimObj;
     public RoomTag roomTag;
     [SerializeField] private float startWaveDelay = 3f;
     [SerializeField] private List<GameObject> roomDoors = new List<GameObject>();
@@ -68,8 +69,14 @@ public class SingleRoomController : MonoBehaviour
                 yield return new WaitForSeconds(ms.spawnDelay);
             }
 
+            GameObject spawnAnim = Instantiate(spawnAnimObj, transform);
+            spawnAnim.transform.localPosition = ms.spawnPos;
+
             GameObject enemy = Instantiate(ms.enemyPrefab, transform);
+            SpawnAnimation s = spawnAnim.GetComponent<SpawnAnimation>();
+            s.enemy = enemy;
             enemy.transform.localPosition = ms.spawnPos;
+            enemy.SetActive(false);
 
             spawnedEnemies.Add(enemy);
         }
