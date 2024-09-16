@@ -20,9 +20,10 @@ public class PushPulseBehavior : Behavior
 
     private PushPulseStruct _pushPulseStruct;
 
-    public override void Initialize()
+    public override void Initialize(AbilityBase abilityBase)
     {
-        _pushPulseStruct = new PushPulseStruct(_damage, _knockback, _activationTime, _speed, _distance);
+        base.Initialize(abilityBase);
+        _pushPulseStruct = new PushPulseStruct(_damage,_knockback,_activationTime, _speed, _distance);
     }
 
     public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)

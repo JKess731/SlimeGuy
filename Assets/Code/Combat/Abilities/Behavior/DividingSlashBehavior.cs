@@ -45,24 +45,22 @@ public class DividingSlashBehavior : Behavior
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        Quaternion newRot = rotation;
-        if (context.started)
+        // Calculate the angle step based on the number of slashes and the total spread angle
+        float angleStep = _spreadAngle / (_slashCount - 1);
+        float currentAngle = -_spreadAngle / 2;  // Start from the negative half of the spread
+
+        Vector2 averageDirection = Vector2.zero;
+
+        for (int i = 0; i < _slashCount; i++)
         {
-            // Calculate the angle step based on the number of slashes and the total spread angle
-            float angleStep = _spreadAngle / (_slashCount - 1);
-            float currentAngle = -_spreadAngle / 2;  // Start from the negative half of the spread
+            // Calculate the new rotation for each slash based on the current angle
+            Quaternion newRot = rotation * Quaternion.Euler(0, 0, currentAngle);
 
-            Vector2 averageDirection = Vector2.zero;
+            GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
+            newDividingSlash.GetComponent<DividingSlash>().SetDividingSlashStruct(_dividingSlashStruct);
 
-            for (int i = 0; i < _slashCount; i++)
-            {
-                // Calculate the new rotation for each slash based on the current angle
-                Quaternion newRot = rotation * Quaternion.Euler(0, 0, currentAngle);
-
-        GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
-        newDividingSlash.GetComponent<DividingSlash>().SetDividingSlashStruct(_dividingSlashStruct);
-
-        AbilityState = AbilityState.PERFORMING;
+            AbilityState = AbilityState.PERFORMING;
+        }
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
