@@ -7,13 +7,22 @@ public class FmodEvents : MonoBehaviour
 {
     public static FmodEvents instance;
 
+    [field:Header("Music")]
+    [field: SerializeField] public EventReference NikoSong { get; private set; }
+
+
     [field:Header("Player")]
     [field: SerializeField] public EventReference playerAttack { get; private set; }
     [field: SerializeField] public EventReference playerDash { get; private set; }
     [field:SerializeField] public EventReference playerHurt { get; private set; }
     [field:SerializeField] public EventReference playerDeath { get; private set; }
     [field: SerializeField] public EventReference playerPickUp { get; private set; }
-    [field: SerializeField] public EventReference NikoSong { get; private set; }
+
+
+    [field:Header("Enemies")]
+    [field:SerializeField] public EventReference enemyAttack { get; private set; }
+    [field:SerializeField] public EventReference enemyHurt { get; private set; }
+    [field:SerializeField] public EventReference enemyDeath { get; private set; }
 
     private void Awake()
     {
