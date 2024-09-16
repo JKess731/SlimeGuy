@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 4751146899569220850}
   - component: {fileID: 100338875997879468}
   - component: {fileID: 5565166607894818481}
+  - component: {fileID: 2333069340530526379}
   m_Layer: 7
   m_Name: EnemyDwarf
   m_TagString: enemy
@@ -405,14 +406,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352c011b5e66b9f4bb8020fe11d4bde6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: d4fabd1de84ec4d46811fbea8b58feac, type: 2}
+  _stats: {fileID: 11400000, guid: c3a443f228234f445b6848ae4ea4802a, type: 2}
+  enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
   enemyIdleBase: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
   enemyAttackBase: {fileID: 11400000, guid: 69f1e2c478eb0a94ab2db8550295ce40, type: 2}
-  enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
+  enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
   enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
-  animator: {fileID: 4751146899569220850}
-  slimeDrop: {fileID: 0}
+  slimeDrop: {fileID: 7906903390282518362, guid: 5a5471a3de724e8408006b702139286a, type: 3}
 --- !u!95 &4751146899569220850
 Animator:
   serializedVersion: 5
@@ -462,6 +463,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 36705b5bfd6d8a94ba023480d660b1af, type: 2}
   duration: 0.25
+--- !u!114 &2333069340530526379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777186743103341712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6012ec76cb1c94f86e1defaf4d543c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7125127084281730235
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class RelicSO : ScriptableObject
 {
-    [SerializeField] protected Stats playerStats;
+    [SerializeField] protected StatsSO playerStats;
     [SerializeField] protected string relicName;
     [SerializeField] protected string flavorTextDescription;
     [SerializeField] protected RelicRarity rarity;
