@@ -64,10 +64,7 @@ public class SingleRoomController : MonoBehaviour
 
         foreach (MonsterSpawner ms in waveMonsters)
         {
-            if (ms.spawnDelay > 0)
-            {
-                yield return new WaitForSeconds(ms.spawnDelay);
-            }
+            yield return new WaitForSecondsRealtime(ms.spawnDelay);
 
             GameObject spawnAnim = Instantiate(spawnAnimObj, transform);
             spawnAnim.transform.localPosition = ms.spawnPos;
