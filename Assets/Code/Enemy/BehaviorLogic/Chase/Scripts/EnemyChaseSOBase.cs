@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class EnemyChaseSOBase : ScriptableObject
     protected GameObject _gameObject;
     protected Transform _playerTransform;
 
+    // Array to hold multiple of one sound event
+    [SerializeField] private EventReference[] dwarfStepSounds;
+
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
 
@@ -16,6 +20,16 @@ public class EnemyChaseSOBase : ScriptableObject
         _transform = gameObject.transform;
         _enemy = enemy;
         _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
+
+        // Initialize the attackSounds array using FmodEvents instance
+        FmodEvents fmodEvents = FmodEvents.instance;
+
+        dwarfStepSounds = new EventReference[]
+        {
+            fmodEvents.DwarfStep1,
+            fmodEvents.DwarfStep2,
+            fmodEvents.DwarfStep3
+        };
     }
 
     public virtual void DoEnterLogic() { 
@@ -34,7 +48,28 @@ public class EnemyChaseSOBase : ScriptableObject
     }
 
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { }
+    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) {
+
+        if (triggerType != EnemyBase.AnimationTriggerType.PlayDwarfFootStepSound)
+        {
+            PlayRandomFootStep();
+        }
+    }
+
+    public virtual void PlayRandomFootStep()
+    {
+        if (dwarfStepSounds.Length > 0)
+        {
+
+            int randomIndex = Random.Range(0, dwarfStepSounds.Length);
+            Debug.Log(randomIndex);
+            AudioManager.instance.PlayOneShot(dwarfStepSounds[randomIndex], _transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("No step sounds assigned to the dwarf.");
+        }
+    }
 
     public virtual void ResetValues() { }
 }

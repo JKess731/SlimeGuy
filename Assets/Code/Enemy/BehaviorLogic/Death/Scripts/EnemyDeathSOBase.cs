@@ -27,9 +27,13 @@ public class EnemyDeathSOBase : ScriptableObject
     public virtual void DoPhysicsLogic() { }
 
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { 
-        if (triggerType == EnemyBase.AnimationTriggerType.EnemyDeath)
+        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
         {
             Destroy(_gameObject);
+        }
+        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
+        {
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
         }
     }
 

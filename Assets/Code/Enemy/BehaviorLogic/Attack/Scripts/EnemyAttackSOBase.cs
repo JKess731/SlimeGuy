@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class EnemyAttackSOBase : ScriptableObject
     protected GameObject _gameObject;
     protected Transform _playerTransform;
 
+
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
 
@@ -16,6 +18,7 @@ public class EnemyAttackSOBase : ScriptableObject
         _transform = gameObject.transform;
         _enemy = enemy;
         _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
+
     }
 
     public virtual void DoEnterLogic() { 
@@ -27,11 +30,24 @@ public class EnemyAttackSOBase : ScriptableObject
     public virtual void DoFrameUpdateLogic() { }
 
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { 
-        if (triggerType == EnemyBase.AnimationTriggerType.EnemyAttack)
+
+    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    {
+        if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.enemyAttack, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _transform.position);
         }
+
+        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDamaged)
+        {
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfHurt, _transform.position);
+        }
+
+        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
+        {
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
+        }
+
     }
 
     public virtual void ResetValues() { }

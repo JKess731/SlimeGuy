@@ -144,6 +144,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         stateMachine.ChangeState(deathState);
     }
+
+    public void GoToDamage()
+    {
+        stateMachine.ChangeState(damagedState);
+    }
     #endregion
 
     #region Health Die Functions
@@ -152,6 +157,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         damageFlash.Flash();
         _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
         Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
+        GoToDamage();
 
         knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
 
@@ -164,6 +170,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         damageFlash.Flash();
         _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
         Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
+        GoToDamage();
 
         if (_stats.GetStat(StatsEnum.HEALTH) <= 0)
         {
@@ -214,10 +221,10 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     }
 
     public enum AnimationTriggerType { 
-        EnemyDamaged,
-        EnemyAttack,
-        EnemyDeath,
-        PlayFootStepSound
+        DwarfDamaged,
+        DwarfAttack,
+        DwarfDeath,
+        PlayDwarfFootStepSound
     }
     #endregion
 
