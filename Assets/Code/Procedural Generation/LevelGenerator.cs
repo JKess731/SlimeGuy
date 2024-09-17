@@ -40,6 +40,9 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         rooms = GenerateGrid();
+
+        Debug.Log("LENGTH: " + rooms.Length);
+
         PlaceStartRoom();
         chosenRoomCount = GetRoomCount();
         Debug.Log(chosenRoomCount);
@@ -53,18 +56,7 @@ public class LevelGenerator : MonoBehaviour
 
     private int GetRoomCount()
     {
-        int count = 0;
-
-        if (overrideRoomCount <= 0)
-        {
-            count = Random.Range(minRooms, maxRooms + 1);
-        }
-        else if (overrideRoomCount > 0)
-        {
-            count = overrideRoomCount;
-        }
-
-        return count;
+        return Random.Range(minRooms, maxRooms + 1);
     }
 
     private void PlaceStartRoom()
@@ -104,7 +96,7 @@ public class LevelGenerator : MonoBehaviour
 
             //Debug.Log(row + "," + col);
 
-            if (rooms[row, col] != null )
+            if (rooms[row, col] != null)
             {
                 // Array Spot is not empty
                 // Get reference to the room at the position
@@ -170,10 +162,9 @@ public class LevelGenerator : MonoBehaviour
 
         // Step 1: Check if the Room is on an edge
 
-        Debug.Log("ROOM ROW: " + row);
-        Debug.Log("ROOM COL: " + col);
+        Debug.Log(doorNeeded);
 
-        if (row == 1 || row == rowSize - 1 || col == 1 || col == colSize - 1)
+        if (row == 0 || row == rowSize - 1 || col == 0 || col == colSize - 1)
         {
             options = GetDoorAmount(1);
 
@@ -183,6 +174,8 @@ public class LevelGenerator : MonoBehaviour
                 if (rt.doors.Contains(doorNeeded))
                 {
                     room = r;
+                    Debug.Log(doorNeeded);
+                    Debug.Log(r.name);
                     break;
                 }
             }
@@ -207,7 +200,6 @@ public class LevelGenerator : MonoBehaviour
                 options = GetDoorAmount(1);
             }
 
-            Debug.Log("OPTIONS: " + options.Count);
             room = RandomRoom(doorNeeded, options);
 
         }
@@ -226,12 +218,7 @@ public class LevelGenerator : MonoBehaviour
             roomTypes = GetRoomsByDoorType(dt, GetFullSpawnList());
         }
 
-        Debug.Log("DOOR NEEDED: " + dt);
-        Debug.Log("ROOMS TYPES: " + roomTypes.Count);
-
         int index = Random.Range(0, roomTypes.Count - 1);
-
-        Debug.Log("INDEX: " + index);
 
         room = roomTypes.ElementAt(index);
 
@@ -290,18 +277,20 @@ public class LevelGenerator : MonoBehaviour
         {
             coord.row += 1;
         }
-        else if (sp.doorNeeded == DoorTypes.BOTTOM_DOOR && coord.row > 0)
+        else if (sp.doorNeeded == DoorTypes.BOTTOM_DOOR && coord.row >= 1)
         {
             coord.row -= 1;
         }
-        else if (sp.doorNeeded == DoorTypes.RIGHT_DOOR && coord.col > 0)
+        else if (sp.doorNeeded == DoorTypes.RIGHT_DOOR && coord.col >= 1)
         {
             coord.col += 1;
         }
         else if (sp.doorNeeded == DoorTypes.LEFT_DOOR && coord.col < colSize - 1)
         {
             coord.col -= 1;
-        }    
+        }
+
+        //Debug.Log("COORD: " + coord.row + " " + coord.col);
 
         return coord;
     }

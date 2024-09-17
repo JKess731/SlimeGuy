@@ -23,7 +23,6 @@ public class SingleRoomController : MonoBehaviour
 
     [SerializeField] private GameObject spawnAnimObj;
     public RoomTag roomTag;
-    [SerializeField] private float startWaveDelay = 3f;
     [SerializeField] private List<GameObject> roomDoors = new List<GameObject>();
     public List<RoomLevelWave> waves = new List<RoomLevelWave>();
 
@@ -36,7 +35,6 @@ public class SingleRoomController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(inWave);
         if (triggered)
         {
             CheckWave();
