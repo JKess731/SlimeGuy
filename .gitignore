@@ -101,3 +101,4 @@ fmod_editor.log
 Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
 Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset
 *.fobj
+Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset.meta
