@@ -10,6 +10,9 @@ public class EnemyAttackSOBase : ScriptableObject
     protected GameObject _gameObject;
     protected Transform _playerTransform;
 
+    // Array to hold multiple of one sound event
+    [SerializeField] private EventReference[] golemAttackSounds;
+
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
@@ -18,6 +21,16 @@ public class EnemyAttackSOBase : ScriptableObject
         _transform = gameObject.transform;
         _enemy = enemy;
         _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
+
+        // Initialize the attackSounds array using FmodEvents instance
+        FmodEvents fmodEvents = FmodEvents.instance;
+
+        golemAttackSounds = new EventReference[]
+        {
+            fmodEvents.GolemAttack1,
+            fmodEvents.GolemAttack2,
+            fmodEvents.GolemAttack3
+        };
 
     }
 
@@ -48,6 +61,25 @@ public class EnemyAttackSOBase : ScriptableObject
             AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
         }
 
+        if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
+        {
+            PlayRandomGolemAttack();
+        }
+    }
+
+    public virtual void PlayRandomGolemAttack()
+    {
+        if (golemAttackSounds.Length > 0)
+        {
+
+            int randomIndex = Random.Range(0, golemAttackSounds.Length);
+            Debug.Log(randomIndex);
+            AudioManager.instance.PlayOneShot(golemAttackSounds[randomIndex], _transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("No attack sounds assigned to Golem.");
+        }
     }
 
     public virtual void ResetValues() { }

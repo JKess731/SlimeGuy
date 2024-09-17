@@ -224,7 +224,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         DwarfDamaged,
         DwarfAttack,
         DwarfDeath,
-        PlayDwarfFootStepSound
+        PlayDwarfFootStepSound,
+        GolemAttack,
+        GolemDeath,
+        GolemDamaged,
+        GolemFootStepSound
     }
     #endregion
 

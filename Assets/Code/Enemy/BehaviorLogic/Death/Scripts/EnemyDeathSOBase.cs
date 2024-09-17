@@ -35,6 +35,10 @@ public class EnemyDeathSOBase : ScriptableObject
         {
             AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
         }
+        if(triggerType == EnemyBase.AnimationTriggerType.GolemDeath)
+        {
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemDeath, _transform.position);
+        }
     }
 
     public virtual void ResetValues() { }
