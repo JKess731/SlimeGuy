@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Slice
+  m_Name: Smash
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,18 +22,26 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -1269094767, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
+    - time: 0.125
+      value: {fileID: -1269094767, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
     - time: 0.25
+      value: {fileID: -1269094767, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
+    - time: 0.375
       value: {fileID: -1269094767, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
     - time: 0.5
       value: {fileID: -2058385252, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
-    - time: 0.76666665
+    - time: 0.625
+      value: {fileID: -2058385252, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
+    - time: 0.75
+      value: {fileID: -2058385252, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
+    - time: 0.875
       value: {fileID: -2058385252, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 60
+  m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -52,6 +60,10 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: -1269094767, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
     - {fileID: -1269094767, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
+    - {fileID: -1269094767, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
+    - {fileID: -1269094767, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
+    - {fileID: -2058385252, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
+    - {fileID: -2058385252, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
     - {fileID: -2058385252, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
     - {fileID: -2058385252, guid: 81029fbd53190d149baa34fb33618f27, type: 3}
   m_AnimationClipSettings:
@@ -59,7 +71,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.7833333
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

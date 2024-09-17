@@ -30,7 +30,7 @@ public class EnemyAttackSOBase : ScriptableObject
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { 
         if (triggerType == EnemyBase.AnimationTriggerType.EnemyAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.enemyAttack, _transform.position);
+            //AudioManager.instance.PlayOneShot(FmodEvents.instance.enemyAttack, _transform.position);
         }
     }
 
