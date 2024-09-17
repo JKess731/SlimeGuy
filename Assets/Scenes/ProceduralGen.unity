@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &13985928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startRoom: {fileID: 2070151340180195389, guid: b2468c9cb9cbbf8448f99be638312f00, type: 3}
   roomList: {fileID: 11400000, guid: 1edcecc11da7f704c9ffebfb32d6e8de, type: 2}
-  maxRooms: 25
+  maxRooms: 16
   minRooms: 10
   overrideRoomCount: 0
   rowSize: 16
@@ -262,7 +262,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 356524888}
-  - component: {fileID: 356524887}
   m_Layer: 0
   m_Name: New Gen
   m_TagString: Untagged
@@ -270,18 +269,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &356524887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 356524886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe1774fb73c5e649a9bb5309c619de4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &356524888
 Transform:
   m_ObjectHideFlags: 0
@@ -462,6 +449,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5428358974488452913, guid: 0378a169840611d469e721b28690adf6, type: 3}
+      propertyPath: genScript
+      value: 
+      objectReference: {fileID: 13985928}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
