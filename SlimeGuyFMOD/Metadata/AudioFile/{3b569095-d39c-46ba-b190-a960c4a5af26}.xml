@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{3b569095-d39c-46ba-b190-a960c4a5af26}">
+		<property name="assetPath">
+			<value>Slime Guy_Dungeon [Strings 1].wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>168</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f1b8826f-904c-45bf-af99-ef0eec3a91ad}</destination>
+		</relationship>
+	</object>
+</objects>

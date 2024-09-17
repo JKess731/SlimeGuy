@@ -6,247 +6,58 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     //References
-    PlayerStats playerStats;
-    PlayerInput playerInput;
-    AnimationControl animationControl;
+    [SerializeField] private StatsSO _playerStats;
+    private PlayerAnimation _animationControl;
+    private PlayerController _playerController;
 
-    Rigidbody2D rb;
-    TrailRenderer tr;
+    private Enum_State _state;                      //State Variables
+    private KnockBack _knockBack;                   //Knockback Variables
 
-    //Movement Variables
-    private Vector2 moveVector = Vector2.zero;
-    public Vector2 faceDirection;
-
-    //Dash Variables
-    private bool canDash = true;
-    private bool dashPressed;
-
-    //Knockback Variables
-    private KnockBack knockBack;
-
-    //Dash Variables
-    [Header("Dash Variables")]
-    [SerializeField] private float dashingPower = 20f;
-    [SerializeField] private float dashingTime = 0.5f;
-    [SerializeField] private float dashingCooldown = 1f;
-
-    //Animation States
-    [Header("Animation States")]
-    [SerializeField] private bool isIdle = false;
-    [SerializeField] private bool isMoving = false;
-    [SerializeField] private bool isDashing = false;
-    [SerializeField] private bool isAttacking = false;
-    [SerializeField] private bool isDamaged = false;
-
-    private float speed;
+    public Enum_State State { get => _state; set => _state = value; }
 
     private void Awake()
     {
-        //Not great
-        playerStats = GetComponent<PlayerStats>();
+        //Set up initial references
+        _playerStats = Instantiate(_playerStats);
+        _playerStats.Initialize();
 
         //Set up initial references
-        animationControl = GetComponent<AnimationControl>();
-        playerInput = new PlayerInput();
-
-        rb = GetComponent<Rigidbody2D>();
-        tr = GetComponent<TrailRenderer>();
-        knockBack = GetComponent<KnockBack>();
-
-        //Set up input actions
-        playerInput.GamePlay.Movement.started += OnMovement;
-        playerInput.GamePlay.Movement.performed += OnMovement;
-        playerInput.GamePlay.Movement.canceled += OnMovementCancel;
-
-        playerInput.GamePlay.Dash.started += OnDash;
-        playerInput.GamePlay.Dash.performed += OnDash;
-        playerInput.GamePlay.Dash.canceled += OnDash;
-    }
-
-    private void Start()
-    {
-        speed = PlayerStats.instance.speed;
+        _animationControl = GetComponent<PlayerAnimation>();
+        _playerController = GetComponent<PlayerController>();
+        _knockBack = GetComponent<KnockBack>();
     }
 
     //Handles Movement and Animation
     private void FixedUpdate()
     {
-        HandleMovement();
         HandleAnimation();
     }
 
-    //Enables Input Actions
-    private void OnEnable()
-    {
-        playerInput.GamePlay.Enable();
-        playerInput.GamePlay.Movement.started += OnMovement;
-        playerInput.GamePlay.Movement.performed += OnMovement;
-        playerInput.GamePlay.Movement.canceled += OnMovementCancel;
-
-        playerInput.GamePlay.Dash.started += OnDash;
-        playerInput.GamePlay.Dash.performed += OnDash;
-        playerInput.GamePlay.Dash.canceled += OnDash;
-    }
-
-    //Disables Input Actions
-    private void OnDisable()
-    {
-        playerInput.GamePlay.Disable();
-        playerInput.GamePlay.Movement.started -= OnMovement;
-        playerInput.GamePlay.Movement.performed -= OnMovement;
-        playerInput.GamePlay.Movement.canceled -= OnMovementCancel;
-
-        playerInput.GamePlay.Dash.started -= OnDash;
-        playerInput.GamePlay.Dash.performed -= OnDash;
-        playerInput.GamePlay.Dash.canceled -= OnDash;
-    }
-
     //Disables Movement Input Actions
-    public void DisableMovement()
-    {
-        playerInput.GamePlay.Movement.started -= OnMovement;
-        playerInput.GamePlay.Movement.performed -= OnMovement;
-        playerInput.GamePlay.Movement.canceled -= OnMovement;
-    }
-
-    //Enables Movement Input Actions
-    public void EnableMovement()
-    {
-        playerInput.GamePlay.Movement.started += OnMovement;
-        playerInput.GamePlay.Movement.performed += OnMovement;
-        playerInput.GamePlay.Movement.canceled += OnMovementCancel;
-    }
-
-    //Handles Movement
-    private void HandleMovement()
-    {
-
-        if (dashPressed && canDash && !knockBack.isBeingKnockedBack)
-        {
-            StartCoroutine(DashCoroutine());
-        }
-
-        if ((isIdle || isMoving) && (!isDashing && !isDamaged))
-        {
-            rb.velocity = moveVector * speed;
-        }
-    }
-
-    //Handles Movement Input Actions
-    private void OnMovement(InputAction.CallbackContext context)
-    {
-        isMoving = true;
-        isIdle = false;
-
-        moveVector = context.ReadValue<Vector2>();
-        faceDirection = moveVector.normalized;
-    }
-
-    private void OnMovementCancel(InputAction.CallbackContext context)
-    {
-        isMoving = false;
-        isIdle = true;
-
-        moveVector = Vector2.zero;
-    }
 
     /// <summary>
     /// Handles the animation based on the state of the player and the direction they are facing
     /// </summary>
     private void HandleAnimation()
     {
-        if(isIdle)
-        {
-            animationControl.SetState(AnimationState.IDLE);
-        }
-
-        if(isMoving)
-        {
-            animationControl.SetState(AnimationState.MOVING);
-        }
-
-        if(isDashing)
-        {
-            animationControl.SetState(AnimationState.DASHING);
-        }
-
-        if(isAttacking)
-        {
-            animationControl.SetState(AnimationState.ATTACKING);
-        }
-
-        if(isDamaged)
-        {
-            animationControl.SetState(AnimationState.DAMAGED);
-        }
-
-        animationControl.PlayAnimation(faceDirection);
-    }
-
-    //Handles Dash Input Actions
-    private void OnDash(InputAction.CallbackContext context)
-    {
-        isIdle = false;
-        isMoving = false;
-        dashPressed = context.ReadValueAsButton();
-    }
-
-    //Dash Coroutine set the rigidbody to the dashing power for a set amount of time
-    private IEnumerator DashCoroutine()
-    {
-        //Handles Initial Dash
-        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
-        DisableMovement();
-        isMoving = false;
-        isDashing = true;
-        canDash = false;
-
-        tr.emitting = true;
-        rb.velocity = faceDirection * dashingPower;
-        yield return new WaitForSeconds(dashingTime);
-
-        //Handles Dash End
-        EnableMovement();
-        tr.emitting = false;
-        isDashing = false;
-        isMoving = true;
-        rb.velocity = Vector2.zero;
-
-        //Handles Dash Cooldown
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
-    }
-
-    public Vector2 GetMoveDir()
-    {
-        return moveVector;
+        _animationControl.PlayAnimation(_playerController.FaceDirection, _state);
     }
 
     //Handles Damage and Knockback
     public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
-        isDamaged = true;
-        isMoving = false;
-        isIdle = false;
-        isDashing = false;
-        isAttacking = false;
+        if (_playerStats.GetStat(StatsEnum.HEALTH) <= 0)
+        {
+            return;
+        }
 
-        playerStats.Damage(damage);
-        knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
+        _playerStats.SubtractStat(StatsEnum.HEALTH, damage);
+        _knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
     }
 
-    private void SetIdleEvent()
+    public void SetState(Enum_State state)
     {
-        isIdle = true;
-        isMoving = false;
-        isDashing = false;
-        isAttacking = false;
-        isDamaged = false;
-    }
-
-    public void setSpeed(float newSpeed)
-    {
-        speed = newSpeed;
+        _state = state;
     }
 }

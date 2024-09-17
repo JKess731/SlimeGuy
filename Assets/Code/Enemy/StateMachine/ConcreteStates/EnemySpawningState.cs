@@ -11,32 +11,31 @@ public class EnemySpawningState : EnemyState
     public override void AnimationTriggerEvent(EnemyBase.AnimationTriggerType triggerType)
     {
         base.AnimationTriggerEvent(triggerType);
-        enemyBase.enemySpawnBaseInstance.DoAnimationTriggerEventLogic(triggerType);
+        _enemyBase.enemySpawnBaseInstance.DoAnimationTriggerEventLogic(triggerType);
     }
 
     public override void EnterState()
     {
         base.EnterState();
-        enemyBase.animator.SetBool("SpawnState", true);
-        enemyBase.enemySpawnBaseInstance.DoEnterLogic();
+        _enemyBase.enemySpawnBaseInstance.DoEnterLogic();
+        //_enemyBase.State = Enum_State.SPAWNING;
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        enemyBase.animator.SetBool("SpawnState", false);
-        enemyBase.enemySpawnBaseInstance.DoExitLogic();
+        _enemyBase.enemySpawnBaseInstance.DoExitLogic();
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        enemyBase.enemySpawnBaseInstance.DoFrameUpdateLogic();
+        _enemyBase.enemySpawnBaseInstance.DoFrameUpdateLogic();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        enemyBase.enemySpawnBaseInstance.DoPhysicsLogic();
+        _enemyBase.enemySpawnBaseInstance.DoPhysicsLogic();
     }
 }

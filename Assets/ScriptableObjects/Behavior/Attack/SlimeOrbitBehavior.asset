@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6398c4295670344b80627702f138e8d, type: 3}
+  m_Name: SlimeOrbitBehavior
+  m_EditorClassIdentifier: 
+  _cooldownTime: 3
+  _activationTime: 7
+  _orbit: {fileID: 7031965650677062296, guid: ffccf9cc23408834e9783f3a655a1542, type: 3}
+  _orbitCount: 4
+  _spreadAngle: 360
+  _damage: 1
+  _knockback: 3
+  _rotationSpeed: 5
+  _distance: 3

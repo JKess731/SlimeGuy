@@ -5,15 +5,14 @@ using UnityEngine;
 // EnemyState class for the enemy state machine
 public class EnemyState
 {
-    protected EnemyBase enemyBase;
-    protected EnemyStateMachine enemyStateMachine;
+    protected EnemyBase _enemyBase;
+    protected EnemyStateMachine _enemyStateMachine;
 
     //Constructor for the creation of the enemy state
     public EnemyState(EnemyBase enemyBase, EnemyStateMachine enemyStateMachine) { 
 
-        this.enemyBase = enemyBase;
-        this.enemyStateMachine = enemyStateMachine;
-    
+        _enemyBase = enemyBase;
+        _enemyStateMachine = enemyStateMachine;
     }
     public virtual void EnterState() { }
     public virtual void ExitState() { }

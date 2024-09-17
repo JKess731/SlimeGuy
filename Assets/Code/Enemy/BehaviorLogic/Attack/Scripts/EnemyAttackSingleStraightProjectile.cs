@@ -32,20 +32,20 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        enemy.MoveEnemy(Vector2.zero);
+        _enemy.MoveEnemy(Vector2.zero);
         if (timer > timeBetweenShots)
         {
             timer = 0f;
-            Vector2 dir = (playerTransform.position - enemy.transform.position).normalized;
-            Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, enemy.transform.position, Quaternion.identity);
+            Vector2 dir = (_playerTransform.position - _enemy.transform.position).normalized;
+            Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, _enemy.transform.position, Quaternion.identity);
             bullet.velocity = dir * bulletSpeed;
         }
-        if (Vector2.Distance(playerTransform.position, enemy.transform.position) > distanceToCountExit)
+        if (Vector2.Distance(_playerTransform.position, _enemy.transform.position) > distanceToCountExit)
         {
             exitTimer += Time.deltaTime;
             if (exitTimer > timeTillExit)
             {
-                enemy.stateMachine.ChangeState(enemy.chaseState);
+                _enemy.stateMachine.ChangeState(_enemy.chaseState);
             }
         }
         else

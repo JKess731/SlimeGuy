@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Gameplay.uss?fileID=7433441132597879392&amp;guid=e17b801b95d5e22448bbba2b3d099b8c&amp;type=3#Gameplay" />
+    <ui:VisualElement name="MainPanel" style="flex-grow: 1;">
+        <ui:VisualElement name="GamePanel" style="flex-grow: 1; align-items: stretch; height: 830px;" />
+        <ui:VisualElement name="AbilityPanel" style="flex-grow: 1; flex-direction: row; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+            <ui:VisualElement name="Ability1" class="Ability">
+                <ui:VisualElement name="Icon" class="Icon" />
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-items: center; align-self: center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Ability2" class="Ability">
+                <ui:VisualElement name="Icon" class="Icon" />
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-items: center; align-self: center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Ability3" class="Ability">
+                <ui:VisualElement name="Icon" class="Icon" />
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-items: center; align-self: center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Padding" style="flex-grow: 1; width: 21px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

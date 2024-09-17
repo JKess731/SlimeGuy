@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class EnemyChaseSOBase : ScriptableObject
 {
-    protected EnemyBase enemy;
-    protected Transform transform;
-    protected GameObject gameObject;
-    protected Transform playerTransform;
+    protected EnemyBase _enemy;
+    protected Transform _transform;
+    protected GameObject _gameObject;
+    protected Transform _playerTransform;
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
 
-        this.gameObject = gameObject;
-        transform = gameObject.transform;
-        this.enemy = enemy;
-        playerTransform = GameObject.FindGameObjectWithTag("player").transform;
-
+        _gameObject = gameObject;
+        _transform = gameObject.transform;
+        _enemy = enemy;
+        _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
     }
 
-    public virtual void DoEnterLogic() { }
+    public virtual void DoEnterLogic() { 
+        _enemy.State = Enum_State.MOVING;
+    }
 
     public virtual void DoExitLogic() { ResetValues(); }
 
     public virtual void DoFrameUpdateLogic()
     {
-        if (enemy.isWithinStikingDistance)
+        _enemy.FaceDir  = (_playerTransform.position - _enemy.transform.position).normalized;
+        if (_enemy.isWithinStikingDistance)
         {
-            enemy.stateMachine.ChangeState(enemy.attackState);
+            _enemy.stateMachine.ChangeState(_enemy.attackState);
         }
     }
 

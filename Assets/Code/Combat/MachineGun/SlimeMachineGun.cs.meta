@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Input/RelicInventoryInputManager.cs.meta
+guid: e81fc2a73de28f8409fe4212b5690b7d
+========
+guid: 47ba5753677adab46ae937a9fcb54f7e
+>>>>>>>> Relic_Trenton_Edison:Assets/Code/Combat/MachineGun/SlimeMachineGun.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
