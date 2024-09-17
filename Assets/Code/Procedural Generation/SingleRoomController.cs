@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
 public class SingleRoomController : MonoBehaviour
@@ -20,16 +21,17 @@ public class SingleRoomController : MonoBehaviour
         public List<MonsterSpawner> monsters = new List<MonsterSpawner>();
     }
 
+    [SerializeField] private GameObject spawnAnimObj;
     public RoomTag roomTag;
-    [SerializeField] private float startWaveDelay = 3f;
     [SerializeField] private List<GameObject> roomDoors = new List<GameObject>();
     public List<RoomLevelWave> waves = new List<RoomLevelWave>();
 
     private int currentWave = 0;
     private bool inWave = false;
-    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    [SerializeField] private List<GameObject> spawnedEnemies = new List<GameObject>();
 
     private bool triggered = false;
+    private bool cleared = false;
 
     private void Update()
     {
@@ -50,36 +52,37 @@ public class SingleRoomController : MonoBehaviour
         }
 
         RoomLevelWave waveToSpawn = waves[currentWave];
+        inWave = true;
         currentWave++;
-
-        if (!triggered) triggered = true;
-
         StartCoroutine(SpawnEnemies(waveToSpawn.monsters));
     }
 
     IEnumerator SpawnEnemies(List<MonsterSpawner> waveMonsters)
     {
-        //yield return new WaitForSeconds(startWaveDelay);
-
         foreach (MonsterSpawner ms in waveMonsters)
         {
-            if (ms.spawnDelay > 0)
-            {
-                yield return new WaitForSeconds(ms.spawnDelay);
-            }
+            yield return new WaitForSecondsRealtime(ms.spawnDelay);
+
+            GameObject spawnAnim = Instantiate(spawnAnimObj, transform);
+            spawnAnim.transform.localPosition = ms.spawnPos;
 
             GameObject enemy = Instantiate(ms.enemyPrefab, transform);
+            SpawnAnimation s = spawnAnim.GetComponent<SpawnAnimation>();
+            s.enemy = enemy;
             enemy.transform.localPosition = ms.spawnPos;
+            enemy.SetActive(false);
 
             spawnedEnemies.Add(enemy);
         }
+
+        if (triggered == false) triggered = true;
 
         inWave = true;
     }
 
     private void CheckNullEnemies()
     {
-        if (spawnedEnemies.Count <= 0)
+        if (spawnedEnemies.Count == 0 && inWave)
         {
             inWave = false;
         }
@@ -94,7 +97,6 @@ public class SingleRoomController : MonoBehaviour
                     nullEnemies.Add(enemy);
                 }
             }
-
             spawnedEnemies.RemoveAll(nullEnemies.Contains);
         }
     }
@@ -111,18 +113,16 @@ public class SingleRoomController : MonoBehaviour
             {
                 StartNextWave();
             }
-            else
+            else if (currentWave == waves.Count && spawnedEnemies.Count == 0)
             {
                 foreach (GameObject door in roomDoors)
                 {
-                    door.SetActive(true);
+                    door.SetActive(false);
                 }
 
                 gameObject.SetActive(false);
             }
         }
-
-
     }
 
 }

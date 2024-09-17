@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a65d765fb527514f929c47c396f1966
+guid: 085624d74b951504c98236f46d2b7c0e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,274 +136,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemySpawn_0
+      name: PuddleMovementCycle_Down-Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 16
+        y: 16
+        width: 32
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea1b5471efcfbcd4f8cd2f8565a3e26a
-      internalID: 2035944205
+      spriteID: 55905f564dc353946ba16aa855f631e3
+      internalID: -1428993314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_1
+      name: PuddleMovementCycle_Down-Sheet_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 80
+        y: 16
+        width: 34
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19c70b8da3eded34986304730c368d11
-      internalID: -575176246
+      spriteID: b95c911869ef8ab4582fc9386c3f2bbf
+      internalID: -1142472266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_2
+      name: PuddleMovementCycle_Down-Sheet_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 144
+        y: 16
+        width: 33
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 970fc29f50d765945be2dc18a8bb36c8
-      internalID: -640449381
+      spriteID: a157b6b7802b6634dafa3e13cc64de23
+      internalID: -1642056577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_3
+      name: PuddleMovementCycle_Down-Sheet_3
       rect:
         serializedVersion: 2
-        x: 288
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 210
+        y: 16
+        width: 31
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf25763a968fb9e419fd2fde2ad8e444
-      internalID: 548350369
+      spriteID: 493cc99b4e89de64e9df9d9700ccf894
+      internalID: -1056348058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_4
+      name: PuddleMovementCycle_Down-Sheet_4
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 272
+        y: 16
+        width: 32
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb4faecb717428d46bcda929407164b4
-      internalID: -1373244847
+      spriteID: df5fdbcea2a625b419b4872757959cef
+      internalID: -785222533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_5
+      name: PuddleMovementCycle_Down-Sheet_5
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 335
+        y: 16
+        width: 34
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01509403112624649af9cd160f30e5ae
-      internalID: 548737380
+      spriteID: 1d6b460dfeb23e74ea23410ed7413e7a
+      internalID: -1303374871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_6
+      name: PuddleMovementCycle_Down-Sheet_6
       rect:
         serializedVersion: 2
-        x: 576
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 400
+        y: 16
+        width: 33
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 925762c9ffc3bd741b77882b740edf04
-      internalID: -2076183952
+      spriteID: a420e92fce670eb449a1a22e056638f2
+      internalID: 455628170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_7
+      name: PuddleMovementCycle_Down-Sheet_7
       rect:
         serializedVersion: 2
-        x: 672
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 465
+        y: 16
+        width: 31
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed6152c8c0fb6654ea08da505ec0fb24
-      internalID: 296332953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySpawn_8
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 806e0cf9f8fad7b40a81ef5f2e84d24a
-      internalID: 575069117
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySpawn_9
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a1e4bfae235fcf43bdccb5ae1d49847
-      internalID: -2005944082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySpawn_10
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98814fbed0abb36408a90cdb71777b8f
-      internalID: -1372286289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySpawn_11
-      rect:
-        serializedVersion: 2
-        x: 1056
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3dd634f6337f0e743b9ccf95e49ec8d3
-      internalID: -934408171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySpawn_12
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38c4f915d311c714eb1a8586f560f1a1
-      internalID: 1903300259
+      spriteID: 7ce4be2628b781d4286c32c74a61c334
+      internalID: 1760639423
       vertices: []
       indices: 
       edges: []
@@ -419,19 +314,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      EnemySpawn_0: 2035944205
-      EnemySpawn_1: -575176246
-      EnemySpawn_10: -1372286289
-      EnemySpawn_11: -934408171
-      EnemySpawn_12: 1903300259
-      EnemySpawn_2: -640449381
-      EnemySpawn_3: 548350369
-      EnemySpawn_4: -1373244847
-      EnemySpawn_5: 548737380
-      EnemySpawn_6: -2076183952
-      EnemySpawn_7: 296332953
-      EnemySpawn_8: 575069117
-      EnemySpawn_9: -2005944082
+      PuddleMovementCycle_Down-Sheet_0: -1428993314
+      PuddleMovementCycle_Down-Sheet_1: -1142472266
+      PuddleMovementCycle_Down-Sheet_2: -1642056577
+      PuddleMovementCycle_Down-Sheet_3: -1056348058
+      PuddleMovementCycle_Down-Sheet_4: -785222533
+      PuddleMovementCycle_Down-Sheet_5: -1303374871
+      PuddleMovementCycle_Down-Sheet_6: 455628170
+      PuddleMovementCycle_Down-Sheet_7: 1760639423
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

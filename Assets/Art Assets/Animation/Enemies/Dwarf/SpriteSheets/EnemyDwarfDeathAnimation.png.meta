@@ -139,10 +139,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 16
-        width: 22
-        height: 33
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,10 +160,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 16
-        width: 29
-        height: 32
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_2
       rect:
         serializedVersion: 2
-        x: 140
-        y: 16
-        width: 32
-        height: 31
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,10 +202,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_3
       rect:
         serializedVersion: 2
-        x: 202
-        y: 16
-        width: 35
-        height: 32
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,10 +223,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_4
       rect:
         serializedVersion: 2
-        x: 267
-        y: 16
-        width: 34
-        height: 33
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +244,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_5
       rect:
         serializedVersion: 2
-        x: 329
-        y: 16
-        width: 37
-        height: 35
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,10 +265,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_6
       rect:
         serializedVersion: 2
-        x: 392
-        y: 16
-        width: 39
-        height: 36
+        x: 384
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,10 +286,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_7
       rect:
         serializedVersion: 2
-        x: 476
-        y: 38
-        width: 10
-        height: 10
+        x: 448
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,10 +307,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_8
       rect:
         serializedVersion: 2
-        x: 515
-        y: 16
-        width: 48
-        height: 35
+        x: 512
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +328,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_9
       rect:
         serializedVersion: 2
-        x: 452
-        y: 16
-        width: 45
-        height: 22
+        x: 576
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,10 +349,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_10
       rect:
         serializedVersion: 2
-        x: 579
-        y: 16
-        width: 39
-        height: 13
+        x: 640
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -370,10 +370,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_11
       rect:
         serializedVersion: 2
-        x: 643
-        y: 16
-        width: 39
-        height: 12
+        x: 704
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -391,10 +391,10 @@ TextureImporter:
       name: EnemyDwarfDeathAnimation_12
       rect:
         serializedVersion: 2
-        x: 707
-        y: 16
-        width: 39
-        height: 11
+        x: 768
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,27 +404,6 @@ TextureImporter:
       bones: []
       spriteID: b2d3b335a41e9a94f80f157ecc1b5304
       internalID: 262364954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDwarfDeathAnimation_13
-      rect:
-        serializedVersion: 2
-        x: 771
-        y: 16
-        width: 39
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ed9d3bdac0f4f24599d9e15c8654450
-      internalID: 1810053575
       vertices: []
       indices: 
       edges: []
@@ -445,7 +424,6 @@ TextureImporter:
       EnemyDwarfDeathAnimation_10: 658233018
       EnemyDwarfDeathAnimation_11: -339594555
       EnemyDwarfDeathAnimation_12: 262364954
-      EnemyDwarfDeathAnimation_13: 1810053575
       EnemyDwarfDeathAnimation_2: 2025189885
       EnemyDwarfDeathAnimation_3: -570986870
       EnemyDwarfDeathAnimation_4: -1325849007

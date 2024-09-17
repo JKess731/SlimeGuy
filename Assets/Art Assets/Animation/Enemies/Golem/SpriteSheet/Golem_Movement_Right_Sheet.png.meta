@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a65d765fb527514f929c47c396f1966
+guid: 34e2cdd408f0abf48961001599a944b6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -111,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,7 +124,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemySpawn_0
+      name: Golem_Movement_Right_Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea1b5471efcfbcd4f8cd2f8565a3e26a
-      internalID: 2035944205
+      spriteID: b60ee081cbba26b45b4de79bdd44c626
+      internalID: 736483783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_1
+      name: Golem_Movement_Right_Sheet_1
       rect:
         serializedVersion: 2
         x: 96
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19c70b8da3eded34986304730c368d11
-      internalID: -575176246
+      spriteID: 4e681d56a3259044997fe40d84f1bdc0
+      internalID: 1886046411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_2
+      name: Golem_Movement_Right_Sheet_2
       rect:
         serializedVersion: 2
         x: 192
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 970fc29f50d765945be2dc18a8bb36c8
-      internalID: -640449381
+      spriteID: 506e53f50b7006245a019bb2d2249c6c
+      internalID: -799391083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_3
+      name: Golem_Movement_Right_Sheet_3
       rect:
         serializedVersion: 2
         x: 288
@@ -213,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf25763a968fb9e419fd2fde2ad8e444
-      internalID: 548350369
+      spriteID: 86d2fb48771b71c449bf38fcb3eb690a
+      internalID: -389233344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_4
+      name: Golem_Movement_Right_Sheet_4
       rect:
         serializedVersion: 2
         x: 384
@@ -234,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb4faecb717428d46bcda929407164b4
-      internalID: -1373244847
+      spriteID: f968867196db4b64088792ddb4bb75c7
+      internalID: 1809573569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_5
+      name: Golem_Movement_Right_Sheet_5
       rect:
         serializedVersion: 2
         x: 480
@@ -255,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01509403112624649af9cd160f30e5ae
-      internalID: 548737380
+      spriteID: 64250605479d59f4099241a32b391fb3
+      internalID: 253395976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_6
+      name: Golem_Movement_Right_Sheet_6
       rect:
         serializedVersion: 2
         x: 576
@@ -276,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 925762c9ffc3bd741b77882b740edf04
-      internalID: -2076183952
+      spriteID: 332e650b8bd3d084e8ef88cd5171d164
+      internalID: -1986981988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_7
+      name: Golem_Movement_Right_Sheet_7
       rect:
         serializedVersion: 2
         x: 672
@@ -297,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed6152c8c0fb6654ea08da505ec0fb24
-      internalID: 296332953
+      spriteID: ef296b6e17d2d5c43b14c41995d85764
+      internalID: 661693921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_8
+      name: Golem_Movement_Right_Sheet_8
       rect:
         serializedVersion: 2
         x: 768
@@ -318,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 806e0cf9f8fad7b40a81ef5f2e84d24a
-      internalID: 575069117
+      spriteID: 14ce51ef8db7e8543a0a84728888c572
+      internalID: -1162532862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_9
+      name: Golem_Movement_Right_Sheet_9
       rect:
         serializedVersion: 2
         x: 864
@@ -339,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a1e4bfae235fcf43bdccb5ae1d49847
-      internalID: -2005944082
+      spriteID: 684535fd209479140bb26adc61e51340
+      internalID: -947203862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_10
+      name: Golem_Movement_Right_Sheet_10
       rect:
         serializedVersion: 2
         x: 960
@@ -360,14 +360,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98814fbed0abb36408a90cdb71777b8f
-      internalID: -1372286289
+      spriteID: 9ec627941969f534a85afdeff1a35d18
+      internalID: 2830457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_11
+      name: Golem_Movement_Right_Sheet_11
       rect:
         serializedVersion: 2
         x: 1056
@@ -381,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dd634f6337f0e743b9ccf95e49ec8d3
-      internalID: -934408171
+      spriteID: 9d1f15c2c260a8e4a8086fe3c882b8ad
+      internalID: -1284165857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_12
+      name: Golem_Movement_Right_Sheet_12
       rect:
         serializedVersion: 2
         x: 1152
@@ -402,8 +402,239 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38c4f915d311c714eb1a8586f560f1a1
-      internalID: 1903300259
+      spriteID: 935bb16919e0ddf4384a9931196ad274
+      internalID: -1846114902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c2525f3ef682d440b41fe8c27a9f622
+      internalID: 1956071526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ff55e4babf911547b67a6f92fbed589
+      internalID: -1464138839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7156a557e06f42b438b0f1265dec6b04
+      internalID: 1685847855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdab0827cad169d4d96bb944d595ef39
+      internalID: -2097296801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09112da9d443b794d841f5257f5169ea
+      internalID: -1194973677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fbe6a01ead6a704fabf01b83f500c70
+      internalID: 1089221637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f624d19be324f45a0f66e602b6ac30
+      internalID: -1363462991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c14aae70b6045994988dd3171a7bab99
+      internalID: 1912248203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e7e546481265fe4090c96643ee3754f
+      internalID: 1560732356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a6fa5ef2ba89a43886277b8110fc63
+      internalID: -11773025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Movement_Right_Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a57e9e1125bba4c902da4f0e39e1e2
+      internalID: -459778820
       vertices: []
       indices: 
       edges: []
@@ -419,19 +650,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      EnemySpawn_0: 2035944205
-      EnemySpawn_1: -575176246
-      EnemySpawn_10: -1372286289
-      EnemySpawn_11: -934408171
-      EnemySpawn_12: 1903300259
-      EnemySpawn_2: -640449381
-      EnemySpawn_3: 548350369
-      EnemySpawn_4: -1373244847
-      EnemySpawn_5: 548737380
-      EnemySpawn_6: -2076183952
-      EnemySpawn_7: 296332953
-      EnemySpawn_8: 575069117
-      EnemySpawn_9: -2005944082
+      Golem_Movement_Right_Sheet_0: 736483783
+      Golem_Movement_Right_Sheet_1: 1886046411
+      Golem_Movement_Right_Sheet_10: 2830457
+      Golem_Movement_Right_Sheet_11: -1284165857
+      Golem_Movement_Right_Sheet_12: -1846114902
+      Golem_Movement_Right_Sheet_13: 1956071526
+      Golem_Movement_Right_Sheet_14: -1464138839
+      Golem_Movement_Right_Sheet_15: 1685847855
+      Golem_Movement_Right_Sheet_16: -2097296801
+      Golem_Movement_Right_Sheet_17: -1194973677
+      Golem_Movement_Right_Sheet_18: 1089221637
+      Golem_Movement_Right_Sheet_19: -1363462991
+      Golem_Movement_Right_Sheet_2: -799391083
+      Golem_Movement_Right_Sheet_20: 1912248203
+      Golem_Movement_Right_Sheet_21: 1560732356
+      Golem_Movement_Right_Sheet_22: -11773025
+      Golem_Movement_Right_Sheet_23: -459778820
+      Golem_Movement_Right_Sheet_3: -389233344
+      Golem_Movement_Right_Sheet_4: 1809573569
+      Golem_Movement_Right_Sheet_5: 253395976
+      Golem_Movement_Right_Sheet_6: -1986981988
+      Golem_Movement_Right_Sheet_7: 661693921
+      Golem_Movement_Right_Sheet_8: -1162532862
+      Golem_Movement_Right_Sheet_9: -947203862
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

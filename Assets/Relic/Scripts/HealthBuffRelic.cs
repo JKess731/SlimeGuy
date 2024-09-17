@@ -24,6 +24,6 @@ public class HealthBuffRelic : RelicSO
 
     public override bool Condition()
     {
-        return false;
+        throw new System.NotImplementedException();
     }
 }

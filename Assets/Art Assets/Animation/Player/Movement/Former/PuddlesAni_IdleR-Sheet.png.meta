@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a65d765fb527514f929c47c396f1966
+guid: b554035dd21b5984b9551bc97ddbd02f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,274 +136,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemySpawn_0
+      name: PuddlesAni_IdleR-Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 16
+        y: 16
+        width: 32
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea1b5471efcfbcd4f8cd2f8565a3e26a
-      internalID: 2035944205
+      spriteID: 467d4e1d661e65a4fa514a8c507d408f
+      internalID: -1377544796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_1
+      name: PuddlesAni_IdleR-Sheet_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 80
+        y: 16
+        width: 33
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19c70b8da3eded34986304730c368d11
-      internalID: -575176246
+      spriteID: 9872eea7cd0c5044892870f09e0fa05a
+      internalID: 1962858816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_2
+      name: PuddlesAni_IdleR-Sheet_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 144
+        y: 16
+        width: 33
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 970fc29f50d765945be2dc18a8bb36c8
-      internalID: -640449381
+      spriteID: 910f2f41032e4414e9897994f1d12bb9
+      internalID: 1341561404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_3
+      name: PuddlesAni_IdleR-Sheet_3
       rect:
         serializedVersion: 2
-        x: 288
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 208
+        y: 16
+        width: 33
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf25763a968fb9e419fd2fde2ad8e444
-      internalID: 548350369
+      spriteID: 9468b5f1eb1463543b2f5ff28b195d04
+      internalID: 488174004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_4
+      name: PuddlesAni_IdleR-Sheet_4
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 272
+        y: 16
+        width: 33
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb4faecb717428d46bcda929407164b4
-      internalID: -1373244847
+      spriteID: 793adc2dd3d347f4890e26c235d2e32e
+      internalID: -1665648483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_5
+      name: PuddlesAni_IdleR-Sheet_5
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 336
+        y: 16
+        width: 33
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01509403112624649af9cd160f30e5ae
-      internalID: 548737380
+      spriteID: 335e82308735c6c4b836b5f6f0f5cf9f
+      internalID: -1268905081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_6
+      name: PuddlesAni_IdleR-Sheet_6
       rect:
         serializedVersion: 2
-        x: 576
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 400
+        y: 16
+        width: 32
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 925762c9ffc3bd741b77882b740edf04
-      internalID: -2076183952
+      spriteID: ebd72a6d86d3a4842802cc38222c2660
+      internalID: -1323623098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_7
+      name: PuddlesAni_IdleR-Sheet_7
       rect:
         serializedVersion: 2
-        x: 672
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 464
+        y: 16
+        width: 31
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed6152c8c0fb6654ea08da505ec0fb24
-      internalID: 296332953
+      spriteID: e6a43e54837393c4ba72b692a1cacfdc
+      internalID: -1419019069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_8
+      name: PuddlesAni_IdleR-Sheet_8
       rect:
         serializedVersion: 2
-        x: 768
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 528
+        y: 16
+        width: 31
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 806e0cf9f8fad7b40a81ef5f2e84d24a
-      internalID: 575069117
+      spriteID: 7abab2e48383077479a0f9bec3a239f0
+      internalID: -2064440564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemySpawn_9
+      name: PuddlesAni_IdleR-Sheet_9
       rect:
         serializedVersion: 2
-        x: 864
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 592
+        y: 16
+        width: 31
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a1e4bfae235fcf43bdccb5ae1d49847
-      internalID: -2005944082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySpawn_10
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98814fbed0abb36408a90cdb71777b8f
-      internalID: -1372286289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySpawn_11
-      rect:
-        serializedVersion: 2
-        x: 1056
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3dd634f6337f0e743b9ccf95e49ec8d3
-      internalID: -934408171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemySpawn_12
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38c4f915d311c714eb1a8586f560f1a1
-      internalID: 1903300259
+      spriteID: 53a5c21f737de6a4583bf0fc49622544
+      internalID: 1015420763
       vertices: []
       indices: 
       edges: []
@@ -419,19 +356,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      EnemySpawn_0: 2035944205
-      EnemySpawn_1: -575176246
-      EnemySpawn_10: -1372286289
-      EnemySpawn_11: -934408171
-      EnemySpawn_12: 1903300259
-      EnemySpawn_2: -640449381
-      EnemySpawn_3: 548350369
-      EnemySpawn_4: -1373244847
-      EnemySpawn_5: 548737380
-      EnemySpawn_6: -2076183952
-      EnemySpawn_7: 296332953
-      EnemySpawn_8: 575069117
-      EnemySpawn_9: -2005944082
+      PuddlesAni_IdleR-Sheet_0: -1377544796
+      PuddlesAni_IdleR-Sheet_1: 1962858816
+      PuddlesAni_IdleR-Sheet_2: 1341561404
+      PuddlesAni_IdleR-Sheet_3: 488174004
+      PuddlesAni_IdleR-Sheet_4: -1665648483
+      PuddlesAni_IdleR-Sheet_5: -1268905081
+      PuddlesAni_IdleR-Sheet_6: -1323623098
+      PuddlesAni_IdleR-Sheet_7: -1419019069
+      PuddlesAni_IdleR-Sheet_8: -2064440564
+      PuddlesAni_IdleR-Sheet_9: 1015420763
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
