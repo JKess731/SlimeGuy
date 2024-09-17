@@ -29,12 +29,14 @@ public class SingleRoomController : MonoBehaviour
 
     private int currentWave = 0;
     private bool inWave = false;
-    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    [SerializeField] private List<GameObject> spawnedEnemies = new List<GameObject>();
 
     private bool triggered = false;
+    private bool cleared = false;
 
     private void Update()
     {
+        Debug.Log(inWave);
         if (triggered)
         {
             CheckWave();
@@ -52,19 +54,13 @@ public class SingleRoomController : MonoBehaviour
         }
 
         RoomLevelWave waveToSpawn = waves[currentWave];
+        inWave = true;
         currentWave++;
-
         StartCoroutine(SpawnEnemies(waveToSpawn.monsters));
     }
 
     IEnumerator SpawnEnemies(List<MonsterSpawner> waveMonsters)
     {
-        //yield return new WaitForSeconds(startWaveDelay);
-
-        Debug.Log("Wave: " + currentWave);
-
-        inWave = true;
-
         foreach (MonsterSpawner ms in waveMonsters)
         {
             yield return new WaitForSecondsRealtime(ms.spawnDelay);
@@ -81,13 +77,14 @@ public class SingleRoomController : MonoBehaviour
             spawnedEnemies.Add(enemy);
         }
 
-        if (!triggered) triggered = true;
+        if (triggered == false) triggered = true;
 
+        inWave = true;
     }
 
     private void CheckNullEnemies()
     {
-        if (spawnedEnemies.Count <= 0 && inWave)
+        if (spawnedEnemies.Count == 0 && inWave)
         {
             inWave = false;
         }
@@ -102,7 +99,6 @@ public class SingleRoomController : MonoBehaviour
                     nullEnemies.Add(enemy);
                 }
             }
-
             spawnedEnemies.RemoveAll(nullEnemies.Contains);
         }
     }
@@ -119,16 +115,16 @@ public class SingleRoomController : MonoBehaviour
             {
                 StartNextWave();
             }
-            else
+            else if (currentWave == waves.Count && spawnedEnemies.Count == 0)
             {
                 foreach (GameObject door in roomDoors)
                 {
-                    door.SetActive(true);
+                    door.SetActive(false);
                 }
+
+                gameObject.SetActive(false);
             }
         }
-
-
     }
 
 }
