@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
 public class SingleRoomController : MonoBehaviour
@@ -53,14 +54,16 @@ public class SingleRoomController : MonoBehaviour
         RoomLevelWave waveToSpawn = waves[currentWave];
         currentWave++;
 
-        if (!triggered) triggered = true;
-
         StartCoroutine(SpawnEnemies(waveToSpawn.monsters));
     }
 
     IEnumerator SpawnEnemies(List<MonsterSpawner> waveMonsters)
     {
         //yield return new WaitForSeconds(startWaveDelay);
+
+        Debug.Log("Wave: " + currentWave);
+
+        inWave = true;
 
         foreach (MonsterSpawner ms in waveMonsters)
         {
@@ -78,12 +81,13 @@ public class SingleRoomController : MonoBehaviour
             spawnedEnemies.Add(enemy);
         }
 
-        inWave = true;
+        if (!triggered) triggered = true;
+
     }
 
     private void CheckNullEnemies()
     {
-        if (spawnedEnemies.Count <= 0)
+        if (spawnedEnemies.Count <= 0 && inWave)
         {
             inWave = false;
         }
@@ -121,8 +125,6 @@ public class SingleRoomController : MonoBehaviour
                 {
                     door.SetActive(true);
                 }
-
-                gameObject.SetActive(false);
             }
         }
 

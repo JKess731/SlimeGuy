@@ -3039,13 +3039,13 @@ MonoBehaviour:
       spawnDelay: 1.5
     - enemyPrefab: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       spawnPos: {x: 3, y: 8.5}
-      spawnDelay: 1.5
+      spawnDelay: 0
     - enemyPrefab: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       spawnPos: {x: 6, y: 6}
-      spawnDelay: 1.5
+      spawnDelay: 0
     - enemyPrefab: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       spawnPos: {x: 4, y: 3.5}
-      spawnDelay: 1.5
+      spawnDelay: 0
 --- !u!1 &6140865600711417345
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95e22b364f422a4098bb62eb65d856f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnAnimObj: {fileID: 6756413586049135127, guid: e8037e8bb0397c3469b7e42688c11fe6, type: 3}
   roomTag: 4
   startWaveDelay: 0
   roomDoors:
