@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &254999699 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4327921851085568936, guid: 5540b7d96b30f1b46818e3ac3675f010, type: 3}
-  m_PrefabInstance: {fileID: 1589141336}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589141340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ae4e37fba0a1544b54459fc51a8840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &262363969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,7 +1045,7 @@ MonoBehaviour:
   attackTXT: {fileID: 711666857}
   defenseTXT: {fileID: 762119588}
   speedTxt: {fileID: 536955717}
-  player: {fileID: 254999699}
+  player: {fileID: 0}
 --- !u!4 &1576407797
 Transform:
   m_ObjectHideFlags: 0
@@ -1197,11 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65027d985656114bb9e35110a7a4e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faceDirection: {x: 0, y: 0}
-  dashingPower: 24
-  dashingTime: 0.2
-  dashingCooldown: 0.5
-  speed: 10
+  _playerStats: {fileID: 0}
 --- !u!1 &1980138521
 GameObject:
   m_ObjectHideFlags: 0

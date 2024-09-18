@@ -23,4 +23,4 @@ MonoBehaviour:
   _projectileSpeed: 20
   _projectileRange: 5
   _piercingAmount: 10
-  _bulletBounce: 1
+  _bulletBounce: 3
