@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142c33aeb902adc4393f18cef48633c0, type: 3}
   m_Name: DividingSlashBehavior
   m_EditorClassIdentifier: 
-  _cooldownTime: 0.2
-  _activationTime: 3
+  _cooldownTime: 0.5
+  _activationTime: 4
+  _status: {fileID: 0}
   _dividingSlash: {fileID: 168608533301039626, guid: 37a47e8836288384ea6c68713713d7c8, type: 3}
   _slashCount: 1
   _spreadAngle: 0
-  _dividingSlashDamage: 2
-  _dividingSlashKnockback: 10
-  _dividingSlashSpeed: 6
-  _dividingSlashRange: 6
+  _dividingSlashDamage: 1
+  _dividingSlashKnockback: 6
+  _dividingSlashSpeed: 8
+  _dividingSlashRange: 8

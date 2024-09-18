@@ -14,8 +14,8 @@ public class DividingSlash : Attacks
     private GameObject _player;
     private GameObject _attack;
     private Rigidbody2D _playerRb;  // Rigidbody of the player
-    private float _playerPushDuration = 0.3f; // Duration of the push
-    private float _playerPushSpeed = 5f;  // Speed of the player's forward push
+    private float _playerPushDuration = 0.1f; // Duration of the push
+    private float _playerPushSpeed = 10f;  // Speed of the player's forward push
 
     private Vector2 _pushDirection; // Direction to push the player
 
@@ -70,8 +70,9 @@ public class DividingSlash : Attacks
         // If the slash hits an enemy, damage the enemy and apply knockback
         if (collision.gameObject.tag == "enemy")
         {
-            collision.gameObject.GetComponent<EnemyBase>().Damage(_damage, transform.right, _knockback, Vector2.up);
+            Debug.Log("Destroy me");
             Destroy(gameObject);
+            collision.gameObject.GetComponent<EnemyBase>().Damage(_damage, transform.right, _knockback, Vector2.up);
         }
     }
 

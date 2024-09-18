@@ -18,11 +18,14 @@ public class Grenade : Attacks
     private float _timer;                  // Timer for explosion
 
     private GameObject _player;
+    private GameObject _attack;
 
     private void Start()
     {
         _player = GameObject.FindWithTag("player");
+        _attack = GameObject.FindWithTag("attack");
         Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(_attack.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     private void FixedUpdate()
@@ -72,6 +75,7 @@ public class Grenade : Attacks
     private IEnumerator ExplosionCountdown()
     {
         yield return new WaitForSeconds(_explosionDelay);  // Wait for 3 seconds
+        Destroy(gameObject);
         Explode();  // Trigger explosion after delay
     }
 
@@ -97,9 +101,6 @@ public class Grenade : Attacks
                 }
             }
         }
-
-        // Destroy the grenade after explosion
-        Destroy(gameObject);
     }
 
     private void Awake()

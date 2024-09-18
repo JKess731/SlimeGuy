@@ -28,10 +28,29 @@ public class PushPulseBehavior : Behavior
 
     public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
     {
-        if (context.started)
-        {
-            GameObject newPushPulse = Instantiate(_pushPulse, attackPosition, Quaternion.identity);
-            newPushPulse.GetComponent<PushPulse>().SetPushPulseStruct(_pushPulseStruct);
-        }
+        ///if (context.started)
+        ///{
+            ///GameObject newPushPulse = Instantiate(_pushPulse, attackPosition, Quaternion.identity);
+            ///newPushPulse.GetComponent<PushPulse>().SetPushPulseStruct(_pushPulseStruct);
+        ///}
+    }
+
+    public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        GameObject newPushPulse = Instantiate(_pushPulse, attackPosition, Quaternion.identity);
+        newPushPulse.GetComponent<PushPulse>().SetPushPulseStruct(_pushPulseStruct);
+
+        AbilityState = AbilityState.PERFORMING;
+    }
+
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.CANCELING;
+    }
+
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.FINISHED;
+        onBehaviorFinished?.Invoke();
     }
 }
