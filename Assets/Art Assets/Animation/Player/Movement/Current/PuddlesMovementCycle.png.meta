@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,190 +136,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PuddlesMovementCycle_Right_Sheet_0
+      name: PuddlesMovementCycle_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
-        width: 32
-        height: 22
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f7fad0ed2932abe48ae4c73497c102c8
-      internalID: 491452920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PuddlesMovementCycle_Right_Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 16
-        width: 36
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e92ab02c3f3d2b429c41a10b5e04df6
-      internalID: -473679040
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PuddlesMovementCycle_Right_Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 16
-        width: 37
-        height: 19
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e40cc7032bee11468e9c295464516a0
-      internalID: -1028880260
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PuddlesMovementCycle_Right_Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 206
-        y: 16
-        width: 35
-        height: 23
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d6b69d3567b6e443860732687c7b38b
-      internalID: -452260686
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PuddlesMovementCycle_Right_Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 269
-        y: 16
-        width: 37
-        height: 22
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5323056acfbb7c4d9739e3370145d7f
-      internalID: 1765642278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PuddlesMovementCycle_Right_Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 333
-        y: 16
-        width: 40
-        height: 18
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c61706a4a489027449e80b1518551967
-      internalID: 394316707
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PuddlesMovementCycle_Right_Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 16
-        width: 40
-        height: 18
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d43d098025333334b8f1ec257788a78e
-      internalID: 1774960915
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PuddlesMovementCycle_Right_Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 462
-        y: 16
-        width: 38
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3bdb53e549ba71447a780408fb697907
-      internalID: 62213311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PuddlesMovementCycle_Right_Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 502
-        height: 62
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fa6dc9f825087f4fbf627c1d465f0af
-      internalID: 1880473110
+      spriteID: b78b82a4f2c972241a3214460dd83b2e
+      internalID: 1012646509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PuddlesMovementCycle_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4316dcabb89b3be4d8d12fa6f51124ed
+      internalID: 1503987401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PuddlesMovementCycle_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb8cfd1400a05fc4fa44ff15812a3be6
+      internalID: 373185600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PuddlesMovementCycle_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 367554806e2429844b00af2d8e4ede1b
+      internalID: -434159507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PuddlesMovementCycle_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d0ae6613fb72dc4fb85efc1f853c6f7
+      internalID: -1862087701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PuddlesMovementCycle_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4587bd78d8aea8b4eb742204efe84408
+      internalID: 349683697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PuddlesMovementCycle_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de0c0aa8cd3c7949b7b1b5dff68cb38
+      internalID: -2022828233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PuddlesMovementCycle_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b49918c3f4bfc8a459937dffc55604a9
+      internalID: -361690291
       vertices: []
       indices: 
       edges: []
@@ -335,15 +314,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PuddlesMovementCycle_Right_Sheet_0: 491452920
-      PuddlesMovementCycle_Right_Sheet_1: -473679040
-      PuddlesMovementCycle_Right_Sheet_2: -1028880260
-      PuddlesMovementCycle_Right_Sheet_3: -452260686
-      PuddlesMovementCycle_Right_Sheet_4: 1765642278
-      PuddlesMovementCycle_Right_Sheet_5: 394316707
-      PuddlesMovementCycle_Right_Sheet_6: 1774960915
-      PuddlesMovementCycle_Right_Sheet_7: 62213311
-      PuddlesMovementCycle_Right_Sheet_8: 1880473110
+      PuddlesMovementCycle_0: 1012646509
+      PuddlesMovementCycle_1: 1503987401
+      PuddlesMovementCycle_2: 373185600
+      PuddlesMovementCycle_3: -434159507
+      PuddlesMovementCycle_4: -1862087701
+      PuddlesMovementCycle_5: 349683697
+      PuddlesMovementCycle_6: -2022828233
+      PuddlesMovementCycle_7: -361690291
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
