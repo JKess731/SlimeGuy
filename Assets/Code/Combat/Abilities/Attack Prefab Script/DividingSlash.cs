@@ -14,8 +14,8 @@ public class DividingSlash : Attacks
     private GameObject _player;
     private GameObject _attack;
     private Rigidbody2D _playerRb;  // Rigidbody of the player
-    private float _playerPushDuration = 0.1f; // Duration of the push
-    private float _playerPushSpeed = 10f;  // Speed of the player's forward push
+    private float _pushDuration = 0.1f; // Duration of the push
+    private float _pushSpeed = 10f;  // Speed of the player's forward push
 
     private Vector2 _pushDirection; // Direction to push the player
 
@@ -44,11 +44,11 @@ public class DividingSlash : Attacks
 
     private IEnumerator PushPlayerForward()
     {
-        Vector2 pushVector = _pushDirection * _playerPushSpeed;
+        Vector2 pushVector = _pushDirection * _pushSpeed;
         float elapsedTime = 0f;
 
         // Push the player forward for a short duration
-        while (elapsedTime < _playerPushDuration)
+        while (elapsedTime < _pushDuration)
         {
             _playerRb.velocity = pushVector;
             elapsedTime += Time.deltaTime;

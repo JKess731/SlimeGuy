@@ -77,7 +77,7 @@ public class EnemyChaseSOBase : ScriptableObject
         {
 
             int randomIndex = Random.Range(0, dwarfStepSounds.Length);
-            Debug.Log(randomIndex);
+            //Debug.Log(randomIndex);
             AudioManager.instance.PlayOneShot(dwarfStepSounds[randomIndex], _transform.position);
         }
         else

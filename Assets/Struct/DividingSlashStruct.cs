@@ -17,7 +17,6 @@ public struct DividingSlashStruct
     public float Speed { get { return _speed; } }
     public float Range { get { return _range; } }
 
-
     public DividingSlashStruct(int damage, float knockback, float speed, float range)
     {
         _damage = damage;
