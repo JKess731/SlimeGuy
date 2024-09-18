@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &13985928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,8 +157,8 @@ MonoBehaviour:
   maxRooms: 25
   minRooms: 10
   overrideRoomCount: 0
-  rowSize: 10
-  colSize: 10
+  rowSize: 16
+  colSize: 16
   spawnDelay: 0.25
   roomsPlaced: []
 --- !u!4 &13985929
