@@ -21,3 +21,5 @@ MonoBehaviour:
     _statValue: 1
   - _statEnum: 2
     _statValue: 3
+  - _statEnum: 2
+    _statValue: 3

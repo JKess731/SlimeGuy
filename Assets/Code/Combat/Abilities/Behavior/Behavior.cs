@@ -68,6 +68,11 @@ public class Behavior : ScriptableObject, IBehavior
         //throw new System.NotImplementedException();
     }
 
+    public virtual void Upgrade(StatsSO playerStats)
+    {
+
+    }
+
     public virtual IEnumerator Cooldown()
     {
         diag.Stopwatch stopWatch = new diag.Stopwatch();

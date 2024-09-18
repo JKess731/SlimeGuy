@@ -25,6 +25,10 @@ public class AbilityManager : MonoBehaviour
 
     private void Start()
     {
+        primary = Instantiate(primary);
+        secondary = Instantiate(secondary);
+        dash = Instantiate(dash);
+
         primary?.Initialize();
         secondary?.Initialize();
         dash?.Initialize();
@@ -58,6 +62,14 @@ public class AbilityManager : MonoBehaviour
     //}
 
     #region Primary
+    public void InstaniatePrimary()
+    {
+        primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
+
+        primary = Instantiate(primary);
+        primary?.Initialize();
+        primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
+    }
 
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
@@ -89,6 +101,15 @@ public class AbilityManager : MonoBehaviour
 
     #region Secondary
 
+    public void InstaniateSecondary()
+    {
+        secondary.Behavior.onBehaviorFinished -= OnSecondaryCooldown;
+
+        secondary = Instantiate(secondary);
+        secondary?.Initialize();
+        secondary.Behavior.onBehaviorFinished += OnSecondaryCooldown;
+    }
+
     public void OnSecondaryStarted(InputAction.CallbackContext context)
     {
         if (secondary.Behavior.AbilityState == AbilityState.READY)
@@ -117,6 +138,14 @@ public class AbilityManager : MonoBehaviour
     #endregion
 
     #region Dash
+    public void InstaniateDash()
+    {
+        dash.Behavior.onBehaviorFinished -= OnDashCooldown;
+
+        dash = Instantiate(dash);
+        dash?.Initialize();
+        dash.Behavior.onBehaviorFinished += OnDashCooldown;
+    }
     public void OnDashStarted(InputAction.CallbackContext context)
     {
         if (dash.Behavior.AbilityState == AbilityState.READY)
