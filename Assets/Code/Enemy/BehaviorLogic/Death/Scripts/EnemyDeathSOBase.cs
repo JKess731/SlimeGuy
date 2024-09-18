@@ -4,32 +4,42 @@ using UnityEngine;
 
 public class EnemyDeathSOBase : ScriptableObject
 {
-    protected EnemyBase enemy;
-    protected Transform transform;
-    protected GameObject gameObject;
-    protected Transform playerTransform;
+    protected EnemyBase _enemy;
+    protected Transform _transform;
+    protected GameObject _gameObject;
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
 
-        this.gameObject = gameObject;
-        transform = gameObject.transform;
-        this.enemy = enemy;
-        
-
+        _gameObject = gameObject;
+        _transform = gameObject.transform;
+        _enemy = enemy;
     }
 
-    public virtual void DoEnterLogic() { }
+    public virtual void DoEnterLogic() { 
+        _enemy.State = Enum_State.DEAD;
+    }
 
     public virtual void DoExitLogic() { ResetValues(); }
 
-    public virtual void DoFrameUpdateLogic()
-    {
-        
-    }
+    public virtual void DoFrameUpdateLogic(){ }
 
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { }
+
+    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { 
+        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
+        {
+            Destroy(_gameObject);
+        }
+        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
+        {
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
+        }
+        if(triggerType == EnemyBase.AnimationTriggerType.GolemDeath)
+        {
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemDeath, _transform.position);
+        }
+    }
 
     public virtual void ResetValues() { }
 

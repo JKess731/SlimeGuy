@@ -7,6 +7,4 @@ public interface IDamageable
 {
     void Damage(float damageAmount, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection);
     void Die();
-    float maxHealth { get; set; }
-    float currentHealth { get; set; }
 }

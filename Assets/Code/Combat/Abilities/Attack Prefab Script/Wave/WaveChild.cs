@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveChild : Attacks
 {
     private float _activationTime;
-
+    private StatusSO _status;
     private HashSet<EnemyBase> _enemyHashSet = new  HashSet<EnemyBase>();
 
     protected void Start()
@@ -30,6 +30,10 @@ public class WaveChild : Attacks
 
             //Else, add the enemy to the hashset and damage it
             enemy.Damage(base._damage);
+            if (_status != null)
+            {
+                collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
+            }
             _enemyHashSet.Add(enemy);
         }
     }
@@ -52,6 +56,10 @@ public class WaveChild : Attacks
 
             //Else, add the enemy to the hashset and damage it
             enemy.Damage(base._damage);
+            if (_status != null)
+            {
+                collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
+            }
             _enemyHashSet.Add(enemy);
         }
     }
@@ -61,5 +69,6 @@ public class WaveChild : Attacks
         _damage = waveStruct.Damage;
         _knockback = waveStruct.Knockback;
         _activationTime = waveStruct.ActivationTime;
+        _status = waveStruct.Status;
     }
 }

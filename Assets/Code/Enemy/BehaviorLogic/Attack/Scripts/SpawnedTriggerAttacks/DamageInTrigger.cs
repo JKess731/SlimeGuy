@@ -14,12 +14,6 @@ public class DamageInTrigger : MonoBehaviour
     private float timer;
     private bool canDamage = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Debug.Log("SpawnedTrigger");
-    }
-
     // Update is called once per frame
     void Update()
     {

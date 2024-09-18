@@ -11,6 +11,7 @@ public class Bullet : Attacks
     private Rigidbody2D _rb;
     private float _range;
     private float _speed;
+    private StatusSO _status;
 
     //If the bullet goes out of range, destroy it
     private void Update()
@@ -34,7 +35,13 @@ public class Bullet : Attacks
         if (collision.gameObject.tag == "enemy")
         {
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage);
+            if (_status != null)
+            {
+                collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
+            }
+            Debug.Log("I got past StatusManager");
             Destroy(gameObject);
+
         }
     }
 
@@ -49,6 +56,7 @@ public class Bullet : Attacks
         _damage = bulletStruct.Damage;
         _range = bulletStruct.Range;
         _speed = bulletStruct.BulletSpeed;
+        _status = bulletStruct.Status;
 
         _rb.velocity = transform.right * _speed;
     }

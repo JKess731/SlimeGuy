@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cooldownTime: 12
   _activationTime: 1
+  _status: {fileID: 11400000, guid: f2b4f48c4bb18fc449dd797b79cf81b0, type: 2}
   _wave: {fileID: 3241613675561963162, guid: eb70f7c09d0dd4c4795821fece597adc, type: 3}
   _parentDamage: 3
   _parentKnockback: 1

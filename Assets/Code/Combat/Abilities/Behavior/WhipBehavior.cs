@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// The wave behavior allows for attacks to spawn child attacks
 /// </summary>
-[CreateAssetMenu(fileName = "Whip", menuName = "Attack/Whip")]
+[CreateAssetMenu(fileName = "Whip", menuName = "Behavior/Whip")]
 public class WhipBehavior : Behavior
 {
     [Header("Whip Attributes")]
@@ -19,17 +19,28 @@ public class WhipBehavior : Behavior
 
     private WhipStruct _whipStruct;
 
-    public override void Initialize()
+    public override void Initialize(AbilityBase abilityBase)
     {
-        _whipStruct = new WhipStruct(_damage, _knockback, _activationTime, _rotationSpeed);
+        base.Initialize(abilityBase);
+        _whipStruct = new WhipStruct(_damage, _knockback, _activationTime, _rotationSpeed, status);
     }
 
-    public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
+    public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        if (context.started)
-        {
-            GameObject newWhip = Instantiate(_whip, attackPosition, Quaternion.identity);
-            newWhip.GetComponent<Whip>().SetWhipStruct(_whipStruct);
-        }
+        GameObject newWhip = Instantiate(_whip, attackPosition, Quaternion.identity);
+        newWhip.GetComponent<Whip>().SetWhipStruct(_whipStruct);
+
+        AbilityState = AbilityState.PERFORMING;
+    }
+
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.CANCELING;
+    }
+
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.FINISHED;
+        onBehaviorFinished?.Invoke();
     }
 }

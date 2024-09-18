@@ -8,11 +8,18 @@ public class Whip : Attacks
     private float _rotationSpeed;
 
     private GameObject _player;
+    private StatusSO _status;
+    private GameObject _attack;
 
     private void Start()
     {
         Destroy(gameObject, _activationTime);
+
         _player = GameObject.FindWithTag("player");
+        _attack = GameObject.FindWithTag("attack");
+        Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(_attack.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
     }
 
     private void FixedUpdate()
@@ -27,6 +34,7 @@ public class Whip : Attacks
         _knockback = whipStruct.Knockback;
         _activationTime = whipStruct.ActivationTime;
         _rotationSpeed = whipStruct.RotationSpeed;
+        _status = whipStruct.Status;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,6 +42,10 @@ public class Whip : Attacks
         if (collision.gameObject.CompareTag("enemy"))
         {
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage, transform.right, _knockback, Vector2.up);
+            if (_status != null)
+            {
+                collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
+            }
         }
     }
 }

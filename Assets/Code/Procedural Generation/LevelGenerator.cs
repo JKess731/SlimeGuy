@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -28,6 +29,7 @@ public class LevelGenerator : MonoBehaviour
     public List<GameObject> roomsPlaced = new List<GameObject>();
 
     public Queue<SpawnPoint> spawnPoints = new Queue<SpawnPoint>();
+    private bool generationComplete = false;
 
     private class ArrayCoordinate
     {
@@ -38,6 +40,9 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         rooms = GenerateGrid();
+
+        Debug.Log("LENGTH: " + rooms.Length);
+
         PlaceStartRoom();
         chosenRoomCount = GetRoomCount();
         Debug.Log(chosenRoomCount);
@@ -51,18 +56,7 @@ public class LevelGenerator : MonoBehaviour
 
     private int GetRoomCount()
     {
-        int count = 0;
-
-        if (overrideRoomCount <= 0)
-        {
-            count = Random.Range(minRooms, maxRooms + 1);
-        }
-        else if (overrideRoomCount > 0)
-        {
-            count = overrideRoomCount;
-        }
-
-        return count;
+        return Random.Range(minRooms, maxRooms + 1);
     }
 
     private void PlaceStartRoom()
@@ -102,7 +96,7 @@ public class LevelGenerator : MonoBehaviour
 
             //Debug.Log(row + "," + col);
 
-            if (rooms[row, col] != null )
+            if (rooms[row, col] != null)
             {
                 // Array Spot is not empty
                 // Get reference to the room at the position
@@ -127,7 +121,7 @@ public class LevelGenerator : MonoBehaviour
                     roomsPlaced.Remove(oldRoomObj);
                     Destroy(oldRoomObj);
 
-                    GameObject spawnedRoom = Instantiate(newRoom, sp.transform.position, Quaternion.identity);
+                    GameObject spawnedRoom = Instantiate(newRoom, sp.transform.position, Quaternion.identity, transform);
                     rooms[row, col] = spawnedRoom.GetComponent<RoomTypes>();
                     currentRoomCount++;
                     roomsPlaced.Insert(index, spawnedRoom);
@@ -140,9 +134,10 @@ public class LevelGenerator : MonoBehaviour
                 // Need to Pick a room based on the door needed
 
                 GameObject room = GetRoom(doorNeeded, row, col);
+                Debug.Log(row + " " + col);
 
                 // Instantiate that room at the position of the spawn point
-                GameObject spawnedRoom = Instantiate(room, sp.transform.position, Quaternion.identity);
+                GameObject spawnedRoom = Instantiate(room, sp.transform.position, Quaternion.identity, transform);
 
                 // Place it in the array at rooms[row, col]
                 rooms[row, col] = spawnedRoom.GetComponent<RoomTypes>();
@@ -152,6 +147,9 @@ public class LevelGenerator : MonoBehaviour
         }
 
         yield return new WaitForSecondsRealtime(1f);
+
+        Debug.Log("Generation Complete...");
+        generationComplete = true;
 
         ChooseBossRoom();
 
@@ -164,6 +162,8 @@ public class LevelGenerator : MonoBehaviour
 
         // Step 1: Check if the Room is on an edge
 
+        Debug.Log(doorNeeded);
+
         if (row == 0 || row == rowSize - 1 || col == 0 || col == colSize - 1)
         {
             options = GetDoorAmount(1);
@@ -174,6 +174,8 @@ public class LevelGenerator : MonoBehaviour
                 if (rt.doors.Contains(doorNeeded))
                 {
                     room = r;
+                    Debug.Log(doorNeeded);
+                    Debug.Log(r.name);
                     break;
                 }
             }
@@ -184,11 +186,11 @@ public class LevelGenerator : MonoBehaviour
 
         else
         {
-            if ((chosenRoomCount / 2) + 1 > currentRoomCount)
+            if ((chosenRoomCount / 2) + 1 >= currentRoomCount)
             {
                 options = GetDoorAmount(2);
             }
-            else if ((chosenRoomCount / 3) > currentRoomCount)
+            else if ((chosenRoomCount / 3) >= currentRoomCount)
             {
                 options = GetDoorAmount(2);
                 options.AddRange(GetDoorAmount(3));
@@ -211,7 +213,15 @@ public class LevelGenerator : MonoBehaviour
 
         List<GameObject> roomTypes = GetRoomsByDoorType(dt, options);
 
-        room = roomTypes.ElementAt(Random.Range(0, roomTypes.Count));
+        if (roomTypes.Count == 0) 
+        {
+            roomTypes = GetRoomsByDoorType(dt, GetFullSpawnList());
+        }
+
+        int index = Random.Range(0, roomTypes.Count - 1);
+
+        room = roomTypes.ElementAt(index);
+
 
         return room;
     }
@@ -267,18 +277,20 @@ public class LevelGenerator : MonoBehaviour
         {
             coord.row += 1;
         }
-        else if (sp.doorNeeded == DoorTypes.BOTTOM_DOOR && coord.row > 0)
+        else if (sp.doorNeeded == DoorTypes.BOTTOM_DOOR && coord.row >= 1)
         {
             coord.row -= 1;
         }
-        else if (sp.doorNeeded == DoorTypes.RIGHT_DOOR && coord.col > 0)
+        else if (sp.doorNeeded == DoorTypes.RIGHT_DOOR && coord.col >= 1)
         {
             coord.col += 1;
         }
         else if (sp.doorNeeded == DoorTypes.LEFT_DOOR && coord.col < colSize - 1)
         {
             coord.col -= 1;
-        }    
+        }
+
+        //Debug.Log("COORD: " + coord.row + " " + coord.col);
 
         return coord;
     }

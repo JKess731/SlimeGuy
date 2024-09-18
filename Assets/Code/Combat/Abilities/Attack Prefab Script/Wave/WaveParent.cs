@@ -7,6 +7,7 @@ public class WaveParent : Attacks
     [SerializeField] private GameObject _child;
     [SerializeField] private Transform _spawnOffset;
     private float _activationTime;
+    private StatusSO _status;
 
     private WaveStruct _childStruct;
 
@@ -26,6 +27,10 @@ public class WaveParent : Attacks
 
             //Else, add the enemy to the hashset and damage it
             enemy.Damage(_damage);
+            if (_status != null)
+            {
+                collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
+            }
 
         }
     }
@@ -36,6 +41,7 @@ public class WaveParent : Attacks
         _knockback = parent.Knockback;
         _activationTime = parent.ActivationTime;
         _childStruct = child;
+        _status = parent.Status;
 
         try
         {
