@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27cce0efc86dfcf49b27c8a2ed60116c, type: 3}
   m_Name: SlimePushBehavior
   m_EditorClassIdentifier: 
-  _cooldownTime: 5
-  _activationTime: 5
+  _cooldownTime: 4
+  _activationTime: 2
+  _status: {fileID: 0}
   _push: {fileID: 7595820434947627400, guid: 64dd7bf8fa61e0548a50803894a0ab1d, type: 3}
   _damage: 1
   _knockback: 10
