@@ -57,4 +57,10 @@ public class ShotgunBehavior : Behavior
         AbilityState = AbilityState.FINISHED;
         onBehaviorFinished?.Invoke();
     }
+
+    public override void Upgrade(StatsSO playerstats)
+    {
+        //_bulletCount += playerstats.GetStat(StatsEnum.BULLETCOUNT); ;
+        //_spreadAngle += playerstats.GetStat(StatsEnum.BULLETSPREAD);
+    }
 }
