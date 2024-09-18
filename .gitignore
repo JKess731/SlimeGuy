@@ -98,3 +98,6 @@ fmod_editor.log
 /Assets/FMODAssets/*
 /Assets/FMODStudioCache.meta
 *.fobj
+/SlimeGuyFMOD/.cache
+/SlimeGuyFMOD/.unsaved
+*.pdc
