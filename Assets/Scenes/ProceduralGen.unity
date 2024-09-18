@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startRoom: {fileID: 2070151340180195389, guid: b2468c9cb9cbbf8448f99be638312f00, type: 3}
-  roomList: {fileID: 11400000, guid: 1edcecc11da7f704c9ffebfb32d6e8de, type: 2}
+  roomList: {fileID: 11400000, guid: 485f63d36751fc84b8b0737e985fadf6, type: 2}
   maxRooms: 25
   minRooms: 10
   overrideRoomCount: 0
@@ -306,11 +306,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7346130731241124811, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7346130731241124811, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7346130731241124811, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: m_LocalPosition.z
