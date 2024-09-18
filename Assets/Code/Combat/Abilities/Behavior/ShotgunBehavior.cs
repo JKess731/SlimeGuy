@@ -19,13 +19,15 @@ public class ShotgunBehavior : Behavior
     [SerializeField] private float _projectileKnockback;
     [SerializeField] private float _projectileSpeed;
     [SerializeField] private float _projectileRange;
+    [SerializeField] private int _piercingAmount;
+    [SerializeField] private int _bulletBounce;
 
     private BulletStruct _bulletStruct;
 
     public override void Initialize(AbilityBase abilityBase)
     {
         base.Initialize(abilityBase);
-        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange, status);
+        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange, status, _piercingAmount, _bulletBounce);
     }
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {

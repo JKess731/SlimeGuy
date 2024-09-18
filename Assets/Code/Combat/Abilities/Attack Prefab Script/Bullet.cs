@@ -12,6 +12,8 @@ public class Bullet : Attacks
     private float _range;
     private float _speed;
     private StatusSO _status;
+    private int _piercingAmount;
+    private int _bulletBounce;
 
     //If the bullet goes out of range, destroy it
     private void Update()
@@ -28,22 +30,75 @@ public class Bullet : Attacks
         //If the bullet hits a wall, destroy the bullet
         if (collision.gameObject.tag == "wall")
         {
-            Destroy(gameObject);
+            if (_bulletBounce == 0)
+            {
+                Destroy(gameObject);
+            }
+            
+             var firstContact = collision.contacts[0];
+             Vector2 newVelocity = Vector2.Reflect(transform.right, firstContact.normal);
+             _rb.velocity = newVelocity * _speed;
+             _bulletBounce--;
         }
 
         //If the bullet hits an enemy, damage the enemy and destroy the bullet
         if (collision.gameObject.tag == "enemy")
         {
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage);
+            if(_piercingAmount > 0) { 
+                _piercingAmount--;
+            }
             if (_status != null)
             {
                 collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
             }
             Debug.Log("I got past StatusManager");
-            Destroy(gameObject);
+            if (_piercingAmount == 0)
+            {
+                Destroy(gameObject);
+            }
 
         }
     }
+
+    protected void OnTriggerEnter2D(Collider2D other)
+    {
+        //If the bullet hits a wall, destroy the bullet
+        if (other.gameObject.tag == "wall")
+        {
+            if (_bulletBounce == 0)
+            {
+                Destroy(gameObject);
+            }
+
+            var firstContact = other.contacts[0];
+            Vector2 newVelocity = Vector2.Reflect(transform.right, firstContact.normal);
+            _rb.velocity = newVelocity * _speed;
+            _bulletBounce--;
+        }
+
+        //If the bullet hits an enemy, damage the enemy and destroy the bullet
+        if (other.gameObject.tag == "enemy")
+        {
+            other.gameObject.GetComponent<EnemyBase>().Damage(_damage);
+            if (_piercingAmount > 0)
+            {
+                _piercingAmount--;
+            }
+            if (_status != null)
+            {
+                other.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
+            }
+            Debug.Log("I got past StatusManager");
+            if (_piercingAmount == 0)
+            {
+                Destroy(gameObject);
+            }
+
+        }
+    }
+
+
 
     private void Awake()
     {
@@ -57,6 +112,8 @@ public class Bullet : Attacks
         _range = bulletStruct.Range;
         _speed = bulletStruct.BulletSpeed;
         _status = bulletStruct.Status;
+        _piercingAmount = bulletStruct.piercingAmount;
+        _bulletBounce = bulletStruct.bulletBounce;
 
         _rb.velocity = transform.right * _speed;
     }

@@ -6510,6 +6510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDwarf (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: _stats
       value: 
@@ -6918,6 +6922,10 @@ PrefabInstance:
     - target: {fileID: 5254476107874737995, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: m_Name
       value: Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5254476107874737995, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
