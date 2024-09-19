@@ -57,6 +57,9 @@ TagManager:
   - name: Walls
     uniqueID: 1163152481
     locked: 0
+  - name: Ceiling
+    uniqueID: 2426186715
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
