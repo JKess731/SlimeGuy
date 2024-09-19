@@ -1,35 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
+using UnityEngine.Events;
 
 public class LevelGenerator : MonoBehaviour
 {
+    // Serialized Settings
+    [Header("Room Settings")]
     [SerializeField] private GameObject startRoom;
+    public GameObject bossArena;
     [SerializeField] private RoomList roomList;
-    [SerializeField] private int maxRooms = 10;
+    [SerializeField] private RoomList emptyRoomsList;
+    [SerializeField] private int maxRooms = 10; // <= GET EXACT NUMBER NEXT
     [SerializeField] private int minRooms = 6;
-    [SerializeField] private int overrideRoomCount = 0;
+
+    // private settings
+    private int overrideRoomCount = 0; // <= REMOVE SOON
     private int chosenRoomCount = 0;
     private int currentRoomCount = 0;
 
+    // data
     [Space]
+    [Header("Array Bounds")]
     [SerializeField] private int rowSize = 5;
     [SerializeField] private int colSize = 5;
     [Space]
 
+    // Delay between spawning each room
+    [Header("Spawn Settings")]
     [SerializeField] private float spawnDelay = 1f;
 
+    // Loading Screen && Boss
+    private Canvas mainUi;
+    private Canvas loadingUi;
+    private GameObject player;
+    [HideInInspector] public UnityEvent Complete;
+    [HideInInspector] public GameObject lastRoom;
+
+    // Collections
     public RoomTypes[,] rooms;
-
     public List<GameObject> roomsPlaced = new List<GameObject>();
-
     public Queue<SpawnPoint> spawnPoints = new Queue<SpawnPoint>();
-    private bool generationComplete = false;
 
     private class ArrayCoordinate
     {
@@ -41,12 +53,34 @@ public class LevelGenerator : MonoBehaviour
     {
         rooms = GenerateGrid();
 
-        //Debug.Log("LENGTH: " + rooms.Length);
-
         PlaceStartRoom();
         chosenRoomCount = GetRoomCount();
-        //Debug.Log(chosenRoomCount);
+        Debug.Log(chosenRoomCount);
+
+        LoadUI();
     }
+
+    #region UI
+
+    private void LoadUI()
+    {
+        player = GameObject.FindGameObjectWithTag("player");
+        mainUi = GameObject.FindGameObjectWithTag("main_ui").GetComponent<Canvas>();
+        loadingUi = GameObject.FindGameObjectWithTag("loadingUi").GetComponent<Canvas>();
+
+        mainUi.enabled = false;
+        player.GetComponent<PlayerController>().enabled = false;
+        loadingUi.enabled = true;
+    }
+
+    private void GenComplete()
+    {
+        player.GetComponent<PlayerController>().enabled = true;
+        mainUi.enabled = true;
+        loadingUi.enabled = false;
+    }
+
+    #endregion
 
     #region Starter Code
     private RoomTypes[,] GenerateGrid()
@@ -64,7 +98,7 @@ public class LevelGenerator : MonoBehaviour
         int middleX = rowSize / 2;
         int middleY = colSize / 2;
 
-        GameObject start = Instantiate(startRoom, new Vector2(0, 0), Quaternion.identity);
+        GameObject start = Instantiate(startRoom, new Vector2(0, 0), Quaternion.identity, transform);
         RoomTypes rt = start.GetComponent<RoomTypes>();
         rooms[middleX, middleY] = rt;
         roomsPlaced.Add(start);
@@ -83,7 +117,6 @@ public class LevelGenerator : MonoBehaviour
 
         while (spawnPoints.Count > 0)
         {
-
             yield return new WaitForSecondsRealtime(spawnDelay);
 
             SpawnPoint sp = GetSpawnPoint();
@@ -149,10 +182,9 @@ public class LevelGenerator : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
 
         Debug.Log("Generation Complete...");
-        generationComplete = true;
-
-        ChooseBossRoom();
-
+        GenComplete();
+        lastRoom = ChooseBossRoom();
+        Complete.Invoke();
     }
 
     private GameObject GetRoom(DoorTypes doorNeeded, int row, int col)
@@ -215,7 +247,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (roomTypes.Count == 0) 
         {
-            roomTypes = GetRoomsByDoorType(dt, GetFullSpawnList());
+            roomTypes = GetRoomsByDoorType(dt, GetFullSpawnList(roomList));
         }
 
         int index = Random.Range(0, roomTypes.Count - 1);
@@ -311,28 +343,36 @@ public class LevelGenerator : MonoBehaviour
         return coord;
     }
 
-    private void ChooseBossRoom()
+    private GameObject ChooseBossRoom()
     {
         GameObject room = roomsPlaced[roomsPlaced.Count - 1];
+        RoomTypes rt = room.GetComponent<RoomTypes>();
+        List<DoorTypes> dt = rt.doors;
 
-        for (int i = 0; i < room.transform.childCount; i++)
+        List<GameObject> emptyRooms = GetFullSpawnList(emptyRoomsList);
+        
+        foreach (GameObject r in emptyRooms)
         {
-            if (room.transform.GetChild(i).name == "Walls")
+            RoomTypes rRt = r.GetComponent<RoomTypes>();
+
+            int count = 0;
+            foreach (DoorTypes d in dt)
             {
-                GameObject r = room.transform.GetChild(i).gameObject;
-
-                for (int j = 0; j < r.transform.childCount; j++)
+                if (rRt.doors.Contains(d))
                 {
-                    SpriteRenderer sr = r.transform.GetChild(j).GetComponent<SpriteRenderer>();
-                    sr.color = Color.red;
+                    count++;
                 }
-
+            }
+            if (count == rRt.doors.Count)
+            {
+                roomsPlaced[roomsPlaced.Count - 1] = Instantiate(r, room.transform.position, Quaternion.identity, transform);
+                Destroy(room);
                 break;
             }
         }
 
-        // Get room grid location
-        // Replace room with boss room of same door type from boss room preset list
+        Debug.Log("boss room replaced");
+        return roomsPlaced[roomsPlaced.Count - 1];
 
     }
 
@@ -340,13 +380,13 @@ public class LevelGenerator : MonoBehaviour
 
     #region Room Lists
 
-    private List<GameObject> GetFullSpawnList()
+    private List<GameObject> GetFullSpawnList(RoomList rl)
     {
         List<GameObject> AllDoors = new List<GameObject>();
-        AllDoors.AddRange(roomList.topRooms);
-        AllDoors.AddRange(roomList.bottomRooms);
-        AllDoors.AddRange(roomList.leftRooms);
-        AllDoors.AddRange(roomList.rightRooms);
+        AllDoors.AddRange(rl.topRooms);
+        AllDoors.AddRange(rl.bottomRooms);
+        AllDoors.AddRange(rl.leftRooms);
+        AllDoors.AddRange(rl.rightRooms);
         AllDoors.Add(startRoom);
 
         return AllDoors;
@@ -354,7 +394,7 @@ public class LevelGenerator : MonoBehaviour
 
     private List<GameObject> GetDoorAmount(int doorCount)
     {
-        List<GameObject> allDoors = GetFullSpawnList();
+        List<GameObject> allDoors = GetFullSpawnList(roomList);
 
         List<GameObject> doors = new List<GameObject>();
         foreach (GameObject r in allDoors)

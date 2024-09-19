@@ -7,13 +7,13 @@ TagManager:
   - enemy
   - player
   - attack
-  - spawner
-  - trigger_parent
-  - trigger_child
   - slime_split
   - wall
   - attack_point_transform
   - room_spawn_point
+  - main_ui
+  - loadingUi
+  - generator
   layers:
   - Default
   - TransparentFX
@@ -56,6 +56,9 @@ TagManager:
     locked: 0
   - name: Walls
     uniqueID: 1163152481
+    locked: 0
+  - name: Ceiling
+    uniqueID: 2426186715
     locked: 0
   - name: Default
     uniqueID: 0
