@@ -19,7 +19,7 @@ public class EnemyDeathState : EnemyState
         base.EnterState();
         _enemyBase.enemyDeathBaseInstance.DoEnterLogic();
         _enemyBase.State = Enum_State.DEAD;
-        Debug.Log("Enemy is dead");
+        //Debug.Log("Enemy is dead");
     }
 
     public override void ExitState()

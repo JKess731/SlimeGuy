@@ -41,11 +41,11 @@ public class LevelGenerator : MonoBehaviour
     {
         rooms = GenerateGrid();
 
-        Debug.Log("LENGTH: " + rooms.Length);
+        //Debug.Log("LENGTH: " + rooms.Length);
 
         PlaceStartRoom();
         chosenRoomCount = GetRoomCount();
-        Debug.Log(chosenRoomCount);
+        //Debug.Log(chosenRoomCount);
     }
 
     #region Starter Code
@@ -134,7 +134,7 @@ public class LevelGenerator : MonoBehaviour
                 // Need to Pick a room based on the door needed
 
                 GameObject room = GetRoom(doorNeeded, row, col);
-                Debug.Log(row + " " + col);
+                //Debug.Log(row + " " + col);
 
                 // Instantiate that room at the position of the spawn point
                 GameObject spawnedRoom = Instantiate(room, sp.transform.position, Quaternion.identity, transform);
@@ -162,7 +162,7 @@ public class LevelGenerator : MonoBehaviour
 
         // Step 1: Check if the Room is on an edge
 
-        Debug.Log(doorNeeded);
+        //Debug.Log(doorNeeded);
 
         if (row == 0 || row == rowSize - 1 || col == 0 || col == colSize - 1)
         {

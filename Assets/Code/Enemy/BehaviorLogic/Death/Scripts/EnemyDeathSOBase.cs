@@ -29,15 +29,14 @@ public class EnemyDeathSOBase : ScriptableObject
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { 
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
         {
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
             Destroy(_gameObject);
         }
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
-        }
+
         if(triggerType == EnemyBase.AnimationTriggerType.GolemDeath)
         {
             AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemDeath, _transform.position);
+            Destroy(_gameObject);
         }
     }
 

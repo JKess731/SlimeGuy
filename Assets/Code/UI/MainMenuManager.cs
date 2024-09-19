@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +7,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public void StartGameOnClick()
     {
-        SceneManager.LoadScene("NoahTestScene");
+        SceneManager.LoadScene("ProceduralGen");
     }
 
     public void QuitGameOnClick()

@@ -92,12 +92,12 @@ public class EnemyChaseSOBase : ScriptableObject
         {
 
             int randomIndex = Random.Range(0, GolemStepSounds.Length);
-            Debug.Log(randomIndex);
+            //Debug.Log(randomIndex);
             AudioManager.instance.PlayOneShot(GolemStepSounds[randomIndex], _transform.position);
         }
         else
         {
-            Debug.LogWarning("No step sounds assigned to the Golem.");
+            //Debug.LogWarning("No step sounds assigned to the Golem.");
         }
     }
 
