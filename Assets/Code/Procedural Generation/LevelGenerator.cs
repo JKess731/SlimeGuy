@@ -9,6 +9,7 @@ public class LevelGenerator : MonoBehaviour
     // Serialized Settings
     [Header("Room Settings")]
     [SerializeField] private GameObject startRoom;
+    public GameObject bossArena;
     [SerializeField] private RoomList roomList;
     [SerializeField] private RoomList emptyRoomsList;
     [SerializeField] private int maxRooms = 10; // <= GET EXACT NUMBER NEXT
@@ -30,10 +31,12 @@ public class LevelGenerator : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] private float spawnDelay = 1f;
 
-    // Loading Screen
+    // Loading Screen && Boss
     private Canvas mainUi;
     private Canvas loadingUi;
     private GameObject player;
+    [HideInInspector] public UnityEvent Complete;
+    [HideInInspector] public GameObject lastRoom;
 
     // Collections
     public RoomTypes[,] rooms;
@@ -95,7 +98,7 @@ public class LevelGenerator : MonoBehaviour
         int middleX = rowSize / 2;
         int middleY = colSize / 2;
 
-        GameObject start = Instantiate(startRoom, new Vector2(0, 0), Quaternion.identity);
+        GameObject start = Instantiate(startRoom, new Vector2(0, 0), Quaternion.identity, transform);
         RoomTypes rt = start.GetComponent<RoomTypes>();
         rooms[middleX, middleY] = rt;
         roomsPlaced.Add(start);
@@ -114,7 +117,6 @@ public class LevelGenerator : MonoBehaviour
 
         while (spawnPoints.Count > 0)
         {
-
             yield return new WaitForSecondsRealtime(spawnDelay);
 
             SpawnPoint sp = GetSpawnPoint();
@@ -181,9 +183,8 @@ public class LevelGenerator : MonoBehaviour
 
         Debug.Log("Generation Complete...");
         GenComplete();
-
-        ChooseBossRoom();
-
+        lastRoom = ChooseBossRoom();
+        Complete.Invoke();
     }
 
     private GameObject GetRoom(DoorTypes doorNeeded, int row, int col)
@@ -342,7 +343,7 @@ public class LevelGenerator : MonoBehaviour
         return coord;
     }
 
-    private void ChooseBossRoom()
+    private GameObject ChooseBossRoom()
     {
         GameObject room = roomsPlaced[roomsPlaced.Count - 1];
         RoomTypes rt = room.GetComponent<RoomTypes>();
@@ -370,7 +371,8 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        Debug.Log("room placed");
+        Debug.Log("boss room replaced");
+        return roomsPlaced[roomsPlaced.Count - 1];
 
     }
 
