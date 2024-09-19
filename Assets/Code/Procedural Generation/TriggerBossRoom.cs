@@ -41,6 +41,6 @@ public class TriggerBossRoom : MonoBehaviour
         gen.gameObject.SetActive(false);
         bossRoom.SetActive(true);
 
-        player.transform.position = new Vector2(0, 0);
+        player.transform.position = new Vector2(0, -6);
     }    
 }
