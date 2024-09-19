@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4210092655768728062}
   - component: {fileID: 6286716933122035961}
   - component: {fileID: 5951096491970071959}
+  - component: {fileID: 7526821506498367939}
   m_Layer: 7
   m_Name: SlashAttackBox
   m_TagString: trigger_child
@@ -232,3 +233,24 @@ MonoBehaviour:
   timerEnd: 0.2
   timeBetweenDamageInstances: 1
   knockbackPower: 10
+--- !u!95 &7526821506498367939
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577202157244426437}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f314a500c92aad04e995f967008382b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

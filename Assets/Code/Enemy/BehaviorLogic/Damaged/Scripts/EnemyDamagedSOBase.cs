@@ -9,8 +9,10 @@ public class EnemyDamagedSOBase : ScriptableObject
     protected Transform _transform;
     protected GameObject _gameObject;
 
+    /*
     // Array to hold multiple of one sound event
     [SerializeField] private EventReference[] GolemDamagedSounds;
+    */
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
@@ -18,6 +20,7 @@ public class EnemyDamagedSOBase : ScriptableObject
         _transform = gameObject.transform;
         _enemy = enemy;
 
+        /*
         // Initialize the attackSounds array using FmodEvents instance
         FmodEvents fmodEvents = FmodEvents.instance;
 
@@ -30,6 +33,7 @@ public class EnemyDamagedSOBase : ScriptableObject
             fmodEvents.GolemDamage5,
             fmodEvents.GolemDamage6
         };
+        */
     }
 
     public virtual void DoEnterLogic() {
@@ -49,11 +53,12 @@ public class EnemyDamagedSOBase : ScriptableObject
         }
         if(triggerType == EnemyBase.AnimationTriggerType.GolemDamaged)
         {
-            PlayRandomDamageSound();
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemDamage, _transform.position);
         }
 
     }
 
+    /*
     public virtual void PlayRandomDamageSound()
     {
         if (GolemDamagedSounds.Length > 0)
@@ -68,6 +73,7 @@ public class EnemyDamagedSOBase : ScriptableObject
             Debug.LogWarning("No damaged sounds for Golem");
         }
     }
+    */
 
     public virtual void ResetValues() { }
 }
