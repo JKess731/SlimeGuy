@@ -1,35 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
+using UnityEngine.Events;
 
 public class LevelGenerator : MonoBehaviour
 {
+    // Serialized Settings
+    [Header("Room Settings")]
     [SerializeField] private GameObject startRoom;
     [SerializeField] private RoomList roomList;
-    [SerializeField] private int maxRooms = 10;
+    [SerializeField] private int maxRooms = 10; // <= GET EXACT NUMBER NEXT
     [SerializeField] private int minRooms = 6;
-    [SerializeField] private int overrideRoomCount = 0;
+
+    // private settings
+    private int overrideRoomCount = 0; // <= REMOVE SOON
     private int chosenRoomCount = 0;
     private int currentRoomCount = 0;
 
+    // data
     [Space]
+    [Header("Array Bounds")]
     [SerializeField] private int rowSize = 5;
     [SerializeField] private int colSize = 5;
     [Space]
 
+    // Delay between spawning each room
+    [Header("Spawn Settings")]
     [SerializeField] private float spawnDelay = 1f;
 
+    // Loading Screen
+    private Canvas mainUi;
+    private Canvas loadingUi;
+    private GameObject player;
+
+    // Collections
     public RoomTypes[,] rooms;
-
     public List<GameObject> roomsPlaced = new List<GameObject>();
-
     public Queue<SpawnPoint> spawnPoints = new Queue<SpawnPoint>();
-    private bool generationComplete = false;
 
     private class ArrayCoordinate
     {
@@ -41,12 +49,34 @@ public class LevelGenerator : MonoBehaviour
     {
         rooms = GenerateGrid();
 
-        Debug.Log("LENGTH: " + rooms.Length);
-
         PlaceStartRoom();
         chosenRoomCount = GetRoomCount();
         Debug.Log(chosenRoomCount);
+
+        LoadUI();
     }
+
+    #region UI
+
+    private void LoadUI()
+    {
+        player = GameObject.FindGameObjectWithTag("player");
+        mainUi = GameObject.FindGameObjectWithTag("main_ui").GetComponent<Canvas>();
+        loadingUi = GameObject.FindGameObjectWithTag("loadingUi").GetComponent<Canvas>();
+
+        mainUi.enabled = false;
+        player.GetComponent<PlayerController>().enabled = false;
+        loadingUi.enabled = true;
+    }
+
+    private void GenComplete()
+    {
+        player.GetComponent<PlayerController>().enabled = true;
+        mainUi.enabled = true;
+        loadingUi.enabled = false;
+    }
+
+    #endregion
 
     #region Starter Code
     private RoomTypes[,] GenerateGrid()
@@ -149,7 +179,7 @@ public class LevelGenerator : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
 
         Debug.Log("Generation Complete...");
-        generationComplete = true;
+        GenComplete();
 
         ChooseBossRoom();
 

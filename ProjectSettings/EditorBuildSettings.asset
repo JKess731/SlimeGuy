@@ -20,8 +20,14 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/AbilityTesting.unity
     guid: 45f0f96a9685ed545a76442e59b0e851
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NoahTestScene.unity
     guid: 88d154c40949141488ebbaa120f2c157
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: f111204693ceff54f8bcb44fd0cc5131
+  - enabled: 1
+    path: Assets/Scenes/ProceduralGen.unity
+    guid: 5de282ba3606be4479d5ea29aae0dfd5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: b76656bbe6c86294f9d074b2611353e5, type: 2}
