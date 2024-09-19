@@ -208,11 +208,11 @@ PrefabInstance:
     - target: {fileID: 4091438651822508028, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: RelicInventory
       value: 
-      objectReference: {fileID: 222389389}
+      objectReference: {fileID: 1045878758}
     - target: {fileID: 4091438651822508028, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: RelicInventoryBG
       value: 
-      objectReference: {fileID: 222389390}
+      objectReference: {fileID: 2147119813}
     - target: {fileID: 4433807784745035315, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.020336924
@@ -714,6 +714,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827500999}
   m_CullTransparentMesh: 1
+--- !u!1 &1045878758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1755113142151932069, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+  m_PrefabInstance: {fileID: 222389388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1443483436
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +897,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832319079}
   m_CullTransparentMesh: 1
+--- !u!1 &2147119813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3724752236865748005, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+  m_PrefabInstance: {fileID: 222389388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
