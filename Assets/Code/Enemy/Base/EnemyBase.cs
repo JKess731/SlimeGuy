@@ -52,7 +52,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private EnemyAnimation enemyAnimation;              // Animator for the enemy
     private Enum_State _state;                          // The current state of the enemy
 
-    public GameObject slimeDrop;                        // The slime drop prefab for absorption
+    //public GameObject slimeDrop;                        // The slime drop prefab for absorption
     public bool isDead { get; set; } = false;
 
     public Vector2 FaceDir { get => faceDir; set => faceDir = value; }
@@ -106,10 +106,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     private void Update()
     {
-        if (knockBack.isBeingKnockedBack)
-        {
-            return;
-        }
         stateMachine.currentEnemyState.FrameUpdate();
         enemyAnimation.PlayAnimation(faceDir,_state);
     }
@@ -156,7 +152,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         damageFlash.Flash();
         _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
-        Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
+        //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
         GoToDamage();
 
         knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
@@ -169,7 +165,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         damageFlash.Flash();
         _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
-        Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
+        //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
         GoToDamage();
 
         if (_stats.GetStat(StatsEnum.HEALTH) <= 0)
@@ -181,7 +177,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public void Die()
     {
         _stats.SetStat(StatsEnum.SPEED, 0);
-        Instantiate(slimeDrop, transform.position, Quaternion.identity);
+        //Instantiate(slimeDrop, transform.position, Quaternion.identity);
         isDead = true;  //Prevent multiple slimedrops
         stateMachine.ChangeState(deathState);
     }

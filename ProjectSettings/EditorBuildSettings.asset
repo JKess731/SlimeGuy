@@ -5,12 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
-    path: Assets/Scenes/JaredScene.unity
-    guid: e36c2fe4d45964f41b66db57f5baa12b
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: f111204693ceff54f8bcb44fd0cc5131
+  - enabled: 1
+    path: Assets/Scenes/ProceduralGen.unity
+    guid: 5de282ba3606be4479d5ea29aae0dfd5
   - enabled: 0
     path: Assets/Scenes/EdisonTestScene.unity
     guid: b6d01cce84614544b997b90dff78d66d
@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/AbilityTesting.unity
     guid: 45f0f96a9685ed545a76442e59b0e851
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NoahTestScene.unity
     guid: 88d154c40949141488ebbaa120f2c157
   m_configObjects:

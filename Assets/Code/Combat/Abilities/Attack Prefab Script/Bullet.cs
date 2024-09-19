@@ -54,7 +54,7 @@ public class Bullet : Attacks
             {
                 collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
             }
-            Debug.Log("I got past StatusManager");
+            //Debug.Log("I got past StatusManager");
             if (_piercingAmount == 0)
             {
                 Destroy(gameObject);

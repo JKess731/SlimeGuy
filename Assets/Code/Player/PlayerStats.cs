@@ -90,15 +90,6 @@ public class PlayerStats : MonoBehaviour
         
         UiManager.instance.UpdateHealthBar(currentHealth, maxHealth);
     }
-
-    public void IncreaseAbsorption(int amount)
-    {
-        if (absorption + amount <= maxAbsorption)
-        {
-            absorption += amount;
-            UiManager.instance.UpdateAbsorptionBar(absorption, maxAbsorption);
-        }
-    }
     public void print()
     {
         Debug.Log("Health: " + currentHealth);

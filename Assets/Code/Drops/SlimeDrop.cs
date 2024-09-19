@@ -11,7 +11,6 @@ public class SlimeDrop : MonoBehaviour
     {
         if (collision.CompareTag("player"))
         {
-            PlayerStats.instance.IncreaseAbsorption(absorptionAmount);
             Destroy(gameObject);
         }
     }

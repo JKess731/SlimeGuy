@@ -20,7 +20,7 @@ public class StatsSO: ScriptableObject
         for(int i = 0; i < _statList.Count; i++) {
             if (_stats.ContainsKey(_statList[i].StatEnum))
             {
-                Debug.LogWarning("Duplicate Stat Found");
+                //Debug.LogWarning("Duplicate Stat Found");
                 continue;
             }
             _stats.Add(_statList[i].StatEnum, _statList[i].Value);

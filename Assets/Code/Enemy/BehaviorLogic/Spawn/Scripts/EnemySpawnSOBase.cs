@@ -11,8 +11,6 @@ public class EnemySpawnSOBase : ScriptableObject
         _gameObject = gameObject;
     }
     public virtual void DoEnterLogic() {
-        Debug.Log(_enemy);
-        Debug.Log(_enemy.State);
         _enemy.State = Enum_State.SPAWNING;
         _enemy.stateMachine.ChangeState(_enemy.idleState);
     }
