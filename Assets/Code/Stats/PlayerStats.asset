@@ -21,3 +21,29 @@ MonoBehaviour:
     _statValue: 10
   - _statEnum: 2
     _statValue: 10
+  - _statEnum: 5
+    _statValue: 0
+  - _statEnum: 7
+    _statValue: 0
+  - _statEnum: 8
+    _statValue: 0
+  - _statEnum: 9
+    _statValue: 0
+  - _statEnum: 10
+    _statValue: 0
+  - _statEnum: 11
+    _statValue: 0
+  - _statEnum: 12
+    _statValue: 0
+  - _statEnum: 13
+    _statValue: 0
+  - _statEnum: 14
+    _statValue: 0
+  - _statEnum: 15
+    _statValue: 0
+  - _statEnum: 17
+    _statValue: 0
+  - _statEnum: 18
+    _statValue: 0
+  - _statEnum: 19
+    _statValue: 0

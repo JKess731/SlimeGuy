@@ -14,6 +14,7 @@ public class PlayerStateMachine : MonoBehaviour
     private KnockBack _knockBack;                   //Knockback Variables
 
     public Enum_State State { get => _state; set => _state = value; }
+    public StatsSO playerStats { get => _playerStats; }
 
     private void Awake()
     {

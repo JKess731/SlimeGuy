@@ -7,6 +7,11 @@ public class HealthBuffRelic : RelicSO
 {
     [SerializeField] private float buffPercentage = 10;
 
+    public override void Initialize(StatsSO playerstats)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void OnPickup()
     {
         ActivateBuffs();
