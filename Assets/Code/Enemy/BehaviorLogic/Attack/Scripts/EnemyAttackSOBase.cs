@@ -73,7 +73,7 @@ public class EnemyAttackSOBase : ScriptableObject
         {
 
             int randomIndex = Random.Range(0, golemAttackSounds.Length);
-            Debug.Log(randomIndex);
+            //Debug.Log(randomIndex);
             AudioManager.instance.PlayOneShot(golemAttackSounds[randomIndex], _transform.position);
         }
         else
