@@ -10,6 +10,7 @@ public class LevelGenerator : MonoBehaviour
     [Header("Room Settings")]
     [SerializeField] private GameObject startRoom;
     [SerializeField] private RoomList roomList;
+    [SerializeField] private RoomList emptyRoomsList;
     [SerializeField] private int maxRooms = 10; // <= GET EXACT NUMBER NEXT
     [SerializeField] private int minRooms = 6;
 
@@ -245,7 +246,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (roomTypes.Count == 0) 
         {
-            roomTypes = GetRoomsByDoorType(dt, GetFullSpawnList());
+            roomTypes = GetRoomsByDoorType(dt, GetFullSpawnList(roomList));
         }
 
         int index = Random.Range(0, roomTypes.Count - 1);
@@ -344,25 +345,32 @@ public class LevelGenerator : MonoBehaviour
     private void ChooseBossRoom()
     {
         GameObject room = roomsPlaced[roomsPlaced.Count - 1];
+        RoomTypes rt = room.GetComponent<RoomTypes>();
+        List<DoorTypes> dt = rt.doors;
 
-        for (int i = 0; i < room.transform.childCount; i++)
+        List<GameObject> emptyRooms = GetFullSpawnList(emptyRoomsList);
+        
+        foreach (GameObject r in emptyRooms)
         {
-            if (room.transform.GetChild(i).name == "Walls")
+            RoomTypes rRt = r.GetComponent<RoomTypes>();
+
+            int count = 0;
+            foreach (DoorTypes d in dt)
             {
-                GameObject r = room.transform.GetChild(i).gameObject;
-
-                for (int j = 0; j < r.transform.childCount; j++)
+                if (rRt.doors.Contains(d))
                 {
-                    SpriteRenderer sr = r.transform.GetChild(j).GetComponent<SpriteRenderer>();
-                    sr.color = Color.red;
+                    count++;
                 }
-
+            }
+            if (count == rRt.doors.Count)
+            {
+                roomsPlaced[roomsPlaced.Count - 1] = Instantiate(r, room.transform.position, Quaternion.identity, transform);
+                Destroy(room);
                 break;
             }
         }
 
-        // Get room grid location
-        // Replace room with boss room of same door type from boss room preset list
+        Debug.Log("room placed");
 
     }
 
@@ -370,13 +378,13 @@ public class LevelGenerator : MonoBehaviour
 
     #region Room Lists
 
-    private List<GameObject> GetFullSpawnList()
+    private List<GameObject> GetFullSpawnList(RoomList rl)
     {
         List<GameObject> AllDoors = new List<GameObject>();
-        AllDoors.AddRange(roomList.topRooms);
-        AllDoors.AddRange(roomList.bottomRooms);
-        AllDoors.AddRange(roomList.leftRooms);
-        AllDoors.AddRange(roomList.rightRooms);
+        AllDoors.AddRange(rl.topRooms);
+        AllDoors.AddRange(rl.bottomRooms);
+        AllDoors.AddRange(rl.leftRooms);
+        AllDoors.AddRange(rl.rightRooms);
         AllDoors.Add(startRoom);
 
         return AllDoors;
@@ -384,7 +392,7 @@ public class LevelGenerator : MonoBehaviour
 
     private List<GameObject> GetDoorAmount(int doorCount)
     {
-        List<GameObject> allDoors = GetFullSpawnList();
+        List<GameObject> allDoors = GetFullSpawnList(roomList);
 
         List<GameObject> doors = new List<GameObject>();
         foreach (GameObject r in allDoors)

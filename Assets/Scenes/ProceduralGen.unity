@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startRoom: {fileID: 2070151340180195389, guid: b2468c9cb9cbbf8448f99be638312f00, type: 3}
   roomList: {fileID: 11400000, guid: 485f63d36751fc84b8b0737e985fadf6, type: 2}
+  emptyRoomsList: {fileID: 11400000, guid: 1edcecc11da7f704c9ffebfb32d6e8de, type: 2}
   maxRooms: 25
   minRooms: 10
   rowSize: 16
