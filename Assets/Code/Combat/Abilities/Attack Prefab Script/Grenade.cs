@@ -101,6 +101,7 @@ public class Grenade : Attacks
                 }
             }
         }
+        Destroy(gameObject);
     }
 
     private void Awake()

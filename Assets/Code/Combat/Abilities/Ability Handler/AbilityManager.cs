@@ -62,11 +62,14 @@ public class AbilityManager : MonoBehaviour
     //}
 
     #region Primary
-    public void InstaniatePrimary()
+    public void InstaniatePrimary(AbilityBase newAbility)
     {
-        primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
+        if (primary != null)
+        {
+            primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
+        }
 
-        primary = Instantiate(primary);
+        primary = Instantiate(newAbility);
         primary?.Initialize();
         primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
     }
@@ -101,11 +104,14 @@ public class AbilityManager : MonoBehaviour
 
     #region Secondary
 
-    public void InstaniateSecondary()
+    public void InstaniateSecondary(AbilityBase newAbility)
     {
-        secondary.Behavior.onBehaviorFinished -= OnSecondaryCooldown;
+        if (secondary != null)
+        {
+            secondary.Behavior.onBehaviorFinished -= OnSecondaryCooldown;
+        }
 
-        secondary = Instantiate(secondary);
+        secondary = Instantiate(newAbility);
         secondary?.Initialize();
         secondary.Behavior.onBehaviorFinished += OnSecondaryCooldown;
     }

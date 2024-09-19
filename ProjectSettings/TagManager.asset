@@ -14,6 +14,9 @@ TagManager:
   - wall
   - attack_point_transform
   - room_spawn_point
+  - spawn
+  - secondary
+  - primary
   layers:
   - Default
   - TransparentFX
