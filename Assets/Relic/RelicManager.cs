@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class RelicManager : MonoBehaviour
 {
-    [SerializeField] private StatsSO playerStats;
     public static RelicManager instance;
+    [SerializeField] private AbilityManager _abilityManager;
     [SerializeField] private int maxRelics = 10;
 
+
+    public AbilityManager abilityManager { get { return _abilityManager; } }
     public RelicCalculator calculator;
     public RelicSO[] relicsEquipped;
 
@@ -29,7 +31,7 @@ public class RelicManager : MonoBehaviour
 
     private void Update()
     {
-        CheckRelics();
+       
     }
 
     // Adds a relic to the array at the first null position

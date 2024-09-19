@@ -1,25 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-[CreateAssetMenu(menuName = "Relics/Health Debuff", fileName = "Health Debuff")]
-public class HealthDebuffRelic : RelicSO
+[CreateAssetMenu(fileName = "WhipActivationTime", menuName = "Relics/WhipActivationTime")]
+public class WhipActivationTimeRelic : RelicSO
 {
-    [SerializeField] private float debuffPercentage = 10;
 
     public override void Initialize(StatsSO playerstats)
     {
-        throw new System.NotImplementedException();
+        _playerStats = playerstats;
     }
 
     public override void OnPickup()
     {
-        ActivateBuffs();
+        ActivateBuffs();   
     }
 
     public override void ActivateBuffs()
     {
-        calc.DebuffHealth(debuffPercentage);
+        _playerStats.AddStat(_changedStat, 100);
     }
 
     public override void DeactivateBuffs()
@@ -29,6 +29,6 @@ public class HealthDebuffRelic : RelicSO
 
     public override bool Condition()
     {
-        return false;
+        throw new System.NotImplementedException();
     }
 }

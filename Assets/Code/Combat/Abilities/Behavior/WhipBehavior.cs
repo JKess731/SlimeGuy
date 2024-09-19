@@ -43,4 +43,27 @@ public class WhipBehavior : Behavior
         AbilityState = AbilityState.FINISHED;
         onBehaviorFinished?.Invoke();
     }
+
+    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
+    {
+        switch (stat)
+        {
+            case StatsEnum.DAMAGE:
+                _whipStruct.Damage += (int)playerstats.GetStat(StatsEnum.DAMAGE);
+                break;
+            case StatsEnum.KNOCKBACK:
+                _knockback += playerstats.GetStat(StatsEnum.KNOCKBACK);
+                break;
+            case StatsEnum.ROTATION_SPEED:
+                _rotationSpeed += (int)playerstats.GetStat(StatsEnum.ROTATION_SPEED);
+                break;
+            case StatsEnum.ACTIVATION_TIME:
+                _activationTime += playerstats.GetStat(StatsEnum.ACTIVATION_TIME);
+                break;
+            case StatsEnum.COOLDOWN_TIME:
+                _cooldownTime += playerstats.GetStat(StatsEnum.COOLDOWN_TIME);
+                break;
+        }
+
+    }
 }

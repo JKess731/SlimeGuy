@@ -68,7 +68,7 @@ public class Behavior : ScriptableObject, IBehavior
         //throw new System.NotImplementedException();
     }
 
-    public virtual void Upgrade(StatsSO playerStats)
+    public virtual void Upgrade(StatsSO playerStats, StatsEnum stats)
     {
 
     }

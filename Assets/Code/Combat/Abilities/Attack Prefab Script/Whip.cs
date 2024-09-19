@@ -17,8 +17,6 @@ public class Whip : Attacks
 
         _player = GameObject.FindWithTag("player");
         _attack = GameObject.FindWithTag("attack");
-        Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(_attack.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
     }
 

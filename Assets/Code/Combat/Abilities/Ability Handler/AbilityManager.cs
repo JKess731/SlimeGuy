@@ -23,19 +23,22 @@ public class AbilityManager : MonoBehaviour
     public AbilityBase Secondary { get => secondary; }
     public AbilityBase Dash { get => dash; }
 
+    public AbilityBase primary2;
+
     private void Start()
     {
-        primary = Instantiate(primary);
+
+        primary2 = Instantiate(primary);
         secondary = Instantiate(secondary);
         dash = Instantiate(dash);
 
-        primary?.Initialize();
+        primary2?.Initialize();
         secondary?.Initialize();
         dash?.Initialize();
 
         try
         {
-            primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
+            primary2.Behavior.onBehaviorFinished += OnPrimaryCooldown;
             secondary.Behavior.onBehaviorFinished += OnSecondaryCooldown;
             dash.Behavior.onBehaviorFinished += OnDashCooldown;
         }
@@ -47,9 +50,9 @@ public class AbilityManager : MonoBehaviour
 
     //private void Update()
     //{
-    //    if (primary.Behavior.AbilityState == AbilityState.FINISHED)
+    //    if (primary2.Behavior.AbilityState == AbilityState.FINISHED)
     //    {
-    //        StartCoroutine(primary.Behavior.Cooldown());
+    //        StartCoroutine(primary2.Behavior.Cooldown());
     //    }
     //    if (secondary.Behavior.AbilityState == AbilityState.FINISHED)
     //    {
@@ -61,41 +64,49 @@ public class AbilityManager : MonoBehaviour
     //    }
     //}
 
-    #region Primary
-    public void InstaniatePrimary()
+    public void UpgradeAbilities(StatsSO playerstats, StatsEnum stat)
     {
-        primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
+        primary2?.Behavior.Upgrade(playerstats, stat);
+        secondary?.Behavior.Upgrade(playerstats, stat);
+        dash?.Behavior.Upgrade(playerstats, stat);
+    }
 
-        primary = Instantiate(primary);
-        primary?.Initialize();
-        primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
+    #region primary2
+    public void Instaniateprimary()
+    {
+        primary2.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
+
+        primary2 = Instantiate(primary2);
+        primary2?.Initialize();
+        primary2.Behavior.onBehaviorFinished += OnPrimaryCooldown;
     }
 
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
-        if(primary.Behavior.AbilityState == AbilityState.READY)
+        if(primary2.Behavior.AbilityState == AbilityState.READY)
         {
-            primary?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
+            primary2?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnPrimaryPerformed(InputAction.CallbackContext context)
     {
-        if(primary.Behavior.AbilityState == AbilityState.PERFORMING)
+        if(primary2.Behavior.AbilityState == AbilityState.PERFORMING)
         {
-            primary?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
+            primary2?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
-        if (primary.Behavior.AbilityState == AbilityState.CANCELING)
+        if (primary2.Behavior.AbilityState == AbilityState.CANCELING)
         {
-            primary?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
+            primary2?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
         }
     }
 
     public void OnPrimaryCooldown()
     {
-        StartCoroutine(primary.Behavior.Cooldown());
+        UiManager.instance.TextAndSliderAdjustment(primary2, "P");
+        StartCoroutine(primary2.Behavior.Cooldown());
     }
     #endregion
 
@@ -134,6 +145,7 @@ public class AbilityManager : MonoBehaviour
     public void OnSecondaryCooldown()
     {
         StartCoroutine(secondary.Behavior.Cooldown());
+        UiManager.instance.TextAndSliderAdjustment(secondary, "S");
     }
     #endregion
 
@@ -170,6 +182,7 @@ public class AbilityManager : MonoBehaviour
     public void OnDashCooldown()
     {
         StartCoroutine(dash.Behavior.Cooldown());
+        UiManager.instance.TextAndSliderAdjustment(dash, "D");
     }
     #endregion 
 
