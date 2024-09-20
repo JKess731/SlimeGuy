@@ -120,7 +120,14 @@ public class SingleRoomController : MonoBehaviour
                     door.SetActive(false);
                 }
 
-                gameObject.SetActive(false);
+                LevelGenerator lg = transform.parent.gameObject.GetComponent<LevelGenerator>();
+                cleared = true;
+                lg.roomsCleared++;
+                lg.clearedChain++;
+                lg.lastClearedRoom = this.gameObject;
+
+                //gameObject.SetActive(false);
+                triggered = false;
             }
         }
     }
