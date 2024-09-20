@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnBoss : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class SpawnBoss : MonoBehaviour
     {
         if (bossRef == null)
         {
-            // Trigger Ending Screen
+            SceneManager.LoadScene("EndMenu");
         }
     }
 }
