@@ -19,7 +19,7 @@ MonoBehaviour:
   _spreadAngle: 20
   _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
   _projectileDamage: 1
-  _projectileKnockback: 1
+  _projectileKnockback: 0
   _projectileSpeed: 20
   _projectileRange: 5
   _piercingAmount: 10

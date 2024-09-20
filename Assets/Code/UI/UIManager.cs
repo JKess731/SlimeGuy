@@ -32,7 +32,7 @@ public class UiManager : MonoBehaviour
 
     public static UiManager instance;
 
-    private void Start()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -40,9 +40,13 @@ public class UiManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UIManager instance already exists. Destroying duplicate.");
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        
         _abilityManager = FindObjectOfType<AbilityManager>();
         healthBar = GameObject.Find("Health Bar").GetComponent<Slider>();
         healthTxt = GameObject.Find("Health Text").GetComponent<TextMeshProUGUI>();
