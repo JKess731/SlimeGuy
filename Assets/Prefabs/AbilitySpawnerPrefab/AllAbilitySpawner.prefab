@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4261365704329129250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6484046023631511256}
+  - component: {fileID: 655314654517998024}
+  m_Layer: 0
+  m_Name: AllAbilitySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6484046023631511256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4261365704329129250}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.352223, y: -0.30416542, z: 11311.867}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &655314654517998024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4261365704329129250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40f11706642ae048b655b752843d63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryAbilityPrefabs:
+  - {fileID: 6634050262174916992, guid: 2c662c23442095643a8da5eb3772eea1, type: 3}
+  - {fileID: 8687808817406728532, guid: 8ce3478fcc07f7e4f835d85211dd79cc, type: 3}
+  secondaryAbilityPrefabs:
+  - {fileID: 2460115958248623468, guid: dbb9c6440447ef34cab3b8588ee52fba, type: 3}
+  - {fileID: 2726926209033287163, guid: 290f273dd17e56b40b9e3e3ef7fc6eec, type: 3}
+  - {fileID: 604973517676962060, guid: 02d402d1bc1355941a5f83f9f44e1473, type: 3}
+  - {fileID: 2228870431341252422, guid: 5eeb650580f23764ea5c4e06e790de4e, type: 3}
+  - {fileID: 2747652142791412021, guid: 1f86a7c24116c034cb35068a8b785f49, type: 3}
+  radius: 3
