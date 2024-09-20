@@ -26,17 +26,26 @@ public class AbilityManager : MonoBehaviour
     private void Start()
     {
 
-        primary = Instantiate(primary);
-        secondary = Instantiate(secondary);
-        dash = Instantiate(dash);
+        if (primary != null)
+        {
+            primary = Instantiate(primary);
+        }
+        if (secondary != null)
+        {
+            secondary = Instantiate(secondary);
+        }
+        if (dash != null)
+        {
+            dash = Instantiate(dash);
+        }
 
-        primary2?.Initialize();
+        primary?.Initialize();
         secondary?.Initialize();
         dash?.Initialize();
 
         try
         {
-            primary2.Behavior.onBehaviorFinished += OnPrimaryCooldown;
+            primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
             secondary.Behavior.onBehaviorFinished += OnSecondaryCooldown;
             dash.Behavior.onBehaviorFinished += OnDashCooldown;
         }
@@ -63,9 +72,12 @@ public class AbilityManager : MonoBehaviour
     //}
 
     #region Primary
-    public void InstaniatePrimary()
+    public void InstaniatePrimary(AbilityBase newAbility)
     {
-        primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
+        if (primary != null)
+        {
+            primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
+        }
 
         primary = Instantiate(newAbility);
         primary?.Initialize();
@@ -74,30 +86,30 @@ public class AbilityManager : MonoBehaviour
 
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
-        if(primary2.Behavior.AbilityState == AbilityState.READY)
+        if(primary?.Behavior.AbilityState == AbilityState.READY)
         {
-            primary2?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
+            primary?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnPrimaryPerformed(InputAction.CallbackContext context)
     {
-        if(primary2.Behavior.AbilityState == AbilityState.PERFORMING)
+        if (primary?.Behavior.AbilityState == AbilityState.PERFORMING)
         {
-            primary2?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
+            primary?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
-        if (primary2.Behavior.AbilityState == AbilityState.CANCELING)
+        if (primary?.Behavior.AbilityState == AbilityState.CANCELING)
         {
-            primary2?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
+            primary?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
         }
     }
 
     public void OnPrimaryCooldown()
     {
-        UiManager.instance.TextAndSliderAdjustment(primary2, "P");
-        StartCoroutine(primary2.Behavior.Cooldown());
+        UiManager.instance?.TextAndSliderAdjustment(primary, "P");
+        StartCoroutine(primary.Behavior.Cooldown());
     }
     #endregion
 
@@ -117,29 +129,29 @@ public class AbilityManager : MonoBehaviour
 
     public void OnSecondaryStarted(InputAction.CallbackContext context)
     {
-        if (secondary.Behavior.AbilityState == AbilityState.READY)
+        if (secondary?.Behavior.AbilityState == AbilityState.READY)
         {
             secondary?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnSecondaryPerformed(InputAction.CallbackContext context)
     {
-        if (secondary.Behavior.AbilityState == AbilityState.STARTING)
+        if (secondary?.Behavior.AbilityState == AbilityState.STARTING)
         {
             secondary?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnSecondaryCanceled(InputAction.CallbackContext context)
     {
-        if(secondary.Behavior.AbilityState == AbilityState.PERFORMING)
+        if(secondary?.Behavior.AbilityState == AbilityState.PERFORMING)
         {
             secondary?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnSecondaryCooldown()
     {
+        UiManager.instance?.TextAndSliderAdjustment(secondary, "S");
         StartCoroutine(secondary.Behavior.Cooldown());
-        UiManager.instance.TextAndSliderAdjustment(secondary, "S");
     }
     #endregion
 
@@ -154,29 +166,29 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnDashStarted(InputAction.CallbackContext context)
     {
-        if (dash.Behavior.AbilityState == AbilityState.READY)
+        if (dash?.Behavior.AbilityState == AbilityState.READY)
         {
             dash?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnDashPerformed(InputAction.CallbackContext context)
     {
-        if (dash.Behavior.AbilityState == AbilityState.STARTING)
+        if (dash?.Behavior.AbilityState == AbilityState.STARTING)
         {
             dash?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnDashCanceled(InputAction.CallbackContext context)
     {
-        if (dash.Behavior.AbilityState == AbilityState.PERFORMING)
+        if (dash?.Behavior.AbilityState == AbilityState.PERFORMING)
         {
             dash?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnDashCooldown()
     {
+        UiManager.instance?.TextAndSliderAdjustment(dash, "D");
         StartCoroutine(dash.Behavior.Cooldown());
-        UiManager.instance.TextAndSliderAdjustment(dash, "D");
     }
     #endregion 
 
@@ -186,4 +198,11 @@ public class AbilityManager : MonoBehaviour
         Debug.Log("Passive");
     }
     #endregion
+
+    public void UpgradeAbilities(StatsSO playerStats, StatsEnum statType)
+    {
+        primary?.Behavior.Upgrade(playerStats, statType);
+        secondary?.Behavior.Upgrade(playerStats, statType);
+        dash?.Behavior.Upgrade(playerStats, statType);
+    }
 }

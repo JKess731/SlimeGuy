@@ -231,92 +231,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <DwarfHurt>k__BackingField.Path
-      value: event:/Gremlin/GremlinHurt
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <DwarfStep>k__BackingField.Path
-      value: event:/Gremlin/Germlin_Step_Final
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemStep>k__BackingField.Path
-      value: event:/Golem/Golem_Step_Final
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemAttack>k__BackingField.Path
-      value: event:/Golem/Golem_Attack_Final
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemDamage>k__BackingField.Path
-      value: event:/Golem/Golem_Damage_Final
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <GolemAttack1>k__BackingField.Path
       value: event:/Golem/Golem_Attack_Final
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <DwarfStep>k__BackingField.Guid.Data1
-      value: -1343764155
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <DwarfStep>k__BackingField.Guid.Data2
-      value: 1279726617
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <DwarfStep>k__BackingField.Guid.Data3
-      value: -1085885289
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <DwarfStep>k__BackingField.Guid.Data4
-      value: -1240755470
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemStep>k__BackingField.Guid.Data1
-      value: -333292837
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemStep>k__BackingField.Guid.Data2
-      value: 1199011146
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemStep>k__BackingField.Guid.Data3
-      value: 768777885
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemStep>k__BackingField.Guid.Data4
-      value: 104661478
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemAttack>k__BackingField.Guid.Data1
-      value: -1840414035
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemAttack>k__BackingField.Guid.Data2
-      value: 1198465864
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemAttack>k__BackingField.Guid.Data3
-      value: -1311176792
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemAttack>k__BackingField.Guid.Data4
-      value: -1540544122
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemDamage>k__BackingField.Guid.Data1
-      value: -1972398831
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemDamage>k__BackingField.Guid.Data2
-      value: 1271385219
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemDamage>k__BackingField.Guid.Data3
-      value: -21700162
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
-      propertyPath: <GolemDamage>k__BackingField.Guid.Data4
-      value: -999837977
       objectReference: {fileID: 0}
     - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: <GolemAttack1>k__BackingField.Guid.Data1
@@ -658,7 +574,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 497496063
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2285,7 +2201,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 497496063
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

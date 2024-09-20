@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class RelicInventoryInputManager : MonoBehaviour
 {
     public static RelicInventoryInputManager instance;
-    [SerializeField] private GameObject RelicInventory;
-    [SerializeField] private GameObject RelicInventoryBG;
+    [SerializeField] private GameObject relicInventory;
+    [SerializeField] private GameObject relicInventoryBG;
     private bool isOpen;
     public bool menuOpenCloseInput {  get; private set; }
     public InputActionAsset inputActionAsset;
@@ -25,8 +25,8 @@ public class RelicInventoryInputManager : MonoBehaviour
 
     private void Start()
     {
-        RelicInventoryBG.SetActive(false);
-        RelicInventory.SetActive(false);
+        relicInventoryBG.SetActive(false);
+        relicInventory.SetActive(false);
         isOpen = false;
     }
 
@@ -49,15 +49,15 @@ public class RelicInventoryInputManager : MonoBehaviour
             if (!isOpen)
             {
                 isOpen = true;
-                RelicInventory.SetActive(true);
-                RelicInventoryBG.SetActive(true);
+                relicInventory.SetActive(true);
+                relicInventoryBG.SetActive(true);
                 Debug.Log("Opening Menu");
             }
             else
             {
                 isOpen = false;
-                RelicInventory.SetActive(false);
-                RelicInventoryBG.SetActive(false);
+                relicInventory.SetActive(false);
+                relicInventoryBG.SetActive(false);
                 Debug.Log("Closing Menu");
             }
         }
