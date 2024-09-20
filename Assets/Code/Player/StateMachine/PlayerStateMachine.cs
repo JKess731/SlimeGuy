@@ -52,7 +52,6 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Damage and Knockback
     public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
-        Debug.Log("Player Damaged:" + damage);
         if (_playerStats.GetStat(StatsEnum.HEALTH) <= 0)
         {
             Destroy(gameObject);
