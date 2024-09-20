@@ -17,5 +17,5 @@ MonoBehaviour:
   _status: {fileID: 0}
   _whip: {fileID: 1444053255082817093, guid: 72bbfe5b1348d7a4792d4a570411e74f, type: 3}
   _damage: 1
-  _knockback: 1
+  _knockback: 6
   _rotationSpeed: 500

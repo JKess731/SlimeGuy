@@ -69,22 +69,22 @@ public class ShotgunBehavior : Behavior
                 _spreadAngle += playerstats.GetStat(StatsEnum.SPREAD_ANGLE);
                 break;
             case StatsEnum.PROJECTILE_DAMAGE:
-                _projectileDamage += (int)playerstats.GetStat(StatsEnum.PROJECTILE_DAMAGE);
+                _bulletStruct._damage += (int)playerstats.GetStat(StatsEnum.PROJECTILE_DAMAGE);
                 break;
             case StatsEnum.PROJECTILE_KNOCKBACK:
-                _projectileKnockback += playerstats.GetStat(StatsEnum.PROJECTILE_KNOCKBACK);
+                _bulletStruct._knockback += playerstats.GetStat(StatsEnum.PROJECTILE_KNOCKBACK);
                 break;
             case StatsEnum.PROJECTILE_SPEED:
-                _projectileSpeed += playerstats.GetStat(StatsEnum.PROJECTILE_SPEED);
+                _bulletStruct._bulletSpeed += playerstats.GetStat(StatsEnum.PROJECTILE_SPEED);
                 break;
             case StatsEnum.PROJECTILE_RANGE:
-                _projectileRange += playerstats.GetStat(StatsEnum.PROJECTILE_RANGE);
+                _bulletStruct._range += playerstats.GetStat(StatsEnum.PROJECTILE_RANGE);
                 break;
             case StatsEnum.RICHOCHET_COUNT:
-                _bulletBounce += (int)playerstats.GetStat(StatsEnum.RICHOCHET_COUNT);
+                _bulletStruct._bulletBounce += (int)playerstats.GetStat(StatsEnum.RICHOCHET_COUNT);
                 break;
             case StatsEnum.PIERCING_COUNT:
-                _piercingAmount += (int)playerstats.GetStat(StatsEnum.PIERCING_COUNT);
+                _bulletStruct._piercingAmount += (int)playerstats.GetStat(StatsEnum.PIERCING_COUNT);
                 break;
         }
 

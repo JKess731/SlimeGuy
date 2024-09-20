@@ -7,13 +7,13 @@ using UnityEngine;
 /// </summary>
 public struct BulletStruct
 {
-    private int _damage;
-    private float _knockback;
-    private float _bulletSpeed;
-    private float _range;
+    public int _damage;
+    public float _knockback;
+    public float _bulletSpeed;
+    public float _range;
     private StatusSO _status;
-    private int _piercingAmount;
-    private int _bulletBounce;
+    public int _piercingAmount;
+    public int _bulletBounce;
 
     public int Damage { get { return _damage; } }
     public float Knockback { get { return _knockback; } }

@@ -108,7 +108,7 @@ public class AbilityManager : MonoBehaviour
 
     public void OnPrimaryCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(primary, "P");
+        UiManager.instance.TextAndSliderAdjustment(primary, "P");
         StartCoroutine(primary.Behavior.Cooldown());
     }
     #endregion
@@ -150,7 +150,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnSecondaryCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(secondary, "S");
+        UiManager.instance.TextAndSliderAdjustment(secondary, "S");
         StartCoroutine(secondary.Behavior.Cooldown());
     }
     #endregion
@@ -187,7 +187,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnDashCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(dash, "D");
+        UiManager.instance.TextAndSliderAdjustment(dash, "D");
         StartCoroutine(dash.Behavior.Cooldown());
     }
     #endregion 
