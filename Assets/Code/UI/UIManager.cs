@@ -8,10 +8,8 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
-    [SerializeField] private Slider absorptionBar;
 
     [SerializeField] private TextMeshProUGUI healthTxt;
-    [SerializeField] private TextMeshProUGUI absorptionTxt;
     [SerializeField] private TextMeshProUGUI primaryCooldownTxt;
     [SerializeField] private TextMeshProUGUI secondaryCooldownTxt;
     [SerializeField] private TextMeshProUGUI dashCooldownTxt;
@@ -47,9 +45,7 @@ public class UiManager : MonoBehaviour
         }
         _abilityManager = FindObjectOfType<AbilityManager>();
         healthBar = GameObject.Find("Health Bar").GetComponent<Slider>();
-        absorptionBar = GameObject.Find("Absorption Bar").GetComponent<Slider>();
         healthTxt = GameObject.Find("Health Text").GetComponent<TextMeshProUGUI>();
-        absorptionTxt = GameObject.Find("Absorption Text").GetComponent<TextMeshProUGUI>();
 
         try
         {
@@ -67,12 +63,6 @@ public class UiManager : MonoBehaviour
     {
         healthBar.value = health / maxHealth;
         healthTxt.SetText(health + "/" + maxHealth);
-    }
-
-    public void UpdateAbsorptionBar(float absorption, float maxAbsorption)
-    {
-        absorptionBar.value = absorption / maxAbsorption;
-        absorptionTxt.SetText(absorption + "/" + maxAbsorption);
     }
 
     public void UpdatePrimaryAbilityImage(Sprite Icon)

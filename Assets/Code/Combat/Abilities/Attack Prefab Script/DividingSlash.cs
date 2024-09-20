@@ -70,7 +70,7 @@ public class DividingSlash : Attacks
         // If the slash hits an enemy, damage the enemy and apply knockback
         if (collision.gameObject.tag == "enemy")
         {
-            Debug.Log("Destroy me");
+            //Debug.Log("Destroy me");
             Destroy(gameObject);
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage, transform.right, _knockback, Vector2.up);
         }

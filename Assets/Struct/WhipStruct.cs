@@ -9,7 +9,7 @@ public struct WhipStruct
     private float _activationTime;
     private float _rotationSpeed;
     private StatusSO _status;
-    public int Damage { get { return _damage; } }
+    public int Damage { get { return _damage; } set => _damage = value; }
     public float Knockback { get { return _knockback; } }
     public float ActivationTime { get { return _activationTime; } }
     public float RotationSpeed { get { return _rotationSpeed; } }

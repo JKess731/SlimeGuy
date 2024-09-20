@@ -6,6 +6,12 @@ using UnityEngine;
 public class HealthDebuffRelic : RelicSO
 {
     [SerializeField] private float debuffPercentage = 10;
+
+    public override void Initialize(StatsSO playerstats)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void OnPickup()
     {
         ActivateBuffs();

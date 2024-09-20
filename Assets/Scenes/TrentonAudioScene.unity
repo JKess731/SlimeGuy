@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyGolem
       objectReference: {fileID: 0}
+    - target: {fileID: 5254476107874737995, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -225,6 +229,26 @@ PrefabInstance:
     - target: {fileID: 711987294111210327, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <GolemAttack1>k__BackingField.Path
+      value: event:/Golem/Golem_Attack_Final
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <GolemAttack1>k__BackingField.Guid.Data1
+      value: -1840414035
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <GolemAttack1>k__BackingField.Guid.Data2
+      value: 1198465864
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <GolemAttack1>k__BackingField.Guid.Data3
+      value: -1311176792
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418893856098874456, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: <GolemAttack1>k__BackingField.Guid.Data4
+      value: -1540544122
       objectReference: {fileID: 0}
     - target: {fileID: 4433807784745035315, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -375,6 +399,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDwarf
       objectReference: {fileID: 0}
+    - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+      propertyPath: enemyAttackBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 69f1e2c478eb0a94ab2db8550295ce40, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -542,7 +574,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 497496063
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2169,7 +2201,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 497496063
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -5863,6 +5895,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1862139791518670944, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
+      propertyPath: primary
+      value: 
+      objectReference: {fileID: 11400000, guid: 04decd47599722f4d8b4d90909296d3d, type: 2}
     - target: {fileID: 3092714111158844755, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: m_Name
       value: Player

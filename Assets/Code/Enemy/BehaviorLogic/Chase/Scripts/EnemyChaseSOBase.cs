@@ -10,9 +10,11 @@ public class EnemyChaseSOBase : ScriptableObject
     protected GameObject _gameObject;
     protected Transform _playerTransform;
 
+    /*
     // Array to hold multiple of one sound event
     [SerializeField] private EventReference[] dwarfStepSounds;
     [SerializeField] private EventReference[] GolemStepSounds;
+    */
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
@@ -22,6 +24,7 @@ public class EnemyChaseSOBase : ScriptableObject
         _enemy = enemy;
         _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
 
+        /*
         // Initialize the attackSounds array using FmodEvents instance
         FmodEvents fmodEvents = FmodEvents.instance;
 
@@ -38,6 +41,7 @@ public class EnemyChaseSOBase : ScriptableObject
             fmodEvents.GolemStep2,
             fmodEvents.GolemStep3
         };
+        */
 
     }
 
@@ -61,17 +65,19 @@ public class EnemyChaseSOBase : ScriptableObject
 
         if (triggerType == EnemyBase.AnimationTriggerType.PlayDwarfFootStepSound)
         {
-            PlayRandomDwarfStep();
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfStep, _transform.position);
         }
 
         if(triggerType == EnemyBase.AnimationTriggerType.GolemFootStepSound)
         {
-            PlayRandomGolemStep();
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemStep, _transform.position);
         }
 
     }
 
-    public virtual void PlayRandomDwarfStep()
+
+
+    /*public virtual void PlayRandomDwarfStep()
     {
         if (dwarfStepSounds.Length > 0)
         {
@@ -92,14 +98,15 @@ public class EnemyChaseSOBase : ScriptableObject
         {
 
             int randomIndex = Random.Range(0, GolemStepSounds.Length);
-            Debug.Log(randomIndex);
+            //Debug.Log(randomIndex);
             AudioManager.instance.PlayOneShot(GolemStepSounds[randomIndex], _transform.position);
         }
         else
         {
-            Debug.LogWarning("No step sounds assigned to the Golem.");
+            //Debug.LogWarning("No step sounds assigned to the Golem.");
         }
     }
+    */
 
 
     public virtual void ResetValues() { }

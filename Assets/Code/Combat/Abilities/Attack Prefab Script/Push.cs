@@ -28,9 +28,7 @@ public class Push : Attacks
 
     private void FixedUpdate()
     {
-        Vector3 offset = new Vector3(0f, 0.5f, 0f);
-
-        transform.position = _player.transform.position + offset;
+        transform.position = _player.transform.position;
 
         // Gradually increase the size of the ability until it reaches the maximum size
         if (transform.localScale.x < _distance)

@@ -33,7 +33,6 @@ public class Orbit : Attacks
 
     private void FixedUpdate()
     {
-        Vector3 offset = new Vector3(0f, 0.5f, 0f);
         _angle += _rotationSpeed * Time.deltaTime;
 
         if (_currentDistance < _distance)
@@ -46,7 +45,7 @@ public class Orbit : Attacks
         }
 
 
-        Vector3 orbitPosition = _player.transform.position + offset + new Vector3(Mathf.Cos(_angle), Mathf.Sin(_angle)) * _currentDistance;
+        Vector3 orbitPosition = _player.transform.position + new Vector3(Mathf.Cos(_angle), Mathf.Sin(_angle)) * _currentDistance;
         transform.position = orbitPosition;
     }
 

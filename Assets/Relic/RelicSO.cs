@@ -5,11 +5,12 @@ using UnityEngine;
 
 public abstract class RelicSO : ScriptableObject
 {
-    [SerializeField] protected StatsSO playerStats;
+    [SerializeField] protected StatsSO _playerStats;
     [SerializeField] protected string relicName;
     [SerializeField] protected string flavorTextDescription;
     [SerializeField] protected RelicRarity rarity;
     [SerializeField] protected Sprite spriteIcon;
+    [SerializeField] protected StatsEnum _changedStat;
 
     [SerializeField] protected bool hasCondition = false;
 
@@ -20,6 +21,9 @@ public abstract class RelicSO : ScriptableObject
     public RelicRarity Rarity {  get { return rarity; } }
     public Sprite Icon { get { return spriteIcon; } }  
     public bool HasCondition {  get { return hasCondition; } }
+    public StatsEnum changedStat { get { return _changedStat; } }
+
+    public abstract void Initialize(StatsSO playerstats);
 
     public abstract void OnPickup();
 

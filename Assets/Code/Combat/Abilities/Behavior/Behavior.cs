@@ -68,33 +68,33 @@ public class Behavior : ScriptableObject, IBehavior
         //throw new System.NotImplementedException();
     }
 
-    public virtual void Upgrade(StatsSO playerStats)
+    public virtual void Upgrade(StatsSO playerStats, StatsEnum stats)
     {
 
     }
 
     public virtual IEnumerator Cooldown()
     {
-        diag.Stopwatch stopWatch = new diag.Stopwatch();
-        stopWatch.Start();
+        //diag.Stopwatch stopWatch = new diag.Stopwatch();
+        //stopWatch.Start();
 
-        Debug.Log("Cooldown Started: " + _cooldownTime);
+        //Debug.Log("Cooldown Started: " + _cooldownTime);
         _abilityState = AbilityState.COOLDOWN;
 
         yield return new WaitForSeconds(_cooldownTime);
 
         // Get the elapsed time as a TimeSpan value.
-        stopWatch.Stop();
-        TimeSpan ts = stopWatch.Elapsed;
+        //stopWatch.Stop();
+        //TimeSpan ts = stopWatch.Elapsed;
 
         // Format and display the TimeSpan value.
-        string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-        ts.Hours, ts.Minutes, ts.Seconds,
-        ts.Milliseconds / 10);
-        Debug.Log("RunTime " + elapsedTime);
+        //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+        //ts.Hours, ts.Minutes, ts.Seconds,
+        //ts.Milliseconds / 10);
+        //Debug.Log("RunTime " + elapsedTime);
 
         _abilityState = AbilityState.READY;
-        Debug.Log("Cooldown Finished");
+        //Debug.Log("Cooldown Finished");
     }
 }
 

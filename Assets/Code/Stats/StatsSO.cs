@@ -20,7 +20,7 @@ public class StatsSO: ScriptableObject
         for(int i = 0; i < _statList.Count; i++) {
             if (_stats.ContainsKey(_statList[i].StatEnum))
             {
-                Debug.LogWarning("Duplicate Stat Found");
+                //Debug.LogWarning("Duplicate Stat Found");
                 continue;
             }
             _stats.Add(_statList[i].StatEnum, _statList[i].Value);
@@ -58,6 +58,11 @@ public class StatsSO: ScriptableObject
         _stats[stat] += value;
     }
 
+    public void AddStat(StatsEnum stat, float value, Behavior ability)
+    {
+        _stats[stat] += value;
+    }
+
     public void SubtractStat(StatsEnum stat, float value)
     {
         _stats[stat] -= value;
@@ -88,7 +93,25 @@ public enum StatsEnum
     HEALTH,
     MAXHEALTH,
 
-    //Projectile Stats
-    BULLETCOUNT,
+    //Projectile Attack Stats
+    BULLET_COUNT,
     ABSORPTION,
+    RICHOCHET_COUNT,
+    PIERCING_COUNT,
+    PROJECTILE_KNOCKBACK,
+    SPREAD_ANGLE,
+    PROJECTILE_DAMAGE,
+    PROJECTILE_SPEED,
+    PROJECTILE_RANGE,
+
+
+    //Ability Stats
+    ACTIVATION_TIME,
+    COOLDOWN_TIME,
+    STATUS,
+
+    //Physical Attack Stats
+    DAMAGE,
+    KNOCKBACK,
+    ROTATION_SPEED,
 }
