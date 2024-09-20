@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SG_middle_loop_bullet1_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 11
+        width: 10
+        height: 10
+      alignment: 9
+      pivot: {x: 0.6974146, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01d8b45a083923b4ba99563d87f81672
+      internalID: -1400874105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SG_middle_loop_bullet1_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 11
+        width: 11
+        height: 10
+      alignment: 9
+      pivot: {x: 0.7243351, y: 0.47884855}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a349f451e0a074d8762cf56130a2cc
+      internalID: 1740895860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SG_middle_loop_bullet1_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 11
+        width: 12
+        height: 10
+      alignment: 9
+      pivot: {x: 0.77614594, y: 0.48589906}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cc93d103596a54fa6cf2894a0cfc5c
+      internalID: -1477755871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SG_middle_loop_bullet1_3
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 11
+        width: 12
+        height: 10
+      alignment: 9
+      pivot: {x: 0.74676895, y: 0.49294958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38538d78bdf07474abda5fbca7d8ca9a
+      internalID: -25269372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SG_middle_loop_bullet1_0: -1400874105
+      SG_middle_loop_bullet1_1: 1740895860
+      SG_middle_loop_bullet1_2: -1477755871
+      SG_middle_loop_bullet1_3: -25269372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
