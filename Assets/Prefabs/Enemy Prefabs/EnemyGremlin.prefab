@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackTime: 0.2
-  constForce: 0.8
+  constForce: 0.7
 --- !u!114 &5565166607894818481
 MonoBehaviour:
   m_ObjectHideFlags: 0
