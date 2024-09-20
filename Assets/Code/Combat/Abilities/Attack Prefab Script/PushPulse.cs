@@ -28,7 +28,7 @@ public class PushPulse : Attacks
     private void FixedUpdate()
     {
         // Update position to follow the player
-        transform.position = _player.transform.position + new Vector3(0f, 0.5f, 0f);
+        transform.position = _player.transform.position;
     }
 
     private IEnumerator PulseRoutine()

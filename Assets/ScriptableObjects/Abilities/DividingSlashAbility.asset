@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DividingSlashAbility
   m_EditorClassIdentifier: 
   abilityName: DividingSlash
-  icon: {fileID: -2413806693520163455, guid: c53e0acb1feba9f48bf09df35a118951, type: 3}
+  icon: {fileID: 1126688326, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
   behavior: {fileID: 11400000, guid: 4926b3f4580762c44a4bfde0f4a1227f, type: 2}

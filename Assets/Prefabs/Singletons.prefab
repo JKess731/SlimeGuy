@@ -419,9 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  absorptionBar: {fileID: 0}
   healthTxt: {fileID: 3226160977747427696}
-  absorptionTxt: {fileID: 0}
   primaryCooldownTxt: {fileID: 0}
   secondaryCooldownTxt: {fileID: 0}
   dashCooldownTxt: {fileID: 0}
@@ -625,7 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281ba0bfea1ad8c40996ab8b19be825f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 646beef95cfe9f549b85d602a7b050ef, type: 2}
+  _abilityManager: {fileID: 0}
   maxRelics: 10
   calculator: {fileID: 0}
   relicsEquipped: []
@@ -1048,7 +1046,7 @@ MonoBehaviour:
       Data2: 1302162718
       Data3: 875254937
       Data4: 1690156463
-    Path: event:/Gremlin/Gremlin
+    Path: event:/Gremlin/GremlinHurt
   <DwarfDeath>k__BackingField:
     Guid:
       Data1: 693111236
@@ -1056,90 +1054,27 @@ MonoBehaviour:
       Data3: 1390187655
       Data4: -426594554
     Path: event:/Gremlin/GremlinDead
-  <DwarfStep1>k__BackingField:
+  <DwarfStep>k__BackingField:
     Guid:
-      Data1: 969533741
-      Data2: 1288895245
-      Data3: -1843852126
-      Data4: 1081349187
-    Path: event:/Gremlin/GremlinStep1
-  <DwarfStep2>k__BackingField:
+      Data1: -1343764155
+      Data2: 1279726617
+      Data3: -1085885289
+      Data4: -1240755470
+    Path: event:/Gremlin/Germlin_Step_Final
+  <GolemAttack>k__BackingField:
     Guid:
-      Data1: -584805301
-      Data2: 1231075815
-      Data3: 1284499391
-      Data4: 153293202
-    Path: event:/Gremlin/GremlinStep2
-  <DwarfStep3>k__BackingField:
+      Data1: -1840414035
+      Data2: 1198465864
+      Data3: -1311176792
+      Data4: -1540544122
+    Path: event:/Golem/Golem_Attack_Final
+  <GolemDamage>k__BackingField:
     Guid:
-      Data1: 1014070741
-      Data2: 1314102680
-      Data3: -1431717472
-      Data4: 546920815
-    Path: event:/Gremlin/GremlinStep3
-  <GolemAttack1>k__BackingField:
-    Guid:
-      Data1: -1350580175
-      Data2: 1239394823
-      Data3: 1091788952
-      Data4: 2014102843
-    Path: event:/Golem/Golem_Attack_New_1_Bass
-  <GolemAttack2>k__BackingField:
-    Guid:
-      Data1: -2043037305
-      Data2: 1237669283
-      Data3: -993349458
-      Data4: 1386868770
-    Path: event:/Golem/Golem_Attack_New_2
-  <GolemAttack3>k__BackingField:
-    Guid:
-      Data1: -1873003494
-      Data2: 1294242799
-      Data3: 1585280187
-      Data4: -2065765620
-    Path: event:/Golem/Golem_Attack_New_3
-  <GolemDamage1>k__BackingField:
-    Guid:
-      Data1: -482344249
-      Data2: 1225258642
-      Data3: 179528073
-      Data4: -1075742460
-    Path: event:/Golem/Golem_Damage_1
-  <GolemDamage2>k__BackingField:
-    Guid:
-      Data1: 1940921325
-      Data2: 1279355714
-      Data3: -101174382
-      Data4: 1875677348
-    Path: event:/Golem/Golem_Damage_2
-  <GolemDamage3>k__BackingField:
-    Guid:
-      Data1: -1682041238
-      Data2: 1256839117
-      Data3: -2132861547
-      Data4: -399373076
-    Path: event:/Golem/Golem_Damage_3
-  <GolemDamage4>k__BackingField:
-    Guid:
-      Data1: 1087640030
-      Data2: 1180856993
-      Data3: 985104277
-      Data4: -1398602274
-    Path: event:/Golem/Golem_Damage_4
-  <GolemDamage5>k__BackingField:
-    Guid:
-      Data1: -532376062
-      Data2: 1262730288
-      Data3: -1496789071
-      Data4: -1017648434
-    Path: event:/Golem/Golem_Damage_5
-  <GolemDamage6>k__BackingField:
-    Guid:
-      Data1: -1571607377
-      Data2: 1325630116
-      Data3: -742250868
-      Data4: -213621273
-    Path: event:/Golem/Golem_Damage_6
+      Data1: -1972398831
+      Data2: 1271385219
+      Data3: -21700162
+      Data4: -999837977
+    Path: event:/Golem/Golem_Damage_Final
   <GolemDeath>k__BackingField:
     Guid:
       Data1: -350208336
@@ -1147,27 +1082,13 @@ MonoBehaviour:
       Data3: 2019298697
       Data4: -1371238445
     Path: event:/Golem/Golem_Death_mixdown_Soft
-  <GolemStep1>k__BackingField:
+  <GolemStep>k__BackingField:
     Guid:
-      Data1: -1806689722
-      Data2: 1289670203
-      Data3: -1238213504
-      Data4: 1658782277
-    Path: event:/Golem/Step_Dry_1
-  <GolemStep2>k__BackingField:
-    Guid:
-      Data1: -474355188
-      Data2: 1161623188
-      Data3: 822862777
-      Data4: -2146593506
-    Path: event:/Golem/Step_Dry_2
-  <GolemStep3>k__BackingField:
-    Guid:
-      Data1: -1561362094
-      Data2: 1144966126
-      Data3: 1342054278
-      Data4: 1552924417
-    Path: event:/Golem/Step_Dry_3
+      Data1: -333292837
+      Data2: 1199011146
+      Data3: 768777885
+      Data4: 104661478
+    Path: event:/Golem/Golem_Step_Final
 --- !u!1001 &1715041279593039670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1176,6 +1097,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 558452028673960895}
     m_Modifications:
+    - target: {fileID: 3389725301522645194, guid: d1af27d7799ae234390d07d272caf4b2, type: 3}
+      propertyPath: relicInventory
+      value: 
+      objectReference: {fileID: 1755113142151932069}
+    - target: {fileID: 3389725301522645194, guid: d1af27d7799ae234390d07d272caf4b2, type: 3}
+      propertyPath: relicInventoryBG
+      value: 
+      objectReference: {fileID: 3724752236865748005}
     - target: {fileID: 3648442026243140459, guid: d1af27d7799ae234390d07d272caf4b2, type: 3}
       propertyPath: m_Name
       value: RelicInventoryManager
@@ -1503,6 +1432,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8663efd4006226f48835f86aac703542, type: 3}
+--- !u!1 &1755113142151932069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5090324776020254235, guid: 8663efd4006226f48835f86aac703542, type: 3}
+  m_PrefabInstance: {fileID: 6845222327926093502}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3724752236865748005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7876768382117350043, guid: 8663efd4006226f48835f86aac703542, type: 3}
+  m_PrefabInstance: {fileID: 6845222327926093502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8979279545297069268 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2478055514790400618, guid: 8663efd4006226f48835f86aac703542, type: 3}
