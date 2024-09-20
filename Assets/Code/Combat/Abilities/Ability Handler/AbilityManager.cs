@@ -23,12 +23,10 @@ public class AbilityManager : MonoBehaviour
     public AbilityBase Secondary { get => secondary; }
     public AbilityBase Dash { get => dash; }
 
-    public AbilityBase primary2;
-
     private void Start()
     {
 
-        primary2 = Instantiate(primary);
+        primary = Instantiate(primary);
         secondary = Instantiate(secondary);
         dash = Instantiate(dash);
 
@@ -50,9 +48,9 @@ public class AbilityManager : MonoBehaviour
 
     //private void Update()
     //{
-    //    if (primary2.Behavior.AbilityState == AbilityState.FINISHED)
+    //    if (primary.Behavior.AbilityState == AbilityState.FINISHED)
     //    {
-    //        StartCoroutine(primary2.Behavior.Cooldown());
+    //        StartCoroutine(primary.Behavior.Cooldown());
     //    }
     //    if (secondary.Behavior.AbilityState == AbilityState.FINISHED)
     //    {
@@ -64,21 +62,14 @@ public class AbilityManager : MonoBehaviour
     //    }
     //}
 
-    public void UpgradeAbilities(StatsSO playerstats, StatsEnum stat)
+    #region Primary
+    public void InstaniatePrimary()
     {
-        primary2?.Behavior.Upgrade(playerstats, stat);
-        secondary?.Behavior.Upgrade(playerstats, stat);
-        dash?.Behavior.Upgrade(playerstats, stat);
-    }
+        primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
 
-    #region primary2
-    public void Instaniateprimary()
-    {
-        primary2.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
-
-        primary2 = Instantiate(primary2);
-        primary2?.Initialize();
-        primary2.Behavior.onBehaviorFinished += OnPrimaryCooldown;
+        primary = Instantiate(newAbility);
+        primary?.Initialize();
+        primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
     }
 
     public void OnPrimaryStarted(InputAction.CallbackContext context)
@@ -112,11 +103,14 @@ public class AbilityManager : MonoBehaviour
 
     #region Secondary
 
-    public void InstaniateSecondary()
+    public void InstaniateSecondary(AbilityBase newAbility)
     {
-        secondary.Behavior.onBehaviorFinished -= OnSecondaryCooldown;
+        if (secondary != null)
+        {
+            secondary.Behavior.onBehaviorFinished -= OnSecondaryCooldown;
+        }
 
-        secondary = Instantiate(secondary);
+        secondary = Instantiate(newAbility);
         secondary?.Initialize();
         secondary.Behavior.onBehaviorFinished += OnSecondaryCooldown;
     }
