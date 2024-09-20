@@ -158,7 +158,7 @@ MonoBehaviour:
   roomList: {fileID: 11400000, guid: 485f63d36751fc84b8b0737e985fadf6, type: 2}
   emptyRoomsList: {fileID: 11400000, guid: 1edcecc11da7f704c9ffebfb32d6e8de, type: 2}
   maxRooms: 25
-  minRooms: 10
+  minRooms: 15
   rowSize: 16
   colSize: 16
   spawnDelay: 0.25
@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6504497772437875389, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7487534051080797805, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_Enabled

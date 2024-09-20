@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="10%Health", menuName ="Relics/Health Buff")]
-public class HealthBuffRelic : RelicSO
+[CreateAssetMenu(fileName = "Relics/StatBuff", menuName = "Relics/Stat Buff (NO HEALTH)")]
+public class StatPercentageBuffRelic : RelicSO
 {
     [SerializeField] private float buffPercentage = 10;
     public override void Initialize(StatsSO playerstats)
@@ -18,7 +18,12 @@ public class HealthBuffRelic : RelicSO
 
     public override void ActivateBuffs()
     {
-        calc.BuffHealth(buffPercentage);
+        float statVal = _playerStats.GetStat(_changedStat);
+        float buffVal = buffPercentage / 100;
+
+        float newVal = statVal + buffVal;
+
+        _playerStats.AddStat(_changedStat, newVal);
     }
 
     public override void DeactivateBuffs()

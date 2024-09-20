@@ -7,13 +7,11 @@ public class Chest : MonoBehaviour
 {
     [SerializeField] private RelicPool pool;
 
-    private GameObject player;
     private RelicManager rManager;
 
     void Start()
     {
-        player = GameObject.FindWithTag("player");
-        rManager = player.GetComponent<RelicManager>();
+        rManager = GameObject.FindAnyObjectByType<RelicManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

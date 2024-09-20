@@ -14,6 +14,7 @@ public struct BulletStruct
     private StatusSO _status;
     private int _piercingAmount;
     private int _bulletBounce;
+    public int _bulletCount;
 
     public int Damage { get { return _damage; } }
     public float Knockback { get { return _knockback; } }
@@ -25,7 +26,8 @@ public struct BulletStruct
     public int piercingAmount { get { return _piercingAmount; } }
     public int bulletBounce { get { return _bulletBounce; } }
 
-    public BulletStruct(int damage, float knockback, float bulletSpeed, float range, StatusSO status, int piercing, int bounce)
+    public BulletStruct(int damage, float knockback, float bulletSpeed, float range, 
+        StatusSO status, int piercing, int bounce, int bulletCount)
     {
         _damage = damage;
         _knockback = knockback;
@@ -34,6 +36,7 @@ public struct BulletStruct
         _status = status;
         _piercingAmount = piercing;
         _bulletBounce = bounce;
+        _bulletCount = bulletCount;
     }
 
 }
