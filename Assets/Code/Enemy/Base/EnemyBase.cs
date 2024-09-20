@@ -224,7 +224,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         GolemAttack,
         GolemDeath,
         GolemDamaged,
-        GolemFootStepSound
+        GolemFootStepSound,
+        PlayNikoSong
     }
     #endregion
 

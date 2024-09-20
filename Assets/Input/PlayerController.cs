@@ -35,14 +35,15 @@ public class PlayerController : MonoBehaviour
     public Vector2 FaceDirection { get => _faceDirection; set => _faceDirection = value; }
     public Vector2 MoveVector { get => _moveVector; set => _moveVector = value; }
 
-
     private void Awake()
     {
         if(_playerInput == null)
         {
             _playerInput = new PlayerInput();
         }
-        
+
+        AudioManager.instance.OnGameStart();
+
         _rb = GetComponent<Rigidbody2D>();
         _tr = GetComponent<TrailRenderer>();
         _abilityManager = GetComponent<AbilityManager>();

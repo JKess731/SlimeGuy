@@ -139,12 +139,12 @@ TextureImporter:
       name: right slash-Sheet upt_0
       rect:
         serializedVersion: 2
-        x: 737
+        x: 736
         y: 83
-        width: 101
+        width: 102
         height: 113
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,27 +152,6 @@ TextureImporter:
       bones: []
       spriteID: 602e5d06f8a700442b789884e6ac8488
       internalID: -466011107
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: right slash-Sheet upt_2
-      rect:
-        serializedVersion: 2
-        x: 1049
-        y: 76
-        width: 96
-        height: 118
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f84dbd50328e5541b4b07d4592ec9f8
-      internalID: 1448541928
       vertices: []
       indices: 
       edges: []
@@ -186,7 +165,7 @@ TextureImporter:
         width: 105
         height: 65
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,7 +186,7 @@ TextureImporter:
         width: 75
         height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,12 +202,12 @@ TextureImporter:
       name: right slash-Sheet upt_8
       rect:
         serializedVersion: 2
-        x: 1871
+        x: 1870
         y: 74
-        width: 33
+        width: 34
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,7 +228,7 @@ TextureImporter:
         width: 11
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,6 +236,48 @@ TextureImporter:
       bones: []
       spriteID: 7a3eb0f40e4cd194a802eaa19fe52d7b
       internalID: 1920029480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: right slash-Sheet upt_3
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 76
+        width: 96
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c44e8b3f87eb04a49bff506fec4c702d
+      internalID: -1137432242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: right slash-Sheet upt_5
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 77
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0070c41511ee0e4e822984ee91992ba
+      internalID: -913543518
       vertices: []
       indices: 
       edges: []
@@ -274,7 +295,6 @@ TextureImporter:
     nameFileIdTable:
       right slash-Sheet upt_0: -466011107
       right slash-Sheet upt_1: -1830808850
-      right slash-Sheet upt_10: 134281381
       right slash-Sheet upt_2: 1448541928
       right slash-Sheet upt_3: -1137432242
       right slash-Sheet upt_4: 465740021
