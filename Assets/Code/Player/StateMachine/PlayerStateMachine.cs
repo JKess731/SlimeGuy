@@ -49,7 +49,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (_playerStats.GetStat(StatsEnum.HEALTH) <= 0)
         {
-            return;
+            Destroy(gameObject);
         }
 
         _playerStats.SubtractStat(StatsEnum.HEALTH, damage);

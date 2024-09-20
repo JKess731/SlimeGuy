@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{94501a46-ce3b-4cde-805c-32b64502df62}">
 		<property name="name">
-			<value>Step_Dry_1</value>
+			<value>GolemStep</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -72,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{6f11709d-e575-4f5e-af1c-62265640c1ae}">
+		<property name="volume">
+			<value>6</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{82920288-9315-41b9-97b6-11dcc65b1f17}</destination>
 		</relationship>
@@ -84,7 +87,7 @@
 	</object>
 	<object class="MultiSound" id="{4fdcffe1-98a1-410a-89b9-d0c4cdc742bb}">
 		<relationship name="sounds">
-			<destination>{1417c414-c3b7-48f0-a53e-d71f2403cb14}</destination>
+			<destination>{0b0b7254-4c2e-4dc7-8858-b559390dde85}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{886761e6-ba9b-4d06-a215-2956ae90f08f}">
@@ -99,11 +102,45 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4ecd04a8-16cb-4fa8-99e5-695315126009}" />
-	<object class="SingleSound" id="{1417c414-c3b7-48f0-a53e-d71f2403cb14}">
-		<relationship name="audioFile">
-			<destination>{39864d3c-819d-4173-b816-04019561e203}</destination>
+	<object class="MultiSound" id="{0b0b7254-4c2e-4dc7-8858-b559390dde85}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
+		<property name="playlistMode">
+			<value>1</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{8906a75b-c869-4f05-8d33-eab46bcba47d}</destination>
+		</relationship>
+		<relationship name="sounds">
+			<destination>{6be63e28-7372-4db8-96fd-0982e776d027}</destination>
+			<destination>{fcb1cdbe-605e-47ed-b1d1-86f9e82e6f41}</destination>
+			<destination>{319b7364-1d6d-453e-a9ca-cc5c396c4edb}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{2823b986-e215-44da-9c06-436ce87534f2}" />
 	<object class="MixerBusFader" id="{9f2da825-63e5-469c-9cdd-82d7fadeecd2}" />
+	<object class="RandomizerModulator" id="{8906a75b-c869-4f05-8d33-eab46bcba47d}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>6.25</value>
+		</property>
+	</object>
+	<object class="SingleSound" id="{6be63e28-7372-4db8-96fd-0982e776d027}">
+		<relationship name="audioFile">
+			<destination>{39864d3c-819d-4173-b816-04019561e203}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{fcb1cdbe-605e-47ed-b1d1-86f9e82e6f41}">
+		<relationship name="audioFile">
+			<destination>{09fb1950-f26e-4aeb-9e63-20316d63b5c4}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{319b7364-1d6d-453e-a9ca-cc5c396c4edb}">
+		<relationship name="audioFile">
+			<destination>{f1e0474c-402a-4eae-8863-b64651f51ebb}</destination>
+		</relationship>
+	</object>
 </objects>

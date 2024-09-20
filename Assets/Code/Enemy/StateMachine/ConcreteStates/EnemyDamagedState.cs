@@ -12,8 +12,7 @@ public class EnemyDamagedState : EnemyState
     public override void AnimationTriggerEvent(EnemyBase.AnimationTriggerType triggerType)
     {
         base.AnimationTriggerEvent(triggerType);
-        _enemyBase.enemyAttackBaseInstance.DoAnimationTriggerEventLogic(triggerType);
-
+        _enemyBase.enemyDamagedBaseInstance.DoAnimationTriggerEventLogic(triggerType);
     }
 
     public override void EnterState()
