@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1109 &-8905786764625608107
+--- !u!1109 &-7643654634858359548
 AnimatorTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,19 +9,19 @@ AnimatorTransition:
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -7298981296509894694}
+  m_DstState: {fileID: -6749966451890544067}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 1
---- !u!1102 &-7298981296509894694
+--- !u!1102 &-6749966451890544067
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DwarfSliceRight
+  m_Name: GolemSmashRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -34,7 +34,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 408a6522f5ac0f045baef5ccc634d693, type: 2}
+  m_Motion: {fileID: 7400000, guid: 165ae62a3072c8147a8059fc15ee0833, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -46,7 +46,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SlashAttackBox
+  m_Name: SmashAttack
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -72,16 +72,16 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -7298981296509894694}
-    m_Position: {x: 220, y: 70, z: 0}
+    m_State: {fileID: -6749966451890544067}
+    m_Position: {x: 240, y: 70, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:
-  - {fileID: -8905786764625608107}
+  - {fileID: -7643654634858359548}
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -70, y: 10, z: 0}
   m_EntryPosition: {x: -40, y: 170, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -7298981296509894694}
+  m_DefaultState: {fileID: -6749966451890544067}

@@ -16,6 +16,7 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
+
     }
 
     public override void DoEnterLogic()

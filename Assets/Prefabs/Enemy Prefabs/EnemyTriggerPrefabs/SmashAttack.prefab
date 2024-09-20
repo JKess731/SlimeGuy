@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5951096491970071959}
   - component: {fileID: 7526821506498367939}
   m_Layer: 7
-  m_Name: SlashAttackBox
+  m_Name: SmashAttack
   m_TagString: trigger_child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,7 +158,7 @@ Animator:
   m_GameObject: {fileID: 7577202157244426437}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f314a500c92aad04e995f967008382b0, type: 2}
+  m_Controller: {fileID: 9100000, guid: c70f45a1ea27e434cba8c0a4065cfed9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
