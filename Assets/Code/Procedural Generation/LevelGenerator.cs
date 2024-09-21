@@ -31,12 +31,15 @@ public class LevelGenerator : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] private float spawnDelay = 1f;
 
-    // Loading Screen && Boss
+    // Loading Screen && Boss && Relics
     private Canvas mainUi;
     private Canvas loadingUi;
     private GameObject player;
     [HideInInspector] public UnityEvent Complete;
     [HideInInspector] public GameObject lastRoom;
+    [HideInInspector] public int roomsCleared = 0;
+    [HideInInspector] public int clearedChain = 0;
+    [HideInInspector] public GameObject lastClearedRoom;
 
     // Collections
     public RoomTypes[,] rooms;
