@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RelicCalculator : MonoBehaviour
 {
-    [SerializeField] private StatsSO playerStats;
+    [SerializeField] public StatsSO playerStats;
 
     private float originalDefense;
 

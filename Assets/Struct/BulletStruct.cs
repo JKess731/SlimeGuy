@@ -11,18 +11,16 @@ public struct BulletStruct
     public float _knockback;
     public float _bulletSpeed;
     public float _range;
-    private StatusSO _status;
-    private int _piercingAmount;
-    private int _bulletBounce;
+    public StatusSO _status;
+    public int _piercingAmount;
+    public int _bulletBounce;
     public int _bulletCount;
 
     public int Damage { get { return _damage; } }
     public float Knockback { get { return _knockback; } }
     public float BulletSpeed { get { return _bulletSpeed; } }
     public float Range { get { return _range; } }
-
     public StatusSO Status { get { return _status; } }
-
     public int piercingAmount { get { return _piercingAmount; } }
     public int bulletBounce { get { return _bulletBounce; } }
 
