@@ -3832,8 +3832,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAnimObj: {fileID: 6756413586049135127, guid: e8037e8bb0397c3469b7e42688c11fe6, type: 3}
   spawnPos: {x: 0, y: -6}
-  bossPrefab: {fileID: 5254476107874737995, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
-  spawnDelay: 2
+  bossPrefab: {fileID: 5254476107874737995, guid: 00d84d046781b14438e07bca78251734, type: 3}
+  spawnDelay: 1.5
 --- !u!61 &6733840266073443778
 BoxCollider2D:
   m_ObjectHideFlags: 0

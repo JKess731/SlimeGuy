@@ -27,7 +27,8 @@ public class ShotgunBehavior : Behavior
     public override void Initialize(AbilityBase abilityBase)
     {
         base.Initialize(abilityBase);
-        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange, status, _piercingAmount, _bulletBounce);
+        _bulletStruct = new BulletStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange, status, 
+            _piercingAmount, _bulletBounce, _bulletCount);
     }
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
@@ -63,7 +64,7 @@ public class ShotgunBehavior : Behavior
         switch (stat)
         {
             case StatsEnum.BULLET_COUNT:
-                _bulletCount += (int)playerstats.GetStat(StatsEnum.BULLET_COUNT);
+                _bulletStruct._bulletCount += (int)playerstats.GetStat(StatsEnum.BULLET_COUNT);
                 break;
             case StatsEnum.SPREAD_ANGLE:
                 _spreadAngle += playerstats.GetStat(StatsEnum.SPREAD_ANGLE);

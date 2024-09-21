@@ -95,7 +95,6 @@ public class UiManager : MonoBehaviour
 
     public IEnumerator TextAndSliderAdjustment(AbilityBase attack, string type) //this coroutine is for the radial cooldown and text on abilites.
     {
-        Debug.Log("I got to TextAndSliderAdjustment");
         Slider modifiedSlider = null;
         TextMeshProUGUI modifiedText = null;
         float newValue = attack.Behavior.CooldownTime;
