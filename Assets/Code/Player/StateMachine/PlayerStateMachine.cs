@@ -28,6 +28,11 @@ public class PlayerStateMachine : MonoBehaviour
         _knockBack = GetComponent<KnockBack>();
     }
 
+    private void Start()
+    {
+        UiManager.instance.UpdateHealthBar(_playerStats.GetStat(StatsEnum.HEALTH), _playerStats.GetStat(StatsEnum.MAXHEALTH));
+    }
+
     //Handles Movement and Animation
     private void FixedUpdate()
     {
@@ -49,12 +54,13 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (_playerStats.GetStat(StatsEnum.HEALTH) <= 0)
         {
-            return;
+            Destroy(gameObject);
         }
 
         _playerStats.SubtractStat(StatsEnum.HEALTH, damage);
         _knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
+        UiManager.instance.UpdateHealthBar(_playerStats.GetStat(StatsEnum.HEALTH), _playerStats.GetStat(StatsEnum.MAXHEALTH));
     }
 
     public void SetState(Enum_State state)
