@@ -5,48 +5,73 @@ using UnityEngine;
  * This script is responsible for the knockback effect.
  * Youtube Video: https://www.youtube.com/watch?v=Jy1yXbKYW68
  * */
+
 public class KnockBack : MonoBehaviour
 {
-    [SerializeField] private float knockBackTime = 0.2f;
-    [SerializeField] private float constForce = 0.25f;
+    [Header("Knockback Variables")]
+    [SerializeField] private float _knockBackTime = 0.2f;
+    [SerializeField] private float _constForce = 0.25f;
+    [SerializeField] private float _delayTime = 0.1f;
 
-    private Rigidbody2D rb2D;
-    private Coroutine knockbackCoroutine;
+    [Header("Knockback Curves")]
+    [SerializeField] private AnimationCurve _knockbackHitForceCurve;
+    [SerializeField] private AnimationCurve _knockbackStoppingForceCurve;
+
+    private Rigidbody2D _rb2D;
+    private Coroutine knockbackCor;
     public bool isBeingKnockedBack { get; set;}
 
     private void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
+        _rb2D = GetComponent<Rigidbody2D>();
     }
 
     public IEnumerator KnockbackAction(Vector2 hitDir, float hitDirForce,Vector2 constantForceDirection)
     {
 
-        Vector2 _hitForce;
-        Vector2 _constantForce;
-        Vector2 _knockbackForce;
-        Vector2 _combinedForce;
+        Vector2 hitForce;
+        Vector2 constantForce;
+        Vector2 knockbackForce;
+        float time = 0;
 
-        _hitForce = hitDir * hitDirForce;
-        _constantForce = constantForceDirection * constForce;
+        
+        constantForce = constantForceDirection * _constForce;
         
         isBeingKnockedBack = true;
 
-        float _elapedTimer = 0;
-        while (_elapedTimer < knockBackTime)
+        float elapedTimer = 0;
+        while (elapedTimer < _knockBackTime)
         {
             //Iterates the timer
-            _elapedTimer += Time.deltaTime;
+            elapedTimer += Time.deltaTime;
+            time = elapedTimer / _knockBackTime;
+
+            //Calculates the hit force
+            hitForce = hitDir * hitDirForce * _knockbackHitForceCurve.Evaluate(time);
 
             //Combine _hitForce and _constantForce
-            _knockbackForce = _hitForce + _constantForce;
-
-            _combinedForce = _knockbackForce;
+            knockbackForce = hitForce + constantForce;
             
             //Applies the knockback force
-            rb2D.velocity = _combinedForce;
+            _rb2D.velocity = knockbackForce;
 
             yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public IEnumerator StopKnockback()
+    {
+        float time = 0;
+
+        Vector2 currentVelocity = _rb2D.velocity;
+
+        while (time < _delayTime)
+        {
+            time += Time.deltaTime;
+            _rb2D.velocity = currentVelocity * _knockbackStoppingForceCurve.Evaluate(time);
+
+            yield return new WaitForFixedUpdate();
+
         }
         isBeingKnockedBack = false;
     }
@@ -63,11 +88,12 @@ public class KnockBack : MonoBehaviour
     //Couroutine is a monobehavior method
     public void CallKnockback(Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
-        if (knockbackCoroutine != null)
+        if (knockbackCor != null)
         {
-            StopCoroutine(knockbackCoroutine);
+            StopCoroutine(knockbackCor);
+            StartCoroutine(StopKnockback());
         }
 
-        knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection, hitForce, constantForceDirection));
+        knockbackCor = StartCoroutine(KnockbackAction(hitDirection, hitForce, constantForceDirection));
     }
 }

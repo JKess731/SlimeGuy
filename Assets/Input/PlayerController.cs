@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
         _abilityManager = GetComponent<AbilityManager>();
         _playerState = GetComponent<PlayerStateMachine>();
 
+        _speed = _playerState.playerStats.GetStat(StatsEnum.SPEED);
+
         //Set up input actions
         _playerInput.GamePlay.Movement.started += OnMovement;
         _playerInput.GamePlay.Movement.performed += OnMovement;

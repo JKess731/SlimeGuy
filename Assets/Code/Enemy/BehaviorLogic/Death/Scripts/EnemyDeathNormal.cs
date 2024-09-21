@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 [CreateAssetMenu(fileName = "DeathNormal", menuName = "EnemyLogic/DeathLogic/Normal")]
 
 public class EnemyDeathNormal : EnemyDeathSOBase
@@ -13,6 +14,7 @@ public class EnemyDeathNormal : EnemyDeathSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
+        _enemy.MoveEnemy(Vector2.zero);
     }
 
     public override void DoExitLogic()

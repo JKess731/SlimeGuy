@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{93cd01a1-512c-4ffd-a096-be501c3c5271}">
+	<object class="AudioFile" id="{18451bb6-ade4-40de-948d-8bfb74ec086b}">
 		<property name="assetPath">
 			<value>GremlinSlice.wav</value>
 		</property>
