@@ -651,7 +651,7 @@ PrefabInstance:
     - target: {fileID: 4091438651822508028, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: RelicInventory
       value: 
-      objectReference: {fileID: 2136495179}
+      objectReference: {fileID: 0}
     - target: {fileID: 4091438651822508028, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: RelicInventoryBG
       value: 
@@ -768,11 +768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2191,10 +2187,6 @@ PrefabInstance:
     - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_Name
       value: EnemyDwarf (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_IsActive
@@ -6061,9 +6053,7 @@ Transform:
   m_LocalPosition: {x: -691, y: -415, z: -11.106805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1383261536}
-  - {fileID: 1895727940}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1846935927 stripped
@@ -6297,7 +6287,7 @@ PrefabInstance:
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: dash
       value: 
-      objectReference: {fileID: 11400000, guid: b266fc7cc02ea184fac719b2b830bd76, type: 2}
+      objectReference: {fileID: 11400000, guid: 402d99393386dc64eb017b53cea7a48e, type: 2}
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: primary
       value: 
@@ -6318,3 +6308,5 @@ SceneRoots:
   - {fileID: 1081436633}
   - {fileID: 1211132776}
   - {fileID: 484256295}
+  - {fileID: 1883121574}
+  - {fileID: 1789936489}
