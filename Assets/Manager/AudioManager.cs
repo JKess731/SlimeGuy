@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
 
     public void OnGameStart()
     {
-        DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType.PlayNikoSong);
+        PlayOneShot(FmodEvents.instance.NikoSong, Vector3.zero);
     }
 
     public void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)

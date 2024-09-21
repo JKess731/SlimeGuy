@@ -185,6 +185,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &13985930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13985927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b156d8473f7f3044da2c93ec90f39b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestPrefab: {fileID: 687838422222638176, guid: 8ab0b4e6726ebe443bd949050d9e4463, type: 3}
 --- !u!114 &91634772 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7483135669636105197, guid: 9ee15d2e67f797542875bb9c8084c326, type: 3}
@@ -226,6 +239,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 204192083973444155, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: calculator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 204192083973444155, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: _abilityManager
       value: 
@@ -316,7 +333,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6504497772437875389, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_IsActive
-      value: 1
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7487534051080797805, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
