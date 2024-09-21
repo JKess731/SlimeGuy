@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d648e90e88dec8488030e726824630c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageDealt: 2
-  timerEnd: 0.2
+  damageDealt: 5
+  timerEnd: 1
   timeBetweenDamageInstances: 1
   knockbackPower: 10
 --- !u!95 &7526821506498367939

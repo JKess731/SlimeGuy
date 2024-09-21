@@ -81,6 +81,7 @@ public class AbilityManager : MonoBehaviour
 
         primary = Instantiate(newAbility);
         primary?.Initialize();
+        UiManager.instance?.UpdatePrimaryAbilityImage(primary.Icon);
         primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
     }
 
@@ -125,6 +126,7 @@ public class AbilityManager : MonoBehaviour
 
         secondary = Instantiate(newAbility);
         secondary?.Initialize();
+        UiManager.instance?.UpdateSecondaryAbilityImage(secondary.Icon);
         secondary.Behavior.onBehaviorFinished += OnSecondaryCooldown;
     }
 
@@ -163,6 +165,7 @@ public class AbilityManager : MonoBehaviour
 
         dash = Instantiate(dash);
         dash?.Initialize();
+        UiManager.instance?.UpdateDashAbilityImage(dash.Icon);
         dash.Behavior.onBehaviorFinished += OnDashCooldown;
     }
     public void OnDashStarted(InputAction.CallbackContext context)

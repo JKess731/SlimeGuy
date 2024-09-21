@@ -1422,6 +1422,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3389725301522645194, guid: d1af27d7799ae234390d07d272caf4b2, type: 3}
+      propertyPath: relicChest
+      value: 
+      objectReference: {fileID: 687838422222638176, guid: 8ab0b4e6726ebe443bd949050d9e4463, type: 3}
+    - target: {fileID: 3389725301522645194, guid: d1af27d7799ae234390d07d272caf4b2, type: 3}
       propertyPath: relicInventory
       value: 
       objectReference: {fileID: 1359936502}

@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e770e2278a1d44689d974316a9cdff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scene: {fileID: 102900000, guid: 5de282ba3606be4479d5ea29aae0dfd5, type: 3}
+  sceneName: ProceduralGen
 --- !u!114 &379495298
 MonoBehaviour:
   m_ObjectHideFlags: 0
