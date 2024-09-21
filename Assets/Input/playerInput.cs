@@ -62,15 +62,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Controller Mouse"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""102017b2-448f-4e10-9cb4-ea1040a8ece4"",
-                    ""expectedControlType"": ""Stick"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -304,17 +295,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Secondary"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""37579b04-0afb-4402-a6cb-2fc2c6a4a860"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Controller Mouse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -355,7 +335,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_GamePlay_Dash = m_GamePlay.FindAction("Dash", throwIfNotFound: true);
         m_GamePlay_Primary = m_GamePlay.FindAction("Primary", throwIfNotFound: true);
         m_GamePlay_Secondary = m_GamePlay.FindAction("Secondary", throwIfNotFound: true);
-        m_GamePlay_ControllerMouse = m_GamePlay.FindAction("Controller Mouse", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_ToggleMenu = m_Menu.FindAction("Toggle Menu", throwIfNotFound: true);
@@ -424,7 +403,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Dash;
     private readonly InputAction m_GamePlay_Primary;
     private readonly InputAction m_GamePlay_Secondary;
-    private readonly InputAction m_GamePlay_ControllerMouse;
     public struct GamePlayActions
     {
         private @PlayerInput m_Wrapper;
@@ -433,7 +411,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_GamePlay_Dash;
         public InputAction @Primary => m_Wrapper.m_GamePlay_Primary;
         public InputAction @Secondary => m_Wrapper.m_GamePlay_Secondary;
-        public InputAction @ControllerMouse => m_Wrapper.m_GamePlay_ControllerMouse;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -455,9 +432,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Secondary.started += instance.OnSecondary;
             @Secondary.performed += instance.OnSecondary;
             @Secondary.canceled += instance.OnSecondary;
-            @ControllerMouse.started += instance.OnControllerMouse;
-            @ControllerMouse.performed += instance.OnControllerMouse;
-            @ControllerMouse.canceled += instance.OnControllerMouse;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -474,9 +448,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Secondary.started -= instance.OnSecondary;
             @Secondary.performed -= instance.OnSecondary;
             @Secondary.canceled -= instance.OnSecondary;
-            @ControllerMouse.started -= instance.OnControllerMouse;
-            @ControllerMouse.performed -= instance.OnControllerMouse;
-            @ControllerMouse.canceled -= instance.OnControllerMouse;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -546,7 +517,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnPrimary(InputAction.CallbackContext context);
         void OnSecondary(InputAction.CallbackContext context);
-        void OnControllerMouse(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

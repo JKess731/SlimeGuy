@@ -40,15 +40,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Controller Mouse",
-                    "type": "PassThrough",
-                    "id": "102017b2-448f-4e10-9cb4-ea1040a8ece4",
-                    "expectedControlType": "Stick",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -280,17 +271,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Secondary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "37579b04-0afb-4402-a6cb-2fc2c6a4a860",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Controller Mouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
