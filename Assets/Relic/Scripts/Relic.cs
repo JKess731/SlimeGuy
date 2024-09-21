@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 [CreateAssetMenu(fileName = "WhipActivationTime", menuName = "Relics/WhipActivationTime")]
 public class WhipActivationTimeRelic : RelicSO
 {
+    [SerializeField] int changeStatBy;
 
     public override void Initialize(StatsSO playerstats)
     {
@@ -19,7 +20,7 @@ public class WhipActivationTimeRelic : RelicSO
 
     public override void ActivateBuffs()
     {
-        _playerStats.AddStat(_changedStat, 100);
+        _playerStats.AddStat(_changedStat, changeStatBy);
     }
 
     public override void DeactivateBuffs()

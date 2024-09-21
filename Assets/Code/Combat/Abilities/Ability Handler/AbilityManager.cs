@@ -23,7 +23,7 @@ public class AbilityManager : MonoBehaviour
     public AbilityBase Secondary { get => secondary; }
     public AbilityBase Dash { get => dash; }
 
-    private void Start()
+    private void Awake()
     {
 
         if (primary != null)
@@ -108,7 +108,8 @@ public class AbilityManager : MonoBehaviour
 
     public void OnPrimaryCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(primary, "P");
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(primary, "P"));
+        Debug.Log("Primary cooldown");
         StartCoroutine(primary.Behavior.Cooldown());
     }
     #endregion
@@ -150,7 +151,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnSecondaryCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(secondary, "S");
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(secondary, "S"));
         StartCoroutine(secondary.Behavior.Cooldown());
     }
     #endregion
@@ -187,7 +188,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnDashCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(dash, "D");
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(dash, "D"));
         StartCoroutine(dash.Behavior.Cooldown());
     }
     #endregion 
