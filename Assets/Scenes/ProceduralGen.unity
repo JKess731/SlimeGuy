@@ -157,8 +157,8 @@ MonoBehaviour:
   bossArena: {fileID: 4369206809775254429, guid: c4c429f06f653294b8835ee2c55c2271, type: 3}
   roomList: {fileID: 11400000, guid: 485f63d36751fc84b8b0737e985fadf6, type: 2}
   emptyRoomsList: {fileID: 11400000, guid: 1edcecc11da7f704c9ffebfb32d6e8de, type: 2}
-  maxRooms: 25
-  minRooms: 15
+  maxRooms: 30
+  minRooms: 25
   rowSize: 16
   colSize: 16
   spawnDelay: 0.25
@@ -1407,6 +1407,10 @@ PrefabInstance:
     - target: {fileID: 1375924084212560066, guid: 20f62233efd76ab47b6d6a72ad059dd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5649232828933351871, guid: 20f62233efd76ab47b6d6a72ad059dd1, type: 3}
+      propertyPath: primaryAbilityPrefabs.Array.size
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

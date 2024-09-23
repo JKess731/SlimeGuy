@@ -16,9 +16,9 @@ MonoBehaviour:
   - _statEnum: 0
     _statValue: 0
   - _statEnum: 3
-    _statValue: 100
+    _statValue: 300
   - _statEnum: 4
-    _statValue: 100
+    _statValue: 300
   - _statEnum: 2
     _statValue: 8
   - _statEnum: 5

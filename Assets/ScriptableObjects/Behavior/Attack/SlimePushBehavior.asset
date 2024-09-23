@@ -16,7 +16,7 @@ MonoBehaviour:
   _activationTime: 2
   _status: {fileID: 0}
   _push: {fileID: 7595820434947627400, guid: 64dd7bf8fa61e0548a50803894a0ab1d, type: 3}
-  _damage: 1
+  _damage: 6
   _knockback: 10
   _speed: 5
   _distance: 7

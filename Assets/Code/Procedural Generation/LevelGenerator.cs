@@ -222,11 +222,7 @@ public class LevelGenerator : MonoBehaviour
 
         else
         {
-            if ((chosenRoomCount / 2) + 1 >= currentRoomCount)
-            {
-                options = GetDoorAmount(2);
-            }
-            else if ((chosenRoomCount / 3) >= currentRoomCount)
+            if ((chosenRoomCount / 2) >= currentRoomCount)
             {
                 options = GetDoorAmount(2);
                 options.AddRange(GetDoorAmount(3));
@@ -235,6 +231,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 options = GetDoorAmount(1);
             }
+
 
             room = RandomRoom(doorNeeded, options);
 
