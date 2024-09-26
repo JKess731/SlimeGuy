@@ -45,6 +45,24 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (primary != null)
+        {
+            primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
+        }
+
+        if (secondary != null)
+        {
+            secondary.Behavior.onBehaviorFinished -= OnSecondaryCooldown;
+        }
+
+        if (dash != null)
+        {
+            dash.Behavior.onBehaviorFinished -= OnDashCooldown;
+        }
+    }
+
     //private void Update()
     //{
     //    if (primary.Behavior.AbilityState == AbilityState.FINISHED)
