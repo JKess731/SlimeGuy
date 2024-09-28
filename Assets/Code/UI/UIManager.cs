@@ -97,11 +97,11 @@ public class UiManager : MonoBehaviour
         passiveAbilityImage.sprite = Icon;
     }
 
-    public IEnumerator TextAndSliderAdjustment(AbilityBase attack, string type) //this coroutine is for the radial cooldown and text on abilites.
+    public IEnumerator TextAndSliderAdjustment(AbilityBaseSO attack, string type) //this coroutine is for the radial cooldown and text on abilites.
     {
         Slider modifiedSlider = null;
         TextMeshProUGUI modifiedText = null;
-        float newValue = attack.Behavior.CooldownTime;
+        float newValue = attack.CooldownTime;
         if(type == "P")
         {
             modifiedSlider = primaryCooldown;
@@ -122,16 +122,16 @@ public class UiManager : MonoBehaviour
             modifiedSlider = passiveCooldown;
             modifiedText = passiveCooldownTxt;
         }
-        yield return new WaitForSeconds(attack.Behavior.ActivationTime);
+        yield return new WaitForSeconds(attack.ActivationTime);
 
         modifiedSlider.gameObject.SetActive(true);
         modifiedText.gameObject.SetActive(true);
 
-        modifiedSlider.maxValue = attack.Behavior.CooldownTime;
+        modifiedSlider.maxValue = attack.CooldownTime;
         modifiedSlider.value = modifiedSlider.maxValue;
-        modifiedText.text = attack.Behavior.CooldownTime.ToString(); 
+        modifiedText.text = attack.CooldownTime.ToString(); 
 
-        while(newValue > 0 && attack.Behavior.CooldownTime > 1)
+        while(newValue > 0 && attack.CooldownTime > 1)
         {
             newValue -= 1;
             yield return new WaitForSeconds(1);
@@ -139,7 +139,7 @@ public class UiManager : MonoBehaviour
             modifiedText.text = newValue.ToString();
         }
 
-        while (newValue > 0 && attack.Behavior.CooldownTime < 1)
+        while (newValue > 0 && attack.CooldownTime < 1)
         {
             newValue -= 0.1f;
             yield return new WaitForSeconds(0.1f);

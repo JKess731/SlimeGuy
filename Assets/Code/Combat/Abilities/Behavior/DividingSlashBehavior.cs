@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "DividingSlash", menuName = "Attack/Dividing Slash")]
-public class DividingSlashBehavior : Behavior
+public class DividingSlashBehavior : AbilityBaseSO
 {
     [Header("Dividing Slash Attributes")]
     [SerializeField] private GameObject _dividingSlash;
@@ -20,27 +20,9 @@ public class DividingSlashBehavior : Behavior
     [SerializeField] private float _dividingSlashSpeed;
     [SerializeField] private float _dividingSlashRange;
 
-    private DividingSlashStruct _dividingSlashStruct;
-
-    public override void Initialize(AbilityBase abilitybase)
+    public override void Initialize(AbilityManager abilityManager)
     {
-        base.Initialize(abilitybase);
-        _dividingSlashStruct = new DividingSlashStruct(_dividingSlashDamage, _dividingSlashKnockback, _dividingSlashSpeed, _dividingSlashRange);
-    }
-
-    //Activate the attack
-    public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
-    {
-        //if (context.started)
-        //{
-        //    for (int i = 0; i < 1; i++)
-        //    {
-        //        Quaternion newRot = rotation;
-
-        //        GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
-        //        newDividingSlash.GetComponent<DividingSlash>().SetDividingSlashStruct(_dividingSlashStruct);
-        //    }
-        //}
+        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
@@ -57,7 +39,6 @@ public class DividingSlashBehavior : Behavior
             Quaternion newRot = rotation * Quaternion.Euler(0, 0, currentAngle);
 
             GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
-            newDividingSlash.GetComponent<DividingSlash>().SetDividingSlashStruct(_dividingSlashStruct);
 
             AbilityState = AbilityState.PERFORMING;
         }

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// The orbit behavior allows for attacks to spawn child attacks
 /// </summary>
 [CreateAssetMenu(fileName = "Orbit", menuName = "Attack/Orbit")]
-public class OrbitBehavior : Behavior
+public class OrbitBehavior : AbilityBaseSO
 {
     [Header("Orbit Attributes")]
     [SerializeField] private GameObject _orbit;
@@ -20,21 +20,9 @@ public class OrbitBehavior : Behavior
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _distance;
 
-    private OrbitStruct _orbitStruct;
-
-    public override void Initialize(AbilityBase abilityBase)
+    public override void Initialize(AbilityManager abilityManager)
     {
-        base.Initialize(abilityBase);
-        _orbitStruct = new OrbitStruct(_damage, _knockback, _activationTime, _rotationSpeed, _distance);
-    }
-
-    public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
-    {
-        //if (context.started)
-        //{
-        //    GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
-        //    newOrbit.GetComponent<Orbit>().SetOrbitStruct(_orbitStruct);
-        //}
+        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
@@ -47,11 +35,11 @@ public class OrbitBehavior : Behavior
             for (int i = 0; i < _orbitCount; i++)
             {
                 // Spawn the orbitball at the player's position
-            GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
+                GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
 
                 // Set the orbitball's attributes and its initial angle
-                newOrbit.GetComponent<Orbit>().SetOrbitStruct(_orbitStruct);
-                newOrbit.GetComponent<Orbit>().SetInitialAngle(currentAngle);
+                //newOrbit.GetComponent<Orbit>().SetOrbitStruct(_orbitStruct);
+                //newOrbit.GetComponent<Orbit>().SetInitialAngle(currentAngle);
 
                 // Increment the angle for the next orbitball
                 currentAngle += angleStep;
@@ -73,21 +61,6 @@ public class OrbitBehavior : Behavior
 
     public override void Upgrade(StatsSO playerstats, StatsEnum stat)
     {
-        switch (stat)
-        {
-            case StatsEnum.DAMAGE:
-                _orbitStruct._damage += (int)playerstats.GetStat(StatsEnum.DAMAGE);
-                break;
-            case StatsEnum.KNOCKBACK:
-                _orbitStruct._knockback += playerstats.GetStat(StatsEnum.KNOCKBACK);
-                break;
-            case StatsEnum.ROTATION_SPEED:
-                _orbitStruct._rotationSpeed += (int)playerstats.GetStat(StatsEnum.ROTATION_SPEED);
-                break;
-            case StatsEnum.ACTIVATION_TIME:
-                _orbitStruct._activationTime += playerstats.GetStat(StatsEnum.ACTIVATION_TIME);
-                break;
-        }
 
     }
 }
