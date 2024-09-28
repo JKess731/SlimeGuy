@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Grenade", menuName = "Attack/Grenade")]
-public class GrenadeBehavior : Behavior
+public class GrenadeBehavior : AbilityBaseSO
 {
     [Header("Grenade Attributes")]
     [SerializeField] private GameObject _grenade;
@@ -17,27 +17,9 @@ public class GrenadeBehavior : Behavior
     [SerializeField] private float _grenadeKnockback;
     [SerializeField] private float _grenadeSpeed;
 
-    private GrenadeStruct _grenadeStruct;
-
-    public override void Initialize(AbilityBase abilityBase)
+    public override void Initialize(AbilityManager abilityManager)
     {
-        base.Initialize(abilityBase);
-        _grenadeStruct = new GrenadeStruct(_grenadeDamage, _grenadeKnockback, _grenadeSpeed);
-    }
-
-    //Activate the attack
-    public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
-    {
-        if (context.started)
-        {
-            for (int i = 0; i < 1; i++)
-            {
-                Quaternion newRot = rotation;
-
-                GameObject newGrenade = Instantiate(_grenade, attackPosition, newRot);
-                newGrenade.GetComponent<Grenade>().SetGrenadeStruct(_grenadeStruct);
-            }
-        }
+        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
@@ -45,7 +27,6 @@ public class GrenadeBehavior : Behavior
         Quaternion newRot = rotation;
 
         GameObject newGrenade = Instantiate(_grenade, attackPosition, newRot);
-        newGrenade.GetComponent<Grenade>().SetGrenadeStruct(_grenadeStruct);
 
         AbilityState = AbilityState.PERFORMING;
     }

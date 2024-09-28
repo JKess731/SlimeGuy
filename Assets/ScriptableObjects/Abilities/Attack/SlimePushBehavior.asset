@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cce0efc86dfcf49b27c8a2ed60116c, type: 3}
+  m_Name: SlimePushBehavior
+  m_EditorClassIdentifier: 
+  _cooldownTime: 4
+  _activationTime: 2
+  _status: {fileID: 0}
+  _push: {fileID: 7595820434947627400, guid: 64dd7bf8fa61e0548a50803894a0ab1d, type: 3}
+  _damage: 6
+  _knockback: 10
+  _speed: 5
+  _distance: 7

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "MachineGun", menuName = "Behavior/MachineGun")]
-public class MachineGunBehavior : Behavior
+public class MachineGunBehavior : AbilityBaseSO
 {
     [Header("Machine Gun Attributes")]
     [SerializeField] private GameObject _MachineGun;
@@ -19,35 +19,27 @@ public class MachineGunBehavior : Behavior
     [SerializeField] private float _projectileSpeed;
     [SerializeField] private float _projectileRange;
 
-    private float nextFireTime = 0f; //Tells when to fire
-    private MachineGunStruct _MachineGunStruct;
-    
+    private float nextFireTime = 0f;
 
-    public override void Initialize(AbilityBase abilityBase)
+    public override void Initialize(AbilityManager abilityManager)
     {
-        base.Initialize(abilityBase);
-        _MachineGunStruct = new MachineGunStruct(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange);
+        base.Initialize(abilityManager);
     }
-
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.PERFORMING;
-        //Debug.Log("Started");
     }
-    // Activate the attack
+
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         GameObject newMachineGun = Instantiate(_MachineGun, attackPosition, rotation);
-        newMachineGun.GetComponent<MachineGun>().SetMachineGunStruct(_MachineGunStruct);
-
         AbilityState = AbilityState.CANCELING;
     }
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.FINISHED;
-        //Debug.Log("Finished");
         onBehaviorFinished?.Invoke();
     }
 }

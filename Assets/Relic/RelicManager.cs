@@ -42,7 +42,7 @@ public class RelicManager : MonoBehaviour
             if (relicsEquipped[i] == null)
             {
                 relicsEquipped[i] = r;
-                UiManager.instance.UpdateRelicImage(r, i, true);
+                UiManager.instance?.UpdateRelicImage(r, i, true);
                 break;
             }
         }

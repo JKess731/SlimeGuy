@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     //PlayerStateMachine Variables
     private PlayerStateMachine _playerState;
+    private Collider2D _playerCollider;
 
     //Input Variables
     private PlayerInput _playerInput;
@@ -35,18 +36,22 @@ public class PlayerController : MonoBehaviour
     public Vector2 FaceDirection { get => _faceDirection; set => _faceDirection = value; }
     public Vector2 MoveVector { get => _moveVector; set => _moveVector = value; }
 
-
     private void Awake()
     {
         if(_playerInput == null)
         {
             _playerInput = new PlayerInput();
         }
-        
+
+        //AudioManager.instance.OnGameStart();
+
         _rb = GetComponent<Rigidbody2D>();
+        _playerCollider = GetComponent<Collider2D>();
         _tr = GetComponent<TrailRenderer>();
         _abilityManager = GetComponent<AbilityManager>();
         _playerState = GetComponent<PlayerStateMachine>();
+
+        _speed = _playerState.playerStats.GetStat(StatsEnum.SPEED);
 
         //Set up input actions
         _playerInput.GamePlay.Movement.started += OnMovement;
@@ -184,19 +189,23 @@ public class PlayerController : MonoBehaviour
     {
         //Handles Initial Dash
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
+        Debug.Log("Dash Started");
+        _playerState.State = Enum_State.DASHING;
+        _playerCollider.excludeLayers = LayerMask.GetMask("enemyAttacksLayer", "enemyLayer");
         //DisableMovement();
         _canDash = false;
 
         _tr.emitting = true;
         _rb.velocity = _faceDirection * _dashingPower;
         yield return new WaitForSeconds(_dashingTime);
-
+        Debug.Log("Dash Ended");
         //-----------------------------------------------------------------------------------
 
         //Handles Dash End
         //EnableMovement();
         _tr.emitting = false;
         _playerState.State = Enum_State.IDLING;
+        _playerCollider.excludeLayers = 0;
         _rb.velocity = Vector2.zero;
 
         //Handles Dash Cooldown
@@ -239,6 +248,10 @@ public class PlayerController : MonoBehaviour
     #region Dash
     private void OnDashStarted(InputAction.CallbackContext context)
     {
+        if (_canDash)
+        {
+            StartCoroutine(DashCoroutine());
+        }
         _abilityManager.OnDashStarted(context);
     }
     private void OnDashPerformed(InputAction.CallbackContext context)
