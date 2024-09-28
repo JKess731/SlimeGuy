@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ChaseRunAway", menuName = "EnemyLogic/ChaseLogic/RunAway")]
-
-public class EnemyChaseRunAway : EnemyChaseSOBase
+[CreateAssetMenu(fileName = "Teleport", menuName = "EnemyLogic/ChaseLogic/Teleport")]
+public class EnemyTeleportSO : EnemyChaseSOBase
 {
-    [SerializeField] private float runAwaySpeed = 1.5f;
-    [SerializeField] private Transform attackPoint;
-    public GameObject ring;
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
@@ -18,6 +14,7 @@ public class EnemyChaseRunAway : EnemyChaseSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
+
     }
 
     public override void DoExitLogic()
@@ -28,8 +25,8 @@ public class EnemyChaseRunAway : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        Vector2 runDir = -(_playerTransform.position - _transform.position).normalized;
-        _enemy.MoveEnemy(runDir *  runAwaySpeed);
+        //Vector2 runDir = -(_playerTransform.position - _transform.position).normalized;
+        //_enemy.MoveEnemy(runDir * runAwaySpeed);
     }
 
     public override void DoPhysicsLogic()
@@ -46,5 +43,4 @@ public class EnemyChaseRunAway : EnemyChaseSOBase
     {
         base.ResetValues();
     }
-
 }
