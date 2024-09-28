@@ -139,12 +139,12 @@ TextureImporter:
       name: right slash-Sheet upt_0
       rect:
         serializedVersion: 2
-        x: 737
+        x: 542
         y: 83
-        width: 101
-        height: 113
+        width: 103
+        height: 118
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,106 +157,106 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: right slash-Sheet upt_2
+      name: right slash-Sheet upt_3
       rect:
         serializedVersion: 2
-        x: 1049
-        y: 76
-        width: 96
+        x: 1392
+        y: 70
+        width: 103
         height: 118
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f84dbd50328e5541b4b07d4592ec9f8
+      spriteID: c44e8b3f87eb04a49bff506fec4c702d
+      internalID: -1137432242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: right slash-Sheet upt_5
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 84
+        width: 103
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0070c41511ee0e4e822984ee91992ba
+      internalID: -913543518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: right slash-Sheet upt_1
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 76
+        width: 103
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6371cd0c9b4c143b85e57eefaa0b9f
+      internalID: -1830808850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: right slash-Sheet upt_2
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 68
+        width: 103
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77e5d968aa5d914eb069d9ccd47f2c2
       internalID: 1448541928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: right slash-Sheet upt_6
+      name: right slash-Sheet upt_4
       rect:
         serializedVersion: 2
-        x: 1316
-        y: 68
-        width: 105
-        height: 65
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa39188620e06e9429954e5be8ed162c
-      internalID: 29724548
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: right slash-Sheet upt_7
-      rect:
-        serializedVersion: 2
-        x: 1589
-        y: 70
-        width: 75
-        height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8bc12abbe3212cf4fa4d6705a3b5f536
-      internalID: -829094345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: right slash-Sheet upt_8
-      rect:
-        serializedVersion: 2
-        x: 1871
+        x: 1676
         y: 74
-        width: 33
-        height: 24
+        width: 103
+        height: 118
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 333cdd1e4c478704a91108ca816d7508
-      internalID: 1078962769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: right slash-Sheet upt_9
-      rect:
-        serializedVersion: 2
-        x: 2159
-        y: 83
-        width: 11
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a3eb0f40e4cd194a802eaa19fe52d7b
-      internalID: 1920029480
+      spriteID: 7fc6b14113a0f3548b5047c4f1a5d81e
+      internalID: 465740021
       vertices: []
       indices: 
       edges: []
@@ -274,15 +274,10 @@ TextureImporter:
     nameFileIdTable:
       right slash-Sheet upt_0: -466011107
       right slash-Sheet upt_1: -1830808850
-      right slash-Sheet upt_10: 134281381
       right slash-Sheet upt_2: 1448541928
       right slash-Sheet upt_3: -1137432242
       right slash-Sheet upt_4: 465740021
       right slash-Sheet upt_5: -913543518
-      right slash-Sheet upt_6: 29724548
-      right slash-Sheet upt_7: -829094345
-      right slash-Sheet upt_8: 1078962769
-      right slash-Sheet upt_9: 1920029480
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

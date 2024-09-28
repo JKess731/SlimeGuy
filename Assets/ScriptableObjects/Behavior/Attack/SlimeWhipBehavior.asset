@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70415709ffb7121428e4b69a171bddd3, type: 3}
   m_Name: SlimeWhipBehavior
   m_EditorClassIdentifier: 
-  _cooldownTime: 2
-  _activationTime: 1
-  _status: {fileID: 0}
+  _cooldownTime: 3
+  _activationTime: 1.5
+  _status: {fileID: 11400000, guid: 41de268f9ff83b840af18fe91cc29984, type: 2}
   _whip: {fileID: 1444053255082817093, guid: 72bbfe5b1348d7a4792d4a570411e74f, type: 3}
-  _damage: 1
-  _knockback: 1
+  _damage: 4
+  _knockback: 6
   _rotationSpeed: 500

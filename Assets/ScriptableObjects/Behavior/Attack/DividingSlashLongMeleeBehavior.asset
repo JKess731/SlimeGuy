@@ -18,7 +18,7 @@ MonoBehaviour:
   _dividingSlash: {fileID: 168608533301039626, guid: 37a47e8836288384ea6c68713713d7c8, type: 3}
   _slashCount: 1
   _spreadAngle: 0
-  _dividingSlashDamage: 1
+  _dividingSlashDamage: 5
   _dividingSlashKnockback: 6
-  _dividingSlashSpeed: 8
+  _dividingSlashSpeed: 12
   _dividingSlashRange: 8

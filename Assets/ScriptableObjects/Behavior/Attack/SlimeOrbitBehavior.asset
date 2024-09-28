@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6398c4295670344b80627702f138e8d, type: 3}
   m_Name: SlimeOrbitBehavior
   m_EditorClassIdentifier: 
-  _cooldownTime: 8
-  _activationTime: 5
+  _cooldownTime: 4
+  _activationTime: 4
   _status: {fileID: 0}
   _orbit: {fileID: 7031965650677062296, guid: ffccf9cc23408834e9783f3a655a1542, type: 3}
   _orbitCount: 2
   _spreadAngle: 360
-  _damage: 1
+  _damage: 5
   _knockback: 3
   _rotationSpeed: 5
   _distance: 3

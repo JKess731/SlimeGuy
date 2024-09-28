@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeea4d80eac327441bb6aedcc292a51c, type: 3}
   m_Name: SlimeShotgunBehavior
   m_EditorClassIdentifier: 
-  _cooldownTime: 0.3
+  _cooldownTime: 0.4
   _activationTime: 0.1
   _status: {fileID: 0}
   _bulletCount: 3
   _spreadAngle: 20
   _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
-  _projectileDamage: 1
-  _projectileKnockback: 0
+  _projectileDamage: 3
+  _projectileKnockback: 5
   _projectileSpeed: 20
   _projectileRange: 5
-  _piercingAmount: 10
-  _bulletBounce: 3
+  _piercingAmount: 0
+  _bulletBounce: 0

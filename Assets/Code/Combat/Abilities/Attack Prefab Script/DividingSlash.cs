@@ -62,10 +62,12 @@ public class DividingSlash : Attacks
     // Handle collisions with enemies and walls
     protected void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         if (collision.gameObject.tag == "wall")
         {
             Destroy(gameObject);
         }
+        */
 
         // If the slash hits an enemy, damage the enemy and apply knockback
         if (collision.gameObject.tag == "enemy")

@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class RelicPickup : MonoBehaviour
 {
-    [SerializeField] private RelicSO relicScriptableObject;
+    public RelicSO relicScriptableObject;
     [SerializeField] private RelicManager relicManager;
 
     private void Awake()

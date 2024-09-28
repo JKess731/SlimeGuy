@@ -42,7 +42,7 @@ public class Whip : Attacks
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage, transform.right, _knockback, Vector2.up);
             if (_status != null)
             {
-                collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
+                //collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
             }
         }
     }

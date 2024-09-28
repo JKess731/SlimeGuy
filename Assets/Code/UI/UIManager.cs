@@ -63,6 +63,14 @@ public class UiManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            UpdatePrimaryAbilityImage(_abilityManager.Primary.Icon);
+        }
+    }
+
     public void UpdateHealthBar(float health, float maxHealth)
     {
         healthBar.value = health / maxHealth;
@@ -91,7 +99,6 @@ public class UiManager : MonoBehaviour
 
     public IEnumerator TextAndSliderAdjustment(AbilityBase attack, string type) //this coroutine is for the radial cooldown and text on abilites.
     {
-        Debug.Log("I got to TextAndSliderAdjustment");
         Slider modifiedSlider = null;
         TextMeshProUGUI modifiedText = null;
         float newValue = attack.Behavior.CooldownTime;
@@ -124,12 +131,27 @@ public class UiManager : MonoBehaviour
         modifiedSlider.value = modifiedSlider.maxValue;
         modifiedText.text = attack.Behavior.CooldownTime.ToString(); 
 
-        while(newValue > 0)
+        while(newValue > 0 && attack.Behavior.CooldownTime > 1)
         {
             newValue -= 1;
             yield return new WaitForSeconds(1);
             modifiedSlider.value = newValue;
             modifiedText.text = newValue.ToString();
+        }
+
+        while (newValue > 0 && attack.Behavior.CooldownTime < 1)
+        {
+            newValue -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+            modifiedSlider.value = newValue;
+            if (newValue <= 0)
+            {
+                modifiedText.text = "0";
+            }
+            else
+            {
+                modifiedText.text = newValue.ToString();
+            }
         }
 
         modifiedSlider.gameObject.SetActive(false);

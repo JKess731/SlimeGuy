@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SingleRoomController : MonoBehaviour
 {
@@ -85,6 +86,11 @@ public class SingleRoomController : MonoBehaviour
         if (spawnedEnemies.Count == 0 && inWave)
         {
             inWave = false;
+
+            if (currentWave == waves.Count)
+            {
+                cleared = true;
+            }
         }
         else
         {
@@ -120,7 +126,13 @@ public class SingleRoomController : MonoBehaviour
                     door.SetActive(false);
                 }
 
-                gameObject.SetActive(false);
+                LevelGenerator lg = GameObject.FindAnyObjectByType<LevelGenerator>();
+                lg.roomsCleared++;
+                lg.clearedChain++;
+                lg.lastClearedRoom = this.gameObject;
+
+                //gameObject.SetActive(false);
+                triggered = false;
             }
         }
     }

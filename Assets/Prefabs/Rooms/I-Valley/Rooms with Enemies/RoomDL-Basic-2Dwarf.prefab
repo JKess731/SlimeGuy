@@ -3236,7 +3236,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 497496063
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -3279,8 +3279,8 @@ Transform:
   - {fileID: 8429776746966902809}
   - {fileID: 4626649034471329013}
   - {fileID: 6310489984590102324}
-  - {fileID: 7560579873834258002}
-  - {fileID: 5938800235392827608}
+  - {fileID: 765596568267750684}
+  - {fileID: 8808329621735142626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6058810881442870833
@@ -3343,7 +3343,7 @@ MonoBehaviour:
   genScript: {fileID: 0}
   doorNeeded: 0
   parentRoom: {fileID: 5011494250752341042}
---- !u!1001 &1432830831660153459
+--- !u!1001 &4302576237628280393
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3353,11 +3353,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.42
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3393,19 +3393,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_Name
-      value: EnemyDwarf (1)
+      value: EnemyGremlin (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
---- !u!4 &5938800235392827608 stripped
+--- !u!4 &8808329621735142626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-  m_PrefabInstance: {fileID: 1432830831660153459}
+  m_PrefabInstance: {fileID: 4302576237628280393}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2982570442874156281
+--- !u!1001 &5410891678952671159
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3415,11 +3415,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: -2.35
       objectReference: {fileID: 0}
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.69
+      value: 5.31
       objectReference: {fileID: 0}
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3455,15 +3455,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_Name
-      value: EnemyDwarf
+      value: EnemyGremlin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
---- !u!4 &7560579873834258002 stripped
+--- !u!4 &765596568267750684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-  m_PrefabInstance: {fileID: 2982570442874156281}
+  m_PrefabInstance: {fileID: 5410891678952671159}
   m_PrefabAsset: {fileID: 0}
