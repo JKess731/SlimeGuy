@@ -26,6 +26,7 @@ public class ShotgunAbilitySO : AbilityBaseSO
     {
         base.Initialize(abilityManager);
     }
+
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         //Debug.Log("Started");
