@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class AbilityManager : MonoBehaviour
 {
     [Header("Ability Variables")]
-    [SerializeField] private AbilityBaseSO primary;
+    [SerializeField] private AbilityMono primary;
     [SerializeField] private AbilityBaseSO secondary;
     [SerializeField] private AbilityBaseSO dash;
     [SerializeField] private AbilityBaseSO passive;
@@ -19,7 +19,7 @@ public class AbilityManager : MonoBehaviour
     //Abilities must be initialized, or else they will not work. For some reason,
     //Unity does not read the preassigned values in the Scriptable Objects Variables.
 
-    public AbilityBaseSO Primary { get => primary; }
+    public AbilityMono Primary { get => primary; }
     public AbilityBaseSO Secondary { get => secondary; }
     public AbilityBaseSO Dash { get => dash; }
     public AbilityBaseSO Passive { get => passive; }
@@ -44,6 +44,7 @@ public class AbilityManager : MonoBehaviour
         secondary?.Initialize(this);
         dash?.Initialize(this);
 
+        //primary = Instantiate(primary);
         try
         {
             primary.onBehaviorFinished += OnPrimaryCooldown;
@@ -54,6 +55,10 @@ public class AbilityManager : MonoBehaviour
         {
             Debug.LogWarning("One Behavior not Found, reload ability into slot");
         }
+
+        gameObject.AddComponent<Shotgun>();
+        primary = gameObject.GetComponent<Shotgun>();
+        primary.RemoveAbility();
     }
 
     //private void Update()
@@ -80,7 +85,7 @@ public class AbilityManager : MonoBehaviour
             primary.onBehaviorFinished -= OnPrimaryCooldown;
         }
 
-        primary = Instantiate(newAbilitySO);
+        //primary = Instantiate(newAbilitySO);
         primary?.Initialize(this);
         primary.onBehaviorFinished += OnPrimaryCooldown;
     }
@@ -107,7 +112,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnPrimaryCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(primary, "P");
+        //UiManager.instance?.TextAndSliderAdjustment(primary, "P");
         StartCoroutine(primary.Cooldown());
     }
     #endregion

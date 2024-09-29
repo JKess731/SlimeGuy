@@ -69,7 +69,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         _stats = Instantiate(_stats);
         _stats.Initialize();
 
-
         //Instantiate State Machine
         stateMachine = new EnemyStateMachine();
 
