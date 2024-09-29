@@ -11,7 +11,6 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     [SerializeField] private int frontSlashDamage;
     [SerializeField] private float frontSlashAttackDelay;
     public GameObject ring;
-    private float timer;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
