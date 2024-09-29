@@ -106,7 +106,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private void Update()
     {
         stateMachine.currentEnemyState.FrameUpdate();
-        enemyAnimation.PlayAnimation(faceDir,_state);
+        //enemyAnimation.PlayAnimation(faceDir,_state);
     }
 
     private void FixedUpdate()
