@@ -38,7 +38,6 @@ public class AbilityMono : MonoBehaviour, IAbility
     public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) { }
     public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) { }
     public virtual void CancelBehavior(Vector2 attackPosition, Quaternion rotation) { }
-
     public virtual void Upgrade(StatsSO playerStats, StatsEnum stats) { }
     public virtual IEnumerator Cooldown()
     {
@@ -63,7 +62,6 @@ public class AbilityMono : MonoBehaviour, IAbility
         _abilityState = AbilityState.READY;
         //Debug.Log("Cooldown Finished");
     }
-
     public virtual IEnumerator Activate()
     {
         throw new System.NotImplementedException();

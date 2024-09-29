@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class AbilityManager : MonoBehaviour
 {
     [Header("Ability Variables")]
-    [SerializeField] private AbilityMono primary;
+    [SerializeField] private AbilityBaseSO primary;
     [SerializeField] private AbilityBaseSO secondary;
     [SerializeField] private AbilityBaseSO dash;
     [SerializeField] private AbilityBaseSO passive;
@@ -19,7 +19,7 @@ public class AbilityManager : MonoBehaviour
     //Abilities must be initialized, or else they will not work. For some reason,
     //Unity does not read the preassigned values in the Scriptable Objects Variables.
 
-    public AbilityMono Primary { get => primary; }
+    public AbilityBaseSO Primary { get => primary; }
     public AbilityBaseSO Secondary { get => secondary; }
     public AbilityBaseSO Dash { get => dash; }
     public AbilityBaseSO Passive { get => passive; }
@@ -55,10 +55,6 @@ public class AbilityManager : MonoBehaviour
         {
             Debug.LogWarning("One Behavior not Found, reload ability into slot");
         }
-
-        gameObject.AddComponent<Shotgun>();
-        primary = gameObject.GetComponent<Shotgun>();
-        primary.RemoveAbility();
     }
 
     //private void Update()

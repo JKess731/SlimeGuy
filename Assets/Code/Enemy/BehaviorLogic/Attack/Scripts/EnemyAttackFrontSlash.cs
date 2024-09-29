@@ -26,22 +26,22 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _enemyTransform.position);
         }
 
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfDamaged)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfHurt, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfHurt, _enemyTransform.position);
         }
 
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _enemyTransform.position);
         }
 
         if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _enemyTransform.position);
             rotation = new Vector3(0, 0, 0);
         }
 
