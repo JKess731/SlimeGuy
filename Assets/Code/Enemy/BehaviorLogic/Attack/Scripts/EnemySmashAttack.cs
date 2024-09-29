@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-[CreateAssetMenu(fileName = "FrontSlash", menuName = "EnemyLogic/AttackLogic/FrontSlash")]
+[CreateAssetMenu(fileName = "SmashAttack", menuName = "EnemyLogic/AttackLogic/SmashAttack")]
 
-public class EnemyAttackFrontSlash : EnemyAttackSOBase
+public class EnemySmashAttack : EnemyAttackSOBase
 {
     [SerializeField] private GameObject slashTriggerPrefab;
     [SerializeField] private Transform attackPoint;
-    [SerializeField] private int frontSlashDamage;
-    [SerializeField] private float frontSlashAttackDelay;
+    [SerializeField] private int frontSmashDamage;
+    [SerializeField] private float frontSmashAttackDelay;
     public GameObject ring;
     private float timer;
 
@@ -17,9 +16,9 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
+        if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _transform.position);
         }
 
     }
@@ -29,7 +28,7 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
         base.DoEnterLogic();
         attackPoint = _enemy.transform.GetChild(1).GetChild(0);
         ring = _enemy.transform.GetChild(1).gameObject;
-        
+
     }
 
     public override void DoExitLogic()
@@ -41,13 +40,13 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     {
         base.DoFrameUpdateLogic();
         _enemy.MoveEnemy(Vector2.zero);
-        if (timer > frontSlashAttackDelay)
+        if (timer > frontSmashAttackDelay)
         {
             timer = 0f;
             GameObject slash = Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
             _enemy.stateMachine.ChangeState(_enemy.chaseState);
         }
-        if (timer < frontSlashAttackDelay)
+        if (timer < frontSmashAttackDelay)
         {
             Vector3 rotation = _playerTransform.position - ring.transform.position;
             float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;

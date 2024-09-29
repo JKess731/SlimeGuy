@@ -450,10 +450,10 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: 90060170a75cf274db63b60ded668f21, type: 2}
   enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
   enemyIdleBase: {fileID: 11400000, guid: 985540e631692a9449807e007b23c8bb, type: 2}
-  enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
-  enemyAttackBase: {fileID: 11400000, guid: 69f1e2c478eb0a94ab2db8550295ce40, type: 2}
-  enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
-  enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
+  enemyChaseBase: {fileID: 11400000, guid: dd2d4c41a65992740a2d31fd5626f2f2, type: 2}
+  enemyAttackBase: {fileID: 11400000, guid: a1425a35fccdb8a48ba1b321705a6a0f, type: 2}
+  enemyDamagedBase: {fileID: 11400000, guid: 6824116bdacd7c04eb79a37fd151cb53, type: 2}
+  enemyDeathBase: {fileID: 11400000, guid: da36a3d9419622a4dbc012e55a11592c, type: 2}
 --- !u!114 &4685945866906265587
 MonoBehaviour:
   m_ObjectHideFlags: 0
