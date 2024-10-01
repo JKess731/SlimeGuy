@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "DividingSlash", menuName = "Attack/Dividing Slash")]
-public class DividingSlashBehavior : AbilityBaseSO
+public class DividingSlashBehavior : AbilitySOBase
 {
     [Header("Dividing Slash Attributes")]
     [SerializeField] private GameObject _dividingSlash;
@@ -20,9 +20,8 @@ public class DividingSlashBehavior : AbilityBaseSO
     [SerializeField] private float _dividingSlashSpeed;
     [SerializeField] private float _dividingSlashRange;
 
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)

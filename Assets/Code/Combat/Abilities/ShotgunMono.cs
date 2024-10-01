@@ -1,13 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "Shotgun", menuName = "Ability/Shotgun")]
-public class ShotgunAbilitySO : AbilityBaseSO
+public class ShotgunMono : AbilityMonoBase
 {
     [Header("Shotgun Attributes")]
     [SerializeField] private int _bulletCount;
@@ -22,9 +17,9 @@ public class ShotgunAbilitySO : AbilityBaseSO
     [SerializeField] private int _piercingAmount;
     [SerializeField] private int _bulletBounce;
 
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
+        base.Initialize();
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
@@ -45,11 +40,6 @@ public class ShotgunAbilitySO : AbilityBaseSO
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        //Debug.Log("Performed");
-
-        //AbilityManager.StartCoroutine(Cooldown());
-
-
         AbilityState = AbilityState.CANCELING;
     }
 
@@ -57,7 +47,7 @@ public class ShotgunAbilitySO : AbilityBaseSO
     {
         //Debug.Log("Finished");
         AbilityState = AbilityState.FINISHED;
-        onBehaviorFinished?.Invoke();
+        StartCoroutine(Cooldown());
     }
 
     public override void Upgrade(StatsSO playerstats, StatsEnum stat)
@@ -65,7 +55,7 @@ public class ShotgunAbilitySO : AbilityBaseSO
         switch (stat)
         {
             case StatsEnum.ATTACK:
-                _projectileDamage += (int) playerstats.GetStat(StatsEnum.ATTACK);
+                _projectileDamage += (int)playerstats.GetStat(StatsEnum.ATTACK);
                 Debug.Log("Projectile Damage Upgraded: " + _projectileDamage);
                 break;
             case StatsEnum.KNOCKBACK:

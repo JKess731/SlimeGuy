@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// The wave behavior allows for attacks to spawn child attacks
 /// </summary>
 [CreateAssetMenu(fileName = "Whip", menuName = "Behavior/Whip")]
-public class WhipBehavior : AbilityBaseSO
+public class WhipBehavior : AbilitySOBase
 {
     [Header("Whip Attributes")]
     [SerializeField] private GameObject _whip;
@@ -17,9 +17,8 @@ public class WhipBehavior : AbilityBaseSO
     [SerializeField] private float _knockback;
     [SerializeField] private float _rotationSpeed;
 
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)

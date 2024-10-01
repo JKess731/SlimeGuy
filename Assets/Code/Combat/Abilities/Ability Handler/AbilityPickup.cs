@@ -5,7 +5,7 @@ using UnityEngine;
 public class AbilityPickup : MonoBehaviour
 {
     [Header("Ability to Assign")]
-    [SerializeField] private AbilityBaseSO abilityToPickup;
+    [SerializeField] private AbilitySOBase abilityToPickup;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,11 +20,11 @@ public class AbilityPickup : MonoBehaviour
                 // Assign the picked-up ability to the first empty slot (primary or secondary)
                 if (abilityToPickup.AbilityType.Equals(AbilityType.PRIMARY))
                 {
-                    abilityManager.InstaniatePrimary(abilityToPickup);
+                    //abilityManager.InstaniatePrimary(abilityToPickup);
                 }
                 else if (abilityToPickup.AbilityType.Equals(AbilityType.SECONDARY))
                 {
-                    abilityManager.InstaniateSecondary(abilityToPickup);
+                    //abilityManager.InstaniateSecondary(abilityToPickup);
                 }
                 else
                 {

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Grenade", menuName = "Attack/Grenade")]
-public class GrenadeBehavior : AbilityBaseSO
+public class GrenadeBehavior : AbilitySOBase
 {
     [Header("Grenade Attributes")]
     [SerializeField] private GameObject _grenade;
@@ -17,9 +17,8 @@ public class GrenadeBehavior : AbilityBaseSO
     [SerializeField] private float _grenadeKnockback;
     [SerializeField] private float _grenadeSpeed;
 
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
