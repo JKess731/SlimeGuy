@@ -84,7 +84,7 @@ public class AbilityManager : MonoBehaviour
             }
         }
 
-        Swap(AbilityType.PRIMARY, "Shotgun Slime Pellet");
+        //Swap(AbilityType.PRIMARY, "Shotgun Slime Pellet");
         Swap(AbilityType.PRIMARY, "DividingSlash");
         Swap(AbilityType.SECONDARY, "SlimeWhip");
     }
