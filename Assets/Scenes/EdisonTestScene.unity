@@ -5922,6 +5922,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Singletons
       objectReference: {fileID: 0}
+    - target: {fileID: 2275855738194048554, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: m_Name
+      value: Relic Manager
+      objectReference: {fileID: 0}
     - target: {fileID: 5490051036770633664, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5929,6 +5933,14 @@ PrefabInstance:
     - target: {fileID: 5490051036770633664, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494147030574811462, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: m_Name
+      value: Audio Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970792373810884810, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: m_Name
+      value: Relic Inventory Manager
       objectReference: {fileID: 0}
     - target: {fileID: 8672213586497206948, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5986,6 +5998,6 @@ SceneRoots:
   - {fileID: 1081436633}
   - {fileID: 1211132776}
   - {fileID: 1883121574}
-  - {fileID: 8724190494010960286}
   - {fileID: 1446654021}
   - {fileID: 2101249337}
+  - {fileID: 8724190494010960286}

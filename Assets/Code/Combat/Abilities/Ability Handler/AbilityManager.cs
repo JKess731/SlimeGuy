@@ -94,6 +94,8 @@ public class AbilityManager : MonoBehaviour
         primary = Instantiate(newAbilitySO);
         primary?.Initialize(this);
         primary.onBehaviorFinished += OnPrimaryCooldown;
+
+        UiManager.instance?.UpdatePrimaryAbilityImage(primary.Icon);
     }
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
@@ -118,8 +120,8 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnPrimaryCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(primary, "P");
         StartCoroutine(primary.Cooldown());
+        StartCoroutine(UiManager.instance?.TextAndSliderAdjustment(primary, "P"));
     }
     #endregion
 
@@ -160,8 +162,8 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnSecondaryCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(secondary, "S");
         StartCoroutine(secondary.Cooldown());
+        StartCoroutine(UiManager.instance?.TextAndSliderAdjustment(secondary, "S"));
     }
     #endregion
 
@@ -199,8 +201,8 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnDashCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(dash, "D");
-        StartCoroutine(dash .Cooldown());
+        StartCoroutine(dash.Cooldown());
+        StartCoroutine(UiManager.instance?.TextAndSliderAdjustment(dash, "D"));
     }
     #endregion 
 

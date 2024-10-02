@@ -104,6 +104,7 @@ public class UiManager : MonoBehaviour
         Slider modifiedSlider = null;
         TextMeshProUGUI modifiedText = null;
         float newValue = attack.CooldownTime;
+
         if(type == "P")
         {
             modifiedSlider = primaryCooldown;
@@ -124,6 +125,7 @@ public class UiManager : MonoBehaviour
             modifiedSlider = passiveCooldown;
             modifiedText = passiveCooldownTxt;
         }
+
         yield return new WaitForSeconds(attack.ActivationTime);
 
         modifiedSlider.gameObject.SetActive(true);

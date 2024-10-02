@@ -7,7 +7,6 @@ public class RelicInventoryInputManager : MonoBehaviour
 {
     public static RelicInventoryInputManager instance;
     [SerializeField] private GameObject relicInventory;
-    [SerializeField] private GameObject relicInventoryBG;
     [SerializeField] private GameObject relicChest;
     private bool isOpen;
     public bool menuOpenCloseInput {  get; private set; }
@@ -26,8 +25,6 @@ public class RelicInventoryInputManager : MonoBehaviour
 
     private void Start()
     {
-        relicInventoryBG.SetActive(false);
-        relicInventory.SetActive(false);
         isOpen = false;
     }
 
@@ -51,19 +48,17 @@ public class RelicInventoryInputManager : MonoBehaviour
             {
                 isOpen = true;
                 relicInventory.SetActive(true);
-                relicInventoryBG.SetActive(true);
                 Debug.Log("Opening Menu");
             }
             else
             {
                 isOpen = false;
                 relicInventory.SetActive(false);
-                relicInventoryBG.SetActive(false);
                 Debug.Log("Closing Menu");
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.V) && Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.V))
         {
             Vector3 playerPos = GameObject.Find("Player").transform.position;
             playerPos.x += 5;

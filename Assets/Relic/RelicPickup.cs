@@ -24,6 +24,11 @@ public class RelicPickup : MonoBehaviour
 
                 relicScriptableObject.Initialize(playerReference);
                 relicScriptableObject.OnPickup();
+
+                Debug.Log("Player Reference: " + playerReference);
+                Debug.Log("Relic SO: " + relicScriptableObject);
+                Debug.Log("Relic Manager: " + relicManager);
+
                 relicManager.abilityManager.UpgradeAbilities(playerReference, relicScriptableObject.changedStat);
                 gameObject.SetActive(false);
             }
