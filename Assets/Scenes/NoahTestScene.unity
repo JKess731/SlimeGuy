@@ -2560,6 +2560,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Relic_AbilitiesUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4733945678087756387, guid: 9ee15d2e67f797542875bb9c8084c326, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492309330685033703, guid: 9ee15d2e67f797542875bb9c8084c326, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9149292497209529637, guid: 9ee15d2e67f797542875bb9c8084c326, type: 3}
       propertyPath: m_Pivot.x
       value: 0
