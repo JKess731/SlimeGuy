@@ -25,6 +25,17 @@ public class EnemyShootCheck : MonoBehaviour
         }
     }
 
+    /*
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject == playerTarget)
+        {
+            enemy.setShootingDistance(false);
+        }
+    }
+    */
+
+
     IEnumerator Cooldown()
     {
         Collider2D c = GetComponent<Collider2D>();
