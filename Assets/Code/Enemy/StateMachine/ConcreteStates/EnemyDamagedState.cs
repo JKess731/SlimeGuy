@@ -12,33 +12,33 @@ public class EnemyDamagedState : EnemyState
     public override void AnimationTriggerEvent(EnemyBase.AnimationTriggerType triggerType)
     {
         base.AnimationTriggerEvent(triggerType);
-        _enemyBase.enemyAttackBaseInstance.DoAnimationTriggerEventLogic(triggerType);
+        _enemyBase.enemyDamagedBaseInstance.DoAnimationTriggerEventLogic(triggerType);
 
     }
 
     public override void EnterState()
     {
         base.EnterState();
-        _enemyBase.enemyAttackBaseInstance.DoEnterLogic();
+        _enemyBase.enemyDamagedBaseInstance.DoEnterLogic();
         _enemyBase.State = Enum_State.DAMAGED;
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        _enemyBase.enemyAttackBaseInstance.DoExitLogic();
+        _enemyBase.enemyDamagedBaseInstance.DoExitLogic();
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        _enemyBase.enemyAttackBaseInstance.DoFrameUpdateLogic();
+        _enemyBase.enemyDamagedBaseInstance.DoFrameUpdateLogic();
 
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        _enemyBase.enemyAttackBaseInstance.DoPhysicsLogic();
+        _enemyBase.enemyDamagedBaseInstance.DoPhysicsLogic();
     }
 }
