@@ -110,11 +110,11 @@ public class Grenade : Attacks
         _startPos = transform.position;
     }
 
-    public void SetGrenadeStruct(GrenadeStruct grenadeStruct)
+    public void Initialize(int damage, float knockback, float speed)
     {
-        _damage = grenadeStruct.Damage;
-        _speed = grenadeStruct.GrenadeSpeed;
-        _knockback = grenadeStruct.Knockback;
+        _damage = damage;
+        _knockback = knockback;
+        _speed = speed;
 
         _rb.velocity = transform.right * _speed;
     }

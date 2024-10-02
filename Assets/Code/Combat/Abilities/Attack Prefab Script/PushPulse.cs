@@ -67,21 +67,21 @@ public class PushPulse : Attacks
         Destroy(gameObject); // Destroy after completing cycles
     }
 
-    public void SetPushPulseStruct(PushPulseStruct pushPulseStruct)
-    {
-        _damage = pushPulseStruct.Damage;
-        _knockback = pushPulseStruct.Knockback;
-        _activationTime = pushPulseStruct.ActivationTime;
-        _speed = pushPulseStruct.Speed;
-        _distance = pushPulseStruct.Distance;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("enemy"))
         {
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage, transform.right, _knockback, Vector2.up);
         }
+    }
+
+    public void Initialize(int damage, float knockback, float speed, float distance, float activationTime)
+    {
+        _damage = damage;
+        _knockback = knockback;
+        _activationTime = activationTime;
+        _speed = speed;
+        _distance = distance;
     }
 }
 

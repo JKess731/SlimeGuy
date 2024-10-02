@@ -45,13 +45,13 @@ public class Push : Attacks
         }
     }
 
-    public void SetPushStruct(PushStruct pushStruct)
+    public void Initialize(int damage, float knockback, float speed, float distance, float activationTime)
     {
-        _damage = pushStruct.Damage;
-        _knockback = pushStruct.Knockback;
-        _activationTime = pushStruct.ActivationTime;
-        _speed = pushStruct.Speed;
-        _distance = pushStruct.Distance;
+        _damage = damage;
+        _knockback = knockback;
+        _activationTime = activationTime;
+        _speed = speed;
+        _distance = distance;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -36,6 +36,8 @@ public class OrbitBehavior : AbilityBaseSO
             {
                 // Spawn the orbitball at the player's position
                 GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
+                newOrbit.GetComponent<Orbit>().Initialize(_damage, _knockback, _rotationSpeed, _distance, _activationTime);
+                newOrbit.GetComponent<Orbit>().SetInitialAngle(currentAngle);
 
                 // Set the orbitball's attributes and its initial angle
                 //newOrbit.GetComponent<Orbit>().SetOrbitStruct(_orbitStruct);

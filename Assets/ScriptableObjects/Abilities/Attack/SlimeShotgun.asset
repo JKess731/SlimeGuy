@@ -9,18 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeea4d80eac327441bb6aedcc292a51c, type: 3}
-  m_Name: SlimeShotgunBehavior
+  m_Script: {fileID: 11500000, guid: febc736e14510784ab7e1219e9678123, type: 3}
+  m_Name: SlimeShotgun
   m_EditorClassIdentifier: 
-  _cooldownTime: 0.4
+  _abilityName: 
+  _icon: {fileID: 21300000, guid: dc64da7e5b5f62f4ca1b3b0113d3c594, type: 3}
+  _abilityType: 0
+  _cooldownTime: 0.3
   _activationTime: 0.1
   _status: {fileID: 0}
   _bulletCount: 3
   _spreadAngle: 20
   _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
-  _projectileDamage: 3
-  _projectileKnockback: 5
-  _projectileSpeed: 20
+  _projectileDamage: 1
+  _projectileKnockback: 1
+  _projectileSpeed: 5
   _projectileRange: 5
-  _piercingAmount: 0
-  _bulletBounce: 0
+  _piercingAmount: 1
+  _bulletBounce: 1

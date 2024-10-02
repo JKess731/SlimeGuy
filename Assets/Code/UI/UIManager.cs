@@ -53,9 +53,9 @@ public class UiManager : MonoBehaviour
 
         try
         {
-            UpdatePrimaryAbilityImage(_abilityManager.Primary.Icon);
-            UpdateSecondaryAbilityImage(_abilityManager.Secondary.Icon);
-            UpdateDashAbilityImage(_abilityManager.Dash.Icon);
+            UpdatePrimaryAbilityImage(_abilityManager.Primary?.Icon);
+            UpdateSecondaryAbilityImage(_abilityManager.Secondary?.Icon);
+            UpdateDashAbilityImage(_abilityManager.Dash?.Icon);
         }
         catch (System.NullReferenceException)
         {
@@ -65,9 +65,11 @@ public class UiManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L))
+        if(Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.LeftShift))
         {
-            UpdatePrimaryAbilityImage(_abilityManager.Primary.Icon);
+            UpdatePrimaryAbilityImage(_abilityManager.Primary?.Icon);
+            UpdateSecondaryAbilityImage(_abilityManager.Secondary?.Icon);
+            UpdateDashAbilityImage(_abilityManager.Dash?.Icon);
         }
     }
 
@@ -102,6 +104,7 @@ public class UiManager : MonoBehaviour
         Slider modifiedSlider = null;
         TextMeshProUGUI modifiedText = null;
         float newValue = attack.CooldownTime;
+
         if(type == "P")
         {
             modifiedSlider = primaryCooldown;
@@ -122,6 +125,7 @@ public class UiManager : MonoBehaviour
             modifiedSlider = passiveCooldown;
             modifiedText = passiveCooldownTxt;
         }
+
         yield return new WaitForSeconds(attack.ActivationTime);
 
         modifiedSlider.gameObject.SetActive(true);

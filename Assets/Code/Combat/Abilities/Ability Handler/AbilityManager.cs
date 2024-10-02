@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -56,21 +57,31 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
-    //private void Update()
-    //{
-    //    if (primary.Behavior.AbilityState == AbilityState.FINISHED)
-    //    {
-    //        StartCoroutine(primary.Behavior.Cooldown());
-    //    }
-    //    if (secondary.Behavior.AbilityState == AbilityState.FINISHED)
-    //    {
-    //        StartCoroutine(secondary.Behavior.Cooldown());
-    //    }
-    //    if (dash.Behavior.AbilityState == AbilityState.FINISHED)
-    //    {
-    //        StartCoroutine(dash.Behavior.Cooldown());
-    //    }
-    //}
+    private void OnDestroy()
+    {
+        if (primary != null)
+        {
+            primary.onBehaviorFinished -= OnPrimaryCooldown;
+        }
+
+        if (secondary != null)
+        {
+            secondary.onBehaviorFinished -= OnSecondaryCooldown;
+        }
+
+        if (dash != null)
+        {
+            dash.onBehaviorFinished -= OnDashCooldown;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 
     #region Primary
     public void InstaniatePrimary(AbilityBaseSO newAbilitySO)
@@ -83,6 +94,8 @@ public class AbilityManager : MonoBehaviour
         primary = Instantiate(newAbilitySO);
         primary?.Initialize(this);
         primary.onBehaviorFinished += OnPrimaryCooldown;
+
+        UiManager.instance?.UpdatePrimaryAbilityImage(primary.Icon);
     }
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
@@ -107,8 +120,8 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnPrimaryCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(primary, "P");
         StartCoroutine(primary.Cooldown());
+        StartCoroutine(UiManager.instance?.TextAndSliderAdjustment(primary, "P"));
     }
     #endregion
 
@@ -149,8 +162,8 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnSecondaryCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(secondary, "S");
         StartCoroutine(secondary.Cooldown());
+        StartCoroutine(UiManager.instance?.TextAndSliderAdjustment(secondary, "S"));
     }
     #endregion
 
@@ -188,8 +201,8 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnDashCooldown()
     {
-        UiManager.instance?.TextAndSliderAdjustment(dash, "D");
-        StartCoroutine(dash .Cooldown());
+        StartCoroutine(dash.Cooldown());
+        StartCoroutine(UiManager.instance?.TextAndSliderAdjustment(dash, "D"));
     }
     #endregion 
 
