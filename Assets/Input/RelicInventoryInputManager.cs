@@ -63,7 +63,7 @@ public class RelicInventoryInputManager : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.V))
+        if(Input.GetKeyDown(KeyCode.V) && Input.GetKeyDown(KeyCode.LeftShift))
         {
             Vector3 playerPos = GameObject.Find("Player").transform.position;
             playerPos.x += 5;

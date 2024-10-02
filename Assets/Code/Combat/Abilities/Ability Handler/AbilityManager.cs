@@ -60,35 +60,19 @@ public class AbilityManager : MonoBehaviour
     {
         if (primary != null)
         {
-            primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
+            primary.onBehaviorFinished -= OnPrimaryCooldown;
         }
 
         if (secondary != null)
         {
-            secondary.Behavior.onBehaviorFinished -= OnSecondaryCooldown;
+            secondary.onBehaviorFinished -= OnSecondaryCooldown;
         }
 
         if (dash != null)
         {
-            dash.Behavior.onBehaviorFinished -= OnDashCooldown;
+            dash.onBehaviorFinished -= OnDashCooldown;
         }
     }
-
-    //private void Update()
-    //{
-    //    if (primary.Behavior.AbilityState == AbilityState.FINISHED)
-    //    {
-    //        StartCoroutine(primary.Behavior.Cooldown());
-    //    }
-    //    if (secondary.Behavior.AbilityState == AbilityState.FINISHED)
-    //    {
-    //        StartCoroutine(secondary.Behavior.Cooldown());
-    //    }
-    //    if (dash.Behavior.AbilityState == AbilityState.FINISHED)
-    //    {
-    //        StartCoroutine(dash.Behavior.Cooldown());
-    //    }
-    //}
 
     #region Primary
     public void InstaniatePrimary(AbilityBaseSO newAbilitySO)
