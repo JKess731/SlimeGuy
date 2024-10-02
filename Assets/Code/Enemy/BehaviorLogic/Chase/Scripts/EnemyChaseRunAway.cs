@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
+
 [CreateAssetMenu(fileName = "ChaseRunAway", menuName = "EnemyLogic/ChaseLogic/RunAway")]
 
 public class EnemyChaseRunAway : EnemyChaseSOBase
 {
     [SerializeField] private float runAwaySpeed = 1.5f;
+    [SerializeField] private Transform attackPoint;
+    public GameObject ring;
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
@@ -42,4 +46,5 @@ public class EnemyChaseRunAway : EnemyChaseSOBase
     {
         base.ResetValues();
     }
+
 }
