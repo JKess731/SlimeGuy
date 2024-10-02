@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -71,6 +72,14 @@ public class AbilityManager : MonoBehaviour
         if (dash != null)
         {
             dash.onBehaviorFinished -= OnDashCooldown;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeWhipBehavior
   m_EditorClassIdentifier: 
   _abilityName: 
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 64e7089b725bdda4eb2fecefb5a5b364, type: 3}
   _abilityType: 1
   _cooldownTime: 3
   _activationTime: 1.5

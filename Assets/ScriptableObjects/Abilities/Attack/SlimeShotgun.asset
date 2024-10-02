@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeShotgun
   m_EditorClassIdentifier: 
   _abilityName: 
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: dc64da7e5b5f62f4ca1b3b0113d3c594, type: 3}
   _abilityType: 0
   _cooldownTime: 0.3
   _activationTime: 0.1
