@@ -19,6 +19,14 @@ public class DividingSlash : Attacks
 
     private Vector2 _pushDirection; // Direction to push the player
 
+    public void Initialize(int damage, float knockback, float speed, float range)
+    {
+        _damage = damage;
+        _knockback = knockback;
+        _speed = speed;
+        _range = range;
+    }
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -88,14 +96,6 @@ public class DividingSlash : Attacks
         {
             Destroy(gameObject);
         }
-    }
-
-    public void SetDividingSlashStruct(DividingSlashStruct dividingSlashStruct)
-    {
-        _damage = dividingSlashStruct.Damage;
-        _range = dividingSlashStruct.Range;
-        _speed = dividingSlashStruct.Speed;
-        _knockback = dividingSlashStruct.Knockback;
     }
 }
 

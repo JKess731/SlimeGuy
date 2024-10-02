@@ -6691,11 +6691,11 @@ PrefabInstance:
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: primary
       value: 
-      objectReference: {fileID: 11400000, guid: 0f372f80640d315449b8300f43b102e4, type: 2}
+      objectReference: {fileID: 11400000, guid: d0019b6e724f93144b2e934c554b1486, type: 2}
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: secondary
       value: 
-      objectReference: {fileID: 11400000, guid: 0f372f80640d315449b8300f43b102e4, type: 2}
+      objectReference: {fileID: 11400000, guid: 955a5e69cd5aee54987b378ba85ba24c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

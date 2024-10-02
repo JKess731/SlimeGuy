@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Shotgun", menuName = "Ability/Shotgun")]
-public class ShotgunAbilitySO : AbilityBaseSO
+public class ShotgunBehavior : AbilityBaseSO
 {
     [Header("Shotgun Attributes")]
     [SerializeField] private int _bulletCount;

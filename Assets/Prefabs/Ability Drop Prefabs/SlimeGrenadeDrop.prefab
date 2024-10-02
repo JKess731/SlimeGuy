@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbd7abbc89ba324fb8fc13ecfa02c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToPickup: {fileID: 11400000, guid: ec485fb9087136942bdfd10e2cc944cf, type: 2}
+  abilityToPickup: {fileID: 11400000, guid: d0019b6e724f93144b2e934c554b1486, type: 2}
 --- !u!1 &4789310781617721588
 GameObject:
   m_ObjectHideFlags: 0

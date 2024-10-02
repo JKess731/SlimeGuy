@@ -27,6 +27,7 @@ public class GrenadeBehavior : AbilityBaseSO
         Quaternion newRot = rotation;
 
         GameObject newGrenade = Instantiate(_grenade, attackPosition, newRot);
+        newGrenade.GetComponent<Grenade>().Initialize(_grenadeDamage, _grenadeKnockback, _grenadeSpeed);
 
         AbilityState = AbilityState.PERFORMING;
     }

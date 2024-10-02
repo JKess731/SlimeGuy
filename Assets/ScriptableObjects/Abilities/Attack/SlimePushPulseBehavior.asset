@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53645cc4280dc5b43b57d46c8b302b67, type: 3}
   m_Name: SlimePushPulseBehavior
   m_EditorClassIdentifier: 
+  _abilityName: 
+  _icon: {fileID: 0}
+  _abilityType: 1
   _cooldownTime: 7
   _activationTime: 2
   _status: {fileID: 0}

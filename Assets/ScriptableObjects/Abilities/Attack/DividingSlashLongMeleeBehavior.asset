@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142c33aeb902adc4393f18cef48633c0, type: 3}
   m_Name: DividingSlashLongMeleeBehavior
   m_EditorClassIdentifier: 
+  _abilityName: 
+  _icon: {fileID: 1680917604, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
+  _abilityType: 0
   _cooldownTime: 0.5
   _activationTime: 4
   _status: {fileID: 0}
