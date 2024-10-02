@@ -54,29 +54,39 @@ public class AbilityManager : MonoBehaviour
 
         for (int i = 0; i < primaryHolder.childCount; i++)
         {
-            AbilityMonoBase ability = primaryHolder.GetChild(i).GetComponent<AbilityMonoBase>();
-            primaryDict.Add(ability.AbilityName, ability);
+            if(primaryHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            {
+                primaryDict.Add(child.AbilityName, child);
+            }
         }
 
         for (int i = 0; i < secondaryHolder.childCount; i++)
         {
-            AbilityMonoBase ability = secondaryHolder.GetChild(i).GetComponent<AbilityMonoBase>();
-            secondaryDict.Add(ability.AbilityName, ability);
+            if(secondaryHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            {
+                secondaryDict.Add(child.AbilityName, child);
+            }
         }
 
         for (int i = 0; i < dashHolder.childCount; i++)
         {
-            AbilityMonoBase ability = dashHolder.GetChild(i).GetComponent<AbilityMonoBase>();
-            dashDict.Add(ability.AbilityName, ability);
+            if(dashHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            {
+                dashDict.Add(child.AbilityName, child);
+            }
         }
 
         for (int i = 0; i < passiveHolder.childCount; i++)
         {
-            AbilityMonoBase ability = passiveHolder.GetChild(i).GetComponent<AbilityMonoBase>();
-            passiveDict.Add(ability.AbilityName, ability);
+            if(passiveHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            {
+                passiveDict.Add(child.AbilityName, child);
+            }
         }
 
-        Swap(AbilityType.PRIMARY, "Shotgun");
+        Swap(AbilityType.PRIMARY, "Shotgun Slime Pellet");
+        Swap(AbilityType.PRIMARY, "DividingSlash");
+        Swap(AbilityType.SECONDARY, "SlimeWhip");
     }
 
     public void Swap(AbilityType abilityType, string abilityName)
@@ -84,15 +94,21 @@ public class AbilityManager : MonoBehaviour
         switch (abilityType)
         {
             case AbilityType.PRIMARY:
-                primary = primaryDict[primary.AbilityName];
+                primary?.gameObject.SetActive(false);
+                primary = primaryDict[abilityName];
+                primary?.Initialize();
                 break;
+
             case AbilityType.SECONDARY:
-                secondary = secondaryDict[secondary.AbilityName];
+                secondary?.gameObject.SetActive(false);
+                secondary = secondaryDict[abilityName];
+                secondary?.Initialize();
                 break;
+
             case AbilityType.DASH:
-                dash = dashDict[dash.AbilityName];
-                break;
-            case AbilityType.PASSIVE:
+                dash?.gameObject.SetActive(false);
+                dash = dashDict[abilityName];
+                dash?.Initialize();
                 break;
         }
     }
@@ -107,14 +123,14 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnPrimaryPerformed(InputAction.CallbackContext context)
     {
-        if (primary?.AbilityState == AbilityState.PERFORMING)
+        if (primary?.AbilityState == AbilityState.STARTING)
         {
             primary?.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
-        if (primary?.AbilityState == AbilityState.CANCELING)
+        if (primary.AbilityState == AbilityState.PERFORMING)
         {
             primary?.CancelBehavior(attackPos.position, attackPos.rotation);
         }

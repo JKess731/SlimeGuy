@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         _tr = GetComponent<TrailRenderer>();
         _playerStateMachine = GetComponent<PlayerStateMachine>();
 
-        _abilityManager = GameObject.Find("AbilityManager").GetComponent<AbilityManager>();
+        _abilityManager = GameObject.Find("Ability Manager").GetComponent<AbilityManager>();
 
         _speed = _playerStateMachine.playerStats.GetStat(StatsEnum.SPEED);
 

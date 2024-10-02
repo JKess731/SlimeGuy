@@ -29,6 +29,7 @@ public class AbilityMonoBase : MonoBehaviour, IAbility
     public virtual void Initialize()
     {
         _abilityState = AbilityState.READY;
+        gameObject.SetActive(true);
     }
     public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) { }
     public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) { }

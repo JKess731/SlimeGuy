@@ -198,9 +198,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 49393250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b1c86120daa004198d99096fad352c, type: 3}
+  m_Script: {fileID: 11500000, guid: f21ccc7ad8685424f8b30006d41cdd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primary: {fileID: 0}
+  secondary: {fileID: 0}
+  dash: {fileID: 0}
+  passive: []
+  attackPos: {fileID: 46478605859797215}
 --- !u!1 &88008595
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 187755241}
+  - component: {fileID: 187755243}
   - component: {fileID: 187755242}
   m_Layer: 0
   m_Name: DividingSlash
@@ -733,7 +739,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 187755240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d64fe3c50e0fc14f95510c8e4a5d417, type: 3}
+  m_Script: {fileID: 11500000, guid: d05b7bcff19cb1e46a84ad68ee7bb8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _abilityName: DividingSlash
@@ -741,15 +747,42 @@ MonoBehaviour:
   _abilityType: 0
   _cooldownTime: 1
   _status: {fileID: 0}
-  _bulletCount: 3
-  _spreadAngle: 20
-  _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
-  _projectileDamage: 1
-  _projectileKnockback: 1
-  _projectileSpeed: 1
-  _projectileRange: 1
-  _piercingAmount: 1
-  _bulletBounce: 1
+  _dividingSlash: {fileID: 168608533301039626, guid: 37a47e8836288384ea6c68713713d7c8, type: 3}
+  _slashCount: 1
+  _spreadAngle: 45
+  _pushRange: 1
+  _pushSpeed: 10
+  _dividingSlashDamage: 1
+  _dividingSlashKnockback: 1
+  _dividingSlashSpeed: 1
+  _dividingSlashRange: 1
+--- !u!50 &187755243
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187755240}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &278063663
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,7 +904,7 @@ GameObject:
   - component: {fileID: 486313386}
   - component: {fileID: 486313385}
   m_Layer: 0
-  m_Name: AbilityManager
+  m_Name: Ability Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,7 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21ccc7ad8685424f8b30006d41cdd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primary: {fileID: 0}
+  primary: {fileID: 2056846678}
   secondary: {fileID: 0}
   dash: {fileID: 0}
   passive: []
@@ -928,7 +961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 602205016}
   m_Layer: 0
-  m_Name: Gernade
+  m_Name: SlimeGernade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1019,8 +1052,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 785987886}
+  - component: {fileID: 785987887}
   m_Layer: 0
-  m_Name: Whip
+  m_Name: SlimeWhip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1041,6 +1075,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1648714884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &785987887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785987885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60799fc3acb73ea48bf61ee189b14a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilityName: SlimeWhip
+  _icon: {fileID: 0}
+  _abilityType: 0
+  _cooldownTime: 1
+  _status: {fileID: 0}
+  _whip: {fileID: 1444053255082817093, guid: 72bbfe5b1348d7a4792d4a570411e74f, type: 3}
+  _damage: 1
+  _knockback: 1
+  _rotationSpeed: 1
+  _activationTime: 1
 --- !u!1 &827238421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6721891750707394437, guid: 67dfabdddbf8bbd46b1fbddcbcec6376, type: 3}
@@ -3168,9 +3224,9 @@ MonoBehaviour:
   _abilityType: 0
   _cooldownTime: 1
   _status: {fileID: 0}
+  _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
   _bulletCount: 3
   _spreadAngle: 20
-  _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
   _projectileDamage: 1
   _projectileKnockback: 1
   _projectileSpeed: 1
@@ -6990,7 +7046,7 @@ GameObject:
   - component: {fileID: 2056846677}
   - component: {fileID: 2056846678}
   m_Layer: 0
-  m_Name: Shotgun
+  m_Name: Shotgun Slime Pellet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7023,18 +7079,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d64fe3c50e0fc14f95510c8e4a5d417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _abilityName: Shotgun
+  _abilityName: Shotgun Slime Pellet
   _icon: {fileID: 0}
   _abilityType: 0
   _cooldownTime: 1
   _status: {fileID: 0}
+  _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
   _bulletCount: 3
   _spreadAngle: 20
-  _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
   _projectileDamage: 1
   _projectileKnockback: 1
-  _projectileSpeed: 1
-  _projectileRange: 1
+  _projectileSpeed: 5
+  _projectileRange: 3
   _piercingAmount: 1
   _bulletBounce: 1
 --- !u!1001 &2101249337
@@ -7113,7 +7169,7 @@ PrefabInstance:
     - target: {fileID: 196028305427288643, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: _abilityManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 486313385}
     - target: {fileID: 1978808047673691875, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.71
