@@ -36,8 +36,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayJeopardy()
     {
-        jeopardy = RuntimeManager.CreateInstance(FmodEvents.instance.Jepardy);
-        jeopardy.start();
+        if (jeopardy.isValid())
+        {
+            jeopardy = RuntimeManager.CreateInstance(FmodEvents.instance.Jepardy);
+            jeopardy.start();
+        }
     }
 
     public void StopJeopardy()

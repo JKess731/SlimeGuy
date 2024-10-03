@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -75,8 +76,8 @@ public class UiManager : MonoBehaviour
 
     public void UpdateHealthBar(float health, float maxHealth)
     {
-        healthBar.value = health / maxHealth;
-        healthTxt.SetText(health + "/" + maxHealth);
+        healthBar.value = math.clamp(health, 0, maxHealth) / maxHealth;
+        healthTxt.SetText(healthBar.value + "/" + maxHealth);
     }
 
     public void UpdatePrimaryAbilityImage(Sprite Icon)

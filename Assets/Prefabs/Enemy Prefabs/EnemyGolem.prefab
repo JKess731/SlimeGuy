@@ -501,7 +501,7 @@ MonoBehaviour:
   enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
   enemyAttackBase: {fileID: 11400000, guid: 27324e2e27470094d97e8a47b1a14ee4, type: 2}
   enemyDamagedBase: {fileID: 11400000, guid: 6824116bdacd7c04eb79a37fd151cb53, type: 2}
-  enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
+  enemyDeathBase: {fileID: 11400000, guid: da36a3d9419622a4dbc012e55a11592c, type: 2}
 --- !u!114 &4685945866906265587
 MonoBehaviour:
   m_ObjectHideFlags: 0
