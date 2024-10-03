@@ -256,9 +256,11 @@ GameObject:
   - component: {fileID: 2442388958254288432}
   - component: {fileID: 7486208283100143368}
   - component: {fileID: 7084188183669074826}
-  m_Layer: 0
+  - component: {fileID: 5630198134457391120}
+  - component: {fileID: 616602905279041893}
+  m_Layer: 8
   m_Name: EnemyWizard
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,8 +351,8 @@ MonoBehaviour:
   enemyIdleBase: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: 6e39bed7642883d4b81cfb915f1e7103, type: 2}
   enemyAttackBase: {fileID: 11400000, guid: 79063f04232b24244a4e42413da7cc97, type: 2}
-  enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
-  enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
+  enemyDamagedBase: {fileID: 11400000, guid: 7e41fefeb06e60b408571fd07497532b, type: 2}
+  enemyDeathBase: {fileID: 11400000, guid: b5b4ce5b4b5445f4bb0ea4c825efadfb, type: 2}
 --- !u!61 &7151497659424373865
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -503,6 +505,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5630198134457391120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278184133083264596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec7eb203fd6b6b43b80f61535c25d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &616602905279041893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278184133083264596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec7eb203fd6b6b43b80f61535c25d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8876314502001647915
 GameObject:
   m_ObjectHideFlags: 0
