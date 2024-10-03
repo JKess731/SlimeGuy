@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 2013809200612587693, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: enemyAttackBase
       value: 
-      objectReference: {fileID: 11400000, guid: 09994e881f6b0a6478c13249ecde470a, type: 2}
+      objectReference: {fileID: 11400000, guid: 27324e2e27470094d97e8a47b1a14ee4, type: 2}
     - target: {fileID: 2013809200612587693, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: enemyDamagedBase
       value: 
@@ -5899,6 +5899,10 @@ PrefabInstance:
     - target: {fileID: 7346130731241124811, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900644117855722651, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
