@@ -42,6 +42,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region Trigger Variables
     public bool isAggroed { get; set; }
     public bool isWithinStikingDistance { get; set; }
+    public bool isWithinShootingDistance { get; set; }
     #endregion
     public  Rigidbody2D RB { get; set; }
     private Vector2 faceDir { get; set; }
@@ -107,7 +108,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private void Update()
     {
         stateMachine.currentEnemyState.FrameUpdate();
-        enemyAnimation.PlayAnimation(faceDir,_state);
+        //enemyAnimation.PlayAnimation(faceDir,_state);
     }
 
     private void FixedUpdate()
@@ -238,6 +239,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public void setStrikingDistance(bool isStrikingDistance_)
     {
         isWithinStikingDistance = isStrikingDistance_;
+    }
+
+    public void setShootingDistance(bool isShootingDistance_) 
+    {
+        isWithinShootingDistance = isShootingDistance_;
     }
     #endregion
 }

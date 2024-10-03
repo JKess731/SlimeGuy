@@ -49,25 +49,6 @@ public class EnemyAttackSOBase : ScriptableObject
 
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _transform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDamaged)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfHurt, _transform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _transform.position);
-        }
     }
 
 

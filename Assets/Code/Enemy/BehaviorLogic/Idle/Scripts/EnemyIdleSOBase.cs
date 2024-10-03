@@ -29,6 +29,10 @@ public class EnemyIdleSOBase : ScriptableObject
         {
             enemy.stateMachine.ChangeState(enemy.chaseState);
         }
+        if (enemy.isWithinShootingDistance)
+        {
+            enemy.stateMachine.ChangeState(enemy.attackState);
+        }
     }
 
     public virtual void DoPhysicsLogic() { }
