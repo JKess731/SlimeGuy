@@ -25,6 +25,7 @@ public class DashBehavior : AbilityBaseSO
         //newWhip.GetComponent<Whip>().SetWhipStruct(_whipStruct);
 
         AbilityState = AbilityState.PERFORMING;
+        onBehaviorFinished?.Invoke();
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
@@ -35,7 +36,6 @@ public class DashBehavior : AbilityBaseSO
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.FINISHED;
-        onBehaviorFinished?.Invoke();
     }
 
     public override void Upgrade(StatsSO playerstats, StatsEnum stat)
