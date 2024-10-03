@@ -1798,6 +1798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Singletons FirstThursday
       objectReference: {fileID: 0}
+    - target: {fileID: 5465267262672305244, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5490051036770633664, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1813,6 +1817,18 @@ PrefabInstance:
     - target: {fileID: 6650816689237899937, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127244915411620329, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348461735713985117, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348461735713985117, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8672213586497206948, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5731,15 +5747,15 @@ PrefabInstance:
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: dash
       value: 
-      objectReference: {fileID: 11400000, guid: 402d99393386dc64eb017b53cea7a48e, type: 2}
+      objectReference: {fileID: 11400000, guid: caea9da2faa374a48b4a89546a3b3697, type: 2}
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: primary
       value: 
-      objectReference: {fileID: 11400000, guid: 04decd47599722f4d8b4d90909296d3d, type: 2}
+      objectReference: {fileID: 11400000, guid: 0f372f80640d315449b8300f43b102e4, type: 2}
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: secondary
       value: 
-      objectReference: {fileID: 11400000, guid: c19e8ebc44663a94bb12205ccb7afef5, type: 2}
+      objectReference: {fileID: 11400000, guid: 62384aa000b56544ebb398164f458a1f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

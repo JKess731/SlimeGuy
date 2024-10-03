@@ -119,6 +119,7 @@ public class UiManager : MonoBehaviour
         {
             modifiedSlider = dashCooldown;
             modifiedText = dashCooldownTxt;
+            Debug.Log("I used dash and got here " + attack.CooldownTime);
         }
         else if (type == "PA")
         {
@@ -148,7 +149,22 @@ public class UiManager : MonoBehaviour
             newValue -= 0.1f;
             yield return new WaitForSeconds(0.1f);
             modifiedSlider.value = newValue;
-            if (newValue <= 0)
+            if (newValue <= 0.1f)
+            {
+                modifiedText.text = "0";
+            }
+            else
+            {
+                modifiedText.text = newValue.ToString();
+            }
+        }
+
+        while (newValue > 0 && attack.CooldownTime == 1)
+        {
+            newValue -= 0.2f;
+            yield return new WaitForSeconds(0.2f);
+            modifiedSlider.value = newValue;
+            if (newValue < 0.2f)
             {
                 modifiedText.text = "0";
             }
