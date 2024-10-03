@@ -16,11 +16,15 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
+        Vector3 rotation = _playerTransform.position - ring.transform.position;
+        float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
+
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
         {
             AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _transform.position);
             //tweak Edison
-            Instantiate(slashTriggerPrefab, attackPoint.position, attackPoint.rotation);
+            Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
         }
     }
 
@@ -29,7 +33,6 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
         base.DoEnterLogic();
         attackPoint = _enemy.transform.GetChild(1).GetChild(0);
         ring = _enemy.transform.GetChild(1).gameObject;
-        
     }
 
     public override void DoExitLogic()

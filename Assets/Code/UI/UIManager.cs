@@ -76,8 +76,9 @@ public class UiManager : MonoBehaviour
 
     public void UpdateHealthBar(float health, float maxHealth)
     {
-        healthBar.value = math.clamp(health, 0, maxHealth) / maxHealth;
-        healthTxt.SetText(healthBar.value + "/" + maxHealth);
+        float newHealth = math.clamp(health, 0, maxHealth);
+        healthBar.value = newHealth/ maxHealth;
+        healthTxt.SetText(newHealth + "/" + maxHealth);
     }
 
     public void UpdatePrimaryAbilityImage(Sprite Icon)

@@ -56,14 +56,13 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _state = Enum_State.DEAD;
             _playerController.DisableMovement();
+            return;
         }
 
         _playerStats.SubtractStat(StatsEnum.HEALTH, damage);
         _knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
-        if (_state != Enum_State.DEAD)
-        {
-            StartCoroutine(PlayerKnockback(0.3f));
-        }
+        StartCoroutine(PlayerKnockback(0.3f));
+
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
         UiManager.instance.UpdateHealthBar(_playerStats.GetStat(StatsEnum.HEALTH), _playerStats.GetStat(StatsEnum.MAXHEALTH));
     }
