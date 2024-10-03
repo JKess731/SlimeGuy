@@ -446,6 +446,10 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1083654864606822260, guid: 8d7335c39f0aed241b60d209f341a842, type: 3}
+      propertyPath: _playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d58222cfe955f24db98e1c515175487, type: 2}
     - target: {fileID: 5360392335249098862, guid: 8d7335c39f0aed241b60d209f341a842, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -975,26 +979,6 @@ PrefabInstance:
     - target: {fileID: 5490051036770633664, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7684180168052861135, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
-      propertyPath: <Jepardy>k__BackingField.Path
-      value: event:/Jeopardy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7684180168052861135, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
-      propertyPath: <Jepardy>k__BackingField.Guid.Data1
-      value: -50371620
-      objectReference: {fileID: 0}
-    - target: {fileID: 7684180168052861135, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
-      propertyPath: <Jepardy>k__BackingField.Guid.Data2
-      value: 1270522505
-      objectReference: {fileID: 0}
-    - target: {fileID: 7684180168052861135, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
-      propertyPath: <Jepardy>k__BackingField.Guid.Data3
-      value: 1547278523
-      objectReference: {fileID: 0}
-    - target: {fileID: 7684180168052861135, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
-      propertyPath: <Jepardy>k__BackingField.Guid.Data4
-      value: -1502487611
       objectReference: {fileID: 0}
     - target: {fileID: 8672213586497206948, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_LocalPosition.x

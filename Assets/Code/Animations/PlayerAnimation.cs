@@ -38,8 +38,9 @@ public class PlayerAnimation : AnimationControl
 
     private IEnumerator EndScreen()
     {
+        AudioManager.instance.StopNiko();
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("EndMenuL");
+        SceneManager.LoadScene("EndMenu");
     }
 }
 
