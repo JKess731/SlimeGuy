@@ -28,6 +28,11 @@ public class PlayerStateMachine : MonoBehaviour
         _knockBack = GetComponent<KnockBack>();
     }
 
+    private void Start()
+    {
+        UiManager.instance.UpdateHealthBar(_playerStats.GetStat(StatsEnum.HEALTH), _playerStats.GetStat(StatsEnum.MAXHEALTH));
+    }
+
     //Handles Movement and Animation
     private void FixedUpdate()
     {
@@ -49,16 +54,29 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (_playerStats.GetStat(StatsEnum.HEALTH) <= 0)
         {
-            return;
+            _state = Enum_State.DEAD;
+            _playerController.DisableMovement();
         }
 
         _playerStats.SubtractStat(StatsEnum.HEALTH, damage);
         _knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
+        if (_state != Enum_State.DEAD)
+        {
+            StartCoroutine(PlayerKnockback(0.3f));
+        }
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
+        UiManager.instance.UpdateHealthBar(_playerStats.GetStat(StatsEnum.HEALTH), _playerStats.GetStat(StatsEnum.MAXHEALTH));
     }
 
     public void SetState(Enum_State state)
     {
         _state = state;
+    }
+
+    private IEnumerator PlayerKnockback(float knockbackTime)
+    {
+        _state = Enum_State.DAMAGED;
+        yield return new WaitForSeconds(knockbackTime);
+        _state = Enum_State.IDLING;
     }
 }

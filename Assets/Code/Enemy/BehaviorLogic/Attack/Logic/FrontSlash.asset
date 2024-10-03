@@ -15,5 +15,5 @@ MonoBehaviour:
   slashTriggerPrefab: {fileID: 7577202157244426437, guid: ec108004c8dd33a4fba2afef55f88f0f, type: 3}
   attackPoint: {fileID: 0}
   frontSlashDamage: 2
-  frontSlashAttackDelay: 1.2
+  frontSlashAttackDelay: 1.5
   ring: {fileID: 0}

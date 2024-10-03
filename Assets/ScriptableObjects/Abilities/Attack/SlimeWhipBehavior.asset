@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70415709ffb7121428e4b69a171bddd3, type: 3}
+  m_Name: SlimeWhipBehavior
+  m_EditorClassIdentifier: 
+  _abilityName: 
+  _icon: {fileID: 21300000, guid: 64e7089b725bdda4eb2fecefb5a5b364, type: 3}
+  _abilityType: 1
+  _cooldownTime: 3
+  _activationTime: 1.5
+  _status: {fileID: 11400000, guid: 41de268f9ff83b840af18fe91cc29984, type: 2}
+  _whip: {fileID: 1444053255082817093, guid: 72bbfe5b1348d7a4792d4a570411e74f, type: 3}
+  _damage: 4
+  _knockback: 6
+  _rotationSpeed: 500

@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Relics/Health Buff", fileName = "Health Buff")]
+[CreateAssetMenu(fileName ="10%Health", menuName ="Relics/Health Buff")]
 public class HealthBuffRelic : RelicSO
 {
     [SerializeField] private float buffPercentage = 10;
-
     public override void Initialize(StatsSO playerstats)
     {
-        throw new System.NotImplementedException();
+        _playerStats = playerstats;
     }
 
     public override void OnPickup()
@@ -19,7 +18,7 @@ public class HealthBuffRelic : RelicSO
 
     public override void ActivateBuffs()
     {
-        calc.BuffHealth(buffPercentage);
+        _playerStats.AddStat(StatsEnum.HEALTH, _playerStats.GetStat(StatsEnum.MAXHEALTH)* buffPercentage/100);
     }
 
     public override void DeactivateBuffs()

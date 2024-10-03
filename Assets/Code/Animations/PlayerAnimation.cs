@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAnimation : AnimationControl
 {
@@ -15,14 +16,30 @@ public class PlayerAnimation : AnimationControl
         {
             if(_damageColor == DamagedColor.WHITE)
             {
-                _animator.Play("Damaged White");
+                _animator.Play("Damage White");
             }
 
             if(_damageColor == DamagedColor.RED)
             {
-                _animator.Play("Damaged Red");
+                _animator.Play("Damage Red");
             }
         }
+
+        if (state == Enum_State.DEAD)
+        {
+            _animator.Play("Dead");
+        }
+    }
+
+    public void GoToEnd()
+    {
+        StartCoroutine(EndScreen());
+    }
+
+    private IEnumerator EndScreen()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("EndMenu");
     }
 }
 
@@ -32,3 +49,4 @@ public enum DamagedColor
     WHITE,
     RED
 }
+

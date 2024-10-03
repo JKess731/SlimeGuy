@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        OnGameStart();
+        PlayOneShot(FmodEvents.instance.NikoSong, Vector3.zero);
     }
 
     public void OnGameStart()

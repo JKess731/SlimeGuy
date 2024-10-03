@@ -157,7 +157,6 @@ Transform:
   m_Children:
   - {fileID: 1274223466834709028}
   - {fileID: 3956110274198115102}
-  - {fileID: 7275767536416132755}
   - {fileID: 615174084205822168}
   - {fileID: 6487120386661351054}
   m_Father: {fileID: 4433807784745035315}
@@ -265,16 +264,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2397857388719928460}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7926659214868308482}
+  m_Father: {fileID: 7698814380000315970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 531.262, y: 53}
+  m_AnchoredPosition: {x: 503.27106, y: 22.876095}
   m_SizeDelta: {x: 274.5135, y: 36.6018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8769372898365411230
@@ -390,7 +389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3956110274198115102
 Transform:
   m_ObjectHideFlags: 0
@@ -418,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170bbbc16caf79c4cbcd4063c33c714c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4405074465010698361}
   healthTxt: {fileID: 3226160977747427696}
   primaryCooldownTxt: {fileID: 0}
   secondaryCooldownTxt: {fileID: 0}
@@ -478,7 +477,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3200497636280106889}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -486,11 +485,11 @@ RectTransform:
   - {fileID: 6538902938804558394}
   - {fileID: 5288560447521294143}
   - {fileID: 6293618922635390197}
-  m_Father: {fileID: 7926659214868308482}
+  m_Father: {fileID: 7698814380000315970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 211, y: 53}
+  m_AnchoredPosition: {x: 183.00903, y: 22.876095}
   m_SizeDelta: {x: 366.018, y: 45.7522}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4405074465010698361
@@ -544,6 +543,43 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &4086934179678565899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7698814380000315970}
+  m_Layer: 5
+  m_Name: Health Bar UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7698814380000315970
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4086934179678565899}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1373442465484856129}
+  - {fileID: 2161139717428949779}
+  m_Father: {fileID: 7926659214868308482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -611.7451, y: -487}
+  m_SizeDelta: {x: 640.52783, y: 45.752197}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5398758688378294278
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &615174084205822168
 Transform:
   m_ObjectHideFlags: 0
@@ -627,37 +663,6 @@ MonoBehaviour:
   maxRelics: 10
   calculator: {fileID: 0}
   relicsEquipped: []
---- !u!1 &6656482405054491463
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7275767536416132755}
-  m_Layer: 0
-  m_Name: PlayerStats
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7275767536416132755
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656482405054491463}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 558452028673960895}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6947235108412896666
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +862,7 @@ GameObject:
   - component: {fileID: 6407537255133545673}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: main_ui
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,8 +879,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1373442465484856129}
-  - {fileID: 2161139717428949779}
+  - {fileID: 7698814380000315970}
   - {fileID: 8979279545297069268}
   m_Father: {fileID: 4433807784745035315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1056,25 +1060,25 @@ MonoBehaviour:
     Path: event:/Gremlin/GremlinDead
   <DwarfStep>k__BackingField:
     Guid:
-      Data1: -1343764155
-      Data2: 1279726617
-      Data3: -1085885289
-      Data4: -1240755470
-    Path: event:/Gremlin/Germlin_Step_Final
+      Data1: 969533741
+      Data2: 1288895245
+      Data3: -1843852126
+      Data4: 1081349187
+    Path: event:/Gremlin/GremlinStep
   <GolemAttack>k__BackingField:
     Guid:
-      Data1: -1840414035
-      Data2: 1198465864
-      Data3: -1311176792
-      Data4: -1540544122
-    Path: event:/Golem/Golem_Attack_Final
+      Data1: -1350580175
+      Data2: 1239394823
+      Data3: 1091788952
+      Data4: 2014102843
+    Path: event:/Golem/Golem_Attack_New_1_Bass
   <GolemDamage>k__BackingField:
     Guid:
-      Data1: -1972398831
-      Data2: 1271385219
-      Data3: -21700162
-      Data4: -999837977
-    Path: event:/Golem/Golem_Damage_Final
+      Data1: 1682500831
+      Data2: 1244934767
+      Data3: -105824101
+      Data4: -1512054749
+    Path: event:/Golem/GolemHurt
   <GolemDeath>k__BackingField:
     Guid:
       Data1: -350208336
@@ -1084,11 +1088,11 @@ MonoBehaviour:
     Path: event:/Golem/Golem_Death_mixdown_Soft
   <GolemStep>k__BackingField:
     Guid:
-      Data1: -333292837
-      Data2: 1199011146
-      Data3: 768777885
-      Data4: 104661478
-    Path: event:/Golem/Golem_Step_Final
+      Data1: -1806689722
+      Data2: 1289670203
+      Data3: -1238213504
+      Data4: 1658782277
+    Path: event:/Golem/GolemStep
 --- !u!1001 &1715041279593039670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1410,6 +1414,14 @@ PrefabInstance:
     - target: {fileID: 8161305206419421869, guid: 8663efd4006226f48835f86aac703542, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 392.99988
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698735626939818584, guid: 8663efd4006226f48835f86aac703542, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 704.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698735626939818584, guid: 8663efd4006226f48835f86aac703542, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 393
       objectReference: {fileID: 0}
     - target: {fileID: 8744368357010313931, guid: 8663efd4006226f48835f86aac703542, type: 3}
       propertyPath: m_AnchoredPosition.x

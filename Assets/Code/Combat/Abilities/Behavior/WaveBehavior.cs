@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// The wave behavior allows for attacks to spawn child attacks
 /// </summary>
 [CreateAssetMenu(fileName = "Wave", menuName = "Behavior/Wave")]
-public class WaveBehavior : Behavior
+public class WaveBehavior : AbilityBaseSO
 {
     [Header("Wave Attributes")]
 
@@ -25,21 +25,26 @@ public class WaveBehavior : Behavior
     [SerializeField] private float _childKnockback;
     [SerializeField] private float _childActivationTime;
 
-    private WaveStruct _parentStruct;
-    private WaveStruct _childStruct;
-
-    public override void Initialize(AbilityBase abilityBase)
+    public override void Initialize(AbilityManager abilityManager)
     {
-        base.Initialize(abilityBase);
-        _parentStruct = new WaveStruct(_parentDamage, _parentKnockback,  _parentActivationTime, status);
-        _childStruct = new WaveStruct(_childDamage, _childKnockback, _childActivationTime, status);
+        base.Initialize(abilityManager);
     }
 
-    public override void Activate(InputAction.CallbackContext context, Vector2 attackPosition, Quaternion rotation)
+    public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        if (context.started)
-        {
-            _wave.GetComponent<Wave>().Spawn(attackPosition, rotation, _parentStruct, _childStruct);
-        }
+        GameObject newWave = Instantiate(_wave, attackPosition, Quaternion.identity);
+
+        AbilityState = AbilityState.PERFORMING;
+    }
+
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.CANCELING;
+    }
+
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
+    {
+        AbilityState = AbilityState.FINISHED;
+        onBehaviorFinished?.Invoke();
     }
 }

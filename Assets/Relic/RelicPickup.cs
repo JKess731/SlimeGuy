@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class RelicPickup : MonoBehaviour
 {
-    [SerializeField] private RelicSO relicScriptableObject;
+    public RelicSO relicScriptableObject;
     [SerializeField] private RelicManager relicManager;
 
     private void Awake()
@@ -24,8 +24,12 @@ public class RelicPickup : MonoBehaviour
 
                 relicScriptableObject.Initialize(playerReference);
                 relicScriptableObject.OnPickup();
-                relicManager.abilityManager.UpgradeAbilities(playerReference, relicScriptableObject.changedStat);                
-                //relicScriptableObject.calc = relicManager.calculator;
+
+                Debug.Log("Player Reference: " + playerReference);
+                Debug.Log("Relic SO: " + relicScriptableObject);
+                Debug.Log("Relic Manager: " + relicManager);
+
+                relicManager.abilityManager.UpgradeAbilities(playerReference, relicScriptableObject.changedStat);
                 gameObject.SetActive(false);
             }
         }

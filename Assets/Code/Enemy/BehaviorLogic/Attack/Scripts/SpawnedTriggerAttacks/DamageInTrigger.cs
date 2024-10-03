@@ -46,7 +46,6 @@ public class DamageInTrigger : MonoBehaviour
         if (collision.gameObject.tag == "player")
         {
             timeBetweenDamageInstancesTimer = 0;
-            canDamage = true;
         }
 
     }

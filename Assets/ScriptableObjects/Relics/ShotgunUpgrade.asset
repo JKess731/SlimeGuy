@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4988b9aca888fde48aa61fff8c8ee281, type: 3}
+  m_Name: ShotgunUpgrade
+  m_EditorClassIdentifier: 
+  _playerStats: {fileID: 0}
+  relicName: 
+  flavorTextDescription: 
+  rarity: 0
+  spriteIcon: {fileID: 1326487139, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
+  _changedStat: 0
+  hasCondition: 0
+  calc: {fileID: 0}

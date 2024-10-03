@@ -10,13 +10,15 @@ public class RelicManager : MonoBehaviour
     [SerializeField] private int maxRelics = 10;
 
 
-    public AbilityManager abilityManager { get { return _abilityManager; } }
+    //Removed the end becuase it keeps crashing the game
+    public AbilityManager abilityManager; //{ get { return _abilityManager; } }
     public RelicCalculator calculator;
     public RelicSO[] relicsEquipped;
 
     private void Awake()
     {
         relicsEquipped = new RelicSO[maxRelics];
+        abilityManager = FindObjectOfType<AbilityManager>();
 
         // Singleton pattern: only one instance of this class can exist
         if (instance == null)
@@ -42,7 +44,7 @@ public class RelicManager : MonoBehaviour
             if (relicsEquipped[i] == null)
             {
                 relicsEquipped[i] = r;
-                UiManager.instance.UpdateRelicImage(r, i, true);
+                UiManager.instance?.UpdateRelicImage(r, i, true);
                 break;
             }
         }

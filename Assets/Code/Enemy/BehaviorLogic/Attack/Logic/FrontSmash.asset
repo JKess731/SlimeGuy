@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e2cc78c1487014ba246061ca5a0cb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7501f2fe456bf6e4d982adba634ac508, type: 3}
   m_Name: FrontSmash
   m_EditorClassIdentifier: 
-  slashTriggerPrefab: {fileID: 7577202157244426437, guid: 3fcef69533236054da3d9fb3de10725d, type: 3}
+  smashTriggerPrefab: {fileID: 7577202157244426437, guid: 3fcef69533236054da3d9fb3de10725d, type: 3}
   attackPoint: {fileID: 0}
-  frontSlashDamage: 2
-  frontSlashAttackDelay: 1.2
+  frontSmashDamage: 5
+  frontSmashAttackDelay: 1
   ring: {fileID: 0}
