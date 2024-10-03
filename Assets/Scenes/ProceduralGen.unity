@@ -442,6 +442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Variant_First _Thursday_10-2-24
       objectReference: {fileID: 0}
+    - target: {fileID: 716286377842560824, guid: 8d7335c39f0aed241b60d209f341a842, type: 3}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5360392335249098862, guid: 8d7335c39f0aed241b60d209f341a842, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
