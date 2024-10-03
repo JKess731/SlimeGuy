@@ -2705,15 +2705,19 @@ PrefabInstance:
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: dash
       value: 
-      objectReference: {fileID: 11400000, guid: 402d99393386dc64eb017b53cea7a48e, type: 2}
+      objectReference: {fileID: 11400000, guid: 955a5e69cd5aee54987b378ba85ba24c, type: 2}
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: primary
       value: 
-      objectReference: {fileID: 11400000, guid: 04decd47599722f4d8b4d90909296d3d, type: 2}
+      objectReference: {fileID: 11400000, guid: 0f372f80640d315449b8300f43b102e4, type: 2}
     - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: secondary
       value: 
-      objectReference: {fileID: 11400000, guid: 26a565c71a304364fa4cc0a7b1b4a0ec, type: 2}
+      objectReference: {fileID: 11400000, guid: acb08967678401d469c9861728929b2f, type: 2}
+    - target: {fileID: 7562140956732353677, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: ring
+      value: 
+      objectReference: {fileID: 1948799931}
     - target: {fileID: 7562140956732353677, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: speed
       value: 10
