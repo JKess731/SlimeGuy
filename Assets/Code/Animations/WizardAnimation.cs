@@ -22,7 +22,7 @@ public class WizardAnimation : AnimationControl
 
         if (state == Enum_State.MOVING)
         {
-            _animator.Play("Move");
+            _animator.Play("Teleport");
         }
 
         if (state == Enum_State.ATTACKING)
@@ -38,11 +38,6 @@ public class WizardAnimation : AnimationControl
         if (state == Enum_State.DEAD)
         {
             _animator.Play("Dead");
-        }
-
-        if (state == Enum_State.TELEPORTING)
-        {
-            _animator.Play("Teleport");
         }
     }
 }

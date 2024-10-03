@@ -29,7 +29,7 @@ public class EnemyTeleportCheck : MonoBehaviour
             StartCoroutine(WaitToTP());
             Collider2D c = GetComponent<Collider2D>();
             c.enabled = false;
-            enemy.State = Enum_State.TELEPORTING;
+            enemy.State = Enum_State.MOVING;
         }
     }
 
@@ -86,8 +86,6 @@ public class EnemyTeleportCheck : MonoBehaviour
         c.enabled = true;
         Debug.Log("TP COOLDOWN OVER");
     }
-
-
 
     /*
 
