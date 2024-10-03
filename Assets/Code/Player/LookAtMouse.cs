@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class LookAtMouse : MonoBehaviour
 {
-    [SerializeField] private Transform pointer;
+    //[SerializeField] private Transform pointer;
     [SerializeField] private float speed = 10;
 
     private UnityEngine.InputSystem.PlayerInput _input;
@@ -61,7 +61,7 @@ public class LookAtMouse : MonoBehaviour
             worldPos.z = 0;
             Vector3 pos = (worldPos - transform.position).normalized; // Place the pointer on a unit circle around the player's position
             pos.z = 0;
-            pointer.localPosition = pos;
+            //pointer.localPosition = pos;
 
             // Point in the same direction as a vector going FROM player TO mouse position (screen space)
             // If we pointed from the pointer's pos to the mouse pos, when the mouse is inside the player

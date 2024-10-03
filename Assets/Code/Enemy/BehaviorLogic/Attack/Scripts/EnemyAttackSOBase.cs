@@ -49,7 +49,6 @@ public class EnemyAttackSOBase : ScriptableObject
 
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
-
     }
 
     public virtual void ResetValues() { }

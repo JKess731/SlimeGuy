@@ -1925,36 +1925,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 360817106025357747, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
   m_PrefabInstance: {fileID: 46478605859797214}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1948799935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948799931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 82f21bc3d10645645bc47ea22a533771, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: GamePlay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1966702799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,10 +2127,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1948799931}
     - target: {fileID: 7562140956732353677, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7562140956732353677, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: pointer
       value: 
       objectReference: {fileID: 302688204}
@@ -2170,10 +2136,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1978808047673691875, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 302688204}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 360817106025357747, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1948799935}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
 --- !u!1 &210416923461626406
 GameObject:

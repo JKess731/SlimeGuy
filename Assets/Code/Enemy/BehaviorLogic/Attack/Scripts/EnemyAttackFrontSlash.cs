@@ -19,8 +19,9 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
         {
             AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _transform.position);
+            //tweak Edison
+            Instantiate(slashTriggerPrefab, attackPoint.position, attackPoint.rotation);
         }
-
     }
 
     public override void DoEnterLogic()
