@@ -43,8 +43,6 @@ public class PlayerController : MonoBehaviour
             _playerInput = new PlayerInput();
         }
 
-        //AudioManager.instance.OnGameStart();
-
         _rb = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<Collider2D>();
         _tr = GetComponent<TrailRenderer>();

@@ -25,6 +25,12 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
+
+        if (triggerType == EnemyBase.AnimationTriggerType.WizardCastTrigger)
+        {
+            Debug.Log("WizardCast");
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.WizardCast, _transform.position);
+        }
     }
 
     public override void DoEnterLogic()

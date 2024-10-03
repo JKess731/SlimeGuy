@@ -22,17 +22,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void OnGameStart()
+    private void Start()
     {
         PlayOneShot(FmodEvents.instance.NikoSong, Vector3.zero);
     }
 
-    public void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public void OnGameStart()
     {
-        if (triggerType == EnemyBase.AnimationTriggerType.PlayNikoSong)
-        {
-            PlayOneShot(FmodEvents.instance.NikoSong, Vector3.zero);
-        }
+        PlayOneShot(FmodEvents.instance.NikoSong, transform.position);
     }
 
     public void PlayOneShot(EventReference eventReference, Vector3 worldPos)

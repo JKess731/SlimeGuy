@@ -108,7 +108,14 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private void Update()
     {
         stateMachine.currentEnemyState.FrameUpdate();
-        //enemyAnimation.PlayAnimation(faceDir,_state);
+        if (enemyAnimation == null)
+        {
+            Debug.LogError("EnemyAnimation is not assigned on " + gameObject.name);
+        }
+        else
+        {
+            enemyAnimation.PlayAnimation(faceDir, _state);
+        }
     }
 
     private void FixedUpdate()
@@ -226,7 +233,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         GolemDeath,
         GolemDamaged,
         GolemFootStepSound,
-        PlayNikoSong
+        PlayNikoSong,
+        WizardCastTrigger,
+        WizardTeleportTrigger,
+        WizardDeathTrigger,
+        WizardDamageTrigger
     }
     #endregion
 
