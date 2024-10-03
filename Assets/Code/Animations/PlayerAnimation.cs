@@ -39,7 +39,7 @@ public class PlayerAnimation : AnimationControl
     private IEnumerator EndScreen()
     {
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("EndMenu");
+        SceneManager.LoadScene("EndMenuL");
     }
 }
 
