@@ -29,6 +29,7 @@ public class EnemyTeleportCheck : MonoBehaviour
             StartCoroutine(WaitToTP());
             Collider2D c = GetComponent<Collider2D>();
             c.enabled = false;
+            enemy.State = Enum_State.TELEPORTING;
         }
     }
 

@@ -8,7 +8,6 @@ public class EnemyGolemDamaged : EnemyDamagedSOBase
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
-        Debug.Log("GolemDamaged Triggered");
         if (triggerType == EnemyBase.AnimationTriggerType.GolemDamaged)
         {
             AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemDamage, _transform.position);

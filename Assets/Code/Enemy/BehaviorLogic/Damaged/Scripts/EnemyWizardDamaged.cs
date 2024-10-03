@@ -11,7 +11,6 @@ public class EnemyWizardDamaged : EnemyDamagedSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.WizardDamageTrigger)
         {
-            Debug.Log("WizardDamage");
             AudioManager.instance.PlayOneShot(FmodEvents.instance.WizardDamage, _transform.position);
         }
     }

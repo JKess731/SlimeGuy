@@ -15,7 +15,6 @@ public class EnemyIdleSOBase : ScriptableObject
         transform = gameObject.transform;
         this.enemy = enemy;
         playerTransform = GameObject.FindGameObjectWithTag("player").transform;
-    
     }
 
     public virtual void DoEnterLogic() { 

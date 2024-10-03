@@ -500,7 +500,7 @@ MonoBehaviour:
   enemyIdleBase: {fileID: 11400000, guid: 985540e631692a9449807e007b23c8bb, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
   enemyAttackBase: {fileID: 11400000, guid: 27324e2e27470094d97e8a47b1a14ee4, type: 2}
-  enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
+  enemyDamagedBase: {fileID: 11400000, guid: 6824116bdacd7c04eb79a37fd151cb53, type: 2}
   enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
 --- !u!114 &4685945866906265587
 MonoBehaviour:

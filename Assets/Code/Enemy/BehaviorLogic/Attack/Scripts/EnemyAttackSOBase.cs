@@ -34,7 +34,6 @@ public class EnemyAttackSOBase : ScriptableObject
             fmodEvents.GolemAttack3
         };
         */
-
     }
 
     public virtual void DoEnterLogic() { 

@@ -8,6 +8,7 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform attackPoint;
+
     [SerializeField] private int damage;
     [SerializeField] private float speed;
     [SerializeField] private float knockbackPower;
@@ -17,10 +18,8 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
     private Projectile p;
     public GameObject ring;
     private bool canShoot = true;
-
     private float timer = 3;
     
-
     #region State Functions
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
@@ -79,7 +78,7 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
 
     private void OnPreLoadUp()
     {
-        Debug.Log("PRE LOAD");
+        //Debug.Log("PRE LOAD");
         // Grab reference to the Teleport Collider & Disable it
         teleportTrigger.enabled = false;
 
@@ -89,7 +88,7 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
 
     private void OnLoadUp()
     {
-        Debug.Log("LOAD");
+        //Debug.Log("LOAD");
         // Create Projectile
         p = CreateProjectile();
         p.OnCollide.AddListener(OnProjectileDeath);
@@ -98,7 +97,7 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
 
     private void OnShoot()
     {
-        Debug.Log("ON SHOOT");
+        //Debug.Log("ON SHOOT");
         p.StartShoot(_enemy.gameObject, damage, speed, _playerTransform, knockbackPower, delay);
         // Grab reference to the Teleport Collider & Enable it
     }

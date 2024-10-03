@@ -661,6 +661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _abilityManager: {fileID: 0}
   maxRelics: 10
+  abilityManager: {fileID: 0}
   calculator: {fileID: 0}
   relicsEquipped: []
 --- !u!1 &6947235108412896666
@@ -1093,6 +1094,34 @@ MonoBehaviour:
       Data3: -1238213504
       Data4: 1658782277
     Path: event:/Golem/GolemStep
+  <WizardCast>k__BackingField:
+    Guid:
+      Data1: -1893220728
+      Data2: 1241464729
+      Data3: 1889023890
+      Data4: -1506307889
+    Path: event:/Wizard/Wizard_Cast
+  <WizardDamage>k__BackingField:
+    Guid:
+      Data1: 68977680
+      Data2: 1302162718
+      Data3: 875254937
+      Data4: 1690156463
+    Path: event:/Gremlin/GremlinHurt
+  <WizardDeath>k__BackingField:
+    Guid:
+      Data1: 1108386472
+      Data2: 1146519904
+      Data3: 1442175146
+      Data4: 741562082
+    Path: event:/Wizard/Wizard_Death
+  <WizardTeleport>k__BackingField:
+    Guid:
+      Data1: 1944312006
+      Data2: 1262148601
+      Data3: 2062158264
+      Data4: -1837458249
+    Path: event:/Wizard/Wizard_Teleport
 --- !u!1001 &1715041279593039670
 PrefabInstance:
   m_ObjectHideFlags: 0

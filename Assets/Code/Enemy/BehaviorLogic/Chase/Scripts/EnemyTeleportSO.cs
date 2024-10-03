@@ -20,7 +20,6 @@ public class EnemyTeleportSO : EnemyChaseSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-
     }
 
     public override void DoExitLogic()
