@@ -30,7 +30,7 @@ public class Whip : Attacks
 
     private void FixedUpdate()
     {
-        Debug.Log("Spinning");
+        //Debug.Log("Spinning");
         transform.position = _player.transform.position;
         transform.Rotate(Vector3.forward * _rotationSpeed * Time.deltaTime);
     }
