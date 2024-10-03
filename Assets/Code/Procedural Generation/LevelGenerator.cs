@@ -185,7 +185,9 @@ public class LevelGenerator : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
 
         Debug.Log("Generation Complete...");
+        AudioManager.instance?.StopJeopardy();
         AudioManager.instance?.PlayOneShot(FmodEvents.instance.NikoSong, transform.position);
+
         GenComplete();
         lastRoom = ChooseBossRoom();
         Complete.Invoke();

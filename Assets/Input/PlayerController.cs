@@ -43,8 +43,6 @@ public class PlayerController : MonoBehaviour
             _playerInput = new PlayerInput();
         }
 
-        //AudioManager.instance.OnGameStart();
-
         _rb = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<Collider2D>();
         _tr = GetComponent<TrailRenderer>();
@@ -189,7 +187,7 @@ public class PlayerController : MonoBehaviour
     {
         //Handles Initial Dash
         AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
-        Debug.Log("Dash Started");
+        //Debug.Log("Dash Started");
         _playerState.State = Enum_State.DASHING;
         _playerCollider.excludeLayers = LayerMask.GetMask("enemyAttacksLayer", "enemyLayer");
         //DisableMovement();
@@ -198,7 +196,7 @@ public class PlayerController : MonoBehaviour
         _tr.emitting = true;
         _rb.velocity = _faceDirection * _dashingPower;
         yield return new WaitForSeconds(_dashingTime);
-        Debug.Log("Dash Ended");
+        //Debug.Log("Dash Ended");
         //-----------------------------------------------------------------------------------
 
         //Handles Dash End

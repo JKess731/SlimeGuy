@@ -23,7 +23,7 @@ MonoBehaviour:
   _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
   _projectileDamage: 1
   _projectileKnockback: 1
-  _projectileSpeed: 5
+  _projectileSpeed: 10
   _projectileRange: 5
   _piercingAmount: 1
   _bulletBounce: 1

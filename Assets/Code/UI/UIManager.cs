@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -75,8 +76,9 @@ public class UiManager : MonoBehaviour
 
     public void UpdateHealthBar(float health, float maxHealth)
     {
-        healthBar.value = health / maxHealth;
-        healthTxt.SetText(health + "/" + maxHealth);
+        float newHealth = math.clamp(health, 0, maxHealth);
+        healthBar.value = newHealth/ maxHealth;
+        healthTxt.SetText(newHealth + "/" + maxHealth);
     }
 
     public void UpdatePrimaryAbilityImage(Sprite Icon)
@@ -119,6 +121,7 @@ public class UiManager : MonoBehaviour
         {
             modifiedSlider = dashCooldown;
             modifiedText = dashCooldownTxt;
+            Debug.Log("I used dash and got here " + attack.CooldownTime);
         }
         else if (type == "PA")
         {
@@ -148,7 +151,22 @@ public class UiManager : MonoBehaviour
             newValue -= 0.1f;
             yield return new WaitForSeconds(0.1f);
             modifiedSlider.value = newValue;
-            if (newValue <= 0)
+            if (newValue <= 0.1f)
+            {
+                modifiedText.text = "0";
+            }
+            else
+            {
+                modifiedText.text = newValue.ToString();
+            }
+        }
+
+        while (newValue > 0 && attack.CooldownTime == 1)
+        {
+            newValue -= 0.2f;
+            yield return new WaitForSeconds(0.2f);
+            modifiedSlider.value = newValue;
+            if (newValue < 0.2f)
             {
                 modifiedText.text = "0";
             }

@@ -15,32 +15,14 @@ public class EnemyAttackSmash : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        GameObject smash = Instantiate(smashTriggerPrefab, attackPoint.position, Quaternion.identity);
-        _enemy.stateMachine.ChangeState(_enemy.chaseState);
-
         Vector3 rotation = _playerTransform.position - ring.transform.position;
         float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _transform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDamaged)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfHurt, _transform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
-        }
-
         if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
         {
             AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _transform.position);
-            rotation = new Vector3(0, 0, 0);
+            GameObject smash = Instantiate(smashTriggerPrefab, attackPoint.position, Quaternion.identity);
         }
 
     }

@@ -34,7 +34,6 @@ public class EnemyAttackSOBase : ScriptableObject
             fmodEvents.GolemAttack3
         };
         */
-
     }
 
     public virtual void DoEnterLogic() { 
@@ -50,24 +49,6 @@ public class EnemyAttackSOBase : ScriptableObject
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
     }
-
-
-    /*
-    public virtual void PlayRandomGolemAttack()
-    {
-        if (golemAttackSounds.Length > 0)
-        {
-
-            int randomIndex = Random.Range(0, golemAttackSounds.Length);
-            //Debug.Log(randomIndex);
-            AudioManager.instance.PlayOneShot(golemAttackSounds[randomIndex], _transform.position);
-        }
-        else
-        {
-            Debug.LogWarning("No attack sounds assigned to Golem.");
-        }
-    }
-    */
 
     public virtual void ResetValues() { }
 }

@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 
 public class AudioManager : MonoBehaviour
 {
 
     public static AudioManager instance;
+
+    public EventInstance jeopardy;
 
     private void Awake()
     {
@@ -21,22 +24,25 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void OnGameStart()
+    private void Start()
     {
-        PlayOneShot(FmodEvents.instance.NikoSong, Vector3.zero);
-    }
-
-    public void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
-    {
-        if (triggerType == EnemyBase.AnimationTriggerType.PlayNikoSong)
-        {
-            PlayOneShot(FmodEvents.instance.NikoSong, Vector3.zero);
-        }
+        PlayJeopardy();
     }
 
     public void PlayOneShot(EventReference eventReference, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(eventReference, worldPos);
+    }
+
+    public void PlayJeopardy()
+    {
+        //The curse of Jeopardy
+        jeopardy = RuntimeManager.CreateInstance(FmodEvents.instance.Jepardy);
+        jeopardy.start();
+    }
+
+    public void StopJeopardy()
+    {
+        jeopardy.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }
