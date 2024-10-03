@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 423c9c2dcd7ea6c46bf75626de592f4c, type: 3}
-  m_Name: Dash
+  m_Name: DashBehavior
   m_EditorClassIdentifier: 
   _abilityName: Dash
   _icon: {fileID: 21300000, guid: d8d09a9f69c3363418567736ccf9aed7, type: 3}

@@ -31,30 +31,22 @@ public class AbilityManager : MonoBehaviour
         if (primary != null)
         {
             primary = Instantiate(primary);
+            primary.onBehaviorFinished += OnPrimaryCooldown;
         }
         if (secondary != null)
         {
             secondary = Instantiate(secondary);
+            secondary.onBehaviorFinished += OnSecondaryCooldown;
         }
         if (dash != null)
         {
             dash = Instantiate(dash);
+            dash.onBehaviorFinished += OnDashCooldown;
         }
 
         primary?.Initialize(this);
         secondary?.Initialize(this);
         dash?.Initialize(this);
-
-        try
-        {
-            primary.onBehaviorFinished += OnPrimaryCooldown;
-            secondary.onBehaviorFinished += OnSecondaryCooldown;
-            dash.onBehaviorFinished += OnDashCooldown;
-        }
-        catch (NullReferenceException e)
-        {
-            Debug.LogWarning("One Behavior not Found, reload ability into slot");
-        }
     }
 
     private void OnDestroy()
@@ -201,6 +193,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnDashCooldown()
     {
+        Debug.Log("Dash Cooldown");
         StartCoroutine(dash.Cooldown());
         StartCoroutine(UiManager.instance?.TextAndSliderAdjustment(dash, "D"));
     }

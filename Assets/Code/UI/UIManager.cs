@@ -107,17 +107,17 @@ public class UiManager : MonoBehaviour
         TextMeshProUGUI modifiedText = null;
         float newValue = attack.CooldownTime;
 
-        if(type == "P")
+        if (type == "P")
         {
             modifiedSlider = primaryCooldown;
             modifiedText = primaryCooldownTxt;
         }
-        else if(type == "S")
+        else if (type == "S")
         {
             modifiedSlider = secondaryCooldown;
             modifiedText = secondaryCooldownTxt;
         }
-        else if(type == "D")
+        else if (type == "D")
         {
             modifiedSlider = dashCooldown;
             modifiedText = dashCooldownTxt;
@@ -136,9 +136,9 @@ public class UiManager : MonoBehaviour
 
         modifiedSlider.maxValue = attack.CooldownTime;
         modifiedSlider.value = modifiedSlider.maxValue;
-        modifiedText.text = attack.CooldownTime.ToString(); 
+        modifiedText.text = attack.CooldownTime.ToString();
 
-        while(newValue > 0 && attack.CooldownTime > 1)
+        while (newValue > 0 && attack.CooldownTime > 1)
         {
             newValue -= 1;
             yield return new WaitForSeconds(1);
@@ -151,14 +151,15 @@ public class UiManager : MonoBehaviour
             newValue -= 0.1f;
             yield return new WaitForSeconds(0.1f);
             modifiedSlider.value = newValue;
-            if (newValue <= 0.1f)
-            {
-                modifiedText.text = "0";
-            }
-            else
-            {
-                modifiedText.text = newValue.ToString();
-            }
+            if (newValue <= 0)
+                if (newValue <= 0.1f)
+                {
+                    modifiedText.text = "0";
+                }
+                else
+                {
+                    modifiedText.text = newValue.ToString();
+                }
         }
 
         while (newValue > 0 && attack.CooldownTime == 1)
