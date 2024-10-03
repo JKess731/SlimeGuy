@@ -5744,18 +5744,6 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
-      propertyPath: dash
-      value: 
-      objectReference: {fileID: 11400000, guid: caea9da2faa374a48b4a89546a3b3697, type: 2}
-    - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
-      propertyPath: primary
-      value: 
-      objectReference: {fileID: 11400000, guid: 0f372f80640d315449b8300f43b102e4, type: 2}
-    - target: {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
-      propertyPath: secondary
-      value: 
-      objectReference: {fileID: 11400000, guid: 62384aa000b56544ebb398164f458a1f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
