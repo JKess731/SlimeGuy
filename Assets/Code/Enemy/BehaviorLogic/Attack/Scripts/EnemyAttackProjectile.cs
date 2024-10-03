@@ -25,6 +25,10 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
+        Vector3 dir = _playerTransform.position - ring.transform.position;
+        float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        ring.transform.rotation = Quaternion.Euler(0, 0, rotation);
+
         if (triggerType == EnemyBase.AnimationTriggerType.WizardCastTrigger)
         {
             Debug.Log("WizardCast");
@@ -116,7 +120,7 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
     {
         // REMOVE ONCE ANIMATIONS IN
         canShoot = false;
-        GameObject newProjectile = Instantiate(projectilePrefab, attackPoint.transform.position, Quaternion.identity);
+        GameObject newProjectile = Instantiate(projectilePrefab, attackPoint.transform.position, ring.transform.rotation);
         Projectile p = newProjectile.GetComponent<Projectile>();
         return p;
     }
