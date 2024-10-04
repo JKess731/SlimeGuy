@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhipMono : AbilityMonoBase
+public class OrbitMono : AbilityMonoBase
 {
-    [Header("Whip Attributes")]
-    [SerializeField] private GameObject _whip;
+    [Header("Orbit Attributes")]
+    [SerializeField] private GameObject _orbit;
+    [SerializeField] private int _orbitCount;
+    [SerializeField] private float _spreadAngle = 360f;
 
     [Header("Prefab Attributes")]
     [SerializeField] private int _damage;
     [SerializeField] private float _knockback;
-    [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _activationTime;
+    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _distance;
 
     public override void Initialize()
     {
@@ -22,9 +25,20 @@ public class WhipMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        //Instantiate the whip prefab
-        GameObject newWhip = Instantiate(_whip,attackPosition,Quaternion.identity);
-        newWhip.GetComponent<Whip>().Initialize(_damage, _knockback, _activationTime, _rotationSpeed, status);
+        // Calculate the angle difference between each orbitball
+        float angleStep = _spreadAngle / _orbitCount;
+        float currentAngle = 0f;
+
+        for (int i = 0; i < _orbitCount; i++)
+        {
+            // Spawn the orbitball at the player's position
+            GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
+            newOrbit.GetComponent<Orbit>().Initialize(_damage, _knockback, _activationTime, _rotationSpeed, _distance);
+            newOrbit.GetComponent<Orbit>().SetInitialAngle(currentAngle);
+
+            // Increment the angle for the next orbitball
+            currentAngle += angleStep;
+        }
 
         StartCoroutine(Cooldown());
     }
@@ -35,10 +49,9 @@ public class WhipMono : AbilityMonoBase
 
     public override void Upgrade(StatsSO playerstats, StatsEnum stat)
     {
-        //TODO: Implement WhipMono Upgrade
+
     }
 
-    //Override the Cooldown method to add the activation time
     public override IEnumerator Cooldown()
     {
         //diag.Stopwatch stopWatch = new diag.Stopwatch();

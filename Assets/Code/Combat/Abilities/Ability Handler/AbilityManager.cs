@@ -83,10 +83,17 @@ public class AbilityManager : MonoBehaviour
                 passiveDict.Add(child.AbilityName, child);
             }
         }
+    }
 
-        //Swap(AbilityType.PRIMARY, "Shotgun Slime Pellet");
-        Swap(AbilityType.PRIMARY, "DividingSlash");
-        Swap(AbilityType.SECONDARY, "SlimeWhip");
+    private void Start()
+    {
+        primary?.Initialize();
+        secondary?.Initialize();
+        dash?.Initialize();
+        foreach (AbilityMonoBase ability in passive)
+        {
+            ability?.Initialize();
+        }
     }
 
     public void Swap(AbilityType abilityType, string abilityName)

@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 41592458}
+  - component: {fileID: 41592459}
   m_Layer: 0
   m_Name: SlimeOrbit
   m_TagString: Untagged
@@ -154,6 +155,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1648714884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &41592459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41592457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad83384f08091664aa39a16881582fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilityName: SlimeOrbit
+  _icon: {fileID: 1680917604, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
+  _abilityType: 1
+  _cooldownTime: 4
+  _status: {fileID: 0}
+  _orbit: {fileID: 7031965650677062296, guid: ffccf9cc23408834e9783f3a655a1542, type: 3}
+  _orbitCount: 2
+  _spreadAngle: 360
+  _damage: 1
+  _knockback: 1
+  _activationTime: 2
+  _rotationSpeed: 50
+  _distance: 1
 --- !u!1 &49393250
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,7 +732,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 187755241}
-  - component: {fileID: 187755243}
   - component: {fileID: 187755242}
   m_Layer: 0
   m_Name: DividingSlash
@@ -756,33 +781,6 @@ MonoBehaviour:
   _dividingSlashKnockback: 1
   _dividingSlashSpeed: 1
   _dividingSlashRange: 1
---- !u!50 &187755243
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187755240}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &278063663
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primary: {fileID: 2056846678}
-  secondary: {fileID: 0}
+  secondary: {fileID: 41592459}
   dash: {fileID: 0}
   passive: []
   attackPos: {fileID: 46478605859797215}
@@ -1088,8 +1086,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _abilityName: SlimeWhip
-  _icon: {fileID: 0}
-  _abilityType: 0
+  _icon: {fileID: 809294474, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
+  _abilityType: 1
   _cooldownTime: 1
   _status: {fileID: 0}
   _whip: {fileID: 1444053255082817093, guid: 72bbfe5b1348d7a4792d4a570411e74f, type: 3}
@@ -7046,7 +7044,7 @@ GameObject:
   - component: {fileID: 2056846677}
   - component: {fileID: 2056846678}
   m_Layer: 0
-  m_Name: Shotgun Slime Pellet
+  m_Name: ShotgunSlimePellet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7079,7 +7077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d64fe3c50e0fc14f95510c8e4a5d417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _abilityName: Shotgun Slime Pellet
+  _abilityName: ShotgunSlimePellet
   _icon: {fileID: 0}
   _abilityType: 0
   _cooldownTime: 1
