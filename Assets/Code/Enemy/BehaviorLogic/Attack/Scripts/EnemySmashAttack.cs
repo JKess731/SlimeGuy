@@ -18,7 +18,7 @@ public class EnemySmashAttack : EnemyAttackSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, attackPoint.position);
         }
 
     }

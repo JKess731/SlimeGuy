@@ -22,14 +22,6 @@ public class DividingSlash : Attacks
         _range = range;
     }
 
-    public void Initialize(int damage, float knockback, float speed, float range)
-    {
-        _damage = damage;
-        _knockback = knockback;
-        _speed = speed;
-        _range = range;
-    }
-
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();

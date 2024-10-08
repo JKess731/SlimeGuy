@@ -22,7 +22,7 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _enemy.transform.position);
             //tweak Edison
             Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
         }

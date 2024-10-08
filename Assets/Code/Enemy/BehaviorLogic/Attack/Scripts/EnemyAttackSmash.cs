@@ -9,6 +9,7 @@ public class EnemyAttackSmash : EnemyAttackSOBase
     [SerializeField] private int frontSmashDamage;
     [SerializeField] private float frontSmashAttackDelay;
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private GameObject ring;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
@@ -20,7 +21,7 @@ public class EnemyAttackSmash : EnemyAttackSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _enemy.transform.position);
             GameObject smash = Instantiate(smashTriggerPrefab, attackPoint.position, Quaternion.identity);
         }
 
