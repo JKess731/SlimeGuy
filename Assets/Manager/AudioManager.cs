@@ -10,7 +10,9 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    public EventInstance niko;
     public EventInstance jeopardy;
+    public EventInstance menuMusic;
 
     private void Awake()
     {
@@ -24,14 +26,20 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start()
-    {
-        PlayJeopardy();
-    }
 
     public void PlayOneShot(EventReference eventReference, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(eventReference, worldPos);
+    }
+
+    public void PlayNiko()
+    {
+        niko = RuntimeManager.CreateInstance(FmodEvents.instance.NikoSong);
+        niko.start();
+    }
+    public void StopNiko()
+    {
+        niko.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     public void PlayJeopardy()
@@ -44,5 +52,15 @@ public class AudioManager : MonoBehaviour
     public void StopJeopardy()
     {
         jeopardy.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+    public void PlayMenuMusic()
+    {
+        menuMusic = RuntimeManager.CreateInstance(FmodEvents.instance.MenuMusic);
+        menuMusic.start();
+    }
+
+    public void StopMenuMusic()
+    {
+        menuMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }

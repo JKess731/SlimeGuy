@@ -24,7 +24,7 @@ public abstract class AbilityBaseSO : ScriptableObject, IAbility
     [HideInInspector] protected AbilityManager _abilityManager;
 
     public delegate void OnBehaviorFinished();
-    public OnBehaviorFinished onBehaviorFinished;
+    public OnBehaviorFinished onBehaviorFinished { get; set; }
 
     public string AbilityName { get => _abilityName; }
     public Sprite Icon { get => _icon; }

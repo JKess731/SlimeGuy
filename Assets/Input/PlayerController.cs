@@ -249,8 +249,8 @@ public class PlayerController : MonoBehaviour
         if (_canDash)
         {
             StartCoroutine(DashCoroutine());
+            _abilityManager.OnDashStarted(context);
         }
-        _abilityManager.OnDashStarted(context);
     }
     private void OnDashPerformed(InputAction.CallbackContext context)
     {
