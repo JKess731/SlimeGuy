@@ -84,6 +84,8 @@ public class AbilityManager : MonoBehaviour
                 passiveDict.Add(child.AbilityName, child);
             }
         }
+
+        attackPos = GameObject.Find("Ring").transform.GetChild(0).transform;
     }
 
     private void Start()
@@ -91,10 +93,18 @@ public class AbilityManager : MonoBehaviour
         primary?.Initialize();
         secondary?.Initialize();
         dash?.Initialize();
+
         foreach (AbilityMonoBase ability in passive)
         {
             ability?.Initialize();
         }
+
+
+        Debug.Log("Primary: " + primary.Icon);
+        Debug.Log("Secondary: " + secondary.Icon);
+        Debug.Log("Getter Pri: " + Primary.Icon);
+        Debug.Log("Getter Sec: " + Secondary.Icon);
+        UiManager.instance.UpdateAllIcons();
     }
 
     public void Swap(AbilityType abilityType, string abilityName)
