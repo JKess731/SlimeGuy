@@ -7,7 +7,7 @@ using diag = System.Diagnostics;
 /// <summary>
 /// The SO base for all attack behaviors
 /// </summary>
-public abstract class AbilityBaseSO : ScriptableObject, IAbility
+public abstract class AbilitySOBase : ScriptableObject, IAbility
 {
     [Header("Ability Attributes")]
     [SerializeField] protected string _abilityName;
@@ -35,11 +35,7 @@ public abstract class AbilityBaseSO : ScriptableObject, IAbility
     public AbilityType AbilityType { get => _abilityType; }
     public AbilityManager AbilityManager { get => _abilityManager; }
 
-    public virtual void Initialize(AbilityManager abilityManager)
-    {
-        _abilityManager = abilityManager;
-        _abilityState = AbilityState.READY;
-    }
+    public virtual void Initialize(){}
     public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) {}
     public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) {}
     public virtual void CancelBehavior(Vector2 attackPosition, Quaternion rotation) {}

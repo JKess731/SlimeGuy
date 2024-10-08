@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "MachineGun", menuName = "Behavior/MachineGun")]
-public class MachineGunBehavior : AbilityBaseSO
+public class MachineGunBehavior : AbilitySOBase
 {
     [Header("Machine Gun Attributes")]
     [SerializeField] private GameObject _MachineGun;
@@ -21,9 +21,8 @@ public class MachineGunBehavior : AbilityBaseSO
 
     private float nextFireTime = 0f;
 
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)

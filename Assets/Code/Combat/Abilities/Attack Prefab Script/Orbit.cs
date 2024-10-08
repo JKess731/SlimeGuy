@@ -49,13 +49,13 @@ public class Orbit : Attacks
         transform.position = orbitPosition;
     }
 
-    public void SetOrbitStruct(OrbitStruct orbitStruct)
+    public void Initialize(float damage, float knockback, float activationTime, float rotationSpeed, float distance)
     {
-        _damage = orbitStruct.Damage;
-        _knockback = orbitStruct.Knockback;
-        _activationTime = orbitStruct.ActivationTime;
-        _rotationSpeed = orbitStruct.RotationSpeed;
-        _distance = orbitStruct.Distance;
+        _damage = (int) damage;
+        _knockback = knockback;
+        _activationTime = activationTime;
+        _rotationSpeed = rotationSpeed;
+        _distance = distance;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

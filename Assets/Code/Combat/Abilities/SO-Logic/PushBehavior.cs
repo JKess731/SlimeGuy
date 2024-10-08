@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// The push behavior allows for attacks to spawn child attacks
 /// </summary>
 [CreateAssetMenu(fileName = "Push", menuName = "Attack/Push")]
-public class PushBehavior : AbilityBaseSO
+public class PushBehavior : AbilitySOBase
 {
     [Header("Push Attributes")]
     [SerializeField] private GameObject _push;
@@ -19,9 +19,8 @@ public class PushBehavior : AbilityBaseSO
     [SerializeField] private float _distance;
 
     
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)

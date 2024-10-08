@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityMono : MonoBehaviour, IAbility
+public class AbilityMonoBase : MonoBehaviour, IAbility
 {
     [Header("Ability Attributes")]
     [SerializeField] protected string _abilityName;
@@ -12,11 +12,9 @@ public class AbilityMono : MonoBehaviour, IAbility
 
     [Header("Variable Attributes")]
     [SerializeField] protected float _cooldownTime;
-    [SerializeField] protected float _activationTime;
     [SerializeField] protected StatusSO _status;
 
     [HideInInspector] protected AbilityState _abilityState;
-    [HideInInspector] protected AbilityManager _abilityManager;
 
     public delegate void OnBehaviorFinished();
     public OnBehaviorFinished onBehaviorFinished;
@@ -24,16 +22,14 @@ public class AbilityMono : MonoBehaviour, IAbility
     public string AbilityName { get => _abilityName; }
     public Sprite Icon { get => _icon; }
     public float CooldownTime { get => _cooldownTime; }
-    public float ActivationTime { get => _activationTime; protected set => _activationTime = value; }
     public StatusSO status { get => _status; protected set => _status = value; }
     public AbilityState AbilityState { get => _abilityState; set => _abilityState = value; }
     public AbilityType AbilityType { get => _abilityType; }
-    public AbilityManager AbilityManager { get => _abilityManager; }
 
-    public virtual void Initialize(AbilityManager abilityManager)
+    public virtual void Initialize()
     {
-        _abilityManager = abilityManager;
         _abilityState = AbilityState.READY;
+        gameObject.SetActive(true);
     }
     public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) { }
     public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) { }
@@ -65,10 +61,5 @@ public class AbilityMono : MonoBehaviour, IAbility
     public virtual IEnumerator Activate()
     {
         throw new System.NotImplementedException();
-    }
-
-    public void RemoveAbility()
-    {
-        Destroy(this);
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// The orbit behavior allows for attacks to spawn child attacks
 /// </summary>
 [CreateAssetMenu(fileName = "Orbit", menuName = "Attack/Orbit")]
-public class OrbitBehavior : AbilityBaseSO
+public class OrbitBehavior : AbilitySOBase
 {
     [Header("Orbit Attributes")]
     [SerializeField] private GameObject _orbit;
@@ -20,9 +20,8 @@ public class OrbitBehavior : AbilityBaseSO
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _distance;
 
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)

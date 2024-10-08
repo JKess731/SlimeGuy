@@ -13,11 +13,14 @@ public class DividingSlash : Attacks
 
     private GameObject _player;
     private GameObject _attack;
-    private Rigidbody2D _playerRb;  // Rigidbody of the player
-    private float _pushDuration = 0.1f; // Duration of the push
-    private float _pushSpeed = 10f;  // Speed of the player's forward push
 
-    private Vector2 _pushDirection; // Direction to push the player
+    public void Initialize(int damage, float knockback, float speed, float range)
+    {
+        _damage = damage;
+        _knockback = knockback;
+        _speed = speed;
+        _range = range;
+    }
 
     private void Awake()
     {
@@ -30,33 +33,9 @@ public class DividingSlash : Attacks
         _maxDistance = _range; // Slash range
         _player = GameObject.FindWithTag("player");
         _attack = GameObject.FindWithTag("attack");
-        _playerRb = _player.GetComponent<Rigidbody2D>();
 
         Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(_attack.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-
-        // Determine the push direction based on the slash direction
-        _pushDirection = transform.right; // Use the direction of the slash
-
-        // Push the player forward
-        StartCoroutine(PushPlayerForward());
-    }
-
-    private IEnumerator PushPlayerForward()
-    {
-        Vector2 pushVector = _pushDirection * _pushSpeed;
-        float elapsedTime = 0f;
-
-        // Push the player forward for a short duration
-        while (elapsedTime < _pushDuration)
-        {
-            _playerRb.velocity = pushVector;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        // Stop player's forward movement after the push
-        _playerRb.velocity = Vector2.zero;
     }
 
     // Handle collisions with enemies and walls
@@ -88,14 +67,6 @@ public class DividingSlash : Attacks
         {
             Destroy(gameObject);
         }
-    }
-
-    public void SetDividingSlashStruct(DividingSlashStruct dividingSlashStruct)
-    {
-        _damage = dividingSlashStruct.Damage;
-        _range = dividingSlashStruct.Range;
-        _speed = dividingSlashStruct.Speed;
-        _knockback = dividingSlashStruct.Knockback;
     }
 }
 

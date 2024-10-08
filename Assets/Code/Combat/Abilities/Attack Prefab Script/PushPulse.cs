@@ -12,6 +12,15 @@ public class PushPulse : Attacks
     private GameObject _player;
     private Rigidbody2D _rb;
 
+    public void Initialize(float damage, float knockback, float activationtime, float speed, float distance)
+    {
+        _damage = (int)damage;
+        _knockback = knockback;
+        _activationTime = activationtime;
+        _speed = speed;
+        _distance = distance;
+    }
+
     private void Start()
     {
         _player = GameObject.FindWithTag("player");
@@ -65,15 +74,6 @@ public class PushPulse : Attacks
         }
 
         Destroy(gameObject); // Destroy after completing cycles
-    }
-
-    public void SetPushPulseStruct(PushPulseStruct pushPulseStruct)
-    {
-        _damage = pushPulseStruct.Damage;
-        _knockback = pushPulseStruct.Knockback;
-        _activationTime = pushPulseStruct.ActivationTime;
-        _speed = pushPulseStruct.Speed;
-        _distance = pushPulseStruct.Distance;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

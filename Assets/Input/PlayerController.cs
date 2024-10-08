@@ -48,8 +48,9 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<Collider2D>();
         _tr = GetComponent<TrailRenderer>();
-        _abilityManager = GetComponent<AbilityManager>();
         _playerStateMachine = GetComponent<PlayerStateMachine>();
+
+        _abilityManager = GameObject.Find("Ability Manager").GetComponent<AbilityManager>();
 
         _speed = _playerStateMachine.playerStats.GetStat(StatsEnum.SPEED);
 
