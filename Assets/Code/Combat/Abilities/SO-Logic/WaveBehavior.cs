@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// The wave behavior allows for attacks to spawn child attacks
 /// </summary>
 [CreateAssetMenu(fileName = "Wave", menuName = "Behavior/Wave")]
-public class WaveBehavior : AbilityBaseSO
+public class WaveBehavior : AbilitySOBase
 {
     [Header("Wave Attributes")]
 
@@ -25,9 +25,8 @@ public class WaveBehavior : AbilityBaseSO
     [SerializeField] private float _childKnockback;
     [SerializeField] private float _childActivationTime;
 
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)

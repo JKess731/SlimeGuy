@@ -101,7 +101,7 @@ public class UiManager : MonoBehaviour
         passiveAbilityImage.sprite = Icon;
     }
 
-    public IEnumerator TextAndSliderAdjustment(AbilityBaseSO attack, string type) //this coroutine is for the radial cooldown and text on abilites.
+    public IEnumerator TextAndSliderAdjustment(AbilitySOBase attack, string type) //this coroutine is for the radial cooldown and text on abilites.
     {
         Slider modifiedSlider = null;
         TextMeshProUGUI modifiedText = null;

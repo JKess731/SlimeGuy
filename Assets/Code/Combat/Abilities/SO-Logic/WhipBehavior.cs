@@ -4,30 +4,27 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// The push behavior allows for attacks to spawn child attacks
+/// The wave behavior allows for attacks to spawn child attacks
 /// </summary>
-[CreateAssetMenu(fileName = "Push", menuName = "Attack/Push")]
-public class PushBehavior : AbilityBaseSO
+[CreateAssetMenu(fileName = "Whip", menuName = "Behavior/Whip")]
+public class WhipBehavior : AbilitySOBase
 {
-    [Header("Push Attributes")]
-    [SerializeField] private GameObject _push;
+    [Header("Whip Attributes")]
+    [SerializeField] private GameObject _whip;
 
     [Header("Prefab Attributes")]
     [SerializeField] private int _damage;
     [SerializeField] private float _knockback;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _distance;
+    [SerializeField] private float _rotationSpeed;
 
-    
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        GameObject newPush = Instantiate(_push, attackPosition, Quaternion.identity);
-        newPush.GetComponent<Push>().Initialize(_damage, _knockback, _speed, _distance,_activationTime);
+        GameObject newWhip = Instantiate(_whip, attackPosition, Quaternion.identity);
+        newWhip.GetComponent<Whip>().Initialize(_damage, _knockback, _rotationSpeed, _activationTime);
 
         AbilityState = AbilityState.PERFORMING;
     }
@@ -41,5 +38,9 @@ public class PushBehavior : AbilityBaseSO
     {
         AbilityState = AbilityState.FINISHED;
         onBehaviorFinished?.Invoke();
+    }
+
+    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
+    {
     }
 }

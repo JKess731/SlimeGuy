@@ -6,7 +6,10 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckable
 {
     [Header("Enemy StatSO")]
-    [SerializeField] private StatsSO _stats; 
+    [SerializeField] private StatsSO _stats;
+
+    [Header("Enemy Ring")]
+    [SerializeField] private Transform ring;
 
     [Header("Enemy StateSO")]
     [Space()]
@@ -53,14 +56,16 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private AnimationControl enemyAnimation;              // Animator for the enemy
     private Enum_State _state;                          // The current state of the enemy
 
-    //public GameObject slimeDrop;                        // The slime drop prefab for absorption
+    //public GameObject slimeDrop;                      // The slime drop prefab for absorption
     public bool isDead { get; set; } = false;
-
     public Vector2 FaceDir { get => faceDir; set => faceDir = value; }
     public Enum_State State { get => _state; set => _state = value; }
 
     private void Awake()
     {
+        //Get attack ring transform
+        ring = transform.Find("AttackRing").transform;
+
         //Get Knockback and Flash Scripts
         knockBack = GetComponent<KnockBack>();
         damageFlash = GetComponent<SimpleFalsh>();
@@ -69,7 +74,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         //Instantiate Scriptable Objects
         _stats = Instantiate(_stats);
         _stats.Initialize();
-
 
         //Instantiate State Machine
         stateMachine = new EnemyStateMachine();
@@ -107,8 +111,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     private void Update()
     {
+        var angle = Mathf.Atan2(faceDir.y, faceDir.x) * Mathf.Rad2Deg;
+        ring.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         stateMachine.currentEnemyState.FrameUpdate();
-        enemyAnimation.PlayAnimation(faceDir, _state);
+        enemyAnimation.PlayAnimation(faceDir,_state); //This line handles animation <--- Check this here for animation troubles
     }
 
     private void FixedUpdate()

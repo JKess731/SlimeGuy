@@ -53,7 +53,9 @@ public class EnemyChaseSOBase : ScriptableObject
 
     public virtual void DoFrameUpdateLogic()
     {
+        Debug.DrawRay(_transform.position, _playerTransform.position - _transform.position, Color.red);
         _enemy.FaceDir  = (_playerTransform.position - _enemy.transform.position).normalized;
+
         if (_enemy.isWithinStikingDistance)
         {
             _enemy.stateMachine.ChangeState(_enemy.attackState);

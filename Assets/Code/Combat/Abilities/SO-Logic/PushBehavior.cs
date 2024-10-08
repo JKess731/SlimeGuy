@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// The push pulse behavior allows for attacks to spawn child attacks
+/// The push behavior allows for attacks to spawn child attacks
 /// </summary>
-[CreateAssetMenu(fileName = "Push Pulse", menuName = "Attack/PushPulse")]
-public class PushPulseBehavior : AbilityBaseSO
+[CreateAssetMenu(fileName = "Push", menuName = "Attack/Push")]
+public class PushBehavior : AbilitySOBase
 {
     [Header("Push Attributes")]
-    [SerializeField] private GameObject _pushPulse;
+    [SerializeField] private GameObject _push;
 
     [Header("Prefab Attributes")]
     [SerializeField] private int _damage;
@@ -18,15 +18,15 @@ public class PushPulseBehavior : AbilityBaseSO
     [SerializeField] private float _speed;
     [SerializeField] private float _distance;
 
-    public override void Initialize(AbilityManager abilityManager)
+    
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        GameObject newPushPulse = Instantiate(_pushPulse, attackPosition, Quaternion.identity);
-        newPushPulse.GetComponent<PushPulse>().Initialize(_damage, _knockback, _speed, _distance, _activationTime);
+        GameObject newPush = Instantiate(_push, attackPosition, Quaternion.identity);
+        newPush.GetComponent<Push>().Initialize(_damage, _knockback, _speed, _distance,_activationTime);
 
         AbilityState = AbilityState.PERFORMING;
     }

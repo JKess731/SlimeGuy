@@ -6,42 +6,38 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "MachineGun", menuName = "Behavior/MachineGun")]
-public class MachineGunBehavior : AbilityBaseSO
+[CreateAssetMenu(fileName = "Grenade", menuName = "Attack/Grenade")]
+public class GrenadeBehavior : AbilitySOBase
 {
-    [Header("Machine Gun Attributes")]
-    [SerializeField] private GameObject _MachineGun;
-    [SerializeField] private GameObject _projectile;
+    [Header("Grenade Attributes")]
+    [SerializeField] private GameObject _grenade;
 
     [Header("Prefab Attributes")]
-    [SerializeField] private int _projectileDamage;
-    [SerializeField] private float _projectileKnockback;
-    [SerializeField] private float _projectileSpeed;
-    [SerializeField] private float _projectileRange;
+    [SerializeField] private int _grenadeDamage;
+    [SerializeField] private float _grenadeKnockback;
+    [SerializeField] private float _grenadeSpeed;
 
-    private float nextFireTime = 0f;
-
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
+        Quaternion newRot = rotation;
+
+        GameObject newGrenade = Instantiate(_grenade, attackPosition, newRot);
+        newGrenade.GetComponent<Grenade>().Initialize(_grenadeDamage, _grenadeKnockback, _grenadeSpeed);
+
         AbilityState = AbilityState.PERFORMING;
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        GameObject newMachineGun = Instantiate(_MachineGun, attackPosition, rotation);
         AbilityState = AbilityState.CANCELING;
     }
-
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.FINISHED;
         onBehaviorFinished?.Invoke();
     }
 }
-    
-

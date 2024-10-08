@@ -49,13 +49,13 @@ public class Orbit : Attacks
         transform.position = orbitPosition;
     }
 
-    public void Initialize(int damage, float knockback, float rotationSpeed, float distance, float activationTime)
+    public void Initialize(float damage, float knockback, float activationTime, float rotationSpeed, float distance)
     {
-        _damage = damage;
+        _damage = (int) damage;
         _knockback = knockback;
+        _activationTime = activationTime;
         _rotationSpeed = rotationSpeed;
         _distance = distance;
-        _activationTime = activationTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

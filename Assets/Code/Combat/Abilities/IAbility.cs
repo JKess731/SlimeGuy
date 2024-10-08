@@ -9,9 +9,8 @@ public interface IAbility
     public Sprite Icon { get; }
     public AbilityState AbilityState { get; set; }
     public float CooldownTime { get; }
-    public float ActivationTime { get; }
 
-    public virtual void Initialize(AbilityManager abilityManager) { }
+    public virtual void Initialize() { }
     public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) { }
     public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) { }
     public virtual void CancelBehavior(Vector2 attackPosition, Quaternion rotation) { }

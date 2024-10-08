@@ -52,6 +52,12 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Damage and Knockback
     public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
+        if (_state.Equals(Enum_State.DASHING))
+        {
+            Debug.Log("Player is dashing, no damage taken");
+            return;
+        }
+
         if (_playerStats.GetStat(StatsEnum.HEALTH) <= 0)
         {
             _state = Enum_State.DEAD;
