@@ -9,7 +9,9 @@ public class Grenade : Attacks
     //Stat variables for grenade
 
     private Rigidbody2D _rb;
+    private float _activationTime;
     private float _speed;
+    private float _distance;
 
     private bool _isStuckToEnemy = false;  // To check if the grenade is stuck to an enemy
     private GameObject _stuckEnemy;        // To reference the enemy it sticks to
@@ -20,13 +22,26 @@ public class Grenade : Attacks
     private GameObject _player;
     private GameObject _attack;
 
+    public void Initialize(float damage, float knockback, float activationtime, float speed, float distance)
+    {
+        _damage = (int)damage;
+        _knockback = knockback;
+        _activationTime = activationtime;
+        _speed = speed;
+        _distance = distance;
+    }
+
     private void Start()
     {
         _player = GameObject.FindWithTag("player");
         _attack = GameObject.FindWithTag("attack");
         Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(_attack.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+        Vector2 forwardDirection = transform.right;  // Assuming the grenade faces right
+        _rb.velocity = forwardDirection * _speed;
     }
+
 
     private void FixedUpdate()
     {
@@ -108,14 +123,5 @@ public class Grenade : Attacks
     {
         _rb = GetComponent<Rigidbody2D>();
         _startPos = transform.position;
-    }
-
-    public void Initialize(int damage, float knockback, float speed)
-    {
-        _damage = damage;
-        _knockback = knockback;
-        _speed = speed;
-
-        _rb.velocity = transform.right * _speed;
     }
 }

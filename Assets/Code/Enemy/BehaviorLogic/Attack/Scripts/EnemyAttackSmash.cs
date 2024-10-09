@@ -6,10 +6,10 @@ using UnityEngine;
 public class EnemyAttackSmash : EnemyAttackSOBase
 {
     [SerializeField] private GameObject smashTriggerPrefab;
-    [SerializeField] private Transform attackPoint;
     [SerializeField] private int frontSmashDamage;
     [SerializeField] private float frontSmashAttackDelay;
-    public GameObject ring;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private GameObject ring;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
@@ -21,7 +21,7 @@ public class EnemyAttackSmash : EnemyAttackSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _transform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _enemy.transform.position);
             GameObject smash = Instantiate(smashTriggerPrefab, attackPoint.position, Quaternion.identity);
         }
 
@@ -31,8 +31,6 @@ public class EnemyAttackSmash : EnemyAttackSOBase
     {
         base.DoEnterLogic();
         attackPoint = _enemy.transform.GetChild(1).GetChild(0);
-        ring = _enemy.transform.GetChild(1).gameObject;
-
     }
 
     public override void DoExitLogic()

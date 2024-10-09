@@ -8,17 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 196028305427288643, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: _abilityManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 360817106025357747, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: m_Name
       value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 1978808047673691875, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.71
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1978808047673691875, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.34
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1978808047673691875, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54,9 +58,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6084106415608594555, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: m_Name
-      value: Player Variant 1
+      value: Player Variant_First _Thursday_10-2-24
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6405545461137557941, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7445355991956479304, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnemyAttackSOBase : ScriptableObject
 {
     protected EnemyBase _enemy;
-    protected Transform _transform;
-    protected GameObject _gameObject;
+    protected GameObject _playerGameObject;
+    protected Transform _enemyTransform;
     protected Transform _playerTransform;
 
     /*
@@ -17,9 +17,8 @@ public class EnemyAttackSOBase : ScriptableObject
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
-
-        _gameObject = gameObject;
-        _transform = gameObject.transform;
+        _playerGameObject = gameObject;
+        _enemyTransform = gameObject.transform;
         _enemy = enemy;
         _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
 

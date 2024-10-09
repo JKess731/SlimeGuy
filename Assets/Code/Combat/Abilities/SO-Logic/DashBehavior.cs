@@ -7,16 +7,15 @@ using UnityEngine.InputSystem;
 /// The wave behavior allows for attacks to spawn child attacks
 /// </summary>
 [CreateAssetMenu(fileName = "Dash", menuName = "Behavior/Dash")]
-public class DashBehavior : AbilityBaseSO
+public class DashBehavior : AbilitySOBase
 {
 
     [Header("Prefab Attributes")]
     [SerializeField] private GameObject _dashPrefab;
     [SerializeField] private float _dashSpeed;
 
-    public override void Initialize(AbilityManager abilityManager)
+    public override void Initialize()
     {
-        base.Initialize(abilityManager);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
