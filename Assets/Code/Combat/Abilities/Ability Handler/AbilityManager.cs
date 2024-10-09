@@ -4,209 +4,217 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class AbilityManager : MonoBehaviour
 {
+
+    [Header("Ability Dictionaries")]
+    [HideInInspector]
+    [SerializeField] private Dictionary<string, AbilityMonoBase> primaryDict = new Dictionary<string, AbilityMonoBase >();
+    [SerializeField] private Dictionary<string, AbilityMonoBase> secondaryDict = new Dictionary<string, AbilityMonoBase>();
+    [SerializeField] private Dictionary<string, AbilityMonoBase> dashDict = new Dictionary<string, AbilityMonoBase>();
+    [SerializeField] private Dictionary<string, AbilityMonoBase> passiveDict = new Dictionary<string, AbilityMonoBase>();
+
     [Header("Ability Variables")]
-    [SerializeField] private AbilityBase primary;
-    [SerializeField] private AbilityBase secondary;
-    [SerializeField] private AbilityBase dash;
-    [SerializeField] private PassiveAbility passive;
+    [SerializeField] private AbilityMonoBase primary;
+    [SerializeField] private AbilityMonoBase secondary;
+    [SerializeField] private AbilityMonoBase dash;
+    [SerializeField] private AbilityMonoBase[] passive;
 
     [Header("Attack Position")]
     [SerializeField] private Transform attackPos;
 
+    private Transform primaryHolder;
+    private Transform secondaryHolder;
+    private Transform dashHolder;
+    private Transform passiveHolder;
+
     //Abilities must be initialized, or else they will not work. For some reason,
     //Unity does not read the preassigned values in the Scriptable Objects Variables.
 
-    public AbilityBase Primary { get => primary; }
-    public AbilityBase Secondary { get => secondary; }
-    public AbilityBase Dash { get => dash; }
+    public AbilityMonoBase Primary { get => primary; }
+    public AbilityMonoBase Secondary { get => secondary; }
+    public AbilityMonoBase Dash { get => dash; }
 
     private void Awake()
     {
+        try
+        {
+            primaryHolder = GameObject.Find("Primary Holder").transform;
+            secondaryHolder = GameObject.Find("Secondary Holder").transform;
+            dashHolder = GameObject.Find("Dash Holder").transform;
+            passiveHolder = GameObject.Find("Passive Holder").transform;
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.LogError("One or more Ability Holders are missing. Please make sure that the Ability Holders are named correctly.");
+            Debug.LogError(e);
+        }
 
-        if (primary != null)
+
+        for (int i = 0; i < primaryHolder.childCount; i++)
         {
-            primary = Instantiate(primary);
-        }
-        if (secondary != null)
-        {
-            secondary = Instantiate(secondary);
-        }
-        if (dash != null)
-        {
-            dash = Instantiate(dash);
+            if(primaryHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            {
+                primaryDict.Add(child.AbilityName, child);
+            }
         }
 
+        for (int i = 0; i < secondaryHolder.childCount; i++)
+        {
+            if(secondaryHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            {
+                secondaryDict.Add(child.AbilityName, child);
+            }
+        }
+
+        for (int i = 0; i < dashHolder.childCount; i++)
+        {
+            if(dashHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            {
+                dashDict.Add(child.AbilityName, child);
+            }
+        }
+
+        for (int i = 0; i < passiveHolder.childCount; i++)
+        {
+            if(passiveHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            {
+                passiveDict.Add(child.AbilityName, child);
+            }
+        }
+
+        attackPos = GameObject.Find("Ring").transform.GetChild(0).transform;
+    }
+
+    private void Start()
+    {
         primary?.Initialize();
         secondary?.Initialize();
         dash?.Initialize();
 
-        try
+        foreach (AbilityMonoBase ability in passive)
         {
-            primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
-            secondary.Behavior.onBehaviorFinished += OnSecondaryCooldown;
-            dash.Behavior.onBehaviorFinished += OnDashCooldown;
+            ability?.Initialize();
         }
-        catch (NullReferenceException e)
-        {
-            Debug.LogWarning("One Behavior not Found, reload ability into slot");
-        }
+
+
+        Debug.Log("Primary: " + primary.Icon);
+        Debug.Log("Secondary: " + secondary.Icon);
+        Debug.Log("Getter Pri: " + Primary.Icon);
+        Debug.Log("Getter Sec: " + Secondary.Icon);
+        UiManager.instance.UpdateAllIcons();
     }
 
-    //private void Update()
-    //{
-    //    if (primary.Behavior.AbilityState == AbilityState.FINISHED)
-    //    {
-    //        StartCoroutine(primary.Behavior.Cooldown());
-    //    }
-    //    if (secondary.Behavior.AbilityState == AbilityState.FINISHED)
-    //    {
-    //        StartCoroutine(secondary.Behavior.Cooldown());
-    //    }
-    //    if (dash.Behavior.AbilityState == AbilityState.FINISHED)
-    //    {
-    //        StartCoroutine(dash.Behavior.Cooldown());
-    //    }
-    //}
+    public void Swap(AbilityType abilityType, string abilityName)
+    {
+        switch (abilityType)
+        {
+            case AbilityType.PRIMARY:
+                primary?.gameObject.SetActive(false);
+                primary = primaryDict[abilityName];
+                primary?.Initialize();
+                break;
+
+            case AbilityType.SECONDARY:
+                secondary?.gameObject.SetActive(false);
+                secondary = secondaryDict[abilityName];
+                secondary?.Initialize();
+                break;
+
+            case AbilityType.DASH:
+                dash?.gameObject.SetActive(false);
+                dash = dashDict[abilityName];
+                dash?.Initialize();
+                break;
+        }
+    }
 
     #region Primary
-    public void InstaniatePrimary(AbilityBase newAbility)
-    {
-        if (primary != null)
-        {
-            primary.Behavior.onBehaviorFinished -= OnPrimaryCooldown;
-        }
-
-        primary = Instantiate(newAbility);
-        primary?.Initialize();
-        UiManager.instance?.UpdatePrimaryAbilityImage(primary.Icon);
-        primary.Behavior.onBehaviorFinished += OnPrimaryCooldown;
-    }
-
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
-        if(primary?.Behavior.AbilityState == AbilityState.READY)
+        if(primary?.AbilityState == AbilityState.READY)
         {
-            primary?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
+            primary?.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnPrimaryPerformed(InputAction.CallbackContext context)
     {
-        if (primary?.Behavior.AbilityState == AbilityState.PERFORMING)
+        if (primary?.AbilityState == AbilityState.STARTING)
         {
-            primary?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
+            primary?.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
-        if (primary?.Behavior.AbilityState == AbilityState.CANCELING)
+        if (primary.AbilityState == AbilityState.PERFORMING)
         {
-            primary?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
+            primary?.CancelBehavior(attackPos.position, attackPos.rotation);
         }
-    }
-
-    public void OnPrimaryCooldown()
-    {
-        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(primary, "P"));
-        Debug.Log("Primary cooldown");
-        StartCoroutine(primary.Behavior.Cooldown());
     }
     #endregion
 
     #region Secondary
-
-    public void InstaniateSecondary(AbilityBase newAbility)
-    {
-        if (secondary != null)
-        {
-            secondary.Behavior.onBehaviorFinished -= OnSecondaryCooldown;
-        }
-
-        secondary = Instantiate(newAbility);
-        secondary?.Initialize();
-        UiManager.instance?.UpdateSecondaryAbilityImage(secondary.Icon);
-        secondary.Behavior.onBehaviorFinished += OnSecondaryCooldown;
-    }
-
     public void OnSecondaryStarted(InputAction.CallbackContext context)
     {
-        if (secondary?.Behavior.AbilityState == AbilityState.READY)
+        if (secondary?.AbilityState == AbilityState.READY)
         {
-            secondary?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
+            secondary?.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnSecondaryPerformed(InputAction.CallbackContext context)
     {
-        if (secondary?.Behavior.AbilityState == AbilityState.STARTING)
+        if (secondary?.AbilityState == AbilityState.STARTING)
         {
-            secondary?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
+            secondary?.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnSecondaryCanceled(InputAction.CallbackContext context)
     {
-        if(secondary?.Behavior.AbilityState == AbilityState.PERFORMING)
+        if(secondary?.AbilityState == AbilityState.PERFORMING)
         {
-            secondary?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
+            secondary?.CancelBehavior(attackPos.position, attackPos.rotation);
         }
-    }
-    public void OnSecondaryCooldown()
-    {
-        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(secondary, "S"));
-        StartCoroutine(secondary.Behavior.Cooldown());
     }
     #endregion
 
     #region Dash
-    public void InstaniateDash()
-    {
-        dash.Behavior.onBehaviorFinished -= OnDashCooldown;
-
-        dash = Instantiate(dash);
-        dash?.Initialize();
-        UiManager.instance?.UpdateDashAbilityImage(dash.Icon);
-        dash.Behavior.onBehaviorFinished += OnDashCooldown;
-    }
     public void OnDashStarted(InputAction.CallbackContext context)
     {
-        if (dash?.Behavior.AbilityState == AbilityState.READY)
+        if (dash?.AbilityState == AbilityState.READY)
         {
-            dash?.Behavior.StartBehavior(attackPos.position, attackPos.rotation);
+            dash?.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnDashPerformed(InputAction.CallbackContext context)
     {
-        if (dash?.Behavior.AbilityState == AbilityState.STARTING)
+        if (dash?.AbilityState == AbilityState.STARTING)
         {
-            dash?.Behavior.PerformBehavior(attackPos.position, attackPos.rotation);
+            dash?.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnDashCanceled(InputAction.CallbackContext context)
     {
-        if (dash?.Behavior.AbilityState == AbilityState.PERFORMING)
+        if (dash?.AbilityState == AbilityState.PERFORMING)
         {
-            dash?.Behavior.CancelBehavior(attackPos.position, attackPos.rotation);
+            dash?.CancelBehavior(attackPos.position, attackPos.rotation);
         }
     }
-    public void OnDashCooldown()
-    {
-        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(dash, "D"));
-        StartCoroutine(dash.Behavior.Cooldown());
-    }
+
     #endregion 
 
     #region Passive
     public void OnPassive()
     {
-        Debug.Log("Passive");
+        //Debug.Log("Passive");
     }
     #endregion
 
     public void UpgradeAbilities(StatsSO playerStats, StatsEnum statType)
     {
-        primary?.Behavior.Upgrade(playerStats, statType);
-        secondary?.Behavior.Upgrade(playerStats, statType);
-        dash?.Behavior.Upgrade(playerStats, statType);
+        primary?.Upgrade(playerStats, statType);
+        secondary?.Upgrade(playerStats, statType);
+        dash?.Upgrade(playerStats, statType);
     }
 }

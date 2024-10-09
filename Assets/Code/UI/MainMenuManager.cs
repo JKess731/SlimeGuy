@@ -8,8 +8,13 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private string sceneName;
 
+    private void Start()
+    {
+        AudioManager.instance.PlayMenuMusic();
+    }
     public void StartGameOnClick()
     {
+        AudioManager.instance.StopMenuMusic();
         SceneManager.LoadScene(sceneName);
     }
 

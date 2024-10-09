@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyChaseDirectToPlayer : EnemyChaseSOBase
 {
-    [SerializeField] public float movementSpeed = 1.75f;
+    [SerializeField] private float movementSpeed = 1.75f;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
@@ -27,6 +27,8 @@ public class EnemyChaseDirectToPlayer : EnemyChaseSOBase
         base.DoFrameUpdateLogic();
         Vector2 moveDirection = (_playerTransform.position - _enemy.transform.position).normalized;
         _enemy.MoveEnemy(moveDirection * movementSpeed);
+
+
     }
 
     public override void DoPhysicsLogic()

@@ -10,6 +10,7 @@ public class EnemyIdleRandomWander : EnemyIdleSOBase
     [SerializeField] private float randomMovementSpeed = 1f;
     private Vector3 targetPos;
     private Vector3 direction;
+
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);

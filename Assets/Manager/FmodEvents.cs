@@ -9,6 +9,8 @@ public class FmodEvents : MonoBehaviour
 
     [field:Header("Music")]
     [field: SerializeField] public EventReference NikoSong { get; private set; }
+    [field: SerializeField] public EventReference Jepardy { get; private set; }
+    [field: SerializeField] public EventReference MenuMusic { get; private set; }
 
 
     [field:Header("Player")]
@@ -34,6 +36,16 @@ public class FmodEvents : MonoBehaviour
     [field: SerializeField] public EventReference GolemDeath { get; private set; }
 
     [field: SerializeField] public EventReference GolemStep{ get; private set; }
+
+    [field: Header("Wizard")]
+    [field: SerializeField] public EventReference WizardCast { get; private set; }
+
+    [field: SerializeField] public EventReference WizardDamage { get; private set; }
+
+    [field: SerializeField] public EventReference WizardDeath { get; private set; }
+
+    [field: SerializeField] public EventReference WizardTeleport { get; private set; }
+
 
 
     private void Awake()

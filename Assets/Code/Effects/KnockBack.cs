@@ -9,16 +9,16 @@ using UnityEngine;
 public class KnockBack : MonoBehaviour
 {
     [Header("Knockback Variables")]
-    [SerializeField] private float _knockBackTime = 0.2f;
-    [SerializeField] private float _constForce = 0.25f;
-    [SerializeField] private float _delayTime = 0.1f;
+    [SerializeField] private float _knockBackTime = 0.2f;       //The time the knockback lasts
+    [SerializeField] private float _constForce = 0.25f;         //The constant force applied to the player
+    [SerializeField] private float _releaseTime = 0.1f;         //The time it takes for the player to stop being knocked back
 
     [Header("Knockback Curves")]
-    [SerializeField] private AnimationCurve _knockbackHitForceCurve;
-    [SerializeField] private AnimationCurve _knockbackStoppingForceCurve;
+    [SerializeField] private AnimationCurve _knockbackHitForceCurve;            //The curve for the hit force
+    [SerializeField] private AnimationCurve _knockbackStoppingForceCurve;       //The curve for the stopping force
 
     private Rigidbody2D _rb2D;
-    private Coroutine knockbackCor;
+    private Coroutine knockBackStart;
     public bool isBeingKnockedBack { get; set;}
 
     private void Start()
@@ -26,7 +26,7 @@ public class KnockBack : MonoBehaviour
         _rb2D = GetComponent<Rigidbody2D>();
     }
 
-    public IEnumerator KnockbackAction(Vector2 hitDir, float hitDirForce,Vector2 constantForceDirection)
+    public IEnumerator KnockBackStart(Vector2 hitDir, float hitDirForce,Vector2 constantForceDirection)
     {
 
         Vector2 hitForce;
@@ -43,8 +43,8 @@ public class KnockBack : MonoBehaviour
         while (elapedTimer < _knockBackTime)
         {
             //Iterates the timer
-            elapedTimer += Time.deltaTime;
-            time = elapedTimer / _knockBackTime;
+            elapedTimer += Time.fixedDeltaTime;
+            time += Time.fixedDeltaTime;
 
             //Calculates the hit force
             hitForce = hitDir * hitDirForce * _knockbackHitForceCurve.Evaluate(time);
@@ -59,15 +59,15 @@ public class KnockBack : MonoBehaviour
         }
     }
 
-    public IEnumerator StopKnockback()
+    public IEnumerator KnockBackSlowStop()
     {
         float time = 0;
 
         Vector2 currentVelocity = _rb2D.velocity;
 
-        while (time < _delayTime)
+        while (time < _releaseTime)
         {
-            time += Time.deltaTime;
+            time += Time.fixedDeltaTime;
             _rb2D.velocity = currentVelocity * _knockbackStoppingForceCurve.Evaluate(time);
 
             yield return new WaitForFixedUpdate();
@@ -88,12 +88,20 @@ public class KnockBack : MonoBehaviour
     //Couroutine is a monobehavior method
     public void CallKnockback(Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
-        if (knockbackCor != null)
+        if (knockBackStart != null)
         {
-            StopCoroutine(knockbackCor);
-            StartCoroutine(StopKnockback());
+            StopCoroutine(knockBackStart);
+            StartCoroutine(KnockBackSlowStop());
         }
 
-        knockbackCor = StartCoroutine(KnockbackAction(hitDirection, hitForce, constantForceDirection));
+        knockBackStart = StartCoroutine(KnockBackStart(hitDirection, hitForce, constantForceDirection));
+    }
+
+    public void StopKnockback()
+    {
+        if (knockBackStart != null)
+        {
+            StopCoroutine(knockBackStart);
+        }
     }
 }

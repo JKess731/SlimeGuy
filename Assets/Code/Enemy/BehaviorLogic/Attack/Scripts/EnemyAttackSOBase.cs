@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnemyAttackSOBase : ScriptableObject
 {
     protected EnemyBase _enemy;
-    protected Transform _transform;
-    protected GameObject _gameObject;
+    protected GameObject _playerGameObject;
+    protected Transform _enemyTransform;
     protected Transform _playerTransform;
 
     /*
@@ -17,9 +17,8 @@ public class EnemyAttackSOBase : ScriptableObject
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
-
-        _gameObject = gameObject;
-        _transform = gameObject.transform;
+        _playerGameObject = gameObject;
+        _enemyTransform = gameObject.transform;
         _enemy = enemy;
         _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
 
@@ -34,7 +33,6 @@ public class EnemyAttackSOBase : ScriptableObject
             fmodEvents.GolemAttack3
         };
         */
-
     }
 
     public virtual void DoEnterLogic() { 
@@ -50,24 +48,6 @@ public class EnemyAttackSOBase : ScriptableObject
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
     }
-
-
-    /*
-    public virtual void PlayRandomGolemAttack()
-    {
-        if (golemAttackSounds.Length > 0)
-        {
-
-            int randomIndex = Random.Range(0, golemAttackSounds.Length);
-            //Debug.Log(randomIndex);
-            AudioManager.instance.PlayOneShot(golemAttackSounds[randomIndex], _transform.position);
-        }
-        else
-        {
-            Debug.LogWarning("No attack sounds assigned to Golem.");
-        }
-    }
-    */
 
     public virtual void ResetValues() { }
 }

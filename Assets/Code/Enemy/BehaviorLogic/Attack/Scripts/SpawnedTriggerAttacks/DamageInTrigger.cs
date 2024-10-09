@@ -14,6 +14,8 @@ public class DamageInTrigger : MonoBehaviour
     private float timer;
     private bool canDamage = true;
 
+
+    // I would make this timer into a coroutine and call it in the start method
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +23,7 @@ public class DamageInTrigger : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
         if(timeBetweenDamageInstancesTimer > timeBetweenDamageInstances)
         {
             timeBetweenDamageInstancesTimer = 0;

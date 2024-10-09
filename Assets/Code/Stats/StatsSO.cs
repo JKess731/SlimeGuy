@@ -58,7 +58,7 @@ public class StatsSO: ScriptableObject
         _stats[stat] += value;
     }
 
-    public void AddStat(StatsEnum stat, float value, Behavior ability)
+    public void AddStat(StatsEnum stat, float value, AbilitySOBase ability)
     {
         _stats[stat] += value;
     }

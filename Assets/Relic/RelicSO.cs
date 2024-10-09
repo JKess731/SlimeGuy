@@ -23,9 +23,15 @@ public abstract class RelicSO : ScriptableObject
     public bool HasCondition {  get { return hasCondition; } }
     public StatsEnum changedStat { get { return _changedStat; } }
 
-    public abstract void Initialize(StatsSO playerstats);
+    public virtual void Initialize(StatsSO playerstats) 
+    { 
+        _playerStats = playerstats;
+    }
 
-    public abstract void OnPickup();
+    public virtual void OnPickup()
+    {
+        ActivateBuffs();
+    }
 
     public abstract void ActivateBuffs();
 

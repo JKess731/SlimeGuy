@@ -47,15 +47,6 @@ public class EnemyDamagedSOBase : ScriptableObject
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) {
 
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDamaged)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfHurt, _transform.position);
-        }
-        if(triggerType == EnemyBase.AnimationTriggerType.GolemDamaged)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemDamage, _transform.position);
-        }
-
     }
 
     /*

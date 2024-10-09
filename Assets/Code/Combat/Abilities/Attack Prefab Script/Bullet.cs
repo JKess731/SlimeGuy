@@ -7,14 +7,28 @@ using UnityEngine.Rendering;
 public class Bullet : Attacks
 {
     //Stat variables of a bullet
-   
     private Rigidbody2D _rb;
+
     private float _range;
     private float _speed;
-    private StatusSO _status;
     private int _piercingAmount;
     private int _bulletBounce;
+    private StatusSO _status;
+
     private CircleCollider2D _circleCollider;
+
+    //Initialize the bullet with the stats of the bullet
+    public void Initialize(int damage, float knockback, float speed, float range, int piercingAmount, int bulletBounce)
+    {
+        _damage = damage;
+        _knockback = knockback;
+        _range = range;
+        _speed = speed;
+        _piercingAmount = piercingAmount;
+        _bulletBounce = bulletBounce;
+
+        _rb.velocity = transform.right * _speed;
+    }
 
     //If the bullet goes out of range, destroy it
     private void Update()

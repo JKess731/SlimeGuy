@@ -419,9 +419,9 @@ MonoBehaviour:
   enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
   enemyIdleBase: {fileID: 11400000, guid: 985540e631692a9449807e007b23c8bb, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
-  enemyAttackBase: {fileID: 11400000, guid: 0eefa1a1b2174f443974542c929605e8, type: 2}
-  enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
-  enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
+  enemyAttackBase: {fileID: 11400000, guid: 27324e2e27470094d97e8a47b1a14ee4, type: 2}
+  enemyDamagedBase: {fileID: 11400000, guid: 6824116bdacd7c04eb79a37fd151cb53, type: 2}
+  enemyDeathBase: {fileID: 11400000, guid: da36a3d9419622a4dbc012e55a11592c, type: 2}
 --- !u!114 &4685945866906265587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,7 +565,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.39
+  m_Radius: 0.54
 --- !u!114 &8674967720457264788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,7 +594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4790399611572501685
 Transform:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 862cfde0db5d82244b6fd7c7f3c73b12, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

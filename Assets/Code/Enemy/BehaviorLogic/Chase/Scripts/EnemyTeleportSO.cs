@@ -9,12 +9,17 @@ public class EnemyTeleportSO : EnemyChaseSOBase
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
+
+        if (triggerType == EnemyBase.AnimationTriggerType.WizardTeleportTrigger)
+        {
+            Debug.Log("WizardTeleport");
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.WizardTeleport, _transform.position);
+        }
     }
 
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-
     }
 
     public override void DoExitLogic()

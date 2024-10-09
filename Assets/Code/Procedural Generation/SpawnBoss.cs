@@ -51,7 +51,7 @@ public class SpawnBoss : MonoBehaviour
     {
         if (bossRef == null)
         {
-            SceneManager.LoadScene("EndMenu");
+            SceneManager.LoadScene("EndMenuW");
         }
     }
 }

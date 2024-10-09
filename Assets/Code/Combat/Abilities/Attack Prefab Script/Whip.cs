@@ -9,30 +9,36 @@ public class Whip : Attacks
 
     private GameObject _player;
     private StatusSO _status;
-    private GameObject _attack;
+
+    public void Initialize(int damage, float knockback, float activationTime, float rotationSpeed, StatusSO status)
+    {
+        _damage = damage;
+        _knockback = knockback;
+        _activationTime = activationTime;
+        _rotationSpeed = rotationSpeed;
+        _status = status;
+    }
+
+    public void Initialize(int damage, float knockback, float rotationSpeed, float activationTime)
+    {
+        _damage = damage;
+        _knockback = knockback;
+        _rotationSpeed = rotationSpeed;
+        _activationTime = activationTime;
+    }
 
     private void Start()
     {
         Destroy(gameObject, _activationTime);
 
         _player = GameObject.FindWithTag("player");
-        _attack = GameObject.FindWithTag("attack");
-
     }
 
     private void FixedUpdate()
     {
+        //Debug.Log("Spinning");
         transform.position = _player.transform.position;
         transform.Rotate(Vector3.forward * _rotationSpeed * Time.deltaTime);
-    }
-
-    public void SetWhipStruct(WhipStruct whipStruct)
-    {
-        _damage = whipStruct.Damage;
-        _knockback = whipStruct.Knockback;
-        _activationTime = whipStruct.ActivationTime;
-        _rotationSpeed = whipStruct.RotationSpeed;
-        _status = whipStruct.Status;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
