@@ -384,11 +384,13 @@ public class LevelGenerator : MonoBehaviour
     private List<GameObject> GetFullSpawnList(RoomList rl)
     {
         List<GameObject> AllDoors = new List<GameObject>();
+        /*
         AllDoors.AddRange(rl.topRooms);
         AllDoors.AddRange(rl.bottomRooms);
         AllDoors.AddRange(rl.leftRooms);
         AllDoors.AddRange(rl.rightRooms);
         AllDoors.Add(startRoom);
+        */
 
         return AllDoors;
     }

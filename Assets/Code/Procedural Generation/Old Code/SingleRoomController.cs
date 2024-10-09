@@ -146,5 +146,6 @@ public enum RoomTag
     SHOP,
     CORRIDOR,
     WAVE,
-    BASIC
+    BASIC,
+    EMPTY
 }

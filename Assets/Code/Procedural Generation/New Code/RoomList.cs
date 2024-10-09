@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName="RoomList", menuName="Procedural Generation/Room List")]
 public class RoomList : ScriptableObject
 {
-    public GameObject[] topRooms;
-    public GameObject[] bottomRooms;
-    public GameObject[] leftRooms;
-    public GameObject[] rightRooms;
+    public RoomTag tag;
+    public GameObject[] rooms;
 }
