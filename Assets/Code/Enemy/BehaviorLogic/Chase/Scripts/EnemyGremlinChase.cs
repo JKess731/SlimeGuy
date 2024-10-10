@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,10 @@ public class EnemyGremlinChase : EnemyChaseSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.PlayDwarfFootStepSound)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfStep, _transform.position);
+            if (_enemy.moveSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);
+            }
         }
 
     }

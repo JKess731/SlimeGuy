@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,10 @@ public class EnemyGremlinDeath :EnemyDeathSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _transform.position);
+            if (_enemy.deathSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.deathSoundEffects[0], _enemy.transform.position);
+            }
             Destroy(_gameObject);
         }
     }

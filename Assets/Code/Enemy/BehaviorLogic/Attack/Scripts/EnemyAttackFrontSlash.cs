@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -22,7 +23,11 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _enemy.transform.position);
+            if (_enemy.attackSoundEffects.Count > 0)
+            {
+                
+                RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
+            }
             //tweak Edison
             Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
         }

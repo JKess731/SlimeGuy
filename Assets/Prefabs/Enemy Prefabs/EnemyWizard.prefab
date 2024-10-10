@@ -250,7 +250,6 @@ GameObject:
   m_Component:
   - component: {fileID: 107141772151869461}
   - component: {fileID: 2851854866923421972}
-  - component: {fileID: 2436041856228967549}
   - component: {fileID: 7151497659424373865}
   - component: {fileID: 8639180374473771882}
   - component: {fileID: 2442388958254288432}
@@ -258,13 +257,14 @@ GameObject:
   - component: {fileID: 7084188183669074826}
   - component: {fileID: 5630198134457391120}
   - component: {fileID: 616602905279041893}
+  - component: {fileID: 405827948745422593}
   m_Layer: 8
   m_Name: EnemyWizard
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &107141772151869461
 Transform:
   m_ObjectHideFlags: 0
@@ -334,25 +334,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2436041856228967549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8278184133083264596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 352c011b5e66b9f4bb8020fe11d4bde6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: 858f7ba3eb201c545b0c1a4b2119e77e, type: 2}
-  enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
-  enemyIdleBase: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
-  enemyChaseBase: {fileID: 11400000, guid: 6e39bed7642883d4b81cfb915f1e7103, type: 2}
-  enemyAttackBase: {fileID: 11400000, guid: 79063f04232b24244a4e42413da7cc97, type: 2}
-  enemyDamagedBase: {fileID: 11400000, guid: 7e41fefeb06e60b408571fd07497532b, type: 2}
-  enemyDeathBase: {fileID: 11400000, guid: b5b4ce5b4b5445f4bb0ea4c825efadfb, type: 2}
 --- !u!61 &7151497659424373865
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -453,7 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _knockBackTime: 0.2
   _constForce: 0.25
-  _delayTime: 0.1
+  _releaseTime: 0.1
   _knockbackHitForceCurve:
     serializedVersion: 2
     m_Curve:
@@ -529,6 +510,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec7eb203fd6b6b43b80f61535c25d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &405827948745422593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278184133083264596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b08ba2e982ed145a72808f92d85fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stats: {fileID: 11400000, guid: 858f7ba3eb201c545b0c1a4b2119e77e, type: 2}
+  ring: {fileID: 0}
+  enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
+  enemyIdleBase: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
+  enemyChaseBase: {fileID: 11400000, guid: 6e39bed7642883d4b81cfb915f1e7103, type: 2}
+  enemyAttackBase: {fileID: 11400000, guid: 79063f04232b24244a4e42413da7cc97, type: 2}
+  enemyDamagedBase: {fileID: 11400000, guid: 7e41fefeb06e60b408571fd07497532b, type: 2}
+  enemyDeathBase: {fileID: 11400000, guid: b5b4ce5b4b5445f4bb0ea4c825efadfb, type: 2}
+  attackSoundEffects:
+  - Guid:
+      Data1: -1893220728
+      Data2: 1241464729
+      Data3: 1889023890
+      Data4: -1506307889
+    Path: event:/Wizard/Wizard_Cast
+  moveSoundEffects:
+  - Guid:
+      Data1: 1944312006
+      Data2: 1262148601
+      Data3: 2062158264
+      Data4: -1837458249
+    Path: event:/Wizard/Wizard_Teleport
+  damagedSoundEffects:
+  - Guid:
+      Data1: 68977680
+      Data2: 1302162718
+      Data3: 875254937
+      Data4: 1690156463
+    Path: event:/Gremlin/GremlinHurt
+  deathSoundEffects:
+  - Guid:
+      Data1: 1108386472
+      Data2: 1146519904
+      Data3: 1442175146
+      Data4: 741562082
+    Path: event:/Wizard/Wizard_Death
 --- !u!1 &8876314502001647915
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,10 @@ public class EnemyGolemChase : EnemyChaseSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.GolemFootStepSound)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemStep, _transform.position);
+            if (_enemy.moveSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);
+            }
         }
 
     }
