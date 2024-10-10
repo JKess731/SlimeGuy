@@ -43,8 +43,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public EnemyDeathSOBase enemyDeathBaseInstance { get; set; }
     #endregion
 
-
-
+    [Header("Enemy Sfx")]
     #region Sfx References
     [SerializeField] public List<EventReference> attackSoundEffects;
     [SerializeField] public List<EventReference> moveSoundEffects;
