@@ -13,6 +13,6 @@ public class MusicPlayer : MonoBehaviour
 
     private void PlayMusic()
     {
-       AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _transform.position); 
+       AudioManager.instance.PlayOneShot(FmodEvents.instance.NikoSong, _transform.position); 
     }
 }

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,10 @@ public class EnemyGolemDamaged : EnemyDamagedSOBase
         base.DoAnimationTriggerEventLogic(triggerType);
         if (triggerType == EnemyBase.AnimationTriggerType.GolemDamaged)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemDamage, _transform.position);
+            if (_enemy.damagedSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.damagedSoundEffects[0], _enemy.transform.position);
+            }
         }
     }
 

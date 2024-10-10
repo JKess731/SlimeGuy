@@ -20,7 +20,7 @@ public class FmodEvents : MonoBehaviour
     [field:SerializeField] public EventReference playerDeath { get; private set; }
     [field: SerializeField] public EventReference playerPickUp { get; private set; }
 
-
+    
     [field:Header("Dwarf")]
     [field:SerializeField] public EventReference DwarfAttack { get; private set; }
     [field:SerializeField] public EventReference DwarfHurt { get; private set; }
@@ -45,7 +45,7 @@ public class FmodEvents : MonoBehaviour
     [field: SerializeField] public EventReference WizardDeath { get; private set; }
 
     [field: SerializeField] public EventReference WizardTeleport { get; private set; }
-
+    
 
 
     private void Awake()

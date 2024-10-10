@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class EnemySmashAttack : EnemyAttackSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, attackPoint.position);
+           //RuntimeManager.PlayOneShot(_enemy.GolemAttack, _enemy.transform.position);
         }
 
     }

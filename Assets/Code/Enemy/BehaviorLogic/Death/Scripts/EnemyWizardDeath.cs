@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,10 @@ public class EnemyWizardDeath : EnemyDeathSOBase
         if (triggerType == EnemyBase.AnimationTriggerType.WizardDeathTrigger)
         {
             Debug.Log("WizardDeath");
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.WizardDeath, _transform.position);
+            if (_enemy.deathSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.deathSoundEffects[0], _enemy.transform.position);
+            }
             Destroy(_gameObject);
         }
     }

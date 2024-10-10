@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -40,6 +41,15 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public EnemyAttackSOBase enemyAttackBaseInstance { get; set; }
     public EnemyDamagedSOBase enemyDamagedBaseInstance { get; set; }
     public EnemyDeathSOBase enemyDeathBaseInstance { get; set; }
+    #endregion
+
+
+
+    #region Sfx References
+    [SerializeField] public List<EventReference> attackSoundEffects;
+    [SerializeField] public List<EventReference> moveSoundEffects;
+    [SerializeField] public List<EventReference> damagedSoundEffects;
+    [SerializeField] public List<EventReference> deathSoundEffects;
     #endregion
 
     #region Trigger Variables
