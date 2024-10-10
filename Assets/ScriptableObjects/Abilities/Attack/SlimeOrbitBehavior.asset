@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6398c4295670344b80627702f138e8d, type: 3}
   m_Name: SlimeOrbitBehavior
   m_EditorClassIdentifier: 
+  _abilityName: 
+  _icon: {fileID: 21300000, guid: 98ce95fdeb8481b49ab36c2fac2ef600, type: 3}
+  _abilityType: 1
   _cooldownTime: 4
   _activationTime: 4
   _status: {fileID: 0}

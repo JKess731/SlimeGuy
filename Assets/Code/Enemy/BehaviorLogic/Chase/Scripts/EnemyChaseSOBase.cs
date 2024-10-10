@@ -65,16 +65,6 @@ public class EnemyChaseSOBase : ScriptableObject
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) {
 
-        if (triggerType == EnemyBase.AnimationTriggerType.PlayDwarfFootStepSound)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfStep, _transform.position);
-        }
-
-        if(triggerType == EnemyBase.AnimationTriggerType.GolemFootStepSound)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemStep, _transform.position);
-        }
-
     }
 
 

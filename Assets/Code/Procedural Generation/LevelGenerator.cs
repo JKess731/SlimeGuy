@@ -51,9 +51,9 @@ public class LevelGenerator : MonoBehaviour
         public int row = 0;
         public int col = 0;
     }
-
     private void Start()
     {
+        AudioManager.instance?.PlayJeopardy();
         rooms = GenerateGrid();
 
         PlaceStartRoom();
@@ -185,7 +185,9 @@ public class LevelGenerator : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
 
         Debug.Log("Generation Complete...");
-        AudioManager.instance?.PlayOneShot(FmodEvents.instance.NikoSong, transform.position);
+        AudioManager.instance?.StopJeopardy();
+        AudioManager.instance?.PlayNiko();
+
         GenComplete();
         lastRoom = ChooseBossRoom();
         Complete.Invoke();

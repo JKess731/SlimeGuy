@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3397623829d5879458764297e770788d, type: 3}
   m_Name: SlimeGrenadeBehavior
   m_EditorClassIdentifier: 
+  _abilityName: 
+  _icon: {fileID: 21300000, guid: 7405ad9bf68726a4681c0bbf5e1f5973, type: 3}
+  _abilityType: 1
   _cooldownTime: 2
   _activationTime: 2
   _status: {fileID: 0}

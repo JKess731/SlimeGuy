@@ -45,6 +45,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region Trigger Variables
     public bool isAggroed { get; set; }
     public bool isWithinStikingDistance { get; set; }
+    public bool isWithinShootingDistance { get; set; }
     #endregion
     public  Rigidbody2D RB { get; set; }
     private Vector2 faceDir { get; set; }
@@ -52,7 +53,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private KnockBack knockBack;                        // Knockback script
     private SimpleFalsh damageFlash;                    // Flash script
 
-    private EnemyAnimation enemyAnimation;              // Animator for the enemy
+    private AnimationControl enemyAnimation;              // Animator for the enemy
     private Enum_State _state;                          // The current state of the enemy
 
     //public GameObject slimeDrop;                      // The slime drop prefab for absorption
@@ -68,7 +69,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         //Get Knockback and Flash Scripts
         knockBack = GetComponent<KnockBack>();
         damageFlash = GetComponent<SimpleFalsh>();
-        enemyAnimation = GetComponent<EnemyAnimation>();
+        enemyAnimation = GetComponent<AnimationControl>();
 
         //Instantiate Scriptable Objects
         _stats = Instantiate(_stats);
@@ -159,6 +160,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         damageFlash.Flash();
         _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
+        Debug.Log("Health: " + _stats.GetStat(StatsEnum.HEALTH));
         //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
         GoToDamage();
 
@@ -172,7 +174,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         damageFlash.Flash();
         _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
-        //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
+        Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
         GoToDamage();
 
         if (_stats.GetStat(StatsEnum.HEALTH) <= 0)
@@ -232,7 +234,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         GolemDeath,
         GolemDamaged,
         GolemFootStepSound,
-        PlayNikoSong
+        PlayNikoSong,
+        WizardCastTrigger,
+        WizardTeleportTrigger,
+        WizardDeathTrigger,
+        WizardDamageTrigger
     }
     #endregion
 
@@ -245,6 +251,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public void setStrikingDistance(bool isStrikingDistance_)
     {
         isWithinStikingDistance = isStrikingDistance_;
+    }
+
+    public void setShootingDistance(bool isShootingDistance_) 
+    {
+        isWithinShootingDistance = isShootingDistance_;
     }
     #endregion
 }

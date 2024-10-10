@@ -26,13 +26,8 @@ public class AbilityPickup : MonoBehaviour
                 {
                     //abilityManager.InstaniateSecondary(abilityToPickup);
                 }
-                else
-                {
-                    // If both slots are full, you could replace an ability or just do nothing
-                    Debug.Log("Both ability slots are full.");
-                }
 
-                // Optionally, destroy the pickup object after being picked up
+                // Destroy the pickup object after being picked up
                 Destroy(gameObject);
             }
         }

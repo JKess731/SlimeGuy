@@ -19,6 +19,14 @@ public class Whip : Attacks
         _status = status;
     }
 
+    public void Initialize(int damage, float knockback, float rotationSpeed, float activationTime)
+    {
+        _damage = damage;
+        _knockback = knockback;
+        _rotationSpeed = rotationSpeed;
+        _activationTime = activationTime;
+    }
+
     private void Start()
     {
         Destroy(gameObject, _activationTime);
@@ -28,6 +36,7 @@ public class Whip : Attacks
 
     private void FixedUpdate()
     {
+        //Debug.Log("Spinning");
         transform.position = _player.transform.position;
         transform.Rotate(Vector3.forward * _rotationSpeed * Time.deltaTime);
     }

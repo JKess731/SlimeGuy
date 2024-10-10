@@ -83,6 +83,15 @@ public class PushPulse : Attacks
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage, transform.right, _knockback, Vector2.up);
         }
     }
+
+    public void Initialize(int damage, float knockback, float speed, float distance, float activationTime)
+    {
+        _damage = damage;
+        _knockback = knockback;
+        _activationTime = activationTime;
+        _speed = speed;
+        _distance = distance;
+    }
 }
 
 

@@ -43,8 +43,6 @@ public class PlayerController : MonoBehaviour
             _playerInput = new PlayerInput();
         }
 
-        //AudioManager.instance.OnGameStart();
-
         _rb = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<Collider2D>();
         _tr = GetComponent<TrailRenderer>();
@@ -297,8 +295,8 @@ public class PlayerController : MonoBehaviour
         if (_canDash)
         {
             StartCoroutine(DashCoroutine());
+            _abilityManager.OnDashStarted(context);
         }
-        _abilityManager.OnDashStarted(context);
     }
     private void OnDashPerformed(InputAction.CallbackContext context)
     {

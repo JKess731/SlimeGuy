@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -83,6 +84,8 @@ public class AbilityManager : MonoBehaviour
                 passiveDict.Add(child.AbilityName, child);
             }
         }
+
+        attackPos = GameObject.Find("Ring").transform.GetChild(0).transform;
     }
 
     private void Start()
@@ -90,10 +93,18 @@ public class AbilityManager : MonoBehaviour
         primary?.Initialize();
         secondary?.Initialize();
         dash?.Initialize();
+
         foreach (AbilityMonoBase ability in passive)
         {
             ability?.Initialize();
         }
+
+
+        Debug.Log("Primary: " + primary.Icon);
+        Debug.Log("Secondary: " + secondary.Icon);
+        Debug.Log("Getter Pri: " + Primary.Icon);
+        Debug.Log("Getter Sec: " + Secondary.Icon);
+        UiManager.instance.UpdateAllIcons();
     }
 
     public void Swap(AbilityType abilityType, string abilityName)
@@ -123,7 +134,7 @@ public class AbilityManager : MonoBehaviour
     #region Primary
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
-        if(primary.AbilityState == AbilityState.READY)
+        if(primary?.AbilityState == AbilityState.READY)
         {
             primary?.StartBehavior(attackPos.position, attackPos.rotation);
         }
@@ -147,21 +158,21 @@ public class AbilityManager : MonoBehaviour
     #region Secondary
     public void OnSecondaryStarted(InputAction.CallbackContext context)
     {
-        if (secondary.AbilityState == AbilityState.READY)
+        if (secondary?.AbilityState == AbilityState.READY)
         {
             secondary?.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnSecondaryPerformed(InputAction.CallbackContext context)
     {
-        if (secondary.AbilityState == AbilityState.STARTING)
+        if (secondary?.AbilityState == AbilityState.STARTING)
         {
             secondary?.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnSecondaryCanceled(InputAction.CallbackContext context)
     {
-        if(secondary.AbilityState == AbilityState.PERFORMING)
+        if(secondary?.AbilityState == AbilityState.PERFORMING)
         {
             secondary?.CancelBehavior(attackPos.position, attackPos.rotation);
         }
@@ -171,21 +182,21 @@ public class AbilityManager : MonoBehaviour
     #region Dash
     public void OnDashStarted(InputAction.CallbackContext context)
     {
-        if (dash.AbilityState == AbilityState.READY)
+        if (dash?.AbilityState == AbilityState.READY)
         {
             dash?.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnDashPerformed(InputAction.CallbackContext context)
     {
-        if (dash.AbilityState == AbilityState.STARTING)
+        if (dash?.AbilityState == AbilityState.STARTING)
         {
             dash?.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnDashCanceled(InputAction.CallbackContext context)
     {
-        if (dash.AbilityState == AbilityState.PERFORMING)
+        if (dash?.AbilityState == AbilityState.PERFORMING)
         {
             dash?.CancelBehavior(attackPos.position, attackPos.rotation);
         }

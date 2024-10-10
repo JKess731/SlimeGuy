@@ -15,7 +15,6 @@ public class EnemyIdleSOBase : ScriptableObject
         transform = gameObject.transform;
         this.enemy = enemy;
         playerTransform = GameObject.FindGameObjectWithTag("player").transform;
-    
     }
 
     public virtual void DoEnterLogic() { 
@@ -28,6 +27,10 @@ public class EnemyIdleSOBase : ScriptableObject
         if (enemy.isAggroed)
         {
             enemy.stateMachine.ChangeState(enemy.chaseState);
+        }
+        if (enemy.isWithinShootingDistance)
+        {
+            enemy.stateMachine.ChangeState(enemy.attackState);
         }
     }
 

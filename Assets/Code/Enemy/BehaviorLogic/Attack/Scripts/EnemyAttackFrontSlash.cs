@@ -11,14 +11,10 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
     [SerializeField] private int frontSlashDamage;
     [SerializeField] private float frontSlashAttackDelay;
     public GameObject ring;
-    private float timer;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
-
-        GameObject slash = Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
-        _enemy.stateMachine.ChangeState(_enemy.chaseState);
 
         Vector3 rotation = _playerTransform.position - ring.transform.position;
         float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
@@ -26,25 +22,10 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _enemyTransform.position);
+            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _enemy.transform.position);
+            //tweak Edison
+            Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
         }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDamaged)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfHurt, _enemyTransform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _enemyTransform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _enemyTransform.position);
-            rotation = new Vector3(0, 0, 0);
-        }
-
     }
 
     public override void DoEnterLogic()
@@ -52,7 +33,6 @@ public class EnemyAttackFrontSlash : EnemyAttackSOBase
         base.DoEnterLogic();
         attackPoint = _enemy.transform.GetChild(1).GetChild(0);
         ring = _enemy.transform.GetChild(1).gameObject;
-        
     }
 
     public override void DoExitLogic()

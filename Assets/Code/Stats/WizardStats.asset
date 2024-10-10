@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _statList:
   - _statEnum: 4
-    _statValue: 20
+    _statValue: 10
   - _statEnum: 3
-    _statValue: 20
+    _statValue: 10
   - _statEnum: 0
     _statValue: 2
   - _statEnum: 2
