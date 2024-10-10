@@ -59,6 +59,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     //public GameObject slimeDrop;                      // The slime drop prefab for absorption
     public bool isDead { get; set; } = false;
     public Vector2 FaceDir { get => faceDir; set => faceDir = value; }
+    public Transform Ring { get => ring; set => ring = value; }
     public Enum_State State { get => _state; set => _state = value; }
 
     private void Awake()
@@ -197,7 +198,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void MoveEnemy(Vector2 velocity)
     {
-        faceDir = velocity.normalized;
         RB.velocity = velocity * _stats.GetStat(StatsEnum.SPEED);
     }
 

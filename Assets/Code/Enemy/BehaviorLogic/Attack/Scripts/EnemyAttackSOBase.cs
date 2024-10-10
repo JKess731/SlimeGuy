@@ -6,48 +6,30 @@ using UnityEngine;
 public class EnemyAttackSOBase : ScriptableObject
 {
     protected EnemyBase _enemy;
-    protected GameObject _playerGameObject;
     protected Transform _enemyTransform;
-    protected Transform _playerTransform;
 
-    /*
-    // Array to hold multiple of one sound event
-    [SerializeField] private EventReference[] golemAttackSounds;
-    */
+    protected GameObject _playerGameObject;
+    protected Transform _playerTransform;
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
-        _playerGameObject = gameObject;
-        _enemyTransform = gameObject.transform;
+        //Get the enemybase and transform components
         _enemy = enemy;
+        _enemyTransform = gameObject.transform;
+
+        //Get the player gameobject and transform components
+        _playerGameObject = gameObject;
         _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
-
-        // Initialize the attackSounds array using FmodEvents instance
-        /*
-        FmodEvents fmodEvents = FmodEvents.instance;
-
-        golemAttackSounds = new EventReference[]
-        {
-            fmodEvents.GolemAttack1,
-            fmodEvents.GolemAttack2,
-            fmodEvents.GolemAttack3
-        };
-        */
     }
 
     public virtual void DoEnterLogic() { 
         _enemy.State = Enum_State.ATTACKING;
     }
-
     public virtual void DoExitLogic() { ResetValues(); }
-
-    public virtual void DoFrameUpdateLogic() { }
-
-    public virtual void DoPhysicsLogic() { }
-
-    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
-    {
+    public virtual void DoFrameUpdateLogic() {
+        _enemy.MoveEnemy(Vector2.zero);
     }
-
+    public virtual void DoPhysicsLogic() { }
+    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType){}
     public virtual void ResetValues() { }
 }
