@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,10 @@ public class EnemyGremlinDamaged : EnemyDamagedSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.DwarfDamaged)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfHurt, _transform.position);
+            if (_enemy.damagedSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.damagedSoundEffects[0], _enemy.transform.position);
+            }
         }
     }
 

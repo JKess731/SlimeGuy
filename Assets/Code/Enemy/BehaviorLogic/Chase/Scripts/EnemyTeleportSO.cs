@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -13,7 +14,10 @@ public class EnemyTeleportSO : EnemyChaseSOBase
         if (triggerType == EnemyBase.AnimationTriggerType.WizardTeleportTrigger)
         {
             Debug.Log("WizardTeleport");
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.WizardTeleport, _transform.position);
+            if (_enemy.moveSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);
+            }
         }
     }
 

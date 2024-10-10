@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,10 @@ public class EnemyGolemDeath : EnemyDeathSOBase
 
         if (triggerType == EnemyBase.AnimationTriggerType.GolemDeath)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemDeath, _transform.position);
+            if (_enemy.deathSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.deathSoundEffects[0], _enemy.transform.position);
+            }
             Destroy(_gameObject);
         }
     }

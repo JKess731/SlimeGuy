@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -32,7 +33,10 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
         if (triggerType == EnemyBase.AnimationTriggerType.WizardCastTrigger)
         {
             Debug.Log("WizardCast");
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.WizardCast, attackPoint.position);
+            if (_enemy.attackSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
+            }
         }
     }
 
