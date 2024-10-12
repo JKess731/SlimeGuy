@@ -10,20 +10,30 @@ public class OrbitMono : AbilityMonoBase
     [SerializeField] private float _spreadAngle = 360f;
 
     [Header("Prefab Attributes")]
-    [SerializeField] private int _damage;
+    [SerializeField] private float _damage;
     [SerializeField] private float _knockback;
     [SerializeField] private float _activationTime;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _distance;
 
+    private PlayerStateMachine _playerStats;
+    private string UIAbilityType;
+
     public override void Initialize()
     {
         base.Initialize();
+        _playerStats = PlayerStats.instance.playerStateMachine;
+        UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
+
+        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
+        float addedActivationTime = _playerStats.playerStats.GetStat(StatsEnum.ACTIVATION_TIME);
+        float addedRotationSpeed = _playerStats.playerStats.GetStat(StatsEnum.ROTATION_SPEED);
 
         // Calculate the angle difference between each orbitball
         float angleStep = _spreadAngle / _orbitCount;
@@ -33,13 +43,17 @@ public class OrbitMono : AbilityMonoBase
         {
             // Spawn the orbitball at the player's position
             GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
-            newOrbit.GetComponent<Orbit>().Initialize(_damage, _knockback, _activationTime, _rotationSpeed, _distance);
+            newOrbit.GetComponent<Orbit>().Initialize(_damage + addedDamage, _knockback + addedKnockback, _activationTime + addedActivationTime, 
+                _rotationSpeed + addedRotationSpeed, _distance);
             newOrbit.GetComponent<Orbit>().SetInitialAngle(currentAngle);
 
             // Increment the angle for the next orbitball
             currentAngle += angleStep;
         }
 
+        Debug.Log("Orrbit Damage:" + (_damage + addedDamage));
+
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
         StartCoroutine(Cooldown());
     }
 
@@ -47,10 +61,6 @@ public class OrbitMono : AbilityMonoBase
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation){}
 
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-
-    }
 
     public override IEnumerator Cooldown()
     {

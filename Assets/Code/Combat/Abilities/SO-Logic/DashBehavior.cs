@@ -37,15 +37,4 @@ public class DashBehavior : AbilitySOBase
     {
         AbilityState = AbilityState.FINISHED;
     }
-
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-        switch (stat)
-        {
-            case StatsEnum.ACTIVATION_TIME:
-                _activationTime += playerstats.GetStat(StatsEnum.ACTIVATION_TIME);
-                break;
-        }
-
-    }
 }

@@ -10,21 +10,35 @@ public class ShotgunMono : AbilityMonoBase
     [SerializeField] private float _spreadAngle;
 
     [Header("Prefab Attributes")]
-    [SerializeField] private int _projectileDamage;
+    [SerializeField] private float _projectileDamage;
     [SerializeField] private float _projectileKnockback;
     [SerializeField] private float _projectileSpeed;
     [SerializeField] private float _projectileRange;
     [SerializeField] private int _piercingAmount;
     [SerializeField] private int _bulletBounce;
 
+    private PlayerStateMachine _playerStats;
+    private string UIAbilityType;
+
     public override void Initialize()
     {
+        
         base.Initialize();
+        _playerStats = PlayerStats.instance.playerStateMachine;
+        UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
+        Debug.Log(UIAbilityType);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
+
+        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
+        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
+        float addedPiercingAmount = _playerStats.playerStats.GetStat(StatsEnum.PIERCING_COUNT);
+        float addedBulletBounce = _playerStats.playerStats.GetStat(StatsEnum.RICHOCHET_COUNT);
+
         Debug.Log("Shotgun Starting");
 
         float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
@@ -35,30 +49,16 @@ public class ShotgunMono : AbilityMonoBase
 
             Debug.Log("Shotgun Bullet Fired");
             GameObject newBullet = Instantiate(_projectile, attackPosition, newRot);
-            newBullet.GetComponent<Bullet>().Initialize(_projectileDamage, _projectileKnockback, _projectileSpeed, _projectileRange, _piercingAmount, _bulletBounce);
+            newBullet.GetComponent<Bullet>().Initialize(_projectileDamage + addedDamage, _projectileKnockback + addedKnockback, 
+                _projectileSpeed + addedSpeed, _projectileRange, _piercingAmount + (int)addedPiercingAmount, _bulletBounce + (int)addedBulletBounce);
+            Debug.Log("Shotgun Damage:" + (_projectileDamage + addedDamage));
         }
 
         StartCoroutine(Cooldown());
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, 0));
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation){}
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation){}
-
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-        switch (stat)
-        {
-            case StatsEnum.ATTACK:
-                _projectileDamage += (int)playerstats.GetStat(StatsEnum.ATTACK);
-                Debug.Log("Projectile Damage Upgraded: " + _projectileDamage);
-                break;
-            case StatsEnum.KNOCKBACK:
-                _projectileKnockback += playerstats.GetStat(StatsEnum.KNOCKBACK);
-                break;
-            case StatsEnum.SPEED:
-                _projectileSpeed += playerstats.GetStat(StatsEnum.SPEED);
-                break;
-        }
-    }
 }
