@@ -1754,45 +1754,8 @@ PrefabInstance:
     - {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1081436636}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
---- !u!1 &1081436634 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-  m_PrefabInstance: {fileID: 1081436633}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1081436635 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3550361478932584518, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-  m_PrefabInstance: {fileID: 1081436633}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1081436636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081436634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b08ba2e982ed145a72808f92d85fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: c3a443f228234f445b6848ae4ea4802a, type: 2}
-  ring: {fileID: 1081436635}
-  enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
-  enemyIdleBase: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
-  enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
-  enemyAttackBase: {fileID: 11400000, guid: 69f1e2c478eb0a94ab2db8550295ce40, type: 2}
-  enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
-  enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
-  attackSoundEffects: []
-  moveSoundEffects: []
-  damagedSoundEffects: []
-  deathSoundEffects: []
 --- !u!1 &1138785010
 GameObject:
   m_ObjectHideFlags: 0
