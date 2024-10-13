@@ -10,8 +10,8 @@ public class DividingSlashMono : AbilityMonoBase
     [SerializeField] private int _slashCount = 1;
     [SerializeField] private float _spreadAngle = 45f;
 
-    [SerializeField] private float _pushRange = 5f;   // The range to push the player forward
-    [SerializeField] private float _pushSpeed = 10f;  // Speed of the player's forward push
+    [SerializeField] private float _pushRange = 5f;   // The range to push the player backward
+    [SerializeField] private float _pushSpeed = 10f;  // Speed of the player's backward push
 
     [Header("Prefab Attributes")]
     [SerializeField] private int _dividingSlashDamage;
@@ -36,7 +36,6 @@ public class DividingSlashMono : AbilityMonoBase
 
         Vector2 vecForAng = rotation * Vector2.right;
         _pushDirection = vecForAng; // Use the direction of the slash
-        _playerRb.velocity = new Vector2(1000,1000);
 
         _startPos = _playerRb.transform.position;
         _pushVector = _pushDirection * _pushSpeed;
@@ -66,8 +65,8 @@ public class DividingSlashMono : AbilityMonoBase
             }
         }
 
-        // Push the player forward
-        //StartCoroutine(PushPlayerForward());
+        // Push the player backward
+        StartCoroutine(PushPlayerBackward());
         StartCoroutine(Cooldown());
     }
 
@@ -83,7 +82,7 @@ public class DividingSlashMono : AbilityMonoBase
         }
     }
 
-    private IEnumerator PushPlayerForward()
+    private IEnumerator PushPlayerBackward()
     {
         Debug.Log("velocity:" + _playerRb.velocity);
         Debug.Log("push vector:" + _pushVector);
@@ -91,17 +90,17 @@ public class DividingSlashMono : AbilityMonoBase
         Debug.Log("playerPos:" + _playerRb.transform.position);
         Debug.Log(Vector2.Distance(_startPos, _playerRb.transform.position));
 
-        // Push the player forward for a short duration
+        // Continue pushing the player backward until the range is reached
         while (Vector2.Distance(_startPos, _playerRb.transform.position) < _pushRange)
         {
-            Debug.Log("Pushing");
-            _playerRb.velocity = _pushVector;
+            Debug.Log("Pushing player backward...");
+            // Apply a force in the backward direction
+            _playerRb.AddForce(-_pushVector * _pushSpeed, ForceMode2D.Force);
             yield return new WaitForFixedUpdate();
         }
 
-        Debug.Log("Player pushed forward");
-        // Stop player's forward movement after the push
+        Debug.Log("Player pushed backward");
+        // Stop player's movement after the push is complete
         _playerRb.velocity = Vector2.zero;
     }
-
 }
