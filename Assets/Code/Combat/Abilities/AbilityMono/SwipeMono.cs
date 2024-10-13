@@ -10,6 +10,7 @@ public class SwipeMono : AbilityMonoBase
 
     [SerializeField] private float _pushRange = 5f;   // The range to push the player forward
     [SerializeField] private float _pushSpeed = 10f;  // Speed of the player's forward push
+    [SerializeField] private float _swipeStartingPoint;
 
     [Header("Prefab Attributes")]
     [SerializeField] private int _swipeDamage;
@@ -33,7 +34,7 @@ public class SwipeMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
         
-        Quaternion swipeRotation = rotation * Quaternion.Euler(0, 0, -60);
+        Quaternion swipeRotation = rotation * Quaternion.Euler(0, 0, _swipeStartingPoint);
 
         Vector2 vecForAng = rotation * Vector2.right;
         _pushDirection = vecForAng; // Use the direction of the swipe

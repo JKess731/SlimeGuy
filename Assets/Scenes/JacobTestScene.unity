@@ -657,6 +657,7 @@ MonoBehaviour:
   _swipe: {fileID: 7009649584980166181, guid: 5fb696517592d6745b3322a25ef4c443, type: 3}
   _pushRange: 1
   _pushSpeed: 20
+  _swipeStartingPoint: -60
   _swipeDamage: 1
   _swipeKnockback: 7
   _activationTime: 0.3
@@ -747,11 +748,11 @@ PrefabInstance:
     - target: {fileID: 855721381421059794, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: primary
       value: 
-      objectReference: {fileID: 415539853}
+      objectReference: {fileID: 1778460205}
     - target: {fileID: 855721381421059794, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: secondary
       value: 
-      objectReference: {fileID: 1778460205}
+      objectReference: {fileID: 415539853}
     - target: {fileID: 2309622323209581909, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

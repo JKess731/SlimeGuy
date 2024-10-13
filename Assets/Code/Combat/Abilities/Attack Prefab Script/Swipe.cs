@@ -15,8 +15,6 @@ public class Swipe : Attacks
 
     private GameObject _player;
 
-    public float Speed => _speed; // Public property to access speed
-
     public void Initialize(int damage, float knockback, float activationTime, float speed, float range)
     {
         _damage = damage;
