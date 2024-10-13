@@ -96,7 +96,7 @@ public class AbilityManager : MonoBehaviour
             }
         }
 
-        attackPos = GameObject.Find("Ring2").transform.GetChild(0).transform;
+        attackPos = GameObject.Find("Ring").transform.GetChild(0).transform;
     }
 
     private void Start()
