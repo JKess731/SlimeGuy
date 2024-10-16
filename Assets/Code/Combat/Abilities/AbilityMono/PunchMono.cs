@@ -50,14 +50,6 @@ public class PunchMono : AbilityMonoBase
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation) { }
 
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-        switch (stat)
-        {
-            //TODO: Implement upgrade logic
-        }
-    }
-
     private IEnumerator PushPlayerForward()
     {
         Debug.Log("velocity:" + _playerRb.velocity);

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SlimeSwipeDamage : MonoBehaviour
 {
-    private int _damage;
+    private float _damage;
     private float _knockback;
 
     private GameObject _player;
 
     // Method to initialize damage parameters
-    public void Initialize(int damage, float knockback)
+    public void Initialize(float damage, float knockback)
     {
         _damage = damage;
         _knockback = knockback;

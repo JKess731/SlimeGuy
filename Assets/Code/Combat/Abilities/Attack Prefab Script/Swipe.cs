@@ -42,7 +42,10 @@ public class Swipe : Attacks
         _player = GameObject.FindWithTag("player");
 
         // Ignore collisions with the player itself
-        Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+        //Remove this line
+        //  vvvvvvvv
+        //Physics2D.IgnoreCollision(_player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     private void Update()

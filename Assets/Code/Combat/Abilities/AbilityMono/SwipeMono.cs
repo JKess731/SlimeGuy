@@ -54,14 +54,6 @@ public class SwipeMono : AbilityMonoBase
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation) { }
 
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-        switch (stat)
-        {
-            //TODO: Implement upgrade logic
-        }
-    }
-
     public override IEnumerator Cooldown()
     {
         //diag.Stopwatch stopWatch = new diag.Stopwatch();
