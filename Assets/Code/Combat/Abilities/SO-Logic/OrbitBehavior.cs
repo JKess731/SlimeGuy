@@ -59,9 +59,4 @@ public class OrbitBehavior : AbilitySOBase
         AbilityState = AbilityState.FINISHED;
         onBehaviorFinished?.Invoke();
     }
-
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-
-    }
 }

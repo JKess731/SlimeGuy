@@ -58,20 +58,5 @@ public class ShotgunBehavior : AbilitySOBase
         AbilityState = AbilityState.FINISHED;
     }
 
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-        switch (stat)
-        {
-            case StatsEnum.ATTACK:
-                _projectileDamage += (int) playerstats.GetStat(StatsEnum.ATTACK);
-                Debug.Log("Projectile Damage Upgraded: " + _projectileDamage);
-                break;
-            case StatsEnum.KNOCKBACK:
-                _projectileKnockback += playerstats.GetStat(StatsEnum.KNOCKBACK);
-                break;
-            case StatsEnum.SPEED:
-                _projectileSpeed += playerstats.GetStat(StatsEnum.SPEED);
-                break;
-        }
-    }
+    
 }

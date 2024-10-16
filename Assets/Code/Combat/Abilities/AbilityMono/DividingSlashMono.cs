@@ -24,15 +24,24 @@ public class DividingSlashMono : AbilityMonoBase
     private Vector2 _startPos;
     private Vector2 _pushVector;
 
+    private PlayerStateMachine _playerStats;
+    private string UIAbilityType;
+
     public override void Initialize()
     {
         base.Initialize();
         _playerRb = GameObject.FindWithTag("player").GetComponent<Rigidbody2D>();
+        _playerStats = PlayerStats.instance.playerStateMachine;
+        UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
+
+        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
+        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
 
         Vector2 vecForAng = rotation * Vector2.right;
         _pushDirection = vecForAng; // Use the direction of the slash
@@ -44,7 +53,8 @@ public class DividingSlashMono : AbilityMonoBase
         if(_slashCount == 1)
         {
             GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, rotation);
-            newDividingSlash.GetComponent<DividingSlash>().Initialize(_dividingSlashDamage, _dividingSlashKnockback, _dividingSlashSpeed, _dividingSlashRange);
+            newDividingSlash.GetComponent<DividingSlash>().Initialize(_dividingSlashDamage + addedDamage, _dividingSlashKnockback + addedKnockback, 
+                _dividingSlashSpeed + addedSpeed, _dividingSlashRange);
         }
 
         // Calculate the angle step based on the number of slashes and the total spread angle
@@ -61,13 +71,17 @@ public class DividingSlashMono : AbilityMonoBase
                 Quaternion newRot = rotation * Quaternion.Euler(0, 0, _spreadAngle) * Quaternion.Euler(0, 0, addedOffset);
 
                 GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
-                newDividingSlash.GetComponent<DividingSlash>().Initialize(_dividingSlashDamage, _dividingSlashKnockback, _dividingSlashSpeed, _dividingSlashRange);
+                newDividingSlash.GetComponent<DividingSlash>().Initialize(_dividingSlashDamage + addedDamage, _dividingSlashKnockback + addedKnockback,
+               _dividingSlashSpeed + addedSpeed, _dividingSlashRange);
 
             }
         }
 
+        Debug.Log("DS Damage:" + (_dividingSlashDamage + addedDamage));
+
         // Push the player forward
         //StartCoroutine(PushPlayerForward());
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, 0));
         StartCoroutine(Cooldown());
     }
 
@@ -75,13 +89,6 @@ public class DividingSlashMono : AbilityMonoBase
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation){}
 
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-        switch (stat)
-        {
-            //TODO: Implement upgrade logic
-        }
-    }
 
     private IEnumerator PushPlayerForward()
     {

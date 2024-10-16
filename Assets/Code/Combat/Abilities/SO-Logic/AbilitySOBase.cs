@@ -39,8 +39,6 @@ public abstract class AbilitySOBase : ScriptableObject, IAbility
     public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) {}
     public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) {}
     public virtual void CancelBehavior(Vector2 attackPosition, Quaternion rotation) {}
-
-    public virtual void Upgrade(StatsSO playerStats, StatsEnum stats) {}
     public virtual IEnumerator Cooldown()
     {
         //diag.Stopwatch stopWatch = new diag.Stopwatch();

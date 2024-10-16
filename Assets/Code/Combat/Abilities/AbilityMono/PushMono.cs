@@ -8,24 +8,36 @@ public class PushMono : AbilityMonoBase
     [SerializeField] private GameObject _push;
 
     [Header("Prefab Attributes")]
-    [SerializeField] private int _damage;
+    [SerializeField] private float _damage;
     [SerializeField] private float _knockback;
     [SerializeField] private float _activationTime;
     [SerializeField] private float _speed;
     [SerializeField] private float _distance;
 
+    private PlayerStateMachine _playerStats;
+    private string UIAbilityType;
+
     public override void Initialize()
     {
         base.Initialize();
+        _playerStats = PlayerStats.instance.playerStateMachine;
+        UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
 
-        GameObject newPush = Instantiate(_push, attackPosition, Quaternion.identity);
-        newPush.GetComponent<Push>().Initialize(_damage, _knockback, _activationTime, _speed, _distance);
+        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
+        float addedActivationTime = _playerStats.playerStats.GetStat(StatsEnum.ACTIVATION_TIME);
+        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
 
+        GameObject newPush = Instantiate(_push, attackPosition, Quaternion.identity);
+        newPush.GetComponent<Push>().Initialize(_damage + addedDamage, _knockback + addedKnockback, _activationTime + addedActivationTime, 
+            _speed + addedSpeed, _distance);
+
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
         StartCoroutine(Cooldown());
     }
 
