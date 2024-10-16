@@ -12,7 +12,7 @@ public class EnemyGolemChase : EnemyChaseSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.GolemFootStepSound)
+        if (triggerType == EnemyBase.AnimationTriggerType.Move)
         {
             if (_enemy.moveSoundEffects.Count > 0)
             {

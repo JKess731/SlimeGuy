@@ -10,7 +10,7 @@ public class EnemyGremlinDamaged : EnemyDamagedSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDamaged)
+        if (triggerType == EnemyBase.AnimationTriggerType.Damage)
         {
             if (_enemy.damagedSoundEffects.Count > 0)
             {

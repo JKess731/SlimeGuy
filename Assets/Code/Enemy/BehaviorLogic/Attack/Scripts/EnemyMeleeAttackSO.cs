@@ -19,7 +19,7 @@ public class EnemyMeleeAttackSO : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
+        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
         {
             //Play attack sound
             AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _enemy.transform.position);

@@ -10,7 +10,7 @@ public class EnemyGremlinDeath :EnemyDeathSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
+        if (triggerType == EnemyBase.AnimationTriggerType.Death)
         {
             if (_enemy.deathSoundEffects.Count > 0)
             {

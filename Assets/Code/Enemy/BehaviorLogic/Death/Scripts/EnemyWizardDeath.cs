@@ -12,7 +12,7 @@ public class EnemyWizardDeath : EnemyDeathSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.WizardDeathTrigger)
+        if (triggerType == EnemyBase.AnimationTriggerType.Death)
         {
             Debug.Log("WizardDeath");
             if (_enemy.deathSoundEffects.Count > 0)

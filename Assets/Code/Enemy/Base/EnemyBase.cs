@@ -62,7 +62,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private KnockBack knockBack;                        // Knockback script
     private SimpleFalsh damageFlash;                    // Flash script
 
-    private AnimationControl enemyAnimation;              // Animator for the enemy
+    private AnimationControl enemyAnimation;            // Animator for the enemy
     private Enum_State _state;                          // The current state of the enemy
 
     //public GameObject slimeDrop;                      // The slime drop prefab for absorption
@@ -235,19 +235,13 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     }
 
     public enum AnimationTriggerType { 
-        DwarfDamaged,
-        DwarfAttack,
-        DwarfDeath,
-        PlayDwarfFootStepSound,
-        GolemAttack,
-        GolemDeath,
-        GolemDamaged,
-        GolemFootStepSound,
-        PlayNikoSong,
-        WizardCastTrigger,
-        WizardTeleportTrigger,
-        WizardDeathTrigger,
-        WizardDamageTrigger
+        Damage,
+        Attack,
+        Death,
+        Move,
+        Teleport,
+        Idle,
+        Spawn
     }
     #endregion
 

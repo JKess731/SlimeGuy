@@ -30,7 +30,7 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
         float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         ring.transform.rotation = Quaternion.Euler(0, 0, rotation);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.WizardCastTrigger)
+        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
         {
             Debug.Log("WizardCast");
             if (_enemy.attackSoundEffects.Count > 0)

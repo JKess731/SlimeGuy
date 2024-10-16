@@ -11,7 +11,7 @@ public class EnemyTeleportSO : EnemyChaseSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.WizardTeleportTrigger)
+        if (triggerType == EnemyBase.AnimationTriggerType.Teleport)
         {
             Debug.Log("WizardTeleport");
             if (_enemy.moveSoundEffects.Count > 0)

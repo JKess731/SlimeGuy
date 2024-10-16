@@ -9,7 +9,7 @@ public class EnemyGolemDamaged : EnemyDamagedSOBase
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
-        if (triggerType == EnemyBase.AnimationTriggerType.GolemDamaged)
+        if (triggerType == EnemyBase.AnimationTriggerType.Damage)
         {
             if (_enemy.damagedSoundEffects.Count > 0)
             {

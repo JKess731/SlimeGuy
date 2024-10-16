@@ -10,7 +10,7 @@ public class EnemyWizardDamaged : EnemyDamagedSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.WizardDamageTrigger)
+        if (triggerType == EnemyBase.AnimationTriggerType.Damage)
         {
             if (_enemy.damagedSoundEffects.Count > 0)
             {

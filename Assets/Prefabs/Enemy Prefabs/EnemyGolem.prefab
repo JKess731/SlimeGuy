@@ -244,7 +244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3225882427332445501
 Transform:
   m_ObjectHideFlags: 0
@@ -514,7 +514,7 @@ MonoBehaviour:
   enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
   enemyIdleBase: {fileID: 11400000, guid: 985540e631692a9449807e007b23c8bb, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: dd2d4c41a65992740a2d31fd5626f2f2, type: 2}
-  enemyAttackBase: {fileID: 11400000, guid: 27324e2e27470094d97e8a47b1a14ee4, type: 2}
+  enemyAttackBase: {fileID: 11400000, guid: 68cb3b0ebe9b20c44904d39dc4eea323, type: 2}
   enemyDamagedBase: {fileID: 11400000, guid: 6824116bdacd7c04eb79a37fd151cb53, type: 2}
   enemyDeathBase: {fileID: 11400000, guid: da36a3d9419622a4dbc012e55a11592c, type: 2}
   attackSoundEffects:

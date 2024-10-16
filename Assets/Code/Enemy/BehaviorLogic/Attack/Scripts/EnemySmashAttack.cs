@@ -17,7 +17,7 @@ public class EnemySmashAttack : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
+        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
         {
            //RuntimeManager.PlayOneShot(_enemy.GolemAttack, _enemy.transform.position);
         }
