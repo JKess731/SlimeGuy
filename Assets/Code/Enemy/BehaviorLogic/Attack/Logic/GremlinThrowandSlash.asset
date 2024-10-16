@@ -9,11 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb821f4ff8132ae499cde582279567e5, type: 3}
-  m_Name: GremlinProjectile
+  m_Script: {fileID: 11500000, guid: c3373f577cd2b3d45991fafed13b08a5, type: 3}
+  m_Name: GremlinThrowandSlash
   m_EditorClassIdentifier: 
+  slashTriggerPrefab: {fileID: 7577202157244426437, guid: ec108004c8dd33a4fba2afef55f88f0f, type: 3}
+  attackPoint: {fileID: 0}
+  frontSlashDamage: 2
+  frontSlashAttackDelay: 1.5
+  ring: {fileID: 0}
   bulletPrefab: {fileID: -1920076444437821268, guid: 3689c8498e713494f8fb9555cdc951ad, type: 3}
   timeBetweenShots: 2
-  timeTillExit: 3
   distanceToCountExit: 3
-  bulletSpeed: 5
+  bulletSpeed: 10
+  attackRange: 3

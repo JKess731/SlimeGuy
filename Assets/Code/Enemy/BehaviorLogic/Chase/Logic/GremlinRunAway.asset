@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GremlinRunAway
   m_EditorClassIdentifier: 
   runAwaySpeed: 1.5
-  attackPoint: {fileID: 0}
-  ring: {fileID: 0}
+  changeDirectionCooldown: 0.5
+  attackRange: 2

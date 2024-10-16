@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb821f4ff8132ae499cde582279567e5, type: 3}
-  m_Name: GremlinProjectile
+  m_Script: {fileID: 11500000, guid: e099cf81baf339448a61a64a6098a873, type: 3}
+  m_Name: GremlinIdleChase
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: -1920076444437821268, guid: 3689c8498e713494f8fb9555cdc951ad, type: 3}
-  timeBetweenShots: 2
-  timeTillExit: 3
-  distanceToCountExit: 3
-  bulletSpeed: 5
