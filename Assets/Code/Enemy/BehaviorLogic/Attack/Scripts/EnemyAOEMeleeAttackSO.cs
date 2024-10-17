@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-[CreateAssetMenu(fileName = "MeleeAttack", menuName = "EnemyLogic/AttackLogic/MeleeAttack")]
+[CreateAssetMenu(fileName = "AOEMeleeAttack", menuName = "EnemyLogic/AttackLogic/AOEMeleeAttack")]
 
-public class EnemyMeleeAttackSO : EnemyAttackSOBase
+public class EnemyAOEMeleeAttackSO : EnemyAttackSOBase
 {
     [Header("Melee Attack Properties")]
     [SerializeField] private GameObject _meleePrefab;
@@ -26,10 +26,8 @@ public class EnemyMeleeAttackSO : EnemyAttackSOBase
             AudioManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
 
             //Spawn attack object
-            GameObject meleeAttack = Instantiate(_meleePrefab, _attackPoint.position, _enemy.Ring.rotation);
+            GameObject meleeAttack = Instantiate(_meleePrefab, _attackPoint.position, Quaternion.identity);
             meleeAttack.GetComponent<EnemyMelee>().Initialize(_damage, _knockback);
-
-            //Set attack delay
         }
     }
 

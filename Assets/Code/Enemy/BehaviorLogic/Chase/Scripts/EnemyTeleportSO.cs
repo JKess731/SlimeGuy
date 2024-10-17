@@ -14,10 +14,7 @@ public class EnemyTeleportSO : EnemyChaseSOBase
         if (triggerType == EnemyBase.AnimationTriggerType.Teleport)
         {
             Debug.Log("WizardTeleport");
-            if (_enemy.moveSoundEffects.Count > 0)
-            {
-                RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);
-            }
+            RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);
         }
     }
 
@@ -34,7 +31,7 @@ public class EnemyTeleportSO : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        if (_enemy.isWithinShootingDistance)
+        if (_enemy._isWithinShootingDistance)
         {
             _enemy.stateMachine.ChangeState(_enemy.attackState);
         }

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class EnemyDeathNormal : EnemyDeathSOBase
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
+        RuntimeManager.PlayOneShot(_enemy.deathSoundEffects[0], _enemy.transform.position);
+        Destroy(_gameObject);
     }
 
     public override void DoEnterLogic()

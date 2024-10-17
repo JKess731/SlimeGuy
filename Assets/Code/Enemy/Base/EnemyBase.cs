@@ -6,41 +6,28 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckable
 {
-    [Header("Enemy StatSO")]
+    //-------------------------------------------------------
+    //                  Serialized Fields
+    //-------------------------------------------------------
+    [Header("Enemy Stats SO")]
     [SerializeField] private StatsSO _stats;
+    [SerializeField] private float _knockbackRes;
+    [SerializeField] private bool _isStunnable = true;
 
     [Header("Enemy Ring")]
     [SerializeField] private Transform ring;
 
-    [Header("Enemy StateSO")]
+    [Header("Enemy State Instance SO")]
     [Space()]
     //The scriptable objects that hold the base logic for the enemy
     #region Scriptable Objects Variables
-    [SerializeField] private EnemySpawnSOBase enemySpawnBase;
-    [SerializeField] private EnemyIdleSOBase enemyIdleBase;
-    [SerializeField] private EnemyChaseSOBase enemyChaseBase;
-    [SerializeField] private EnemyAttackSOBase enemyAttackBase;
-    [SerializeField] private EnemyDamagedSOBase enemyDamagedBase;
-    [SerializeField] private EnemyDeathSOBase enemyDeathBase;
-
-    //The types of states the enemy can be in
-    #region State Machine Variables
-    public EnemyStateMachine stateMachine { get; set; }
-    public EnemyIdleState idleState { get; set; }
-    public EnemyChaseState chaseState { get; set; }
-    public EnemyAttackState attackState { get; set; }
-    public EnemyDamagedState damagedState { get; set; }
-    public EnemySpawningState spawnState { get; set; }
-    public EnemyDeathState deathState { get; set; }
-    #endregion
-
+    [SerializeField] private EnemySpawnSOBase _enemySpawnBase;
+    [SerializeField] private EnemyIdleSOBase _enemyIdleBase;
+    [SerializeField] private EnemyChaseSOBase _enemyChaseBase;
+    [SerializeField] private EnemyAttackSOBase _enemyAttackBase;
+    [SerializeField] private EnemyDamagedSOBase _enemyDamagedBase;
+    [SerializeField] private EnemyDeathSOBase _enemyDeathBase;
     //The instances of the scriptable objects 
-    public EnemySpawnSOBase enemySpawnBaseInstance { get; set; }
-    public EnemyIdleSOBase enemyIdleBaseInstance { get; set; }
-    public EnemyChaseSOBase enemyChaseBaseInstance { get; set; }
-    public EnemyAttackSOBase enemyAttackBaseInstance { get; set; }
-    public EnemyDamagedSOBase enemyDamagedBaseInstance { get; set; }
-    public EnemyDeathSOBase enemyDeathBaseInstance { get; set; }
     #endregion
 
     [Header("Enemy Sfx")]
@@ -51,25 +38,62 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     [SerializeField] public List<EventReference> deathSoundEffects;
     #endregion
 
-    #region Trigger Variables
-    public bool isAggroed { get; set; }
-    public bool isWithinStikingDistance { get; set; }
-    public bool isWithinShootingDistance { get; set; }
-    #endregion
-    public  Rigidbody2D RB { get; set; }
-    private Vector2 faceDir { get; set; }
+    private Vector2 _faceDir;                            // The direction the enemy is facing
+    private bool _isDead = false;                        // Is the enemy dead
+    private KnockBack _knockBack;                        // Knockback script
+    private SimpleFalsh _damageFlash;                    // Flash script
 
-    private KnockBack knockBack;                        // Knockback script
-    private SimpleFalsh damageFlash;                    // Flash script
+    private Rigidbody2D _rigidbody2D;                    // Rigidbody of the enemy
+    private AnimationControl _enemyAnimation;            // Animator for the enemy
+    private Enum_State _state;                           // The current state of the enemy
 
-    private AnimationControl enemyAnimation;            // Animator for the enemy
-    private Enum_State _state;                          // The current state of the enemy
 
-    //public GameObject slimeDrop;                      // The slime drop prefab for absorption
-    public bool isDead { get; set; } = false;
-    public Vector2 FaceDir { get => faceDir; set => faceDir = value; }
-    public Transform Ring { get => ring; set => ring = value; }
+    //-------------------------------------------------------
+    //                  Non-Serialized Fields
+    //-------------------------------------------------------
+    private Coroutine _attackEnumerator;                          // Enumerator for the attack
+    private Coroutine _stunEnumerator;
+    public Coroutine AttackEnumerator { get => _attackEnumerator; set => _attackEnumerator = value; }   // Enumerator for the attack
+    public Coroutine StunEnumerator { get => _stunEnumerator; set => _stunEnumerator = value; }         // Enumerator for the stun
+
+    //-------------------------------------------------------
+    //                         Properties
+    //-------------------------------------------------------
+    #region Regular Properties
+    public StatsSO Stats { get => _stats; }
+    public bool IsDead { get; set; } = false;
+    public bool IsStunnable { get => _isStunnable; set => _isStunnable = value; }
+    public KnockBack KnockBack { get => _knockBack;}
+    public Vector2 FaceDir { get => _faceDir; set => _faceDir = value; }
+    public Transform Ring { get => ring;}
     public Enum_State State { get => _state; set => _state = value; }
+    public Rigidbody2D RigidBody2d { get => _rigidbody2D; set => _rigidbody2D = value; }
+    #endregion
+    //----------------- Trigger Variables -------------------    //The variables that hold the status of the enemy
+    #region Trigger Variables
+    public bool _isAggroed { get; set; }
+    public bool _isWithinStikingDistance { get; set; }
+    public bool _isWithinShootingDistance { get; set; }
+    #endregion
+    //---------------State Machine Variables-----------------    //The types of states the enemy can be in
+    #region State Machine Variables
+    public EnemyStateMachine stateMachine { get; set; }
+    public EnemyIdleState idleState { get; set; }
+    public EnemyChaseState chaseState { get; set; }
+    public EnemyAttackState attackState { get; set; }
+    public EnemyDamagedState damagedState { get; set; }
+    public EnemySpawningState spawnState { get; set; }
+    public EnemyDeathState deathState { get; set; }
+    #endregion
+    //---------------Scriptable Object Instances-------------    //The instances of the scriptable objects
+    #region SO Instances Variables
+    public EnemySpawnSOBase enemySpawnBaseInstance { get; set; }
+    public EnemyIdleSOBase enemyIdleBaseInstance { get; set; }
+    public EnemyChaseSOBase enemyChaseBaseInstance { get; set; }
+    public EnemyAttackSOBase enemyAttackBaseInstance { get; set; }
+    public EnemyDamagedSOBase enemyDamagedBaseInstance { get; set; }
+    public EnemyDeathSOBase enemyDeathBaseInstance { get; set; }
+    #endregion
 
     private void Awake()
     {
@@ -77,9 +101,9 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         ring = transform.Find("AttackRing").transform;
 
         //Get Knockback and Flash Scripts
-        knockBack = GetComponent<KnockBack>();
-        damageFlash = GetComponent<SimpleFalsh>();
-        enemyAnimation = GetComponent<AnimationControl>();
+        _knockBack = GetComponent<KnockBack>();
+        _damageFlash = GetComponent<SimpleFalsh>();
+        _enemyAnimation = GetComponent<AnimationControl>();
 
         //Instantiate Scriptable Objects
         _stats = Instantiate(_stats);
@@ -89,12 +113,12 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         stateMachine = new EnemyStateMachine();
 
         //Instantiate enemy base scriptable objects
-        enemySpawnBaseInstance = Instantiate(enemySpawnBase);
-        enemyIdleBaseInstance = Instantiate(enemyIdleBase);
-        enemyChaseBaseInstance = Instantiate(enemyChaseBase);
-        enemyAttackBaseInstance = Instantiate(enemyAttackBase);
-        enemyDamagedBaseInstance = Instantiate(enemyDamagedBase);
-        enemyDeathBaseInstance = Instantiate(enemyDeathBase);
+        enemySpawnBaseInstance = Instantiate(_enemySpawnBase);
+        enemyIdleBaseInstance = Instantiate(_enemyIdleBase);
+        enemyChaseBaseInstance = Instantiate(_enemyChaseBase);
+        enemyAttackBaseInstance = Instantiate(_enemyAttackBase);
+        enemyDamagedBaseInstance = Instantiate(_enemyDamagedBase);
+        enemyDeathBaseInstance = Instantiate(_enemyDeathBase);
 
         //Instantiate enemy states into State Machine
         spawnState = new EnemySpawningState(this, stateMachine);
@@ -107,7 +131,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     private void Start()
     {
-        RB = GetComponent<Rigidbody2D>();
+        RigidBody2d = GetComponent<Rigidbody2D>();
 
         enemySpawnBaseInstance.Initialize(gameObject, this);
         enemyIdleBaseInstance.Initialize(gameObject, this);
@@ -121,16 +145,26 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     private void Update()
     {
-        var angle = Mathf.Atan2(faceDir.y, faceDir.x) * Mathf.Rad2Deg;
+        var angle = Mathf.Atan2(_faceDir.y, _faceDir.x) * Mathf.Rad2Deg;
         ring.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         stateMachine.currentEnemyState.FrameUpdate();
-        enemyAnimation.PlayAnimation(faceDir,_state); //This line handles animation <--- Check this here for animation troubles
+        _enemyAnimation.PlayAnimation(_faceDir,_state); //This line handles animation <--- Check this here for animation troubles may need to be changed
     }
 
     private void FixedUpdate()
     {
         stateMachine.currentEnemyState.PhysicsUpdate();
+    }
+
+    public void StartNewCoroutine (IEnumerator coroutine)
+    {
+        StartCoroutine(coroutine);
+    }
+
+    public void StopExsistingCoroutine (IEnumerator coroutine)
+    {
+        StopCoroutine(coroutine);
     }
 
     #region Change states for animation events
@@ -168,28 +202,43 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region Health Die Functions
     public void Damage(float damageAmount, Vector2 hitDirection, float hitforce, Vector2 constantForceDirection)
     {
-        damageFlash.Flash();
-        _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
-        Debug.Log("Health: " + _stats.GetStat(StatsEnum.HEALTH));
-        //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
-        GoToDamage();
-
-        knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
 
         if (_stats.GetStat(StatsEnum.HEALTH) <=0) {
             Die();
         }
+
+        if (_stats.GetStat(StatsEnum.HEALTH) >= 0 && !_isDead)
+        {
+            _damageFlash.Flash();
+            _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
+            _knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
+            AudioManager.PlayOneShot(damagedSoundEffects[0], transform.position);
+        }
+
+        //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
+        if (_isStunnable)
+        {
+            GoToDamage();
+        }
     }
     public void Damage(float damageAmount)
     {
-        damageFlash.Flash();
-        _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
-        Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
-        GoToDamage();
-
         if (_stats.GetStat(StatsEnum.HEALTH) <= 0)
         {
             Die();
+        }
+
+        if (_stats.GetStat(StatsEnum.HEALTH) >= 0 && !_isDead)
+        {
+            _damageFlash.Flash();
+            _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
+            AudioManager.PlayOneShot(damagedSoundEffects[0], transform.position);
+        }
+
+        //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
+        if (_isStunnable)
+        {
+            GoToDamage();
         }
     }
 
@@ -197,7 +246,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     {
         _stats.SetStat(StatsEnum.SPEED, 0);
         //Instantiate(slimeDrop, transform.position, Quaternion.identity);
-        isDead = true;  //Prevent multiple slimedrops
+        _isDead = true;  //Prevent multiple slimedrops
         stateMachine.ChangeState(deathState);
     }
 
@@ -207,7 +256,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void MoveEnemy(Vector2 velocity)
     {
-        RB.velocity = velocity * _stats.GetStat(StatsEnum.SPEED);
+        RigidBody2d.velocity = velocity;
     }
 
     /// <summary>
@@ -246,19 +295,19 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #endregion
 
     #region Trigger Checks
-    public void setAggroStatus(bool isAggroed_)
+    public void setAggroStatus(bool isAggroed)
     {
-        isAggroed = isAggroed_;
+        _isAggroed = isAggroed;
     }
 
-    public void setStrikingDistance(bool isStrikingDistance_)
+    public void setStrikingDistance(bool isStrikingDistance)
     {
-        isWithinStikingDistance = isStrikingDistance_;
+        _isWithinStikingDistance = isStrikingDistance;
     }
 
-    public void setShootingDistance(bool isShootingDistance_) 
+    public void setShootingDistance(bool isShootingDistance) 
     {
-        isWithinShootingDistance = isShootingDistance_;
+        _isWithinShootingDistance = isShootingDistance;
     }
     #endregion
 }

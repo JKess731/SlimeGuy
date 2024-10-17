@@ -34,13 +34,13 @@ public class EnemyGremlinChase : EnemyChaseSOBase
 
     public override void DoFrameUpdateLogic()
     {
-        base.DoFrameUpdateLogic();
-        if (_enemy.isDead)
-        {
-            movementSpeed = 0;
-        }
-        Vector2 moveDirection = (_playerTransform.position - _enemy.transform.position).normalized;
-        _enemy.MoveEnemy(moveDirection * movementSpeed);
+        //base.DoFrameUpdateLogic();
+        //if (_enemy._isDead)
+        //{
+        //    movementSpeed = 0;
+        //}
+        //Vector2 moveDirection = (_playerTransform.position - _enemy.transform.position).normalized;
+        //_enemy.MoveEnemy(moveDirection * movementSpeed);
     }
 
     public override void DoPhysicsLogic()

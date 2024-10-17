@@ -53,11 +53,9 @@ public class MachineGun : Attacks
 
             
             GameObject newBullet = Instantiate(_bulletPrefab, firePoint.position, bulletRotation);
-            newBullet.GetComponent<Bullet>().SetBulletStruct(_bulletStruct);
         }
     }
 
-    
     public void SetMachineGunStruct(MachineGunStruct machineGunStruct)
     {
         _damage = machineGunStruct.Damage;
@@ -66,7 +64,6 @@ public class MachineGun : Attacks
         _knockback = machineGunStruct.Knockback;
     }
 
-    
     public void SetBulletStruct(BulletStruct bulletStruct)
     {
         _bulletStruct = bulletStruct;

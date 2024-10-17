@@ -77,10 +77,7 @@ public class DividingSlashMono : AbilityMonoBase
 
     public override void Upgrade(StatsSO playerstats, StatsEnum stat)
     {
-        switch (stat)
-        {
-            //TODO: Implement upgrade logic
-        }
+
     }
 
     private IEnumerator PushPlayerForward()

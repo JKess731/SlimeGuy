@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyAttackSOBase : ScriptableObject
 {
     protected EnemyBase _enemy;
-    protected Transform _enemyTransform;
+    //protected Transform _enemyTransform;
 
     protected GameObject _playerGameObject;
     protected Transform _playerTransform;
@@ -15,7 +15,7 @@ public class EnemyAttackSOBase : ScriptableObject
     {
         //Get the enemybase and transform components
         _enemy = enemy;
-        _enemyTransform = gameObject.transform;
+        //_enemyTransform = gameObject.transform;
 
         //Get the player gameobject and transform components
         _playerGameObject = gameObject;

@@ -24,19 +24,17 @@ public class EnemyIdleSOBase : ScriptableObject
     public virtual void DoExitLogic() { ResetValues(); }
 
     public virtual void DoFrameUpdateLogic() {
-        if (enemy.isAggroed)
+        if (enemy._isAggroed)
         {
             enemy.stateMachine.ChangeState(enemy.chaseState);
         }
-        if (enemy.isWithinShootingDistance)
+        if (enemy._isWithinShootingDistance)
         {
             enemy.stateMachine.ChangeState(enemy.attackState);
         }
     }
-
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { }
-
     public virtual void ResetValues() { }
 
 }
