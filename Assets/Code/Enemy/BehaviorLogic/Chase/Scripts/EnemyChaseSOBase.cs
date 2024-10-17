@@ -53,9 +53,11 @@ public class EnemyChaseSOBase : ScriptableObject
 
     public virtual void DoFrameUpdateLogic()
     {
+        //Debug.Log("Chase State");
         Debug.DrawRay(_transform.position, _playerTransform.position - _transform.position, Color.red);
         _enemy.FaceDir  = (_playerTransform.position - _enemy.transform.position).normalized;
 
+        //If the player is within the striking distance, change to attack state
         if (_enemy._isWithinStikingDistance)
         {
             _enemy.stateMachine.ChangeState(_enemy.attackState);
