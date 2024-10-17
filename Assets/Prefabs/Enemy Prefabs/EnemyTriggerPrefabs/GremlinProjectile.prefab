@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1920076444437821268}
   - component: {fileID: 2085412283036432148}
   - component: {fileID: 5105770593522658110}
+  - component: {fileID: 8932767582022434134}
   m_Layer: 0
   m_Name: GremlinProjectile
   m_TagString: Untagged
@@ -163,4 +164,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   speed: 0
+  target: {fileID: 0}
   knockbackPower: 0
+  delay: 0
+  OnCollide:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!95 &8932767582022434134
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461920220333077132}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

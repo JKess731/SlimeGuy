@@ -11,5 +11,6 @@ public enum Enum_State
     TELEPORTING,
     DAMAGED,
     DEAD,
-    ATTACKING
+    ATTACKING,
+    RANGEDATTACK
 }

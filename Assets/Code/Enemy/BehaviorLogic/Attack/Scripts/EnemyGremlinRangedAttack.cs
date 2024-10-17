@@ -32,6 +32,7 @@ public class EnemyGremlinRangedAttack : EnemyAttackSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
+        _enemy.State = Enum_State.RANGEDATTACK;
     }
 
     public override void DoExitLogic()

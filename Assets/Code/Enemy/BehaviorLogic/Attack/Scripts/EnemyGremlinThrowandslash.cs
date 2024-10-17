@@ -49,6 +49,7 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
                 if (timer > timeBetweenShots)
                 {
                     timer = 0f;
+                    _enemy.State = Enum_State.RANGEDATTACK;
                     Vector2 dir = (_playerTransform.position - _enemy.transform.position).normalized;
                     Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, _enemy.transform.position, Quaternion.identity);
                     bullet.velocity = dir * bulletSpeed;
