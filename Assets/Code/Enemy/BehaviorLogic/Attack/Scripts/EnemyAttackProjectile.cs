@@ -16,7 +16,7 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
     [SerializeField] private float delay;
 
     private Collider2D teleportTrigger;
-    private Projectile p;
+    private EnemyProjectile p;
     public GameObject ring;
     private bool canShoot = true;
     private float timer = 3;
@@ -120,12 +120,12 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
         canShoot = true;
     }
 
-    private Projectile CreateProjectile()
+    private EnemyProjectile CreateProjectile()
     {
         // REMOVE ONCE ANIMATIONS IN
         canShoot = false;
         GameObject newProjectile = Instantiate(projectilePrefab, attackPoint.transform.position, ring.transform.rotation);
-        Projectile p = newProjectile.GetComponent<Projectile>();
+        EnemyProjectile p = newProjectile.GetComponent<EnemyProjectile>();
         return p;
     }
 

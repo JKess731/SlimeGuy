@@ -18,7 +18,7 @@ public class EnemyGremlinRunAway : EnemyChaseSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.PlayDwarfFootStepSound)
+        if (triggerType == EnemyBase.AnimationTriggerType.Move)
         {
             if (_enemy.moveSoundEffects.Count > 0)
             {

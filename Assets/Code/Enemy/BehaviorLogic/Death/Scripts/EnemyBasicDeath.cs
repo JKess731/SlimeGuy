@@ -2,30 +2,22 @@ using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+[CreateAssetMenu(fileName = "BasicDeath", menuName = "EnemyLogic/DeathLogic/BasicDeath")]
 
-
-
-[CreateAssetMenu(fileName = "WizardDeath", menuName = "EnemyLogic/DeathLogic/WizardDeath")]
-public class EnemyWizardDeath : EnemyDeathSOBase
+public class EnemyBasicDeath : EnemyDeathSOBase
 {
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
-
-        if (triggerType == EnemyBase.AnimationTriggerType.Death)
-        {
-            Debug.Log("WizardDeath");
-            if (_enemy.deathSoundEffects.Count > 0)
-            {
-                RuntimeManager.PlayOneShot(_enemy.deathSoundEffects[0], _enemy.transform.position);
-            }
-            Destroy(_gameObject);
-        }
+        RuntimeManager.PlayOneShot(_enemy.deathSoundEffects[0], _enemy.transform.position);
+        Destroy(_gameObject);
     }
 
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
+        _enemy.MoveEnemy(Vector2.zero);
     }
 
     public override void DoExitLogic()

@@ -270,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1722,6 +1722,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 15114237929827101, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_Size.y
+      value: 2.1102204
+      objectReference: {fileID: 0}
+    - target: {fileID: 15114237929827101, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.41288474
+      objectReference: {fileID: 0}
+    - target: {fileID: 766400675495287892, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5431082
+      objectReference: {fileID: 0}
+    - target: {fileID: 766400675495287892, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.060769096
+      objectReference: {fileID: 0}
+    - target: {fileID: 766400675495287892, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672807340608699795, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.045
+      objectReference: {fileID: 0}
     - target: {fileID: 3225882427332445501, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.37
@@ -1778,6 +1802,14 @@ PrefabInstance:
       propertyPath: _enemyAttackBase
       value: 
       objectReference: {fileID: 11400000, guid: 3ba5d8561b5fc3e43bad6186c45d9e07, type: 2}
+    - target: {fileID: 6851613663513596656, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851613663513596656, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

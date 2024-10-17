@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GremlinProjectile : MonoBehaviour
+public class EnemyGremlinProjectile : MonoBehaviour
 {
     public int damage;
     public float speed;
