@@ -20,7 +20,7 @@ public class EnemyGremlinRangedAttack : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
+        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
         {
             if (_enemy.attackSoundEffects.Count > 0)
             {

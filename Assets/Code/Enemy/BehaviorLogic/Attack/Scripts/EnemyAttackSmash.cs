@@ -16,11 +16,11 @@ public class EnemyAttackSmash : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        Vector3 rotation = _playerTransform.position - ring.transform.position;
-        float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
+        //Vector3 rotation = _playerTransform.position - ring.transform.position;
+        //float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        //ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
+        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
         {
             if (_enemy.attackSoundEffects.Count > 0)
             {

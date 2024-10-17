@@ -1034,13 +1034,37 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1384282985212612307, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
+      propertyPath: _enemyIdleBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
+    - target: {fileID: 1384282985212612307, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
       propertyPath: enemyChaseBase
       value: 
       objectReference: {fileID: 11400000, guid: d28b3edc659f3e940acc2e34b747ac8a, type: 2}
     - target: {fileID: 1384282985212612307, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
+      propertyPath: _enemyChaseBase
+      value: 
+      objectReference: {fileID: 11400000, guid: d28b3edc659f3e940acc2e34b747ac8a, type: 2}
+    - target: {fileID: 1384282985212612307, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
+      propertyPath: _enemyDeathBase
+      value: 
+      objectReference: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
+    - target: {fileID: 1384282985212612307, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
+      propertyPath: _enemySpawnBase
+      value: 
+      objectReference: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
+    - target: {fileID: 1384282985212612307, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
       propertyPath: enemyAttackBase
       value: 
       objectReference: {fileID: 11400000, guid: 5ece92b4746dd8e4ab9384e3beebc289, type: 2}
+    - target: {fileID: 1384282985212612307, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
+      propertyPath: _enemyAttackBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ece92b4746dd8e4ab9384e3beebc289, type: 2}
+    - target: {fileID: 1384282985212612307, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
+      propertyPath: _enemyDamagedBase
+      value: 
+      objectReference: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
     - target: {fileID: 4722212593522719403, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.56

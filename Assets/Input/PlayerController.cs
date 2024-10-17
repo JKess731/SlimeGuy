@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator DashCoroutine()
     {
         //Handles Initial Dash
-        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
+        AudioManager.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
         //Debug.Log("Dash Started");
         _playerStateMachine.State = Enum_State.DASHING;
         _playerCollider.excludeLayers = LayerMask.GetMask("enemyAttacksLayer", "enemyLayer");

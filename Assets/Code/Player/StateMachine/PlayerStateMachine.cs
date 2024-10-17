@@ -69,7 +69,7 @@ public class PlayerStateMachine : MonoBehaviour
         _knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
         StartCoroutine(PlayerKnockback(0.3f));
 
-        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
+        AudioManager.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
         UiManager.instance.UpdateHealthBar(_playerStats.GetStat(StatsEnum.HEALTH), _playerStats.GetStat(StatsEnum.MAXHEALTH));
     }
 

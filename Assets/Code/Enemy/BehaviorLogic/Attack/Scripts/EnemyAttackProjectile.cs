@@ -16,7 +16,7 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
     [SerializeField] private float delay;
 
     private Collider2D teleportTrigger;
-    private Projectile p;
+    private EnemyProjectile p;
     public GameObject ring;
     private bool canShoot = true;
     private float timer = 3;
@@ -30,7 +30,7 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
         float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         ring.transform.rotation = Quaternion.Euler(0, 0, rotation);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.WizardCastTrigger)
+        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
         {
             Debug.Log("WizardCast");
             if (_enemy.attackSoundEffects.Count > 0)
@@ -120,12 +120,12 @@ public class EnemyAttackProjectile : EnemyAttackSOBase
         canShoot = true;
     }
 
-    private Projectile CreateProjectile()
+    private EnemyProjectile CreateProjectile()
     {
         // REMOVE ONCE ANIMATIONS IN
         canShoot = false;
         GameObject newProjectile = Instantiate(projectilePrefab, attackPoint.transform.position, ring.transform.rotation);
-        Projectile p = newProjectile.GetComponent<Projectile>();
+        EnemyProjectile p = newProjectile.GetComponent<EnemyProjectile>();
         return p;
     }
 

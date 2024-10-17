@@ -1,26 +1,23 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.EventSystems;
+[CreateAssetMenu(fileName = "BasicDeath", menuName = "EnemyLogic/DeathLogic/BasicDeath")]
 
-[CreateAssetMenu(fileName = "Teleport", menuName = "EnemyLogic/ChaseLogic/Teleport")]
-public class EnemyTeleportSO : EnemyChaseSOBase
+public class EnemyBasicDeath : EnemyDeathSOBase
 {
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
-
-        if (triggerType == EnemyBase.AnimationTriggerType.Teleport)
-        {
-            Debug.Log("WizardTeleport");
-            RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);
-        }
+        RuntimeManager.PlayOneShot(_enemy.deathSoundEffects[0], _enemy.transform.position);
+        Destroy(_gameObject);
     }
 
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
+        _enemy.MoveEnemy(Vector2.zero);
     }
 
     public override void DoExitLogic()
@@ -31,12 +28,6 @@ public class EnemyTeleportSO : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        if (_enemy._isWithinShootingDistance)
-        {
-            _enemy.stateMachine.ChangeState(_enemy.attackState);
-        }
-        //Vector2 runDir = -(_playerTransform.position - _transform.position).normalized;
-        //_enemy.MoveEnemy(runDir * runAwaySpeed);
     }
 
     public override void DoPhysicsLogic()
