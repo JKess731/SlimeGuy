@@ -74,6 +74,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public bool _isAggroed { get; set; }
     public bool _isWithinStikingDistance { get; set; }
     public bool _isWithinShootingDistance { get; set; }
+    public bool _isWithinRunAwayDistance { get; set; }  
     #endregion
     //---------------State Machine Variables-----------------    //The types of states the enemy can be in
     #region State Machine Variables
@@ -308,6 +309,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public void setShootingDistance(bool isShootingDistance) 
     {
         _isWithinShootingDistance = isShootingDistance;
+    }
+
+    public void setRunAwayDistance(bool isRunAwayDistance)
+    {
+        _isWithinRunAwayDistance = isRunAwayDistance;
     }
     #endregion
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GremlinProjectile
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: -1920076444437821268, guid: 3689c8498e713494f8fb9555cdc951ad, type: 3}
-  timeBetweenShots: 0.5
-  timeTillExit: 0.5
+  timeBetweenShots: 1
+  timeTillExit: 2
   distanceToCountExit: 3
   bulletSpeed: 5

@@ -22,18 +22,18 @@ public class EnemyShootCheck : MonoBehaviour
         if (collision.gameObject == playerTarget)
         {
             enemy.setShootingDistance(true);
+            enemy.setRunAwayDistance(false); 
         }
     }
 
-    /*
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject == playerTarget)
         {
-            enemy.setShootingDistance(false);
+            enemy.setShootingDistance(false); 
+            enemy.setRunAwayDistance(true); 
         }
     }
-    */
 
 
     IEnumerator Cooldown()

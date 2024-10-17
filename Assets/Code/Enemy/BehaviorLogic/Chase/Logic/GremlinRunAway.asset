@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b3a0f1d75f66e429a73a3a0ed69d42, type: 3}
   m_Name: GremlinRunAway
   m_EditorClassIdentifier: 
-  runAwaySpeed: 1.5
+  runAwaySpeed: 5
   changeDirectionCooldown: 0.5
   attackRange: 2
