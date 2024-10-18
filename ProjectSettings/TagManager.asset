@@ -52,7 +52,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - deadLayer
   m_SortingLayers:
   - name: Floor
     uniqueID: 497496063

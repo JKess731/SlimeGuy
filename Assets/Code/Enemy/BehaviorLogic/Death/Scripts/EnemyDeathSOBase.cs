@@ -18,17 +18,19 @@ public class EnemyDeathSOBase : ScriptableObject
 
     public virtual void DoEnterLogic() { 
         _enemy.State = Enum_State.DEAD;
+        _enemy.gameObject.layer = LayerMask.NameToLayer("deadLayer");
+        _enemy.KnockBack.StopKnockBack();
     }
 
     public virtual void DoExitLogic() { ResetValues(); }
 
-    public virtual void DoFrameUpdateLogic(){ }
+    public virtual void DoFrameUpdateLogic(){
+        _enemy.MoveEnemy(Vector2.zero);
+    }
 
     public virtual void DoPhysicsLogic() { }
 
-    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { 
-       
-    }
+    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { }
 
     public virtual void ResetValues() { }
 

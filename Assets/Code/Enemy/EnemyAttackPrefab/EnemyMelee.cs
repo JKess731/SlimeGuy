@@ -31,7 +31,8 @@ public class EnemyMelee : MonoBehaviour
     {
         if (collision.gameObject.tag == "player")
         {
-            collision.gameObject.GetComponent<PlayerStateMachine>().Damage(_damage, transform.right, _knockback, transform.right);
+            Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
+            collision.gameObject.GetComponent<PlayerStateMachine>().Damage(_damage, knockbackDirection, _knockback, knockbackDirection);
         }
     }
 

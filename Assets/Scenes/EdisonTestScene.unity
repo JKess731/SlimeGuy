@@ -1527,11 +1527,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3387875913002940873, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: _cooldownTime
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3387875913002940873, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: _piercingAmount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387875913002940873, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: _projectileSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4433807784745035315, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1577,6 +1581,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Singletons
       objectReference: {fileID: 0}
+    - target: {fileID: 7935010771825859155, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935010771825859155, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935010771825859155, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1590,30 +1606,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1384282985212612307, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      propertyPath: _enemyIdleBase
-      value: 
-      objectReference: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
-    - target: {fileID: 1384282985212612307, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      propertyPath: _enemyChaseBase
-      value: 
-      objectReference: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
-    - target: {fileID: 1384282985212612307, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      propertyPath: _enemyDeathBase
-      value: 
-      objectReference: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
-    - target: {fileID: 1384282985212612307, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      propertyPath: _enemySpawnBase
-      value: 
-      objectReference: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
-    - target: {fileID: 1384282985212612307, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      propertyPath: _enemyAttackBase
-      value: 
-      objectReference: {fileID: 11400000, guid: 69f1e2c478eb0a94ab2db8550295ce40, type: 2}
-    - target: {fileID: 1384282985212612307, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      propertyPath: _enemyDamagedBase
-      value: 
-      objectReference: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
     - target: {fileID: 4722212593522719403, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.39
@@ -1656,14 +1648,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
       propertyPath: m_Name
-      value: EnemyDwarf (1)
+      value: EnemyGremlin
       objectReference: {fileID: 0}
-    - target: {fileID: 6777186743103341712, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8370906869325316475, guid: 1ab8e259e98e8e24cb0b56d02b565763, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1729,6 +1716,10 @@ PrefabInstance:
     - target: {fileID: 15114237929827101, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: m_Offset.y
       value: -0.41288474
+      objectReference: {fileID: 0}
+    - target: {fileID: 15114237929827101, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 7927
       objectReference: {fileID: 0}
     - target: {fileID: 766400675495287892, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: m_Size.y
@@ -1797,6 +1788,10 @@ PrefabInstance:
     - target: {fileID: 5254476107874737995, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: m_Name
       value: EnemyGolem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5254476107874737995, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5744069583149286991, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: _enemyAttackBase
@@ -5495,9 +5490,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3779642523075419301, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: m_Color.a
+      value: 0.4509804
+      objectReference: {fileID: 0}
     - target: {fileID: 6084106415608594555, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
       propertyPath: m_Name
       value: Player Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408123973740318269, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: _knockbackHitForceCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408123973740318269, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408123973740318269, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408123973740318269, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408123973740318269, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408123973740318269, guid: 5534cbff1ebb4a14b9768763553447a2, type: 3}
+      propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[1].outSlope
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

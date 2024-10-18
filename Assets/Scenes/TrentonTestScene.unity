@@ -391,11 +391,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3225882427332445501, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.94
+      value: -5.09
       objectReference: {fileID: 0}
     - target: {fileID: 3225882427332445501, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.97
+      value: -0.77
       objectReference: {fileID: 0}
     - target: {fileID: 3225882427332445501, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -432,10 +432,6 @@ PrefabInstance:
     - target: {fileID: 5254476107874737995, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
       propertyPath: m_Name
       value: EnemyGolem
-      objectReference: {fileID: 0}
-    - target: {fileID: 5254476107874737995, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

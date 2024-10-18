@@ -99,11 +99,6 @@ public class AbilityManager : MonoBehaviour
             ability?.Initialize();
         }
 
-
-        Debug.Log("Primary: " + primary.Icon);
-        Debug.Log("Secondary: " + secondary.Icon);
-        Debug.Log("Getter Pri: " + Primary.Icon);
-        Debug.Log("Getter Sec: " + Secondary.Icon);
         UiManager.instance.UpdateAllIcons();
     }
 

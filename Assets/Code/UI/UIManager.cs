@@ -71,8 +71,8 @@ public class UiManager : MonoBehaviour
     /// </summary>
     public void UpdateAllIcons()
     {
-            Debug.Log("UI Get Primary: " + _abilityManager.Primary.Icon);
-            Debug.Log("UI Get Secondary: " + _abilityManager.Secondary.Icon);
+            //Debug.Log("UI Get Primary: " + _abilityManager.Primary.Icon);
+            //Debug.Log("UI Get Secondary: " + _abilityManager.Secondary.Icon);
         try
         {
             UpdatePrimaryAbilityImage(_abilityManager.Primary?.Icon);

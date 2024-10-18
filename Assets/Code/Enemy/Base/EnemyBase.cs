@@ -61,7 +61,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     //-------------------------------------------------------
     #region Regular Properties
     public StatsSO Stats { get => _stats; }
-    public bool IsDead { get; set; } = false;
+    public bool IsDead { get => _isDead; set => _isDead = value; }
     public bool IsStunnable { get => _isStunnable; set => _isStunnable = value; }
     public KnockBack KnockBack { get => _knockBack;}
     public Vector2 FaceDir { get => _faceDir; set => _faceDir = value; }
@@ -157,16 +157,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         stateMachine.currentEnemyState.PhysicsUpdate();
     }
 
-    public void StartNewCoroutine (IEnumerator coroutine)
-    {
-        StartCoroutine(coroutine);
-    }
-
-    public void StopExsistingCoroutine (IEnumerator coroutine)
-    {
-        StopCoroutine(coroutine);
-    }
-
     #region Change states for animation events
     public void GoToIdle()
     {
@@ -202,8 +192,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region Health Die Functions
     public void Damage(float damageAmount, Vector2 hitDirection, float hitforce, Vector2 constantForceDirection)
     {
-
-        if (_stats.GetStat(StatsEnum.HEALTH) <=0) {
+        if (_stats.GetStat(StatsEnum.HEALTH) <=0 && !_isDead) {
+            _damageFlash.Flash();
             Die();
         }
 
@@ -215,16 +205,16 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
             AudioManager.PlayOneShot(damagedSoundEffects[0], transform.position);
         }
 
-        //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
-        if (_isStunnable)
+        if (_isStunnable && !_isDead)
         {
             GoToDamage();
         }
     }
     public void Damage(float damageAmount)
     {
-        if (_stats.GetStat(StatsEnum.HEALTH) <= 0)
+        if (_stats.GetStat(StatsEnum.HEALTH) <= 0 && !_isDead)
         {
+            _damageFlash.Flash();
             Die();
         }
 
@@ -236,18 +226,20 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         }
 
         //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
-        if (_isStunnable)
+        if (_isStunnable && !_isDead)
         {
             GoToDamage();
+            Debug.Log("Damaged");
         }
     }
 
     public void Die()
     {
         _stats.SetStat(StatsEnum.SPEED, 0);
-        //Instantiate(slimeDrop, transform.position, Quaternion.identity);
-        _isDead = true;  //Prevent multiple slimedrops
         stateMachine.ChangeState(deathState);
+        _isDead = true;  
+        Debug.Log(stateMachine.currentEnemyState);
+        Debug.Log(_state);
     }
 
     #endregion
