@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e2cc78c1487014ba246061ca5a0cb7, type: 3}
   m_Name: GremlinMeleeSlash
   m_EditorClassIdentifier: 
+  _attackTime: 0.8
+  _attackExitTime: 1
   _meleePrefab: {fileID: 7577202157244426437, guid: ec108004c8dd33a4fba2afef55f88f0f, type: 3}
   _damage: 1
   _knockback: 1

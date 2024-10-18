@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class EnemyAttackSOBase : ScriptableObject
 {
-    protected EnemyBase _enemy;
-    //protected Transform _enemyTransform;
+    [SerializeField] private float _attackTime = 1f;        //Duration of the attack --> Time of the attack animation
+    [SerializeField] private float _attackExitTime = 1f;    //Duration of the attack recovery/exit time
 
+    protected EnemyBase _enemy;
     protected GameObject _playerGameObject;
     protected Transform _playerTransform;
+
+    protected float _timer = 0;
+    protected float _exitTimer = 0;
+    protected bool _isAttackDone = false;
 
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
@@ -28,8 +33,31 @@ public class EnemyAttackSOBase : ScriptableObject
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic() {
         _enemy.MoveEnemy(Vector2.zero);
+
+        if (_timer > _attackTime)
+        {
+            _isAttackDone = true;
+        }
+
+        if (_isAttackDone)
+        {
+            _exitTimer += Time.deltaTime;
+            if (_exitTimer > _attackExitTime)
+            {
+                _enemy.GoToIdle();
+            }
+        }
+        else
+        {
+            _exitTimer = 0;
+        }
+
+        _timer += Time.deltaTime;
     }
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType){}
-    public virtual void ResetValues() { }
+    public virtual void ResetValues() { 
+        _timer = 0;
+        _exitTimer = 0f;
+    }
 }

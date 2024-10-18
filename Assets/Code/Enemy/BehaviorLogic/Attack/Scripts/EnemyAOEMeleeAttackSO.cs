@@ -40,7 +40,6 @@ public class EnemyAOEMeleeAttackSO : EnemyAttackSOBase
     public override void DoExitLogic()
     {
         base.DoExitLogic();
-
     }
 
     public override void DoFrameUpdateLogic()
