@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8daca39e7d8f84bbf4cff0413d104b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tag: 6
   doors: 03000000000000000100000002000000
 --- !u!1 &2652507390355112704
 GameObject:
@@ -1133,13 +1134,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5595820087840007230}
   - component: {fileID: 5007348682486597647}
-  m_Layer: 0
+  - component: {fileID: 2884075592759254865}
+  m_Layer: 12
   m_Name: Left Spawn
   m_TagString: room_spawn_point
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5595820087840007230
 Transform:
   m_ObjectHideFlags: 0
@@ -1168,8 +1170,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genScript: {fileID: 0}
-  doorNeeded: 2
+  doorsNeeded: 02000000
   parentRoom: {fileID: 2070151340180195389}
+--- !u!61 &2884075592759254865
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3262668792650518881}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &3477560438079265886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,13 +2279,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7599178134877272593}
   - component: {fileID: 1956589951806564649}
-  m_Layer: 0
+  - component: {fileID: 1765123027610296452}
+  m_Layer: 12
   m_Name: Right Spawn
   m_TagString: room_spawn_point
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7599178134877272593
 Transform:
   m_ObjectHideFlags: 0
@@ -2267,8 +2315,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genScript: {fileID: 0}
-  doorNeeded: 1
+  doorsNeeded: 01000000
   parentRoom: {fileID: 2070151340180195389}
+--- !u!61 &1765123027610296452
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983937663811532097}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &4140354331317018394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,13 +2804,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1169127494914566803}
   - component: {fileID: 1472191982048474569}
-  m_Layer: 0
+  - component: {fileID: 7024587803301449817}
+  m_Layer: 12
   m_Name: Top Spawn
   m_TagString: room_spawn_point
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1169127494914566803
 Transform:
   m_ObjectHideFlags: 0
@@ -2746,8 +2840,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genScript: {fileID: 0}
-  doorNeeded: 3
+  doorsNeeded: 03000000
   parentRoom: {fileID: 2070151340180195389}
+--- !u!61 &7024587803301449817
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305726421969263919}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7205933103289904961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,13 +2897,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2684281282603889983}
   - component: {fileID: 2799566963820921967}
-  m_Layer: 0
+  - component: {fileID: 3090867495478429335}
+  m_Layer: 12
   m_Name: Bottom Spawn
   m_TagString: room_spawn_point
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2684281282603889983
 Transform:
   m_ObjectHideFlags: 0
@@ -2793,8 +2933,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genScript: {fileID: 0}
-  doorNeeded: 0
+  doorsNeeded: 00000000
   parentRoom: {fileID: 2070151340180195389}
+--- !u!61 &3090867495478429335
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7205933103289904961}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7787835851769065988
 GameObject:
   m_ObjectHideFlags: 0

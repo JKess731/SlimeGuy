@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 697421703933719717}
   - component: {fileID: 1357405620113460247}
-  m_Layer: 0
+  - component: {fileID: 3812052637698064235}
+  m_Layer: 12
   m_Name: Top Spawn
   m_TagString: room_spawn_point
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &697421703933719717
 Transform:
   m_ObjectHideFlags: 0
@@ -45,55 +46,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genScript: {fileID: 0}
-  doorNeeded: 3
+  doorsNeeded: 03000000
   parentRoom: {fileID: 9141870586405259135}
---- !u!1 &2889314113537838221
-GameObject:
+--- !u!61 &3812052637698064235
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1116203288094056660}
-  - component: {fileID: 7832006782300135379}
-  m_Layer: 0
-  m_Name: Right Spawn
-  m_TagString: room_spawn_point
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1116203288094056660
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2889314113537838221}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1870538890626630201}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7832006782300135379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2889314113537838221}
+  m_GameObject: {fileID: 1852750503194335959}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2694846ae37cbf74e90435beabf9ba33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  genScript: {fileID: 0}
-  doorNeeded: 1
-  parentRoom: {fileID: 9141870586405259135}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &3153016666402641679
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,13 +977,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5319584052039998172}
   - component: {fileID: 9070029911943088618}
-  m_Layer: 0
+  - component: {fileID: 4423815905278701432}
+  m_Layer: 12
   m_Name: Left Spawn
   m_TagString: room_spawn_point
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5319584052039998172
 Transform:
   m_ObjectHideFlags: 0
@@ -1013,8 +1013,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genScript: {fileID: 0}
-  doorNeeded: 2
+  doorsNeeded: 02000000
   parentRoom: {fileID: 9141870586405259135}
+--- !u!61 &4423815905278701432
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598617315733771945}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &6291988480277253392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,53 +2830,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!1 &6777546771300786979
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1405746683625037072}
-  - component: {fileID: 213225420683009957}
-  m_Layer: 0
-  m_Name: Bottom Spawn
-  m_TagString: room_spawn_point
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1405746683625037072
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777546771300786979}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -16, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1870538890626630201}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &213225420683009957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777546771300786979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2694846ae37cbf74e90435beabf9ba33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  genScript: {fileID: 0}
-  doorNeeded: 0
-  parentRoom: {fileID: 9141870586405259135}
 --- !u!1 &7149949120188906187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3919,10 +3917,8 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1405746683625037072}
   - {fileID: 5319584052039998172}
   - {fileID: 697421703933719717}
-  - {fileID: 1116203288094056660}
   - {fileID: 3503822423132542089}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3938,4 +3934,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8daca39e7d8f84bbf4cff0413d104b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tag: 6
   doors: 0000000001000000

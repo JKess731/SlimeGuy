@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoomTypes : MonoBehaviour
 {
+    public RoomTag tag;
     public List<DoorTypes> doors = new List<DoorTypes>();
 }
 

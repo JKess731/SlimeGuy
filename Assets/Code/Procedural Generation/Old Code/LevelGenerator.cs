@@ -107,13 +107,13 @@ public class LevelGenerator : MonoBehaviour
         roomsPlaced.Add(start);
         currentRoomCount++;
 
-        StartCoroutine(Generate());
+        //StartCoroutine(Generate());
     }
 
     #endregion
 
     #region Generator Code
-
+    /*
     IEnumerator Generate()
     {
         yield return new WaitForSecondsRealtime(spawnDelay / 2);
@@ -191,6 +191,9 @@ public class LevelGenerator : MonoBehaviour
         Complete.Invoke();
     }
 
+    */
+
+    /*
     private GameObject GetRoom(DoorTypes doorNeeded, int row, int col)
     {
         GameObject room = null;
@@ -384,13 +387,12 @@ public class LevelGenerator : MonoBehaviour
     private List<GameObject> GetFullSpawnList(RoomList rl)
     {
         List<GameObject> AllDoors = new List<GameObject>();
-        /*
+        /
         AllDoors.AddRange(rl.topRooms);
         AllDoors.AddRange(rl.bottomRooms);
         AllDoors.AddRange(rl.leftRooms);
         AllDoors.AddRange(rl.rightRooms);
         AllDoors.Add(startRoom);
-        */
 
         return AllDoors;
     }
@@ -427,6 +429,8 @@ public class LevelGenerator : MonoBehaviour
         return rList;
     }
 
+    */
 
     #endregion
+    
 }
