@@ -31,7 +31,7 @@ TagManager:
   - playerAttackLayer
   - Wall
   - SpawnPoints
-  - 
+  - MiniMap
   - 
   - 
   - 
@@ -51,6 +51,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Minimap
+    uniqueID: 2574458557
+    locked: 0
   - name: Floor
     uniqueID: 497496063
     locked: 0

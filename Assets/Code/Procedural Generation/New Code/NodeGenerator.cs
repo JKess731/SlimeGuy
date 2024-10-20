@@ -12,6 +12,7 @@ public class NodeGenerator : MonoBehaviour
     private int nodeCount;
     private int arrRow;
     private int arrCol;
+    [SerializeField] private float nodeDelay = .1f;
     private RoomNode[,] nodeArray;
     private List<RoomNode> nodesPlaced = new List<RoomNode>();
     private Queue<RoomNode> nodeQueue = new Queue<RoomNode>();
@@ -118,7 +119,7 @@ public class NodeGenerator : MonoBehaviour
     {
         while (nodeCount > 0)
         {
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(nodeDelay);
 
             RoomNode node = nodeQueue.Dequeue();
             ArrayCoordinate coord = GetNodeCoordinate(node);

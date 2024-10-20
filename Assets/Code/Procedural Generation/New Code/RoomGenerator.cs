@@ -55,7 +55,6 @@ public class RoomGenerator : MonoBehaviour
         nodeGenerator.OnNodesFinishes.AddListener(StartRoomGeneration);
     }
 
-
     private void StartRoomGeneration()
     {
         // Get Values needed after Nodes are finished generator
