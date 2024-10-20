@@ -14,17 +14,17 @@ public class EnemyMelee : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
+    public void Initialize(int damage, float knockback)
+    {
+        _damage = damage;
+        _knockback = knockback;
+    }
 
     private void Start()
     {
         _animator.Play("Attack");
     }
 
-    public void Initialize(int damage, float knockback)
-    {
-        _damage = damage;
-        _knockback = knockback;
-    }
 
     //Handles attack collision
     private void OnTriggerEnter2D(Collider2D collision)

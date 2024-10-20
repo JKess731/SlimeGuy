@@ -16,6 +16,7 @@ public class Bullet : Attacks
     private StatusSO _status;
 
     private CircleCollider2D _circleCollider;
+    private WallBounce _wallBounce;
 
     //Initialize the bullet with the stats of the bullet
     public void Initialize(int damage, float knockback, float speed, float range, int piercingAmount, int bulletBounce)
@@ -29,11 +30,19 @@ public class Bullet : Attacks
         if (_piercingAmount > 0)
         {
             _rb.isKinematic = true;
+            _circleCollider.isTrigger = true;
         }
 
         _bulletBounce = bulletBounce;
 
+        if (_bulletBounce > 0)
+        {
+            _wallBounce.Initialize(_bulletBounce, _speed);
+        }
+
         _rb.velocity = transform.right * _speed;
+
+        Debug.Log("Bullet Initialized");
     }
 
     //If the bullet goes out of range, destroy it
@@ -41,6 +50,7 @@ public class Bullet : Attacks
     {
         if (Vector2.Distance(_startPos, transform.position) > _range)
         {
+            Debug.Log("Bullet out of range");
             Destroy(gameObject);
         }
     }
@@ -67,7 +77,6 @@ public class Bullet : Attacks
         {
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage);
             if(_piercingAmount > 0) { 
-                _circleCollider.isTrigger = true;
                 _piercingAmount--;
             }
             if (_status != null)
@@ -79,7 +88,6 @@ public class Bullet : Attacks
             {
                 Destroy(gameObject);
             }
-
         }
     }
 
@@ -91,15 +99,6 @@ public class Bullet : Attacks
             {
                 collision.gameObject.GetComponent<EnemyBase>().Damage(_damage);
             }
-            _circleCollider.isTrigger = true;
-            _rb.velocity = transform.right * _speed;
-        }
-    }
-
-    protected void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "enemy") { 
-            _circleCollider.isTrigger = false;
         }
     }
 
@@ -108,5 +107,6 @@ public class Bullet : Attacks
         _rb = GetComponent<Rigidbody2D>();
         _startPos = transform.position;
         _circleCollider = GetComponent<CircleCollider2D>();
+        _wallBounce = gameObject.GetComponentInChildren<WallBounce>();
     }
 }

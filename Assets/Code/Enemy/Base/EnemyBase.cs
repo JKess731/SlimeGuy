@@ -18,7 +18,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     [SerializeField] private Transform ring;
 
     [Header("Enemy State Instance SO")]
-    [Space()]
     //The scriptable objects that hold the base logic for the enemy
     #region Scriptable Objects Variables
     [SerializeField] private EnemySpawnSOBase _enemySpawnBase;
@@ -45,7 +44,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     private Rigidbody2D _rigidbody2D;                    // Rigidbody of the enemy
     private AnimationControl _enemyAnimation;            // Animator for the enemy
-    private Enum_State _state;                           // The current state of the enemy
+    private Enum_AnimationState _state;                           // The current state of the enemy
 
 
     //-------------------------------------------------------
@@ -66,7 +65,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public KnockBack KnockBack { get => _knockBack;}
     public Vector2 FaceDir { get => _faceDir; set => _faceDir = value; }
     public Transform Ring { get => ring;}
-    public Enum_State State { get => _state; set => _state = value; }
+    public Enum_AnimationState State { get => _state; set => _state = value; }
     public Rigidbody2D RigidBody2d { get => _rigidbody2D; set => _rigidbody2D = value; }
     #endregion
     //----------------- Trigger Variables -------------------    //The variables that hold the status of the enemy

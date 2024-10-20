@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: GolemAOEMeleeSmash
   m_EditorClassIdentifier: 
   _attackTime: 0.7
-  _attackExitTime: 2
+  _attackExitTime: 1.5
   _meleePrefab: {fileID: 7577202157244426437, guid: 3fcef69533236054da3d9fb3de10725d, type: 3}
-  _damage: 1
-  _knockback: 1
-  _attackDelay: 1
+  _damage: 10
+  _knockback: 10

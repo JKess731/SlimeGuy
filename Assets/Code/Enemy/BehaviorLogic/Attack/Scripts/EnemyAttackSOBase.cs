@@ -1,7 +1,9 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using Diag = System.Diagnostics;
 using UnityEngine;
+using System;
 
 public class EnemyAttackSOBase : ScriptableObject
 {
@@ -16,6 +18,8 @@ public class EnemyAttackSOBase : ScriptableObject
     protected float _exitTimer = 0;
     protected bool _isAttackDone = false;
 
+    private Diag.Stopwatch _stopwatch = new Diag.Stopwatch();
+
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
         //Get the enemybase and transform components
@@ -28,22 +32,28 @@ public class EnemyAttackSOBase : ScriptableObject
     }
 
     public virtual void DoEnterLogic() { 
-        _enemy.State = Enum_State.ATTACKING;
+        _enemy.State = Enum_AnimationState.ATTACKING;
+        _stopwatch.Start();
     }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic() {
-        _enemy.MoveEnemy(Vector2.zero);
 
-        if (_timer > _attackTime)
+        if (_timer > _attackTime && !_isAttackDone)
         {
             _isAttackDone = true;
+
+            //Debug.Log("Stopwatch:" + _stopwatch.Elapsed);
+            //Debug.Log("Attack done:" + _timer);
         }
 
         if (_isAttackDone)
         {
             _exitTimer += Time.deltaTime;
+
             if (_exitTimer > _attackExitTime)
             {
+                //Debug.Log("Stopwatch:" + _stopwatch.Elapsed);
+                //Debug.Log("Exit done:" + _exitTimer);
                 _enemy.GoToIdle();
             }
         }
@@ -57,7 +67,9 @@ public class EnemyAttackSOBase : ScriptableObject
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType){}
     public virtual void ResetValues() { 
+        _stopwatch.Stop();
         _timer = 0;
         _exitTimer = 0f;
+        _isAttackDone = false;
     }
 }

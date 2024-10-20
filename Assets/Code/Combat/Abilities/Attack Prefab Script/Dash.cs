@@ -12,11 +12,6 @@ public class Dash : Attacks
     {
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
-    public void SetDashStruct(DashStruct dashStruc)
-    {
-        _activationTime = dashStruc._activationTime;
-        _dashSpeed = dashStruc._dashSpeed;
-    }
 
     private IEnumerator DashCoroutine()
     {

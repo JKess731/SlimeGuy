@@ -13,6 +13,13 @@ public class WaveChild : Attacks
         Destroy(gameObject, _activationTime);
     }
 
+    public void Initialized(float damage, float knockback, float activationTime)
+    {
+        _damage = (int) damage;
+        _knockback = knockback;
+        _activationTime = activationTime;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // If the object is an enemy
@@ -62,13 +69,5 @@ public class WaveChild : Attacks
             }
             _enemyHashSet.Add(enemy);
         }
-    }
-
-    public void SetWaveStruct(WaveStruct waveStruct)
-    {
-        _damage = waveStruct.Damage;
-        _knockback = waveStruct.Knockback;
-        _activationTime = waveStruct.ActivationTime;
-        _status = waveStruct.Status;
     }
 }

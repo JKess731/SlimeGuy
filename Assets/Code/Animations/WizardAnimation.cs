@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WizardAnimation : AnimationControl
 {
-    public override void PlayAnimation(Vector2 direction, Enum_State state)
+    public override void PlayAnimation(Vector2 direction, Enum_AnimationState state)
     {
         if (direction.x < 0)
         {
@@ -15,27 +15,27 @@ public class WizardAnimation : AnimationControl
             _spriteRenderer.flipX = false;
         }
 
-        if (state == Enum_State.IDLING)
+        if (state == Enum_AnimationState.IDLING)
         {
             _animator.Play("Idle");
         }
 
-        if (state == Enum_State.MOVING)
+        if (state == Enum_AnimationState.MOVING)
         {
             _animator.Play("Teleport");
         }
 
-        if (state == Enum_State.ATTACKING)
+        if (state == Enum_AnimationState.ATTACKING)
         {
             _animator.Play("Attack");
         }
 
-        if (state == Enum_State.DAMAGED)
+        if (state == Enum_AnimationState.DAMAGED)
         {
             _animator.Play("Damaged");
         }
 
-        if (state == Enum_State.DEAD)
+        if (state == Enum_AnimationState.DEAD)
         {
             _animator.Play("Dead");
         }

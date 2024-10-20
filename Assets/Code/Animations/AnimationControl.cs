@@ -20,7 +20,7 @@ public class AnimationControl : MonoBehaviour
     /// Plays the animation based on the direction the player is facing and the state of the player
     /// </summary>
     /// <param name="direction"></param>
-    public virtual void PlayAnimation(Vector2 direction, Enum_State state)
+    public virtual void PlayAnimation(Vector2 direction, Enum_AnimationState state)
     {
         if (direction.x < 0)
         {
@@ -32,7 +32,7 @@ public class AnimationControl : MonoBehaviour
         }
 
 
-        if (state == Enum_State.IDLING)
+        if (state == Enum_AnimationState.IDLING)
         {
             if (direction.x != 0)
             {
@@ -51,7 +51,7 @@ public class AnimationControl : MonoBehaviour
             }
         }
 
-        if (state == Enum_State.MOVING)
+        if (state == Enum_AnimationState.MOVING)
         {
             if (direction.x != 0)
             {
@@ -72,7 +72,7 @@ public class AnimationControl : MonoBehaviour
     }
 
     #region Enum_State to String
-    protected void Play(Enum_State state, Vector2 direction)
+    protected void Play(Enum_AnimationState state, Vector2 direction)
     {
         string stateString = state.ToString();
         stateString = stateString.Substring(0, 1).ToUpper() + stateString.Substring(1).ToLower();

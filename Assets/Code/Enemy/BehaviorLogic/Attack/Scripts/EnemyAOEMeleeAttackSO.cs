@@ -11,9 +11,6 @@ public class EnemyAOEMeleeAttackSO : EnemyAttackSOBase
     [SerializeField] private int _damage;
     [SerializeField] private float _knockback;
 
-    [Header("State Properties")]
-    [SerializeField] private float _attackDelay;
-
     private Transform _attackPoint;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
@@ -44,6 +41,7 @@ public class EnemyAOEMeleeAttackSO : EnemyAttackSOBase
 
     public override void DoFrameUpdateLogic()
     {
+        _enemy.MoveEnemy(Vector2.zero);
         base.DoFrameUpdateLogic();
     }
 

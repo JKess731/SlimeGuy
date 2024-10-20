@@ -20,7 +20,7 @@ public class EnemyDamagedState : EnemyState
     {
         base.EnterState();
         _enemyBase.enemyDamagedBaseInstance.DoEnterLogic();
-        _enemyBase.State = Enum_State.DAMAGED;
+        _enemyBase.State = Enum_AnimationState.DAMAGED;
     }
 
     public override void ExitState()

@@ -10,6 +10,10 @@ public class EnemyBasicDamage : EnemyDamagedSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
     }
+    public override void Initialize(GameObject gameObject, EnemyBase enemy)
+    {
+        base.Initialize(gameObject, enemy);
+    }
 
     public override void DoEnterLogic()
     {
@@ -29,11 +33,6 @@ public class EnemyBasicDamage : EnemyDamagedSOBase
     public override void DoPhysicsLogic()
     {
         base.DoPhysicsLogic();
-    }
-
-    public override void Initialize(GameObject gameObject, EnemyBase enemy)
-    {
-        base.Initialize(gameObject, enemy);
     }
 
     public override void ResetValues()

@@ -17,7 +17,7 @@ public class EnemyDeathSOBase : ScriptableObject
     }
 
     public virtual void DoEnterLogic() { 
-        _enemy.State = Enum_State.DEAD;
+        _enemy.State = Enum_AnimationState.DEAD;
         _enemy.gameObject.layer = LayerMask.NameToLayer("deadLayer");
         _enemy.KnockBack.StopKnockBack();
     }

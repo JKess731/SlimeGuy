@@ -8,11 +8,11 @@ public class PlayerAnimation : AnimationControl
     //Damaged Color
     [SerializeField] private DamagedColor _damageColor;
 
-    public override void PlayAnimation(Vector2 direction, Enum_State state)
+    public override void PlayAnimation(Vector2 direction, Enum_AnimationState state)
     {
         base.PlayAnimation(direction, state);
 
-        if (state == Enum_State.DAMAGED)
+        if (state == Enum_AnimationState.DAMAGED)
         {
             if(_damageColor == DamagedColor.WHITE)
             {
@@ -25,7 +25,7 @@ public class PlayerAnimation : AnimationControl
             }
         }
 
-        if (state == Enum_State.DEAD)
+        if (state == Enum_AnimationState.DEAD)
         {
             _animator.Play("Dead");
         }

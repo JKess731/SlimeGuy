@@ -18,7 +18,7 @@ public class EnemyDamagedSOBase : ScriptableObject
         _enemy = enemy;
     }
     public virtual void DoEnterLogic() {
-        _enemy.State = Enum_State.DAMAGED;
+        _enemy.State = Enum_AnimationState.DAMAGED;
     }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic() {

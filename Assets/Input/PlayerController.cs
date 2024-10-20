@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _playerStateMachine.SetState(Enum_State.IDLING);
+        _playerStateMachine.SetState(Enum_AnimationState.IDLING);
     }
     private void Update()
     {
@@ -180,17 +180,17 @@ public class PlayerController : MonoBehaviour
     //Handles Movement
     private void HandleMovement()
     {
-        if (_playerStateMachine.State == Enum_State.DEAD)
+        if (_playerStateMachine.State == Enum_AnimationState.DEAD)
         {
             return;
         }
 
-        if(_playerStateMachine.State == Enum_State.DAMAGED)
+        if(_playerStateMachine.State == Enum_AnimationState.DAMAGED)
         {
             return;
         }
 
-        if (_playerStateMachine.State == Enum_State.IDLING || _playerStateMachine.State == Enum_State.MOVING)
+        if (_playerStateMachine.State == Enum_AnimationState.IDLING || _playerStateMachine.State == Enum_AnimationState.MOVING)
         {
             _rb.velocity = _moveVector * _speed;
         }
@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
     //Handles Movement Input Actions
     public void OnMovement(InputAction.CallbackContext context)
     {
-        _playerStateMachine.State = Enum_State.MOVING;
+        _playerStateMachine.State = Enum_AnimationState.MOVING;
 
         _moveVector = context.ReadValue<Vector2>();
         _faceDirection = _moveVector.normalized;
@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovementCancel(InputAction.CallbackContext context)
     {
-        _playerStateMachine.State = Enum_State.IDLING;
+        _playerStateMachine.State = Enum_AnimationState.IDLING;
 
         _moveVector = Vector2.zero;
     }
@@ -222,7 +222,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        _playerStateMachine.State = Enum_State.DASHING;
+        _playerStateMachine.State = Enum_AnimationState.DASHING;
         StartCoroutine(DashCoroutine());
 
         _dashPressed = context.ReadValueAsButton();
@@ -234,7 +234,7 @@ public class PlayerController : MonoBehaviour
         //Handles Initial Dash
         AudioManager.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
         //Debug.Log("Dash Started");
-        _playerStateMachine.State = Enum_State.DASHING;
+        _playerStateMachine.State = Enum_AnimationState.DASHING;
         _playerCollider.excludeLayers = LayerMask.GetMask("enemyAttacksLayer", "enemyLayer");
         //DisableMovement();
         _canDash = false;
@@ -248,7 +248,7 @@ public class PlayerController : MonoBehaviour
         //Handles Dash End
         //EnableMovement();
         _tr.emitting = false;
-        _playerStateMachine.State = Enum_State.IDLING;
+        _playerStateMachine.State = Enum_AnimationState.IDLING;
         _playerCollider.excludeLayers = 0;
         _rb.velocity = Vector2.zero;
 
@@ -305,16 +305,6 @@ public class PlayerController : MonoBehaviour
     private void OnDashCanceled(InputAction.CallbackContext context)
     {
         _abilityManager.OnDashCanceled(context);
-    }
-
-    public void OnPrimary(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnSecondary(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
     }
     #endregion
 }

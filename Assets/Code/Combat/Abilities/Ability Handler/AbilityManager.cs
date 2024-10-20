@@ -126,6 +126,7 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
+    //Used to subscribe to the primary input
     #region Primary
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
@@ -150,6 +151,7 @@ public class AbilityManager : MonoBehaviour
     }
     #endregion
 
+    //Used to subscribe to the secondary input 
     #region Secondary
     public void OnSecondaryStarted(InputAction.CallbackContext context)
     {
@@ -174,6 +176,7 @@ public class AbilityManager : MonoBehaviour
     }
     #endregion
 
+    //Used to subscribe to the dash input 
     #region Dash
     public void OnDashStarted(InputAction.CallbackContext context)
     {
@@ -199,6 +202,7 @@ public class AbilityManager : MonoBehaviour
 
     #endregion 
 
+    //Used to subscribe to the passive
     #region Passive
     public void OnPassive()
     {

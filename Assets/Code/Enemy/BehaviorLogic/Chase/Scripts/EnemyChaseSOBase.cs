@@ -46,7 +46,7 @@ public class EnemyChaseSOBase : ScriptableObject
     }
 
     public virtual void DoEnterLogic() { 
-        _enemy.State = Enum_State.MOVING;
+        _enemy.State = Enum_AnimationState.MOVING;
     }
 
     public virtual void DoExitLogic() { ResetValues(); }
