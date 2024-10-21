@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushMono : AbilityMonoBase
+public class WallMono : AbilityMonoBase
 {
-    [Header("Push Attributes")]
-    [SerializeField] private GameObject _push;
+    [Header("Wall Attributes")]
+    [SerializeField] private GameObject _wall;
 
     [Header("Prefab Attributes")]
-    [SerializeField] private float _damage;
-    [SerializeField] private float _knockback;
+    [SerializeField] private int _wallDamage;
+    [SerializeField] private float _wallKnockback;
     [SerializeField] private float _activationTime;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _distance;
+
+    private Rigidbody2D _playerRb;
+    private Vector2 _startPos;
 
     private PlayerStateMachine _playerStats;
     private string UIAbilityType;
@@ -20,6 +21,7 @@ public class PushMono : AbilityMonoBase
     public override void Initialize()
     {
         base.Initialize();
+        _playerRb = GameObject.FindWithTag("player").GetComponent<Rigidbody2D>();
         _playerStats = PlayerStats.instance.playerStateMachine;
         UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
@@ -30,20 +32,18 @@ public class PushMono : AbilityMonoBase
 
         float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
         float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
-        float addedActivationTime = _playerStats.playerStats.GetStat(StatsEnum.ACTIVATION_TIME);
-        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
 
-        GameObject newPush = Instantiate(_push, attackPosition, Quaternion.identity);
-        newPush.GetComponent<Push>().Initialize(_damage + addedDamage, _knockback + addedKnockback, _activationTime + addedActivationTime, 
-            _speed + addedSpeed, _distance);
+        _startPos = _playerRb.transform.position;
 
-        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
+        GameObject newWall = Instantiate(_wall, attackPosition, rotation);
+        newWall.GetComponent<Wall>().Initialize(_wallDamage + addedDamage, _wallKnockback + addedDamage, _activationTime);
+
         StartCoroutine(Cooldown());
     }
 
-    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation){}
+    public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation) { }
 
-    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation){}
+    public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation) { }
 
     public override IEnumerator Cooldown()
     {

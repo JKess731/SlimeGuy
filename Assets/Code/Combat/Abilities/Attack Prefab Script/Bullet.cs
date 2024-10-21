@@ -18,7 +18,7 @@ public class Bullet : Attacks
     private CircleCollider2D _circleCollider;
 
     //Initialize the bullet with the stats of the bullet
-    public void Initialize(int damage, float knockback, float speed, float range, int piercingAmount, int bulletBounce)
+    public void Initialize(float damage, float knockback, float speed, float range, int piercingAmount, int bulletBounce)
     {
         _damage = damage;
         _knockback = knockback;

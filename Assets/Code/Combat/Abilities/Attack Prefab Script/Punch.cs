@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class DividingSlash : Attacks
+public class Punch : Attacks
 {
     private Rigidbody2D _rb;
     private float _range;
@@ -14,7 +14,7 @@ public class DividingSlash : Attacks
     private GameObject _player;
     private GameObject _attack;
 
-    public void Initialize(float damage, float knockback, float speed, float range)
+    public void Initialize(int damage, float knockback, float speed, float range)
     {
         _damage = damage;
         _knockback = knockback;
@@ -30,7 +30,7 @@ public class DividingSlash : Attacks
 
     private void Start()
     {
-        _maxDistance = _range; // Slash range
+        _maxDistance = _range; // Punch range
         _player = GameObject.FindWithTag("player");
         _attack = GameObject.FindWithTag("attack");
 
@@ -48,25 +48,23 @@ public class DividingSlash : Attacks
         }
         */
 
-        // If the slash hits an enemy, damage the enemy and apply knockback
+        // If the punch hits an enemy, damage the enemy and apply knockback
         if (collision.gameObject.tag == "enemy")
         {
             //Debug.Log("Destroy me");
-            Destroy(gameObject);
             collision.gameObject.GetComponent<EnemyBase>().Damage(_damage, transform.right, _knockback, Vector2.up);
         }
     }
 
     private void Update()
     {
-        // Move the slash forward
+        // Move the punch forward
         _rb.velocity = transform.right * _speed;
 
-        // Destroy the slash after it has traveled its max distance
+        // Destroy the punch after it has traveled its max distance
         if (Vector3.Distance(_startPosition, transform.position) >= _maxDistance)
         {
             Destroy(gameObject);
         }
     }
 }
-
