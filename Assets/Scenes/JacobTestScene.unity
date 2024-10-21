@@ -253,6 +253,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &119870255 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 268914884431512594, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+  m_PrefabInstance: {fileID: 742089618}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &184773129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,7 +757,15 @@ PrefabInstance:
     - target: {fileID: 855721381421059794, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: secondary
       value: 
-      objectReference: {fileID: 415539853}
+      objectReference: {fileID: 975813701}
+    - target: {fileID: 855721381421059794, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: passive.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 855721381421059794, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      propertyPath: passive.Array.data[0]
+      value: 
+      objectReference: {fileID: 1727066258}
     - target: {fileID: 2309622323209581909, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -985,6 +998,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1230622347957319758, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 415539852}
+    - targetCorrespondingSourceObject: {fileID: 1230622347957319758, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 975813700}
+    - targetCorrespondingSourceObject: {fileID: 268914884431512594, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1727066257}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
 --- !u!1001 &743657500
@@ -1249,6 +1268,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6026051681432070955, guid: 453f2763d62efe24fa9c4f6f1c9d8e3e, type: 3}
   m_PrefabInstance: {fileID: 742089618}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &975813699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 975813700}
+  - component: {fileID: 975813701}
+  m_Layer: 0
+  m_Name: SlimeWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &975813700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975813699}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1517514236}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975813701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975813699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab3a4b113ce41349ab888923d8cb861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilityName: SlimeWall
+  _icon: {fileID: 0}
+  _abilityType: 1
+  _cooldownTime: 3
+  _status: {fileID: 0}
+  _wall: {fileID: 1885479085440805900, guid: b5619dfdf91b214479b8a36311569e1d, type: 3}
+  _wallDamage: 1
+  _wallKnockback: 10
+  _activationTime: 5
 --- !u!114 &997034540 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6232203662465846845, guid: 9ee15d2e67f797542875bb9c8084c326, type: 3}
@@ -5426,6 +5498,59 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
+--- !u!1 &1727066256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727066257}
+  - component: {fileID: 1727066258}
+  m_Layer: 0
+  m_Name: SlimeTrail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1727066257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727066256}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 119870255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1727066258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727066256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4190073ad69320546a0ede55ae65efb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilityName: SlimeTrail
+  _icon: {fileID: 0}
+  _abilityType: 3
+  _cooldownTime: 0
+  _status: {fileID: 0}
+  trailPrefab: {fileID: 6158484231948084506, guid: 8f8413d7c00bda14592ef4383d696759, type: 3}
+  trailLifetime: 1
+  maxTrailCount: 6
+  trailSpawnInterval: 0.1
 --- !u!114 &1728065499 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2897327046516107550, guid: 9ee15d2e67f797542875bb9c8084c326, type: 3}
