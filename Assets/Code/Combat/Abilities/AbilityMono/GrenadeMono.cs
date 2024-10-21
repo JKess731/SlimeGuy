@@ -8,25 +8,38 @@ public class GrenadeMono : AbilityMonoBase
     [SerializeField] private GameObject _grenade;
 
     [Header("Prefab Attributes")]
-    [SerializeField] private int _damage;
+    [SerializeField] private float _damage;
     [SerializeField] private float _knockback;
     [SerializeField] private float _activationTime;
     [SerializeField] private float _speed;
     [SerializeField] private float _distance;
 
+    private PlayerStateMachine _playerStats;
+    private string UIAbilityType;
+
     public override void Initialize()
     {
         base.Initialize();
+        _playerStats = PlayerStats.instance.playerStateMachine;
+        UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
 
+        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
+        float addedActivationTime = _playerStats.playerStats.GetStat(StatsEnum.ACTIVATION_TIME);
+        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
+
         Quaternion newRot = rotation;
         GameObject newGrenade = Instantiate(_grenade, attackPosition, newRot);
-        newGrenade.GetComponent<Grenade>().Initialize(_damage, _knockback, _activationTime, _speed, _distance);
+        newGrenade.GetComponent<Grenade>().Initialize(_damage + addedDamage, _knockback + addedKnockback, _activationTime + addedActivationTime,
+            _speed + addedSpeed, _distance);
 
+        Debug.Log("Grenade Damage:" + (_damage + addedDamage));
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
         StartCoroutine(Cooldown());
     }
 

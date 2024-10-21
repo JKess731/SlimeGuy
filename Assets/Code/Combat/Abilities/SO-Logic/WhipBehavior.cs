@@ -39,8 +39,4 @@ public class WhipBehavior : AbilitySOBase
         AbilityState = AbilityState.FINISHED;
         onBehaviorFinished?.Invoke();
     }
-
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-    }
 }

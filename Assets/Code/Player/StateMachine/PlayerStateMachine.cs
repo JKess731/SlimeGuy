@@ -16,6 +16,8 @@ public class PlayerStateMachine : MonoBehaviour
     public Enum_AnimationState State { get => _state; set => _state = value; }
     public StatsSO playerStats { get => _playerStats; }
 
+    
+
     private void Awake()
     {
         //Set up initial references
