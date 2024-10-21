@@ -50,6 +50,8 @@ public class SingleRoomController : MonoBehaviour
             {
                 door.SetActive(true);
             }
+
+            // Enable music
         }
 
         RoomLevelWave waveToSpawn = waves[currentWave];
@@ -126,6 +128,8 @@ public class SingleRoomController : MonoBehaviour
                     door.SetActive(false);
                 }
 
+                // Disable music
+
                 LevelGenerator lg = GameObject.FindAnyObjectByType<LevelGenerator>();
                 lg.roomsCleared++;
                 lg.clearedChain++;
@@ -146,5 +150,6 @@ public enum RoomTag
     SHOP,
     CORRIDOR,
     WAVE,
-    BASIC
+    BASIC,
+    EMPTY
 }
