@@ -1,6 +1,9 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Timers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -9,11 +12,10 @@ public class EnemyGremlinRangedAttack : EnemyAttackSOBase
 {
     [SerializeField] private Rigidbody2D bulletPrefab;
     [SerializeField] private float timeBetweenShots = 2f;
-    [SerializeField] private float timeTillExit = 3f;
-    [SerializeField] private float distanceToCountExit = 3f;
     [SerializeField] private float bulletSpeed = 10f;
 
     private float attackCooldownTimer;
+    private bool canShoot;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {

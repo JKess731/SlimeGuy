@@ -21,5 +21,13 @@ public class EnemyRunAwayCheck : MonoBehaviour
             enemy.setRunAwayDistance(true);
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject == playerTarget)
+        {
+            enemy.setRunAwayDistance(false);
+        }
+    }
 }
 
