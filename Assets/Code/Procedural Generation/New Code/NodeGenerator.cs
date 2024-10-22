@@ -311,5 +311,21 @@ public class NodeGenerator : MonoBehaviour
         return coordinate;
     }
 
+    private void DestroyNodes()
+    {
+        Queue<GameObject> nodeDestroy = new Queue<GameObject>();
+        for (int i = 0; i < nodesPlaced.Count; i++)
+        {
+            nodeDestroy.Enqueue(nodesPlaced[i].gameObject);
+        }
+
+        while (nodeDestroy.Count > 0)
+        {
+            Destroy(nodeDestroy.Dequeue());
+        }
+
+        nodesPlaced.Clear();
+    }
+
     #endregion
 }

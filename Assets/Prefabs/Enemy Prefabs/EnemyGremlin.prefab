@@ -562,12 +562,12 @@ MonoBehaviour:
   _knockbackRes: 0
   _isStunnable: 1
   ring: {fileID: 0}
-  _enemySpawnBase: {fileID: 0}
-  _enemyIdleBase: {fileID: 0}
-  _enemyChaseBase: {fileID: 0}
-  _enemyAttackBase: {fileID: 0}
-  _enemyDamagedBase: {fileID: 0}
-  _enemyDeathBase: {fileID: 0}
+  _enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
+  _enemyIdleBase: {fileID: 11400000, guid: 985540e631692a9449807e007b23c8bb, type: 2}
+  _enemyChaseBase: {fileID: 11400000, guid: d28b3edc659f3e940acc2e34b747ac8a, type: 2}
+  _enemyAttackBase: {fileID: 11400000, guid: 69f1e2c478eb0a94ab2db8550295ce40, type: 2}
+  _enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
+  _enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
   attackSoundEffects:
   - Guid:
       Data1: 1275740998
