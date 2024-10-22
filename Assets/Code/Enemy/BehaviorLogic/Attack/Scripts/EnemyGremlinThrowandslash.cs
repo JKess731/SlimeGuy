@@ -17,10 +17,13 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
     [SerializeField] private float distanceToCountExit = 3f;
     [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float attackRange = 3f;
-    [SerializeField] private float rangedAttackDistance = 5f; 
+    [SerializeField] private float rangedAttackDistance = 5f;
 
-    private float timer;
-    private float exitTimer;
+    [SerializeField] private float shootingCooldown = 2f; 
+    private float nextShootTime = 0f;
+
+    [SerializeField] private float meleeCooldown = 1.5f; 
+    private float nextMeleeAttackTime = 0f;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {

@@ -11,8 +11,8 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
     [SerializeField] private float changeDirectionCooldown = 0.5f;  
     [SerializeField] private float attackRange = 5.0f; 
 
-    private Vector2 runDir;  
-    private float lastDirectionChangeTime;  
+    private Vector2 runDir;
+    private bool hasLineOfSight = false;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
@@ -30,7 +30,7 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        UpdateRunDirection(); 
+        _enemy.MoveEnemy(Vector2.zero);
     }
 
     public override void DoExitLogic()
@@ -42,14 +42,45 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
     {
         base.DoFrameUpdateLogic();
 
-        if (Vector2.Distance(_transform.position, _playerTransform.position) > attackRange)
+        hasLineOfSight = false;
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(_enemy.transform.position, _playerTransform.position - _enemy.transform.position);
+
+        foreach (RaycastHit2D hit in hits)
         {
-            _enemy.MoveEnemy(runDir * runAwaySpeed);
+            if (hit.collider.CompareTag("player"))
+            {
+                hasLineOfSight = true;
+                Debug.DrawRay(_enemy.transform.position, _playerTransform.position - _enemy.transform.position, Color.green);
+                break; 
+            }
+            else
+            {
+                Debug.DrawRay(_enemy.transform.position, _playerTransform.position - _enemy.transform.position, Color.red);
+            }
         }
-        else
+
+        if (hasLineOfSight)
         {
-            _enemy.MoveEnemy(Vector2.zero);
-            _enemy.stateMachine.ChangeState(_enemy.attackState);
+            // If the enemy is within shooting distance, attack
+            if (_enemy._isWithinShootingDistance)
+            {
+                Debug.Log("ATTACK");
+                _enemy.stateMachine.ChangeState(_enemy.attackState);
+            }
+            // If the enemy is within run-away distance, move away from the player
+            else if (_enemy._isWithinRunAwayDistance)
+            {
+                Debug.Log("MOVE");
+                Vector2 runDir = (_transform.position - _playerTransform.position).normalized;
+                _enemy.MoveEnemy(runDir * runAwaySpeed);
+            }
+            // If the player is outside both distances, stand still
+            else
+            {
+                Debug.Log("STAND STILL");
+                _enemy.MoveEnemy(Vector2.zero);
+            }
         }
     }
 
@@ -66,23 +97,6 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
     public override void ResetValues()
     {
         base.ResetValues();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("wall"))
-        {
-            UpdateRunDirection();
-            lastDirectionChangeTime = Time.time;
-        }
-    }
-
-    private void UpdateRunDirection()
-    {
-        runDir = -(_playerTransform.position - _transform.position).normalized;
-
-        float randomAngle = Random.Range(-90f, 90f);
-        runDir = Quaternion.Euler(0, 0, randomAngle) * runDir;
     }
 }
 

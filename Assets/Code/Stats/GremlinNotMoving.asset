@@ -9,6 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e099cf81baf339448a61a64a6098a873, type: 3}
-  m_Name: GremlinIdleChase
+  m_Script: {fileID: 11500000, guid: df85d10d946d2ad42a832325e3bcb4c8, type: 3}
+  m_Name: GremlinNotMoving
   m_EditorClassIdentifier: 
+  _statList:
+  - _statEnum: 4
+    _statValue: 10
+  - _statEnum: 3
+    _statValue: 10
+  - _statEnum: 0
+    _statValue: 1
+  - _statEnum: 2
+    _statValue: 4
