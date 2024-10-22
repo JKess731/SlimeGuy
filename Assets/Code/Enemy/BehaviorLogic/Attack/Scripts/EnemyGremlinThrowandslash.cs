@@ -81,7 +81,7 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
             exitTimer += Time.deltaTime;
             if (exitTimer > timeBetweenShots)
             {
-                _enemy.stateMachine.ChangeState(_enemy.chaseState);
+                _enemy.stateMachine.ChangeState(_enemy.moveState);
             }
         }
         else

@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "GremlinIdleChase", menuName = "EnemyLogic/ChaseLogic/GremlinIdleChase")]
-public class EnemyGremlinIdleChase : EnemyChaseSOBase
+public class EnemyGremlinIdleChase : EnemyMoveSOBase
 {
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {

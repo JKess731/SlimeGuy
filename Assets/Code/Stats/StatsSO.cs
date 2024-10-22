@@ -18,12 +18,12 @@ public class StatsSO: ScriptableObject
     public void Initialize()
     {
         for(int i = 0; i < _statList.Count; i++) {
-            if (_stats.ContainsKey(_statList[i].Stat))
+            if (_stats.ContainsKey(_statList[i].StatType))
             {
                 //Debug.LogWarning("Duplicate Stat Found");
                 continue;
             }
-            _stats.Add(_statList[i].Stat, _statList[i].Value);
+            _stats.Add(_statList[i].StatType, _statList[i].Value);
         }
     }
 
@@ -44,7 +44,7 @@ public class StatsSO: ScriptableObject
     {
         for (int i = 0; i < statList.Count; i++)
         {
-            _stats.Add(_statList[i].Stat, _statList[i].Value);
+            _stats.Add(_statList[i].StatType, _statList[i].Value);
         }
     }
 
@@ -74,9 +74,9 @@ public class StatsSO: ScriptableObject
 [Serializable]
 public class StatsInfo
 {
-    [SerializeField] private Enum_Stats _stat;
+    [SerializeField] private Enum_Stats _statType;
     [SerializeField] private float _statValue;
 
-    public Enum_Stats Stat { get => _stat; }
+    public Enum_Stats StatType { get => _statType; }
     public float Value { get => _statValue;}
 }

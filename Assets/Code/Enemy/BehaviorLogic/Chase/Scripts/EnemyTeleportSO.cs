@@ -5,7 +5,7 @@ using System.Net.NetworkInformation;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Teleport", menuName = "EnemyLogic/ChaseLogic/Teleport")]
-public class EnemyTeleportSO : EnemyChaseSOBase
+public class EnemyTeleportSO : EnemyMoveSOBase
 {
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {

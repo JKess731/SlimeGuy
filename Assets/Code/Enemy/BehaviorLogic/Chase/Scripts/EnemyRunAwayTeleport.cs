@@ -5,10 +5,8 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "RunAwayTeleport", menuName = "EnemyLogic/ChaseLogic/RunAwayTeleport")]
 
-public class EnemyRunAwayTeleport : EnemyChaseSOBase
+public class EnemyRunAwayTeleport : EnemyMoveSOBase
 {
-    [SerializeField] private Transform attackPoint;
-    public GameObject ring;
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
@@ -28,19 +26,26 @@ public class EnemyRunAwayTeleport : EnemyChaseSOBase
     {
         base.DoFrameUpdateLogic();
 
+        //If the player is within the striking distance, change to attack state
+        //Else move towards the player
         if (!_enemy._isWithinShootingDistance)
         {
             Vector2 dir = (_playerTransform.position - _transform.position).normalized;
             _enemy.MoveEnemy(dir * _enemy.Stats.GetStat(Enum_Stats.SPEED));
         }
 
+        //If the player is within the striking distance, attempt to run away
+        if (_enemy._isWithinStikingDistance)
+        {
+            Vector2 runDir = -(_playerTransform.position - _transform.position).normalized;
+            _enemy.MoveEnemy(runDir * _enemy.Stats.GetStat(Enum_Stats.SPEED));
+        }
+
+        //If the player is within the teleporting distance, teleport
         if (_enemy._isWithinTeleportingDistance)
         {
             Teleport();
         }
-
-        Vector2 runDir = -(_playerTransform.position - _transform.position).normalized;
-        _enemy.MoveEnemy(runDir * _enemy.Stats.GetStat(Enum_Stats.SPEED));
     }
 
     public override void DoPhysicsLogic()

@@ -22,7 +22,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region Scriptable Objects Variables
     [SerializeField] private EnemySpawnSOBase _enemySpawnBase;
     [SerializeField] private EnemyIdleSOBase _enemyIdleBase;
-    [SerializeField] private EnemyChaseSOBase _enemyChaseBase;
+    [SerializeField] private EnemyMoveSOBase _enemyChaseBase;
     [SerializeField] private EnemyAttackSOBase _enemyAttackBase;
     [SerializeField] private EnemyDamagedSOBase _enemyDamagedBase;
     [SerializeField] private EnemyDeathSOBase _enemyDeathBase;
@@ -79,7 +79,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region State Machine Variables
     public EnemyStateMachine stateMachine { get; set; }
     public EnemyIdleState idleState { get; set; }
-    public EnemyChaseState chaseState { get; set; }
+    public EnemyChaseState moveState { get; set; }
     public EnemyAttackState attackState { get; set; }
     public EnemyDamagedState damagedState { get; set; }
     public EnemySpawningState spawnState { get; set; }
@@ -89,7 +89,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region SO Instances Variables
     public EnemySpawnSOBase enemySpawnBaseInstance { get; set; }
     public EnemyIdleSOBase enemyIdleBaseInstance { get; set; }
-    public EnemyChaseSOBase enemyChaseBaseInstance { get; set; }
+    public EnemyMoveSOBase enemyChaseBaseInstance { get; set; }
     public EnemyAttackSOBase enemyAttackBaseInstance { get; set; }
     public EnemyDamagedSOBase enemyDamagedBaseInstance { get; set; }
     public EnemyDeathSOBase enemyDeathBaseInstance { get; set; }
@@ -123,7 +123,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         //Instantiate enemy states into State Machine
         spawnState = new EnemySpawningState(this, stateMachine);
         idleState = new EnemyIdleState(this, stateMachine);
-        chaseState = new EnemyChaseState(this, stateMachine);
+        moveState = new EnemyChaseState(this, stateMachine);
         attackState = new EnemyAttackState(this, stateMachine);
         damagedState = new EnemyDamagedState(this, stateMachine);
         deathState = new EnemyDeathState(this, stateMachine);
@@ -165,7 +165,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void GoToChase()
     {
-        stateMachine.ChangeState(chaseState);
+        stateMachine.ChangeState(moveState);
     }
 
     public void GoToAttack()

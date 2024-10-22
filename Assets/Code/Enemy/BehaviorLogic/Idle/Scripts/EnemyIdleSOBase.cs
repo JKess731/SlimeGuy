@@ -27,18 +27,25 @@ public class EnemyIdleSOBase : ScriptableObject
 
         // if the enemy is aggroed, change to chase state
         // if the enemy is within shooting distance, change to attack state
+        // if the enemy is within striking distance, change to attack state
+
         // if the enemy is not aggroed, change to idle state
         // Stricking Bool is set in chase state
 
         if (enemy._isAggroed)
         {
-            enemy.stateMachine.ChangeState(enemy.chaseState);
+            enemy.stateMachine.ChangeState(enemy.moveState);
         }
 
-        if (enemy._isWithinShootingDistance)
-        {
-            enemy.stateMachine.ChangeState(enemy.attackState);
-        }
+        //if (enemy._isWithinStikingDistance)
+        //{
+        //    enemy.stateMachine.ChangeState(enemy.attackState);
+        //}
+
+        //if (enemy._isWithinShootingDistance)
+        //{
+        //    enemy.stateMachine.ChangeState(enemy.attackState);
+        //}
     }
 
     public virtual void DoPhysicsLogic() { }

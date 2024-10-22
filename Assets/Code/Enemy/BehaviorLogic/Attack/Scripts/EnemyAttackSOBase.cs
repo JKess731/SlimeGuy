@@ -11,6 +11,7 @@ public class EnemyAttackSOBase : ScriptableObject
     [SerializeField] private float _attackExitTime = 1f;    //Duration of the attack recovery/exit time
 
     protected EnemyBase _enemy;
+    protected Transform _enemyTransform;
     protected GameObject _playerGameObject;
     protected Transform _playerTransform;
 
@@ -20,11 +21,16 @@ public class EnemyAttackSOBase : ScriptableObject
 
     private Diag.Stopwatch _stopwatch = new Diag.Stopwatch();
 
+    /// <summary>
+    /// Initialize the scriptable object
+    /// </summary>
+    /// <param name="gameObject"> The enemy game object</param>
+    /// <param name="enemy"> The enemybase scripy</param>
     public virtual void Initialize(GameObject gameObject, EnemyBase enemy)
     {
         //Get the enemybase and transform components
         _enemy = enemy;
-        //_enemyTransform = gameObject.transform;
+        _enemyTransform = gameObject.transform;
 
         //Get the player gameobject and transform components
         _playerGameObject = gameObject;

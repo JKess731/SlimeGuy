@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "GremlinRunAway", menuName = "EnemyLogic/ChaseLogic/GremlinRunAway")]
-public class EnemyGremlinRunAway : EnemyChaseSOBase
+public class EnemyGremlinRunAway : EnemyMoveSOBase
 {
     [SerializeField] private float runAwaySpeed = 1.5f;
     [SerializeField] private float changeDirectionCooldown = 0.5f;  

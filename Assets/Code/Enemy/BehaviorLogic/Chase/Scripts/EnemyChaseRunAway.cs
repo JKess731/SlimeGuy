@@ -5,7 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "ChaseRunAway", menuName = "EnemyLogic/ChaseLogic/RunAway")]
 
-public class EnemyChaseRunAway : EnemyChaseSOBase
+public class EnemyChaseRunAway : EnemyMoveSOBase
 {
     [SerializeField] private float runAwaySpeed = 1.5f;
     [SerializeField] private Transform attackPoint;

@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: WizardStats
   m_EditorClassIdentifier: 
   _statList:
-  - _statEnum: 4
+  - _stat: 3
     _statValue: 10
-  - _statEnum: 3
+  - _stat: 4
     _statValue: 10
-  - _statEnum: 0
-    _statValue: 2
-  - _statEnum: 2
-    _statValue: 0
+  - _stat: 2
+    _statValue: 1

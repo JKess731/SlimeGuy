@@ -32,7 +32,9 @@ public class EnemyIdleRandomWander : EnemyIdleSOBase
     {
         base.DoFrameUpdateLogic();
         direction = (targetPos - enemy.transform.position).normalized;
+
         enemy.MoveEnemy(direction * randomMovementSpeed);
+
         if ((enemy.transform.position - targetPos).sqrMagnitude < 0.01f)
         {
             targetPos = GetRandomPointInCircle();
