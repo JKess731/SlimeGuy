@@ -734,6 +734,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Singletons FirstThursday
       objectReference: {fileID: 0}
+    - target: {fileID: 5632237893383201660, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: <IValleyTheme>k__BackingField.Path
+      value: event:/IValleyTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632237893383201660, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: <IValleyTheme>k__BackingField.Guid.Data1
+      value: 2138113156
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632237893383201660, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: <IValleyTheme>k__BackingField.Guid.Data2
+      value: 1235300883
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632237893383201660, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: <IValleyTheme>k__BackingField.Guid.Data3
+      value: 1217167034
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632237893383201660, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: <IValleyTheme>k__BackingField.Guid.Data4
+      value: -162750039
+      objectReference: {fileID: 0}
     - target: {fileID: 7339888533048764866, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

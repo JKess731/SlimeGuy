@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public EventInstance niko;
     public EventInstance jeopardy;
     public EventInstance menuMusic;
+    public EventInstance IValleyTheme;
 
     private void Awake()
     {
@@ -47,6 +48,15 @@ public class AudioManager : MonoBehaviour
     public void StopNiko()
     {
         niko.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+    public void PlayIValley()
+    {
+        IValleyTheme = RuntimeManager.CreateInstance(FmodEvents.instance.IValleyTheme);
+        IValleyTheme.start();
+    }
+    public void StopIValley()
+    {
+        IValleyTheme.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     //The curse of Jeopardy

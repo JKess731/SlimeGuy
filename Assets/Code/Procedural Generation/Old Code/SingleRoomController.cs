@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Common;
 using UnityEngine;
 using UnityEngine.Events;
+using FMOD;
+using FMODUnity;
 
 public class SingleRoomController : MonoBehaviour
 {
