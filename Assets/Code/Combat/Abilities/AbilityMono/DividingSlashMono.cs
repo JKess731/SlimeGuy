@@ -39,9 +39,9 @@ public class DividingSlashMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
-        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ATTACK) + _dividingSlashDamage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(StatsEnum.KNOCKBACK) + _dividingSlashKnockback;
+        float newSpeed = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PROJECTILE_SPEED) + _dividingSlashSpeed;
 
         Vector2 vecForAng = rotation * Vector2.right;
         _pushDirection = vecForAng; // Use the direction of the slash
@@ -52,8 +52,7 @@ public class DividingSlashMono : AbilityMonoBase
         if(_slashCount == 1)
         {
             GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, rotation);
-            newDividingSlash.GetComponent<DividingSlash>().Initialize(_dividingSlashDamage + addedDamage, _dividingSlashKnockback + addedKnockback, 
-                _dividingSlashSpeed + addedSpeed, _dividingSlashRange);
+            newDividingSlash.GetComponent<DividingSlash>().Initialize(newDamage, newKnockback, newSpeed, _dividingSlashRange);
         }
 
         // Calculate the angle step based on the number of slashes and the total spread angle
@@ -70,17 +69,18 @@ public class DividingSlashMono : AbilityMonoBase
                 Quaternion newRot = rotation * Quaternion.Euler(0, 0, _spreadAngle) * Quaternion.Euler(0, 0, addedOffset);
 
                 GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
-                newDividingSlash.GetComponent<DividingSlash>().Initialize(_dividingSlashDamage + addedDamage, _dividingSlashKnockback + addedKnockback,
-               _dividingSlashSpeed + addedSpeed, _dividingSlashRange);
+                newDividingSlash.GetComponent<DividingSlash>().Initialize(newDamage, newKnockback, newSpeed, _dividingSlashRange);
 
             }
         }
 
-        Debug.Log("DS Damage:" + (_dividingSlashDamage + addedDamage));
-
         // Push the player backward
         StartCoroutine(PushPlayerBackward());
         StartCoroutine(Cooldown());
+
+        //This is basically saying pass in this monobehavior as the ability, use the UIAbility type variable to determine which box it's in in the UI, and 
+        //its activation time. This will be the same in every Mono class that calls this, though the activation time parameter value may differ.
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, 0));
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation){}
