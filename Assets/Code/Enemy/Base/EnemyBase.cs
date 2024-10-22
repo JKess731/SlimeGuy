@@ -67,6 +67,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public Transform Ring { get => ring;}
     public Enum_AnimationState State { get => _state; set => _state = value; }
     public Rigidbody2D RigidBody2d { get => _rigidbody2D; set => _rigidbody2D = value; }
+    public AnimationControl EnemyAnimation { get => _enemyAnimation;}
     #endregion
     //----------------- Trigger Variables -------------------    //The variables that hold the status of the enemy
     #region Trigger Variables
@@ -79,7 +80,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region State Machine Variables
     public EnemyStateMachine stateMachine { get; set; }
     public EnemyIdleState idleState { get; set; }
-    public EnemyChaseState moveState { get; set; }
+    public EnemyMoveState moveState { get; set; }
     public EnemyAttackState attackState { get; set; }
     public EnemyDamagedState damagedState { get; set; }
     public EnemySpawningState spawnState { get; set; }
@@ -123,7 +124,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         //Instantiate enemy states into State Machine
         spawnState = new EnemySpawningState(this, stateMachine);
         idleState = new EnemyIdleState(this, stateMachine);
-        moveState = new EnemyChaseState(this, stateMachine);
+        moveState = new EnemyMoveState(this, stateMachine);
         attackState = new EnemyAttackState(this, stateMachine);
         damagedState = new EnemyDamagedState(this, stateMachine);
         deathState = new EnemyDeathState(this, stateMachine);
@@ -273,16 +274,18 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region Animation Triggers
     private void AnimationTriggerEvent(AnimationTriggerType triggerType) { 
         stateMachine.currentEnemyState.AnimationTriggerEvent(triggerType);
+        Debug.Log(stateMachine.currentEnemyState);
     }
 
+    //Move this to public enum folder
     public enum AnimationTriggerType { 
-        Damage,
-        Attack,
-        Death,
-        Move,
-        Teleport,
-        Idle,
-        Spawn
+        DAMAGE,
+        ATTACK,
+        DEATH,
+        MOVE,
+        TELEPORT,
+        IDLE,
+        SPAWN
     }
     #endregion
 

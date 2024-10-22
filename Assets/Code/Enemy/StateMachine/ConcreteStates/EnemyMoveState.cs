@@ -1,7 +1,7 @@
-public class EnemyChaseState : EnemyState
+public class EnemyMoveState : EnemyState
 {
 
-    public EnemyChaseState(EnemyBase enemyBase, EnemyStateMachine enemyStateMachine) : base(enemyBase, enemyStateMachine)
+    public EnemyMoveState(EnemyBase enemyBase, EnemyStateMachine enemyStateMachine) : base(enemyBase, enemyStateMachine)
     {
 
     }

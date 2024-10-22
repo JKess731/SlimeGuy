@@ -25,12 +25,10 @@ public class PlayerStats : MonoBehaviour
             Debug.LogWarning("PlayerStats instance already exists. Destroying duplicate.");
             Destroy(gameObject);
         }
+        playerStateMachine = GetComponent<PlayerStateMachine>();
     }
 
     private void Start()
     {
-        playerStateMachine = GetComponent<PlayerStateMachine>();
-        Debug.Log("PlayerStateMachine: " + playerStateMachine);
-        Debug.Log("PlayerStats: " + playerStateMachine.playerStats);
     }
 }

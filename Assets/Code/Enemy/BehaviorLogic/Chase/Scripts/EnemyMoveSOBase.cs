@@ -21,6 +21,7 @@ public class EnemyMoveSOBase : ScriptableObject
 
         _gameObject = gameObject;
         _transform = gameObject.transform;
+
         _enemy = enemy;
         _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
     }

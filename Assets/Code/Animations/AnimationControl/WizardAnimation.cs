@@ -27,7 +27,14 @@ public class WizardAnimation : AnimationControl
 
         if (state == Enum_AnimationState.TELEPORTING)
         {
-            _animator.Play("TeleportStart");
+            if(_animator.GetBool("Teleport") == false)
+            {
+                _animator.Play("TeleportStart");
+            }
+            else if(_animator.GetBool("Teleport") == true)
+            {
+                _animator.Play("TeleportExit");
+            }
         }
 
         if (state == Enum_AnimationState.ATTACKING)

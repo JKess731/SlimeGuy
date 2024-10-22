@@ -17,7 +17,7 @@ public class EnemyAOEMeleeAttackSO : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
+        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
         {
             //Play attack sound
             AudioManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);

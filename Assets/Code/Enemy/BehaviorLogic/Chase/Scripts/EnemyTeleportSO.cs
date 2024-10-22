@@ -11,7 +11,7 @@ public class EnemyTeleportSO : EnemyMoveSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Teleport)
+        if (triggerType == EnemyBase.AnimationTriggerType.TELEPORT)
         {
             Debug.Log("WizardTeleport");
             RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);

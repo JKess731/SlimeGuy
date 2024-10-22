@@ -24,12 +24,15 @@ public class EnemyTeleportCheck : MonoBehaviour
     {
         if (collision.gameObject == playerTarget)
         {
-            enemy.setAggroStatus(true);
-            enemy.setShootingDistance(false);
-            //StartCoroutine(WaitToTP());
-            //Collider2D c = GetComponent<Collider2D>();
-            //c.enabled = false;
-            //enemy.State = Enum_AnimationState.MOVING;
+            enemy.setTeleportingDistance(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject == playerTarget)
+        {
+            enemy.setTeleportingDistance(false);
         }
     }
 

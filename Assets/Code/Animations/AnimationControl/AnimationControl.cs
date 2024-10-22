@@ -10,6 +10,8 @@ public class AnimationControl : MonoBehaviour
     protected SpriteRenderer _spriteRenderer;
     protected Animator _animator;
 
+    public Animator Animator => _animator;
+
     void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();

@@ -22,7 +22,6 @@ public class ShotgunMono : AbilityMonoBase
 
     public override void Initialize()
     {
-        
         base.Initialize();
         _playerStats = PlayerStats.instance.playerStateMachine;
         UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
@@ -34,13 +33,11 @@ public class ShotgunMono : AbilityMonoBase
 
         float addedDamage = _playerStats.playerStats.GetStat(Enum_Stats.ATTACK);
         float addedKnockback = _playerStats.playerStats.GetStat(Enum_Stats.KNOCKBACK);
-        float addedSpeed = _playerStats.playerStats.GetStat(Enum_Stats.SPEED);
+        //float addedSpeed = _playerStats.playerStats.GetStat(Enum_Stats.SPEED);
         float addedPiercingAmount = _playerStats.playerStats.GetStat(Enum_Stats.PIERCING_COUNT);
         float addedBulletBounce = _playerStats.playerStats.GetStat(Enum_Stats.RICHOCHET_COUNT);
 
-        Debug.Log("Shotgun Starting");
-
-        float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
+        float angleDiff = _spreadAngle * 2/ (_bulletCount - 1);
         for (int i = 0; i < _bulletCount; i++)
         {
             float addedOffset = -angleDiff * i;
@@ -48,8 +45,7 @@ public class ShotgunMono : AbilityMonoBase
 
             GameObject newBullet = Instantiate(_projectile, attackPosition, newRot);
             newBullet.GetComponent<Bullet>().Initialize(_projectileDamage + addedDamage, _projectileKnockback + addedKnockback, 
-                _projectileSpeed + addedSpeed, _projectileRange, _piercingAmount + (int)addedPiercingAmount, _bulletBounce + (int)addedBulletBounce);
-            Debug.Log("Shotgun Damage:" + (_projectileDamage + addedDamage));
+                _projectileSpeed /*+ addedSpeed*/, _projectileRange, _piercingAmount + (int)addedPiercingAmount, _bulletBounce + (int)addedBulletBounce);
         }
 
         StartCoroutine(Cooldown());

@@ -23,7 +23,7 @@ public class EnemyRangeAttackProjectile : EnemyAttackSOBase
         Vector3 dir = _playerTransform.position - _attackPoint.transform.position;
         float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
+        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
         {
             Debug.Log("WizardCast");
             if (_enemy.attackSoundEffects.Count > 0)

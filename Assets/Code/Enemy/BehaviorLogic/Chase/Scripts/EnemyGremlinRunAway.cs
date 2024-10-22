@@ -18,7 +18,7 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Move)
+        if (triggerType == EnemyBase.AnimationTriggerType.MOVE)
         {
             if (_enemy.moveSoundEffects.Count > 0)
             {

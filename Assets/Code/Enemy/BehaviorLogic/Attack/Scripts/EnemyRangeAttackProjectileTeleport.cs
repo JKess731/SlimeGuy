@@ -23,9 +23,8 @@ public class EnemyRangeAttackProjectileTeleport : EnemyAttackSOBase
         Vector3 dir = _playerTransform.position - _attackPoint.transform.position;
         float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
+        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
         {
-            Debug.Log("WizardCast");
             if (_enemy.attackSoundEffects.Count > 0)
             {
                 RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
@@ -51,8 +50,10 @@ public class EnemyRangeAttackProjectileTeleport : EnemyAttackSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
+
         if (_enemy._isWithinTeleportingDistance)
         {
+            Debug.Log("Teleporting");
             _enemy.stateMachine.ChangeState(_enemy.moveState);
         }
 

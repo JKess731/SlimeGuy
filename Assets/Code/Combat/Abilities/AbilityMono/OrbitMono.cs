@@ -23,7 +23,6 @@ public class OrbitMono : AbilityMonoBase
     {
         base.Initialize();
         _playerStats = PlayerStats.instance.playerStateMachine;
-        Debug.Log(PlayerStats.instance.playerStateMachine);
         UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
 
