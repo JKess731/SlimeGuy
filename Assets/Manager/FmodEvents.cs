@@ -12,6 +12,8 @@ public class FmodEvents : MonoBehaviour
     [field: SerializeField] public EventReference Jepardy { get; private set; }
     [field: SerializeField] public EventReference MenuMusic { get; private set; }
 
+    [field: SerializeField] public EventReference IValleyTheme {  get; private set; }
+
 
     [field:Header("Player")]
     [field: SerializeField] public EventReference playerAttack { get; private set; }
