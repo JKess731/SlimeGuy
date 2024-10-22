@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2182151277006393198}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.83, y: -0.43, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -236,8 +236,8 @@ GameObject:
   - component: {fileID: 3711156806258511412}
   - component: {fileID: 22841002167309459}
   - component: {fileID: 766400675495287892}
-  - component: {fileID: 2013809200612587693}
   - component: {fileID: 4685945866906265587}
+  - component: {fileID: 5744069583149286991}
   m_Layer: 8
   m_Name: EnemyGolem
   m_TagString: enemy
@@ -360,9 +360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9874ece03a58ca14da08bdbf145ee69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _knockBackTime: 0.2
-  _constForce: 0.25
-  _delayTime: 0.1
+  _knockBackTime: 0.15
+  _constForce: 0
+  _releaseTime: 0.1
   _knockbackHitForceCurve:
     serializedVersion: 2
     m_Curve:
@@ -376,7 +376,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.25
+      time: 0.15
       value: 1
       inSlope: 0
       outSlope: 0
@@ -389,7 +389,25 @@ MonoBehaviour:
     m_RotationOrder: 4
   _knockbackStoppingForceCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.15
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -465,25 +483,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6532869, y: 0.64192694}
   m_EdgeRadius: 0
---- !u!114 &2013809200612587693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5254476107874737995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 352c011b5e66b9f4bb8020fe11d4bde6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: 90060170a75cf274db63b60ded668f21, type: 2}
-  enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
-  enemyIdleBase: {fileID: 11400000, guid: 985540e631692a9449807e007b23c8bb, type: 2}
-  enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
-  enemyAttackBase: {fileID: 11400000, guid: 27324e2e27470094d97e8a47b1a14ee4, type: 2}
-  enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
-  enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
 --- !u!114 &4685945866906265587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +497,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 36705b5bfd6d8a94ba023480d660b1af, type: 2}
   duration: 0.25
+--- !u!114 &5744069583149286991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5254476107874737995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b08ba2e982ed145a72808f92d85fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stats: {fileID: 11400000, guid: 90060170a75cf274db63b60ded668f21, type: 2}
+  _knockbackRes: 0
+  _isStunnable: 0
+  ring: {fileID: 0}
+  _enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
+  _enemyIdleBase: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
+  _enemyChaseBase: {fileID: 11400000, guid: 87270434d9983ee4c9d3324d8489dc42, type: 2}
+  _enemyAttackBase: {fileID: 11400000, guid: 68cb3b0ebe9b20c44904d39dc4eea323, type: 2}
+  _enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}
+  _enemyDeathBase: {fileID: 11400000, guid: ff3fbe3b8e8934148a564d777b3599a0, type: 2}
+  attackSoundEffects:
+  - Guid:
+      Data1: -1840414035
+      Data2: 1198465864
+      Data3: -1311176792
+      Data4: -1540544122
+    Path: event:/Golem/Golem_Attack_Final
+  moveSoundEffects:
+  - Guid:
+      Data1: -333292837
+      Data2: 1199011146
+      Data3: 768777885
+      Data4: 104661478
+    Path: event:/Golem/Golem_Step_Final
+  damagedSoundEffects:
+  - Guid:
+      Data1: -1972398831
+      Data2: 1271385219
+      Data3: -21700162
+      Data4: -999837977
+    Path: event:/Golem/Golem_Damage_Final
+  deathSoundEffects:
+  - Guid:
+      Data1: -350208336
+      Data2: 1129826073
+      Data3: 2019298697
+      Data4: -1371238445
+    Path: event:/Golem/Golem_Death_mixdown_Soft
 --- !u!1 &8430501404910341687
 GameObject:
   m_ObjectHideFlags: 0

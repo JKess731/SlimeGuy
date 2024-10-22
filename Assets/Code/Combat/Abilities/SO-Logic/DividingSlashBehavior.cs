@@ -38,6 +38,7 @@ public class DividingSlashBehavior : AbilitySOBase
             Quaternion newRot = rotation * Quaternion.Euler(0, 0, currentAngle);
 
             GameObject newDividingSlash = Instantiate(_dividingSlash, attackPosition, newRot);
+            newDividingSlash.GetComponent<DividingSlash>().Initialize(_dividingSlashDamage, _dividingSlashKnockback, _dividingSlashSpeed, _dividingSlashRange);
 
             AbilityState = AbilityState.PERFORMING;
         }

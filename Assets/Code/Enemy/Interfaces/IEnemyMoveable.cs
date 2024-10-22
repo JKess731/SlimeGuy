@@ -5,6 +5,6 @@ using UnityEngine;
 // IEnemyMoveable interface for all moveable enemies
 public interface IEnemyMoveable
 {
-    Rigidbody2D RB { get; set; }
+    Rigidbody2D RigidBody2d { get; set; }
     void MoveEnemy(Vector2 velocity);
 }

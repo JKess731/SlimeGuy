@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
-using UnityEngine.AI;
-using static UnityEditor.PlayerSettings;
 
 public class EnemyTeleportCheck : MonoBehaviour
 {
@@ -28,9 +25,11 @@ public class EnemyTeleportCheck : MonoBehaviour
         if (collision.gameObject == playerTarget)
         {
             enemy.setAggroStatus(true);
+            enemy.setShootingDistance(false);
             StartCoroutine(WaitToTP());
             Collider2D c = GetComponent<Collider2D>();
             c.enabled = false;
+            enemy.State = Enum_State.MOVING;
         }
     }
 
@@ -69,6 +68,8 @@ public class EnemyTeleportCheck : MonoBehaviour
             enemy.transform.position = farPos;
         }
 
+        enemy.setShootingDistance(true);
+
         /*
         Vector2 pos = GetTeleportPosition();
         enemy.transform.position = pos;
@@ -85,8 +86,6 @@ public class EnemyTeleportCheck : MonoBehaviour
         c.enabled = true;
         Debug.Log("TP COOLDOWN OVER");
     }
-
-
 
     /*
 

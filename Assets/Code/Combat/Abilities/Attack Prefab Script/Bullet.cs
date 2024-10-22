@@ -18,13 +18,19 @@ public class Bullet : Attacks
     private CircleCollider2D _circleCollider;
 
     //Initialize the bullet with the stats of the bullet
-    public void Initialize(int damage, float knockback, float speed, float range, int piercingAmount, int bulletBounce)
+    public void Initialize(float damage, float knockback, float speed, float range, int piercingAmount, int bulletBounce)
     {
         _damage = damage;
         _knockback = knockback;
         _range = range;
         _speed = speed;
         _piercingAmount = piercingAmount;
+
+        if (_piercingAmount > 0)
+        {
+            _rb.isKinematic = true;
+        }
+
         _bulletBounce = bulletBounce;
 
         _rb.velocity = transform.right * _speed;
@@ -102,17 +108,5 @@ public class Bullet : Attacks
         _rb = GetComponent<Rigidbody2D>();
         _startPos = transform.position;
         _circleCollider = GetComponent<CircleCollider2D>();
-    }
-
-    public void SetBulletStruct(BulletStruct bulletStruct)
-    {
-        _damage = bulletStruct.Damage;
-        _range = bulletStruct.Range;
-        _speed = bulletStruct.BulletSpeed;
-        _status = bulletStruct.Status;
-        _piercingAmount = bulletStruct.piercingAmount;
-        _bulletBounce = bulletStruct.bulletBounce;
-
-        _rb.velocity = transform.right * _speed;
     }
 }

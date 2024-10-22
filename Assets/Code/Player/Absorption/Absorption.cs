@@ -16,13 +16,13 @@ public class Absorption : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-            int enemyHealth = collision.gameObject.GetComponent<Enemy>().GetHealth();
+            //int enemyHealth = collision.gameObject.GetComponent<EnemyMelee>().GetHealth();
 
-            if (enemyHealth <= absorbtionRate)
-            {
-                //playerStatUI.setText(_statBoost);
-                Destroy(collision.gameObject);
-            }
+            //if (enemyHealth <= absorbtionRate)
+            //{
+            //    //playerStatUI.setText(_statBoost);
+            //    Destroy(collision.gameObject);
+            //}
         }
     }
 }

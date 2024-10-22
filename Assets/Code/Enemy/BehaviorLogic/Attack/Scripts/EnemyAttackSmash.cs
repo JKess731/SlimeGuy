@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,32 +10,23 @@ public class EnemyAttackSmash : EnemyAttackSOBase
     [SerializeField] private int frontSmashDamage;
     [SerializeField] private float frontSmashAttackDelay;
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private GameObject ring;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        GameObject smash = Instantiate(smashTriggerPrefab, attackPoint.position, Quaternion.identity);
-        _enemy.stateMachine.ChangeState(_enemy.chaseState);
+        //Vector3 rotation = _playerTransform.position - ring.transform.position;
+        //float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        //ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfAttack)
+        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfAttack, _enemyTransform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDamaged)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfHurt, _enemyTransform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.DwarfDeath)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfDeath, _enemyTransform.position);
-        }
-
-        if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _enemyTransform.position);
+            if (_enemy.attackSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
+            }
+            GameObject smash = Instantiate(smashTriggerPrefab, attackPoint.position, Quaternion.identity);
         }
 
     }

@@ -14,7 +14,7 @@ public class DividingSlash : Attacks
     private GameObject _player;
     private GameObject _attack;
 
-    public void Initialize(int damage, float knockback, float speed, float range)
+    public void Initialize(float damage, float knockback, float speed, float range)
     {
         _damage = damage;
         _knockback = knockback;

@@ -53,10 +53,12 @@ public class EnemyChaseSOBase : ScriptableObject
 
     public virtual void DoFrameUpdateLogic()
     {
+        //Debug.Log("Chase State");
         Debug.DrawRay(_transform.position, _playerTransform.position - _transform.position, Color.red);
         _enemy.FaceDir  = (_playerTransform.position - _enemy.transform.position).normalized;
 
-        if (_enemy.isWithinStikingDistance)
+        //If the player is within the striking distance, change to attack state
+        if (_enemy._isWithinStikingDistance)
         {
             _enemy.stateMachine.ChangeState(_enemy.attackState);
         }
@@ -64,16 +66,6 @@ public class EnemyChaseSOBase : ScriptableObject
 
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) {
-
-        if (triggerType == EnemyBase.AnimationTriggerType.PlayDwarfFootStepSound)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.DwarfStep, _transform.position);
-        }
-
-        if(triggerType == EnemyBase.AnimationTriggerType.GolemFootStepSound)
-        {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemStep, _transform.position);
-        }
 
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAnimation : AnimationControl
 {
-
     public override void PlayAnimation(Vector2 direction, Enum_State state)
     {
         if (direction.x < 0)
@@ -28,7 +27,12 @@ public class EnemyAnimation : AnimationControl
 
         if(state == Enum_State.ATTACKING)
         {
-            _animator.Play("Slice");
+            _animator.Play("Attack");
+        }
+
+        if(state == Enum_State.RANGEDATTACK)
+        {
+            _animator.Play("Throw");
         }
 
         if(state == Enum_State.DAMAGED)

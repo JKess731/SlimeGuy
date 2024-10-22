@@ -25,7 +25,7 @@ public class PushPulseBehavior : AbilitySOBase
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         GameObject newPushPulse = Instantiate(_pushPulse, attackPosition, Quaternion.identity);
-        //newPushPulse.GetComponent<PushPulse>().SetPushPulseStruct(_pushPulseStruct);
+        newPushPulse.GetComponent<PushPulse>().Initialize(_damage, _knockback, _speed, _distance, _activationTime);
 
         AbilityState = AbilityState.PERFORMING;
     }

@@ -8,7 +8,9 @@ public enum Enum_State
     IDLING,
     MOVING,
     DASHING,
+    TELEPORTING,
     DAMAGED,
     DEAD,
-    ATTACKING
+    ATTACKING,
+    RANGEDATTACK
 }

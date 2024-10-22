@@ -24,7 +24,7 @@ public abstract class AbilitySOBase : ScriptableObject, IAbility
     [HideInInspector] protected AbilityManager _abilityManager;
 
     public delegate void OnBehaviorFinished();
-    public OnBehaviorFinished onBehaviorFinished;
+    public OnBehaviorFinished onBehaviorFinished { get; set; }
 
     public string AbilityName { get => _abilityName; }
     public Sprite Icon { get => _icon; }
@@ -39,8 +39,6 @@ public abstract class AbilitySOBase : ScriptableObject, IAbility
     public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) {}
     public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) {}
     public virtual void CancelBehavior(Vector2 attackPosition, Quaternion rotation) {}
-
-    public virtual void Upgrade(StatsSO playerStats, StatsEnum stats) {}
     public virtual IEnumerator Cooldown()
     {
         //diag.Stopwatch stopWatch = new diag.Stopwatch();

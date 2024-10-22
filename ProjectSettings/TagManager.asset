@@ -17,6 +17,9 @@ TagManager:
   - main_ui
   - loadingUi
   - generator
+  - trigger_parent
+  - trigger_child
+  - tp_trigger
   layers:
   - Default
   - TransparentFX

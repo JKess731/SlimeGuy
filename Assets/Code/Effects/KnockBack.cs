@@ -91,7 +91,6 @@ public class KnockBack : MonoBehaviour
         if (knockBackStart != null)
         {
             StopCoroutine(knockBackStart);
-            StartCoroutine(KnockBackSlowStop());
         }
 
         knockBackStart = StartCoroutine(KnockBackStart(hitDirection, hitForce, constantForceDirection));

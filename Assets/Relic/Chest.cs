@@ -7,22 +7,25 @@ public class Chest : MonoBehaviour
 {
     [SerializeField] private RelicPool pool;
 
+    private Animator chestAnimator; 
+
     private RelicManager rManager;
 
     void Start()
     {
         rManager = GameObject.FindAnyObjectByType<RelicManager>();
+        chestAnimator = GetComponent<Animator>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("player"))
         {
-            SpawnRelic();
+            chestAnimator.Play("ChestOpen");
         }
     }
 
-    void SpawnRelic()
+    public void SpawnRelic()
     {
         GameObject relic = pool.relics[Random.Range(0, pool.relics.Count)];
         RelicPickup rp = relic.GetComponent<RelicPickup>();

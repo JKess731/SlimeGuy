@@ -23,28 +23,18 @@ public class DashBehavior : AbilitySOBase
         //GameObject dash = 
         //newWhip.GetComponent<Whip>().SetWhipStruct(_whipStruct);
 
-        AbilityState = AbilityState.PERFORMING;
+        AbilityState = AbilityState.STARTING;
+        onBehaviorFinished?.Invoke();
+        Debug.Log(onBehaviorFinished);
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation)
     {
-        AbilityState = AbilityState.CANCELING;
+        AbilityState = AbilityState.PERFORMING;
     }
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.FINISHED;
-        onBehaviorFinished?.Invoke();
-    }
-
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-        switch (stat)
-        {
-            case StatsEnum.ACTIVATION_TIME:
-                _activationTime += playerstats.GetStat(StatsEnum.ACTIVATION_TIME);
-                break;
-        }
-
     }
 }

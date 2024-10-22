@@ -11,6 +11,15 @@ public class Push : Attacks
     private GameObject _player;
     private GameObject _attack;
 
+    public void Initialize(float damage, float knockback, float activationtime, float speed, float distance)
+    {
+        _damage = (int)damage;
+        _knockback = knockback;
+        _activationTime = activationtime;
+        _speed = speed;
+        _distance = distance;
+    }
+
     private void Start()
     {
         Destroy(gameObject, _activationTime);
@@ -43,15 +52,6 @@ public class Push : Attacks
                 Destroy(gameObject);
             }
         }
-    }
-
-    public void SetPushStruct(PushStruct pushStruct)
-    {
-        _damage = pushStruct.Damage;
-        _knockback = pushStruct.Knockback;
-        _activationTime = pushStruct.ActivationTime;
-        _speed = pushStruct.Speed;
-        _distance = pushStruct.Distance;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

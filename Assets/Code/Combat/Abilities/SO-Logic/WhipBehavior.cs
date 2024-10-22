@@ -24,6 +24,7 @@ public class WhipBehavior : AbilitySOBase
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         GameObject newWhip = Instantiate(_whip, attackPosition, Quaternion.identity);
+        newWhip.GetComponent<Whip>().Initialize(_damage, _knockback, _rotationSpeed, _activationTime);
 
         AbilityState = AbilityState.PERFORMING;
     }
@@ -37,9 +38,5 @@ public class WhipBehavior : AbilitySOBase
     {
         AbilityState = AbilityState.FINISHED;
         onBehaviorFinished?.Invoke();
-    }
-
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
     }
 }
