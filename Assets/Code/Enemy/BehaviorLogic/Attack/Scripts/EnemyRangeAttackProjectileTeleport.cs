@@ -32,7 +32,10 @@ public class EnemyRangeAttackProjectileTeleport : EnemyAttackSOBase
 
             GameObject projectile = Instantiate(_projectilePrefab, _attackPoint.position, Quaternion.Euler(0, 0, rotation));
             projectile.GetComponent<EnemyProjectile>().Initialize(_damage, _speed, _knockbackPower, _lifetime);
+
+            Debug.Log("Projectile + Teleport Attack");
         }
+        Debug.Log("Projectile + Teleport Attack2");
     }
 
     public override void DoEnterLogic()
@@ -53,7 +56,6 @@ public class EnemyRangeAttackProjectileTeleport : EnemyAttackSOBase
 
         if (_enemy._isWithinTeleportingDistance)
         {
-            Debug.Log("Teleporting");
             _enemy.stateMachine.ChangeState(_enemy.moveState);
         }
 

@@ -17,10 +17,13 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
     [SerializeField] private float distanceToCountExit = 3f;
     [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float attackRange = 3f;
-    [SerializeField] private float rangedAttackDistance = 5f; 
+    [SerializeField] private float rangedAttackDistance = 5f;
 
-    private float timer;
-    private float exitTimer;
+    [SerializeField] private float shootingCooldown = 2f;
+    private float nextShootTime = 0f;
+
+    [SerializeField] private float meleeCooldown = 1.5f;
+    private float nextMeleeAttackTime = 0f;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
@@ -35,25 +38,6 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
             if (_enemy.attackSoundEffects.Count > 0)
             {
                 RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
-            }
-
-            float distanceToPlayer = Vector2.Distance(_playerTransform.position, _enemy.transform.position);
-
-            if (distanceToPlayer <= attackRange)
-            {
-                Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
-                timer = 0f; 
-            }
-            else if (distanceToPlayer <= rangedAttackDistance) 
-            {
-                if (timer > timeBetweenShots)
-                {
-                    timer = 0f;
-                    _enemy.State = Enum_AnimationState.RANGEDATTACK;
-                    Vector2 dir = (_playerTransform.position - _enemy.transform.position).normalized;
-                    Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, _enemy.transform.position, Quaternion.identity);
-                    bullet.velocity = dir * bulletSpeed;
-                }
             }
         }
     }
@@ -74,19 +58,24 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
     {
         base.DoFrameUpdateLogic();
 
-        timer += Time.deltaTime;
+        //if the player is within shooting distance and enough time has gone by, enemy shoots
+        if (_enemy._isWithinShootingDistance && Time.time >= nextShootTime)
+        {
+            _enemy.State = Enum_AnimationState.RANGEDATTACK;
 
-        if (Vector2.Distance(_playerTransform.position, _enemy.transform.position) > distanceToCountExit)
-        {
-            exitTimer += Time.deltaTime;
-            if (exitTimer > timeBetweenShots)
-            {
-                _enemy.stateMachine.ChangeState(_enemy.moveState);
-            }
+            Vector2 dir = (_playerTransform.position - _enemy.transform.position).normalized;
+            Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, _enemy.transform.position, Quaternion.identity);
+            bullet.velocity = dir * bulletSpeed;
+
+            nextShootTime = Time.time + shootingCooldown;
         }
-        else
+        //if player is within striking distance do the melee attack
+        else if (_enemy._isWithinStikingDistance && Time.time >= nextMeleeAttackTime)
         {
-            exitTimer = 0f;
+            _enemy.State = Enum_AnimationState.ATTACKING;
+            Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
+
+            nextMeleeAttackTime = Time.time + meleeCooldown;
         }
     }
 

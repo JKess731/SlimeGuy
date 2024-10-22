@@ -4,14 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "GremlinRunAway", menuName = "EnemyLogic/ChaseLogic/GremlinRunAway")]
-public class EnemyGremlinRunAway : EnemyMoveSOBase
-{
-    [SerializeField] private float runAwaySpeed = 1.5f;
-    [SerializeField] private float changeDirectionCooldown = 0.5f;  
-    [SerializeField] private float attackRange = 5.0f; 
 
-    private Vector2 runDir;
+[CreateAssetMenu(fileName = "ChaseUntilRange", menuName = "EnemyLogic/ChaseLogic/ChaseUntilRange")]
+public class EnemyChaseUntilRange : EnemyMoveSOBase
+{
+    [SerializeField] private float ChaseSpeed = 1.5f;
     private bool hasLineOfSight = false;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
@@ -26,11 +23,9 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
             }
         }
     }
-
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        _enemy.MoveEnemy(Vector2.zero);
     }
 
     public override void DoExitLogic()
@@ -43,7 +38,6 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
         base.DoFrameUpdateLogic();
 
         hasLineOfSight = false;
-
         RaycastHit2D[] hits = Physics2D.RaycastAll(_enemy.transform.position, _playerTransform.position - _enemy.transform.position);
 
         foreach (RaycastHit2D hit in hits)
@@ -52,7 +46,7 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
             {
                 hasLineOfSight = true;
                 Debug.DrawRay(_enemy.transform.position, _playerTransform.position - _enemy.transform.position, Color.green);
-                break; 
+                break;
             }
             else
             {
@@ -62,23 +56,15 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
 
         if (hasLineOfSight)
         {
-            // If the enemy is within shooting distance, attack
-            if (_enemy._isWithinShootingDistance)
+            // If the player is outside of shooting or striking distance, chase the player
+            if (!_enemy._isWithinShootingDistance && !_enemy._isWithinStikingDistance)
             {
-                Debug.Log("ATTACK");
-                _enemy.stateMachine.ChangeState(_enemy.attackState);
+                Vector2 chaseDir = (_playerTransform.position - _enemy.transform.position).normalized;
+                _enemy.MoveEnemy(chaseDir * ChaseSpeed);
             }
-            // If the enemy is within run-away distance, move away from the player
-            else if (_enemy._isWithinRunAwayDistance)
-            {
-                Debug.Log("MOVE");
-                Vector2 runDir = (_transform.position - _playerTransform.position).normalized;
-                _enemy.MoveEnemy(runDir * runAwaySpeed);
-            }
-            // If the player is outside both distances, stand still
             else
             {
-                Debug.Log("STAND STILL");
+                // Stop the enemy once it is within range
                 _enemy.MoveEnemy(Vector2.zero);
             }
         }
@@ -99,4 +85,3 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
         base.ResetValues();
     }
 }
-

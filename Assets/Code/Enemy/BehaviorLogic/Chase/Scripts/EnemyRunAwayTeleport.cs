@@ -8,6 +8,7 @@ using static UnityEditor.FilePathAttribute;
 
 public class EnemyRunAwayTeleport : EnemyMoveSOBase
 {
+    private bool _teleportfinished = false;
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
@@ -15,12 +16,14 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
         if (triggerType == EnemyBase.AnimationTriggerType.TELEPORT && !_enemy.EnemyAnimation.Animator.GetBool("Teleport"))
         {
             OnTeleport();
+            Debug.Log("TeleportingStarted");
             return;
         }
 
         if (triggerType == EnemyBase.AnimationTriggerType.TELEPORT && _enemy.EnemyAnimation.Animator.GetBool("Teleport"))
         {
             _enemy.stateMachine.ChangeState(_enemy.idleState);
+            Debug.Log("TeleportingExited");
         }
     }
 
@@ -45,9 +48,16 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
         //If the player is within the striking distance, attempt to run away
         //If the player is within the teleporting distance, teleport
         //If the player is within the teleporting distance, teleport
+
+        if (_enemy.EnemyAnimation.Animator.GetBool("Teleport") && _teleportfinished)
+        {
+            _enemy.MoveEnemy(Vector2.zero);
+            return;
+        }
+
         if (_enemy._isWithinTeleportingDistance)
         {
-            StartTeleport();
+            _enemy.State = Enum_AnimationState.TELEPORTING;
             _enemy.MoveEnemy(Vector2.zero);
             return;
         }
@@ -86,16 +96,9 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
         base.ResetValues();
     }
 
-    private void StartTeleport()
-    {
-        _enemy.State = Enum_AnimationState.TELEPORTING;
-    }
-
     #region Teleport
     private void OnTeleport()
     {
-        _enemy.EnemyAnimation.Animator.SetBool("Teleport", true);
-
         Vector2 [] teleportPosArray = new Vector2[8];
         float teleportDistance = 5f;
         Vector2 dir = _transform.right * teleportDistance;
@@ -108,25 +111,38 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
             Quaternion newRot = Quaternion.Euler(0, 0, addedOffset);
 
             LayerMask wallMask = LayerMask.GetMask("Wall");
-            Ray ray = new Ray(_transform.position, newRot * dir);
 
-            if (Physics.Raycast(ray,out RaycastHit hit, wallMask))
+            Ray2D ray = new Ray2D(_transform.position, newRot * _transform.up);
+
+
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, teleportDistance, wallMask);
+            Debug.DrawRay(ray.origin, ray.direction * teleportDistance, Color.cyan, 1f);
+
+            //if (hit)
+            //{
+            //    //if (hit2.collider.CompareTag("wall"))
+            //    //{
+            //        //Debug.DrawRay(ray.origin, hit.point, Color.green, 1f);
+            //        Debug.Log("Hit");
+            //    //}
+            //}
+
+            if (!hit)
             {
-                if (hit.collider.CompareTag("Wall"))
-                {
-                    Debug.Log("Wall");
-                    continue;
-                }
-
+                Debug.DrawRay(ray.origin, ray.direction * teleportDistance, Color.red, 1f);
                 teleportPosArray[i] = ray.origin + ray.direction * teleportDistance;
-
-                Debug.Log("Raycasting");
             }
         }
 
+        //foreach (Vector2 pos in teleportPosArray)
+        //{
+        //    Debug.Log("Teleport Pos: " + pos);
+        //}
+
         Vector2 teleportPos = teleportPosArray[Random.Range(0, teleportPosArray.Length)];
+        //Debug.Log("Teleported to: " + teleportPos);
         _transform.position = teleportPos;
-        Debug.Log("Teleporting");
+        _enemy.EnemyAnimation.Animator.SetBool("Teleport", true);
     }
     #endregion
 }

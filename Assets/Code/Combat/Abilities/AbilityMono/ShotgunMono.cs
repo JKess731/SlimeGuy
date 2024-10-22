@@ -22,6 +22,7 @@ public class ShotgunMono : AbilityMonoBase
 
     public override void Initialize()
     {
+        
         base.Initialize();
         _playerStats = PlayerStats.instance.playerStateMachine;
         UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
