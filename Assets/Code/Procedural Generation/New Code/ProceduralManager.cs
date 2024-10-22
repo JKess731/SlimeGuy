@@ -57,6 +57,7 @@ public class ProceduralManager : MonoBehaviour
     private void Start()
     {
         InitGenerators();
+        AudioManager.instance.PlayIValley();
     }
 
     #region Functions
