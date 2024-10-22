@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Attacks : MonoBehaviour
 {
-    protected int _damage;
+    protected float _damage;
     protected float _knockback;
     protected Vector2 _startPos;
 }

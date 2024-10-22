@@ -14,7 +14,7 @@ public class PushPulse : Attacks
 
     public void Initialize(float damage, float knockback, float activationtime, float speed, float distance)
     {
-        _damage = (int)damage;
+        _damage = damage;
         _knockback = knockback;
         _activationTime = activationtime;
         _speed = speed;

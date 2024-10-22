@@ -30,6 +30,8 @@ public class AbilityManager : MonoBehaviour
     private Transform dashHolder;
     private Transform passiveHolder;
 
+    public static AbilityManager Instance;
+
     //Abilities must be initialized, or else they will not work. For some reason,
     //Unity does not read the preassigned values in the Scriptable Objects Variables.
 
@@ -39,6 +41,15 @@ public class AbilityManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         try
         {
             primaryHolder = GameObject.Find("Primary Holder").transform;
@@ -211,10 +222,25 @@ public class AbilityManager : MonoBehaviour
     }
     #endregion
 
-    public void UpgradeAbilities(StatsSO playerStats, StatsEnum statType)
+
+    public string AbilityUIType(AbilityMonoBase ability)
     {
-        primary?.Upgrade(playerStats, statType);
-        secondary?.Upgrade(playerStats, statType);
-        dash?.Upgrade(playerStats, statType);
+        if(primary.GetType() == ability.GetType())
+        {
+            return "P";
+        }
+        else if(secondary.GetType() == ability.GetType())
+        {
+            return "S";
+        }
+        else if(dash.GetType() == ability.GetType())
+        {
+            return "D";
+        }
+        else if(passive.GetType() == ability.GetType())
+        {
+            return "PA";
+        }
+        return "WRONG";
     }
 }

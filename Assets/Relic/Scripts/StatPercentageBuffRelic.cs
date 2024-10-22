@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Relics/StatBuff", menuName = "Relics/Stat Buff (NO HEALTH)")]
 public class StatPercentageBuffRelic : RelicSO
 {
-    [SerializeField] private float buffPercentage = 10;
+    [SerializeField] private float buffPercentage = 15;
     public override void Initialize(StatsSO playerstats)
     {
         _playerStats = playerstats;

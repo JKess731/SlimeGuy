@@ -8,35 +8,43 @@ public class WhipMono : AbilityMonoBase
     [SerializeField] private GameObject _whip;
 
     [Header("Prefab Attributes")]
-    [SerializeField] private int _damage;
+    [SerializeField] private float _damage;
     [SerializeField] private float _knockback;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _activationTime;
+    private PlayerStateMachine _playerStats;
+    private string UIAbilityType;
 
     public override void Initialize()
     {
         base.Initialize();
+        _playerStats = PlayerStats.instance.playerStateMachine;
+        UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
 
+        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
+        float addedActivationTime = _playerStats.playerStats.GetStat(StatsEnum.ACTIVATION_TIME);
+        float addedRotationSpeed = _playerStats.playerStats.GetStat(StatsEnum.ROTATION_SPEED);
+
         //Instantiate the whip prefab
         GameObject newWhip = Instantiate(_whip,attackPosition,Quaternion.identity);
-        newWhip.GetComponent<Whip>().Initialize(_damage, _knockback, _activationTime, _rotationSpeed, status);
+        newWhip.GetComponent<Whip>().Initialize( _damage + addedDamage, _knockback + addedKnockback, _activationTime + addedActivationTime, 
+            _rotationSpeed + addedRotationSpeed, status);
 
+        Debug.Log("Damage is: " + (_damage + addedDamage));
+
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
         StartCoroutine(Cooldown());
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation){}
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation){}
-
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-        //TODO: Implement WhipMono Upgrade
-    }
 
     //Override the Cooldown method to add the activation time
     public override IEnumerator Cooldown()
