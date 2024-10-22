@@ -33,11 +33,12 @@ public class EnemyAnimation : AnimationControl
         if(state == Enum_AnimationState.RANGEDATTACK)
         {
             _animator.Play("Range Attack");
+            Debug.Log("Ranged Attack");
         }
 
         if(state == Enum_AnimationState.DAMAGED)
         {
-            _animator.Play("Damaged");
+            _animator.Play("Damage");
         }
 
         if(state == Enum_AnimationState.DEAD)
