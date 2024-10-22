@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Secondary2",
+                    "type": "Button",
+                    "id": "710d11df-9529-4ea6-8024-866175a312de",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Look",
                     "type": "PassThrough",
                     "id": "c2fe57ee-7508-4dd3-8f07-640b56327c2f",
@@ -302,6 +311,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6c0b856-8b8f-4de0-a921-9a5284c85474",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Secondary2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

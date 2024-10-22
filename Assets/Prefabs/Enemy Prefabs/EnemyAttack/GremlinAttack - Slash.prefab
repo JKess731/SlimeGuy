@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7526821506498367939}
   - component: {fileID: 7434707756489362887}
   m_Layer: 7
-  m_Name: GremlinSlashAttack
+  m_Name: GremlinAttack - Slash
   m_TagString: trigger_child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -26,10 +26,10 @@ public class WhipMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
-        float addedActivationTime = _playerStats.playerStats.GetStat(StatsEnum.ACTIVATION_TIME);
-        float addedRotationSpeed = _playerStats.playerStats.GetStat(StatsEnum.ROTATION_SPEED);
+        float addedDamage = _playerStats.playerStats.GetStat(Enum_Stats.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(Enum_Stats.KNOCKBACK);
+        float addedActivationTime = _playerStats.playerStats.GetStat(Enum_Stats.ACTIVATION_TIME);
+        float addedRotationSpeed = _playerStats.playerStats.GetStat(Enum_Stats.ROTATION_SPEED);
 
         //Instantiate the whip prefab
         GameObject newWhip = Instantiate(_whip,attackPosition,Quaternion.identity);

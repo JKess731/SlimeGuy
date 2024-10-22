@@ -26,18 +26,17 @@ public class ShotgunMono : AbilityMonoBase
         base.Initialize();
         _playerStats = PlayerStats.instance.playerStateMachine;
         UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
-        Debug.Log(UIAbilityType);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
 
-        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
-        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
-        float addedPiercingAmount = _playerStats.playerStats.GetStat(StatsEnum.PIERCING_COUNT);
-        float addedBulletBounce = _playerStats.playerStats.GetStat(StatsEnum.RICHOCHET_COUNT);
+        float addedDamage = _playerStats.playerStats.GetStat(Enum_Stats.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(Enum_Stats.KNOCKBACK);
+        float addedSpeed = _playerStats.playerStats.GetStat(Enum_Stats.SPEED);
+        float addedPiercingAmount = _playerStats.playerStats.GetStat(Enum_Stats.PIERCING_COUNT);
+        float addedBulletBounce = _playerStats.playerStats.GetStat(Enum_Stats.RICHOCHET_COUNT);
 
         Debug.Log("Shotgun Starting");
 

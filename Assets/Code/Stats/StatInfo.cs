@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class StatInfo
 {
-    public Enum_Stat statType;
+    public Enum_Stats statType;
     public float statValue;
 }

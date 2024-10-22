@@ -41,8 +41,6 @@ public class Bullet : Attacks
         }
 
         _rb.velocity = transform.right * _speed;
-
-        Debug.Log("Bullet Initialized");
     }
 
     //If the bullet goes out of range, destroy it
@@ -50,7 +48,6 @@ public class Bullet : Attacks
     {
         if (Vector2.Distance(_startPos, transform.position) > _range)
         {
-            Debug.Log("Bullet out of range");
             Destroy(gameObject);
         }
     }

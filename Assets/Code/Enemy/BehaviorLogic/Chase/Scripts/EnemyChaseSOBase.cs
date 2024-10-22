@@ -23,26 +23,6 @@ public class EnemyChaseSOBase : ScriptableObject
         _transform = gameObject.transform;
         _enemy = enemy;
         _playerTransform = GameObject.FindGameObjectWithTag("player").transform;
-
-        /*
-        // Initialize the attackSounds array using FmodEvents instance
-        FmodEvents fmodEvents = FmodEvents.instance;
-
-        dwarfStepSounds = new EventReference[]
-        {
-            fmodEvents.DwarfStep1,
-            fmodEvents.DwarfStep2,
-            fmodEvents.DwarfStep3
-        };
-
-        GolemStepSounds = new EventReference[]
-        {
-            fmodEvents.GolemStep1,
-            fmodEvents.GolemStep2,
-            fmodEvents.GolemStep3
-        };
-        */
-
     }
 
     public virtual void DoEnterLogic() { 
@@ -65,43 +45,6 @@ public class EnemyChaseSOBase : ScriptableObject
     }
 
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) {
-
-    }
-
-
-
-    /*public virtual void PlayRandomDwarfStep()
-    {
-        if (dwarfStepSounds.Length > 0)
-        {
-
-            int randomIndex = Random.Range(0, dwarfStepSounds.Length);
-            //Debug.Log(randomIndex);
-            AudioManager.instance.PlayOneShot(dwarfStepSounds[randomIndex], _transform.position);
-        }
-        else
-        {
-            Debug.LogWarning("No step sounds assigned to the dwarf.");
-        }
-    }
-
-    public virtual void PlayRandomGolemStep()
-    {
-        if (GolemStepSounds.Length > 0)
-        {
-
-            int randomIndex = Random.Range(0, GolemStepSounds.Length);
-            //Debug.Log(randomIndex);
-            AudioManager.instance.PlayOneShot(GolemStepSounds[randomIndex], _transform.position);
-        }
-        else
-        {
-            //Debug.LogWarning("No step sounds assigned to the Golem.");
-        }
-    }
-    */
-
-
+    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) {}
     public virtual void ResetValues() { }
 }

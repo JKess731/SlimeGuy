@@ -26,6 +26,9 @@ public class AbilityMonoBase : MonoBehaviour, IAbility
     public AbilityState AbilityState { get => _abilityState; set => _abilityState = value; }
     public AbilityType AbilityType { get => _abilityType; }
 
+    /// <summary>
+    /// Sets the ability to be ready to use and sets the gameobject to active
+    /// </summary>
     public virtual void Initialize()
     {
         _abilityState = AbilityState.READY;
@@ -60,5 +63,11 @@ public class AbilityMonoBase : MonoBehaviour, IAbility
     public virtual IEnumerator Activate()
     {
         throw new System.NotImplementedException();
+    }
+
+    public virtual void Drop()
+    {
+        gameObject.SetActive(false);
+        //Instantiate(_dropPrefab, transform.position, Quaternion.identity);
     }
 }

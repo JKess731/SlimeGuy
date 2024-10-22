@@ -142,8 +142,16 @@ public class UiManager : MonoBehaviour
 
         yield return new WaitForSeconds(activationTime);
 
-        modifiedSlider.gameObject.SetActive(true);
-        modifiedText.gameObject.SetActive(true);
+        //Added try catch to prevent null reference errors
+        try
+        {
+            modifiedSlider.gameObject.SetActive(true);
+            modifiedText.gameObject.SetActive(true);
+        }catch(System.NullReferenceException)
+        {
+            Debug.LogWarning("One or more abilities are not assigned");
+            yield break;
+        }
 
         modifiedSlider.maxValue = attack.CooldownTime;
         modifiedSlider.value = modifiedSlider.maxValue;

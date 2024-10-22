@@ -73,6 +73,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public bool _isAggroed { get; set; }
     public bool _isWithinStikingDistance { get; set; }
     public bool _isWithinShootingDistance { get; set; }
+    public bool _isWithinTeleportingDistance { get; set; }
     #endregion
     //---------------State Machine Variables-----------------    //The types of states the enemy can be in
     #region State Machine Variables
@@ -191,15 +192,15 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region Health Die Functions
     public void Damage(float damageAmount, Vector2 hitDirection, float hitforce, Vector2 constantForceDirection)
     {
-        if (_stats.GetStat(StatsEnum.HEALTH) <=0 && !_isDead) {
+        if (_stats.GetStat(Enum_Stats.HEALTH) <=0 && !_isDead) {
             _damageFlash.Flash();
             Die();
         }
 
-        if (_stats.GetStat(StatsEnum.HEALTH) >= 0 && !_isDead)
+        if (_stats.GetStat(Enum_Stats.HEALTH) >= 0 && !_isDead)
         {
             _damageFlash.Flash();
-            _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
+            _stats.SubtractStat(Enum_Stats.HEALTH, damageAmount);
             _knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
             AudioManager.PlayOneShot(damagedSoundEffects[0], transform.position);
         }
@@ -211,16 +212,16 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     }
     public void Damage(float damageAmount)
     {
-        if (_stats.GetStat(StatsEnum.HEALTH) <= 0 && !_isDead)
+        if (_stats.GetStat(Enum_Stats.HEALTH) <= 0 && !_isDead)
         {
             _damageFlash.Flash();
             Die();
         }
 
-        if (_stats.GetStat(StatsEnum.HEALTH) >= 0 && !_isDead)
+        if (_stats.GetStat(Enum_Stats.HEALTH) >= 0 && !_isDead)
         {
             _damageFlash.Flash();
-            _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
+            _stats.SubtractStat(Enum_Stats.HEALTH, damageAmount);
             AudioManager.PlayOneShot(damagedSoundEffects[0], transform.position);
         }
 
@@ -234,7 +235,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void Die()
     {
-        _stats.SetStat(StatsEnum.SPEED, 0);
+        _stats.SetStat(Enum_Stats.SPEED, 0);
         stateMachine.ChangeState(deathState);
         _isDead = true;  
         Debug.Log(stateMachine.currentEnemyState);
@@ -256,8 +257,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     /// <param name="amount"></param>
     public void ModifyMoveSpeed(float amount, float timeUntilReset)
     {
-        float originalSpeed = _stats.GetStat(StatsEnum.SPEED);
-        _stats.AddStat(StatsEnum.SPEED,amount);
+        float originalSpeed = _stats.GetStat(Enum_Stats.SPEED);
+        _stats.AddStat(Enum_Stats.SPEED,amount);
 
         StartCoroutine(ResetSpeed(timeUntilReset, originalSpeed));
     }
@@ -265,7 +266,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public IEnumerator ResetSpeed(float time, float originalSpeed)
     {
         yield return new WaitForSeconds(time);
-        _stats.SetStat(StatsEnum.SPEED, originalSpeed);
+        _stats.SetStat(Enum_Stats.SPEED, originalSpeed);
     }
     #endregion
 
@@ -299,6 +300,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public void setShootingDistance(bool isShootingDistance) 
     {
         _isWithinShootingDistance = isShootingDistance;
+    }
+
+    public void setTeleportingDistance(bool isTeleportingDistance)
+    {
+        _isWithinTeleportingDistance = isTeleportingDistance;
     }
     #endregion
 }

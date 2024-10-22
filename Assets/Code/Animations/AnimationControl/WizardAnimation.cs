@@ -22,6 +22,11 @@ public class WizardAnimation : AnimationControl
 
         if (state == Enum_AnimationState.MOVING)
         {
+            _animator.Play("Move");
+        }
+
+        if (state == Enum_AnimationState.TELEPORTING)
+        {
             _animator.Play("Teleport");
         }
 

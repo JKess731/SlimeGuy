@@ -24,7 +24,7 @@ public class EnemyChaseDirectToPlayer : EnemyChaseSOBase
     {
         base.DoFrameUpdateLogic();
         Vector2 moveDirection = (_playerTransform.position - _enemy.transform.position).normalized;
-        _enemy.MoveEnemy(moveDirection * _enemy.Stats.GetStat(StatsEnum.SPEED));
+        _enemy.MoveEnemy(moveDirection * _enemy.Stats.GetStat(Enum_Stats.SPEED));
     }
 
     public override void DoPhysicsLogic()

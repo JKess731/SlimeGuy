@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         _abilityManager = GameObject.Find("Ability Manager").GetComponent<AbilityManager>();
 
-        _speed = _playerStateMachine.playerStats.GetStat(StatsEnum.SPEED);
+        _speed = _playerStateMachine.playerStats.GetStat(Enum_Stats.SPEED);
 
         //Set up input actions
         _playerInput.GamePlay.Movement.started += OnMovement;
@@ -98,6 +98,10 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
         _playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
         _playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
+
+        _playerInput.GamePlay.Secondary2.started += OnSecondary2Started;
+        _playerInput.GamePlay.Secondary2.performed += OnSecondary2Performed;
+        _playerInput.GamePlay.Secondary2.canceled += OnSecondary2Canceled;
     }
 
     //Disables Input Actions
@@ -119,6 +123,10 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Secondary.started -= OnSecondaryStarted;
         _playerInput.GamePlay.Secondary.performed -= OnSecondaryPerformed;
         _playerInput.GamePlay.Secondary.canceled -= OnSecondaryCanceled;
+
+        _playerInput.GamePlay.Secondary2.started -= OnSecondary2Started;
+        _playerInput.GamePlay.Secondary2.performed -= OnSecondary2Performed;
+        _playerInput.GamePlay.Secondary2.canceled -= OnSecondary2Canceled;
     }
 
     public void DisableGameplay()
@@ -139,6 +147,10 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Secondary.started -= OnSecondaryStarted;
         _playerInput.GamePlay.Secondary.performed -= OnSecondaryPerformed;
         _playerInput.GamePlay.Secondary.canceled -= OnSecondaryCanceled;
+
+        _playerInput.GamePlay.Secondary2.started -= OnSecondary2Started;
+        _playerInput.GamePlay.Secondary2.performed -= OnSecondary2Performed;
+        _playerInput.GamePlay.Secondary2.canceled -= OnSecondary2Canceled;
     }
 
     public void EnableGameplay()
@@ -159,6 +171,10 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
         _playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
         _playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
+
+        _playerInput.GamePlay.Secondary2.started += OnSecondary2Started;
+        _playerInput.GamePlay.Secondary2.performed += OnSecondary2Performed;
+        _playerInput.GamePlay.Secondary2.canceled += OnSecondary2Canceled;
     }
 
     #region Movement
@@ -274,7 +290,8 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Secondary
+    #region All Secondary
+    //Secondary 1 input: LeftClick ||
     private void OnSecondaryStarted(InputAction.CallbackContext context)
     {
         _abilityManager.OnSecondaryStarted(context);
@@ -286,6 +303,20 @@ public class PlayerController : MonoBehaviour
     private void OnSecondaryCanceled(InputAction.CallbackContext context)
     {
         _abilityManager.OnSecondaryCanceled(context);
+    }
+
+    //Secondary 2 input: Q ||
+    private void OnSecondary2Started(InputAction.CallbackContext context)
+    {
+        _abilityManager.OnSecondary2Started(context);
+    }
+    private void OnSecondary2Performed(InputAction.CallbackContext context)
+    {
+        _abilityManager.OnSecondary2Performed(context);
+    }
+    private void OnSecondary2Canceled(InputAction.CallbackContext context)
+    {
+        _abilityManager.OnSecondary2Canceled(context);
     }
     #endregion
 

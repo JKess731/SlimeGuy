@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -18,8 +19,8 @@ public class AbilityManager : MonoBehaviour
 
     [Header("Ability Variables")]
     [SerializeField] private AbilityMonoBase primary;
-    [SerializeField] private AbilityMonoBase secondary;
     [SerializeField] private AbilityMonoBase dash;
+    [SerializeField] private AbilityMonoBase [] secondary = new AbilityMonoBase[2];     //Secondary has initially two abilities
     [SerializeField] private AbilityMonoBase[] passive;
 
     [Header("Attack Position")]
@@ -36,7 +37,8 @@ public class AbilityManager : MonoBehaviour
     //Unity does not read the preassigned values in the Scriptable Objects Variables.
 
     public AbilityMonoBase Primary { get => primary; }
-    public AbilityMonoBase Secondary { get => secondary; }
+    public AbilityMonoBase Secondary { get => secondary[0]; }
+    public AbilityMonoBase Secondary2 { get => secondary[1]; }
     public AbilityMonoBase Dash { get => dash; }
 
     private void Awake()
@@ -101,9 +103,16 @@ public class AbilityManager : MonoBehaviour
 
     private void Start()
     {
+        //Initialize all abilities
+        //Hover over the Initialize method to see what it does
         primary?.Initialize();
-        secondary?.Initialize();
+
+        for (int i = 0; i < secondary.Length; i++)
+        {
+            secondary[i]?.Initialize();
+        }
         dash?.Initialize();
+
 
         foreach (AbilityMonoBase ability in passive)
         {
@@ -124,9 +133,16 @@ public class AbilityManager : MonoBehaviour
                 break;
 
             case AbilityType.SECONDARY:
-                secondary?.gameObject.SetActive(false);
-                secondary = secondaryDict[abilityName];
-                secondary?.Initialize();
+                int index = secondary.Length;
+                if(index > secondary.Length)
+                {
+                    Debug.LogError("Index out of range");
+                    return;
+                }
+
+                secondary[index]?.gameObject.SetActive(false);
+                secondary[index] = secondaryDict[abilityName];
+                secondary[index]?.Initialize();
                 break;
 
             case AbilityType.DASH:
@@ -163,28 +179,56 @@ public class AbilityManager : MonoBehaviour
     #endregion
 
     //Used to subscribe to the secondary input 
-    #region Secondary
+    #region All Secondary
+
+    #region Secondary1
     public void OnSecondaryStarted(InputAction.CallbackContext context)
     {
-        if (secondary?.AbilityState == AbilityState.READY)
+        if (secondary[0]?.AbilityState == AbilityState.READY)
         {
-            secondary?.StartBehavior(attackPos.position, attackPos.rotation);
+            secondary[0]?.StartBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnSecondaryPerformed(InputAction.CallbackContext context)
     {
-        if (secondary?.AbilityState == AbilityState.STARTING)
+        if (secondary[0]?.AbilityState == AbilityState.STARTING)
         {
-            secondary?.PerformBehavior(attackPos.position, attackPos.rotation);
+            secondary[0]?.PerformBehavior(attackPos.position, attackPos.rotation);
         }
     }
     public void OnSecondaryCanceled(InputAction.CallbackContext context)
     {
-        if(secondary?.AbilityState == AbilityState.PERFORMING)
+        if(secondary[0]?.AbilityState == AbilityState.PERFORMING)
         {
-            secondary?.CancelBehavior(attackPos.position, attackPos.rotation);
+            secondary[0]?.CancelBehavior(attackPos.position, attackPos.rotation);
         }
     }
+    #endregion
+
+    #region Secondary2
+    public void OnSecondary2Started(InputAction.CallbackContext context)
+    {
+        if (secondary[1]?.AbilityState == AbilityState.READY)
+        {
+            secondary[1]?.StartBehavior(attackPos.position, attackPos.rotation);
+        }
+    }
+    public void OnSecondary2Performed(InputAction.CallbackContext context)
+    {
+        if (secondary[1]?.AbilityState == AbilityState.STARTING)
+        {
+            secondary[1]?.PerformBehavior(attackPos.position, attackPos.rotation);
+        }
+    }
+    public void OnSecondary2Canceled(InputAction.CallbackContext context)
+    {
+        if (secondary[1]?.AbilityState == AbilityState.PERFORMING)
+        {
+            secondary[1]?.CancelBehavior(attackPos.position, attackPos.rotation);
+        }
+    }
+    #endregion
+
     #endregion
 
     //Used to subscribe to the dash input 
@@ -224,19 +268,19 @@ public class AbilityManager : MonoBehaviour
 
     public string AbilityUIType(AbilityMonoBase ability)
     {
-        if(primary.GetType() == ability.GetType())
+        if(primary?.GetType() == ability.GetType())
         {
             return "P";
         }
-        else if(secondary.GetType() == ability.GetType())
+        else if(secondary?.GetType() == ability.GetType())
         {
             return "S";
         }
-        else if(dash.GetType() == ability.GetType())
+        else if(dash?.GetType() == ability.GetType())
         {
             return "D";
         }
-        else if(passive.GetType() == ability.GetType())
+        else if(passive?.GetType() == ability.GetType())
         {
             return "PA";
         }

@@ -23,6 +23,7 @@ public class OrbitMono : AbilityMonoBase
     {
         base.Initialize();
         _playerStats = PlayerStats.instance.playerStateMachine;
+        Debug.Log(PlayerStats.instance.playerStateMachine);
         UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
 
@@ -30,10 +31,12 @@ public class OrbitMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
-        float addedActivationTime = _playerStats.playerStats.GetStat(StatsEnum.ACTIVATION_TIME);
-        float addedRotationSpeed = _playerStats.playerStats.GetStat(StatsEnum.ROTATION_SPEED);
+        //Handles the upgrade of the ability
+        Debug.Log(_playerStats);
+        float addedDamage = _playerStats.playerStats.GetStat(Enum_Stats.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(Enum_Stats.KNOCKBACK);
+        float addedActivationTime = _playerStats.playerStats.GetStat(Enum_Stats.ACTIVATION_TIME);
+        float addedRotationSpeed = _playerStats.playerStats.GetStat(Enum_Stats.ROTATION_SPEED);
 
         // Calculate the angle difference between each orbitball
         float angleStep = _spreadAngle / _orbitCount;

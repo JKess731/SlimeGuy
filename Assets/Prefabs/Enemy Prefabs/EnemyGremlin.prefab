@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 3000118926762882230}
   - component: {fileID: 5285495171779920478}
   m_Layer: 8
-  m_Name: AggroRadius
+  m_Name: AggroDistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
