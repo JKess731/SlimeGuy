@@ -9,7 +9,30 @@ public class WaveParent : Attacks
     private float _activationTime;
     private StatusSO _status;
 
-    private WaveStruct _childStruct;
+    public void Initialize(float damage, float knockback, float activationTime)
+    {
+        _damage = (int)damage;
+        _knockback = knockback;
+        _activationTime = activationTime;
+    }
+
+    //public void SetParentWave(WaveStruct parent, WaveStruct child)
+    //{
+    //    _damage = parent.Damage;
+    //    _knockback = parent.Knockback;
+    //    _activationTime = parent.ActivationTime;
+    //    _childStruct = child;
+    //    _status = parent.Status;
+
+    //    try
+    //    {
+    //        _child.GetComponent<WaveChild>().SetWaveStruct(child);
+    //    }
+    //    catch(System.Exception e)
+    //    {
+    //        Debug.Log(e);
+    //    }
+    //}
 
     protected void Start()
     {
@@ -34,24 +57,6 @@ public class WaveParent : Attacks
 
         }
     }
-
-    public void SetParentWave(WaveStruct parent, WaveStruct child)
-    {
-        _damage = parent.Damage;
-        _knockback = parent.Knockback;
-        _activationTime = parent.ActivationTime;
-        _childStruct = child;
-        _status = parent.Status;
-
-        try
-        {
-            _child.GetComponent<WaveChild>().SetWaveStruct(child);
-        }
-        catch(System.Exception e)
-        {
-            Debug.Log(e);
-        }
-    }
     
     private IEnumerator DestroyWave()
     {
@@ -60,7 +65,7 @@ public class WaveParent : Attacks
         if (_child != null)
         {
             GameObject waveChild = Instantiate(_child, _spawnOffset.position, transform.rotation);
-            waveChild.GetComponent<WaveChild>().SetWaveStruct(_childStruct);
+            //waveChild.GetComponent<WaveChild>().SetWaveStruct(_childStruct);
         }
 
         Destroy(gameObject);

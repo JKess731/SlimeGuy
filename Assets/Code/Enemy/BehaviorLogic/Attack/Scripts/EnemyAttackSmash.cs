@@ -20,7 +20,7 @@ public class EnemyAttackSmash : EnemyAttackSOBase
         //float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         //ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
+        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
         {
             if (_enemy.attackSoundEffects.Count > 0)
             {

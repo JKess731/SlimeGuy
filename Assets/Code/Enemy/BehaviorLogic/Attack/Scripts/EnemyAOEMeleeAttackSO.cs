@@ -11,16 +11,13 @@ public class EnemyAOEMeleeAttackSO : EnemyAttackSOBase
     [SerializeField] private int _damage;
     [SerializeField] private float _knockback;
 
-    [Header("State Properties")]
-    [SerializeField] private float _attackDelay;
-
     private Transform _attackPoint;
 
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
+        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
         {
             //Play attack sound
             AudioManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
@@ -40,11 +37,11 @@ public class EnemyAOEMeleeAttackSO : EnemyAttackSOBase
     public override void DoExitLogic()
     {
         base.DoExitLogic();
-
     }
 
     public override void DoFrameUpdateLogic()
     {
+        _enemy.MoveEnemy(Vector2.zero);
         base.DoFrameUpdateLogic();
     }
 

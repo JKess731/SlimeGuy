@@ -19,7 +19,7 @@ public class EnemyIdleState : EnemyState
     {
         base.EnterState();
         _enemyBase.enemyIdleBaseInstance.DoEnterLogic();
-        _enemyBase.State = Enum_State.IDLING;
+        _enemyBase.State = Enum_AnimationState.IDLING;
     }
 
     public override void ExitState()

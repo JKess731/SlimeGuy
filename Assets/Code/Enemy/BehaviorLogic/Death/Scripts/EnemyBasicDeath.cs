@@ -10,14 +10,13 @@ public class EnemyBasicDeath : EnemyDeathSOBase
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
-        RuntimeManager.PlayOneShot(_enemy.deathSoundEffects[0], _enemy.transform.position);
         Destroy(_gameObject);
     }
 
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        _enemy.MoveEnemy(Vector2.zero);
+        RuntimeManager.PlayOneShot(_enemy.deathSoundEffects[0], _enemy.transform.position);
     }
 
     public override void DoExitLogic()

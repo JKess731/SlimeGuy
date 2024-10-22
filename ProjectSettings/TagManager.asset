@@ -52,7 +52,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - deadLayer
   m_SortingLayers:
   - name: Minimap
     uniqueID: 2574458557

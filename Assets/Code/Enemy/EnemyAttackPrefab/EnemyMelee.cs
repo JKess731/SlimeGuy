@@ -14,24 +14,25 @@ public class EnemyMelee : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-
-    private void Start()
-    {
-        _animator.Play("Attack");
-    }
-
     public void Initialize(int damage, float knockback)
     {
         _damage = damage;
         _knockback = knockback;
     }
 
+    private void Start()
+    {
+        _animator.Play("Attack");
+    }
+
+
     //Handles attack collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player")
         {
-            collision.gameObject.GetComponent<PlayerStateMachine>().Damage(_damage, transform.right, _knockback, transform.right);
+            Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
+            collision.gameObject.GetComponent<PlayerStateMachine>().Damage(_damage, knockbackDirection, _knockback, knockbackDirection);
         }
     }
 

@@ -18,12 +18,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     [SerializeField] private Transform ring;
 
     [Header("Enemy State Instance SO")]
-    [Space()]
     //The scriptable objects that hold the base logic for the enemy
     #region Scriptable Objects Variables
     [SerializeField] private EnemySpawnSOBase _enemySpawnBase;
     [SerializeField] private EnemyIdleSOBase _enemyIdleBase;
-    [SerializeField] private EnemyChaseSOBase _enemyChaseBase;
+    [SerializeField] private EnemyMoveSOBase _enemyChaseBase;
     [SerializeField] private EnemyAttackSOBase _enemyAttackBase;
     [SerializeField] private EnemyDamagedSOBase _enemyDamagedBase;
     [SerializeField] private EnemyDeathSOBase _enemyDeathBase;
@@ -45,7 +44,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     private Rigidbody2D _rigidbody2D;                    // Rigidbody of the enemy
     private AnimationControl _enemyAnimation;            // Animator for the enemy
-    private Enum_State _state;                           // The current state of the enemy
+    private Enum_AnimationState _state;                           // The current state of the enemy
 
 
     //-------------------------------------------------------
@@ -61,25 +60,27 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     //-------------------------------------------------------
     #region Regular Properties
     public StatsSO Stats { get => _stats; }
-    public bool IsDead { get; set; } = false;
+    public bool IsDead { get => _isDead; set => _isDead = value; }
     public bool IsStunnable { get => _isStunnable; set => _isStunnable = value; }
     public KnockBack KnockBack { get => _knockBack;}
     public Vector2 FaceDir { get => _faceDir; set => _faceDir = value; }
     public Transform Ring { get => ring;}
-    public Enum_State State { get => _state; set => _state = value; }
+    public Enum_AnimationState State { get => _state; set => _state = value; }
     public Rigidbody2D RigidBody2d { get => _rigidbody2D; set => _rigidbody2D = value; }
+    public AnimationControl EnemyAnimation { get => _enemyAnimation;}
     #endregion
     //----------------- Trigger Variables -------------------    //The variables that hold the status of the enemy
     #region Trigger Variables
     public bool _isAggroed { get; set; }
     public bool _isWithinStikingDistance { get; set; }
     public bool _isWithinShootingDistance { get; set; }
+    public bool _isWithinTeleportingDistance { get; set; }
     #endregion
     //---------------State Machine Variables-----------------    //The types of states the enemy can be in
     #region State Machine Variables
     public EnemyStateMachine stateMachine { get; set; }
     public EnemyIdleState idleState { get; set; }
-    public EnemyChaseState chaseState { get; set; }
+    public EnemyMoveState moveState { get; set; }
     public EnemyAttackState attackState { get; set; }
     public EnemyDamagedState damagedState { get; set; }
     public EnemySpawningState spawnState { get; set; }
@@ -89,7 +90,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region SO Instances Variables
     public EnemySpawnSOBase enemySpawnBaseInstance { get; set; }
     public EnemyIdleSOBase enemyIdleBaseInstance { get; set; }
-    public EnemyChaseSOBase enemyChaseBaseInstance { get; set; }
+    public EnemyMoveSOBase enemyChaseBaseInstance { get; set; }
     public EnemyAttackSOBase enemyAttackBaseInstance { get; set; }
     public EnemyDamagedSOBase enemyDamagedBaseInstance { get; set; }
     public EnemyDeathSOBase enemyDeathBaseInstance { get; set; }
@@ -123,7 +124,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         //Instantiate enemy states into State Machine
         spawnState = new EnemySpawningState(this, stateMachine);
         idleState = new EnemyIdleState(this, stateMachine);
-        chaseState = new EnemyChaseState(this, stateMachine);
+        moveState = new EnemyMoveState(this, stateMachine);
         attackState = new EnemyAttackState(this, stateMachine);
         damagedState = new EnemyDamagedState(this, stateMachine);
         deathState = new EnemyDeathState(this, stateMachine);
@@ -157,16 +158,6 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         stateMachine.currentEnemyState.PhysicsUpdate();
     }
 
-    public void StartNewCoroutine (IEnumerator coroutine)
-    {
-        StartCoroutine(coroutine);
-    }
-
-    public void StopExsistingCoroutine (IEnumerator coroutine)
-    {
-        StopCoroutine(coroutine);
-    }
-
     #region Change states for animation events
     public void GoToIdle()
     {
@@ -175,7 +166,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
 
     public void GoToChase()
     {
-        stateMachine.ChangeState(chaseState);
+        stateMachine.ChangeState(moveState);
     }
 
     public void GoToAttack()
@@ -202,52 +193,54 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #region Health Die Functions
     public void Damage(float damageAmount, Vector2 hitDirection, float hitforce, Vector2 constantForceDirection)
     {
-
-        if (_stats.GetStat(StatsEnum.HEALTH) <=0) {
+        if (_stats.GetStat(Enum_Stats.HEALTH) <=0 && !_isDead) {
+            _damageFlash.Flash();
             Die();
         }
 
-        if (_stats.GetStat(StatsEnum.HEALTH) >= 0 && !_isDead)
+        if (_stats.GetStat(Enum_Stats.HEALTH) >= 0 && !_isDead)
         {
             _damageFlash.Flash();
-            _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
+            _stats.SubtractStat(Enum_Stats.HEALTH, damageAmount);
             _knockBack.CallKnockback(hitDirection, hitforce, constantForceDirection);
             AudioManager.PlayOneShot(damagedSoundEffects[0], transform.position);
         }
 
-        //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
-        if (_isStunnable)
+        if (_isStunnable && !_isDead)
         {
             GoToDamage();
         }
     }
     public void Damage(float damageAmount)
     {
-        if (_stats.GetStat(StatsEnum.HEALTH) <= 0)
+        if (_stats.GetStat(Enum_Stats.HEALTH) <= 0 && !_isDead)
         {
+            _damageFlash.Flash();
             Die();
         }
 
-        if (_stats.GetStat(StatsEnum.HEALTH) >= 0 && !_isDead)
+        if (_stats.GetStat(Enum_Stats.HEALTH) >= 0 && !_isDead)
         {
             _damageFlash.Flash();
-            _stats.SubtractStat(StatsEnum.HEALTH, damageAmount);
+            _stats.SubtractStat(Enum_Stats.HEALTH, damageAmount);
             AudioManager.PlayOneShot(damagedSoundEffects[0], transform.position);
         }
 
         //Debug.Log(_stats.GetStat(StatsEnum.HEALTH));
-        if (_isStunnable)
+        if (_isStunnable && !_isDead)
         {
             GoToDamage();
+            Debug.Log("Damaged");
         }
     }
 
     public void Die()
     {
-        _stats.SetStat(StatsEnum.SPEED, 0);
-        //Instantiate(slimeDrop, transform.position, Quaternion.identity);
-        _isDead = true;  //Prevent multiple slimedrops
+        _stats.SetStat(Enum_Stats.SPEED, 0);
         stateMachine.ChangeState(deathState);
+        _isDead = true;  
+        Debug.Log(stateMachine.currentEnemyState);
+        Debug.Log(_state);
     }
 
     #endregion
@@ -265,8 +258,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     /// <param name="amount"></param>
     public void ModifyMoveSpeed(float amount, float timeUntilReset)
     {
-        float originalSpeed = _stats.GetStat(StatsEnum.SPEED);
-        _stats.AddStat(StatsEnum.SPEED,amount);
+        float originalSpeed = _stats.GetStat(Enum_Stats.SPEED);
+        _stats.AddStat(Enum_Stats.SPEED,amount);
 
         StartCoroutine(ResetSpeed(timeUntilReset, originalSpeed));
     }
@@ -274,23 +267,25 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public IEnumerator ResetSpeed(float time, float originalSpeed)
     {
         yield return new WaitForSeconds(time);
-        _stats.SetStat(StatsEnum.SPEED, originalSpeed);
+        _stats.SetStat(Enum_Stats.SPEED, originalSpeed);
     }
     #endregion
 
     #region Animation Triggers
     private void AnimationTriggerEvent(AnimationTriggerType triggerType) { 
         stateMachine.currentEnemyState.AnimationTriggerEvent(triggerType);
+        Debug.Log(stateMachine.currentEnemyState);
     }
 
+    //Move this to public enum folder
     public enum AnimationTriggerType { 
-        Damage,
-        Attack,
-        Death,
-        Move,
-        Teleport,
-        Idle,
-        Spawn
+        DAMAGE,
+        ATTACK,
+        DEATH,
+        MOVE,
+        TELEPORT,
+        IDLE,
+        SPAWN
     }
     #endregion
 
@@ -308,6 +303,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public void setShootingDistance(bool isShootingDistance) 
     {
         _isWithinShootingDistance = isShootingDistance;
+    }
+
+    public void setTeleportingDistance(bool isTeleportingDistance)
+    {
+        _isWithinTeleportingDistance = isTeleportingDistance;
     }
     #endregion
 }

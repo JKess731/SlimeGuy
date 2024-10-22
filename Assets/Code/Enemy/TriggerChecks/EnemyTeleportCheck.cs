@@ -6,11 +6,11 @@ public class EnemyTeleportCheck : MonoBehaviour
 {
     public GameObject playerTarget { get; set; }
     private EnemyBase enemy;
-    [SerializeField] private float tpCooldown = 20f;
-    [SerializeField] private float teleportDistance = 5f;
-    //[SerializeField] private GameObject lookPoint;
-    [SerializeField] private float tpDelay = 3f;
-    [SerializeField] private List<GameObject> tpPoints = new List<GameObject>();
+    //[SerializeField] private float tpCooldown = 20f;
+    //[SerializeField] private float teleportDistance = 5f;
+    ////[SerializeField] private GameObject lookPoint;
+    //[SerializeField] private float tpDelay = 3f;
+    //[SerializeField] private List<GameObject> tpPoints = new List<GameObject>();
 
 
     private void Awake()
@@ -24,67 +24,16 @@ public class EnemyTeleportCheck : MonoBehaviour
     {
         if (collision.gameObject == playerTarget)
         {
-            enemy.setAggroStatus(true);
-            enemy.setShootingDistance(false);
-            StartCoroutine(WaitToTP());
-            Collider2D c = GetComponent<Collider2D>();
-            c.enabled = false;
-            enemy.State = Enum_State.MOVING;
+            enemy.setTeleportingDistance(true);
         }
     }
 
-    private void Shuffle<T>(List<T> ts)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        var count = ts.Count;
-        var last = count - 1;
-        for (var i = 0; i < last; ++i)
+        if (collision.gameObject == playerTarget)
         {
-            var r = UnityEngine.Random.Range(i, count);
-            var tmp = ts[i];
-            ts[i] = ts[r];
-            ts[r] = tmp;
+            enemy.setTeleportingDistance(false);
         }
-    }
-
-    IEnumerator WaitToTP()
-    { 
-        yield return new WaitForSeconds(tpDelay);
-
-        if (tpPoints.Count > 0)
-        {
-            Vector2 farPos = Vector2.zero;
-            float dist = 0;
-            Shuffle(tpPoints);
-            foreach (GameObject p in tpPoints) 
-            {
-                float distance = Vector2.Distance(playerTarget.transform.position, p.transform.position);
-                if (dist == 0 || distance > teleportDistance)
-                {
-                    dist = distance;
-                    farPos = p.transform.position;
-                }
-            }
-
-            enemy.transform.position = farPos;
-        }
-
-        enemy.setShootingDistance(true);
-
-        /*
-        Vector2 pos = GetTeleportPosition();
-        enemy.transform.position = pos;
-        Debug.Log("AFTER: " + enemy.transform.position);
-        */
-
-        StartCoroutine(Cooldown());
-    }
-
-    IEnumerator Cooldown()
-    {
-        Collider2D c = GetComponent<Collider2D>();
-        yield return new WaitForSeconds(tpCooldown);
-        c.enabled = true;
-        Debug.Log("TP COOLDOWN OVER");
     }
 
     /*

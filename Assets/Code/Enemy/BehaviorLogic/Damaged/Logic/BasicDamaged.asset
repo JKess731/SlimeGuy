@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 485e41b05d10ff24286b83c0798f6804, type: 3}
   m_Name: BasicDamaged
   m_EditorClassIdentifier: 
+  _stunTimer: 0.2

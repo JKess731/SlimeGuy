@@ -30,8 +30,8 @@ public class WallMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
+        float addedDamage = _playerStats.playerStats.GetStat(Enum_Stats.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(Enum_Stats.KNOCKBACK);
 
         _startPos = _playerRb.transform.position;
 

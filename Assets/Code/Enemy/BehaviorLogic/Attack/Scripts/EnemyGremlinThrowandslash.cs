@@ -30,7 +30,7 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
         float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
+        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
         {
             if (_enemy.attackSoundEffects.Count > 0)
             {
@@ -49,7 +49,7 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
                 if (timer > timeBetweenShots)
                 {
                     timer = 0f;
-                    _enemy.State = Enum_State.RANGEDATTACK;
+                    _enemy.State = Enum_AnimationState.RANGEDATTACK;
                     Vector2 dir = (_playerTransform.position - _enemy.transform.position).normalized;
                     Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, _enemy.transform.position, Quaternion.identity);
                     bullet.velocity = dir * bulletSpeed;
@@ -81,7 +81,7 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
             exitTimer += Time.deltaTime;
             if (exitTimer > timeBetweenShots)
             {
-                _enemy.stateMachine.ChangeState(_enemy.chaseState);
+                _enemy.stateMachine.ChangeState(_enemy.moveState);
             }
         }
         else

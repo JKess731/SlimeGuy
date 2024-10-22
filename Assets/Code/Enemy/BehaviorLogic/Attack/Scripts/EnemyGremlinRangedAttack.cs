@@ -20,7 +20,7 @@ public class EnemyGremlinRangedAttack : EnemyAttackSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
+        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
         {
             if (_enemy.attackSoundEffects.Count > 0)
             {
@@ -32,7 +32,7 @@ public class EnemyGremlinRangedAttack : EnemyAttackSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        _enemy.State = Enum_State.RANGEDATTACK;
+        _enemy.State = Enum_AnimationState.RANGEDATTACK;
     }
 
     public override void DoExitLogic()
@@ -57,7 +57,7 @@ public class EnemyGremlinRangedAttack : EnemyAttackSOBase
             exitTimer += Time.deltaTime;
             if (exitTimer > timeTillExit)
             {
-                _enemy.stateMachine.ChangeState(_enemy.chaseState);
+                _enemy.stateMachine.ChangeState(_enemy.moveState);
             }
         }
         else

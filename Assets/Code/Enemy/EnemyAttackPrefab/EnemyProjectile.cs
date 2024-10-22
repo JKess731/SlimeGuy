@@ -4,76 +4,70 @@ using UnityEngine.Events;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    public int damage;
-    public float speed;
-    public Transform target;
-    public float knockbackPower;
-    public float delay;
+    private int _damage;
+    private float _speed;
+    private float _knockback;
+    private float _lifetime;
 
-    private Rigidbody2D rb;
-    private Collider2D teleportTrigger;
-    private GameObject enemy;
-
-    private bool canDamage = true;
-    private bool isMoving = false;
-
-    public UnityEvent OnCollide;
+    private Rigidbody2D _rb2d;
+    private Animator _animator;
+    private void Awake()
+    {
+        _rb2d = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _animator.Play("Start");
+    }
+
+    public void Initialize(int damage, float speed, float knockback, float lifeTime)
+    {
+        _damage = damage;
+        _speed = speed;
+        _knockback = knockback;
+        _lifetime = lifeTime;
+
+        _rb2d.velocity = transform.right * _speed;
+        StartCoroutine(StartLifeTime(_lifetime));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 11)
+        if (collision.gameObject.CompareTag("wall"))
         {
-            OnDeath();
+            DestroyProjectile();
         }
 
-        if (collision.gameObject.CompareTag("player") && canDamage)
+        if (collision.gameObject.CompareTag("player"))
         {
-            canDamage = false;
-            PlayerStateMachine psm = collision.gameObject.GetComponent<PlayerStateMachine>();
-            psm.Damage(damage, transform.right, knockbackPower, transform.right);
-
-            OnDeath();
+            Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
+            collision.gameObject.GetComponent<PlayerStateMachine>().Damage(_damage, knockbackDirection, _knockback, knockbackDirection);
+            DestroyProjectile();
         }
     }
-
-    public void OnDeath()
+    /// <summary>
+    /// Destroys the projectile by playing the end animation and setting the velocity to zero
+    /// </summary
+    private void DestroyProjectile()
     {
-        OnCollide?.Invoke();
-        StopCoroutine(Shoot());
+        _animator.Play("End");
+        _rb2d.velocity = Vector2.zero;
+        _rb2d.includeLayers = 0;
+    }
+
+    private IEnumerator StartLifeTime(float lifeTime)
+    {
+        yield return new WaitForSeconds(lifeTime);
+        DestroyProjectile();
+    }
+
+    /// <summary>
+    /// Destroys the projectile, used by animation event
+    /// </summary>
+    public void OnFinished()
+    {
         Destroy(gameObject);
-    }
-
-    public void StartShoot(GameObject enemy, int damage, float speed, Transform target, 
-        float knockbackPower, float delay)
-    {
-        this.enemy = enemy;  
-        this.damage = damage;
-        this.speed = speed;
-        this.target = target;
-        this.knockbackPower = knockbackPower; 
-        this.delay = delay;
-
-        teleportTrigger = enemy.transform.GetChild(0).GetChild(0).GetComponent<Collider2D>();
-
-        StartCoroutine(Shoot());
-    }
-
-    public IEnumerator Shoot()
-    {
-        yield return new WaitForSeconds(delay);
-        isMoving = true;
-        teleportTrigger.enabled = true;
-        Vector3 direction = target.position - transform.position;
-
-        while (isMoving)
-        {
-            rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
-            yield return null;
-        }
     }
 }

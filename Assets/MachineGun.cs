@@ -18,7 +18,6 @@ public class MachineGun : Attacks
 
     [SerializeField] private Transform firePoint;        
     [SerializeField] private GameObject _bulletPrefab; 
-    private BulletStruct _bulletStruct;
 
     private void Awake()
     {
@@ -54,18 +53,5 @@ public class MachineGun : Attacks
             
             GameObject newBullet = Instantiate(_bulletPrefab, firePoint.position, bulletRotation);
         }
-    }
-
-    public void SetMachineGunStruct(MachineGunStruct machineGunStruct)
-    {
-        _damage = machineGunStruct.Damage;
-        _range = machineGunStruct.Range;
-        _bulletSpeed = machineGunStruct.BulletSpeed;
-        _knockback = machineGunStruct.Knockback;
-    }
-
-    public void SetBulletStruct(BulletStruct bulletStruct)
-    {
-        _bulletStruct = bulletStruct;
     }
 }

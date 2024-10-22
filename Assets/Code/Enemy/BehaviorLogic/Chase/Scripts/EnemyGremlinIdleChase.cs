@@ -6,13 +6,13 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "GremlinIdleChase", menuName = "EnemyLogic/ChaseLogic/GremlinIdleChase")]
-public class EnemyGremlinIdleChase : EnemyChaseSOBase
+public class EnemyGremlinIdleChase : EnemyMoveSOBase
 {
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Move)
+        if (triggerType == EnemyBase.AnimationTriggerType.MOVE)
         {
             if (_enemy.moveSoundEffects.Count > 0)
             {

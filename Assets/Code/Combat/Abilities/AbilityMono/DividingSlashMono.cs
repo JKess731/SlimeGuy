@@ -39,9 +39,9 @@ public class DividingSlashMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
-        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
+        float addedDamage = _playerStats.playerStats.GetStat(Enum_Stats.ATTACK);
+        float addedKnockback = _playerStats.playerStats.GetStat(Enum_Stats.KNOCKBACK);
+        float addedSpeed = _playerStats.playerStats.GetStat(Enum_Stats.SPEED);
 
         Vector2 vecForAng = rotation * Vector2.right;
         _pushDirection = vecForAng; // Use the direction of the slash

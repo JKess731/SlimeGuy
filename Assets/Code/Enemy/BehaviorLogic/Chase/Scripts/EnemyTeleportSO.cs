@@ -5,13 +5,13 @@ using System.Net.NetworkInformation;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Teleport", menuName = "EnemyLogic/ChaseLogic/Teleport")]
-public class EnemyTeleportSO : EnemyChaseSOBase
+public class EnemyTeleportSO : EnemyMoveSOBase
 {
     public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Teleport)
+        if (triggerType == EnemyBase.AnimationTriggerType.TELEPORT)
         {
             Debug.Log("WizardTeleport");
             RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);

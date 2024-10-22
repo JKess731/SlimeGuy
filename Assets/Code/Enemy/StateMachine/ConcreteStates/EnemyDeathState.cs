@@ -18,7 +18,7 @@ public class EnemyDeathState : EnemyState
     {
         base.EnterState();
         _enemyBase.enemyDeathBaseInstance.DoEnterLogic();
-        _enemyBase.State = Enum_State.DEAD;
+        _enemyBase.State = Enum_AnimationState.DEAD;
         //Debug.Log("Enemy is dead");
     }
 

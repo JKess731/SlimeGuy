@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: GolemStats
   m_EditorClassIdentifier: 
   _statList:
-  - _statEnum: 4
+  - _statType: 3
     _statValue: 30
-  - _statEnum: 3
+  - _statType: 4
     _statValue: 30
-  - _statEnum: 0
+  - _statType: 0
     _statValue: 5
-  - _statEnum: 2
-    _statValue: 1
-  - _statEnum: 2
+  - _statType: 1
     _statValue: 3
+  - _statType: 2
+    _statValue: 1
