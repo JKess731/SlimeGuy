@@ -150,8 +150,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
         var angle = Mathf.Atan2(_faceDir.y, _faceDir.x) * Mathf.Rad2Deg;
         ring.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        stateMachine.currentEnemyState.FrameUpdate();
         _enemyAnimation.PlayAnimation(_faceDir,_state); //This line handles animation <--- Check this here for animation troubles may need to be changed
+        stateMachine.currentEnemyState.FrameUpdate();
     }
 
     private void FixedUpdate()

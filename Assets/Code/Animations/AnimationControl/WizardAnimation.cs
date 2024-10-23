@@ -15,6 +15,7 @@ public class WizardAnimation : AnimationControl
             _spriteRenderer.flipX = false;
         }
 
+
         if (state == Enum_AnimationState.IDLING)
         {
             _animator.Play("Idle");

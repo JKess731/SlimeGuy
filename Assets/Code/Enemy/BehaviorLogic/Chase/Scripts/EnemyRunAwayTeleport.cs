@@ -87,8 +87,10 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
     #region Teleport
     private void OnTeleport()
     {
+        //List to store all possible teleport positions
         List<Vector2> teleportPosArray = new List<Vector2>();
         
+        //Math to calculate the angle difference between each raycast
         float angleDiff = (360/8);
 
         for (int i = 0; i < 8; i++)
@@ -99,7 +101,6 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
             LayerMask wallMask = LayerMask.GetMask("Wall");
 
             Ray2D ray = new Ray2D(_transform.position, newRot * _transform.up);
-
 
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, _teleportDistance, wallMask);
             Debug.DrawRay(ray.origin, ray.direction * _teleportDistance, Color.cyan, 1f);
