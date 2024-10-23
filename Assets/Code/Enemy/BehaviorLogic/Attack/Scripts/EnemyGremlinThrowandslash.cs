@@ -25,7 +25,10 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
     [SerializeField] private float meleeCooldown = 1.5f;
     private float nextMeleeAttackTime = 0f;
 
-    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
+    private bool isThrow;
+    private bool isSlash;
+
+    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
@@ -33,11 +36,23 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
         float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
 
-        if (triggerType == Enum_AnimationTriggerType.ATTACK)
+        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
         {
-            if (_enemy.attackSoundEffects.Count > 0)
+            if (isThrow)
             {
-                RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
+                GremlinShoot();
+                if (_enemy.attackSoundEffects.Count > 1)
+                {
+                    RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[1], _enemy.transform.position);
+                }
+            }
+            else if (isSlash)
+            {
+                GremlinSlash();
+                if (_enemy.attackSoundEffects.Count > 0)
+                {
+                    RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
+                }
             }
         }
     }
@@ -59,23 +74,16 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
         base.DoFrameUpdateLogic();
 
         //if the player is within shooting distance and enough time has gone by, enemy shoots
-        if (_enemy._isWithinShootingDistance && Time.time >= nextShootTime)
-        {
-            _enemy.State = Enum_AnimationState.RANGEDATTACK;
-
-            Vector2 dir = (_playerTransform.position - _enemy.transform.position).normalized;
-            Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, _enemy.transform.position, Quaternion.identity);
-            bullet.velocity = dir * bulletSpeed;
-
-            nextShootTime = Time.time + shootingCooldown;
+        if (_enemy._isWithinShootingDistance)
+        {  
+            isThrow = true;
         }
-        //if player is within striking distance do the melee attack
-        else if (_enemy._isWithinStikingDistance && Time.time >= nextMeleeAttackTime)
-        {
-            _enemy.State = Enum_AnimationState.ATTACKING;
-            Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
 
-            nextMeleeAttackTime = Time.time + meleeCooldown;
+        //if player is within striking distance do the melee attack
+        if (_enemy._isWithinStikingDistance)
+        {
+            isThrow = false;
+            isSlash = true;
         }
     }
 
@@ -92,5 +100,19 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
     public override void ResetValues()
     {
         base.ResetValues();
+    }
+
+    public void GremlinShoot()
+    {
+        _enemy.State = Enum_State.RANGEDATTACK;
+        Vector2 dir = (_playerTransform.position - _enemy.transform.position).normalized;
+        Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, _enemy.transform.position, Quaternion.identity);
+        bullet.velocity = dir * bulletSpeed;
+    }
+
+    public void GremlinSlash()
+    {
+        _enemy.State = Enum_State.ATTACKING;
+        Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
     }
 }

@@ -22,7 +22,6 @@ public class EnemyShootCheck : MonoBehaviour
         if (collision.gameObject == playerTarget)
         {
             enemy.setShootingDistance(true);
-            enemy.setRunAwayDistance(false); 
         }
     }
 
@@ -31,7 +30,6 @@ public class EnemyShootCheck : MonoBehaviour
         if (collision.gameObject == playerTarget)
         {
             enemy.setShootingDistance(false); 
-            enemy.setRunAwayDistance(true); 
         }
     }
 
