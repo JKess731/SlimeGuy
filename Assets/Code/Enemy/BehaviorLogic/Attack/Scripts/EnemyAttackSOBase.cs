@@ -6,14 +6,15 @@ using UnityEngine;
 
 public class EnemyAttackSOBase : ScriptableObject
 {
-    [SerializeField] private float _attackTime = 1f;
-    [SerializeField] private float _attackExitTime = 1f;
+    [SerializeField] protected float _attackTime = 1f;
+    [SerializeField] protected float _attackExitTime = 1f;
 
     protected EnemyBase _enemy;
     protected Transform _enemyTransform;
     protected GameObject _playerGameObject;
     protected Transform _playerTransform;
 
+    //Make private??
     protected float _timer = 0;
     protected float _exitTimer = 0;
     protected bool _isAttackDone = false;
@@ -64,5 +65,8 @@ public class EnemyAttackSOBase : ScriptableObject
     }
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType){}
-    public virtual void ResetValues() { }
+    public virtual void ResetValues() { 
+        _timer = 0;
+        _exitTimer = 0;
+    }
 }

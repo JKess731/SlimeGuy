@@ -287,6 +287,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     public enum AnimationTriggerType { 
         Damage,
         Attack,
+        RangeAttack,
         Death,
         Move,
         Teleport,

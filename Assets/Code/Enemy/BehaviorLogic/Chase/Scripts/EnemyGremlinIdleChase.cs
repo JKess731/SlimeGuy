@@ -34,15 +34,24 @@ public class EnemyChaseUntilRange : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
+
+        if(!_enemy._isWithinShootingDistance && _enemy._isAggroed)
+        {
+            Vector2 moveDirection = (_playerTransform.position - _enemy.transform.position).normalized;
+            _enemy.MoveEnemy(moveDirection * _enemy.Stats.GetStat(StatsEnum.SPEED));
+        }
+
         if (_enemy._isWithinShootingDistance)
         {
             _enemy.stateMachine.ChangeState(_enemy.attackState);
         }
 
-        if(!_enemy._isWithinShootingDistance && !_enemy._isWithinStikingDistance)
+        if (_enemy._isWithinStikingDistance)
         {
-            _enemy.MoveEnemy(Vector2.zero);
+            _enemy.stateMachine.ChangeState(_enemy.attackState);
         }
+
+
     }
 
     public override void DoPhysicsLogic()

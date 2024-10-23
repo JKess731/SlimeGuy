@@ -1624,6 +1624,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4092726651108161504, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
+      propertyPath: m_Name
+      value: ShootingDistance
+      objectReference: {fileID: 0}
     - target: {fileID: 4722212593522719403, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.946938
@@ -1670,7 +1674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777186743103341712, guid: 0f15cd0b74d4d0b4f95b00d6a453cbd8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
