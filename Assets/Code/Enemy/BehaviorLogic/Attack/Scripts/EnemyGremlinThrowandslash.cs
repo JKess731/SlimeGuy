@@ -28,7 +28,7 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
     private bool isThrow;
     private bool isSlash;
 
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
@@ -36,7 +36,7 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
         float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.Attack)
+        if (triggerType == Enum_AnimationTriggerType.ATTACK)
         {
             if (isThrow)
             {
@@ -104,7 +104,7 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
 
     public void GremlinShoot()
     {
-        _enemy.State = Enum_State.RANGEDATTACK;
+        _enemy.State = Enum_AnimationState.RANGEDATTACK;
         Vector2 dir = (_playerTransform.position - _enemy.transform.position).normalized;
         Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, _enemy.transform.position, Quaternion.identity);
         bullet.velocity = dir * bulletSpeed;
@@ -112,7 +112,7 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
 
     public void GremlinSlash()
     {
-        _enemy.State = Enum_State.ATTACKING;
+        _enemy.State = Enum_AnimationState.ATTACKING;
         Instantiate(slashTriggerPrefab, attackPoint.position, ring.transform.rotation);
     }
 }

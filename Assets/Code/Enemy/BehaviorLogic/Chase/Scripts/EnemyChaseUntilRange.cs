@@ -9,7 +9,7 @@ using UnityEngine;
 public class EnemyChaseUntilRange : EnemyMoveSOBase
 {
     [SerializeField] private float ChaseSpeed = 1.5f;
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 

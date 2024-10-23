@@ -42,9 +42,8 @@ public class EnemyIdleRandomWander : EnemyIdleSOBase
 
         if (enemy._isAggroed)
         {
-            enemy.stateMachine.ChangeState(enemy.chaseState);
+            enemy.stateMachine.ChangeState(enemy.moveState);
         }
-
     }
 
     public override void DoPhysicsLogic()

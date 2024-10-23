@@ -61,6 +61,10 @@ public class ProceduralManager : MonoBehaviour
     {
         InitGenerators();
         AudioManager.instance.PlayIValley();
+        AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
+        float value1 = 1234567f;
+        AudioManager.instance.IValleyTheme.getParameterByName("enemyNear",out value1);
+        Debug.Log(value1);
     }
 
     #region Functions

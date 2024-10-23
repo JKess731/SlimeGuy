@@ -17,12 +17,12 @@ public class EnemyGremlinRangedAttack : EnemyAttackSOBase
     private float attackCooldownTimer;
     private bool canShoot;
 
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         if (attackCooldownTimer >= timeBetweenShots)
         {
             base.DoAnimationTriggerEventLogic(triggerType);
-            if (triggerType == EnemyBase.AnimationTriggerType.Attack)
+            if (triggerType == Enum_AnimationTriggerType.ATTACK)
             {
                 GremlinThrow();
                 attackCooldownTimer = 0f; 
@@ -38,7 +38,7 @@ public class EnemyGremlinRangedAttack : EnemyAttackSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-        _enemy.State = Enum_State.RANGEDATTACK;
+        _enemy.State = Enum_AnimationState.RANGEDATTACK;
         attackCooldownTimer = timeBetweenShots; 
     }
 

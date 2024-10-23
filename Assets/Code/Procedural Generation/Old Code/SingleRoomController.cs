@@ -11,6 +11,7 @@ public class SingleRoomController : MonoBehaviour
     public void Start()
     {
         AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
+        AudioManager.instance.IValleyTheme.setParameterByName("enemyNear", 1, false);
     }
 
     [System.Serializable]
