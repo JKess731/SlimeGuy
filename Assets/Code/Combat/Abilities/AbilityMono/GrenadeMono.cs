@@ -28,10 +28,10 @@ public class GrenadeMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float newDamage = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ATTACK) + _damage;
-        float newKnockback = _playerStats.playerStats.ModifiedStatValue(StatsEnum.KNOCKBACK) + _knockback;
-        float newActivationTime = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ACTIVATION_TIME) + _activationTime;
-        float newSpeed = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PROJECTILE_SPEED) + _speed;
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ATTACK) + _damage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.KNOCKBACK) + _knockback;
+        float newActivationTime = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ACTIVATION_TIME) + _activationTime;
+        float newSpeed = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.PROJECTILE_SPEED) + _speed;
 
         Quaternion newRot = rotation;
         GameObject newGrenade = Instantiate(_grenade, attackPosition, newRot);

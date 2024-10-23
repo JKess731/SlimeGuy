@@ -32,11 +32,11 @@ public class ShotgunMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float newDamage = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ATTACK) + _projectileDamage;
-        float newKnockback = _playerStats.playerStats.ModifiedStatValue(StatsEnum.KNOCKBACK) + _projectileKnockback;
-        float newSpeed = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PROJECTILE_SPEED) + _projectileSpeed;
-        float addedPiercingAmount = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PIERCING_COUNT);
-        float addedBulletBounce = _playerStats.playerStats.ModifiedStatValue(StatsEnum.RICHOCHET_COUNT);
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ATTACK) + _projectileDamage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.KNOCKBACK) + _projectileKnockback;
+        float newSpeed = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.PROJECTILE_SPEED) + _projectileSpeed;
+        float addedPiercingAmount = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.PIERCING_COUNT);
+        float addedBulletBounce = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.RICHOCHET_COUNT);
 
         float angleDiff = _spreadAngle * 2/ (_bulletCount - 1);
         for (int i = 0; i < _bulletCount; i++)
