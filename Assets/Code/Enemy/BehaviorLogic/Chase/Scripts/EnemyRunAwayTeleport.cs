@@ -8,22 +8,20 @@ using static UnityEditor.FilePathAttribute;
 
 public class EnemyRunAwayTeleport : EnemyMoveSOBase
 {
-    private bool _teleportfinished = false;
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    [SerializeField] private float _teleportDistance = 5f;
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.TELEPORT && !_enemy.EnemyAnimation.Animator.GetBool("Teleport"))
+        if (triggerType == Enum_AnimationTriggerType.TELEPORT && !_enemy.EnemyAnimation.Animator.GetBool("Teleport"))
         {
             OnTeleport();
-            Debug.Log("TeleportingStarted");
             return;
         }
 
-        if (triggerType == EnemyBase.AnimationTriggerType.TELEPORT && _enemy.EnemyAnimation.Animator.GetBool("Teleport"))
+        if (triggerType == Enum_AnimationTriggerType.TELEPORT && _enemy.EnemyAnimation.Animator.GetBool("Teleport"))
         {
             _enemy.stateMachine.ChangeState(_enemy.idleState);
-            Debug.Log("TeleportingExited");
         }
     }
 
@@ -42,19 +40,7 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
     {
         base.DoFrameUpdateLogic();
 
-        //If the player is within the shooting distance, change to attack state
-        //If not, move towards the player
-
-        //If the player is within the striking distance, attempt to run away
         //If the player is within the teleporting distance, teleport
-        //If the player is within the teleporting distance, teleport
-
-        if (_enemy.EnemyAnimation.Animator.GetBool("Teleport") && _teleportfinished)
-        {
-            _enemy.MoveEnemy(Vector2.zero);
-            return;
-        }
-
         if (_enemy._isWithinTeleportingDistance)
         {
             _enemy.State = Enum_AnimationState.TELEPORTING;
@@ -62,6 +48,8 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
             return;
         }
 
+        //If the player is within the shooting distance, change to attack state
+        //If not, move towards the player
         if (_enemy._isWithinShootingDistance)
         {
             _enemy.stateMachine.ChangeState(_enemy.attackState);
@@ -99,10 +87,10 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
     #region Teleport
     private void OnTeleport()
     {
-        Vector2 [] teleportPosArray = new Vector2[8];
-        float teleportDistance = 5f;
-        Vector2 dir = _transform.right * teleportDistance;
-
+        //List to store all possible teleport positions
+        List<Vector2> teleportPosArray = new List<Vector2>();
+        
+        //Math to calculate the angle difference between each raycast
         float angleDiff = (360/8);
 
         for (int i = 0; i < 8; i++)
@@ -114,33 +102,34 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
 
             Ray2D ray = new Ray2D(_transform.position, newRot * _transform.up);
 
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, _teleportDistance, wallMask);
+            Debug.DrawRay(ray.origin, ray.direction * _teleportDistance, Color.cyan, 1f);
 
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, teleportDistance, wallMask);
-            Debug.DrawRay(ray.origin, ray.direction * teleportDistance, Color.cyan, 1f);
+            //Debug.Draw for invalid raycasts
+            if (hit)
+            {
+                //Draw the invalid raycast that hits a wall
+                //Skips the rest of the loop
+                Debug.DrawRay(ray.origin, ray.direction * _teleportDistance, Color.red, 1f);
+                continue;
+            }
 
-            //if (hit)
-            //{
-            //    //if (hit2.collider.CompareTag("wall"))
-            //    //{
-            //        //Debug.DrawRay(ray.origin, hit.point, Color.green, 1f);
-            //        Debug.Log("Hit");
-            //    //}
-            //}
-
+            //Debug.Draw for valid raycasts
             if (!hit)
             {
-                Debug.DrawRay(ray.origin, ray.direction * teleportDistance, Color.red, 1f);
-                teleportPosArray[i] = ray.origin + ray.direction * teleportDistance;
+                //Add the teleport position to the array if the raycast is does not hit a wall
+                Debug.DrawRay(ray.origin, ray.direction * _teleportDistance, Color.green, 1f);
+                teleportPosArray.Add(ray.origin + ray.direction * _teleportDistance);
             }
         }
 
-        //foreach (Vector2 pos in teleportPosArray)
-        //{
-        //    Debug.Log("Teleport Pos: " + pos);
-        //}
+        //If there are no valid teleport positions, teleport to the current position
+        if (teleportPosArray.Count == 0)
+        {
+            teleportPosArray.Add(_transform.position);
+        }
 
-        Vector2 teleportPos = teleportPosArray[Random.Range(0, teleportPosArray.Length)];
-        //Debug.Log("Teleported to: " + teleportPos);
+        Vector2 teleportPos = teleportPosArray[Random.Range(0, teleportPosArray.Count)];
         _transform.position = teleportPos;
         _enemy.EnemyAnimation.Animator.SetBool("Teleport", true);
     }

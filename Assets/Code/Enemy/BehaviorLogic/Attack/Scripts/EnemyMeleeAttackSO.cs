@@ -13,11 +13,11 @@ public class EnemyMeleeAttackSO : EnemyAttackSOBase
 
     private Transform _attackPoint;
 
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
+        if (triggerType == Enum_AnimationTriggerType.ATTACK)
         {
             //Play attack sound
             AudioManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);

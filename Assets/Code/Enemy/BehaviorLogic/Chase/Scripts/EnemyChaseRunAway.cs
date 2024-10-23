@@ -10,7 +10,7 @@ public class EnemyChaseRunAway : EnemyMoveSOBase
     [SerializeField] private float runAwaySpeed = 1.5f;
     [SerializeField] private Transform attackPoint;
     public GameObject ring;
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
     }

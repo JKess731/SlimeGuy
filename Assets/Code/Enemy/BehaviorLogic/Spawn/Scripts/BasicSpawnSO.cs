@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 
 public class BasicSpawnSO : EnemySpawnSOBase
 {
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
     }

@@ -7,11 +7,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Teleport", menuName = "EnemyLogic/ChaseLogic/Teleport")]
 public class EnemyTeleportSO : EnemyMoveSOBase
 {
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.TELEPORT)
+        if (triggerType == Enum_AnimationTriggerType.TELEPORT)
         {
             Debug.Log("WizardTeleport");
             RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);

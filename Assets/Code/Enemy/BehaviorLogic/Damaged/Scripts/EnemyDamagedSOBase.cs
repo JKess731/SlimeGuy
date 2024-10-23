@@ -31,7 +31,7 @@ public class EnemyDamagedSOBase : ScriptableObject
         _timer += Time.deltaTime;
     }
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) {}
+    public virtual void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType) {}
     public virtual void ResetValues() { 
         _timer = 0;
     }

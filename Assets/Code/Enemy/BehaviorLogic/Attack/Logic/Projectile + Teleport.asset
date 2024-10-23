@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0811e7ccbd34c424bb16a59b20837ff1, type: 3}
   m_Name: Projectile + Teleport
   m_EditorClassIdentifier: 
-  _attackTime: 1
-  _attackExitTime: 1
+  _attackTime: 2.2
+  _attackExitTime: 0.3
   _projectilePrefab: {fileID: 8839898757806257828, guid: 96575dbaef7cc4f40baabf6942643af7, type: 3}
   _damage: 1
-  _speed: 1
+  _speed: 3
   _knockbackPower: 1
-  _lifetime: 1
+  _lifetime: 5

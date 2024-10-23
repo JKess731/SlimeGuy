@@ -16,14 +16,14 @@ public class EnemyRangeAttackProjectile : EnemyAttackSOBase
     private Transform _attackPoint;
 
     #region State Functions
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
         Vector3 dir = _playerTransform.position - _attackPoint.transform.position;
         float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
+        if (triggerType == Enum_AnimationTriggerType.ATTACK)
         {
             Debug.Log("WizardCast");
             if (_enemy.attackSoundEffects.Count > 0)
