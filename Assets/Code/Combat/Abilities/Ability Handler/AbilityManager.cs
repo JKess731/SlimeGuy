@@ -11,7 +11,7 @@ public class AbilityManager : MonoBehaviour
 
     [Header("Ability Dictionaries")]
     [HideInInspector]
-    [SerializeField] private Dictionary<string, AbilityMonoBase> primaryDict = new Dictionary<string, AbilityMonoBase >();
+    [SerializeField] private Dictionary<string, AbilityMonoBase> primaryDict = new Dictionary<string, AbilityMonoBase>();
     [SerializeField] private Dictionary<string, AbilityMonoBase> secondaryDict = new Dictionary<string, AbilityMonoBase>();
     [SerializeField] private Dictionary<string, AbilityMonoBase> dashDict = new Dictionary<string, AbilityMonoBase>();
     [SerializeField] private Dictionary<string, AbilityMonoBase> passiveDict = new Dictionary<string, AbilityMonoBase>();
@@ -66,7 +66,7 @@ public class AbilityManager : MonoBehaviour
 
         for (int i = 0; i < primaryHolder.childCount; i++)
         {
-            if(primaryHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            if (primaryHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
             {
                 primaryDict.Add(child.AbilityName, child);
             }
@@ -74,7 +74,7 @@ public class AbilityManager : MonoBehaviour
 
         for (int i = 0; i < secondaryHolder.childCount; i++)
         {
-            if(secondaryHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            if (secondaryHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
             {
                 secondaryDict.Add(child.AbilityName, child);
             }
@@ -82,7 +82,7 @@ public class AbilityManager : MonoBehaviour
 
         for (int i = 0; i < dashHolder.childCount; i++)
         {
-            if(dashHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            if (dashHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
             {
                 dashDict.Add(child.AbilityName, child);
             }
@@ -90,7 +90,7 @@ public class AbilityManager : MonoBehaviour
 
         for (int i = 0; i < passiveHolder.childCount; i++)
         {
-            if(passiveHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
+            if (passiveHolder.GetChild(i).TryGetComponent(out AbilityMonoBase child))
             {
                 passiveDict.Add(child.AbilityName, child);
             }
@@ -145,7 +145,7 @@ public class AbilityManager : MonoBehaviour
     #region Primary
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
-        if(primary?.AbilityState == AbilityState.READY)
+        if (primary?.AbilityState == AbilityState.READY)
         {
             primary?.StartBehavior(attackPos.position, attackPos.rotation);
         }
@@ -183,7 +183,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnSecondaryCanceled(InputAction.CallbackContext context)
     {
-        if(secondary?.AbilityState == AbilityState.PERFORMING)
+        if (secondary?.AbilityState == AbilityState.PERFORMING)
         {
             secondary?.CancelBehavior(attackPos.position, attackPos.rotation);
         }
@@ -225,19 +225,19 @@ public class AbilityManager : MonoBehaviour
 
     public string AbilityUIType(AbilityMonoBase ability)
     {
-        if(primary.GetType() == ability.GetType())
+        if (primary.GetType() == ability.GetType())
         {
             return "P";
         }
-        else if(secondary.GetType() == ability.GetType())
+        else if (secondary.GetType() == ability.GetType())
         {
             return "S";
         }
-        else if(dash.GetType() == ability.GetType())
+        else if (dash.GetType() == ability.GetType())
         {
             return "D";
         }
-        else if(passive.GetType() == ability.GetType())
+        else if (passive.GetType() == ability.GetType())
         {
             return "PA";
         }

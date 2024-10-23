@@ -135,7 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbd7abbc89ba324fb8fc13ecfa02c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToPickup: {fileID: 11400000, guid: 62384aa000b56544ebb398164f458a1f, type: 2}
+  abilityToPickupName: SlimeWhip
+  abilityType: 1
 --- !u!1 &2762480260998963309
 GameObject:
   m_ObjectHideFlags: 0

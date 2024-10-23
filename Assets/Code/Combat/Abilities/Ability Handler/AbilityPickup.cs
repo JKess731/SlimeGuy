@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class AbilityPickup : MonoBehaviour
 {
-    [Header("Ability to Assign")]
-    [SerializeField] private AbilitySOBase abilityToPickup;
+    [Header("Ability Details")]
+    [SerializeField] private string abilityToPickupName;  // Name of the ability to pick up
+    [SerializeField] private AbilityType abilityType;     // Type of the ability
+
+    private bool playerInRange = false;
+    private AbilityManager playerAbilityManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the player collided with the ability
+        // Check if the player collided with the pickup
         if (collision.gameObject.CompareTag("player"))
         {
-            // Get the player's AbilityManager
-            AbilityManager abilityManager = collision.GetComponent<AbilityManager>();
+            playerInRange = true;        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // Check if player leaves the pickup
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            // Access the AbilityManager singleton
+            AbilityManager abilityManager = AbilityManager.Instance;
 
             if (abilityManager != null)
             {
-                // Assign the picked-up ability to the first empty slot (primary or secondary)
-                if (abilityToPickup.AbilityType.Equals(AbilityType.PRIMARY))
-                {
-                    //abilityManager.InstaniatePrimary(abilityToPickup);
-                }
-                else if (abilityToPickup.AbilityType.Equals(AbilityType.SECONDARY))
-                {
-                    //abilityManager.InstaniateSecondary(abilityToPickup);
-                }
+                // Assign the ability based on its type (Primary, Secondary, Dash, or Passive)
+                abilityManager.Swap(abilityType, abilityToPickupName);
 
                 // Destroy the pickup object after being picked up
                 Destroy(gameObject);
