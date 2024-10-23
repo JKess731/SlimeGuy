@@ -9,17 +9,17 @@ using static UnityEditor.FilePathAttribute;
 public class EnemyRunAwayTeleport : EnemyMoveSOBase
 {
     [SerializeField] private float _teleportDistance = 5f;
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.TELEPORT && !_enemy.EnemyAnimation.Animator.GetBool("Teleport"))
+        if (triggerType == Enum_AnimationTriggerType.TELEPORT && !_enemy.EnemyAnimation.Animator.GetBool("Teleport"))
         {
             OnTeleport();
             return;
         }
 
-        if (triggerType == EnemyBase.AnimationTriggerType.TELEPORT && _enemy.EnemyAnimation.Animator.GetBool("Teleport"))
+        if (triggerType == Enum_AnimationTriggerType.TELEPORT && _enemy.EnemyAnimation.Animator.GetBool("Teleport"))
         {
             _enemy.stateMachine.ChangeState(_enemy.idleState);
         }

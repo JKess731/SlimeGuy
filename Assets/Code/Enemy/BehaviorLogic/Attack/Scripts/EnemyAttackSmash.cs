@@ -12,7 +12,7 @@ public class EnemyAttackSmash : EnemyAttackSOBase
     [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject ring;
 
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
@@ -20,7 +20,7 @@ public class EnemyAttackSmash : EnemyAttackSOBase
         //float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         //ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.ATTACK)
+        if (triggerType == Enum_AnimationTriggerType.ATTACK)
         {
             if (_enemy.attackSoundEffects.Count > 0)
             {

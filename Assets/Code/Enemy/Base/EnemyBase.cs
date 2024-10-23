@@ -273,20 +273,8 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     #endregion
 
     #region Animation Triggers
-    private void AnimationTriggerEvent(AnimationTriggerType triggerType) { 
+    private void AnimationTriggerEvent(Enum_AnimationTriggerType triggerType) { 
         stateMachine.currentEnemyState.AnimationTriggerEvent(triggerType);
-        Debug.Log(stateMachine.currentEnemyState);
-    }
-
-    //Move this to public enum folder
-    public enum AnimationTriggerType { 
-        DAMAGE,
-        ATTACK,
-        DEATH,
-        MOVE,
-        TELEPORT,
-        IDLE,
-        SPAWN
     }
     #endregion
 

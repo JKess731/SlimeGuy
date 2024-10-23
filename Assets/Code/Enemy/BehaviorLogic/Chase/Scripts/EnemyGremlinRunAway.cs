@@ -14,11 +14,11 @@ public class EnemyGremlinRunAway : EnemyMoveSOBase
     private Vector2 runDir;
     private bool hasLineOfSight = false;
 
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.MOVE)
+        if (triggerType == Enum_AnimationTriggerType.MOVE)
         {
             if (_enemy.moveSoundEffects.Count > 0)
             {

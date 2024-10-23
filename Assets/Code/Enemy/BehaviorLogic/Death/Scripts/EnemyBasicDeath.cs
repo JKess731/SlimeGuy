@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class EnemyBasicDeath : EnemyDeathSOBase
 {
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
         Destroy(_gameObject);

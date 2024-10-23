@@ -40,6 +40,6 @@ public class EnemyMoveSOBase : ScriptableObject
     }
 
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) {}
+    public virtual void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType) {}
     public virtual void ResetValues() { }
 }
