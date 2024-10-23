@@ -33,11 +33,13 @@ public class ShotgunMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
-        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
-        float addedPiercingAmount = _playerStats.playerStats.GetStat(StatsEnum.PIERCING_COUNT);
-        float addedBulletBounce = _playerStats.playerStats.GetStat(StatsEnum.RICHOCHET_COUNT);
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ATTACK) + _projectileDamage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(StatsEnum.KNOCKBACK) + _projectileKnockback;
+        float newSpeed = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PROJECTILE_SPEED) + _projectileSpeed;
+        float addedPiercingAmount = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PIERCING_COUNT);
+        float addedBulletBounce = _playerStats.playerStats.ModifiedStatValue(StatsEnum.RICHOCHET_COUNT);
+
+        Debug.Log("Value of damage: " + newDamage);
 
         Debug.Log("Shotgun Starting");
 
@@ -49,12 +51,14 @@ public class ShotgunMono : AbilityMonoBase
 
             Debug.Log("Shotgun Bullet Fired");
             GameObject newBullet = Instantiate(_projectile, attackPosition, newRot);
-            newBullet.GetComponent<Bullet>().Initialize(_projectileDamage + addedDamage, _projectileKnockback + addedKnockback, 
-                _projectileSpeed + addedSpeed, _projectileRange, _piercingAmount + (int)addedPiercingAmount, _bulletBounce + (int)addedBulletBounce);
-            Debug.Log("Shotgun Damage:" + (_projectileDamage + addedDamage));
+            newBullet.GetComponent<Bullet>().Initialize(newDamage, newKnockback, newSpeed, _projectileRange, _piercingAmount + (int)addedPiercingAmount, 
+                _bulletBounce + (int)addedBulletBounce);
         }
 
         StartCoroutine(Cooldown());
+
+        //This is basically saying pass in this monobehavior as the ability, use the UIAbility type variable to determine which box it's in in the UI, and 
+        //its activation time. This will be the same in every Mono class that calls this, though the activation time parameter value may differ.
         StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, 0));
     }
 

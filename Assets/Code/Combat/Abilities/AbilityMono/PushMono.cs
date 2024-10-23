@@ -28,17 +28,19 @@ public class PushMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float addedDamage = _playerStats.playerStats.GetStat(StatsEnum.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(StatsEnum.KNOCKBACK);
-        float addedActivationTime = _playerStats.playerStats.GetStat(StatsEnum.ACTIVATION_TIME);
-        float addedSpeed = _playerStats.playerStats.GetStat(StatsEnum.SPEED);
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ATTACK) + _damage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(StatsEnum.KNOCKBACK) + _knockback;
+        float newActivationTime = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ACTIVATION_TIME) + _activationTime;
+        float newSpeed = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PROJECTILE_SPEED) + _speed;
 
         GameObject newPush = Instantiate(_push, attackPosition, Quaternion.identity);
-        newPush.GetComponent<Push>().Initialize(_damage + addedDamage, _knockback + addedKnockback, _activationTime + addedActivationTime, 
-            _speed + addedSpeed, _distance);
+        newPush.GetComponent<Push>().Initialize(newDamage, newKnockback, newActivationTime, newSpeed, _distance);
 
-        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
         StartCoroutine(Cooldown());
+
+        //This is basically saying pass in this monobehavior as the ability, use the UIAbility type variable to determine which box it's in in the UI, and 
+        //its activation time. This will be the same in every Mono class that calls this, though the activation time parameter value may differ.
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation){}

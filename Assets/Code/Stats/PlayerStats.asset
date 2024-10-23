@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _statList:
   - _statEnum: 0
-    _statValue: 0
+    _statValue: 1
   - _statEnum: 3
     _statValue: 300
   - _statEnum: 4
@@ -28,22 +28,22 @@ MonoBehaviour:
   - _statEnum: 8
     _statValue: 0
   - _statEnum: 9
-    _statValue: 0
+    _statValue: 1
   - _statEnum: 10
     _statValue: 0
   - _statEnum: 11
-    _statValue: 0
+    _statValue: 1
   - _statEnum: 12
-    _statValue: 0
+    _statValue: 1
   - _statEnum: 13
-    _statValue: 0
+    _statValue: 1
   - _statEnum: 14
-    _statValue: 0
+    _statValue: 1
   - _statEnum: 15
-    _statValue: 0
+    _statValue: 1
   - _statEnum: 17
-    _statValue: 0
+    _statValue: 1
   - _statEnum: 18
-    _statValue: 0
+    _statValue: 1
   - _statEnum: 19
-    _statValue: 0
+    _statValue: 1
