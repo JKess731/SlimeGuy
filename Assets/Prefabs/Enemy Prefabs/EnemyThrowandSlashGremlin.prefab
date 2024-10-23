@@ -643,6 +643,8 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: c3a443f228234f445b6848ae4ea4802a, type: 2}
   _knockbackRes: 0
   _isStunnable: 1
+  _knockbackRes: 0
+  _isStunnable: 1
   ring: {fileID: 0}
   _enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
   _enemyIdleBase: {fileID: 11400000, guid: 985540e631692a9449807e007b23c8bb, type: 2}

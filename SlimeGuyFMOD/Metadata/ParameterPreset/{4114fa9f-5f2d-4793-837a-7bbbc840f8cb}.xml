@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{4114fa9f-5f2d-4793-837a-7bbbc840f8cb}">
+		<property name="name">
+			<value>dangerLevel</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c6f731a5-dcbb-4957-83b1-20f6b92ca633}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e86ea1c8-a02b-468c-af08-71416288fdae}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e86ea1c8-a02b-468c-af08-71416288fdae}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

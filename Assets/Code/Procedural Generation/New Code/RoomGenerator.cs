@@ -15,8 +15,14 @@ public class RoomGenerator : MonoBehaviour
     private float spawnDelay;
     private GameObject[,] roomArray;
     private RoomNode[,] nodeArray;
+    private Queue<RoomTag> roomTags;
 
     private RoomList emptyRoomList;
+    private RoomList basicRoomList;
+    private RoomList eventRoomList;
+    private RoomList waveRoomList;
+    private RoomList shopRoomList;
+    private RoomList bossRoomList;
 
     #region Properties
     public int RoomCount { get { return roomCount; } set { roomCount = value; } }
@@ -59,7 +65,10 @@ public class RoomGenerator : MonoBehaviour
     {
         // Get Values needed after Nodes are finished generator
         nodeArray = nodeGenerator.NodeArray;
+        roomTags = manager.TagQueue;
+
         emptyRoomList = manager.EmptyRooms;
+        basicRoomList = manager.BasicRooms;
 
         StartCoroutine(Generate());
     }
@@ -71,11 +80,6 @@ public class RoomGenerator : MonoBehaviour
             yield return new WaitForSeconds(spawnDelay);
             // Get a reference to the current node
             RoomNode node = nodeGenerator.NodesPlaced[i];
-            Debug.Log(i);
-            for (int j = 0; j < node.doors.Count; j++)
-            {
-                Debug.Log(node.doors[j]);
-            }
             GameObject nodeObj = node.gameObject;
             ArrayCoordinate nodeCoords = GetNodeCoord(node);
             int row = nodeCoords.row;
@@ -84,7 +88,10 @@ public class RoomGenerator : MonoBehaviour
             // Create a list of doors based on node's neighbors
             List<DoorTypes> doorsNeeded = new List<DoorTypes>();
             doorsNeeded = GetNodeNeighbors(node, nodeCoords);
-            GameObject room = GetRoomByDoorsNeeded(doorsNeeded, emptyRoomList);
+
+            RoomList rl = GetRoomListByRoomType(roomTags.Dequeue());
+
+            GameObject room = GetRoomByDoorsNeeded(doorsNeeded, rl);
             GameObject spawnedRoom = Instantiate(room, nodeObj.transform.position, Quaternion.identity, transform);
 
             roomArray[row, col] = spawnedRoom;
@@ -94,42 +101,6 @@ public class RoomGenerator : MonoBehaviour
     private List<DoorTypes> GetNodeNeighbors(RoomNode node, ArrayCoordinate nodeCoord)
     {
         List<DoorTypes> doorsNeeded = node.doors;
-        
-        /*
-        int row = nodeCoord.row;
-        int col = nodeCoord.col;
-        /*
-        if (row > 0)
-        {
-            if (nodeArray[row - 1, col] != null)
-            {
-                doorsNeeded.Add(DoorTypes.TOP_DOOR);
-            }
-        }
-
-        if (row + 1 < nodeArray.GetLength(0))
-        {
-            if (nodeArray[row + 1, col] != null)
-            {
-                doorsNeeded.Add(DoorTypes.BOTTOM_DOOR);
-            }
-        }
-
-        if (col + 1 < nodeArray.GetLength(1))
-        {
-            if (nodeArray[row, col + 1] != null)
-            {
-                doorsNeeded.Add(DoorTypes.RIGHT_DOOR);
-            }
-        }
-
-        if (col > 0)
-        {
-            if (nodeArray[row, col - 1] != null)
-            {
-                doorsNeeded.Add(DoorTypes.LEFT_DOOR);
-            }
-        }*/
 
         return doorsNeeded;
     }
@@ -189,6 +160,36 @@ public class RoomGenerator : MonoBehaviour
         GameObject result = options[Random.Range(0, options.Count)];
         Debug.Log("GIVES: " + result.name);
         return result;
+    }
+
+    private RoomList GetRoomListByRoomType(RoomTag t)
+    {
+        if (t == RoomTag.EMPTY)
+        {
+            return emptyRoomList;
+        }
+        else if (t == RoomTag.BASIC)
+        {
+            return basicRoomList;
+        }
+        else if (t == RoomTag.EVENT)
+        {
+            return eventRoomList;
+        }
+        else if (t == RoomTag.WAVE)
+        {
+            return waveRoomList;
+        }
+        else if (t == RoomTag.SHOP)
+        {
+            return shopRoomList;
+        }
+        else if (t == RoomTag.BOSS)
+        {
+            return bossRoomList;
+        }
+
+        return emptyRoomList;
     }
 
     #endregion
