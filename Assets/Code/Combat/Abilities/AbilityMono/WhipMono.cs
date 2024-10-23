@@ -12,6 +12,7 @@ public class WhipMono : AbilityMonoBase
     [SerializeField] private float _knockback;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _activationTime;
+    [SerializeField] private float _range;
     private PlayerStateMachine _playerStats;
     private string UIAbilityType;
 
@@ -32,9 +33,9 @@ public class WhipMono : AbilityMonoBase
         float addedRotationSpeed = _playerStats.playerStats.GetStat(StatsEnum.ROTATION_SPEED);
 
         //Instantiate the whip prefab
-        GameObject newWhip = Instantiate(_whip,attackPosition,Quaternion.identity);
+        GameObject newWhip = Instantiate(_whip,attackPosition, rotation);
         newWhip.GetComponent<Whip>().Initialize( _damage + addedDamage, _knockback + addedKnockback, _activationTime + addedActivationTime, 
-            _rotationSpeed + addedRotationSpeed, status);
+            _rotationSpeed + addedRotationSpeed, _range, status);
 
         Debug.Log("Damage is: " + (_damage + addedDamage));
 
