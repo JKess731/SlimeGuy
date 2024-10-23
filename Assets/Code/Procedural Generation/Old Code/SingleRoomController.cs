@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using System.Data.Common;
 using UnityEngine;
 using UnityEngine.Events;
+using FMOD.Studio;
+using FMODUnity;
 
 public class SingleRoomController : MonoBehaviour
 {
+    public void Start()
+    {
+        AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
+        AudioManager.instance.IValleyTheme.setParameterByName("enemyNear", 1, false);
+    }
+
     [System.Serializable]
     public class MonsterSpawner
     {
@@ -51,7 +59,7 @@ public class SingleRoomController : MonoBehaviour
                 door.SetActive(true);
             }
 
-            // Enable music
+            AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel" , 1);
         }
 
         RoomLevelWave waveToSpawn = waves[currentWave];
@@ -128,8 +136,8 @@ public class SingleRoomController : MonoBehaviour
                     door.SetActive(false);
                 }
 
-                // Disable music
-
+                AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 2);
+                StartCoroutine(AudioDelay(3f));
                 LevelGenerator lg = GameObject.FindAnyObjectByType<LevelGenerator>();
                 lg.roomsCleared++;
                 lg.clearedChain++;
@@ -139,6 +147,13 @@ public class SingleRoomController : MonoBehaviour
                 triggered = false;
             }
         }
+    }
+
+    private IEnumerator AudioDelay(float t)
+    {
+        yield return new WaitForSeconds(t);
+        AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
+
     }
 
 }
@@ -153,3 +168,5 @@ public enum RoomTag
     BASIC,
     EMPTY
 }
+
+//Audio Change

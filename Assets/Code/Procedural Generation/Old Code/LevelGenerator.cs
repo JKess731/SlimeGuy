@@ -61,6 +61,7 @@ public class LevelGenerator : MonoBehaviour
         Debug.Log(chosenRoomCount);
 
         LoadUI();
+        AudioManager.instance?.PlayIValley();
     }
 
     #region UI

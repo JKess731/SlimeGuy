@@ -20,5 +20,52 @@ public class Debugger : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
+
+        //Audio Changer
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
+
+            float value1 = 1234567f;
+            AudioManager.instance.IValleyTheme.getParameterByName("dangerLevel", out value1);
+            Debug.Log(value1);
+
+            float value2 = 1234567f;
+            AudioManager.instance.IValleyTheme.getParameterByName("enemyNear", out value2);
+            Debug.Log(value2);
+        }
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 1);
+            AudioManager.instance.IValleyTheme.setParameterByName("enemyNear", 1f, false);
+            //StartCoroutine("quickDelay");
+
+            float value1 = 1234567f;
+            AudioManager.instance.IValleyTheme.getParameterByName("dangerLevel", out value1);
+            Debug.Log(value1);
+
+            float value2 = 1234567f;
+            AudioManager.instance.IValleyTheme.getParameterByName("enemyNear", out value2);
+            Debug.Log(value2);
+        }
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 2);
+
+            float value1 = 1234567f;
+            AudioManager.instance.IValleyTheme.getParameterByName("dangerLevel", out value1);
+            Debug.Log(value1);
+
+            float value2 = 1234567f;
+            AudioManager.instance.IValleyTheme.getParameterByName("enemyNear", out value2);
+            Debug.Log(value2);
+        }
+    }
+
+    private IEnumerator quickDelay()
+    {
+        yield return new WaitForSeconds(10f);
+        AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0f, false);
+        AudioManager.instance.IValleyTheme.setParameterByName("enemyNear", 0f, false);
     }
 }

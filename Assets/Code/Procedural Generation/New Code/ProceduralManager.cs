@@ -27,14 +27,17 @@ public class ProceduralManager : MonoBehaviour
     [SerializeField] private RoomList basicRoomList;
     [SerializeField] private RoomList bossRoomList;
     [SerializeField] private RoomList shopRoomList;
+    private Queue<RoomTag> tagQueue = new Queue<RoomTag>();
 
     #region Properties
 
-    public List<LevelRoomInfo> RoomsTypesList {  get { return _roomsTypesList; } }
+    public List<LevelRoomInfo> RoomsTypesList { get { return _roomsTypesList; } }
     public NodeGenerator NodeGenerator { get { return _nodeGenerator; } }
     public RoomGenerator RoomGenerator { get { return _roomGenerator; } }
+    public Queue<RoomTag> TagQueue { get { return tagQueue; } }
 
     public RoomList EmptyRooms { get { return emptyRoomList; } }
+    public RoomList BasicRooms {  get {  return basicRoomList; } }
 
     #endregion
 
@@ -57,6 +60,11 @@ public class ProceduralManager : MonoBehaviour
     private void Start()
     {
         InitGenerators();
+        AudioManager.instance.PlayIValley();
+        AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
+        float value1 = 1234567f;
+        AudioManager.instance.IValleyTheme.getParameterByName("enemyNear",out value1);
+        Debug.Log(value1);
     }
 
     #region Functions
@@ -81,6 +89,7 @@ public class ProceduralManager : MonoBehaviour
 
         // Lets the room generator grab a reference to the node generator from here
         _roomGenerator.InitRoomGenerator();
+        QueueTags(_roomsTypesList);
     }
 
     private int GetRoomTotalCount()
@@ -93,5 +102,52 @@ public class ProceduralManager : MonoBehaviour
         return i;
     }
 
+    private void QueueTags(List<LevelRoomInfo> list)
+    {
+        List<RoomTag> newList = new List<RoomTag>();
+
+        foreach (LevelRoomInfo i in list)
+        {
+            if (i.rt != RoomTag.EMPTY)
+            {
+                for (int n = i.count; n > 0; n--)
+                {
+                    newList.Add(i.rt);
+                }
+            }
+        }
+
+        Shuffle(newList);
+
+        newList.Insert(0, RoomTag.EMPTY);
+
+        if (newList.Contains(RoomTag.BOSS))
+        {
+            newList.Remove(RoomTag.BOSS);
+        }
+
+        newList.Add(RoomTag.BOSS);
+
+        foreach (RoomTag t in newList)
+        {
+            tagQueue.Enqueue(t);
+        }
+    }
+
+    #endregion
+
+    #region Utility
+    private void Shuffle<T>(List<T> ts)
+    {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
+        }
+    }
     #endregion
 }

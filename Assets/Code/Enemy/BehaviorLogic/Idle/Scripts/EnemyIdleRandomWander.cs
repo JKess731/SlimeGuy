@@ -39,6 +39,11 @@ public class EnemyIdleRandomWander : EnemyIdleSOBase
         {
             targetPos = GetRandomPointInCircle();
         }
+
+        if (enemy._isAggroed)
+        {
+            enemy.stateMachine.ChangeState(enemy.moveState);
+        }
     }
 
     public override void DoPhysicsLogic()

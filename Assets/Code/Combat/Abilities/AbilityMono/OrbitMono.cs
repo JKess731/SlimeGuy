@@ -30,12 +30,10 @@ public class OrbitMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        //Handles the upgrade of the ability
-        Debug.Log(_playerStats);
-        float addedDamage = _playerStats.playerStats.GetStat(Enum_Stats.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(Enum_Stats.KNOCKBACK);
-        float addedActivationTime = _playerStats.playerStats.GetStat(Enum_Stats.ACTIVATION_TIME);
-        float addedRotationSpeed = _playerStats.playerStats.GetStat(Enum_Stats.ROTATION_SPEED);
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ATTACK) + _damage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.KNOCKBACK) + _knockback;
+        float newActivationTime = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ACTIVATION_TIME) + _activationTime;
+        float newRotationSpeed = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ROTATION_SPEED) + _rotationSpeed;
 
         // Calculate the angle difference between each orbitball
         float angleStep = _spreadAngle / _orbitCount;
@@ -45,17 +43,18 @@ public class OrbitMono : AbilityMonoBase
         {
             // Spawn the orbitball at the player's position
             GameObject newOrbit = Instantiate(_orbit, attackPosition, Quaternion.identity);
-            newOrbit.GetComponent<Orbit>().Initialize(_damage + addedDamage, _knockback + addedKnockback, _activationTime + addedActivationTime, 
-                _rotationSpeed + addedRotationSpeed, _distance);
+            newOrbit.GetComponent<Orbit>().Initialize(newDamage, newKnockback, newActivationTime, newRotationSpeed, _distance);
             newOrbit.GetComponent<Orbit>().SetInitialAngle(currentAngle);
 
             // Increment the angle for the next orbitball
             currentAngle += angleStep;
         }
 
-        Debug.Log("Orrbit Damage:" + (_damage + addedDamage));
 
+        //This is basically saying pass in this monobehavior as the ability, use the UIAbility type variable to determine which box it's in in the UI, and 
+        //its activation time. This will be the same in every Mono class that calls this, though the activation time parameter value may differ.
         StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
+
         StartCoroutine(Cooldown());
     }
 

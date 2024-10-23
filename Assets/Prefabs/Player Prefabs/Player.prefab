@@ -111,7 +111,6 @@ GameObject:
   - component: {fileID: 1750317048491914005}
   - component: {fileID: 8952310678309908331}
   - component: {fileID: 2348812801982170321}
-  - component: {fileID: 6821881506391984414}
   m_Layer: 6
   m_Name: Player
   m_TagString: player
@@ -440,17 +439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284721d4264ff574eaf05ddacab6d365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <maxHealth>k__BackingField: 10
-  <currentHealth>k__BackingField: 10
-  <attack>k__BackingField: 1
-  <attackSpeed>k__BackingField: 1
-  <defense>k__BackingField: 1
-  <speed>k__BackingField: 1
-  <absorption>k__BackingField: 1
-  <maxAbsorption>k__BackingField: 1
-  <bulletCount>k__BackingField: 1
-  spawnPos: {x: 0, y: 0}
-  currentRoom: {fileID: 0}
   playerStateMachine: {fileID: 0}
 --- !u!114 &1750317048491914005
 MonoBehaviour:
@@ -466,14 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _knockBackTime: 0.2
   _constForce: 0.25
-  _releaseTime: 0.1
   _knockbackHitForceCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _knockbackStoppingForceCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
@@ -509,19 +490,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 11400000, guid: 4d58222cfe955f24db98e1c515175487, type: 2}
---- !u!114 &6821881506391984414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3092714111158844755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f809cbe5788e754fa612f9066407b2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageColor: 0
 --- !u!1 &3786534185869167126
 GameObject:
   m_ObjectHideFlags: 0

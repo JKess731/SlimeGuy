@@ -18,12 +18,7 @@ public class StatPercentageBuffRelic : RelicSO
 
     public override void ActivateBuffs()
     {
-        float statVal = _playerStats.GetStat(_changedStat);
-        float buffVal = buffPercentage / 100;
-
-        float newVal = statVal + buffVal;
-
-        _playerStats.AddStat(_changedStat, newVal);
+        _playerStats.RegisterStat(_changedStat, "Multiply", buffPercentage / 100);
     }
 
     public override void DeactivateBuffs()

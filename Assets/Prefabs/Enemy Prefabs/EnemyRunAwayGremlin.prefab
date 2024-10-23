@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7331954189411075419}
   - component: {fileID: 5228591424709194504}
   m_Layer: 8
-  m_Name: ShootingDistanceEnter
+  m_Name: ShootingDistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,6 @@ Transform:
   - {fileID: 1680938171249561934}
   - {fileID: 2391427536696444454}
   - {fileID: 6203398520012737942}
-  - {fileID: 7803439990485820513}
   - {fileID: 3778410812640822499}
   m_Father: {fileID: 4722212593522719403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -282,87 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c79f699f906f44caab7816805aa1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &3962393505739851391
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7803439990485820513}
-  - component: {fileID: 7863636620073324466}
-  - component: {fileID: 135094645738897579}
-  m_Layer: 8
-  m_Name: ShootingDistanceExit
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7803439990485820513
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3962393505739851391}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1, y: 2.1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7913074600318505000}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &7863636620073324466
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3962393505739851391}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.39
---- !u!114 &135094645738897579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3962393505739851391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3566057f1a640ac43b1f4c503663f199, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootCooldown: 3
 --- !u!1 &4591870892567601933
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,7 +726,7 @@ MonoBehaviour:
   _isStunnable: 1
   ring: {fileID: 0}
   _enemySpawnBase: {fileID: 11400000, guid: d3d180501ea53c746b01b02e939611b3, type: 2}
-  _enemyIdleBase: {fileID: 11400000, guid: 985540e631692a9449807e007b23c8bb, type: 2}
+  _enemyIdleBase: {fileID: 11400000, guid: 01af137fb9445134d9410f2c1bf6022a, type: 2}
   _enemyChaseBase: {fileID: 11400000, guid: 2144905a7647fcf4789c0285520b573e, type: 2}
   _enemyAttackBase: {fileID: 11400000, guid: d2ff75c0b0272394284a4dd40e202a74, type: 2}
   _enemyDamagedBase: {fileID: 11400000, guid: e7b9c762044c6fa43a1c52001b0f25fd, type: 2}

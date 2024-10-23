@@ -489,6 +489,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1010249177220764094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6904458813528927513}
+  - component: {fileID: 366179264448863524}
+  m_Layer: 0
+  m_Name: Debugger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6904458813528927513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010249177220764094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4925860084389839568}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &366179264448863524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010249177220764094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b11e62bd1d07bb468bbe3f6f5a8d4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1059625457193880966
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +748,13 @@ MonoBehaviour:
       Data3: 459987382
       Data4: -14890483
     Path: event:/StartMusic
+  <IValleyTheme>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <playerAttack>k__BackingField:
     Guid:
       Data1: -115196307
@@ -739,90 +790,6 @@ MonoBehaviour:
       Data3: -1252000886
       Data4: 1788261284
     Path: event:/SFX/Puddles/SlimePickupCoin_mixdown
-  <DwarfAttack>k__BackingField:
-    Guid:
-      Data1: 1275740998
-      Data2: 1326337593
-      Data3: -511714116
-      Data4: 189367657
-    Path: event:/Gremlin/GremlinSlice
-  <DwarfHurt>k__BackingField:
-    Guid:
-      Data1: 68977680
-      Data2: 1302162718
-      Data3: 875254937
-      Data4: 1690156463
-    Path: event:/Gremlin/GremlinHurt
-  <DwarfDeath>k__BackingField:
-    Guid:
-      Data1: 693111236
-      Data2: 1231856157
-      Data3: 1390187655
-      Data4: -426594554
-    Path: event:/Gremlin/GremlinDead
-  <DwarfStep>k__BackingField:
-    Guid:
-      Data1: 969533741
-      Data2: 1288895245
-      Data3: -1843852126
-      Data4: 1081349187
-    Path: event:/Gremlin/GremlinStep
-  <GolemAttack>k__BackingField:
-    Guid:
-      Data1: -1350580175
-      Data2: 1239394823
-      Data3: 1091788952
-      Data4: 2014102843
-    Path: event:/Golem/Golem_Attack_New_1_Bass
-  <GolemDamage>k__BackingField:
-    Guid:
-      Data1: 1682500831
-      Data2: 1244934767
-      Data3: -105824101
-      Data4: -1512054749
-    Path: event:/Golem/GolemHurt
-  <GolemDeath>k__BackingField:
-    Guid:
-      Data1: -350208336
-      Data2: 1129826073
-      Data3: 2019298697
-      Data4: -1371238445
-    Path: event:/Golem/Golem_Death_mixdown_Soft
-  <GolemStep>k__BackingField:
-    Guid:
-      Data1: -1806689722
-      Data2: 1289670203
-      Data3: -1238213504
-      Data4: 1658782277
-    Path: event:/Golem/GolemStep
-  <WizardCast>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <WizardDamage>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <WizardDeath>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <WizardTeleport>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!1 &1512865292409741229
 GameObject:
   m_ObjectHideFlags: 0
@@ -3770,6 +3737,7 @@ Transform:
   - {fileID: 7552118413576774337}
   - {fileID: 7935010771825859155}
   - {fileID: 505005712078855010}
+  - {fileID: 6904458813528927513}
   m_Father: {fileID: 4433807784745035315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7259425255676045597

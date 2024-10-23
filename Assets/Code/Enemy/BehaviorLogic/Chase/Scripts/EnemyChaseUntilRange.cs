@@ -9,8 +9,6 @@ using UnityEngine;
 public class EnemyChaseUntilRange : EnemyMoveSOBase
 {
     [SerializeField] private float ChaseSpeed = 1.5f;
-    private bool hasLineOfSight = false;
-
     public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
@@ -36,37 +34,14 @@ public class EnemyChaseUntilRange : EnemyMoveSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-
-        hasLineOfSight = false;
-        RaycastHit2D[] hits = Physics2D.RaycastAll(_enemy.transform.position, _playerTransform.position - _enemy.transform.position);
-
-        foreach (RaycastHit2D hit in hits)
+        if (_enemy._isWithinShootingDistance)
         {
-            if (hit.collider.CompareTag("player"))
-            {
-                hasLineOfSight = true;
-                Debug.DrawRay(_enemy.transform.position, _playerTransform.position - _enemy.transform.position, Color.green);
-                break;
-            }
-            else
-            {
-                Debug.DrawRay(_enemy.transform.position, _playerTransform.position - _enemy.transform.position, Color.red);
-            }
+            _enemy.stateMachine.ChangeState(_enemy.attackState);
         }
 
-        if (hasLineOfSight)
+        if(!_enemy._isWithinShootingDistance && !_enemy._isWithinStikingDistance)
         {
-            // If the player is outside of shooting or striking distance, chase the player
-            if (!_enemy._isWithinShootingDistance && !_enemy._isWithinStikingDistance)
-            {
-                Vector2 chaseDir = (_playerTransform.position - _enemy.transform.position).normalized;
-                _enemy.MoveEnemy(chaseDir * ChaseSpeed);
-            }
-            else
-            {
-                // Stop the enemy once it is within range
-                _enemy.MoveEnemy(Vector2.zero);
-            }
+            _enemy.MoveEnemy(Vector2.zero);
         }
     }
 

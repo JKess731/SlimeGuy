@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{0eff90a1-36df-4274-8fbc-07ee89813fa2}">
+		<property name="name">
+			<value>enemyNear</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c6f731a5-dcbb-4957-83b1-20f6b92ca633}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{c2769bce-ed49-45d6-b1a0-993cf3dccfaf}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{c2769bce-ed49-45d6-b1a0-993cf3dccfaf}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.89999997615814209</value>
+		</property>
+		<property name="seekSpeedDescending">
+			<value>0.34000000357627869</value>
+		</property>
+	</object>
+</objects>
