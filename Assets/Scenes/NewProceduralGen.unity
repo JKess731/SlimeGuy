@@ -580,7 +580,7 @@ MonoBehaviour:
   _nodeGenerator: {fileID: 906571799}
   _roomGenerator: {fileID: 906571798}
   _roomsTypesList:
-  - rt: 5
+  - rt: 4
     count: 30
   - rt: 6
     count: 1
@@ -589,7 +589,7 @@ MonoBehaviour:
   _colSize: 10
   emptyRoomList: {fileID: 11400000, guid: 91720e50f032e5f4f9e5ad3e3c835c77, type: 2}
   eventRoomList: {fileID: 0}
-  waveRoomList: {fileID: 0}
+  waveRoomList: {fileID: 11400000, guid: 8b8e03299dcc780459f4f08fa10d85bc, type: 2}
   basicRoomList: {fileID: 11400000, guid: baef52f922bbca34b8125da19e67bdd4, type: 2}
   bossRoomList: {fileID: 0}
   shopRoomList: {fileID: 0}

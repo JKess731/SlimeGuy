@@ -38,6 +38,7 @@ public class ProceduralManager : MonoBehaviour
 
     public RoomList EmptyRooms { get { return emptyRoomList; } }
     public RoomList BasicRooms {  get {  return basicRoomList; } }
+    public RoomList WaveRooms {  get { return waveRoomList; } }
 
     #endregion
 

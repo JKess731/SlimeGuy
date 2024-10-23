@@ -69,6 +69,7 @@ public class RoomGenerator : MonoBehaviour
 
         emptyRoomList = manager.EmptyRooms;
         basicRoomList = manager.BasicRooms;
+        waveRoomList = manager.WaveRooms;
 
         StartCoroutine(Generate());
     }
