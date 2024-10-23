@@ -11,7 +11,7 @@ public class EnemyIdleRandomWander : EnemyIdleSOBase
     private Vector3 targetPos;
     private Vector3 direction;
 
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
     }
@@ -32,10 +32,17 @@ public class EnemyIdleRandomWander : EnemyIdleSOBase
     {
         base.DoFrameUpdateLogic();
         direction = (targetPos - enemy.transform.position).normalized;
+
         enemy.MoveEnemy(direction * randomMovementSpeed);
+
         if ((enemy.transform.position - targetPos).sqrMagnitude < 0.01f)
         {
             targetPos = GetRandomPointInCircle();
+        }
+
+        if (enemy._isAggroed)
+        {
+            enemy.stateMachine.ChangeState(enemy.moveState);
         }
     }
 

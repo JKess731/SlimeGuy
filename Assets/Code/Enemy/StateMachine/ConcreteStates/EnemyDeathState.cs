@@ -8,7 +8,7 @@ public class EnemyDeathState : EnemyState
     {
     }
 
-    public override void AnimationTriggerEvent(EnemyBase.AnimationTriggerType triggerType)
+    public override void AnimationTriggerEvent(Enum_AnimationTriggerType triggerType)
     {
         base.AnimationTriggerEvent(triggerType);
         _enemyBase.enemyDeathBaseInstance.DoAnimationTriggerEventLogic(triggerType);
@@ -18,7 +18,7 @@ public class EnemyDeathState : EnemyState
     {
         base.EnterState();
         _enemyBase.enemyDeathBaseInstance.DoEnterLogic();
-        _enemyBase.State = Enum_State.DEAD;
+        _enemyBase.State = Enum_AnimationState.DEAD;
         //Debug.Log("Enemy is dead");
     }
 

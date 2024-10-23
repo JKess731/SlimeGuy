@@ -26,30 +26,24 @@ public class ShotgunMono : AbilityMonoBase
         base.Initialize();
         _playerStats = PlayerStats.instance.playerStateMachine;
         UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
-        Debug.Log(UIAbilityType);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
 
-        float newDamage = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ATTACK) + _projectileDamage;
-        float newKnockback = _playerStats.playerStats.ModifiedStatValue(StatsEnum.KNOCKBACK) + _projectileKnockback;
-        float newSpeed = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PROJECTILE_SPEED) + _projectileSpeed;
-        float addedPiercingAmount = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PIERCING_COUNT);
-        float addedBulletBounce = _playerStats.playerStats.ModifiedStatValue(StatsEnum.RICHOCHET_COUNT);
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ATTACK) + _projectileDamage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.KNOCKBACK) + _projectileKnockback;
+        float newSpeed = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.PROJECTILE_SPEED) + _projectileSpeed;
+        float addedPiercingAmount = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.PIERCING_COUNT);
+        float addedBulletBounce = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.RICHOCHET_COUNT);
 
-        Debug.Log("Value of damage: " + newDamage);
-
-        Debug.Log("Shotgun Starting");
-
-        float angleDiff = _spreadAngle * 2 / (_bulletCount - 1);
+        float angleDiff = _spreadAngle * 2/ (_bulletCount - 1);
         for (int i = 0; i < _bulletCount; i++)
         {
             float addedOffset = -angleDiff * i;
             Quaternion newRot = rotation * Quaternion.Euler(0, 0, _spreadAngle) * Quaternion.Euler(0, 0, addedOffset);
 
-            Debug.Log("Shotgun Bullet Fired");
             GameObject newBullet = Instantiate(_projectile, attackPosition, newRot);
             newBullet.GetComponent<Bullet>().Initialize(newDamage, newKnockback, newSpeed, _projectileRange, _piercingAmount + (int)addedPiercingAmount, 
                 _bulletBounce + (int)addedBulletBounce);

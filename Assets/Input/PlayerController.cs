@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         _abilityManager = GameObject.Find("Ability Manager").GetComponent<AbilityManager>();
 
-        _speed = _playerStateMachine.playerStats.GetStat(StatsEnum.SPEED);
+        _speed = _playerStateMachine.playerStats.GetStat(Enum_Stats.SPEED);
 
         //Set up input actions
         _playerInput.GamePlay.Movement.started += OnMovement;
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _playerStateMachine.SetState(Enum_State.IDLING);
+        _playerStateMachine.SetState(Enum_AnimationState.IDLING);
     }
     private void Update()
     {
@@ -98,6 +98,10 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
         _playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
         _playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
+
+        _playerInput.GamePlay.Secondary2.started += OnSecondary2Started;
+        _playerInput.GamePlay.Secondary2.performed += OnSecondary2Performed;
+        _playerInput.GamePlay.Secondary2.canceled += OnSecondary2Canceled;
     }
 
     //Disables Input Actions
@@ -119,6 +123,10 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Secondary.started -= OnSecondaryStarted;
         _playerInput.GamePlay.Secondary.performed -= OnSecondaryPerformed;
         _playerInput.GamePlay.Secondary.canceled -= OnSecondaryCanceled;
+
+        _playerInput.GamePlay.Secondary2.started -= OnSecondary2Started;
+        _playerInput.GamePlay.Secondary2.performed -= OnSecondary2Performed;
+        _playerInput.GamePlay.Secondary2.canceled -= OnSecondary2Canceled;
     }
 
     public void DisableGameplay()
@@ -139,6 +147,10 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Secondary.started -= OnSecondaryStarted;
         _playerInput.GamePlay.Secondary.performed -= OnSecondaryPerformed;
         _playerInput.GamePlay.Secondary.canceled -= OnSecondaryCanceled;
+
+        _playerInput.GamePlay.Secondary2.started -= OnSecondary2Started;
+        _playerInput.GamePlay.Secondary2.performed -= OnSecondary2Performed;
+        _playerInput.GamePlay.Secondary2.canceled -= OnSecondary2Canceled;
     }
 
     public void EnableGameplay()
@@ -159,6 +171,10 @@ public class PlayerController : MonoBehaviour
         _playerInput.GamePlay.Secondary.started += OnSecondaryStarted;
         _playerInput.GamePlay.Secondary.performed += OnSecondaryPerformed;
         _playerInput.GamePlay.Secondary.canceled += OnSecondaryCanceled;
+
+        _playerInput.GamePlay.Secondary2.started += OnSecondary2Started;
+        _playerInput.GamePlay.Secondary2.performed += OnSecondary2Performed;
+        _playerInput.GamePlay.Secondary2.canceled += OnSecondary2Canceled;
     }
 
     #region Movement
@@ -180,17 +196,17 @@ public class PlayerController : MonoBehaviour
     //Handles Movement
     private void HandleMovement()
     {
-        if (_playerStateMachine.State == Enum_State.DEAD)
+        if (_playerStateMachine.State == Enum_AnimationState.DEAD)
         {
             return;
         }
 
-        if(_playerStateMachine.State == Enum_State.DAMAGED)
+        if(_playerStateMachine.State == Enum_AnimationState.DAMAGED)
         {
             return;
         }
 
-        if (_playerStateMachine.State == Enum_State.IDLING || _playerStateMachine.State == Enum_State.MOVING)
+        if (_playerStateMachine.State == Enum_AnimationState.IDLING || _playerStateMachine.State == Enum_AnimationState.MOVING)
         {
             _rb.velocity = _moveVector * _speed;
         }
@@ -199,7 +215,7 @@ public class PlayerController : MonoBehaviour
     //Handles Movement Input Actions
     public void OnMovement(InputAction.CallbackContext context)
     {
-        _playerStateMachine.State = Enum_State.MOVING;
+        _playerStateMachine.State = Enum_AnimationState.MOVING;
 
         _moveVector = context.ReadValue<Vector2>();
         _faceDirection = _moveVector.normalized;
@@ -207,7 +223,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovementCancel(InputAction.CallbackContext context)
     {
-        _playerStateMachine.State = Enum_State.IDLING;
+        _playerStateMachine.State = Enum_AnimationState.IDLING;
 
         _moveVector = Vector2.zero;
     }
@@ -222,7 +238,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        _playerStateMachine.State = Enum_State.DASHING;
+        _playerStateMachine.State = Enum_AnimationState.DASHING;
         StartCoroutine(DashCoroutine());
 
         _dashPressed = context.ReadValueAsButton();
@@ -232,9 +248,9 @@ public class PlayerController : MonoBehaviour
     private IEnumerator DashCoroutine()
     {
         //Handles Initial Dash
-        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
+        AudioManager.PlayOneShot(FmodEvents.instance.playerDash, transform.position);
         //Debug.Log("Dash Started");
-        _playerStateMachine.State = Enum_State.DASHING;
+        _playerStateMachine.State = Enum_AnimationState.DASHING;
         _playerCollider.excludeLayers = LayerMask.GetMask("enemyAttacksLayer", "enemyLayer");
         //DisableMovement();
         _canDash = false;
@@ -248,7 +264,7 @@ public class PlayerController : MonoBehaviour
         //Handles Dash End
         //EnableMovement();
         _tr.emitting = false;
-        _playerStateMachine.State = Enum_State.IDLING;
+        _playerStateMachine.State = Enum_AnimationState.IDLING;
         _playerCollider.excludeLayers = 0;
         _rb.velocity = Vector2.zero;
 
@@ -274,7 +290,8 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Secondary
+    #region All Secondary
+    //Secondary 1 input: LeftClick ||
     private void OnSecondaryStarted(InputAction.CallbackContext context)
     {
         _abilityManager.OnSecondaryStarted(context);
@@ -286,6 +303,20 @@ public class PlayerController : MonoBehaviour
     private void OnSecondaryCanceled(InputAction.CallbackContext context)
     {
         _abilityManager.OnSecondaryCanceled(context);
+    }
+
+    //Secondary 2 input: Q ||
+    private void OnSecondary2Started(InputAction.CallbackContext context)
+    {
+        _abilityManager.OnSecondary2Started(context);
+    }
+    private void OnSecondary2Performed(InputAction.CallbackContext context)
+    {
+        _abilityManager.OnSecondary2Performed(context);
+    }
+    private void OnSecondary2Canceled(InputAction.CallbackContext context)
+    {
+        _abilityManager.OnSecondary2Canceled(context);
     }
     #endregion
 
@@ -305,16 +336,6 @@ public class PlayerController : MonoBehaviour
     private void OnDashCanceled(InputAction.CallbackContext context)
     {
         _abilityManager.OnDashCanceled(context);
-    }
-
-    public void OnPrimary(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnSecondary(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
     }
     #endregion
 }

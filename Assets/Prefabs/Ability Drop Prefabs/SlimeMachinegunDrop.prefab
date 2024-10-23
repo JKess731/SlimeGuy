@@ -455,4 +455,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbd7abbc89ba324fb8fc13ecfa02c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToPickup: {fileID: 11400000, guid: f61d11ed69bc08e48bc7a9ac6ad4b9f2, type: 2}
+  abilityToPickupName: 

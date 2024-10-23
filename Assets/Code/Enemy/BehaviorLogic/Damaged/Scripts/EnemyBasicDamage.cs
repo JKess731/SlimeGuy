@@ -6,9 +6,13 @@ using UnityEngine;
 
 public class EnemyBasicDamage : EnemyDamagedSOBase
 {
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
+    }
+    public override void Initialize(GameObject gameObject, EnemyBase enemy)
+    {
+        base.Initialize(gameObject, enemy);
     }
 
     public override void DoEnterLogic()
@@ -29,11 +33,6 @@ public class EnemyBasicDamage : EnemyDamagedSOBase
     public override void DoPhysicsLogic()
     {
         base.DoPhysicsLogic();
-    }
-
-    public override void Initialize(GameObject gameObject, EnemyBase enemy)
-    {
-        base.Initialize(gameObject, enemy);
     }
 
     public override void ResetValues()

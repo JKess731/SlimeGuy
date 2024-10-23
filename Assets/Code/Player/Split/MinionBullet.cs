@@ -21,7 +21,7 @@ public class MinionBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-            collision.gameObject.GetComponent<Enemy>().Damage(bulletDamage);
+            //collision.gameObject.GetComponent<EnemyMelee>().Damage(bulletDamage);
             Destroy(gameObject);
         }
 

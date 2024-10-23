@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlimeDrop : MonoBehaviour
 {
     //Might want to randomize the amount of absorption the player gets
-    [SerializeField] private int absorptionAmount = 1;
+    //[SerializeField] private int absorptionAmount = 1;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

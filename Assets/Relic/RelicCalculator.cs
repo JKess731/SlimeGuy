@@ -10,28 +10,28 @@ public class RelicCalculator : MonoBehaviour
 
     private void Start()
     {
-        originalDefense = playerStats.GetStat(StatsEnum.DEFENSE);
+        originalDefense = playerStats.GetStat(Enum_Stats.DEFENSE);
     }
 
     #region Health Buff/Debuff
     public void BuffHealth(float percentage)
     {
-        playerStats.AddStat(StatsEnum.HEALTH, playerStats.GetStat(StatsEnum.MAXHEALTH) * (percentage/100));
+        playerStats.AddStat(Enum_Stats.HEALTH, playerStats.GetStat(Enum_Stats.MAXHEALTH) * (percentage/100));
     }
 
     public void BuffHealth(int integer)
     {
-        playerStats.AddStat(StatsEnum.HEALTH, integer);
+        playerStats.AddStat(Enum_Stats.HEALTH, integer);
     }
 
     public void DebuffHealth(float percentage)
     {
-        playerStats.SubtractStat(StatsEnum.HEALTH, playerStats.GetStat(StatsEnum.MAXHEALTH) * (percentage / 100));
+        playerStats.SubtractStat(Enum_Stats.HEALTH, playerStats.GetStat(Enum_Stats.MAXHEALTH) * (percentage / 100));
     }
 
     public void DebuffHealth(int integer)
     {
-        playerStats.SubtractStat(StatsEnum.HEALTH, integer);
+        playerStats.SubtractStat(Enum_Stats.HEALTH, integer);
     }
     #endregion
 
@@ -39,22 +39,22 @@ public class RelicCalculator : MonoBehaviour
 
     public void BuffDefense(float percentage)
     {
-        playerStats.AddStat(StatsEnum.DEFENSE, originalDefense * (percentage / 100));
+        playerStats.AddStat(Enum_Stats.DEFENSE, originalDefense * (percentage / 100));
     }
 
     public void BuffDefense(int integer)
     {
-        playerStats.AddStat(StatsEnum.DEFENSE, integer);
+        playerStats.AddStat(Enum_Stats.DEFENSE, integer);
     }
 
     public void DebuffDefense(float percentage)
     {
-        playerStats.SubtractStat(StatsEnum.HEALTH, originalDefense * (percentage / 100));
+        playerStats.SubtractStat(Enum_Stats.HEALTH, originalDefense * (percentage / 100));
     }
 
     public void DebuffDefense(int integer)
     {
-        playerStats.SubtractStat(StatsEnum.DEFENSE, integer);
+        playerStats.SubtractStat(Enum_Stats.DEFENSE, integer);
     }
 
     #endregion

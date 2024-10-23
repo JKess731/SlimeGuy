@@ -64,6 +64,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Secondary2"",
+                    ""type"": ""Button"",
+                    ""id"": ""710d11df-9529-4ea6-8024-866175a312de"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Look"",
                     ""type"": ""PassThrough"",
                     ""id"": ""c2fe57ee-7508-4dd3-8f07-640b56327c2f"",
@@ -326,6 +335,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6c0b856-8b8f-4de0-a921-9a5284c85474"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Secondary2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -394,6 +414,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_GamePlay_Dash = m_GamePlay.FindAction("Dash", throwIfNotFound: true);
         m_GamePlay_Primary = m_GamePlay.FindAction("Primary", throwIfNotFound: true);
         m_GamePlay_Secondary = m_GamePlay.FindAction("Secondary", throwIfNotFound: true);
+        m_GamePlay_Secondary2 = m_GamePlay.FindAction("Secondary2", throwIfNotFound: true);
         m_GamePlay_Look = m_GamePlay.FindAction("Look", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
@@ -463,6 +484,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Dash;
     private readonly InputAction m_GamePlay_Primary;
     private readonly InputAction m_GamePlay_Secondary;
+    private readonly InputAction m_GamePlay_Secondary2;
     private readonly InputAction m_GamePlay_Look;
     public struct GamePlayActions
     {
@@ -472,6 +494,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_GamePlay_Dash;
         public InputAction @Primary => m_Wrapper.m_GamePlay_Primary;
         public InputAction @Secondary => m_Wrapper.m_GamePlay_Secondary;
+        public InputAction @Secondary2 => m_Wrapper.m_GamePlay_Secondary2;
         public InputAction @Look => m_Wrapper.m_GamePlay_Look;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
@@ -494,6 +517,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Secondary.started += instance.OnSecondary;
             @Secondary.performed += instance.OnSecondary;
             @Secondary.canceled += instance.OnSecondary;
+            @Secondary2.started += instance.OnSecondary2;
+            @Secondary2.performed += instance.OnSecondary2;
+            @Secondary2.canceled += instance.OnSecondary2;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
@@ -513,6 +539,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Secondary.started -= instance.OnSecondary;
             @Secondary.performed -= instance.OnSecondary;
             @Secondary.canceled -= instance.OnSecondary;
+            @Secondary2.started -= instance.OnSecondary2;
+            @Secondary2.performed -= instance.OnSecondary2;
+            @Secondary2.canceled -= instance.OnSecondary2;
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
@@ -603,6 +632,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnPrimary(InputAction.CallbackContext context);
         void OnSecondary(InputAction.CallbackContext context);
+        void OnSecondary2(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
     }
     public interface IMenuActions

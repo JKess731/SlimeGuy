@@ -11,12 +11,12 @@ public class EnemySpawnSOBase : ScriptableObject
         _gameObject = gameObject;
     }
     public virtual void DoEnterLogic() {
-        _enemy.State = Enum_State.SPAWNING;
+        _enemy.State = Enum_AnimationState.SPAWNING;
         _enemy.stateMachine.ChangeState(_enemy.idleState);
     }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic() {}
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType) { }
+    public virtual void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType) { }
     public virtual void ResetValues() { }
 }
