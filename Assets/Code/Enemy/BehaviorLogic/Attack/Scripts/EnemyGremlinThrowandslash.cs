@@ -54,11 +54,6 @@ public class EnemyGremlinThrowandslash : EnemyAttackSOBase
         attackPoint = _enemy.transform.GetChild(1).GetChild(0);
         ring = _enemy.transform.GetChild(1).gameObject;
 
-        if (_enemy._isWithinStikingDistance)
-        {
-            return;
-        }
-
         if (_enemy._isWithinShootingDistance)
         {
             _attackTime = _shootingAttackTime;
