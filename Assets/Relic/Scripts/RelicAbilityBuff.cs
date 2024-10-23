@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "RelicAbilityBuff", menuName = "Relics/RelicAbilityBuff")]
 public class RelicAbilityBuff : RelicSO
 {
-    [SerializeField] int changeStatBy;
+    [SerializeField] float changeStatBy;
 
     public override void Initialize(StatsSO playerstats)
     {
@@ -20,7 +21,7 @@ public class RelicAbilityBuff : RelicSO
 
     public override void ActivateBuffs()
     {
-        _playerStats.AddStat(_changedStat, changeStatBy);
+        _playerStats.RegisterStat(changedStat, "Add", changeStatBy);
     }
 
     public override void DeactivateBuffs()

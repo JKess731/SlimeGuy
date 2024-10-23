@@ -20,4 +20,4 @@ MonoBehaviour:
   _changedStat: 19
   hasCondition: 0
   calc: {fileID: 0}
-  changeStatBy: 500
+  changeStatBy: 10

@@ -28,19 +28,21 @@ public class GrenadeMono : AbilityMonoBase
     {
         AbilityState = AbilityState.STARTING;
 
-        float addedDamage = _playerStats.playerStats.GetStat(Enum_Stats.ATTACK);
-        float addedKnockback = _playerStats.playerStats.GetStat(Enum_Stats.KNOCKBACK);
-        float addedActivationTime = _playerStats.playerStats.GetStat(Enum_Stats.ACTIVATION_TIME);
-        float addedSpeed = _playerStats.playerStats.GetStat(Enum_Stats.SPEED);
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ATTACK) + _damage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(StatsEnum.KNOCKBACK) + _knockback;
+        float newActivationTime = _playerStats.playerStats.ModifiedStatValue(StatsEnum.ACTIVATION_TIME) + _activationTime;
+        float newSpeed = _playerStats.playerStats.ModifiedStatValue(StatsEnum.PROJECTILE_SPEED) + _speed;
 
         Quaternion newRot = rotation;
         GameObject newGrenade = Instantiate(_grenade, attackPosition, newRot);
-        newGrenade.GetComponent<Grenade>().Initialize(_damage + addedDamage, _knockback + addedKnockback, _activationTime + addedActivationTime,
-            _speed + addedSpeed, _distance);
+        newGrenade.GetComponent<Grenade>().Initialize(newDamage, newKnockback, newActivationTime, newSpeed, _distance);
 
-        Debug.Log("Grenade Damage:" + (_damage + addedDamage));
-        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
         StartCoroutine(Cooldown());
+
+        //This is basically saying pass in this monobehavior as the ability, use the UIAbility type variable to determine which box it's in in the UI, and 
+        //its activation time. This will be the same in every Mono class that calls this, though the activation time parameter value may differ.
+
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation){}

@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class Whip : Attacks
 {
+    private Rigidbody2D _rb;
     private float _activationTime;
     private float _rotationSpeed;
+    private float _range;
+    private Vector3 _startPosition;
+    private float _maxDistance;
 
     private GameObject _player;
     private StatusSO _status;
 
-    public void Initialize(float damage, float knockback, float activationTime, float rotationSpeed, StatusSO status)
+    public void Initialize(float damage, float knockback, float activationTime, float rotationSpeed, float range, StatusSO status)
     {
         _damage = damage;
         _knockback = knockback;
         _activationTime = activationTime;
         _rotationSpeed = rotationSpeed;
+        _range = range;
         _status = status;
     }
 
@@ -27,29 +32,34 @@ public class Whip : Attacks
         _activationTime = activationTime;
     }
 
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _startPosition = transform.position;
+    }
+
     private void Start()
     {
         Destroy(gameObject, _activationTime);
-
+        SlimeSwipeDamage damageScript = GetComponentInChildren<SlimeSwipeDamage>();
+        if (damageScript != null)
+        {
+            damageScript.Initialize(_damage, _knockback);
+        }
+        _maxDistance = _range; // Swipe range
         _player = GameObject.FindWithTag("player");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        //Debug.Log("Spinning");
-        transform.position = _player.transform.position;
-        transform.Rotate(Vector3.forward * _rotationSpeed * Time.deltaTime);
-    }
+        // Set the position of the swipe directly without rotating
+        Vector3 playerPosition = _player.transform.position;
+        Vector3 whipPosition = playerPosition;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("enemy"))
-        {
-            collision.gameObject.GetComponent<EnemyBase>().Damage(_damage, transform.right, _knockback, Vector2.up);
-            if (_status != null)
-            {
-                //collision.gameObject.GetComponent<StatusManager>().StatusHandler(_status);
-            }
-        }
+        // Move the swipe to the new position
+        transform.position = whipPosition;
+
+        // Rotate around the player
+        transform.RotateAround(playerPosition, Vector3.forward, _rotationSpeed * Time.deltaTime);
     }
 }
