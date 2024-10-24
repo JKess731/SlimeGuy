@@ -21,7 +21,7 @@ public class AbilityPickup : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("player"))
         {
             playerInRange = false;
         }
