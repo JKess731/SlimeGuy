@@ -113,6 +113,7 @@ public class AbilityManager : MonoBehaviour
         for (int i = 0; i < secondary.Length; i++)
         {
             secondary[i]?.Initialize();
+            Debug.Log(secondary[i].AbilityName);
         }
         dash?.Initialize();
 

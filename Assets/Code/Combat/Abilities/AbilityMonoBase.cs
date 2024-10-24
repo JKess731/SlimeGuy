@@ -33,7 +33,6 @@ public class AbilityMonoBase : MonoBehaviour, IAbility
     {
         _abilityState = AbilityState.READY;
         gameObject.SetActive(true);
-        Debug.Log("Ability Initialized: "+ _abilityName);
     }
     public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) { }
     public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) { }
