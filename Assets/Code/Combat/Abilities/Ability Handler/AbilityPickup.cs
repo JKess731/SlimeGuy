@@ -5,24 +5,23 @@ using UnityEngine;
 public class AbilityPickup : MonoBehaviour
 {
     [Header("Ability Details")]
-    [SerializeField] private string abilityToPickupName;  // Name of the ability to pick up
-    [SerializeField] private AbilityType abilityType;     // Type of the ability
+    [SerializeField] private string abilityToPickupName;  
+    [SerializeField] private AbilityType abilityType;     
 
     private bool playerInRange = false;
     private AbilityManager playerAbilityManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the player collided with the pickup
         if (collision.gameObject.CompareTag("player"))
         {
-            playerInRange = true;        }
+            playerInRange = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // Check if player leaves the pickup
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("player"))
         {
             playerInRange = false;
         }
@@ -30,19 +29,15 @@ public class AbilityPickup : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.F))
         {
-            // Access the AbilityManager singleton
             AbilityManager abilityManager = AbilityManager.Instance;
 
-            if (abilityManager != null)
-            {
-                // Assign the ability based on its type (Primary, Secondary, Dash, or Passive)
-                abilityManager.Swap(abilityType, abilityToPickupName);
+            Debug.Log(abilityType);
+            
+            abilityManager.Swap(abilityType, abilityToPickupName);
 
-                // Destroy the pickup object after being picked up
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 }
