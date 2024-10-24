@@ -33,6 +33,9 @@ public class AbilityManager : MonoBehaviour
 
     public static AbilityManager Instance;
 
+    private AbilityDrop abilityDrop;  // Reference to AbilityDrop script
+    private GameObject player;
+
     //Abilities must be initialized, or else they will not work. For some reason,
     //Unity does not read the preassigned values in the Scriptable Objects Variables.
 
@@ -120,29 +123,54 @@ public class AbilityManager : MonoBehaviour
         }
 
         UiManager.instance.UpdateAllIcons();
+        abilityDrop = GetComponent<AbilityDrop>();
+        player = GameObject.FindGameObjectWithTag("player");
     }
 
-    public void Swap(AbilityType abilityType, string abilityName)
+    public void Swap(AbilityType abilityType, string abilityName, int index = 0)
     {
+        Vector3 playerPosition = player.transform.position;
         switch (abilityType)
         {
             case AbilityType.PRIMARY:
-                primary?.gameObject.SetActive(false);
+                if (primary != null)
+                {
+                    abilityDrop.DropAbility(primary.AbilityName, playerPosition);
+                    primary?.gameObject.SetActive(false);
+                }
+                //primary?.gameObject.SetActive(false);
                 primary = primaryDict[abilityName];
                 primary?.Initialize();
                 break;
 
             case AbilityType.SECONDARY:
-                int index = secondary.Length;
-                if(index > secondary.Length)
+                if (secondary[0] != null && secondary[1] != null)
                 {
-                    Debug.LogError("Index out of range");
-                    return;
+                    secondary[0]?.gameObject.SetActive(false);
+                    secondary[0] = secondary[1];
+
+                    abilityDrop.DropAbility(secondary[1].AbilityName, playerPosition);
+
+                    secondary[1]?.gameObject.SetActive(false);
+                    secondary[1] = secondaryDict[abilityName];
+                }
+                else
+                {
+                    if (secondary[0] == null)
+                    {
+                        secondary[0]?.gameObject.SetActive(false);
+                        secondary[0] = secondaryDict[abilityName];
+                        secondary[0]?.Initialize();
+                    }
+                    else
+                    {
+                        secondary[1]?.gameObject.SetActive(false);
+                        secondary[1] = secondaryDict[abilityName];
+                        secondary[1]?.Initialize();
+                    }
                 }
 
-                secondary[index]?.gameObject.SetActive(false);
-                secondary[index] = secondaryDict[abilityName];
-                secondary[index]?.Initialize();
+                secondary[1]?.Initialize();
                 break;
 
             case AbilityType.DASH:
