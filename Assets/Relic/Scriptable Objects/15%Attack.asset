@@ -20,4 +20,4 @@ MonoBehaviour:
   _changedStat: 0
   hasCondition: 0
   calc: {fileID: 0}
-  buffPercentage: 15
+  buffPercentage: 30

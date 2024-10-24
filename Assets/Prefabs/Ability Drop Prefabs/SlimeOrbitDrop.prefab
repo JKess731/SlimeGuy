@@ -269,7 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbd7abbc89ba324fb8fc13ecfa02c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToPickup: {fileID: 11400000, guid: 955a5e69cd5aee54987b378ba85ba24c, type: 2}
+  abilityToPickupName: SlimeOrbit
+  abilityType: 1
 --- !u!1 &2626633727595276544
 GameObject:
   m_ObjectHideFlags: 0

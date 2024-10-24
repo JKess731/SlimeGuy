@@ -10,11 +10,13 @@ public class PlayerStateMachine : MonoBehaviour
     private PlayerAnimation _animationControl;
     private PlayerController _playerController;
 
-    private Enum_State _state;                      //State Variables
+    private Enum_AnimationState _state;                      //State Variables
     private KnockBack _knockBack;                   //Knockback Variables
 
-    public Enum_State State { get => _state; set => _state = value; }
+    public Enum_AnimationState State { get => _state; set => _state = value; }
     public StatsSO playerStats { get => _playerStats; }
+
+    
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Start()
     {
-        UiManager.instance.UpdateHealthBar(_playerStats.GetStat(StatsEnum.HEALTH), _playerStats.GetStat(StatsEnum.MAXHEALTH));
+        UiManager.instance.UpdateHealthBar(_playerStats.GetStat(Enum_Stats.HEALTH), _playerStats.GetStat(Enum_Stats.MAXHEALTH));
     }
 
     //Handles Movement and Animation
@@ -52,36 +54,36 @@ public class PlayerStateMachine : MonoBehaviour
     //Handles Damage and Knockback
     public void Damage(int damage, Vector2 hitDirection, float hitForce, Vector2 constantForceDirection)
     {
-        if (_state.Equals(Enum_State.DASHING))
+        if (_state.Equals(Enum_AnimationState.DASHING))
         {
             Debug.Log("Player is dashing, no damage taken");
             return;
         }
 
-        if (_playerStats.GetStat(StatsEnum.HEALTH) <= 0)
+        if (_playerStats.GetStat(Enum_Stats.HEALTH) <= 0)
         {
-            _state = Enum_State.DEAD;
+            _state = Enum_AnimationState.DEAD;
             _playerController.DisableMovement();
             return;
         }
 
-        _playerStats.SubtractStat(StatsEnum.HEALTH, damage);
+        _playerStats.SubtractStat(Enum_Stats.HEALTH, damage);
         _knockBack.CallKnockback(hitDirection, hitForce, constantForceDirection);
         StartCoroutine(PlayerKnockback(0.3f));
 
-        AudioManager.instance.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
-        UiManager.instance.UpdateHealthBar(_playerStats.GetStat(StatsEnum.HEALTH), _playerStats.GetStat(StatsEnum.MAXHEALTH));
+        AudioManager.PlayOneShot(FmodEvents.instance.playerHurt, transform.position);
+        UiManager.instance.UpdateHealthBar(_playerStats.GetStat(Enum_Stats.HEALTH), _playerStats.GetStat(Enum_Stats.MAXHEALTH));
     }
 
-    public void SetState(Enum_State state)
+    public void SetState(Enum_AnimationState state)
     {
         _state = state;
     }
 
     private IEnumerator PlayerKnockback(float knockbackTime)
     {
-        _state = Enum_State.DAMAGED;
+        _state = Enum_AnimationState.DAMAGED;
         yield return new WaitForSeconds(knockbackTime);
-        _state = Enum_State.IDLING;
+        _state = Enum_AnimationState.IDLING;
     }
 }

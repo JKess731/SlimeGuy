@@ -8,26 +8,41 @@ public class GrenadeMono : AbilityMonoBase
     [SerializeField] private GameObject _grenade;
 
     [Header("Prefab Attributes")]
-    [SerializeField] private int _damage;
+    [SerializeField] private float _damage;
     [SerializeField] private float _knockback;
     [SerializeField] private float _activationTime;
     [SerializeField] private float _speed;
     [SerializeField] private float _distance;
 
+    private PlayerStateMachine _playerStats;
+    private string UIAbilityType;
+
     public override void Initialize()
     {
         base.Initialize();
+        _playerStats = PlayerStats.instance.playerStateMachine;
+        UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
 
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ATTACK) + _damage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.KNOCKBACK) + _knockback;
+        float newActivationTime = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ACTIVATION_TIME) + _activationTime;
+        float newSpeed = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.PROJECTILE_SPEED) + _speed;
+
         Quaternion newRot = rotation;
         GameObject newGrenade = Instantiate(_grenade, attackPosition, newRot);
-        newGrenade.GetComponent<Grenade>().Initialize(_damage, _knockback, _activationTime, _speed, _distance);
+        newGrenade.GetComponent<Grenade>().Initialize(newDamage, newKnockback, newActivationTime, newSpeed, _distance);
 
         StartCoroutine(Cooldown());
+
+        //This is basically saying pass in this monobehavior as the ability, use the UIAbility type variable to determine which box it's in in the UI, and 
+        //its activation time. This will be the same in every Mono class that calls this, though the activation time parameter value may differ.
+
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation){}

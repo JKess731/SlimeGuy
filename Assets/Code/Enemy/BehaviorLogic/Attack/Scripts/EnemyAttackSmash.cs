@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,17 +12,20 @@ public class EnemyAttackSmash : EnemyAttackSOBase
     [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject ring;
 
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        Vector3 rotation = _playerTransform.position - ring.transform.position;
-        float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
+        //Vector3 rotation = _playerTransform.position - ring.transform.position;
+        //float slashRotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        //ring.transform.rotation = Quaternion.Euler(0, 0, slashRotZ);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.GolemAttack)
+        if (triggerType == Enum_AnimationTriggerType.ATTACK)
         {
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.GolemAttack, _enemy.transform.position);
+            if (_enemy.attackSoundEffects.Count > 0)
+            {
+                RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
+            }
             GameObject smash = Instantiate(smashTriggerPrefab, attackPoint.position, Quaternion.identity);
         }
 

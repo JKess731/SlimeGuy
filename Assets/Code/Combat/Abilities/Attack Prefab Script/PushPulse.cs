@@ -14,7 +14,7 @@ public class PushPulse : Attacks
 
     public void Initialize(float damage, float knockback, float activationtime, float speed, float distance)
     {
-        _damage = (int)damage;
+        _damage = damage;
         _knockback = knockback;
         _activationTime = activationtime;
         _speed = speed;
@@ -34,7 +34,7 @@ public class PushPulse : Attacks
         StartCoroutine(PulseRoutine());
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         // Update position to follow the player
         transform.position = _player.transform.position;
@@ -57,17 +57,17 @@ public class PushPulse : Attacks
                 yield return null;
             }
 
-            transform.localScale = new Vector3(_distance, _distance, 0);
+            //transform.localScale = new Vector3(_distance, _distance, 0);
 
             // Shrink
-            while (elapsedTime < 2 * cycleTime)
-            {
-                float shrink = _speed * Time.deltaTime;
-                transform.localScale -= new Vector3(shrink, shrink, 0);
-                elapsedTime += Time.deltaTime;
-
-                yield return null;
-            }
+            //while (elapsedTime < 2 * cycleTime)
+            //{
+            //    float shrink = _speed * Time.deltaTime;
+            //    transform.localScale -= new Vector3(shrink, shrink, 0);
+            //    elapsedTime += Time.deltaTime;
+            //
+           //     yield return null;
+            //}
 
             transform.localScale = Vector3.zero; // Reset scale for the next cycle
             elapsedTime = 0f; // Reset elapsed time for the next cycle

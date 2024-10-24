@@ -92,6 +92,9 @@
 		<property name="length">
 			<value>20</value>
 		</property>
+		<property name="volume">
+			<value>-80</value>
+		</property>
 		<property name="playlistMode">
 			<value>1</value>
 		</property>

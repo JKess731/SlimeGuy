@@ -11,7 +11,7 @@ public class SerializedDictionary : MonoBehaviour
     [SerializeField]
     NewDictionary newDictionary;
 
-    Dictionary<Enum_Stat, float> dictionary;
+    Dictionary<Enum_Stats, float> dictionary;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class SerializedDictionary : MonoBehaviour
 [Serializable]
 public class DictionaryItems
 {
-    public Enum_Stat stat;
+    public Enum_Stats stat;
     public float value;
 }
 
@@ -31,9 +31,9 @@ public class NewDictionary
     [SerializeField]
     DictionaryItems[] dictItemsList;
 
-    public Dictionary<Enum_Stat, float> ToDictionary()
+    public Dictionary<Enum_Stats, float> ToDictionary()
     {
-        Dictionary<Enum_Stat, float> dict = new Dictionary<Enum_Stat, float>();
+        Dictionary<Enum_Stats, float> dict = new Dictionary<Enum_Stats, float>();
 
         foreach(DictionaryItems item in dictItemsList)
         {

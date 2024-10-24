@@ -25,15 +25,13 @@ public class EnemyShootCheck : MonoBehaviour
         }
     }
 
-    /*
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject == playerTarget)
         {
-            enemy.setShootingDistance(false);
+            enemy.setShootingDistance(false); 
         }
     }
-    */
 
 
     IEnumerator Cooldown()

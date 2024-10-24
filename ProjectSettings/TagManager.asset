@@ -33,7 +33,8 @@ TagManager:
   - enemyAttackLayer
   - playerAttackLayer
   - Wall
-  - bullets
+  - SpawnPoints
+  - MiniMap
   - 
   - 
   - 
@@ -51,9 +52,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - deadLayer
   m_SortingLayers:
+  - name: Minimap
+    uniqueID: 2574458557
+    locked: 0
   - name: Floor
     uniqueID: 497496063
     locked: 0

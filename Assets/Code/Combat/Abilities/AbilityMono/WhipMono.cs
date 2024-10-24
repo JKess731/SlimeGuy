@@ -8,23 +8,39 @@ public class WhipMono : AbilityMonoBase
     [SerializeField] private GameObject _whip;
 
     [Header("Prefab Attributes")]
-    [SerializeField] private int _damage;
+    [SerializeField] private float _damage;
     [SerializeField] private float _knockback;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _activationTime;
+    [SerializeField] private float _range;
+    private PlayerStateMachine _playerStats;
+    private string UIAbilityType;
 
     public override void Initialize()
     {
         base.Initialize();
+        _playerStats = PlayerStats.instance.playerStateMachine;
+        UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
     }
 
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
 
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ATTACK) + _damage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.KNOCKBACK) + _knockback;
+        float newActivationTime = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ACTIVATION_TIME) + _activationTime;
+        float newRotationSpeed = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ROTATION_SPEED) + _rotationSpeed;
+
         //Instantiate the whip prefab
         GameObject newWhip = Instantiate(_whip,attackPosition,Quaternion.identity);
-        newWhip.GetComponent<Whip>().Initialize(_damage, _knockback, _activationTime, _rotationSpeed, status);
+        newWhip.GetComponent<Whip>().Initialize(newDamage, newKnockback, newActivationTime,
+           newRotationSpeed, _range,status);
+
+        //This is basically saying pass in this monobehavior as the ability, use the UIAbility type variable to determine which box it's in in the UI, and 
+        //its activation time. This will be the same in every Mono class that calls this, though the activation time parameter value may differ.
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, _activationTime));
+
 
         StartCoroutine(Cooldown());
     }
@@ -32,11 +48,6 @@ public class WhipMono : AbilityMonoBase
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation){}
 
     public override void CancelBehavior(Vector2 attackPosition, Quaternion rotation){}
-
-    public override void Upgrade(StatsSO playerstats, StatsEnum stat)
-    {
-        //TODO: Implement WhipMono Upgrade
-    }
 
     //Override the Cooldown method to add the activation time
     public override IEnumerator Cooldown()

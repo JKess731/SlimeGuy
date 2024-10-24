@@ -18,7 +18,7 @@ public class HealthBuffRelic : RelicSO
 
     public override void ActivateBuffs()
     {
-        _playerStats.AddStat(StatsEnum.HEALTH, _playerStats.GetStat(StatsEnum.MAXHEALTH)* buffPercentage/100);
+        _playerStats.AddStat(Enum_Stats.HEALTH, _playerStats.GetStat(Enum_Stats.MAXHEALTH)* buffPercentage/100);
     }
 
     public override void DeactivateBuffs()

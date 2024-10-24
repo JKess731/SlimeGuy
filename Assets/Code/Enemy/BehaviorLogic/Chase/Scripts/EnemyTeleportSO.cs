@@ -1,19 +1,20 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Teleport", menuName = "EnemyLogic/ChaseLogic/Teleport")]
-public class EnemyTeleportSO : EnemyChaseSOBase
+public class EnemyTeleportSO : EnemyMoveSOBase
 {
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
 
-        if (triggerType == EnemyBase.AnimationTriggerType.WizardTeleportTrigger)
+        if (triggerType == Enum_AnimationTriggerType.TELEPORT)
         {
             Debug.Log("WizardTeleport");
-            AudioManager.instance.PlayOneShot(FmodEvents.instance.WizardTeleport, _transform.position);
+            RuntimeManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);
         }
     }
 
@@ -30,7 +31,7 @@ public class EnemyTeleportSO : EnemyChaseSOBase
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
-        if (_enemy.isWithinShootingDistance)
+        if (_enemy._isWithinShootingDistance)
         {
             _enemy.stateMachine.ChangeState(_enemy.attackState);
         }

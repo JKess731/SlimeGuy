@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: BossGolemStats
   m_EditorClassIdentifier: 
   _statList:
-  - _statEnum: 4
+  - _stat: 3
     _statValue: 100
-  - _statEnum: 3
+  - _stat: 4
     _statValue: 100
-  - _statEnum: 0
+  - _stat: 2
     _statValue: 10
-  - _statEnum: 2
+  - _stat: 0
     _statValue: 5

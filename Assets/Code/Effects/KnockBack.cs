@@ -11,11 +11,9 @@ public class KnockBack : MonoBehaviour
     [Header("Knockback Variables")]
     [SerializeField] private float _knockBackTime = 0.2f;       //The time the knockback lasts
     [SerializeField] private float _constForce = 0.25f;         //The constant force applied to the player
-    [SerializeField] private float _releaseTime = 0.1f;         //The time it takes for the player to stop being knocked back
 
     [Header("Knockback Curves")]
     [SerializeField] private AnimationCurve _knockbackHitForceCurve;            //The curve for the hit force
-    [SerializeField] private AnimationCurve _knockbackStoppingForceCurve;       //The curve for the stopping force
 
     private Rigidbody2D _rb2D;
     private Coroutine knockBackStart;
@@ -59,23 +57,6 @@ public class KnockBack : MonoBehaviour
         }
     }
 
-    public IEnumerator KnockBackSlowStop()
-    {
-        float time = 0;
-
-        Vector2 currentVelocity = _rb2D.velocity;
-
-        while (time < _releaseTime)
-        {
-            time += Time.fixedDeltaTime;
-            _rb2D.velocity = currentVelocity * _knockbackStoppingForceCurve.Evaluate(time);
-
-            yield return new WaitForFixedUpdate();
-
-        }
-        isBeingKnockedBack = false;
-    }
-
     /// <summary>
     /// Calls the knockback coroutine
     /// @param hitDirection: The direction the player is hit
@@ -91,16 +72,16 @@ public class KnockBack : MonoBehaviour
         if (knockBackStart != null)
         {
             StopCoroutine(knockBackStart);
-            StartCoroutine(KnockBackSlowStop());
         }
 
         knockBackStart = StartCoroutine(KnockBackStart(hitDirection, hitForce, constantForceDirection));
     }
 
-    public void StopKnockback()
+    public void StopKnockBack()
     {
         if (knockBackStart != null)
         {
+            Debug.Log("Knockback Stopped");
             StopCoroutine(knockBackStart);
         }
     }

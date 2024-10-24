@@ -12,7 +12,7 @@ public class HealPlayer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            _stats.SetStat(StatsEnum.HEALTH, _stats.GetStat(StatsEnum.MAXHEALTH));
+            _stats.SetStat(Enum_Stats.HEALTH, _stats.GetStat(Enum_Stats.MAXHEALTH));
         }
     }
 }

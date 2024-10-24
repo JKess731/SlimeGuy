@@ -13,37 +13,37 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   _statList:
-  - _statEnum: 0
-    _statValue: 0
-  - _statEnum: 3
+  - _statType: 3
     _statValue: 300
-  - _statEnum: 4
+  - _statType: 4
     _statValue: 300
-  - _statEnum: 2
-    _statValue: 8
-  - _statEnum: 5
+  - _statType: 0
     _statValue: 0
-  - _statEnum: 7
+  - _statType: 1
     _statValue: 0
-  - _statEnum: 8
+  - _statType: 2
+    _statValue: 6
+  - _statType: 5
     _statValue: 0
-  - _statEnum: 9
+  - _statType: 6
     _statValue: 0
-  - _statEnum: 10
+  - _statType: 7
     _statValue: 0
-  - _statEnum: 11
+  - _statType: 8
     _statValue: 0
-  - _statEnum: 12
+  - _statType: 10
     _statValue: 0
-  - _statEnum: 13
+  - _statType: 11
     _statValue: 0
-  - _statEnum: 14
+  - _statType: 12
     _statValue: 0
-  - _statEnum: 15
+  - _statType: 13
     _statValue: 0
-  - _statEnum: 17
+  - _statType: 14
     _statValue: 0
-  - _statEnum: 18
+  - _statType: 15
     _statValue: 0
-  - _statEnum: 19
+  - _statType: 18
+    _statValue: 0
+  - _statType: 19
     _statValue: 0

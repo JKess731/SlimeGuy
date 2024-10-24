@@ -455,4 +455,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbd7abbc89ba324fb8fc13ecfa02c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToPickup: {fileID: 11400000, guid: 561d99e7f74e60940ade74f3d18fb499, type: 2}
+  abilityToPickupName: DividingSlash

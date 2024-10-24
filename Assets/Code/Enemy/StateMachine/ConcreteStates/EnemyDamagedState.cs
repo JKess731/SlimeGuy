@@ -9,7 +9,7 @@ public class EnemyDamagedState : EnemyState
 
     }
 
-    public override void AnimationTriggerEvent(EnemyBase.AnimationTriggerType triggerType)
+    public override void AnimationTriggerEvent(Enum_AnimationTriggerType triggerType)
     {
         base.AnimationTriggerEvent(triggerType);
         _enemyBase.enemyDamagedBaseInstance.DoAnimationTriggerEventLogic(triggerType);
@@ -20,7 +20,7 @@ public class EnemyDamagedState : EnemyState
     {
         base.EnterState();
         _enemyBase.enemyDamagedBaseInstance.DoEnterLogic();
-        _enemyBase.State = Enum_State.DAMAGED;
+        _enemyBase.State = Enum_AnimationState.DAMAGED;
     }
 
     public override void ExitState()

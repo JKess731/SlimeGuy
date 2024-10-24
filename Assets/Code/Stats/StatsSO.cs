@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 /// <summary>
@@ -10,7 +11,10 @@ using UnityEngine;
 public class StatsSO: ScriptableObject
 {
     [SerializeField]private List<StatsInfo> _statList= new List<StatsInfo>();
-    private Dictionary<StatsEnum, float> _stats = new Dictionary<StatsEnum, float>(); 
+    private Dictionary<Enum_Stats, float> _stats = new Dictionary<Enum_Stats, float>();
+    private Dictionary<Enum_Stats, float> _statsAdditive = new Dictionary<Enum_Stats, float>();
+    private Dictionary<Enum_Stats, float> _statsMultiplicative = new Dictionary<Enum_Stats, float>();
+
     public List<StatsInfo> StatList { get => _statList; }
     /// <summary>
     /// Adds all stats to dictionary
@@ -18,16 +22,16 @@ public class StatsSO: ScriptableObject
     public void Initialize()
     {
         for(int i = 0; i < _statList.Count; i++) {
-            if (_stats.ContainsKey(_statList[i].StatEnum))
+            if (_stats.ContainsKey(_statList[i].StatType))
             {
                 //Debug.LogWarning("Duplicate Stat Found");
                 continue;
             }
-            _stats.Add(_statList[i].StatEnum, _statList[i].Value);
+            _stats.Add(_statList[i].StatType, _statList[i].Value);
         }
     }
 
-    public float GetStat(StatsEnum stat)
+    public float GetStat(Enum_Stats stat)
     {
         if (_stats.TryGetValue(stat,out float value))
         {
@@ -44,29 +48,112 @@ public class StatsSO: ScriptableObject
     {
         for (int i = 0; i < statList.Count; i++)
         {
-            _stats.Add(_statList[i].StatEnum, _statList[i].Value);
+            _stats.Add(_statList[i].StatType, _statList[i].Value);
         }
     }
 
-    public void SetStat(StatsEnum stat, float value)
+    public void SetStat(Enum_Stats stat, float value)
     {
         _stats[stat] = value;
     }
 
-    public void AddStat(StatsEnum stat, float value)
+    public void AddStat(Enum_Stats stat, float value)
     {
         _stats[stat] += value;
     }
 
-    public void AddStat(StatsEnum stat, float value, AbilitySOBase ability)
-    {
-        _stats[stat] += value;
-    }
-
-    public void SubtractStat(StatsEnum stat, float value)
+    public void SubtractStat(Enum_Stats stat, float value)
     {
         _stats[stat] -= value;
     }
+
+
+
+
+
+
+    public void SetStatAdditive(Enum_Stats stat, float value)
+    {
+        _statsAdditive[stat] = value;
+    }
+
+    public void AddStatAdditive(Enum_Stats stat, float value)
+    {
+        _statsAdditive[stat] += value;
+    }
+
+
+
+
+
+    public void SetStatMultiplicative(Enum_Stats stat, float value)
+    {
+        _statsMultiplicative[stat] = value;
+    }
+
+    public void AddStatMultiplicative(Enum_Stats stat, float value)
+    {
+        _statsMultiplicative[stat] += value;
+        Debug.Log(stat + "'s value in _statsMultiplicative: " + _statsMultiplicative[stat]);
+        Debug.Log("bboo");
+    }
+
+
+
+
+    public float ModifiedStatValue(Enum_Stats stat)
+    {
+        //(BaseState + StatIncrement) * (1+StatMultipler)
+
+        if (_statsMultiplicative.ContainsKey(stat) && !_statsAdditive.ContainsKey(stat))
+        {
+            Debug.Log("I got here ----");
+            return _stats[stat] * (1 + _statsMultiplicative[stat]);
+            
+        }
+        else if (!_statsMultiplicative.ContainsKey(stat) && _statsAdditive.ContainsKey(stat))
+        {
+            return (_stats[stat] + _statsAdditive[stat]);
+        }
+        else if (!_statsMultiplicative.ContainsKey(stat) && !_statsAdditive.ContainsKey(stat))
+        {
+            return (_stats[stat]);
+        }
+        else
+        {
+            return (_stats[stat] + _statsAdditive[stat]) * (1 + _statsMultiplicative[stat]);
+        }
+    }
+
+    public void RegisterStat(Enum_Stats stat, string type, float value)
+    {
+        if(type == "Add")
+        {
+            if (_statsAdditive.ContainsKey(stat))
+            {
+                AddStatAdditive(stat, value);
+            }
+            else
+            {
+                _statsAdditive.Add(stat, value);
+            }
+        }
+        if(type == "Multiply")
+        {
+            if (_statsMultiplicative.ContainsKey(stat))
+            {
+                AddStatMultiplicative(stat, value);
+            }
+            else
+            {
+                _statsMultiplicative.Add(stat, value);
+            }
+        }
+    }
+
+
+
+
 }
 /// <summary>
 /// Serializable class to store statInfo for list and dictionary
@@ -74,44 +161,9 @@ public class StatsSO: ScriptableObject
 [Serializable]
 public class StatsInfo
 {
-    [SerializeField] private StatsEnum _statEnum;
+    [SerializeField] private Enum_Stats _statType;
     [SerializeField] private float _statValue;
 
-    public StatsEnum StatEnum { get => _statEnum; }
+    public Enum_Stats StatType { get => _statType; }
     public float Value { get => _statValue;}
-}
-
-public enum StatsEnum
-{
-    //Add stats here
-    //----------------------------------------------------------------
-
-    //Base Stats
-    ATTACK,
-    DEFENSE,
-    SPEED,
-    HEALTH,
-    MAXHEALTH,
-
-    //Projectile Attack Stats
-    BULLET_COUNT,
-    ABSORPTION,
-    RICHOCHET_COUNT,
-    PIERCING_COUNT,
-    PROJECTILE_KNOCKBACK,
-    SPREAD_ANGLE,
-    PROJECTILE_DAMAGE,
-    PROJECTILE_SPEED,
-    PROJECTILE_RANGE,
-
-
-    //Ability Stats
-    ACTIVATION_TIME,
-    COOLDOWN_TIME,
-    STATUS,
-
-    //Physical Attack Stats
-    DAMAGE,
-    KNOCKBACK,
-    ROTATION_SPEED,
 }

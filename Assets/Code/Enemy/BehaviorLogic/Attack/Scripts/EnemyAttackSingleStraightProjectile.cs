@@ -14,7 +14,7 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
     private float timer;
     private float exitTimer;
 
-    public override void DoAnimationTriggerEventLogic(EnemyBase.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
     }
@@ -45,7 +45,7 @@ public class EnemyAttackSingleStraightProjectile : EnemyAttackSOBase
             exitTimer += Time.deltaTime;
             if (exitTimer > timeTillExit)
             {
-                _enemy.stateMachine.ChangeState(_enemy.chaseState);
+                _enemy.stateMachine.ChangeState(_enemy.moveState);
             }
         }
         else
