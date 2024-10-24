@@ -8,6 +8,11 @@ public class EnemyChaseDirectToPlayer : EnemyMoveSOBase
     public override void DoAnimationTriggerEventLogic(Enum_AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
+
+        if (triggerType == Enum_AnimationTriggerType.MOVE)
+        {
+            AudioManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);
+        }
     }
 
     public override void DoEnterLogic()

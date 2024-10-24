@@ -15,6 +15,7 @@ public class EnemyRunAwayTeleport : EnemyMoveSOBase
 
         if (triggerType == Enum_AnimationTriggerType.TELEPORT && !_enemy.EnemyAnimation.Animator.GetBool("Teleport"))
         {
+            AudioManager.PlayOneShot(_enemy.moveSoundEffects[0], _enemy.transform.position);
             OnTeleport();
             return;
         }
