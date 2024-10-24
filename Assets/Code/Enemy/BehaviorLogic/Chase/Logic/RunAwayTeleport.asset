@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8ba85bd11e07b42b8168136fb8f827, type: 3}
   m_Name: RunAwayTeleport
   m_EditorClassIdentifier: 
-  _teleportDistance: 10
+  _teleportDistance: 8
