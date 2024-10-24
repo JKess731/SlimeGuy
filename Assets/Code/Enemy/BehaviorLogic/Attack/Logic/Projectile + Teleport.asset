@@ -15,7 +15,7 @@ MonoBehaviour:
   _attackTime: 2.2
   _attackExitTime: 0.3
   _projectilePrefab: {fileID: 8839898757806257828, guid: 96575dbaef7cc4f40baabf6942643af7, type: 3}
-  _damage: 1
-  _speed: 3
+  _damage: 5
+  _speed: 9
   _knockbackPower: 1
   _lifetime: 5

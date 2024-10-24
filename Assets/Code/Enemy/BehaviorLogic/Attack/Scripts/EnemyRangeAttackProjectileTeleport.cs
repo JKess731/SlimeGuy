@@ -30,8 +30,14 @@ public class EnemyRangeAttackProjectileTeleport : EnemyAttackSOBase
                 RuntimeManager.PlayOneShot(_enemy.attackSoundEffects[0], _enemy.transform.position);
             }
 
-            GameObject projectile = Instantiate(_projectilePrefab, _attackPoint.position, Quaternion.Euler(0, 0, rotation));
-            projectile.GetComponent<EnemyProjectile>().Initialize(_damage, _speed, _knockbackPower, _lifetime);
+            GameObject projectile1 = Instantiate(_projectilePrefab, _attackPoint.position, Quaternion.Euler(0, 0, rotation-15));
+            projectile1.GetComponent<EnemyProjectile>().Initialize(_damage, _speed, _knockbackPower, _lifetime);
+
+            GameObject projectile2 = Instantiate(_projectilePrefab, _attackPoint.position, Quaternion.Euler(0, 0, rotation));
+            projectile2.GetComponent<EnemyProjectile>().Initialize(_damage, _speed, _knockbackPower, _lifetime);
+
+            GameObject projectile3 = Instantiate(_projectilePrefab, _attackPoint.position, Quaternion.Euler(0, 0, rotation+15));
+            projectile3.GetComponent<EnemyProjectile>().Initialize(_damage, _speed, _knockbackPower, _lifetime);
         }
     }
 
