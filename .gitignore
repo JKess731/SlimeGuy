@@ -61,6 +61,10 @@ sysinfo.txt
 *.unitypackage
 *.app
 
+# Fmod files to ignore
+*.pdc
+*.fobj
+
 # Crashlytics generated file
 crashlytics-build.properties
 
@@ -97,7 +101,5 @@ fmod_editor.log
 # FMOD 1.10.x (Legacy)
 /Assets/FMODAssets/*
 /Assets/FMODStudioCache.meta
-*.fobj
 /SlimeGuyFMOD/.cache
 /SlimeGuyFMOD/.unsaved
-*.pdc
