@@ -30,7 +30,16 @@ public class AudioManager : MonoBehaviour
 
     public static void PlayOneShot(EventReference eventReference, Vector3 worldPos)
     {
-        RuntimeManager.PlayOneShot(eventReference, worldPos);
+        try
+        {
+            RuntimeManager.PlayOneShot(eventReference, worldPos);
+        }
+        catch (Exception)
+        {
+
+            Debug.LogWarning("AudioManager: PlayOneShot failed to play " + eventReference);
+        }
+        
     }
 
     //Can be used to remove Play Niko and Stop Niko && Play Jeopardy and Stop Jeopardy

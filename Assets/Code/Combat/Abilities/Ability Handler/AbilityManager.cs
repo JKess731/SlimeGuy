@@ -112,6 +112,8 @@ public class AbilityManager : MonoBehaviour
 
         for (int i = 0; i < secondary.Length; i++)
         {
+            if (secondary[i] is null) { continue; }
+
             secondary[i]?.Initialize();
             Debug.Log(secondary[i].AbilityName);
         }
@@ -196,6 +198,10 @@ public class AbilityManager : MonoBehaviour
     #region Primary
     public void OnPrimaryStarted(InputAction.CallbackContext context)
     {
+        if(primary is null) { 
+            Debug.Log("Primary is null");
+            return; }
+
         if (primary?.AbilityState == AbilityState.READY)
         {
             primary?.StartBehavior(attackPos.position, attackPos.rotation);
@@ -203,6 +209,10 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnPrimaryPerformed(InputAction.CallbackContext context)
     {
+        if(primary is null) { 
+            Debug.Log("Primary is null");
+            return; }
+
         if (primary?.AbilityState == AbilityState.STARTING)
         {
             primary?.PerformBehavior(attackPos.position, attackPos.rotation);
@@ -210,6 +220,10 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnPrimaryCanceled(InputAction.CallbackContext context)
     {
+        if(primary is null) { 
+            Debug.Log("Primary is null");
+            return; }
+
         if (primary.AbilityState == AbilityState.PERFORMING)
         {
             primary?.CancelBehavior(attackPos.position, attackPos.rotation);
@@ -223,6 +237,10 @@ public class AbilityManager : MonoBehaviour
     #region Secondary1
     public void OnSecondaryStarted(InputAction.CallbackContext context)
     {
+        if (secondary[0] is null) { 
+            Debug.Log("Secondary is null");
+            return; }
+
         if (secondary[0]?.AbilityState == AbilityState.READY)
         {
             secondary[0]?.StartBehavior(attackPos.position, attackPos.rotation);
@@ -230,6 +248,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void OnSecondaryPerformed(InputAction.CallbackContext context)
     {
+        Debug.Log("Secondary Performed");
         if (secondary[0]?.AbilityState == AbilityState.STARTING)
         {
             secondary[0]?.PerformBehavior(attackPos.position, attackPos.rotation);
@@ -247,6 +266,8 @@ public class AbilityManager : MonoBehaviour
     #region Secondary2
     public void OnSecondary2Started(InputAction.CallbackContext context)
     {
+        if (secondary[1] is null) { return; }
+
         if (secondary[1]?.AbilityState == AbilityState.READY)
         {
             secondary[1]?.StartBehavior(attackPos.position, attackPos.rotation);
@@ -274,6 +295,8 @@ public class AbilityManager : MonoBehaviour
     #region Dash
     public void OnDashStarted(InputAction.CallbackContext context)
     {
+        if (dash is null) { return; }
+
         if (dash?.AbilityState == AbilityState.READY)
         {
             dash?.StartBehavior(attackPos.position, attackPos.rotation);

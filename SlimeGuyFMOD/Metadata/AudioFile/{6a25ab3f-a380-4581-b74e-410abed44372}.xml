@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{6a25ab3f-a380-4581-b74e-410abed44372}">
+		<property name="assetPath">
+			<value>Slime_Slash.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.44658333333333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f1b8826f-904c-45bf-af99-ef0eec3a91ad}</destination>
+		</relationship>
+	</object>
+</objects>

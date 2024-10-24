@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class AbilityMonoBase : MonoBehaviour, IAbility
     [SerializeField] protected string _abilityName;
     [SerializeField] protected Sprite _icon;
     [SerializeField] protected AbilityType _abilityType;
-
+    [SerializeField] protected EventReference _sfx;
 
     [Header("Variable Attributes")]
     [SerializeField] protected float _cooldownTime;
@@ -34,8 +35,14 @@ public class AbilityMonoBase : MonoBehaviour, IAbility
         _abilityState = AbilityState.READY;
         gameObject.SetActive(true);
     }
+
+    /// Starts the behavior of the ability - On Pressed
     public virtual void StartBehavior(Vector2 attackPosition, Quaternion rotation) { }
+
+    /// Performs the behavior of the ability - While Helded
     public virtual void PerformBehavior(Vector2 attackPosition, Quaternion rotation) { }
+
+    /// Cancels the behavior of the ability - On Release
     public virtual void CancelBehavior(Vector2 attackPosition, Quaternion rotation) { }
     public virtual IEnumerator Cooldown()
     {

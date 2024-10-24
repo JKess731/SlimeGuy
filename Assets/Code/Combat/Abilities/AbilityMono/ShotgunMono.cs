@@ -31,6 +31,7 @@ public class ShotgunMono : AbilityMonoBase
     public override void StartBehavior(Vector2 attackPosition, Quaternion rotation)
     {
         AbilityState = AbilityState.STARTING;
+        AudioManager.PlayOneShot(_sfx,transform.position);
 
         float newDamage = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ATTACK) + _projectileDamage;
         float newKnockback = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.KNOCKBACK) + _projectileKnockback;

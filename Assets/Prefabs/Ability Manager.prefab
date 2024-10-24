@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2981726174444645886
 Transform:
   m_ObjectHideFlags: 0
@@ -47,6 +47,13 @@ MonoBehaviour:
   _abilityName: SlimeWall
   _icon: {fileID: 0}
   _abilityType: 1
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 3
   _status: {fileID: 0}
   _wall: {fileID: 1885479085440805900, guid: b5619dfdf91b214479b8a36311569e1d, type: 3}
@@ -100,6 +107,13 @@ MonoBehaviour:
   _abilityName: SlimeWhip
   _icon: {fileID: 809294474, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
   _abilityType: 1
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 1
   _status: {fileID: 0}
   _whip: {fileID: 1444053255082817093, guid: 72bbfe5b1348d7a4792d4a570411e74f, type: 3}
@@ -155,6 +169,13 @@ MonoBehaviour:
   _abilityName: SlimePushPulse
   _icon: {fileID: 372012219, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
   _abilityType: 1
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 0
   _status: {fileID: 0}
   _pushPulse: {fileID: 9087892251996441329, guid: e9bb8cf59f951af48a2792de9df212f2, type: 3}
@@ -210,6 +231,13 @@ MonoBehaviour:
   _abilityName: DividingSlash
   _icon: {fileID: 1126688326, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
   _abilityType: 0
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 1
   _status: {fileID: 0}
   _dividingSlash: {fileID: 168608533301039626, guid: 37a47e8836288384ea6c68713713d7c8, type: 3}
@@ -268,6 +296,13 @@ MonoBehaviour:
   _abilityName: SlimeGrenade
   _icon: {fileID: -1710881915, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
   _abilityType: 1
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 2
   _status: {fileID: 0}
   _grenade: {fileID: 383735710107329663, guid: efed971914fda05439022b3b572addde, type: 3}
@@ -323,6 +358,13 @@ MonoBehaviour:
   _abilityName: SlimeOrbit
   _icon: {fileID: 1680917604, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
   _abilityType: 1
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 4
   _status: {fileID: 0}
   _orbit: {fileID: 7031965650677062296, guid: ffccf9cc23408834e9783f3a655a1542, type: 3}
@@ -330,9 +372,9 @@ MonoBehaviour:
   _spreadAngle: 360
   _damage: 1
   _knockback: 1
-  _activationTime: 2
-  _rotationSpeed: 50
-  _distance: 1
+  _activationTime: 3
+  _rotationSpeed: 5
+  _distance: 1.5
 --- !u!1 &2354473148997972644
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3658948380754580023}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.902586, y: -8.397725, z: -0.746186}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -422,6 +464,7 @@ MonoBehaviour:
   dash: {fileID: 0}
   secondary:
   - {fileID: 0}
+  - {fileID: 0}
   passive: []
   attackPos: {fileID: 0}
 --- !u!1 &4367171126161085708
@@ -440,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3099930287436804792
 Transform:
   m_ObjectHideFlags: 0
@@ -471,6 +514,13 @@ MonoBehaviour:
   _abilityName: SlimePunch
   _icon: {fileID: 0}
   _abilityType: 1
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 1
   _status: {fileID: 0}
   _punch: {fileID: 4469192852231491485, guid: c19b100f35e71df48a548a0bbe4b9772, type: 3}
@@ -496,7 +546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3430394361145926479
 Transform:
   m_ObjectHideFlags: 0
@@ -527,6 +577,13 @@ MonoBehaviour:
   _abilityName: SlimeSwipe
   _icon: {fileID: 0}
   _abilityType: 1
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 3
   _status: {fileID: 0}
   _swipe: {fileID: 7009649584980166181, guid: 5fb696517592d6745b3322a25ef4c443, type: 3}
@@ -617,6 +674,13 @@ MonoBehaviour:
   _abilityName: ShotgunSlimePellet
   _icon: {fileID: 1326487139, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
   _abilityType: 0
+  _sfx:
+    Guid:
+      Data1: -115196307
+      Data2: 1130899821
+      Data3: 626401201
+      Data4: 664755720
+    Path: event:/SFX/Puddles/Slime Shotgun
   _cooldownTime: 1
   _status: {fileID: 0}
   _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
@@ -712,6 +776,13 @@ MonoBehaviour:
   _abilityName: SlimePush
   _icon: {fileID: -9467021, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
   _abilityType: 1
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 1
   _status: {fileID: 0}
   _push: {fileID: 7595820434947627400, guid: 64dd7bf8fa61e0548a50803894a0ab1d, type: 3}
@@ -830,6 +901,13 @@ MonoBehaviour:
   _abilityName: SlimeMachineGun
   _icon: {fileID: 0}
   _abilityType: 0
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 1
   _status: {fileID: 0}
   _projectile: {fileID: 5098964168513206920, guid: 392cfdb261393ed4e8548955e3c64e9b, type: 3}
@@ -857,7 +935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2485939367313959369
 Transform:
   m_ObjectHideFlags: 0
@@ -888,6 +966,13 @@ MonoBehaviour:
   _abilityName: SlimeTrail
   _icon: {fileID: 0}
   _abilityType: 3
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 0
   _status: {fileID: 0}
   trailPrefab: {fileID: 6158484231948084506, guid: 8f8413d7c00bda14592ef4383d696759, type: 3}
@@ -941,6 +1026,13 @@ MonoBehaviour:
   _abilityName: ShotgunWide
   _icon: {fileID: 0}
   _abilityType: 0
+  _sfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _cooldownTime: 1
   _status: {fileID: 0}
   _projectile: {fileID: 132834982205136225, guid: 5ff3c97cf83aeef488ccf42bd11b45a2, type: 3}
