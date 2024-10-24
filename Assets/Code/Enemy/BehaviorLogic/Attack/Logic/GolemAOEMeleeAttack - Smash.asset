@@ -15,5 +15,5 @@ MonoBehaviour:
   _attackTime: 0.7
   _attackExitTime: 1.5
   _meleePrefab: {fileID: 7577202157244426437, guid: 3fcef69533236054da3d9fb3de10725d, type: 3}
-  _damage: 10
-  _knockback: 10
+  _damage: 15
+  _knockback: 15

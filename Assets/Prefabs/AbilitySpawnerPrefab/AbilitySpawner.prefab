@@ -49,13 +49,16 @@ MonoBehaviour:
   primaryAbilityPrefabs:
   - {fileID: 6634050262174916992, guid: 2c662c23442095643a8da5eb3772eea1, type: 3}
   - {fileID: 8687808817406728532, guid: 8ce3478fcc07f7e4f835d85211dd79cc, type: 3}
-  - {fileID: 8034460759978167465, guid: a66bf7ff9915ac347948a4cdfda66af1, type: 3}
+  - {fileID: 7742664093595293336, guid: 343af2a00731c6a46adadd229c51ae58, type: 3}
+  - {fileID: 5642451245746340031, guid: 5009383d351ad35488eceeff72e7f79b, type: 3}
+  - {fileID: 906486929231452663, guid: 25c73bab14c2e0a489f7460b63e70c2f, type: 3}
   secondaryAbilityPrefabs:
   - {fileID: 2460115958248623468, guid: dbb9c6440447ef34cab3b8588ee52fba, type: 3}
   - {fileID: 2228870431341252422, guid: 5eeb650580f23764ea5c4e06e790de4e, type: 3}
   - {fileID: 604973517676962060, guid: 02d402d1bc1355941a5f83f9f44e1473, type: 3}
   - {fileID: 2726926209033287163, guid: 290f273dd17e56b40b9e3e3ef7fc6eec, type: 3}
   - {fileID: 2747652142791412021, guid: 1f86a7c24116c034cb35068a8b785f49, type: 3}
+  - {fileID: 4946163134128588525, guid: 428a1ce82f3703b4696732456ccff3d3, type: 3}
   primarySpawnPoint: {fileID: 1375924084212560066}
   secondarySpawnPoints:
   - {fileID: 1979917428677449576}
