@@ -143,18 +143,28 @@ public class AbilityManager : MonoBehaviour
                 break;
 
             case AbilityType.SECONDARY:
+                //If both slots are filled, drop the first ability and replace it with the second ability
                 if (secondary[0] != null && secondary[1] != null)
                 {
+                    Debug.Log("Both slots are filled");
+
+                    //Disable the first ability -> Drop it
                     secondary[0]?.gameObject.SetActive(false);
-                    
                     abilityDrop.DropAbility(secondary[0].AbilityName, playerPosition);
 
+                    //Replace the first ability with the second ability
+                    Debug.Log("Swapping: " + secondary[0].AbilityName +" <- " + secondary[1].AbilityName);
                     secondary[0] = secondary[1];
 
+                    //Reinitialize the first ability
                     secondary[0]?.Initialize();
 
-                    secondary[1]?.gameObject.SetActive(false);
+                    //Replace the second ability with the new ability
+                    //Set the current ability to false -> swap it with the new ability -> reinitialize the new ability
+
+                    Debug.Log("Swapping: " + secondary[1].AbilityName + " <- " + abilityName);
                     secondary[1] = secondaryDict[abilityName];
+                    secondary[1]?.Initialize();
                 }
                 else
                 {
@@ -171,8 +181,6 @@ public class AbilityManager : MonoBehaviour
                         secondary[1]?.Initialize();
                     }
                 }
-
-                secondary[1]?.Initialize();
                 break;
 
             case AbilityType.DASH:
