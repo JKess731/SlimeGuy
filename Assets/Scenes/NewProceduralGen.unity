@@ -622,73 +622,6 @@ MonoBehaviour:
   OnNodesFinishes:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1064853594
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1064853595}
-  - component: {fileID: 1064853596}
-  m_Layer: 0
-  m_Name: Level Generator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1064853595
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064853594}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9303745, y: 0.45004255, z: 0.25886357}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1064853596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064853594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe16191876d008e4da1407db4c932748, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startRoom: {fileID: 2070151340180195389, guid: 71ccd96880ca6e148aa1d61affaeabba, type: 3}
-  roomsList:
-  - rt: 0
-    count: 5
-  - rt: 2
-    count: 1
-  - rt: 4
-    count: 3
-  - rt: 5
-    count: 4
-  emptyRoomList: {fileID: 0}
-  eventRoomList: {fileID: 0}
-  waveRoomList: {fileID: 0}
-  basicRoomList: {fileID: 0}
-  bossRoomList: {fileID: 0}
-  shopRoomList: {fileID: 0}
-  rowSize: 10
-  colSize: 10
-  spawnDelay: 0.25
-  roomsPlaced: []
-  OnRoomPlaced:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1256114765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1305,7 +1238,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1064853595}
   - {fileID: 906571796}
   - {fileID: 734981979}
   - {fileID: 1256114765}

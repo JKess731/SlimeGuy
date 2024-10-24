@@ -750,11 +750,11 @@ MonoBehaviour:
     Path: event:/StartMusic
   <IValleyTheme>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2138113156
+      Data2: 1235300883
+      Data3: 1217167034
+      Data4: -162750039
+    Path: event:/IValleyTheme
   <playerAttack>k__BackingField:
     Guid:
       Data1: -115196307
@@ -5228,9 +5228,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4925860084389839568}
     m_Modifications:
+    - target: {fileID: 294804381312757022, guid: 61282c7add53828438c8a1b0dc2d69e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3658948380754580023, guid: 61282c7add53828438c8a1b0dc2d69e4, type: 3}
       propertyPath: m_Name
       value: Ability Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367171126161085708, guid: 61282c7add53828438c8a1b0dc2d69e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435378636390973368, guid: 61282c7add53828438c8a1b0dc2d69e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6261451496518389589, guid: 61282c7add53828438c8a1b0dc2d69e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5270,6 +5282,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6261451496518389589, guid: 61282c7add53828438c8a1b0dc2d69e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160239593955608006, guid: 61282c7add53828438c8a1b0dc2d69e4, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

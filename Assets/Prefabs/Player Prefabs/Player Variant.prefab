@@ -25,16 +25,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1750317048491914005, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
-      propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[1].value
+      propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1750317048491914005, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
+      propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750317048491914005, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[1].inSlope
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1750317048491914005, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: _knockbackHitForceCurve.m_Curve.Array.data[1].outSlope
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1750317048491914005, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: _knockbackStoppingForceCurve.m_Curve.Array.data[0].time
@@ -98,11 +102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7346130731241124811, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7346130731241124811, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.56
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7346130731241124811, guid: a65ca340a08df8c48b2fcb77ef45e227, type: 3}
       propertyPath: m_LocalPosition.z

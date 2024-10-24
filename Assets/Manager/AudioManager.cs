@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     public EventInstance niko;
     public EventInstance jeopardy;
     public EventInstance menuMusic;
-    public EventInstance IValleyTheme;
+    public EventInstance IValleyTheme { get; set; }
 
     private void Awake()
     {
