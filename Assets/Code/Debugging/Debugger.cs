@@ -22,7 +22,7 @@ public class Debugger : MonoBehaviour
         }
 
         //Audio Changer
-        if (Input.GetKeyDown(KeyCode.F8))
+        if (Input.GetKeyDown(KeyCode.F8) && Input.GetKey(KeyCode.LeftShift))
         {
             AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
 
@@ -34,7 +34,7 @@ public class Debugger : MonoBehaviour
             AudioManager.instance.IValleyTheme.getParameterByName("enemyNear", out value2);
             Debug.Log(value2);
         }
-        if (Input.GetKeyDown(KeyCode.F9))
+        if (Input.GetKeyDown(KeyCode.F9) && Input.GetKey(KeyCode.LeftShift))
         {
             AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 1);
             AudioManager.instance.IValleyTheme.setParameterByName("enemyNear", 1f, false);
@@ -48,7 +48,7 @@ public class Debugger : MonoBehaviour
             AudioManager.instance.IValleyTheme.getParameterByName("enemyNear", out value2);
             Debug.Log(value2);
         }
-        if (Input.GetKeyDown(KeyCode.F10))
+        if (Input.GetKeyDown(KeyCode.F10) && Input.GetKey(KeyCode.LeftShift))
         {
             AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 2);
 
