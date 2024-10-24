@@ -12,12 +12,13 @@ public class AbilityDrop : MonoBehaviour
         { "SlimeWhip", "SlimeWhipDrop" },
         { "SlimeWall", "SlimeWallDrop" },
         { "ShotgunSlimePellet", "SlimeShotgunDrop" },
-        { "ShotgunWide", "ShotgunWideDrop" },
+        { "ShotgunWide", "SlimeShotgunWideDrop" },
         { "DividingSlash", "SlimeSlashDrop" },
         { "SlimeSwipe", "SlimeSwipeDrop" },
         { "SlimePush", "SlimePushDrop" },
         { "SlimePushPulse", "SlimePushPulseDrop" },
-        { "SlimePunch", "SlimePunchDrop" }
+        { "SlimePunch", "SlimePunchDrop" },
+        { "SlimeOrbit", "SlimeOrbitDrop" }
     };
 
     private HashSet<string> droppedAbilities = new HashSet<string>();

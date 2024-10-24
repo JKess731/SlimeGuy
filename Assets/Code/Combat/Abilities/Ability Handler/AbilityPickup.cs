@@ -34,15 +34,8 @@ public class AbilityPickup : MonoBehaviour
             AbilityManager abilityManager = AbilityManager.Instance;
 
             Debug.Log(abilityType);
-
-            if (abilityType == AbilityType.SECONDARY)
-            {
-                abilityManager.Swap(abilityType, abilityToPickupName);
-            }
-            else
-            {
-                abilityManager.Swap(abilityType, abilityToPickupName);
-            }
+            
+            abilityManager.Swap(abilityType, abilityToPickupName);
 
             Destroy(gameObject);
         }

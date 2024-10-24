@@ -138,7 +138,6 @@ public class AbilityManager : MonoBehaviour
                     abilityDrop.DropAbility(primary.AbilityName, playerPosition);
                     primary?.gameObject.SetActive(false);
                 }
-                //primary?.gameObject.SetActive(false);
                 primary = primaryDict[abilityName];
                 primary?.Initialize();
                 break;
@@ -147,9 +146,12 @@ public class AbilityManager : MonoBehaviour
                 if (secondary[0] != null && secondary[1] != null)
                 {
                     secondary[0]?.gameObject.SetActive(false);
+                    
+                    abilityDrop.DropAbility(secondary[0].AbilityName, playerPosition);
+
                     secondary[0] = secondary[1];
 
-                    abilityDrop.DropAbility(secondary[1].AbilityName, playerPosition);
+                    secondary[0]?.Initialize();
 
                     secondary[1]?.gameObject.SetActive(false);
                     secondary[1] = secondaryDict[abilityName];
