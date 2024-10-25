@@ -256,6 +256,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.77549756
       objectReference: {fileID: 0}
+    - target: {fileID: 1875464870673551181, guid: 41c05388e1310254fba61ec8916a1f75, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1992577694245478649, guid: 41c05388e1310254fba61ec8916a1f75, type: 3}
       propertyPath: m_Name
       value: RotationSpeed relic  Variant
@@ -298,6 +302,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2954765875866299775, guid: 41c05388e1310254fba61ec8916a1f75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6909860128416448699, guid: 41c05388e1310254fba61ec8916a1f75, type: 3}
+      propertyPath: m_LayerOverridePriority
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7792416779256435176, guid: 41c05388e1310254fba61ec8916a1f75, type: 3}

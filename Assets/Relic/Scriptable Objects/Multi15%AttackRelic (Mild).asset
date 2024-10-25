@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf515ede412d82b45b63214df8c31847, type: 3}
-  m_Name: ActivationBoostRelic(Mild)
+  m_Script: {fileID: 11500000, guid: c9c84052dbe24ac439a2539ea20e8441, type: 3}
+  m_Name: Multi15%AttackRelic (Mild)
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 0}
-  relicName: ActivationTimeBoost
-  flavorTextDescription: Boosting your Ability activation time!
+  relicName: Boxing Gloves
+  flavorTextDescription: Gain 15% buff on Attack
   rarity: 0
-  spriteIcon: {fileID: 21300000, guid: 9fc067e1efabf6b41822116c1133b13b, type: 3}
-  _changedStat: 14
+  spriteIcon: {fileID: 0}
+  _changedStat: 0
   hasCondition: 0
   calc: {fileID: 0}
-  changeStatBy: 2
+  buffPercentage: 15

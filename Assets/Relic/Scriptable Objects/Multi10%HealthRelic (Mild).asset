@@ -10,8 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2715fae66098a974bb96b25606ee2fb2, type: 3}
-  m_Name: Health Buff
+  m_Name: Multi10%HealthRelic (Mild)
   m_EditorClassIdentifier: 
-  abilityName: SlimeWhip
-  icon: {fileID: 809294474, guid: 9059b90dd036ad14486e8842a7407316, type: 3}
-  behavior: {fileID: 11400000, guid: 62384aa000b56544ebb398164f458a1f, type: 2}
+  _playerStats: {fileID: 0}
+  relicName: 10 of Hearts
+  flavorTextDescription: Gain a 10% buff on Health
+  rarity: 0
+  spriteIcon: {fileID: 0}
+  _changedStat: 3
+  hasCondition: 0
+  calc: {fileID: 0}
+  buffPercentage: 10

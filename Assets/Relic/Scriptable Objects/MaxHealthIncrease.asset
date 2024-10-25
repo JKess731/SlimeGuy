@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c84052dbe24ac439a2539ea20e8441, type: 3}
+  m_Script: {fileID: 11500000, guid: 2715fae66098a974bb96b25606ee2fb2, type: 3}
   m_Name: MaxHealthIncrease
   m_EditorClassIdentifier: 
   _playerStats: {fileID: 0}
-  relicName: 25lb Dumbells
-  flavorTextDescription: Gain +25 to Max Health
-  rarity: 1
+  relicName: 
+  flavorTextDescription: 
+  rarity: 0
   spriteIcon: {fileID: 0}
   _changedStat: 4
   hasCondition: 0
   calc: {fileID: 0}
-  buffPercentage: 25
+  buffPercentage: 20
