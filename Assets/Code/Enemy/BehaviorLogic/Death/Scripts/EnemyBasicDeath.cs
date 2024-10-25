@@ -11,6 +11,8 @@ public class EnemyBasicDeath : EnemyDeathSOBase
     {
         base.DoAnimationTriggerEventLogic(triggerType);
         Destroy(_gameObject);
+        EnemyBase e = _gameObject.GetComponent<EnemyBase>();
+        e.OnDeath?.Invoke();
     }
 
     public override void DoEnterLogic()

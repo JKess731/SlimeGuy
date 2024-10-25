@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckable
 {
@@ -46,6 +47,7 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private AnimationControl _enemyAnimation;            // Animator for the enemy
     private Enum_AnimationState _state;                           // The current state of the enemy
 
+    public UnityEvent OnDeath;
 
     //-------------------------------------------------------
     //                  Non-Serialized Fields
@@ -157,6 +159,11 @@ public class EnemyBase : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerChe
     private void FixedUpdate()
     {
         stateMachine.currentEnemyState.PhysicsUpdate();
+    }
+
+    private void OnDestroy()
+    {
+        //OnDeath?.Invoke();
     }
 
     #region Change states for animation events

@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Events;
-using FMOD.Studio;
-using FMODUnity;
 
 public class SingleRoomController : MonoBehaviour
 {
-    public void Start()
-    {
-        AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
-        AudioManager.instance.IValleyTheme.setParameterByName("enemyNear", 1, false);
-    }
+    [SerializeField] private GameObject spawnAnimObj;
+    [SerializeField] private List<GameObject> roomDoors = new List<GameObject>();
+    [SerializeField] private float audioDelay = 3f;
+    public List<RoomLevelWave> waves = new List<RoomLevelWave>();
+
+    private int currentWave = 0;
+    [SerializeField] private List<GameObject> spawnedEnemies = new List<GameObject>();
+
+    #region Classes
 
     [System.Serializable]
     public class MonsterSpawner
@@ -30,43 +33,80 @@ public class SingleRoomController : MonoBehaviour
         public List<MonsterSpawner> monsters = new List<MonsterSpawner>();
     }
 
-    [SerializeField] private GameObject spawnAnimObj;
-    public RoomTag roomTag;
-    [SerializeField] private List<GameObject> roomDoors = new List<GameObject>();
-    public List<RoomLevelWave> waves = new List<RoomLevelWave>();
+    #endregion
 
-    private int currentWave = 0;
-    private bool inWave = false;
-    [SerializeField] private List<GameObject> spawnedEnemies = new List<GameObject>();
+    #region Events
 
-    private bool triggered = false;
-    private bool cleared = false;
+    public UnityEvent OnRoomTriggered ; // Invoked when a room is triggered
+    public UnityEvent OnRoomCleared;   // Invoked when a room is fully cleared
+    public UnityEvent OnWaveStart;     // Invoked when a new wave has started
+    public UnityEvent OnWaveCleared;   // Invoked when a room with waves > 1 has a wave cleared
 
-    private void Update()
+    #endregion
+
+    public void Start()
     {
-        if (triggered)
-        {
-            CheckWave();
-        }
+        AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
+        AudioManager.instance.IValleyTheme.setParameterByName("enemyNear", 1, false);
+        Init();
     }
 
-    public void StartNextWave()
+    private void Init()
     {
-        if (currentWave == 0)
-        {
-            foreach (GameObject door in roomDoors)
-            {
-                door.SetActive(true);
-            }
+        // Initialize Listeners to Events
+        OnRoomTriggered.AddListener(LockDoors); // Lock the doors when the room starts
+        OnRoomTriggered.AddListener(NextWave); // Start the first wave when triggered
 
-            AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel" , 1);
-        }
+        OnRoomCleared.AddListener(UnlockDoors); // Unlock the doors when the room is cleared
+    }
 
-        RoomLevelWave waveToSpawn = waves[currentWave];
-        inWave = true;
+    #region Wave Control
+
+    // Attempts to start the next wave
+    private void NextWave()
+    {
         currentWave++;
-        StartCoroutine(SpawnEnemies(waveToSpawn.monsters));
+        Debug.Log(currentWave);
+
+        if (currentWave > waves.Count)
+        {
+            OnRoomCleared?.Invoke(); // No more waves to spawn
+        }
+        else
+        {
+            RoomLevelWave waveToSpawn = waves[currentWave - 1];
+            StartCoroutine(SpawnEnemies(waveToSpawn.monsters));
+        }
     }
+
+    #endregion
+
+    #region Door Control
+
+    private void LockDoors()
+    {
+        foreach (GameObject d in roomDoors)
+        {
+            d.SetActive(true);
+        }
+
+        AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 1);
+    }
+
+    private void UnlockDoors()
+    {
+        foreach (GameObject d in roomDoors)
+        {
+            d.SetActive(false);
+        }
+
+        AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 2);
+        StartCoroutine(AudioDelay(audioDelay));
+    }
+
+    #endregion
+
+    #region Enemy Control
 
     IEnumerator SpawnEnemies(List<MonsterSpawner> waveMonsters)
     {
@@ -86,75 +126,50 @@ public class SingleRoomController : MonoBehaviour
             spawnedEnemies.Add(enemy);
         }
 
-        if (triggered == false) triggered = true;
-
-        inWave = true;
+        OnWaveStart.AddListener(AddDeathListeners); // Listen for enemies when they die
+        OnWaveCleared.AddListener(NextWave); // Start the next wave if a wave has cleared
+        OnWaveStart?.Invoke();
     }
 
-    private void CheckNullEnemies()
+    // Lets this script listen for when Enemies die
+    private void AddDeathListeners()
     {
-        if (spawnedEnemies.Count == 0 && inWave)
+        foreach (GameObject enemyObj in spawnedEnemies)
         {
-            inWave = false;
-
-            if (currentWave == waves.Count)
-            {
-                cleared = true;
-            }
-        }
-        else
-        {
-            List<GameObject> nullEnemies = new List<GameObject>();
-
-            foreach (GameObject enemy in spawnedEnemies)
-            {
-                if (enemy == null)
-                {
-                    nullEnemies.Add(enemy);
-                }
-            }
-            spawnedEnemies.RemoveAll(nullEnemies.Contains);
+            EnemyBase enemy = enemyObj.GetComponent<EnemyBase>();
+            enemy.OnDeath.AddListener(delegate { RemoveDeadEnemy(enemy); });
         }
     }
 
-    private void CheckWave()
+    // Removes the given enemy from the list & checks if the list has no more enemies
+    private void RemoveDeadEnemy(EnemyBase e)
     {
-        if (inWave)
-        {
-            CheckNullEnemies();
-        }
-        else
-        {
-            if (currentWave < waves.Count)
-            {
-                StartNextWave();
-            }
-            else if (currentWave == waves.Count && spawnedEnemies.Count == 0)
-            {
-                foreach (GameObject door in roomDoors)
-                {
-                    door.SetActive(false);
-                }
+        StartCoroutine(DeadDelay(e.gameObject));
+    }
 
-                AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 2);
-                StartCoroutine(AudioDelay(3f));
-                LevelGenerator lg = GameObject.FindAnyObjectByType<LevelGenerator>();
-                lg.roomsCleared++;
-                lg.clearedChain++;
-                lg.lastClearedRoom = this.gameObject;
-
-                //gameObject.SetActive(false);
-                triggered = false;
-            }
+    private IEnumerator DeadDelay(GameObject e)
+    {
+        yield return new WaitForSeconds(.5f);
+        spawnedEnemies.Remove(e);
+        Debug.Log(spawnedEnemies.Count);
+        if (spawnedEnemies.Count <= 0)
+        {
+            // Tell the controller that this wave has cleared
+            OnWaveCleared?.Invoke();
         }
     }
+
+    #endregion
+
+    #region Audio
 
     private IEnumerator AudioDelay(float t)
     {
         yield return new WaitForSeconds(t);
         AudioManager.instance.IValleyTheme.setParameterByName("dangerLevel", 0);
-
     }
+
+    #endregion
 
 }
 

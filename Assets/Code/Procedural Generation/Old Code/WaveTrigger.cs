@@ -10,7 +10,7 @@ public class WaveTrigger : MonoBehaviour
     {
         if (collision.CompareTag("player"))
         {
-            controller.StartNextWave();
+            controller.OnRoomTriggered?.Invoke(); 
             gameObject.SetActive(false);
         }
     }

@@ -377,6 +377,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692654589}
   m_CullTransparentMesh: 1
+--- !u!1001 &732759967
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4261365704329129250, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_Name
+      value: AllAbilitySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.352223
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.30416542
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11311.867
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484046023631511256, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5561f83ae9f5da246947dd7a11dc054f, type: 3}
 --- !u!1 &734981975
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +756,7 @@ MonoBehaviour:
   _roomGenerator: {fileID: 906571798}
   _roomsTypesList:
   - rt: 4
-    count: 49
+    count: 4
   - rt: 6
     count: 1
   _spawnDelay: 0
@@ -1087,6 +1144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Singletons FirstThursday
       objectReference: {fileID: 0}
+    - target: {fileID: 3813308271645056603, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: _projectileDamage
+      value: 99
+      objectReference: {fileID: 0}
     - target: {fileID: 5632237893383201660, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: <IValleyTheme>k__BackingField.Path
       value: event:/IValleyTheme
@@ -1106,6 +1167,10 @@ PrefabInstance:
     - target: {fileID: 5632237893383201660, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: <IValleyTheme>k__BackingField.Guid.Data4
       value: -162750039
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634507738359960133, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
+      propertyPath: secondary.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7339888533048764866, guid: ac2168b7fdfebfa41a27fc74de28ecda, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1362,3 +1427,4 @@ SceneRoots:
   - {fileID: 1622031986}
   - {fileID: 587224640}
   - {fileID: 780203666}
+  - {fileID: 732759967}
