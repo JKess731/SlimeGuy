@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 4163714258016128980}
   - component: {fileID: 3132985906532479216}
   m_Layer: 0
-  m_Name: RoomDL-Empty
+  m_Name: RoomDL-Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1492,6 +1492,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 4459858441064691628}
   - {fileID: 4440966663345089193}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2443,6 +2444,76 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!1 &4794438465216192423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4459858441064691628}
+  - component: {fileID: 8688252405694964757}
+  m_Layer: 0
+  m_Name: ShopControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4459858441064691628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4794438465216192423}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.46, y: 4.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4163714258016128980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8688252405694964757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4794438465216192423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273748963b0cb2b4a917e26f26f599eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityPickups:
+  - {fileID: 2747652142791412021, guid: 1f86a7c24116c034cb35068a8b785f49, type: 3}
+  - {fileID: 8034460759978167465, guid: a66bf7ff9915ac347948a4cdfda66af1, type: 3}
+  - {fileID: 2228870431341252422, guid: 5eeb650580f23764ea5c4e06e790de4e, type: 3}
+  - {fileID: 5642451245746340031, guid: 5009383d351ad35488eceeff72e7f79b, type: 3}
+  - {fileID: 604973517676962060, guid: 02d402d1bc1355941a5f83f9f44e1473, type: 3}
+  - {fileID: 2726926209033287163, guid: 290f273dd17e56b40b9e3e3ef7fc6eec, type: 3}
+  - {fileID: 6634050262174916992, guid: 2c662c23442095643a8da5eb3772eea1, type: 3}
+  - {fileID: 906486929231452663, guid: 25c73bab14c2e0a489f7460b63e70c2f, type: 3}
+  - {fileID: 8687808817406728532, guid: 8ce3478fcc07f7e4f835d85211dd79cc, type: 3}
+  - {fileID: 7742664093595293336, guid: 343af2a00731c6a46adadd229c51ae58, type: 3}
+  - {fileID: 4946163134128588525, guid: 428a1ce82f3703b4696732456ccff3d3, type: 3}
+  - {fileID: 2460115958248623468, guid: dbb9c6440447ef34cab3b8588ee52fba, type: 3}
+  relicPickups:
+  - {fileID: 1992577694245478649, guid: 623225fc460bd214f96b31cfc0777865, type: 3}
+  - {fileID: 1992577694245478649, guid: cd8b41a8be0c65240a8766cea9025e17, type: 3}
+  - {fileID: 1032922754605914550, guid: 4b0840c1baeb2b548a23c23bc5cb2652, type: 3}
+  - {fileID: 1992577694245478649, guid: 15e102ceeb888754484ceedc685a695c, type: 3}
+  - {fileID: 1798956242726863487, guid: bdf6ab37a25cccb4eb8a97a357218109, type: 3}
+  - {fileID: 6071608577235024857, guid: eb62d647b49f4d6469a0ef29e343c0af, type: 3}
+  - {fileID: 5199774544636245750, guid: 1136f4c73f6d53449841b3fcc0832678, type: 3}
+  - {fileID: 1992577694245478649, guid: 95e0ee908f1c01242bf20c5b40273c87, type: 3}
+  - {fileID: 2553874670995009282, guid: fed234fde06b643488dbe84e8d2073c2, type: 3}
+  - {fileID: 1992577694245478649, guid: 41c05388e1310254fba61ec8916a1f75, type: 3}
+  distanceX: 2
+  distanceY: 2
 --- !u!1 &5774343224104732162
 GameObject:
   m_ObjectHideFlags: 0

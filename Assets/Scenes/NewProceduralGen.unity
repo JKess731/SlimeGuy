@@ -564,6 +564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilitySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 692532600222179721, guid: 20f62233efd76ab47b6d6a72ad059dd1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1375924084212560066, guid: 20f62233efd76ab47b6d6a72ad059dd1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -756,9 +760,11 @@ MonoBehaviour:
   _roomGenerator: {fileID: 906571798}
   _roomsTypesList:
   - rt: 4
-    count: 4
+    count: 10
   - rt: 6
     count: 1
+  - rt: 2
+    count: 3
   _spawnDelay: 0
   _rowSize: 10
   _colSize: 10
@@ -767,7 +773,7 @@ MonoBehaviour:
   waveRoomList: {fileID: 11400000, guid: 8b8e03299dcc780459f4f08fa10d85bc, type: 2}
   basicRoomList: {fileID: 11400000, guid: baef52f922bbca34b8125da19e67bdd4, type: 2}
   bossRoomList: {fileID: 0}
-  shopRoomList: {fileID: 0}
+  shopRoomList: {fileID: 11400000, guid: 64b6e44f33fac68438a68f399e9ad31f, type: 2}
 --- !u!114 &906571798
 MonoBehaviour:
   m_ObjectHideFlags: 0

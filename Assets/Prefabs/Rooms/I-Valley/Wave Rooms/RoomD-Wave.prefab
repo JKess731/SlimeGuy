@@ -5094,12 +5094,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAnimObj: {fileID: 6756413586049135127, guid: e8037e8bb0397c3469b7e42688c11fe6, type: 3}
-  roomTag: 4
   roomDoors:
   - {fileID: 3363667141187144623}
+  audioDelay: 3
   waves:
   - monsters:
     - enemyPrefab: {fileID: 5254476107874737995, guid: 0a59172866d30064d8ada71bcca4b83f, type: 3}
-      spawnPos: {x: 0, y: 5}
+      spawnPos: {x: 0, y: 0}
       spawnDelay: 0.5
   spawnedEnemies: []
+  OnRoomTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRoomCleared:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWaveCleared:
+    m_PersistentCalls:
+      m_Calls: []
