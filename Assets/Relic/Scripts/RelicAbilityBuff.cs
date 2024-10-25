@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "RelicAbilityBuff", menuName = "Relics/RelicAbilityBuff")]
+[CreateAssetMenu(fileName = "RelicAbilityBuff", menuName = "Relics/Additive Relic")]
 public class RelicAbilityBuff : RelicSO
 {
     [SerializeField] float changeStatBy;

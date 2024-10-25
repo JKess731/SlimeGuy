@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Relics/StatBuff", menuName = "Relics/Stat Buff (NO HEALTH)")]
+[CreateAssetMenu(fileName = "Relics/StatBuff", menuName = "Relics/Multiplicative")]
 public class StatPercentageBuffRelic : RelicSO
 {
     [SerializeField] private float buffPercentage = 15;

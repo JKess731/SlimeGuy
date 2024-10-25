@@ -49,6 +49,9 @@ public class ShotgunMono : AbilityMonoBase
                 _bulletBounce + (int)addedBulletBounce);
         }
 
+        Debug.Log("Shotty damage: " + newDamage);
+        Debug.Log("Shotty knockback: " + newKnockback);
+
         StartCoroutine(Cooldown());
 
         //This is basically saying pass in this monobehavior as the ability, use the UIAbility type variable to determine which box it's in in the UI, and 
