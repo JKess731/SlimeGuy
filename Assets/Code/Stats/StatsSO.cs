@@ -105,6 +105,8 @@ public class StatsSO: ScriptableObject
     {
         //(BaseState + StatIncrement) * (1+StatMultipler)
 
+        //initialize all zeroes inside the dicts instead
+
         if (_statsMultiplicative.ContainsKey(stat) && !_statsAdditive.ContainsKey(stat))
         {
             Debug.Log("I got here ----");
