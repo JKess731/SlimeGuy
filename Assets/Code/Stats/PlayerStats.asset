@@ -18,9 +18,9 @@ MonoBehaviour:
   - _statType: 4
     _statValue: 300
   - _statType: 0
-    _statValue: 0
+    _statValue: 1
   - _statType: 1
-    _statValue: 0
+    _statValue: 1
   - _statType: 2
     _statValue: 6
   - _statType: 5
@@ -34,16 +34,16 @@ MonoBehaviour:
   - _statType: 10
     _statValue: 0
   - _statType: 11
-    _statValue: 0
+    _statValue: 1
   - _statType: 12
-    _statValue: 0
+    _statValue: 1
   - _statType: 13
     _statValue: 0
   - _statType: 14
-    _statValue: 0
+    _statValue: 1
   - _statType: 15
-    _statValue: 0
+    _statValue: 1
   - _statType: 18
-    _statValue: 0
+    _statValue: 1
   - _statType: 19
-    _statValue: 0
+    _statValue: 1

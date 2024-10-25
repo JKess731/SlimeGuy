@@ -53,7 +53,7 @@ public class UiManager : MonoBehaviour
 
     private void Start()
     {
-        
+        UpdateAllIcons();
     }
 
     private void Update()
@@ -77,7 +77,7 @@ public class UiManager : MonoBehaviour
         {
             UpdatePrimaryAbilityImage(_abilityManager.Primary?.Icon);
             UpdateSecondaryAbilityImage(_abilityManager.Secondary?.Icon);
-            UpdateDashAbilityImage(_abilityManager.Dash?.Icon);
+            UpdateDashAbilityImage(_abilityManager.Secondary2?.Icon);
         }
         catch (System.NullReferenceException)
         {
@@ -123,18 +123,18 @@ public class UiManager : MonoBehaviour
             modifiedSlider = _primaryCooldown;
             modifiedText = _primaryCooldownTxt;
         }
-        else if (type == "S")
+        else if (type == "S1")
         {
             modifiedSlider = _secondaryCooldown;
             modifiedText = _secondaryCooldownTxt;
         }
-        else if (type == "D")
+        else if (type == "S2")
         {
             modifiedSlider = _dashCooldown;
             modifiedText = _dashCooldownTxt;
             Debug.Log("I used dash and got here " + attack.CooldownTime);
         }
-        else if (type == "PA")
+        else if (type == "D")
         {
             modifiedSlider = _passiveCooldown;
             modifiedText = passiveCooldownTxt;

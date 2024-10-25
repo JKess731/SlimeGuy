@@ -22,9 +22,14 @@ public class PunchMono : AbilityMonoBase
     private Vector2 _startPos;
     private Vector2 _pushVector;
 
+    private PlayerStateMachine _playerStats;
+    private string UIAbilityType;
+
     public override void Initialize()
     {
         base.Initialize();
+        _playerStats = PlayerStats.instance.playerStateMachine;
+        UIAbilityType = AbilityManager.Instance.AbilityUIType(this);
         _playerRb = GameObject.FindWithTag("player").GetComponent<Rigidbody2D>();
     }
 
@@ -38,12 +43,23 @@ public class PunchMono : AbilityMonoBase
         _startPos = _playerRb.transform.position;
         _pushVector = _pushDirection * _pushSpeed;
 
+        float newDamage = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.ATTACK) + _punchDamage;
+        float newKnockback = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.KNOCKBACK) + _punchKnockback;
+        float newSpeed = _playerStats.playerStats.ModifiedStatValue(Enum_Stats.PROJECTILE_SPEED) + _punchSpeed;
+
         GameObject newPunch = Instantiate(_punch, attackPosition, rotation);
-        newPunch.GetComponent<Punch>().Initialize(_punchDamage, _punchKnockback, _punchSpeed, _punchRange);
+        newPunch.GetComponent<Punch>().Initialize((int)newDamage, newKnockback, newSpeed, _punchRange);
+
+        Debug.Log("punch damage: " + newDamage);
+        Debug.Log("punch knockback: " + newKnockback);
 
         // Push the player forward
         StartCoroutine(PushPlayerForward());
         StartCoroutine(Cooldown());
+
+        //This is basically saying pass in this monobehavior as the ability, use the UIAbility type variable to determine which box it's in in the UI, and 
+        //its activation time. This will be the same in every Mono class that calls this, though the activation time parameter value may differ.
+        StartCoroutine(UiManager.instance.TextAndSliderAdjustment(this, UIAbilityType, 0));
     }
 
     public override void PerformBehavior(Vector2 attackPosition, Quaternion rotation) { }
@@ -52,22 +68,14 @@ public class PunchMono : AbilityMonoBase
 
     private IEnumerator PushPlayerForward()
     {
-        Debug.Log("velocity:" + _playerRb.velocity);
-        Debug.Log("push vector:" + _pushVector);
-        Debug.Log("startPos:" + _startPos);
-        Debug.Log("playerPos:" + _playerRb.transform.position);
-        Debug.Log(Vector2.Distance(_startPos, _playerRb.transform.position));
 
         // Continue pushing the player forward until the range is reached
         while (Vector2.Distance(_startPos, _playerRb.transform.position) < _pushRange)
         {
-            Debug.Log("Pushing player forward...");
             // Apply a force in the forward direction
             _playerRb.AddForce(_pushVector * _pushSpeed, ForceMode2D.Force);
             yield return new WaitForFixedUpdate();
         }
-
-        Debug.Log("Player pushed forward");
         // Stop player's movement after the push is complete
         _playerRb.velocity = Vector2.zero;
     }

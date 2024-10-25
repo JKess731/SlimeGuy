@@ -94,8 +94,6 @@ public class StatsSO: ScriptableObject
     public void AddStatMultiplicative(Enum_Stats stat, float value)
     {
         _statsMultiplicative[stat] += value;
-        Debug.Log(stat + "'s value in _statsMultiplicative: " + _statsMultiplicative[stat]);
-        Debug.Log("bboo");
     }
 
 
@@ -113,18 +111,16 @@ public class StatsSO: ScriptableObject
             return _stats[stat] * (1 + _statsMultiplicative[stat]);
             
         }
-        else if (!_statsMultiplicative.ContainsKey(stat) && _statsAdditive.ContainsKey(stat))
+        if (!_statsMultiplicative.ContainsKey(stat) && _statsAdditive.ContainsKey(stat))
         {
             return (_stats[stat] + _statsAdditive[stat]);
         }
-        else if (!_statsMultiplicative.ContainsKey(stat) && !_statsAdditive.ContainsKey(stat))
+        if (!_statsMultiplicative.ContainsKey(stat) && !_statsAdditive.ContainsKey(stat))
         {
             return (_stats[stat]);
         }
-        else
-        {
-            return (_stats[stat] + _statsAdditive[stat]) * (1 + _statsMultiplicative[stat]);
-        }
+        return (_stats[stat] + _statsAdditive[stat]) * (1 + _statsMultiplicative[stat]);
+        
     }
 
     public void RegisterStat(Enum_Stats stat, string type, float value)
@@ -149,6 +145,8 @@ public class StatsSO: ScriptableObject
             else
             {
                 _statsMultiplicative.Add(stat, value);
+                Debug.Log(stat + "'s value in _statsMultiplicative: " + _statsMultiplicative[stat]);
+                Debug.Log("bboo");
             }
         }
     }

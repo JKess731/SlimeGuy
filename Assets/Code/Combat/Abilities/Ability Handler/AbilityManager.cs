@@ -310,17 +310,17 @@ public class AbilityManager : MonoBehaviour
         {
             return "P";
         }
-        else if(secondary?.GetType() == ability.GetType())
+        if (secondary[0]?.GetType() == ability.GetType())
         {
-            return "S";
+            return "S1";
         }
-        else if(dash?.GetType() == ability.GetType())
+        if (secondary[1]?.GetType() == ability.GetType())
+        {
+            return "S2";
+        }
+        if(dash?.GetType() == ability.GetType())
         {
             return "D";
-        }
-        else if(passive?.GetType() == ability.GetType())
-        {
-            return "PA";
         }
         return "WRONG";
     }
